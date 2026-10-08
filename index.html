@@ -13,7 +13,11 @@ h1,h2{font-family:"Songti SC","Noto Serif SC","STSong",serif}
 .sitehead .brand{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.25rem;font-weight:700;color:var(--ink);text-decoration:none}
 .sitehead .brand small{font-family:sans-serif;font-weight:400;font-size:.75rem;color:var(--muted);margin-left:.6rem;letter-spacing:.1em}
 /* domain */
-.domain{padding:2rem 0 .5rem}
+.domain{padding:2rem 0 .5rem;scroll-margin-top:3.4rem}
+.dnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
+.dnav-inner{max-width:46rem;margin:0 auto;padding:.55rem 1.15rem;display:flex;gap:.5rem;overflow-x:auto}
+.dnav a{flex:1 0 auto;text-align:center;font-size:.85rem;text-decoration:none;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:.32rem .8rem;white-space:nowrap}
+.dnav a:active{background:var(--green);color:#fff;border-color:var(--green)}
 .domain h2{font-size:1.3rem;margin:0 0 .2rem;display:flex;align-items:baseline;gap:.6rem}
 .domain h2 .count{font-family:sans-serif;font-size:.75rem;color:var(--muted);font-weight:400}
 .domain .intro{color:var(--muted);font-size:.88rem;margin:0 0 1rem}
@@ -62,9 +66,10 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 }
 </style></head>
 <body><div class="wrap"><header class="sitehead"><a class="brand" href="index.html">四十本经典书<small>BOOK GUIDE · VOL.01</small></a></header></div>
+<nav class="dnav"><div class="dnav-inner"><a href="#dom-1">软件工程</a><a href="#dom-2">系统设计</a><a href="#dom-3">UI/UX 设计</a><a href="#dom-4">产品经理</a></div></nav>
 <main><div class="wrap"><div class="sitehead" style="border:none;padding-bottom:0"><span class="brand" style="font-size:1.6rem">四十本经典书<small>4 领域 × 10 本 · 豆瓣核实版</small></span></div>
 <p style="color:var(--muted);font-size:.9rem;margin:.6rem 0 0">软件工程 · 系统设计 · UI/UX · 产品经理。每本书：总体观点 × 核心观点 × 全书结构，短句配例子。</p></div>
-<div class="wrap"><section class="domain"><h2>软件工程<span class="count">10 本</span></h2><p class="intro">软件工程就是研究怎么把写代码这件事，从“一个人灵光一闪”变成“一群人稳定交付”的学问——管的不只是代码，更是人、进度和复杂度。</p><div>
+<div class="wrap"><section class="domain" id="dom-1"><h2>软件工程<span class="count">10 本</span></h2><p class="intro">软件工程就是研究怎么把写代码这件事，从“一个人灵光一闪”变成“一群人稳定交付”的学问——管的不只是代码，更是人、进度和复杂度。</p><div>
 <a class="brow" href="book-01.html">
 <img src="covers/s1102259.jpg" alt="《人月神话》封面" loading="lazy">
 <div><p class="t">01. 《人月神话》</p>
@@ -116,7 +121,7 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <p class="m">埃里克·埃文斯 / 人民邮电出版社 / 2003</p></div>
 <span class="r"><b>7.9</b><span>522人评价</span></span></a>
 </div></section></div>
-<div class="wrap"><section class="domain"><h2>系统设计<span class="count">10 本</span></h2><p class="intro">系统设计是研究“怎么把软件系统搭得又稳、又快、还好改”的学问：数据放哪、机器挂了怎么办、用户涨十倍怎么办、代码越写越乱怎么办——这些问题的答案，都归它管。</p><div>
+<div class="wrap"><section class="domain" id="dom-2"><h2>系统设计<span class="count">10 本</span></h2><p class="intro">系统设计是研究“怎么把软件系统搭得又稳、又快、还好改”的学问：数据放哪、机器挂了怎么办、用户涨十倍怎么办、代码越写越乱怎么办——这些问题的答案，都归它管。</p><div>
 <a class="brow" href="book-11.html">
 <img src="covers/s30329536.jpg" alt="《数据密集型应用系统设计》封面" loading="lazy">
 <div><p class="t">11. 《数据密集型应用系统设计》</p>
@@ -168,7 +173,7 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <p class="m">马丁·阿伯特（Martin L. Abbott）、迈克尔·费舍尔（Michael T. Fisher） / 机械工业出版社 / 2014</p></div>
 <span class="r"><b>8</b><span>326人评价</span></span></a>
 </div></section></div>
-<div class="wrap"><section class="domain"><h2>UI/UX 设计<span class="count">10 本</span></h2><p class="intro">说白了，UI/UX 设计就是研究“人怎么用东西”的学问：UI 管“长什么样”，UX 管“用起来顺不顺”。目标只有一个——让用户用产品时不费脑子、不犯错，还觉得顺手。</p><div>
+<div class="wrap"><section class="domain" id="dom-3"><h2>UI/UX 设计<span class="count">10 本</span></h2><p class="intro">说白了，UI/UX 设计就是研究“人怎么用东西”的学问：UI 管“长什么样”，UX 管“用起来顺不顺”。目标只有一个——让用户用产品时不费脑子、不犯错，还觉得顺手。</p><div>
 <a class="brow" href="book-21.html">
 <img src="covers/s1827702.jpg" alt="《点石成金》封面" loading="lazy">
 <div><p class="t">21. 《点石成金》</p>
@@ -220,7 +225,7 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <p class="m">约翰·梅达 / 中国人民大学出版社 / 2007</p></div>
 <span class="r"><b>7.7</b><span>682人评价</span></span></a>
 </div></section></div>
-<div class="wrap"><section class="domain"><h2>产品经理<span class="count">10 本</span></h2><p class="intro">产品经理就是那个要想清楚“做什么产品、为谁做、为什么值得做”的人——夹在用户、技术和生意之间，把一个个想法变成大家愿意用的产品。</p><div>
+<div class="wrap"><section class="domain" id="dom-4"><h2>产品经理<span class="count">10 本</span></h2><p class="intro">产品经理就是那个要想清楚“做什么产品、为谁做、为什么值得做”的人——夹在用户、技术和生意之间，把一个个想法变成大家愿意用的产品。</p><div>
 <a class="brow" href="book-31.html">
 <img src="covers/s5914587.jpg" alt="《启示录》封面" loading="lazy">
 <div><p class="t">31. 《启示录》</p>
