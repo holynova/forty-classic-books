@@ -197,10 +197,14 @@ function buildIndex() {
     const bookRows = domainBooks.map(b => {
       const padId = String(b.id).padStart(2, '0');
       const stars = getStars(b.rating);
+      // Performance optimization: Prioritize LCP images above the fold; lazy-load offscreen images
+      const imgAttrs = b.id <= 2
+        ? 'fetchpriority="high" decoding="async"'
+        : 'loading="lazy" decoding="async"';
       return `
         <a class="brow" href="${b.slug}.html" data-title="${escapeHtml(b.title)}" data-author="${escapeHtml(b.author)}" data-publisher="${escapeHtml(b.publisher)}" data-domain="${escapeHtml(b.domain)}" data-intro="${escapeHtml(b.intro)}">
           <div class="brow-cover-wrap">
-            <img src="${b.cover}" alt="${escapeHtml(b.title)}封面" loading="lazy" width="68" height="98">
+            <img src="${b.cover}" alt="${escapeHtml(b.title)}封面" ${imgAttrs} width="68" height="98">
           </div>
           <div class="brow-body">
             <h3 class="brow-title"><span class="tabular">${padId}.</span> ${escapeHtml(b.title)}</h3>
@@ -241,6 +245,7 @@ function buildIndex() {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(site.title)}</title>
+  <link rel="dns-prefetch" href="https://cloud.umami.is">
   <link rel="stylesheet" href="style.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="e01c9f78-4607-4e60-b01c-77c8190b12b4"></script>
 </head>
@@ -376,41 +381,147 @@ function buildIndex() {
         searchEmpty.style.display = (matchCount === 0 && query) ? 'block' : 'none';
       }
 
-      if (searchInput) searchInput.addEventListener('input', handleSearch);
+      let searchRaf = null;
+      function debouncedSearch() {
+        if (searchRaf) cancelAnimationFrame(searchRaf);
+        searchRaf = requestAnimationFrame(handleSearch);
+      }
+
+      if (searchInput) searchInput.addEventListener('input', debouncedSearch);
       if (searchClear) searchClear.addEventListener('click', function() {
         searchInput.value = '';
         searchInput.focus();
         handleSearch();
       });
 
-      // 2. Sticky Nav ScrollSpy
+      // 2. Sticky Nav Navigation & ScrollSpy
+      const dnav = document.getElementById('stickyNav');
+      const dnavInner = dnav ? dnav.querySelector('.dnav-inner') : null;
       const navLinks = Array.from(document.querySelectorAll('.dnav a'));
-      const observerOptions = {
-        root: null,
-        rootMargin: '-80px 0px -60% 0px',
-        threshold: 0
-      };
+      let isClickScrolling = false;
+      let clickScrollTimer = null;
 
-      const observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            const id = entry.target.id;
-            navLinks.forEach(link => {
-              if (link.getAttribute('data-target') === id) {
-                link.classList.add('active');
-                link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-              } else {
-                link.classList.remove('active');
-              }
-            });
+      function centerActiveTab(activeLink) {
+        if (!activeLink || !dnavInner) return;
+        // Scroll ONLY the horizontal dnav-inner container! NEVER call scrollIntoView which aborts window scrolling.
+        const targetLeft = activeLink.offsetLeft - (dnavInner.clientWidth - activeLink.offsetWidth) / 2;
+        dnavInner.scrollTo({
+          left: Math.max(0, targetLeft),
+          behavior: 'smooth'
+        });
+      }
+
+      function setActiveNav(targetId) {
+        let activeEl = null;
+        navLinks.forEach(link => {
+          if (link.getAttribute('data-target') === targetId) {
+            link.classList.add('active');
+            activeEl = link;
+          } else {
+            link.classList.remove('active');
           }
         });
-      }, observerOptions);
+        if (activeEl) centerActiveTab(activeEl);
+      }
 
-      domainSections.forEach(sec => observer.observe(sec));
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(e) {
+          const targetId = this.getAttribute('data-target');
+          const targetSection = document.getElementById(targetId);
+          if (!targetSection) return;
 
-      // 3. Scroll position preservation
+          e.preventDefault();
+          setActiveNav(targetId);
+
+          isClickScrolling = true;
+          if (clickScrollTimer) clearTimeout(clickScrollTimer);
+          clickScrollTimer = setTimeout(() => {
+            isClickScrolling = false;
+            updateScrollSpy();
+          }, 1200);
+
+          const navHeight = dnav ? dnav.offsetHeight : 56;
+          const targetTop = targetSection.getBoundingClientRect().top + window.scrollY - navHeight;
+
+          window.scrollTo({
+            top: Math.max(0, Math.round(targetTop)),
+            behavior: 'smooth'
+          });
+
+          if (history.pushState) {
+            history.pushState(null, '', '#' + targetId);
+          }
+        });
+      });
+
+      // Clear click scroll lock on scrollend
+      window.addEventListener('scrollend', function() {
+        if (isClickScrolling) {
+          isClickScrolling = false;
+          if (clickScrollTimer) clearTimeout(clickScrollTimer);
+          updateScrollSpy();
+        }
+      });
+
+      // ScrollSpy: update active tab when user manually scrolls
+      let scrollTicking = false;
+      function updateScrollSpy() {
+        if (isClickScrolling) return;
+        const navHeight = dnav ? dnav.offsetHeight : 56;
+        const threshold = navHeight + 80;
+
+        // Bottom of page check
+        if ((window.innerHeight + window.scrollY) >= (document.documentElement.scrollHeight - 60)) {
+          const visibleSections = domainSections.filter(s => s.style.display !== 'none');
+          if (visibleSections.length > 0) {
+            const lastSec = visibleSections[visibleSections.length - 1];
+            setActiveNav(lastSec.id);
+            return;
+          }
+        }
+
+        let currentId = null;
+        for (const sec of domainSections) {
+          if (sec.style.display === 'none') continue;
+          const rect = sec.getBoundingClientRect();
+          if (rect.top <= threshold) {
+            currentId = sec.id;
+          } else {
+            break;
+          }
+        }
+
+        if (!currentId && domainSections.length > 0) {
+          const firstVisible = domainSections.find(s => s.style.display !== 'none');
+          if (firstVisible) currentId = firstVisible.id;
+        }
+
+        if (currentId) {
+          const currentActive = document.querySelector('.dnav a.active');
+          if (!currentActive || currentActive.getAttribute('data-target') !== currentId) {
+            setActiveNav(currentId);
+          }
+        }
+      }
+
+      window.addEventListener('scroll', function() {
+        if (isClickScrolling) return;
+        if (!scrollTicking) {
+          requestAnimationFrame(() => {
+            updateScrollSpy();
+            scrollTicking = false;
+          });
+          scrollTicking = true;
+        }
+      }, { passive: true });
+
+      // 3. Scroll position preservation & Hash navigation
       function restoreScroll() {
+        if (location.hash) {
+          const hashId = location.hash.replace('#', '');
+          setActiveNav(hashId);
+          return;
+        }
         try {
           const y = sessionStorage.getItem('idxScroll');
           if (y !== null) {
@@ -424,6 +535,12 @@ function buildIndex() {
           sessionStorage.setItem('idxScroll', String(window.scrollY));
         } catch (e) {}
       }
+      window.addEventListener('hashchange', function() {
+        if (location.hash) {
+          const hashId = location.hash.replace('#', '');
+          setActiveNav(hashId);
+        }
+      });
       window.addEventListener('DOMContentLoaded', restoreScroll);
       window.addEventListener('pageshow', function(e) { if (e.persisted) restoreScroll(); });
       window.addEventListener('pagehide', saveScroll);
@@ -470,14 +587,14 @@ function buildBooks() {
     // Prev / Next Nav (Cover Cards)
     const prevHtml = prevBook
       ? `<a class="prev${!nextBook ? ' solo' : ''}" href="${prevBook.slug}.html">
-          <img src="${prevBook.cover}" alt="${escapeHtml(prevBook.title)}封面" loading="lazy">
+          <img src="${prevBook.cover}" alt="${escapeHtml(prevBook.title)}封面" loading="lazy" decoding="async">
           <span class="t"><span>← 上一本</span>${escapeHtml(prevBook.title)}</span>
          </a>`
       : '';
 
     const nextHtml = nextBook
       ? `<a class="next${!prevBook ? ' solo' : ''}" href="${nextBook.slug}.html">
-          <img src="${nextBook.cover}" alt="${escapeHtml(nextBook.title)}封面" loading="lazy">
+          <img src="${nextBook.cover}" alt="${escapeHtml(nextBook.title)}封面" loading="lazy" decoding="async">
           <span class="t"><span>下一本 →</span>${escapeHtml(nextBook.title)}</span>
          </a>`
       : '';
@@ -501,6 +618,7 @@ function buildBooks() {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(book.title)} · 经典书导读</title>
+  <link rel="dns-prefetch" href="https://cloud.umami.is">
   <link rel="stylesheet" href="style.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="e01c9f78-4607-4e60-b01c-77c8190b12b4"></script>
 </head>
@@ -539,7 +657,7 @@ function buildBooks() {
 
           <div class="detail-top">
             <div class="detail-cover-wrap">
-              <img class="detail-cover" src="${book.cover}" alt="${escapeHtml(book.title)}封面" width="138" height="200">
+              <img class="detail-cover" src="${book.cover}" alt="${escapeHtml(book.title)}封面" fetchpriority="high" decoding="async" width="138" height="200">
             </div>
             <div class="detail-meta">
               <div class="detail-meta-item">
