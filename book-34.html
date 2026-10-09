@@ -7,80 +7,431 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="wrap">
-    <header class="sitehead">
-      <div class="sitehead-inner">
-        <a class="brand" href="index.html">
-          四十本经典书
-          <small>BOOK GUIDE · VOL.01</small>
-        </a>
-        <span class="sitehead-tag">产品经理</span>
-      </div>
-    </header>
+  <div class="layout-container">
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <aside class="global-sidebar" id="globalSidebar" aria-label="全书目录导航">
+    <div class="sidebar-header">
+      <a class="sidebar-brand" href="index.html">
+        <span class="sidebar-brand-title">四十本经典书</span>
+        <span class="sidebar-brand-sub">4 领域 × 10 本 · 经典书导读</span>
+      </a>
+      <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="关闭目录">×</button>
+    </div>
 
-    <main>
-      <div class="back-nav">
-        <a class="back-link" href="index.html#dom-4">← 全部 40 本</a>
-        <span class="detail-domain-tag">产品经理 · 第 34 本</span>
+    <div class="sidebar-search">
+      <div class="sidebar-search-wrap">
+        <svg viewBox="0 0 24 24" class="sb-search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" id="sidebarSearchInput" placeholder="快速检索 40 本书..." autocomplete="off">
+        <button type="button" id="sidebarSearchClear" class="sb-search-clear" aria-label="清除">×</button>
       </div>
+      <div class="sidebar-search-empty" id="sidebarSearchEmpty">无匹配图书</div>
+    </div>
 
-      <div class="book-title-header">
-        <h1>《人人都是产品经理》</h1>
-      </div>
-
-      <div class="detail-top">
-        <div class="detail-cover-wrap">
-          <img class="detail-cover" src="covers/s4723970.jpg" alt="《人人都是产品经理》封面" width="138" height="200">
+    <nav class="sidebar-nav" id="sidebarNav">
+      <div class="sidebar-group" data-domain="软件工程">
+        <div class="sidebar-group-title">
+          <span>软件工程</span>
+          <span class="sidebar-badge">10</span>
         </div>
-        <div class="detail-meta">
-          <div class="detail-meta-item">
-            <span class="label">作者：</span>
-            <span class="value">苏杰</span>
-          </div>
-          <div class="detail-meta-item">
-            <span class="label">出版社：</span>
-            <span class="value">电子工业出版社</span>
-          </div>
-          <div class="detail-meta-item">
-            <span class="label">出版年：</span>
-            <span class="value">2010年4月</span>
-          </div>
-          
-          <div class="detail-meta-item">
-            <span class="label">领域：</span>
-            <span class="value">产品经理 · 第 34 本</span>
-          </div>
-          <div class="detail-meta-item" style="margin-top: 0.4rem;">
-            <a class="douban-link" href="https://book.douban.com/subject/4723970/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
-          </div>
+        <ul class="sidebar-list">
+          <li>
+          <a href="book-01.html" class="sidebar-link" data-id="1" data-title="《人月神话》" data-author="弗雷德里克·布鲁克斯">
+            <span class="sb-num tabular">01</span>
+            <span class="sb-title">《人月神话》</span>
+            <span class="sb-score tabular">8.4</span>
+          </a>
+        </li>
+<li>
+          <a href="book-02.html" class="sidebar-link" data-id="2" data-title="《人件》" data-author="汤姆·迪马科、蒂莫西·李斯特">
+            <span class="sb-num tabular">02</span>
+            <span class="sb-title">《人件》</span>
+            <span class="sb-score tabular">8.2</span>
+          </a>
+        </li>
+<li>
+          <a href="book-03.html" class="sidebar-link" data-id="3" data-title="《代码大全（第2版）》" data-author="史蒂夫·迈克康奈尔">
+            <span class="sb-num tabular">03</span>
+            <span class="sb-title">《代码大全（第2版）》</span>
+            <span class="sb-score tabular">9.3</span>
+          </a>
+        </li>
+<li>
+          <a href="book-04.html" class="sidebar-link" data-id="4" data-title="《程序员修炼之道》" data-author="安德鲁·亨特、大卫·托马斯">
+            <span class="sb-num tabular">04</span>
+            <span class="sb-title">《程序员修炼之道》</span>
+            <span class="sb-score tabular">8.7</span>
+          </a>
+        </li>
+<li>
+          <a href="book-05.html" class="sidebar-link" data-id="5" data-title="《重构：改善既有代码的设计》" data-author="马丁·福勒">
+            <span class="sb-num tabular">05</span>
+            <span class="sb-title">《重构：改善既有代码的设计》</span>
+            <span class="sb-score tabular">9</span>
+          </a>
+        </li>
+<li>
+          <a href="book-06.html" class="sidebar-link" data-id="6" data-title="《代码整洁之道》" data-author="罗伯特·C·马丁">
+            <span class="sb-num tabular">06</span>
+            <span class="sb-title">《代码整洁之道》</span>
+            <span class="sb-score tabular">8.5</span>
+          </a>
+        </li>
+<li>
+          <a href="book-07.html" class="sidebar-link" data-id="7" data-title="《设计模式：可复用面向对象软件的基础》" data-author="Erich Gamma、Richard Helm、Ralph Johnson、John Vlissides">
+            <span class="sb-num tabular">07</span>
+            <span class="sb-title">《设计模式：可复用面向对象软件的基础》</span>
+            <span class="sb-score tabular">9</span>
+          </a>
+        </li>
+<li>
+          <a href="book-08.html" class="sidebar-link" data-id="8" data-title="《UNIX编程艺术》" data-author="埃里克·雷蒙德">
+            <span class="sb-num tabular">08</span>
+            <span class="sb-title">《UNIX编程艺术》</span>
+            <span class="sb-score tabular">9</span>
+          </a>
+        </li>
+<li>
+          <a href="book-09.html" class="sidebar-link" data-id="9" data-title="《编程珠玑》" data-author="乔恩·本特利">
+            <span class="sb-num tabular">09</span>
+            <span class="sb-title">《编程珠玑》</span>
+            <span class="sb-score tabular">9.1</span>
+          </a>
+        </li>
+<li>
+          <a href="book-10.html" class="sidebar-link" data-id="10" data-title="《领域驱动设计》" data-author="埃里克·埃文斯">
+            <span class="sb-num tabular">10</span>
+            <span class="sb-title">《领域驱动设计》</span>
+            <span class="sb-score tabular">7.9</span>
+          </a>
+        </li>
+        </ul>
+      </div>
+<div class="sidebar-group" data-domain="系统设计">
+        <div class="sidebar-group-title">
+          <span>系统设计</span>
+          <span class="sidebar-badge">10</span>
         </div>
+        <ul class="sidebar-list">
+          <li>
+          <a href="book-11.html" class="sidebar-link" data-id="11" data-title="《数据密集型应用系统设计》" data-author="马丁·克雷普曼">
+            <span class="sb-num tabular">11</span>
+            <span class="sb-title">《数据密集型应用系统设计》</span>
+            <span class="sb-score tabular">9.6</span>
+          </a>
+        </li>
+<li>
+          <a href="book-12.html" class="sidebar-link" data-id="12" data-title="《架构整洁之道》" data-author="罗伯特·C·马丁">
+            <span class="sb-num tabular">12</span>
+            <span class="sb-title">《架构整洁之道》</span>
+            <span class="sb-score tabular">8.7</span>
+          </a>
+        </li>
+<li>
+          <a href="book-13.html" class="sidebar-link" data-id="13" data-title="《微服务设计》" data-author="桑·纽曼">
+            <span class="sb-num tabular">13</span>
+            <span class="sb-title">《微服务设计》</span>
+            <span class="sb-score tabular">8.1</span>
+          </a>
+        </li>
+<li>
+          <a href="book-14.html" class="sidebar-link" data-id="14" data-title="《企业应用架构模式》" data-author="马丁·福勒">
+            <span class="sb-num tabular">14</span>
+            <span class="sb-title">《企业应用架构模式》</span>
+            <span class="sb-score tabular">8.7</span>
+          </a>
+        </li>
+<li>
+          <a href="book-15.html" class="sidebar-link" data-id="15" data-title="《SRE：Google运维解密》" data-author="Google SRE 团队">
+            <span class="sb-num tabular">15</span>
+            <span class="sb-title">《SRE：Google运维解密》</span>
+            <span class="sb-score tabular">8.9</span>
+          </a>
+        </li>
+<li>
+          <a href="book-16.html" class="sidebar-link" data-id="16" data-title="《发布！软件的设计与部署》" data-author="迈克尔·尼加德">
+            <span class="sb-num tabular">16</span>
+            <span class="sb-title">《发布！软件的设计与部署》</span>
+            <span class="sb-score tabular">7.7</span>
+          </a>
+        </li>
+<li>
+          <a href="book-17.html" class="sidebar-link" data-id="17" data-title="《大型网站技术架构：核心原理与案例分析》" data-author="李智慧">
+            <span class="sb-num tabular">17</span>
+            <span class="sb-title">《大型网站技术架构：核心原理与案例分析》</span>
+            <span class="sb-score tabular">7.8</span>
+          </a>
+        </li>
+<li>
+          <a href="book-18.html" class="sidebar-link" data-id="18" data-title="《凤凰项目：一个IT运维的传奇故事》" data-author="吉恩·金、凯文·贝尔、乔治·斯帕福德">
+            <span class="sb-num tabular">18</span>
+            <span class="sb-title">《凤凰项目：一个IT运维的传奇故事》</span>
+            <span class="sb-score tabular">8.6</span>
+          </a>
+        </li>
+<li>
+          <a href="book-19.html" class="sidebar-link" data-id="19" data-title="《微服务架构设计模式》" data-author="克里斯·理查森（Chris Richardson）">
+            <span class="sb-num tabular">19</span>
+            <span class="sb-title">《微服务架构设计模式》</span>
+            <span class="sb-score tabular">9.0</span>
+          </a>
+        </li>
+<li>
+          <a href="book-20.html" class="sidebar-link" data-id="20" data-title="《架构即未来》" data-author="马丁·阿伯特（Martin L. Abbott）、迈克尔·费舍尔（Michael T. Fisher）">
+            <span class="sb-num tabular">20</span>
+            <span class="sb-title">《架构即未来》</span>
+            <span class="sb-score tabular">8</span>
+          </a>
+        </li>
+        </ul>
       </div>
-
-      <div class="ratebox">
-        <span class="ratebox-num">7.6</span>
-        <div class="ratebox-info">
-          <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
-          <div class="ratebox-label"><b>豆瓣评分</b> · 9827人评价</div>
+<div class="sidebar-group" data-domain="UI/UX 设计">
+        <div class="sidebar-group-title">
+          <span>UI/UX 设计</span>
+          <span class="sidebar-badge">10</span>
         </div>
+        <ul class="sidebar-list">
+          <li>
+          <a href="book-21.html" class="sidebar-link" data-id="21" data-title="《点石成金》" data-author="史蒂夫·克鲁格">
+            <span class="sb-num tabular">21</span>
+            <span class="sb-title">《点石成金》</span>
+            <span class="sb-score tabular">8.5</span>
+          </a>
+        </li>
+<li>
+          <a href="book-22.html" class="sidebar-link" data-id="22" data-title="《用户体验的要素》" data-author="杰西·詹姆斯·加勒特">
+            <span class="sb-num tabular">22</span>
+            <span class="sb-title">《用户体验的要素》</span>
+            <span class="sb-score tabular">8.3</span>
+          </a>
+        </li>
+<li>
+          <a href="book-23.html" class="sidebar-link" data-id="23" data-title="《设计心理学》" data-author="唐纳德·诺曼">
+            <span class="sb-num tabular">23</span>
+            <span class="sb-title">《设计心理学》</span>
+            <span class="sb-score tabular">8.2</span>
+          </a>
+        </li>
+<li>
+          <a href="book-24.html" class="sidebar-link" data-id="24" data-title="《交互设计精髓》" data-author="艾伦·库珀">
+            <span class="sb-num tabular">24</span>
+            <span class="sb-title">《交互设计精髓》</span>
+            <span class="sb-score tabular">8.7</span>
+          </a>
+        </li>
+<li>
+          <a href="book-25.html" class="sidebar-link" data-id="25" data-title="《写给大家看的设计书》" data-author="罗宾·威廉姆斯">
+            <span class="sb-num tabular">25</span>
+            <span class="sb-title">《写给大家看的设计书》</span>
+            <span class="sb-score tabular">8.6</span>
+          </a>
+        </li>
+<li>
+          <a href="book-26.html" class="sidebar-link" data-id="26" data-title="《设计师要懂心理学》" data-author="苏珊·魏因申克">
+            <span class="sb-num tabular">26</span>
+            <span class="sb-title">《设计师要懂心理学》</span>
+            <span class="sb-score tabular">7.6</span>
+          </a>
+        </li>
+<li>
+          <a href="book-27.html" class="sidebar-link" data-id="27" data-title="《情感化设计》" data-author="唐纳德·诺曼">
+            <span class="sb-num tabular">27</span>
+            <span class="sb-title">《情感化设计》</span>
+            <span class="sb-score tabular">8.1</span>
+          </a>
+        </li>
+<li>
+          <a href="book-28.html" class="sidebar-link" data-id="28" data-title="《认知与设计》" data-author="杰夫·约翰逊">
+            <span class="sb-num tabular">28</span>
+            <span class="sb-title">《认知与设计》</span>
+            <span class="sb-score tabular">8.6</span>
+          </a>
+        </li>
+<li>
+          <a href="book-29.html" class="sidebar-link" data-id="29" data-title="《微交互》" data-author="丹·萨弗">
+            <span class="sb-num tabular">29</span>
+            <span class="sb-title">《微交互》</span>
+            <span class="sb-score tabular">7.6</span>
+          </a>
+        </li>
+<li>
+          <a href="book-30.html" class="sidebar-link" data-id="30" data-title="《简单法则》" data-author="约翰·梅达">
+            <span class="sb-num tabular">30</span>
+            <span class="sb-title">《简单法则》</span>
+            <span class="sb-score tabular">7.7</span>
+          </a>
+        </li>
+        </ul>
       </div>
-
-      <div class="intro-quote">
-        阿里出身的苏杰，用一个真实项目的完整经历，带你走完从需求到上线的全过程——中国产品经理的入门圣经。
+<div class="sidebar-group" data-domain="产品经理">
+        <div class="sidebar-group-title">
+          <span>产品经理</span>
+          <span class="sidebar-badge">10</span>
+        </div>
+        <ul class="sidebar-list">
+          <li>
+          <a href="book-31.html" class="sidebar-link" data-id="31" data-title="《启示录》" data-author="马蒂·卡根">
+            <span class="sb-num tabular">31</span>
+            <span class="sb-title">《启示录》</span>
+            <span class="sb-score tabular">8.4</span>
+          </a>
+        </li>
+<li>
+          <a href="book-32.html" class="sidebar-link" data-id="32" data-title="《精益创业》" data-author="埃里克·莱斯">
+            <span class="sb-num tabular">32</span>
+            <span class="sb-title">《精益创业》</span>
+            <span class="sb-score tabular">8.2</span>
+          </a>
+        </li>
+<li>
+          <a href="book-33.html" class="sidebar-link" data-id="33" data-title="《俞军产品方法论》" data-author="俞军">
+            <span class="sb-num tabular">33</span>
+            <span class="sb-title">《俞军产品方法论》</span>
+            <span class="sb-score tabular">7.8</span>
+          </a>
+        </li>
+<li>
+          <a href="book-34.html" class="sidebar-link active" data-id="34" data-title="《人人都是产品经理》" data-author="苏杰" aria-current="page">
+            <span class="sb-num tabular">34</span>
+            <span class="sb-title">《人人都是产品经理》</span>
+            <span class="sb-score tabular">7.6</span>
+          </a>
+        </li>
+<li>
+          <a href="book-35.html" class="sidebar-link" data-id="35" data-title="《创新者的窘境》" data-author="克莱顿·克里斯坦森">
+            <span class="sb-num tabular">35</span>
+            <span class="sb-title">《创新者的窘境》</span>
+            <span class="sb-score tabular">8.5</span>
+          </a>
+        </li>
+<li>
+          <a href="book-36.html" class="sidebar-link" data-id="36" data-title="《上瘾：让用户养成使用习惯的四大产品逻辑》" data-author="尼尔·埃亚尔 / 瑞安·胡佛">
+            <span class="sb-num tabular">36</span>
+            <span class="sb-title">《上瘾：让用户养成使用习惯的四大产品逻辑》</span>
+            <span class="sb-score tabular">7.4</span>
+          </a>
+        </li>
+<li>
+          <a href="book-37.html" class="sidebar-link" data-id="37" data-title="《增长黑客》" data-author="肖恩·埃利斯、摩根·布朗">
+            <span class="sb-num tabular">37</span>
+            <span class="sb-title">《增长黑客》</span>
+            <span class="sb-score tabular">8.2</span>
+          </a>
+        </li>
+<li>
+          <a href="book-38.html" class="sidebar-link" data-id="38" data-title="《精益数据分析》" data-author="阿利斯泰尔·克罗尔、本杰明·约斯科维茨">
+            <span class="sb-num tabular">38</span>
+            <span class="sb-title">《精益数据分析》</span>
+            <span class="sb-score tabular">8.2</span>
+          </a>
+        </li>
+<li>
+          <a href="book-39.html" class="sidebar-link" data-id="39" data-title="《用户故事与敏捷方法》" data-author="迈克·科恩">
+            <span class="sb-num tabular">39</span>
+            <span class="sb-title">《用户故事与敏捷方法》</span>
+            <span class="sb-score tabular">8.1</span>
+          </a>
+        </li>
+<li>
+          <a href="book-40.html" class="sidebar-link" data-id="40" data-title="《定位》" data-author="艾·里斯、杰克·特劳特">
+            <span class="sb-num tabular">40</span>
+            <span class="sb-title">《定位》</span>
+            <span class="sb-score tabular">8.2</span>
+          </a>
+        </li>
+        </ul>
       </div>
+    </nav>
 
-      <section class="section-block">
-        <h2>总体观点</h2>
-        <div class="thesis-body">
-          <p>苏杰是阿里、淘宝早期的产品经理。2010年出版时，中文世界几乎没有讲“产品经理怎么做”的书。</p>
+    <div class="sidebar-footer">
+      <a href="index.html" class="sidebar-catalog-link">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>全部书单首页</span>
+      </a>
+      <span class="sidebar-kbd-hint"><kbd>M</kbd> 切换</span>
+    </div>
+  </aside>
+
+    <div class="main-wrapper">
+      <div class="wrap">
+        <header class="sitehead">
+          <div class="sitehead-inner">
+            <div class="sitehead-left">
+              <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="切换全书目录" title="打开/收起目录 (快捷键 M)">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <span>目录</span>
+              </button>
+              <a class="brand" href="index.html">
+                四十本经典书
+                <small>BOOK GUIDE · VOL.01</small>
+              </a>
+            </div>
+            <span class="sitehead-tag">产品经理</span>
+          </div>
+        </header>
+
+        <main>
+          <div class="back-nav">
+            <a class="back-link" href="index.html#dom-4">← 全部 40 本</a>
+            <span class="detail-domain-tag">产品经理 · 第 34 本</span>
+          </div>
+
+          <div class="book-title-header">
+            <h1>《人人都是产品经理》</h1>
+          </div>
+
+          <div class="detail-top">
+            <div class="detail-cover-wrap">
+              <img class="detail-cover" src="covers/s4723970.jpg" alt="《人人都是产品经理》封面" width="138" height="200">
+            </div>
+            <div class="detail-meta">
+              <div class="detail-meta-item">
+                <span class="label">作者：</span>
+                <span class="value">苏杰</span>
+              </div>
+              <div class="detail-meta-item">
+                <span class="label">出版社：</span>
+                <span class="value">电子工业出版社</span>
+              </div>
+              <div class="detail-meta-item">
+                <span class="label">出版年：</span>
+                <span class="value">2010年4月</span>
+              </div>
+              
+              <div class="detail-meta-item">
+                <span class="label">领域：</span>
+                <span class="value">产品经理 · 第 34 本</span>
+              </div>
+              <div class="detail-meta-item" style="margin-top: 0.4rem;">
+                <a class="douban-link" href="https://book.douban.com/subject/4723970/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="ratebox">
+            <span class="ratebox-num">7.6</span>
+            <div class="ratebox-info">
+              <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
+              <div class="ratebox-label"><b>豆瓣评分</b> · 9827人评价</div>
+            </div>
+          </div>
+
+          <div class="intro-quote">
+            阿里出身的苏杰，用一个真实项目的完整经历，带你走完从需求到上线的全过程——中国产品经理的入门圣经。
+          </div>
+
+          <section class="section-block">
+            <h2>总体观点</h2>
+            <div class="thesis-body">
+              <p>苏杰是阿里、淘宝早期的产品经理。2010年出版时，中文世界几乎没有讲“产品经理怎么做”的书。</p>
 <p>核心观点：产品经理首先是一种思维方式——凡事先问“为谁解决什么问题”。书里给了一套完整方法：需求怎么来、做什么、怎么做、怎么协作。</p>
 <p>它经典在“真实”：全书围绕一个真实项目展开，像连续剧。“少做就是多做”“BRD/MRD/PRD”成了产品圈基础词汇。产品社区“人人都是产品经理”名字就来自这本书。</p>
-        </div>
-      </section>
+            </div>
+          </section>
 
-      <section class="section-block">
-        <h2>核心观点 <span class="badge">共 7 条</span></h2>
-        <ol class="idea-list">
-          <li class="idea-item">
+          <section class="section-block">
+            <h2>核心观点 <span class="badge">共 7 条</span></h2>
+            <ol class="idea-list">
+              <li class="idea-item">
         <p class="idea-title"><b>1. 人人都是产品经理：产品思维是一种通用思维</b></p>
         <p class="idea-desc">产品经理不只是岗位，更是思维方式：先想为谁解决什么问题，再想方案，最后想怎么验证。装修带娃做PPT，本质都是做产品。</p>
         <div class="example-box"><span class="tag">例 ·</span>去K歌嫌点歌面板排序不合理、装修抢着当项目经理排工期——这就是产品思维。</div>
@@ -115,13 +466,13 @@
         <p class="idea-desc">技术文档流程都能学，难的是心法：爱自己的产品、超强执行力、同理心。产品经理是“无冕之王”，全靠影响力把事推成。</p>
         <div class="example-box"><span class="tag">例 ·</span>“有爱”：半夜想到一个bug爬起来记下来；“同理心”：钻进用户、开发、老板的脑子，用三种语言说话。</div>
       </li>
-        </ol>
-      </section>
+            </ol>
+          </section>
 
-      <section class="section-block">
-        <h2>全书结构 <span class="badge">5 部分</span></h2>
-        <ol class="part-list">
-          <li class="part-item">
+          <section class="section-block">
+            <h2>全书结构 <span class="badge">5 部分</span></h2>
+            <ol class="part-list">
+              <li class="part-item">
         <p class="part-title"><b>第1章：写给-1到3岁的产品经理</b></p>
         <p class="part-desc">产品经理到底是干什么的：什么样的人适合做，新人最常见的困惑。</p>
         <div class="example-box"><span class="tag">例 ·</span>看到难用App第一反应是“改成那样会不会更好”——你骨子里就是个产品经理。</div>
@@ -146,27 +497,34 @@
         <p class="part-desc">一份可直接套用的用户调研问卷模板，附完整实例。</p>
         <div class="example-box"><span class="tag">例 ·</span>从“你用过我们的产品吗”到“最希望改进什么”，照着抄就能用。</div>
       </li>
-        </ol>
-      </section>
+            </ol>
+          </section>
 
-      <nav class="pn">
-        <a class="prev" href="book-33.html">
+          <nav class="pn">
+            <a class="prev" href="book-33.html">
           <img src="covers/s34907971.jpg" alt="《俞军产品方法论》封面" loading="lazy">
           <span class="t"><span>← 上一本</span>《俞军产品方法论》</span>
          </a>
-        <a class="next" href="book-35.html">
+            <a class="next" href="book-35.html">
           <img src="covers/s4243770.jpg" alt="《创新者的窘境》封面" loading="lazy">
           <span class="t"><span>下一本 →</span>《创新者的窘境》</span>
          </a>
-      </nav>
+          </nav>
 
-      <a class="nav-back-catalog" href="index.html#dom-4">返回 产品经理 目录</a>
-    </main>
+          <a class="nav-back-catalog" href="index.html#dom-4">返回 产品经理 目录</a>
+        </main>
 
-    <footer>
-      <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
-      <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-    </footer>
+        <footer>
+          <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+          <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
+        </footer>
+      </div>
+
+      <button type="button" class="floating-menu-btn" id="floatingMenuBtn" aria-label="打开40本书目录">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <span>40本目录</span>
+      </button>
+    </div>
   </div>
 
   <script>
@@ -176,5 +534,120 @@
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
   </script>
+
+  
+  <script>
+    (function() {
+      // Sidebar drawer & collapse controls
+      const sidebar = document.getElementById('globalSidebar');
+      const backdrop = document.getElementById('sidebarBackdrop');
+      const toggleBtn = document.getElementById('sidebarToggleBtn');
+      const floatBtn = document.getElementById('floatingMenuBtn');
+      const closeBtn = document.getElementById('sidebarCloseBtn');
+      const searchInput = document.getElementById('sidebarSearchInput');
+      const searchClear = document.getElementById('sidebarSearchClear');
+      const searchEmpty = document.getElementById('sidebarSearchEmpty');
+      const groups = Array.from(document.querySelectorAll('.sidebar-group'));
+
+      // Check desktop saved preference
+      try {
+        if (window.innerWidth >= 1200 && localStorage.getItem('sidebarCollapsed') === '1') {
+          document.body.classList.add('sidebar-collapsed');
+        }
+      } catch (e) {}
+
+      function isDesktop() {
+        return window.innerWidth >= 1200;
+      }
+
+      function openMobileSidebar() {
+        document.body.classList.add('sidebar-open');
+        const activeLink = document.querySelector('.sidebar-link.active');
+        if (activeLink) {
+          activeLink.scrollIntoView({ block: 'center', behavior: 'smooth' });
+        }
+      }
+
+      function closeMobileSidebar() {
+        document.body.classList.remove('sidebar-open');
+      }
+
+      function toggleSidebar() {
+        if (isDesktop()) {
+          const isCollapsed = document.body.classList.toggle('sidebar-collapsed');
+          try {
+            localStorage.setItem('sidebarCollapsed', isCollapsed ? '1' : '0');
+          } catch (e) {}
+        } else {
+          if (document.body.classList.contains('sidebar-open')) {
+            closeMobileSidebar();
+          } else {
+            openMobileSidebar();
+          }
+        }
+      }
+
+      if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
+      if (floatBtn) floatBtn.addEventListener('click', openMobileSidebar);
+      if (closeBtn) closeBtn.addEventListener('click', closeMobileSidebar);
+      if (backdrop) backdrop.addEventListener('click', closeMobileSidebar);
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeMobileSidebar();
+        }
+        if ((e.key === 'm' || e.key === 'M') && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          toggleSidebar();
+        }
+      });
+
+      // Quick search within sidebar
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          const q = (this.value || '').trim().toLowerCase();
+          if (searchClear) searchClear.style.display = q ? 'block' : 'none';
+          let matchCount = 0;
+
+          groups.forEach(group => {
+            let groupMatches = 0;
+            const items = Array.from(group.querySelectorAll('.sidebar-link'));
+            items.forEach(item => {
+              const title = (item.dataset.title || '').toLowerCase();
+              const author = (item.dataset.author || '').toLowerCase();
+              const matched = !q || title.includes(q) || author.includes(q);
+              item.parentElement.style.display = matched ? 'block' : 'none';
+              if (matched) {
+                groupMatches++;
+                matchCount++;
+              }
+            });
+            group.style.display = (groupMatches > 0 || !q) ? 'block' : 'none';
+          });
+
+          if (searchEmpty) {
+            searchEmpty.style.display = (matchCount === 0 && q) ? 'block' : 'none';
+          }
+        });
+
+        if (searchClear) {
+          searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.focus();
+          });
+        }
+      }
+
+      // Auto scroll active book into view on page load
+      const currentActive = document.querySelector('.sidebar-link.active');
+      if (currentActive) {
+        setTimeout(function() {
+          currentActive.scrollIntoView({ block: 'center' });
+        }, 120);
+      }
+    })();
+  </script>
+
 </body>
 </html>
