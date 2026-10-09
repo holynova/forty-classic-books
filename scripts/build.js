@@ -259,6 +259,7 @@ function buildIndex() {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(site.title)}</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="e01c9f78-4607-4e60-b01c-77c8190b12b4"></script>
 </head>
 <body>
   <div class="layout-container">
@@ -322,7 +323,7 @@ function buildIndex() {
       <footer>
         <div class="wrap">
           <p>${escapeHtml(site.footerNote)}</p>
-          <p>${escapeHtml(site.footerVerify)}</p>
+          <p>${escapeHtml(site.footerVerify)} · <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a></p>
         </div>
       </footer>
 
@@ -517,6 +518,7 @@ function buildBooks() {
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>${escapeHtml(book.title)} · 四十本经典书</title>
   <link rel="stylesheet" href="style.css">
+  <script defer src="https://cloud.umami.is/script.js" data-website-id="e01c9f78-4607-4e60-b01c-77c8190b12b4"></script>
 </head>
 <body>
   <div class="layout-container">
@@ -621,7 +623,7 @@ function buildBooks() {
 
         <footer>
           <p>${escapeHtml(site.footerNote)}</p>
-          <p>${escapeHtml(site.footerVerify)}</p>
+          <p>${escapeHtml(site.footerVerify)} · <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a></p>
         </footer>
       </div>
 
