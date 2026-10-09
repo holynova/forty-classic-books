@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -96,11 +100,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>实践：把三步工作法用起来</b> Bill带着团队落地：看板可视化、限制在制品、小批量发布、建立快速反馈、保护瓶颈。凤凰项目从“人人喊打”慢慢变成“居然能按时交付了”。</p><p class="ex">白板上墙，所有工作上板；“进行中”最多三件事；布伦特的时间被保护，只干最重要的事。几周后：交付变快，加班变少。</p></li>
 <li><p class="part"><b>凤凰涅槃：上线与转折</b> 凤凰项目成功上线，CEO保住了IT部门。更重要的是，团队证明了：用正确的方法，传统企业的IT也能跑得像互联网公司一样快。</p><p class="ex">上线当天所有人守在作战室：没有通宵、没有惊魂，系统平稳上线。Bill意识到：不靠熬夜拼命项目也能成功，靠的是流程，不是运气。</p></li>
 <li><p class="part"><b>尾声：从项目到文化</b> 收尾讲文化的沉淀：复盘机制、知识分享、持续实验。项目会结束，但“三步工作法”留下来，变成了组织的肌肉记忆。</p><p class="ex">最后Bill不再天天救火，而是在想“怎么让好状态持续下去”。DevOps的终点不是一套工具，是持续改善的文化。</p></li></ol></section>
-<nav class="pn">
-<a href="book-17.html"><span>← 上一本</span>《大型网站技术架构：核心原理与案例分析》</a>
-<a class="next" href="book-19.html"><span>下一本 →</span>《微服务架构设计模式》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-17.html"><img src="covers/s25723064.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《大型网站技术架构：核心原理与案例分析》</span></a><a class="next" href="book-19.html"><img src="covers/s33425123.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《微服务架构设计模式》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

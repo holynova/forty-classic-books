@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第6章 用户故事验收测试</b> 讲“确认”：在写代码之前就把验收标准定下来，由客户定义“什么算做完”。</p><p class="ex">“优惠券”验收：满 100 减 10 的券。99 元不能用，100 元能用。退货后券要返还——提前写下来，开发和测试就不用猜了。</p></li>
 <li><p class="part"><b>第II部分 估算和计划（第8-11章）</b> 故事点估算、排优先级、发布计划、迭代计划，以及用速率和燃尽图跟踪进度。</p><p class="ex">发布计划：按优先级把故事排进待办列表，用团队的历史速率一算。“双十一前能做完哪些”一目了然——比拍脑袋定截止日期靠谱。</p></li>
 <li><p class="part"><b>第IV部分 完整实例：付款管理项目</b> 全书最实在的部分：拿一个真实的付款管理项目，从头到尾演示。怎么写故事、怎么估、怎么排计划、怎么迭代。</p><p class="ex">跟着这个案例走一遍：一个“史诗”怎么被拆成十几个小故事。哪些先进第一个迭代，燃尽图怎么画——相当于一次带教实习。</p></li></ol></section>
-<nav class="pn">
-<a href="book-38.html"><span>← 上一本</span>《精益数据分析》</a>
-<a class="next" href="book-40.html"><span>下一本 →</span>《定位》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-38.html"><img src="covers/s26278639.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《精益数据分析》</span></a><a class="next" href="book-40.html"><img src="covers/s1017180.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《定位》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

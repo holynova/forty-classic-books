@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -96,11 +100,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第三部分：决策</b> 产品经理的核心工作：在信息不足时做决策，选期望收益最大的选项。</p><p class="ex">砍不砍做了三个月但数据平平的功能：算期望效用——成功概率×收益，对比继续投入的成本。</p></li>
 <li><p class="part"><b>第四部分：产品经理的选拔与成长</b> 什么样的人适合做产品经理：靠体验、复盘和实战练判断力。</p><p class="ex">好产品经理的特质：同理心强、逻辑好、爱折腾，愿意亲手试100个产品。</p></li>
 <li><p class="part"><b>附录：推荐书单</b> 近百本书单，覆盖经济学、心理学、社会学——产品经理的知识底盘。</p><p class="ex">《经济学原理》《思考，快与慢》《影响力》：经济学帮你算账，心理学帮你懂人性。</p></li></ol></section>
-<nav class="pn">
-<a href="book-32.html"><span>← 上一本</span>《精益创业》</a>
-<a class="next" href="book-34.html"><span>下一本 →</span>《人人都是产品经理》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-32.html"><img src="covers/s10945606.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《精益创业》</span></a><a class="next" href="book-34.html"><img src="covers/s4723970.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《人人都是产品经理》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

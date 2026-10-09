@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>Z轴：数据拆分——按客户、数据拆</b> 数据分片的策略（哈希、范围、目录）、分片后的查询路由、跨片事务的取舍。这是扩展性最强、也最复杂的一条轴。</p><p class="ex">微信用户数据按地域分片，华南用户查华南的库。单库数据量下来查询快了，还顺带满足数据合规——Z轴一举多得。</p></li>
 <li><p class="part"><b>架构原则：可扩展系统的设计清单</b> 总结一线大厂验证过的架构原则：无状态、异步、缓存、松耦合等。目标是让系统“天生好扩展”，而不是长大后再动手术。</p><p class="ex">新服务上线前，架构师拿checklist逐项过：无状态吗？能水平扩展吗？缓存加了吗？耗时操作异步了吗？扩展性从“口号”变成“流程”。</p></li>
 <li><p class="part"><b>人与流程：组织和事故管理</b> 可扩展的组织（小团队、端到端负责）和流程（敏捷、变更管理、事故复盘）：技术、流程、组织三者缺一不可。这是本书区别于纯技术书的最大特点。</p><p class="ex">eBay把大团队拆成几十个小团队，每个对一块业务端到端负责，发布速度反而上去了。组织架构和系统架构互相塑造——这就是康威定律。</p></li></ol></section>
-<nav class="pn">
-<a href="book-19.html"><span>← 上一本</span>《微服务架构设计模式》</a>
-<a class="next" href="book-21.html"><span>下一本 →</span>《点石成金》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-19.html"><img src="covers/s33425123.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《微服务架构设计模式》</span></a><a class="next" href="book-21.html"><img src="covers/s1827702.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《点石成金》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第四章：知道要做什么——约束、可发现性与反馈</b> 让用户“知道该干嘛”的三大法宝：约束、可发现性、反馈。约束限制错误可能，可发现性靠示能和意符，反馈是做了给回应。这是全书最实用的设计工具箱。</p><p class="ex">乐高积木凸起和凹槽只有一种拼法，拼错了根本卡不进去。约束的大师：小孩不用教就会玩。</p></li>
 <li><p class="part"><b>第五章：人为错误？不，是糟糕的设计</b> 系统讲错误：手滑 vs 想错、为什么指责用户没用，以及防错设计的方法。从根上让错误发生不了，或让错误代价足够小。</p><p class="ex">药瓶“按压再旋转”瓶盖：小孩打不开，大人一看就懂。软件里删文件前输入文件名确认，高危操作不让你手滑就酿大祸。</p></li>
 <li><p class="part"><b>第六、七章：设计思维与商业中的设计</b> 从单品设计上升到方法论。以用户为中心的设计流程：观察、想法、原型、测试，不断迭代。以及设计如何在商业组织里落地。</p><p class="ex">像做菜：先尝一口（观察用户）、想想缺啥（想法）。小火试做一份（原型）、请人试吃（测试）。不好吃就回炉。</p></li></ol></section>
-<nav class="pn">
-<a href="book-22.html"><span>← 上一本</span>《用户体验的要素》</a>
-<a class="next" href="book-24.html"><span>下一本 →</span>《交互设计精髓》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-22.html"><img src="covers/s2297549.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《用户体验的要素》</span></a><a class="next" href="book-24.html"><img src="covers/s3279105.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《交互设计精髓》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第四部分：对象-关系的行为、结构与元数据模式</b> 把“翻译”做细：工作单元、标识映射、延迟加载、值对象、继承映射。处理缓存、加载时机、类继承存进表这些脏活。</p><p class="ex">翻译公司内部分工：有人管术语库（元数据映射），有人定哪些文件先翻（延迟加载），有人校对去重（标识映射）。都是让翻译又快又准的配套手艺。</p></li>
 <li><p class="part"><b>第五部分：Web 表示与分布模式</b> 网页层的分工：MVC、前端控制器、页面控制器、模板视图——谁收请求、谁选页面、谁拼HTML。以及拆到多台机器上的分布模式。</p><p class="ex">就像话剧后台分工：有人管报幕（前端控制器）、有人管换景（页面控制器）、有人管念台词（视图）。观众只看到一台戏，背后是一套分工。</p></li>
 <li><p class="part"><b>第六部分：并发、会话与基本模式</b> 多人同时改一条数据怎么办（乐观锁、悲观锁）、用户登录状态放哪（会话状态模式）。以及全书用到的最基础的小模式。</p><p class="ex">乐观锁像共享文档协作：大家先改着，保存时发现冲突再合并，而不是一开始就锁死不让别人碰。冲突大概率不会发生，别为小概率事件付出大代价。</p></li></ol></section>
-<nav class="pn">
-<a href="book-13.html"><span>← 上一本</span>《微服务设计》</a>
-<a class="next" href="book-15.html"><span>下一本 →</span>《SRE：Google运维解密》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-13.html"><img src="covers/s26772677.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《微服务设计》</span></a><a class="next" href="book-15.html"><img src="covers/s26875239.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《SRE：Google运维解密》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

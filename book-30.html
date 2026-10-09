@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -98,11 +102,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>高级篇（上）：情感 · 信任</b> 简约不只冷冰冰：温度和信任也是简约的一部分——让人放松、敢用的产品才真的简单。</p><p class="ex">支付宝免密支付：拿掉“输密码”，买单顺滑到无感，你愿意把一点信任交给它。</p></li>
 <li><p class="part"><b>高级篇（下）：失败 · 唯一</b> 承认有些东西永远做不简约，别硬拗；真正的简约是“减去明显的、加上有意义的”。</p><p class="ex">Photoshop 注定比美图秀秀复杂——承认它是给专业人士的工具，把裁剪、调色放在最顺手处，复杂但好用。</p></li>
 <li><p class="part"><b>收尾：三把钥匙——远离 · 开放 · 力量</b> 最后三把钥匙：把不常用的搬远，把过程摊开让人看懂，用更少办更多的事。</p><p class="ex">手机 App 资源库：不常用的不用删，滑到最后一屏收纳，桌面瞬间清爽。</p></li></ol></section>
-<nav class="pn">
-<a href="book-29.html"><span>← 上一本</span>《微交互》</a>
-<a class="next" href="book-31.html"><span>下一本 →</span>《启示录》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-29.html"><img src="covers/s25744600.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《微交互》</span></a><a class="next" href="book-31.html"><img src="covers/s5914587.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《启示录》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

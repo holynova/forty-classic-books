@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -99,11 +103,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第5-6章 业务逻辑设计与事件溯源</b> 用DDD的聚合、领域事件来建模业务逻辑；事件溯源把“状态变化”本身存下来，天然可审计、可重放。</p><p class="ex">订单创建后发出“订单已创建”事件，库存听到扣库存，物流听到建运单。订单服务根本不认识它俩，加新服务不用改老代码。</p></li>
 <li><p class="part"><b>第7-8章 查询与外部API</b> CQRS解决跨服务查询难题；API网关与BFF模式解决前端接入问题。读写分离、各取所需。</p><p class="ex">双十一大屏实时显示成交额：查询服务订阅所有交易事件，数字每秒更新。写库（交易）和读库（大屏）互不干扰，各自安好。</p></li>
 <li><p class="part"><b>第9-13章 测试、生产就绪、部署与重构</b> 微服务测试策略（消费者驱动的契约测试是重点）、生产就绪checklist、多种部署模式。最后以绞杀者模式收尾：老单体一点点换成微服务。</p><p class="ex">“本地能跑”到“线上敢跑”，差的是：健康检查、指标、链路追踪、外部化配置、灰度发布。测试金字塔告诉你单元、集成、端到端测试该怎么配比。</p></li></ol></section>
-<nav class="pn">
-<a href="book-18.html"><span>← 上一本</span>《凤凰项目：一个IT运维的传奇故事》</a>
-<a class="next" href="book-20.html"><span>下一本 →</span>《架构即未来》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-18.html"><img src="covers/s26644070.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《凤凰项目：一个IT运维的传奇故事》</span></a><a class="next" href="book-20.html"><img src="covers/s26765979.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《架构即未来》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

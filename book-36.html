@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第3步：多变的酬赏</b> 三种酬赏（社交/猎物/自我），以及为什么“不确定性”才是上瘾的灵魂。</p><p class="ex">抖音信息流永远不知道下一条是什么——“开盲盒”的感觉就是多变酬赏。</p></li>
 <li><p class="part"><b>第4步：投入</b> 让用户付出时间数据内容社交关系；投入储存价值、制造沉没成本、加载新触发。</p><p class="ex">B站投币收藏关注：越用越懂你，换平台代价越高；发动态等点赞的心情就是下次触发。</p></li>
 <li><p class="part"><b>实战：圣经App案例、习惯测试与伦理</b> 用“圣经App”完整演示模型落地：习惯测试+“操纵矩阵”伦理自查。</p><p class="ex">圣经App用“每天读经打卡+连续X天勋章+完成进度”，把反人性的读经做成了习惯。</p></li></ol></section>
-<nav class="pn">
-<a href="book-35.html"><span>← 上一本</span>《创新者的窘境》</a>
-<a class="next" href="book-37.html"><span>下一本 →</span>《增长黑客》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-35.html"><img src="covers/s4243770.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《创新者的窘境》</span></a><a class="next" href="book-37.html"><img src="covers/s27593848.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《增长黑客》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

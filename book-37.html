@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第4章 快节奏试验</b> 增长实验的完整流程：想法来源、ICE 打分排优先级、实验设计、复盘沉淀。</p><p class="ex">攒了 50 个想法不可能全做，ICE 打分先上影响力大、把握大、好做的；失败的实验也要写复盘。</p></li>
 <li><p class="part"><b>第二部分 实战：第5-8章 获客、激活、留存、变现</b> 按用户旅程拆四章：获客讲渠道测试与规模化，激活讲啊哈时刻。留存讲三个阶段，变现讲定价与收入实验。</p><p class="ex">获客讲 Airbnb 蹭流量。激活讲 Facebook 的“10 天 7 好友”。留存讲“初期留存决定长期留存”，变现讲实验找最优定价。</p></li>
 <li><p class="part"><b>第9章 良性循环：维持并加速增长</b> 病毒传播和口碑：设计让用户自发拉新的机制，让增长自己转起来。</p><p class="ex">Hotmail 在每封邮件底下加一句“免费邮箱，点击注册”。18 个月做到 1200 万用户，一分钱广告没花。</p></li></ol></section>
-<nav class="pn">
-<a href="book-36.html"><span>← 上一本</span>《上瘾：让用户养成使用习惯的四大产品逻辑》</a>
-<a class="next" href="book-38.html"><span>下一本 →</span>《精益数据分析》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-36.html"><img src="covers/s27030507.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《上瘾：让用户养成使用习惯的四大产品逻辑》</span></a><a class="next" href="book-38.html"><img src="covers/s26278639.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《精益数据分析》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

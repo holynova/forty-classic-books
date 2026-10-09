@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第七到九章：错误处理、边界、单元测试</b> 代码的“免疫系统”：出错了怎么办、怎么跟第三方代码打交道、怎么写测试保护自己。</p><p class="ex">系安全带、看后视镜、买保险：不出事没感觉，出事时救命。</p></li>
 <li><p class="part"><b>第十一、十三章：系统、并发编程</b> 从写好一段代码到搭好一个系统：架构怎么保持整洁、多线程代码怎么写不出乱子。</p><p class="ex">从做好一道菜到开餐厅：两个厨师同时往一口锅加盐得有规矩，不然味道全乱。</p></li>
 <li><p class="part"><b>第十四到十七章：实战案例与启发</b> 拿真实代码开刀：一段烂代码怎么一步步被改好，外加“代码味道与启发”清单随时翻查。</p><p class="ex">武功秘籍的“实战录像”：看高手把一套乱拳拆解重组，变成漂亮招式。</p></li></ol></section>
-<nav class="pn">
-<a href="book-05.html"><span>← 上一本</span>《重构：改善既有代码的设计》</a>
-<a class="next" href="book-07.html"><span>下一本 →</span>《设计模式：可复用面向对象软件的基础》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-05.html"><img src="covers/s1229923.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《重构：改善既有代码的设计》</span></a><a class="next" href="book-07.html"><img src="covers/s1052241.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《设计模式：可复用面向对象软件的基础》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

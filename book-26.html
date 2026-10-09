@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第四章 人是如何思考的</b> 心智模型、认知负荷和心流：人对东西怎么运转有预想，超负荷就宕机。</p><p class="ex">用户默认共享单车“扫码就开锁”。你的车还要先按隐藏按钮，他的心智模型就崩了。</p></li>
 <li><p class="part"><b>第五~六章 注意力与动机</b> 注意力与动机：一次只能好好干一件事；多巴胺爱不可预测的奖励，目标要拆小。</p><p class="ex">集卡活动让人停不下来，因为“下一张是啥”不可预测。把大目标拆成“再集 2 张就换购”，比“集满 50 张”有劲。</p></li>
 <li><p class="part"><b>第七~十章 社会性、感觉、犯错与决策</b> 社会性与情绪：从众、面子；人会犯错，要做容错；决策怕损失、爱走捷径。</p><p class="ex">“仅剩 2 件”比“库存充足”更能促单。人对“失去”的敏感，远超对“得到”的渴望。</p></li></ol></section>
-<nav class="pn">
-<a href="book-25.html"><span>← 上一本</span>《写给大家看的设计书》</a>
-<a class="next" href="book-27.html"><span>下一本 →</span>《情感化设计》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-25.html"><img src="covers/s3323633.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《写给大家看的设计书》</span></a><a class="next" href="book-27.html"><img src="covers/s1314262.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《情感化设计》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

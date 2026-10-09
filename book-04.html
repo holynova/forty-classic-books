@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -98,11 +102,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第四章：注重实效的偏执</b> 防御性编程：契约式设计、断言、早崩溃、异常处理——对“代码一定会出问题”保持健康的偏执。</p><p class="ex">出门前检查煤气锁门不是悲观，是知道“万一”的代价太大。把“万一思维”写进代码。</p></li>
 <li><p class="part"><b>第五、六章：弯曲，或折断 &amp; 当你编码时</b> 让代码柔软好改（解耦、元程序设计），以及写代码的手艺：算法速度、重构、测试、橡皮鸭调试。</p><p class="ex">前面练心法，这两章练招式：怎么出拳、怎么拆招、怎么复盘。</p></li>
 <li><p class="part"><b>第七、八章：项目之前 &amp; 注重实效的项目</b> 从个人手艺到团队协作：怎么估算工期、写文档、做需求、让团队保持实效。</p><p class="ex">从单打独斗的厨师变餐厅主厨：不光菜要好，还得定菜单、管后厨、跟客人打交道。</p></li></ol></section>
-<nav class="pn">
-<a href="book-03.html"><span>← 上一本</span>《代码大全（第2版）》</a>
-<a class="next" href="book-05.html"><span>下一本 →</span>《重构：改善既有代码的设计》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-03.html"><img src="covers/s1477390.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《代码大全（第2版）》</span></a><a class="next" href="book-05.html"><img src="covers/s1229923.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《重构：改善既有代码的设计》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>名字的威力与品牌延伸的陷阱（第9-13章）</b> 名字怎么起、品牌为什么不能乱延伸：一个名字在用户脑子里只能代表一件事。贪多必失。</p><p class="ex">施乐想从复印机延伸到计算机。用户脑子里的“复印机”印象太深，计算机业务惨败。名字一旦钉死，很难再钉第二件事。</p></li>
 <li><p class="part"><b>给公司、国家、产品、服务定位（第14-20章）</b> 把定位方法用到各种对象上：企业名、多元化公司、国家形象。银行、教堂——万物皆可定位。</p><p class="ex">连国家都能定位：提到瑞士你想到手表和银行，提到德国你想到汽车和严谨。国家形象也是多年定位的结果。</p></li>
 <li><p class="part"><b>为自己和前程定位：六步建立定位（第21-22章）</b> 把定位用在个人职业上，总结建立定位的六个步骤。认清现状、找准位置、选定对手、准备资源、长期坚持、表里如一。</p><p class="ex">求职时别说“我要找一份有发展的工作”（等于没定位）。要说“我要成为母婴品类最懂增长的产品经理”——位置越具体，越容易被记住。</p></li></ol></section>
-<nav class="pn">
-<a href="book-39.html"><span>← 上一本</span>《用户故事与敏捷方法》</a>
-
-</nav>
+<nav class="pn"><a class="prev" href="book-39.html"><img src="covers/s4743056.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《用户故事与敏捷方法》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -98,11 +102,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第四部分：进度是怎么失控的（第7章 为什么巴比伦塔会失败、第8章 胸有成竹、第9章 削足适履、第10章 提纲挈领、第11章 未雨绸缪）</b> 沟通失败、估算乐观、文档缺失如何一步步拖垮进度，以及用文档、里程碑把项目拉回正轨。</p><p class="ex">全家出游没人做攻略、出发时间随口一说、各玩各的手机——最后肯定有人掉队、有人饿肚子。</p></li>
 <li><p class="part"><b>第五部分：把项目做完的实战（第12章 干将莫邪、第13章 整体部分、第14章 祸起萧墙、第15章 另外一面）</b> 工具、测试、调试这些“把活干完”的硬功夫，以及项目后期各种幺蛾子的应对。</p><p class="ex">装修收尾决定入住体验：缝隙打没打胶、插座通没通电——最后 10% 的活，决定 90% 的口碑。</p></li>
 <li><p class="part"><b>第六部分：二十年后再看（第16章 没有银弹、第17章 再论“没有银弹”、第18章 命题的再论述、第19章 令人惊喜的二十年）</b> 20 周年版新增：布鲁克斯复盘当年论断的对错，以及“没有银弹”——本质困难靠技术突变消灭不掉。</p><p class="ex">老船长二十年后重看自己画的航海图：有些暗礁标对了，有些洋流判错了，但“大海永远有风险”这条总原则没变。</p></li></ol></section>
-<nav class="pn">
-<span></span>
-<a class="next" href="book-02.html"><span>下一本 →</span>《人件》</a>
-</nav>
+<nav class="pn"><a class="next solo" href="book-02.html"><img src="covers/s1108725.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《人件》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

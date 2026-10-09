@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第 4 章：反馈</b> 讲怎么让用户感知结果：视觉、声音、震动反馈和微文案——快、克制、说人话。</p><p class="ex">点赞的回弹动画、发送成功的“嗖”声——用户靠这些感知到“事情成了”。</p></li>
 <li><p class="part"><b>第 5 章：循环与模式</b> 讲微交互随时间怎么变：循环让它越用越聪明，模式是负担要慎用。</p><p class="ex">输入法越用越懂你是循环，勿扰模式一开全静音是模式。</p></li>
 <li><p class="part"><b>第 6 章与附录：组合实战与测试</b> 把四个零件装起来做完整案例。小东西也要装到真机上找人试。</p><p class="ex">把“开关静音”按四个零件做出来，装到真机上。找 5 个用户实际拨一下，看懂不懂、爽不爽。</p></li></ol></section>
-<nav class="pn">
-<a href="book-28.html"><span>← 上一本</span>《认知与设计》</a>
-<a class="next" href="book-30.html"><span>下一本 →</span>《简单法则》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-28.html"><img src="covers/s6792322.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《认知与设计》</span></a><a class="next" href="book-30.html"><img src="covers/s2144413.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《简单法则》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第二部分 找到正确的指标：六种商业模式</b> 全书最厚的部分：六种生意，每种配五个发展阶段的关键指标。电子商务、SaaS、免费移动应用、媒体网站、用户生成内容、双边市场。</p><p class="ex">做电商就看电子商务那章：移情阶段看验证了几个痛点，黏性阶段看复购率。营收阶段看客单价——直接照抄作业。</p></li>
 <li><p class="part"><b>第三部分 指标的合理范围：好坏的刻度线</b> 光知道看什么指标还不够，还得知道“多少算好”。给每种商业模式的每个指标划基准线。</p><p class="ex">SaaS 月流失率 5% 算优秀，10% 算危险。相当于给你的数据配了一把尺子。</p></li>
 <li><p class="part"><b>第四部分 把精益分析装进组织</b> 怎么让数据文化落地：从创始人到一线员工，人人会看数、敢质疑、做实验。</p><p class="ex">要求每个提案带上“要验证的假设、看什么指标、失败了怎么办”。开会不许说“我觉得”，必须说“数据显示”。</p></li></ol></section>
-<nav class="pn">
-<a href="book-37.html"><span>← 上一本</span>《增长黑客》</a>
-<a class="next" href="book-39.html"><span>下一本 →</span>《用户故事与敏捷方法》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-37.html"><img src="covers/s27593848.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《增长黑客》</span></a><a class="next" href="book-39.html"><img src="covers/s4743056.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《用户故事与敏捷方法》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

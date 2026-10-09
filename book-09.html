@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第二部分：性能——代码调优与节省空间（第 9-10 章）</b> 代码调优实战（一半急救锦囊一半大手术）、节省空间的巧思——优化是最后手段，但动手时要有一整套工具箱。</p><p class="ex">调优二分搜索：减少分支、利用局部性，硬是把“已最优”的算法又提速一大截。工程实现上永远有油水可榨。</p></li>
 <li><p class="part"><b>第三部分：应用——排序、取样与搜索（第 11-13 章）</b> 内功用到具体问题：排序的工程实现、取样问题（水塘抽样）、搜索结构的权衡——每章一个完整实战故事。</p><p class="ex">他给真实系统写排序：根据数据特点（基本有序？重复多？）定制快速排序变体。算法课教“排序”，这章教“在真实世界里排序”。</p></li>
 <li><p class="part"><b>第三部分：应用——堆与字符串（第 14-15 章）</b> 堆（顺带实现优先级队列和堆排序）、字符串处理——经典数据结构学透，工作中处处是它的影子。</p><p class="ex">堆就是“急诊分诊台”：永远先处理最重的病人，新病人按轻重插队。操作系统调度、快递分仓，背后都是堆。</p></li></ol></section>
-<nav class="pn">
-<a href="book-08.html"><span>← 上一本</span>《UNIX编程艺术》</a>
-<a class="next" href="book-10.html"><span>下一本 →</span>《领域驱动设计》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-08.html"><img src="covers/s1467587.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《UNIX编程艺术》</span></a><a class="next" href="book-10.html"><img src="covers/s26819666.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《领域驱动设计》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

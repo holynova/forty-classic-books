@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -96,11 +100,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第三部分：破坏性技术的规律</b> 破坏性技术的固定剧本：低端切入，沿性能轨迹上移，“够用”时吃掉主流。</p><p class="ex">小尺寸硬盘性能提升比主流需求涨得还快，“够用”那天主流客户整批倒戈。</p></li>
 <li><p class="part"><b>第四部分：怎么办——让组织去匹配任务</b> 药方：想抓住破坏性技术，给它独立小组织，独立成本结构和考核。</p><p class="ex">新业务塞老部门：按利润率考核永远“不达标”被砍；独立小团队按“学到了什么”考核，反而活下来。</p></li>
 <li><p class="part"><b>结语：给管理者的忠告</b> 破坏性创新不是管理失败，是好管理的副产品；关键是看清自己的价值网。</p><p class="ex">听到“新技术性能差、利润低、客户不想要”时，先问：是真不行，还是我的价值网让我觉得它不行。</p></li></ol></section>
-<nav class="pn">
-<a href="book-34.html"><span>← 上一本</span>《人人都是产品经理》</a>
-<a class="next" href="book-36.html"><span>下一本 →</span>《上瘾：让用户养成使用习惯的四大产品逻辑》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-34.html"><img src="covers/s4723970.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《人人都是产品经理》</span></a><a class="next" href="book-36.html"><img src="covers/s27030507.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《上瘾：让用户养成使用习惯的四大产品逻辑》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

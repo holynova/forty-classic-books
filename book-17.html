@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -99,11 +103,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>伸缩与扩展：第6-7章 永无止境 &amp; 随需应变</b> 伸缩性是“加机器就扛更多流量”，可扩展性是“加新功能不用大改”。一个管量，一个管变化。</p><p class="ex">双十一加100台服务器（伸缩），明年上“直播带货”（扩展）。前者靠云平台一键扩容，后者靠当初把“商品、交易、营销”拆成独立服务。</p></li>
 <li><p class="part"><b>安全：第8章 固若金汤——网站的安全架构</b> 讲Web攻击（XSS、SQL注入、CSRF）怎么防、敏感信息怎么加密、垃圾信息怎么过滤、电商怎么做风险控制。安全是架构的底线。</p><p class="ex">密码绝不能明文存库，要存“加盐哈希”：黑客偷走数据库，拿到的也是一堆算不回去的乱码。这是设计阶段定好的规矩，不是出事后再改。</p></li>
 <li><p class="part"><b>第三篇 实战案例 &amp; 第四篇 架构师：第9-15章</b> 第三篇解剖淘宝、Wikipedia、Doris、秒杀系统和真实故障案例；第四篇讲架构师怎么做技术决策、怎么在职场成长。</p><p class="ex">第12章秒杀系统是全书最高光：从“排队+限流+隔离”三板斧，到“把秒杀做成独立小系统”，很多公司第一次做秒杀就是照这章抄的作业。</p></li></ol></section>
-<nav class="pn">
-<a href="book-16.html"><span>← 上一本</span>《发布！软件的设计与部署》</a>
-<a class="next" href="book-18.html"><span>下一本 →</span>《凤凰项目：一个IT运维的传奇故事》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-16.html"><img src="covers/s26304417.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《发布！软件的设计与部署》</span></a><a class="next" href="book-18.html"><img src="covers/s26644070.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《凤凰项目：一个IT运维的传奇故事》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

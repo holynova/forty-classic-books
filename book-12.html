@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -99,11 +103,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第五部分 · 架构（第15-28章）：整洁架构登场</b> 正式定义整洁架构：四层同心圆、依赖规则、如何划分边界、怎么用设计模式跨越边界。并用完整实战案例把内容串起来。</p><p class="ex">全书高潮：正式提出整洁架构——同心圆、依赖规则、边界划分、设计模式。还拿一个视频销售网站当案例，从头到尾搭一遍给你看。</p></li>
 <li><p class="part"><b>第六部分 · 实现细节（第29-33章）</b> 讲具体技术的安放位置：数据库、Web界面、框架都是细节，应该被隔离在最外层，随时可换；附带整洁的嵌入式架构实践。</p><p class="ex">数据库、Web、框架都是可替换的“细节”：具体技术“插”进架构而不污染业务核心。连嵌入式这种硬骨头也讲了怎么保持整洁。</p></li>
 <li><p class="part"><b>附录：几十年从业经历的印证</b> 作者用自己数十年的软件从业经历，再次印证书中的观点：架构的规则几十年来没变过，变的只是技术的外衣。</p><p class="ex">Bob大叔从1964年写到现在：这些规则不是纸上谈兵，是几十年一次次验证过的经验。</p></li></ol></section>
-<nav class="pn">
-<a href="book-11.html"><span>← 上一本</span>《数据密集型应用系统设计》</a>
-<a class="next" href="book-13.html"><span>下一本 →</span>《微服务设计》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-11.html"><img src="covers/s30329536.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《数据密集型应用系统设计》</span></a><a class="next" href="book-13.html"><img src="covers/s26772677.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《微服务设计》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第四章：结构型模式</b> 7 种管“对象怎么组装”：适配器、桥接、组合、装饰、外观、享元、代理——拼出更大的结构。</p><p class="ex">乐高拼装说明书：小零件拼成城堡，拼完还能拆、还能换。</p></li>
 <li><p class="part"><b>第五章：行为型模式</b> 11 种管“对象怎么协作”：观察者、策略、命令、状态……数量最多、日常最常用。</p><p class="ex">球队战术手册：球怎么传、谁跑位、教练怎么指挥，一套完整配合打法。</p></li>
 <li><p class="part"><b>第六章：结论</b> 收尾：模式怎么用、什么时候不用、模式的未来——别把模式当宗教，保持清醒。</p><p class="ex">秘籍最后一页：武功再高也怕菜刀。模式再好只是工具，解决实际问题才是目的。</p></li></ol></section>
-<nav class="pn">
-<a href="book-06.html"><span>← 上一本</span>《代码整洁之道》</a>
-<a class="next" href="book-08.html"><span>下一本 →</span>《UNIX编程艺术》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-06.html"><img src="covers/s4199741.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《代码整洁之道》</span></a><a class="next" href="book-08.html"><img src="covers/s1467587.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《UNIX编程艺术》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>

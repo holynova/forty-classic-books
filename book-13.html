@@ -52,11 +52,15 @@ ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
 .idea,.part{margin:0;font-size:.96rem}
 .ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
 .ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next */
-.pn{display:flex;justify-content:space-between;gap:1rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{text-decoration:none;font-size:.88rem;max-width:48%}
-.pn .next{text-align:right;margin-left:auto}
-.pn span{display:block;font-size:.72rem;color:var(--muted)}
+/* prev next cards */
+.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
+.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
+.pn a:active{background:var(--soft)}
+.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
+.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
+.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
+.pn a.next{flex-direction:row-reverse;text-align:right}
+.pn a.solo{grid-column:1/-1}
 footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
 footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 @media(min-width:640px){
@@ -97,11 +101,16 @@ footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
 <li><p class="part"><b>第四部分：拆完怎么连：集成与数据</b> 服务间通信怎么选（REST、RPC、消息队列），以及最难的数据分家。从共享库到各管各的，数据同步和一致性怎么处理。</p><p class="ex">离婚分财产：房子车子一人一套容易，最难的是共同账户的钱怎么分、以后孩子的学费怎么给。数据分家也一样：接口好定，一致性难搞。</p></li>
 <li><p class="part"><b>第五部分：部署、测试、监控与安全</b> 每个服务独立流水线、容器化部署；分布式系统的测试策略（契约测试）；监控三件套；服务间认证与纵深防御。</p><p class="ex">连锁餐厅：分店独立装修开业（独立部署），总部神秘顾客抽查（契约测试）。装摄像头看后厨（监控），进后厨刷卡（安全）。缺一样，开到第十家店就乱套。</p></li>
 <li><p class="part"><b>第六部分：组织与规模化</b> 康威定律与团队组织：按服务组建全功能小团队。服务多到几十上百个之后：版本治理、服务发现、弹性伸缩。</p><p class="ex">就像乐队：三个人时怎么排都行，变成交响乐团就得有声部、有指挥、有总谱。服务少时靠自觉，服务多了就得靠平台和规范。</p></li></ol></section>
-<nav class="pn">
-<a href="book-12.html"><span>← 上一本</span>《架构整洁之道》</a>
-<a class="next" href="book-14.html"><span>下一本 →</span>《企业应用架构模式》</a>
-</nav>
+<nav class="pn"><a class="prev" href="book-12.html"><img src="covers/s30333919.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《架构整洁之道》</span></a><a class="next" href="book-14.html"><img src="covers/s1230559.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《企业应用架构模式》</span></a></nav>
 </main></div><footer><div class="wrap">
 <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
 <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer></body></html>
+</div></footer>
+<script>
+document.addEventListener('keydown',function(e){
+  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
+  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
+  if(e.key==='ArrowRight'&&n){location.href=n.href;}
+});
+</script>
+</body></html>
