@@ -62,7 +62,7 @@ function renderSidebar(currentBookId = null) {
     <div class="sidebar-header">
       <a class="sidebar-brand" href="index.html">
         <span class="sidebar-brand-title">${escapeHtml(site.brand)}</span>
-        <span class="sidebar-brand-sub">4 领域 × 10 本 · 经典书导读</span>
+        <span class="sidebar-brand-sub">${site.domains.length} 领域 × 10 本 · 经典书导读</span>
       </a>
       <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="关闭目录">×</button>
     </div>
@@ -70,7 +70,7 @@ function renderSidebar(currentBookId = null) {
     <div class="sidebar-search">
       <div class="sidebar-search-wrap">
         <svg viewBox="0 0 24 24" class="sb-search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
-        <input type="search" id="sidebarSearchInput" placeholder="快速检索 40 本书..." autocomplete="off">
+        <input type="search" id="sidebarSearchInput" placeholder="快速检索 ${books.length} 本书..." autocomplete="off">
         <button type="button" id="sidebarSearchClear" class="sb-search-clear" aria-label="清除">×</button>
       </div>
       <div class="sidebar-search-empty" id="sidebarSearchEmpty">无匹配图书</div>
@@ -106,18 +106,7 @@ const sidebarScript = `
       const searchEmpty = document.getElementById('sidebarSearchEmpty');
       const groups = Array.from(document.querySelectorAll('.sidebar-group'));
 
-      // Check desktop saved preference
-      try {
-        if (window.innerWidth >= 1200 && localStorage.getItem('sidebarCollapsed') === '1') {
-          document.body.classList.add('sidebar-collapsed');
-        }
-      } catch (e) {}
-
-      function isDesktop() {
-        return window.innerWidth >= 1200;
-      }
-
-      function openMobileSidebar() {
+      function openSidebar() {
         document.body.classList.add('sidebar-open');
         const activeLink = document.querySelector('.sidebar-link.active');
         if (activeLink) {
@@ -125,34 +114,27 @@ const sidebarScript = `
         }
       }
 
-      function closeMobileSidebar() {
+      function closeSidebar() {
         document.body.classList.remove('sidebar-open');
       }
 
       function toggleSidebar() {
-        if (isDesktop()) {
-          const isCollapsed = document.body.classList.toggle('sidebar-collapsed');
-          try {
-            localStorage.setItem('sidebarCollapsed', isCollapsed ? '1' : '0');
-          } catch (e) {}
+        if (document.body.classList.contains('sidebar-open')) {
+          closeSidebar();
         } else {
-          if (document.body.classList.contains('sidebar-open')) {
-            closeMobileSidebar();
-          } else {
-            openMobileSidebar();
-          }
+          openSidebar();
         }
       }
 
       if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
-      if (floatBtn) floatBtn.addEventListener('click', openMobileSidebar);
-      if (closeBtn) closeBtn.addEventListener('click', closeMobileSidebar);
-      if (backdrop) backdrop.addEventListener('click', closeMobileSidebar);
+      if (floatBtn) floatBtn.addEventListener('click', toggleSidebar);
+      if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+      if (backdrop) backdrop.addEventListener('click', closeSidebar);
 
       // Keyboard shortcuts
       document.addEventListener('keydown', function(e) {
         if (e.key === 'Escape') {
-          closeMobileSidebar();
+          closeSidebar();
         }
         if ((e.key === 'm' || e.key === 'M') && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
           toggleSidebar();
@@ -273,13 +255,14 @@ function buildIndex() {
               <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="切换全书目录" title="打开/收起目录 (快捷键 M)">
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 <span>目录</span>
+                <span class="kbd-pill"><kbd>M</kbd></span>
               </button>
               <a class="brand" href="index.html">
                 ${escapeHtml(site.brand)}
                 <small>${escapeHtml(site.brandSub)}</small>
               </a>
             </div>
-            <span class="sitehead-tag">40 本精选</span>
+            <span class="sitehead-tag">${books.length} 本精选</span>
           </div>
         </header>
 
@@ -327,9 +310,9 @@ function buildIndex() {
         </div>
       </footer>
 
-      <button type="button" class="floating-menu-btn" id="floatingMenuBtn" aria-label="打开40本书目录">
+      <button type="button" class="floating-menu-btn" id="floatingMenuBtn" aria-label="打开全部图书目录">
         <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        <span>40本目录</span>
+        <span>目录</span>
       </button>
     </div>
   </div>
@@ -516,7 +499,7 @@ function buildBooks() {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${escapeHtml(book.title)} · 四十本经典书</title>
+  <title>${escapeHtml(book.title)} · 经典书导读</title>
   <link rel="stylesheet" href="style.css">
   <script defer src="https://cloud.umami.is/script.js" data-website-id="e01c9f78-4607-4e60-b01c-77c8190b12b4"></script>
 </head>
@@ -532,6 +515,7 @@ function buildBooks() {
               <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="切换全书目录" title="打开/收起目录 (快捷键 M)">
                 <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
                 <span>目录</span>
+                <span class="kbd-pill"><kbd>M</kbd></span>
               </button>
               <a class="brand" href="index.html">
                 ${escapeHtml(site.brand)}
@@ -544,7 +528,7 @@ function buildBooks() {
 
         <main>
           <div class="back-nav">
-            <a class="back-link" href="${domainAnchor}">← 全部 40 本</a>
+            <a class="back-link" href="${domainAnchor}">← 全部书单</a>
             <span class="detail-domain-tag">${escapeHtml(book.domain)} · ${escapeHtml(book.domainOrder)}</span>
           </div>
 
@@ -627,9 +611,9 @@ function buildBooks() {
         </footer>
       </div>
 
-      <button type="button" class="floating-menu-btn" id="floatingMenuBtn" aria-label="打开40本书目录">
+      <button type="button" class="floating-menu-btn" id="floatingMenuBtn" aria-label="打开全部图书目录">
         <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
-        <span>40本目录</span>
+        <span>目录</span>
       </button>
     </div>
   </div>
@@ -650,7 +634,7 @@ function buildBooks() {
     fs.writeFileSync(path.join(ROOT_DIR, `${book.slug}.html`), html, 'utf-8');
   });
 
-  console.log(`✓ Generated 40 book detail pages`);
+  console.log(`✓ Generated ${books.length} book detail pages`);
 }
 
 // Run build

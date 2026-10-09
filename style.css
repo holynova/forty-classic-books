@@ -1251,7 +1251,21 @@ body.sidebar-open .global-sidebar {
   stroke: currentColor;
 }
 
-/* Floating Drawer Pill on Mobile */
+.sidebar-toggle-btn .kbd-pill {
+  margin-left: 0.15rem;
+}
+
+.sidebar-toggle-btn .kbd-pill kbd {
+  background: var(--paper);
+  border: 1px solid var(--hair-strong);
+  border-radius: 3px;
+  padding: 0.05rem 0.3rem;
+  font-size: 0.68rem;
+  font-family: var(--mono);
+  color: var(--muted);
+}
+
+/* Floating Drawer Pill on Touch/Mobile Screens */
 .floating-menu-btn {
   position: fixed;
   bottom: calc(20px + env(safe-area-inset-bottom, 0px));
@@ -1287,44 +1301,21 @@ body.sidebar-open .global-sidebar {
   stroke: currentColor;
 }
 
-/* Desktop layout when >= 1200px */
-@media (min-width: 1200px) {
+/* Responsive Rules: Default Hidden for Immersive Reading Across All Devices */
+@media (min-width: 1024px) {
   .global-sidebar {
-    transform: translateX(0);
-    width: 280px;
-    box-shadow: none;
-  }
-
-  .main-wrapper {
-    margin-left: 280px;
-    transition: margin-left 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-
-  .sidebar-backdrop {
-    display: none !important;
+    width: 320px;
   }
 
   .floating-menu-btn {
     display: none;
   }
-
-  .sidebar-close-btn {
-    display: none;
-  }
-
-  /* When desktop user collapses sidebar for pure reader focus */
-  body.sidebar-collapsed .global-sidebar {
-    transform: translateX(-100%);
-  }
-
-  body.sidebar-collapsed .main-wrapper {
-    margin-left: 0;
-  }
 }
 
-/* Tablet & Mobile (< 1200px) */
-@media (max-width: 1199px) {
-  .sidebar-kbd-hint {
+@media (max-width: 1023px) {
+  .sidebar-kbd-hint,
+  .sidebar-toggle-btn .kbd-pill {
     display: none;
   }
 }
+
