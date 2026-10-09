@@ -8,7 +8,7 @@ English: Curated reading guide for 70 classic books across 7 core domains: Softw
 
 ## 在线体验 / Live Demo
 
-- [Cloudflare Demo](https://forty-classic-books.xiaosang.cc/)
+- [Cloudflare Demo](https://xiaosang.cc/forty-classic-books/)
 - [GitHub Pages](https://holynova.github.io/forty-classic-books/)
 - [GitHub Repo](https://github.com/holynova/forty-classic-books)
 
@@ -29,6 +29,6 @@ node scripts/build.js && node scripts/validate.js
 npx wrangler deploy --config wrangler.jsonc
 ```
 
-Cloudflare Workers · Custom Domain: `forty-classic-books.xiaosang.cc`
+Cloudflare Workers · Route: `xiaosang.cc/forty-classic-books/*`
 
 源码与部署配置使用同一个主分支；在本地手动发布，不创建 Cloudflare 专用分支或 GitHub Action。

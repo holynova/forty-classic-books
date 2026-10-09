@@ -2,15 +2,17 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "forty-classic-books",
   "account_id": "ef7863c4de93e71c3496f940c8ab4865",
+  "main": "worker.js",
   "compatibility_date": "2026-10-09",
   "workers_dev": false,
   "assets": {
-    "directory": "."
+    "directory": ".",
+    "binding": "ASSETS"
   },
   "routes": [
     {
-      "pattern": "forty-classic-books.xiaosang.cc",
-      "custom_domain": true
+      "pattern": "forty-classic-books.xiaosang.cc/*",
+      "zone_name": "xiaosang.cc"
     }
   ]
 }

@@ -6,6 +6,7 @@ const DATA_DIR = path.join(ROOT_DIR, 'data');
 
 const site = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'site.json'), 'utf-8'));
 const books = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'books.json'), 'utf-8'));
+const pkg = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'package.json'), 'utf-8'));
 
 function getStars(ratingStr) {
   const r = parseFloat(ratingStr) || 0;
@@ -306,7 +307,7 @@ function buildIndex() {
       <footer>
         <div class="wrap">
           <p>${escapeHtml(site.footerNote)}</p>
-          <p>${escapeHtml(site.footerVerify)} · <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a></p>
+          <p>${escapeHtml(site.footerVerify)} · <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> · <span class="footer-version">v${escapeHtml(pkg.version)}</span></p>
         </div>
       </footer>
 
@@ -607,7 +608,7 @@ function buildBooks() {
 
         <footer>
           <p>${escapeHtml(site.footerNote)}</p>
-          <p>${escapeHtml(site.footerVerify)} · <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a></p>
+          <p>${escapeHtml(site.footerVerify)} · <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> · <span class="footer-version">v${escapeHtml(pkg.version)}</span></p>
         </footer>
       </div>
 
