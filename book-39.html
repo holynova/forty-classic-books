@@ -1,116 +1,188 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>《用户故事与敏捷方法》· 四十本经典书</title><style>
-:root{--green:#007722;--ink:#1a1a1a;--muted:#767676;--hair:#e9e6df;--paper:#ffffff;--soft:#f7f5f0}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.8}
-.wrap{max-width:46rem;margin:0 auto;padding:0 1.15rem}
-a{color:var(--green)}
-h1,h2{font-family:"Songti SC","Noto Serif SC","STSong",serif}
-::selection{background:#dcefe2}
-/* header */
-.sitehead{border-bottom:1px solid var(--hair);padding:1rem 0 .9rem}
-.sitehead .brand{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.25rem;font-weight:700;color:var(--ink);text-decoration:none}
-.sitehead .brand small{font-family:sans-serif;font-weight:400;font-size:.75rem;color:var(--muted);margin-left:.6rem;letter-spacing:.1em}
-/* domain */
-.domain{padding:2rem 0 .5rem;scroll-margin-top:3.4rem}
-.dnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
-.dnav-inner{max-width:46rem;margin:0 auto;padding:.55rem 1.15rem;display:flex;gap:.5rem;overflow-x:auto}
-.dnav a{flex:1 0 auto;text-align:center;font-size:.85rem;text-decoration:none;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:.32rem .8rem;white-space:nowrap}
-.dnav a:active{background:var(--green);color:#fff;border-color:var(--green)}
-.domain h2{font-size:1.3rem;margin:0 0 .2rem;display:flex;align-items:baseline;gap:.6rem}
-.domain h2 .count{font-family:sans-serif;font-size:.75rem;color:var(--muted);font-weight:400}
-.domain .intro{color:var(--muted);font-size:.88rem;margin:0 0 1rem}
-/* book rows (douban search-result style) */
-.brow{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-top:1px solid var(--hair);text-decoration:none;color:var(--ink)}
-.brow:last-child{border-bottom:1px solid var(--hair)}
-.brow img{width:64px;height:auto;flex:0 0 auto;box-shadow:0 1px 4px rgba(0,0,0,.14)}
-.brow .t{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.05rem;font-weight:700;margin:0 0 .15rem;line-height:1.5}
-.brow .m{font-size:.8rem;color:var(--muted);margin:0;line-height:1.7}
-.brow .r{margin-left:auto;flex:0 0 auto;text-align:right}
-.brow .r b{font-size:1.25rem;color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
-.brow .r span{display:block;font-size:.72rem;color:var(--muted)}
-.brow:active{background:var(--soft)}
-/* detail page */
-.back{display:inline-block;font-size:.85rem;text-decoration:none;margin:1.1rem 0 .4rem}
-.bookhead h1{font-size:1.7rem;margin:.2rem 0 1rem;line-height:1.4}
-.topblock{display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:1.4rem}
-.topblock img.cover{width:132px;height:auto;flex:0 0 auto;box-shadow:0 2px 10px rgba(0,0,0,.16)}
-.info{font-size:.88rem;line-height:2}
-.info .k{color:var(--muted)}
-.info a{text-decoration:none;border-bottom:1px solid var(--green)}
-.ratebox{display:flex;align-items:baseline;gap:.7rem;background:var(--soft);border:1px solid var(--hair);border-radius:.5rem;padding:.8rem 1rem;margin:0 0 1.6rem}
-.ratebox .num{font-size:2.4rem;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums;line-height:1}
-.ratebox .lbl{font-size:.8rem;color:var(--muted)}
-.ratebox .lbl b{color:var(--ink)}
-section.blk{margin:0 0 2rem}
-section.blk h2{font-size:1.15rem;margin:0 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--ink)}
-.thesis p{margin:0 0 .7rem}
-ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
-.ideas li,.parts li{padding:.7rem 0;border-top:1px solid var(--hair)}
-.ideas li:last-child,.parts li:last-child{border-bottom:1px solid var(--hair)}
-.idea,.part{margin:0;font-size:.96rem}
-.ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
-.ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next cards */
-.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
-.pn a:active{background:var(--soft)}
-.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
-.pn a.next{flex-direction:row-reverse;text-align:right}
-.pn a.solo{grid-column:1/-1}
-footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
-footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
-@media(min-width:640px){
-  .topblock img.cover{width:168px}
-  .bookhead h1{font-size:2rem}
-  .brow img{width:76px}
-}
-</style></head>
-<body><div class="wrap"><header class="sitehead"><a class="brand" href="index.html">四十本经典书<small>BOOK GUIDE · VOL.01</small></a></header></div>
-<div class="wrap"><main>
-<a class="back" href="index.html">← 全部 40 本</a>
-<div class="bookhead"><h1>《用户故事与敏捷方法》</h1></div>
-<div class="topblock">
-<img class="cover" src="covers/s4743056.jpg" alt="《用户故事与敏捷方法》封面">
-<div class="info">
-<div><span class="k">作者：</span>迈克·科恩</div>
-<div><span class="k">出版社：</span>清华大学出版社</div>
-<div><span class="k">出版年：</span>2010-4</div>
-<div><span class="k">原作名：</span>User Stories Applied: For Agile Software Development</div>
-<div><span class="k">领域：</span>产品经理 · 第 39 本</div>
-<div style="margin-top:.4rem"><a href="https://book.douban.com/subject/4743056/" target="_blank" rel="noopener">豆瓣读书 →</a></div>
-</div></div>
-<div class="ratebox"><span class="num">8.1</span><span class="lbl"><b>豆瓣评分</b><br>609人评价</span></div>
-<p style="font-size:1.02rem;border-left:3px solid var(--green);padding-left:.8rem;margin:0 0 1.8rem">敏捷开发写需求的“圣经”：别写几十页没人看的文档了。一张小卡片加面对面交谈，再写下验收标准，就够了。</p>
-<section class="blk"><h2>总体观点</h2><div class="thesis"><p>2004 年，敏捷教练迈克·科恩写了这本书。当时很多团队嘴上“敏捷”，实际还是瀑布那套。产品经理憋几个月写巨详细的需求文档，做完发现用户根本不想要。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《用户故事与敏捷方法》 · 四十本经典书</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="sitehead">
+      <div class="sitehead-inner">
+        <a class="brand" href="index.html">
+          四十本经典书
+          <small>BOOK GUIDE · VOL.01</small>
+        </a>
+        <span class="sitehead-tag">产品经理</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="back-nav">
+        <a class="back-link" href="index.html#dom-4">← 全部 40 本</a>
+        <span class="detail-domain-tag">产品经理 · 第 39 本</span>
+      </div>
+
+      <div class="book-title-header">
+        <h1>《用户故事与敏捷方法》</h1>
+      </div>
+
+      <div class="detail-top">
+        <div class="detail-cover-wrap">
+          <img class="detail-cover" src="covers/s4743056.jpg" alt="《用户故事与敏捷方法》封面" width="138" height="200">
+        </div>
+        <div class="detail-meta">
+          <div class="detail-meta-item">
+            <span class="label">作者：</span>
+            <span class="value">迈克·科恩</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版社：</span>
+            <span class="value">清华大学出版社</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版年：</span>
+            <span class="value">2010-4</span>
+          </div>
+          <div class="detail-meta-item">
+        <span class="label">原作名：</span>
+        <span class="value">User Stories Applied: For Agile Software Development</span>
+      </div>
+          <div class="detail-meta-item">
+            <span class="label">领域：</span>
+            <span class="value">产品经理 · 第 39 本</span>
+          </div>
+          <div class="detail-meta-item" style="margin-top: 0.4rem;">
+            <a class="douban-link" href="https://book.douban.com/subject/4743056/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ratebox">
+        <span class="ratebox-num">8.1</span>
+        <div class="ratebox-info">
+          <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
+          <div class="ratebox-label"><b>豆瓣评分</b> · 609人评价</div>
+        </div>
+      </div>
+
+      <div class="intro-quote">
+        敏捷开发写需求的“圣经”：别写几十页没人看的文档了。一张小卡片加面对面交谈，再写下验收标准，就够了。
+      </div>
+
+      <section class="section-block">
+        <h2>总体观点</h2>
+        <div class="thesis-body">
+          <p>2004 年，敏捷教练迈克·科恩写了这本书。当时很多团队嘴上“敏捷”，实际还是瀑布那套。产品经理憋几个月写巨详细的需求文档，做完发现用户根本不想要。</p>
 <p>核心方法是“用户故事”：一张小卡片，正面只写一句话。句式是：作为谁、想要什么、以便于得到什么价值。卡片只是“提醒”，细节靠团队“交谈”聊出来。聊完把“怎么算做完”写成“验收标准”来“确认”。卡片加交谈加确认，就是著名的 3C。INVEST 六原则：独立、可协商、有价值、可估算、小、可测试。</p>
-<p>后半本讲怎么用：故事点估算、排优先级、发布计划、迭代计划。用速率和燃尽图跟踪进度。今天几乎所有敏捷团队写需求的规矩，都出自这本书。</p></div></section>
-<section class="blk"><h2>核心观点 · 7</h2><ol class="ideas"><li><p class="idea"><b>1. </b> 完整用户故事有三部分：卡片——小卡片写一句话，只是个提醒；交谈——产品、开发、测试把细节聊透，这是最重要的；确认——把“做到什么程度算完”写成验收标准。卡片故意简略，就是逼大家开口聊。</p><p class="ex">“点赞功能”卡片只写“作为刷视频的用户，我想双击点赞，以便表达喜欢”。开会一聊：点赞失败怎么办、连点三次算几次。边界情况全暴露了，文档永远写不出这么全。</p></li>
-<li><p class="idea"><b>2. </b> 三项缺一不可：“作为谁”逼你想清楚用户是谁；“我想要什么”说功能。“以便于什么”说背后的价值——最重要，能帮你砍掉很多没用的需求。写不出“以便于”，需求本身就没想明白。</p><p class="ex">外卖 App：“作为加班族，我想按销量排序，以便找到靠谱的店不踩雷。”看到“以便于”就知道，核心是“帮用户避雷”，设计时就要突出销量和评分。</p></li>
-<li><p class="idea"><b>3. </b> 好故事六个标准，首字母拼成 INVEST。独立（能单独上线）、可协商（细节可谈）。有价值（对用户有价值）、可估算（能估出工作量）。小（一个迭代内做完）、可测试（做完能验证）。拿这六条一卡，烂需求立刻现形。</p><p class="ex">“作为用户，我想有个好看的首页”——违反可测试和有价值。改成“作为新用户，我想在首页看到猜你喜欢，以便快速找到感兴趣的内容”。配上“首屏加载小于 2 秒”，才算合格。</p></li>
-<li><p class="idea"><b>4. </b> 写故事之前先回答“用户是谁”。把用户分成几类典型角色，起名字、编背景、贴照片上墙。以后讨论需求就问：“宝妈李姐会用这个功能吗？”</p><p class="ex">在线教育：“鸡娃宝妈”看学习报告，“自律大学生”看打卡排名。给“考证的打工人”推 15 分钟微课——角色不同，需求完全不同。</p></li>
-<li><p class="idea"><b>5. </b> 多少扯皮都源于“做完了”但“不是我想要的”。开工前，产品经理和团队把验收测试写下来：一条条可验证的标准。这是给开发的“施工图”、测试的“考卷”、产品的“收货单”。不能是“体验流畅”这种空话。</p><p class="ex">登录功能验收：密码输错 3 次，账号锁定 15 分钟并提示；错误提示不告诉你是账号错还是密码错（防撞库）。开发照着写，测试照着测，谁都没话说。</p></li>
-<li><p class="idea"><b>6. </b> 估“这个功能要几天”十有八九不准，人天会被开会、请假吃掉。用“故事点”：找个熟悉的小故事当“1 个点”，新的跟它比大小。常用斐波那契数列（1、2、3、5、8、13）。数字越大越不精确，逼着把大故事拆小。</p><p class="ex">“做个静态页面”等于 1 个点，“带搜索的商品列表页”可能是 5 个点。“整个支付流程”是 13 个点——13 太大了，必须拆。估出来的不是“几天”，而是团队一个迭代能消化多少点。</p></li>
-<li><p class="idea"><b>7. </b> 刚收集来的需求往往巨大无比，叫“史诗”，比如“用户管理系统”。史诗不能直接进迭代，必须拆成一个个能在 1 到 2 周内做完的故事。拆的原则是“切蛋糕”：每一刀都是完整可用的功能。不是“这周做数据库、下周做界面”那种切法。</p><p class="ex">“在线支付”切蛋糕：第一刀“支持支付宝付款”（界面到支付全通）。第二刀“加上微信支付”，第三刀“加上退款”。每一刀上线用户立刻能用。</p></li></ol></section>
-<section class="blk"><h2>全书结构</h2><ol class="parts"><li><p class="part"><b>第I部分 起步：第1章 概览</b> 用户故事是什么、为什么需要它：软件需求本质是沟通问题。故事等于卡片加交谈加确认。</p><p class="ex">“按文档做完了，用户说不是他想要的”——就是因为文档代替不了交谈。故事卡只是约大家来聊天的“饭局邀请函”。</p></li>
-<li><p class="part"><b>第2章 编写故事、第7章 优秀准则</b> 故事的标准写法、INVEST 六原则、“切蛋糕”式拆分。</p><p class="ex">“作为求职者，我想保存搜索条件，以便下次直接看新职位”。主语、功能、价值齐了。再用 INVEST 检查一遍，不合格的打回去重写。</p></li>
-<li><p class="part"><b>第3-5章：用户角色建模、搜集故事、用户代理</b> 需求从哪来：先给用户画像（角色建模），再用访谈、问卷、观察搜集故事。见不到真实用户时，找“用户代理”合作。</p><p class="ex">做医疗软件见不到医生，就去跟医药代表、客服聊。实在不行，让团队成员“扮演”医生走一遍流程——总比坐在办公室编需求强。</p></li>
-<li><p class="part"><b>第6章 用户故事验收测试</b> 讲“确认”：在写代码之前就把验收标准定下来，由客户定义“什么算做完”。</p><p class="ex">“优惠券”验收：满 100 减 10 的券。99 元不能用，100 元能用。退货后券要返还——提前写下来，开发和测试就不用猜了。</p></li>
-<li><p class="part"><b>第II部分 估算和计划（第8-11章）</b> 故事点估算、排优先级、发布计划、迭代计划，以及用速率和燃尽图跟踪进度。</p><p class="ex">发布计划：按优先级把故事排进待办列表，用团队的历史速率一算。“双十一前能做完哪些”一目了然——比拍脑袋定截止日期靠谱。</p></li>
-<li><p class="part"><b>第IV部分 完整实例：付款管理项目</b> 全书最实在的部分：拿一个真实的付款管理项目，从头到尾演示。怎么写故事、怎么估、怎么排计划、怎么迭代。</p><p class="ex">跟着这个案例走一遍：一个“史诗”怎么被拆成十几个小故事。哪些先进第一个迭代，燃尽图怎么画——相当于一次带教实习。</p></li></ol></section>
-<nav class="pn"><a class="prev" href="book-38.html"><img src="covers/s26278639.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《精益数据分析》</span></a><a class="next" href="book-40.html"><img src="covers/s1017180.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《定位》</span></a></nav>
-</main></div><footer><div class="wrap">
-<p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
-<p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer>
-<script>
-document.addEventListener('keydown',function(e){
-  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
-  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
-  if(e.key==='ArrowRight'&&n){location.href=n.href;}
-});
-</script>
-</body></html>
+<p>后半本讲怎么用：故事点估算、排优先级、发布计划、迭代计划。用速率和燃尽图跟踪进度。今天几乎所有敏捷团队写需求的规矩，都出自这本书。</p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>核心观点 <span class="badge">共 7 条</span></h2>
+        <ol class="idea-list">
+          <li class="idea-item">
+        <p class="idea-title"><b>1. 用户故事三要素（3C）：卡片、交谈与确认</b></p>
+        <p class="idea-desc">卡片记一句话做提醒；交谈让产品、开发、测试当面聊透细节；确认将验收标准固化下来。刻意简短的卡片逼大家充分沟通。</p>
+        <div class="example-box"><span class="tag">例 ·</span>“点赞功能”卡片只写“作为刷视频的用户，我想双击点赞，以便表达喜欢”。开会一聊：点赞失败怎么办、连点三次算几次。边界情况全暴露了，文档永远写不出这么全。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>2. 用户故事标准句式：作为谁、想要什么、以便于什么</b></p>
+        <p class="idea-desc">“以便于”阐明价值最关键，能过滤无意义伪需求。想不清楚用户从功能里获得什么收益，这个故事就不及格。</p>
+        <div class="example-box"><span class="tag">例 ·</span>外卖 App：“作为加班族，我想按销量排序，以便找到靠谱的店不踩雷。”看到“以便于”就知道，核心是“帮用户避雷”，设计时就要突出销量和评分。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>3. 好故事的 INVEST 六准则</b></p>
+        <p class="idea-desc">独立（Independent）、可协商（Negotiable）、有价值（Valuable）、可估算（Estimable）、小（Small）、可测试（Testable）。</p>
+        <div class="example-box"><span class="tag">例 ·</span>“作为用户，我想有个好看的首页”——违反可测试和有价值。改成“作为新用户，我想在首页看到猜你喜欢，以便快速找到感兴趣的内容”。配上“首屏加载小于 2 秒”，才算合格。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>4. 写故事前先建用户画像角色（Personas）</b></p>
+        <p class="idea-desc">先将目标受众细分成典型角色并设定具体场景。讨论功能时以具体角色视角判断，避免脱离实际的自嗨设计。</p>
+        <div class="example-box"><span class="tag">例 ·</span>在线教育：“鸡娃宝妈”看学习报告，“自律大学生”看打卡排名。给“考证的打工人”推 15 分钟微课——角色不同，需求完全不同。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>5. 用可验证的验收测试终结需求扯皮</b></p>
+        <p class="idea-desc">开工前写死可验证的测试准则。这是给开发的施工图、测试的考卷和产品的收货单，拒绝“体验良好”等空洞描述。</p>
+        <div class="example-box"><span class="tag">例 ·</span>登录功能验收：密码输错 3 次，账号锁定 15 分钟并提示；错误提示不告诉你是账号错还是密码错（防撞库）。开发照着写，测试照着测，谁都没话说。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>6. 用故事点（相对估算）替代工时人天</b></p>
+        <p class="idea-desc">时间容易被琐事侵蚀，故事点用斐波那契数列进行体量对比。越大的故事不确定性越高，逼迫团队拆小任务。</p>
+        <div class="example-box"><span class="tag">例 ·</span>“做个静态页面”等于 1 个点，“带搜索的商品列表页”可能是 5 个点。“整个支付流程”是 13 个点——13 太大了，必须拆。估出来的不是“几天”，而是团队一个迭代能消化多少点。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>7. 像切蛋糕一样横切史诗级大需求</b></p>
+        <p class="idea-desc">巨大史诗故事不能按技术层（数据库/接口/界面）横截，而要垂直切片，确保每一刀交付给用户都是完整可用的端到端功能。</p>
+        <div class="example-box"><span class="tag">例 ·</span>“在线支付”切蛋糕：第一刀“支持支付宝付款”（界面到支付全通）。第二刀“加上微信支付”，第三刀“加上退款”。每一刀上线用户立刻能用。</div>
+      </li>
+        </ol>
+      </section>
+
+      <section class="section-block">
+        <h2>全书结构 <span class="badge">6 部分</span></h2>
+        <ol class="part-list">
+          <li class="part-item">
+        <p class="part-title"><b>第I部分 起步：第1章 概览</b></p>
+        <p class="part-desc">用户故事是什么、为什么需要它：软件需求本质是沟通问题。故事等于卡片加交谈加确认。</p>
+        <div class="example-box"><span class="tag">例 ·</span>“按文档做完了，用户说不是他想要的”——就是因为文档代替不了交谈。故事卡只是约大家来聊天的“饭局邀请函”。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第2章 编写故事、第7章 优秀准则</b></p>
+        <p class="part-desc">故事的标准写法、INVEST 六原则、“切蛋糕”式拆分。</p>
+        <div class="example-box"><span class="tag">例 ·</span>“作为求职者，我想保存搜索条件，以便下次直接看新职位”。主语、功能、价值齐了。再用 INVEST 检查一遍，不合格的打回去重写。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第3-5章：用户角色建模、搜集故事、用户代理</b></p>
+        <p class="part-desc">需求从哪来：先给用户画像（角色建模），再用访谈、问卷、观察搜集故事。见不到真实用户时，找“用户代理”合作。</p>
+        <div class="example-box"><span class="tag">例 ·</span>做医疗软件见不到医生，就去跟医药代表、客服聊。实在不行，让团队成员“扮演”医生走一遍流程——总比坐在办公室编需求强。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第6章 用户故事验收测试</b></p>
+        <p class="part-desc">讲“确认”：在写代码之前就把验收标准定下来，由客户定义“什么算做完”。</p>
+        <div class="example-box"><span class="tag">例 ·</span>“优惠券”验收：满 100 减 10 的券。99 元不能用，100 元能用。退货后券要返还——提前写下来，开发和测试就不用猜了。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第II部分 估算和计划（第8-11章）</b></p>
+        <p class="part-desc">故事点估算、排优先级、发布计划、迭代计划，以及用速率和燃尽图跟踪进度。</p>
+        <div class="example-box"><span class="tag">例 ·</span>发布计划：按优先级把故事排进待办列表，用团队的历史速率一算。“双十一前能做完哪些”一目了然——比拍脑袋定截止日期靠谱。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第IV部分 完整实例：付款管理项目</b></p>
+        <p class="part-desc">全书最实在的部分：拿一个真实的付款管理项目，从头到尾演示。怎么写故事、怎么估、怎么排计划、怎么迭代。</p>
+        <div class="example-box"><span class="tag">例 ·</span>跟着这个案例走一遍：一个“史诗”怎么被拆成十几个小故事。哪些先进第一个迭代，燃尽图怎么画——相当于一次带教实习。</div>
+      </li>
+        </ol>
+      </section>
+
+      <nav class="pn">
+        <a class="prev" href="book-38.html">
+          <img src="covers/s26278639.jpg" alt="《精益数据分析》封面" loading="lazy">
+          <span class="t"><span>← 上一本</span>《精益数据分析》</span>
+         </a>
+        <a class="next" href="book-40.html">
+          <img src="covers/s1017180.jpg" alt="《定位》封面" loading="lazy">
+          <span class="t"><span>下一本 →</span>《定位》</span>
+         </a>
+      </nav>
+
+      <a class="nav-back-catalog" href="index.html#dom-4">返回 产品经理 目录</a>
+    </main>
+
+    <footer>
+      <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+      <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+</body>
+</html>

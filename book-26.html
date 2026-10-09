@@ -1,116 +1,188 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>《设计师要懂心理学》· 四十本经典书</title><style>
-:root{--green:#007722;--ink:#1a1a1a;--muted:#767676;--hair:#e9e6df;--paper:#ffffff;--soft:#f7f5f0}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.8}
-.wrap{max-width:46rem;margin:0 auto;padding:0 1.15rem}
-a{color:var(--green)}
-h1,h2{font-family:"Songti SC","Noto Serif SC","STSong",serif}
-::selection{background:#dcefe2}
-/* header */
-.sitehead{border-bottom:1px solid var(--hair);padding:1rem 0 .9rem}
-.sitehead .brand{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.25rem;font-weight:700;color:var(--ink);text-decoration:none}
-.sitehead .brand small{font-family:sans-serif;font-weight:400;font-size:.75rem;color:var(--muted);margin-left:.6rem;letter-spacing:.1em}
-/* domain */
-.domain{padding:2rem 0 .5rem;scroll-margin-top:3.4rem}
-.dnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
-.dnav-inner{max-width:46rem;margin:0 auto;padding:.55rem 1.15rem;display:flex;gap:.5rem;overflow-x:auto}
-.dnav a{flex:1 0 auto;text-align:center;font-size:.85rem;text-decoration:none;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:.32rem .8rem;white-space:nowrap}
-.dnav a:active{background:var(--green);color:#fff;border-color:var(--green)}
-.domain h2{font-size:1.3rem;margin:0 0 .2rem;display:flex;align-items:baseline;gap:.6rem}
-.domain h2 .count{font-family:sans-serif;font-size:.75rem;color:var(--muted);font-weight:400}
-.domain .intro{color:var(--muted);font-size:.88rem;margin:0 0 1rem}
-/* book rows (douban search-result style) */
-.brow{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-top:1px solid var(--hair);text-decoration:none;color:var(--ink)}
-.brow:last-child{border-bottom:1px solid var(--hair)}
-.brow img{width:64px;height:auto;flex:0 0 auto;box-shadow:0 1px 4px rgba(0,0,0,.14)}
-.brow .t{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.05rem;font-weight:700;margin:0 0 .15rem;line-height:1.5}
-.brow .m{font-size:.8rem;color:var(--muted);margin:0;line-height:1.7}
-.brow .r{margin-left:auto;flex:0 0 auto;text-align:right}
-.brow .r b{font-size:1.25rem;color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
-.brow .r span{display:block;font-size:.72rem;color:var(--muted)}
-.brow:active{background:var(--soft)}
-/* detail page */
-.back{display:inline-block;font-size:.85rem;text-decoration:none;margin:1.1rem 0 .4rem}
-.bookhead h1{font-size:1.7rem;margin:.2rem 0 1rem;line-height:1.4}
-.topblock{display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:1.4rem}
-.topblock img.cover{width:132px;height:auto;flex:0 0 auto;box-shadow:0 2px 10px rgba(0,0,0,.16)}
-.info{font-size:.88rem;line-height:2}
-.info .k{color:var(--muted)}
-.info a{text-decoration:none;border-bottom:1px solid var(--green)}
-.ratebox{display:flex;align-items:baseline;gap:.7rem;background:var(--soft);border:1px solid var(--hair);border-radius:.5rem;padding:.8rem 1rem;margin:0 0 1.6rem}
-.ratebox .num{font-size:2.4rem;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums;line-height:1}
-.ratebox .lbl{font-size:.8rem;color:var(--muted)}
-.ratebox .lbl b{color:var(--ink)}
-section.blk{margin:0 0 2rem}
-section.blk h2{font-size:1.15rem;margin:0 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--ink)}
-.thesis p{margin:0 0 .7rem}
-ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
-.ideas li,.parts li{padding:.7rem 0;border-top:1px solid var(--hair)}
-.ideas li:last-child,.parts li:last-child{border-bottom:1px solid var(--hair)}
-.idea,.part{margin:0;font-size:.96rem}
-.ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
-.ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next cards */
-.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
-.pn a:active{background:var(--soft)}
-.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
-.pn a.next{flex-direction:row-reverse;text-align:right}
-.pn a.solo{grid-column:1/-1}
-footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
-footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
-@media(min-width:640px){
-  .topblock img.cover{width:168px}
-  .bookhead h1{font-size:2rem}
-  .brow img{width:76px}
-}
-</style></head>
-<body><div class="wrap"><header class="sitehead"><a class="brand" href="index.html">四十本经典书<small>BOOK GUIDE · VOL.01</small></a></header></div>
-<div class="wrap"><main>
-<a class="back" href="index.html">← 全部 40 本</a>
-<div class="bookhead"><h1>《设计师要懂心理学》</h1></div>
-<div class="topblock">
-<img class="cover" src="covers/s23708491.jpg" alt="《设计师要懂心理学》封面">
-<div class="info">
-<div><span class="k">作者：</span>苏珊·魏因申克</div>
-<div><span class="k">出版社：</span>人民邮电出版社</div>
-<div><span class="k">出版年：</span>2013-5-1</div>
-<div><span class="k">原作名：</span>100 Things Every Designer Needs to Know About People</div>
-<div><span class="k">领域：</span>UI/UX 设计 · 第 26 本</div>
-<div style="margin-top:.4rem"><a href="https://book.douban.com/subject/23708491/" target="_blank" rel="noopener">豆瓣读书 →</a></div>
-</div></div>
-<div class="ratebox"><span class="num">7.6</span><span class="lbl"><b>豆瓣评分</b><br>1812人评价</span></div>
-<p style="font-size:1.02rem;border-left:3px solid var(--green);padding-left:.8rem;margin:0 0 1.8rem">100 条“人就是这样”的心理学结论，每条翻译成一句设计该怎么做。</p>
-<section class="blk"><h2>总体观点</h2><div class="thesis"><p>作者是行为心理学家。她发现设计师和心理学隔着一堵墙：论文看不懂，看懂了不知怎么用。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《设计师要懂心理学》 · 四十本经典书</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="sitehead">
+      <div class="sitehead-inner">
+        <a class="brand" href="index.html">
+          四十本经典书
+          <small>BOOK GUIDE · VOL.01</small>
+        </a>
+        <span class="sitehead-tag">UI/UX 设计</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="back-nav">
+        <a class="back-link" href="index.html#dom-3">← 全部 40 本</a>
+        <span class="detail-domain-tag">UI/UX 设计 · 第 26 本</span>
+      </div>
+
+      <div class="book-title-header">
+        <h1>《设计师要懂心理学》</h1>
+      </div>
+
+      <div class="detail-top">
+        <div class="detail-cover-wrap">
+          <img class="detail-cover" src="covers/s23708491.jpg" alt="《设计师要懂心理学》封面" width="138" height="200">
+        </div>
+        <div class="detail-meta">
+          <div class="detail-meta-item">
+            <span class="label">作者：</span>
+            <span class="value">苏珊·魏因申克</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版社：</span>
+            <span class="value">人民邮电出版社</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版年：</span>
+            <span class="value">2013-5-1</span>
+          </div>
+          <div class="detail-meta-item">
+        <span class="label">原作名：</span>
+        <span class="value">100 Things Every Designer Needs to Know About People</span>
+      </div>
+          <div class="detail-meta-item">
+            <span class="label">领域：</span>
+            <span class="value">UI/UX 设计 · 第 26 本</span>
+          </div>
+          <div class="detail-meta-item" style="margin-top: 0.4rem;">
+            <a class="douban-link" href="https://book.douban.com/subject/23708491/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ratebox">
+        <span class="ratebox-num">7.6</span>
+        <div class="ratebox-info">
+          <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
+          <div class="ratebox-label"><b>豆瓣评分</b> · 1812人评价</div>
+        </div>
+      </div>
+
+      <div class="intro-quote">
+        100 条“人就是这样”的心理学结论，每条翻译成一句设计该怎么做。
+      </div>
+
+      <section class="section-block">
+        <h2>总体观点</h2>
+        <div class="thesis-body">
+          <p>作者是行为心理学家。她发现设计师和心理学隔着一堵墙：论文看不懂，看懂了不知怎么用。</p>
 <p>她把跟设计最相关的 100 个原理分成十章。按“人如何看、如何读、如何记”来分。每条都是“结论 + 解释 + 设计小贴士”。</p>
-<p>这是本案头辞典，不用从头读到尾。吵架时能甩出依据，是它给设计师最大的底气。</p></div></section>
-<section class="blk"><h2>核心观点 · 7</h2><ol class="ideas"><li><p class="idea"><b>1. 人一次只能记住三四件事，别考验用户的记性</b> 短时记忆一次只能装 3 到 4 个组块。别让用户“记住验证码再填”，也别让他“记住上一页价格再回来比”。这样的设计都是在为难人。记不住是脑子说了算，不是用户笨。</p><p class="ex">导航菜单一口气列 20 个选项，用户看完就忘。拆成 4 到 5 个一组，世界都清净了。背手机号你也 3-4-4 分段，大脑天生这么干。</p></li>
-<li><p class="idea"><b>2. 开头和结尾最容易被记住，重要的放两头</b> 系列位置效应：一串东西里开头和结尾最容易记住，中间最容易忘。最重要的放开头，其次放结尾，中间放次要的。别把王牌藏中间。</p><p class="ex">App 底部导航 5 个位置，最重要的“首页”和“我的”放两端。面试自我介绍开头结尾精心准备，中间经历 HR 转头就忘。</p></li>
-<li><p class="idea"><b>3. 选择越多，人越难下手</b> 希克定律：选项越多，决策越慢；多到一定程度，人干脆不选了。别以为功能多等于好。好设计替用户做减法，或分步骤呈现。</p><p class="ex">超市 30 种果酱，顾客逛一圈空手走；只摆 6 种，销量反而更高。朋友纠结吃饭，你说“火锅还是日料”他立刻能定。</p></li>
-<li><p class="idea"><b>4. 人看别人怎么做，自己就跟着做</b> 社会认同：拿不准时，人看周围人怎么做。评分、销量、评论都在说“很多人买了，你放心”。普通人的评价比专家管用，因为用户觉得“他跟我一样”。</p><p class="ex">两家奶茶店，一家排长队一家没人，你大概率去排队那家。“这么多人选”本身就是信号。</p></li>
-<li><p class="idea"><b>5. 别让人“回忆”，要让人“认出来”</b> “再认”比“回忆”省力得多：从选项里认出一个，比凭空想起一个容易。好界面多用“选”少用“填”，多给提示少考记忆。让用户凭空回忆的设计都反人性。</p><p class="ex">登录用“从相册选出设过的三张图”，比“输入密保答案”容易。就像考试：选择题永远比填空题简单。</p></li>
-<li><p class="idea"><b>6. 人在压力下会变“笨”，关键时刻界面越简单越好</b> 耶克斯 - 多德森定律：一点紧张能专注，压力一大表现直线下降。赶时间、着急时，平时会用的功能都不会了。关键流程要简单到“闭眼走对”。</p><p class="ex">赶飞机时改签，平时三步搞定，着急时每步都像迷宫。好流程只剩“改到哪班、点确定”两步。</p></li>
-<li><p class="idea"><b>7. 人的眼睛会被“脸”和“会动的东西”吸走</b> 视觉硬连线：对人脸和运动极度敏感，这是进化留下的。页面放张人脸，目光一定先去那儿；有地方在闪，别的都看不见。用好是引导，用滥是灾难。</p><p class="ex">落地页放张微笑客服照片，转化率常上涨，人脸自带信任感。表单旁放闪烁广告条，用户就填不好表了。</p></li></ol></section>
-<section class="blk"><h2>全书结构</h2><ol class="parts"><li><p class="part"><b>第一章 人是如何看的</b> 视觉原理：先看整体轮廓、余光先发现运动，格式塔原理决定我们怎么分组信息。</p><p class="ex">网页上两个按钮离得近，你默认它们是一对。离得远，觉得没关系——“接近性”在替你分组。</p></li>
-<li><p class="part"><b>第二章 人是如何阅读的</b> 阅读冷知识：认词靠字形轮廓，全大写反而难读；屏幕阅读是扫读不是逐字读。</p><p class="ex">没人逐字读你的长文案，用户扫小标题和加粗。重要的词加粗、段落要短，是给“扫读”准备的。</p></li>
-<li><p class="part"><b>第三章 人是如何记忆的</b> 短时记忆 3~4 组块，开头结尾记得牢，再认比回忆容易。</p><p class="ex">用户说“我上次是这么操作的”，很可能记错了。记忆每次回想都会被改写，不如直接观察他操作。</p></li>
-<li><p class="part"><b>第四章 人是如何思考的</b> 心智模型、认知负荷和心流：人对东西怎么运转有预想，超负荷就宕机。</p><p class="ex">用户默认共享单车“扫码就开锁”。你的车还要先按隐藏按钮，他的心智模型就崩了。</p></li>
-<li><p class="part"><b>第五~六章 注意力与动机</b> 注意力与动机：一次只能好好干一件事；多巴胺爱不可预测的奖励，目标要拆小。</p><p class="ex">集卡活动让人停不下来，因为“下一张是啥”不可预测。把大目标拆成“再集 2 张就换购”，比“集满 50 张”有劲。</p></li>
-<li><p class="part"><b>第七~十章 社会性、感觉、犯错与决策</b> 社会性与情绪：从众、面子；人会犯错，要做容错；决策怕损失、爱走捷径。</p><p class="ex">“仅剩 2 件”比“库存充足”更能促单。人对“失去”的敏感，远超对“得到”的渴望。</p></li></ol></section>
-<nav class="pn"><a class="prev" href="book-25.html"><img src="covers/s3323633.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《写给大家看的设计书》</span></a><a class="next" href="book-27.html"><img src="covers/s1314262.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《情感化设计》</span></a></nav>
-</main></div><footer><div class="wrap">
-<p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
-<p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer>
-<script>
-document.addEventListener('keydown',function(e){
-  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
-  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
-  if(e.key==='ArrowRight'&&n){location.href=n.href;}
-});
-</script>
-</body></html>
+<p>这是本案头辞典，不用从头读到尾。吵架时能甩出依据，是它给设计师最大的底气。</p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>核心观点 <span class="badge">共 7 条</span></h2>
+        <ol class="idea-list">
+          <li class="idea-item">
+        <p class="idea-title"><b>1. 人一次只能记住三四件事，别考验用户的记性</b></p>
+        <p class="idea-desc">短时记忆一次只能装 3 到 4 个组块。别让用户“记住验证码再填”，也别让他“记住上一页价格再回来比”。这样的设计都是在为难人。记不住是脑子说了算，不是用户笨。</p>
+        <div class="example-box"><span class="tag">例 ·</span>导航菜单一口气列 20 个选项，用户看完就忘。拆成 4 到 5 个一组，世界都清净了。背手机号你也 3-4-4 分段，大脑天生这么干。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>2. 开头和结尾最容易被记住，重要的放两头</b></p>
+        <p class="idea-desc">系列位置效应：一串东西里开头和结尾最容易记住，中间最容易忘。最重要的放开头，其次放结尾，中间放次要的。别把王牌藏中间。</p>
+        <div class="example-box"><span class="tag">例 ·</span>App 底部导航 5 个位置，最重要的“首页”和“我的”放两端。面试自我介绍开头结尾精心准备，中间经历 HR 转头就忘。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>3. 选择越多，人越难下手</b></p>
+        <p class="idea-desc">希克定律：选项越多，决策越慢；多到一定程度，人干脆不选了。别以为功能多等于好。好设计替用户做减法，或分步骤呈现。</p>
+        <div class="example-box"><span class="tag">例 ·</span>超市 30 种果酱，顾客逛一圈空手走；只摆 6 种，销量反而更高。朋友纠结吃饭，你说“火锅还是日料”他立刻能定。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>4. 人看别人怎么做，自己就跟着做</b></p>
+        <p class="idea-desc">社会认同：拿不准时，人看周围人怎么做。评分、销量、评论都在说“很多人买了，你放心”。普通人的评价比专家管用，因为用户觉得“他跟我一样”。</p>
+        <div class="example-box"><span class="tag">例 ·</span>两家奶茶店，一家排长队一家没人，你大概率去排队那家。“这么多人选”本身就是信号。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>5. 别让人“回忆”，要让人“认出来”</b></p>
+        <p class="idea-desc">“再认”比“回忆”省力得多：从选项里认出一个，比凭空想起一个容易。好界面多用“选”少用“填”，多给提示少考记忆。让用户凭空回忆的设计都反人性。</p>
+        <div class="example-box"><span class="tag">例 ·</span>登录用“从相册选出设过的三张图”，比“输入密保答案”容易。就像考试：选择题永远比填空题简单。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>6. 人在压力下会变“笨”，关键时刻界面越简单越好</b></p>
+        <p class="idea-desc">耶克斯 - 多德森定律：一点紧张能专注，压力一大表现直线下降。赶时间、着急时，平时会用的功能都不会了。关键流程要简单到“闭眼走对”。</p>
+        <div class="example-box"><span class="tag">例 ·</span>赶飞机时改签，平时三步搞定，着急时每步都像迷宫。好流程只剩“改到哪班、点确定”两步。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>7. 人的眼睛会被“脸”和“会动的东西”吸走</b></p>
+        <p class="idea-desc">视觉硬连线：对人脸和运动极度敏感，这是进化留下的。页面放张人脸，目光一定先去那儿；有地方在闪，别的都看不见。用好是引导，用滥是灾难。</p>
+        <div class="example-box"><span class="tag">例 ·</span>落地页放张微笑客服照片，转化率常上涨，人脸自带信任感。表单旁放闪烁广告条，用户就填不好表了。</div>
+      </li>
+        </ol>
+      </section>
+
+      <section class="section-block">
+        <h2>全书结构 <span class="badge">6 部分</span></h2>
+        <ol class="part-list">
+          <li class="part-item">
+        <p class="part-title"><b>第一章 人是如何看的</b></p>
+        <p class="part-desc">视觉原理：先看整体轮廓、余光先发现运动，格式塔原理决定我们怎么分组信息。</p>
+        <div class="example-box"><span class="tag">例 ·</span>网页上两个按钮离得近，你默认它们是一对。离得远，觉得没关系——“接近性”在替你分组。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第二章 人是如何阅读的</b></p>
+        <p class="part-desc">阅读冷知识：认词靠字形轮廓，全大写反而难读；屏幕阅读是扫读不是逐字读。</p>
+        <div class="example-box"><span class="tag">例 ·</span>没人逐字读你的长文案，用户扫小标题和加粗。重要的词加粗、段落要短，是给“扫读”准备的。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第三章 人是如何记忆的</b></p>
+        <p class="part-desc">短时记忆 3~4 组块，开头结尾记得牢，再认比回忆容易。</p>
+        <div class="example-box"><span class="tag">例 ·</span>用户说“我上次是这么操作的”，很可能记错了。记忆每次回想都会被改写，不如直接观察他操作。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第四章 人是如何思考的</b></p>
+        <p class="part-desc">心智模型、认知负荷和心流：人对东西怎么运转有预想，超负荷就宕机。</p>
+        <div class="example-box"><span class="tag">例 ·</span>用户默认共享单车“扫码就开锁”。你的车还要先按隐藏按钮，他的心智模型就崩了。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第五~六章 注意力与动机</b></p>
+        <p class="part-desc">注意力与动机：一次只能好好干一件事；多巴胺爱不可预测的奖励，目标要拆小。</p>
+        <div class="example-box"><span class="tag">例 ·</span>集卡活动让人停不下来，因为“下一张是啥”不可预测。把大目标拆成“再集 2 张就换购”，比“集满 50 张”有劲。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第七~十章 社会性、感觉、犯错与决策</b></p>
+        <p class="part-desc">社会性与情绪：从众、面子；人会犯错，要做容错；决策怕损失、爱走捷径。</p>
+        <div class="example-box"><span class="tag">例 ·</span>“仅剩 2 件”比“库存充足”更能促单。人对“失去”的敏感，远超对“得到”的渴望。</div>
+      </li>
+        </ol>
+      </section>
+
+      <nav class="pn">
+        <a class="prev" href="book-25.html">
+          <img src="covers/s3323633.jpg" alt="《写给大家看的设计书》封面" loading="lazy">
+          <span class="t"><span>← 上一本</span>《写给大家看的设计书》</span>
+         </a>
+        <a class="next" href="book-27.html">
+          <img src="covers/s1314262.jpg" alt="《情感化设计》封面" loading="lazy">
+          <span class="t"><span>下一本 →</span>《情感化设计》</span>
+         </a>
+      </nav>
+
+      <a class="nav-back-catalog" href="index.html#dom-3">返回 UI/UX 设计 目录</a>
+    </main>
+
+    <footer>
+      <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+      <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+</body>
+</html>

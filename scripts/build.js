@@ -1,0 +1,436 @@
+const fs = require('fs');
+const path = require('path');
+
+const ROOT_DIR = path.resolve(__dirname, '..');
+const DATA_DIR = path.join(ROOT_DIR, 'data');
+
+const site = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'site.json'), 'utf-8'));
+const books = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'books.json'), 'utf-8'));
+
+function getStars(ratingStr) {
+  const r = parseFloat(ratingStr) || 0;
+  const stars5 = r / 2; // out of 5
+  const full = Math.floor(stars5);
+  const half = (stars5 - full) >= 0.3 ? 1 : 0;
+  const empty = 5 - full - half;
+  return '★'.repeat(full) + (half ? '★' : '') + '☆'.repeat(empty);
+}
+
+function escapeHtml(str) {
+  if (!str) return '';
+  return str
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+// 1. Build Index HTML
+function buildIndex() {
+  const domainSections = site.domains.map(dom => {
+    const domainBooks = books.filter(b => b.domain === dom.name);
+    const bookRows = domainBooks.map(b => {
+      const padId = String(b.id).padStart(2, '0');
+      const stars = getStars(b.rating);
+      return `
+        <a class="brow" href="${b.slug}.html" data-title="${escapeHtml(b.title)}" data-author="${escapeHtml(b.author)}" data-publisher="${escapeHtml(b.publisher)}" data-domain="${escapeHtml(b.domain)}" data-intro="${escapeHtml(b.intro)}">
+          <div class="brow-cover-wrap">
+            <img src="${b.cover}" alt="${escapeHtml(b.title)}封面" loading="lazy" width="68" height="98">
+          </div>
+          <div class="brow-body">
+            <h3 class="brow-title"><span class="tabular">${padId}.</span> ${escapeHtml(b.title)}</h3>
+            <p class="brow-meta">${escapeHtml(b.author)} / ${escapeHtml(b.publisher)} / ${escapeHtml(b.publishYear)}</p>
+            <p class="brow-desc">${escapeHtml(b.intro)}</p>
+          </div>
+          <div class="brow-rating">
+            <span class="brow-rating-num tabular">${b.rating}</span>
+            <div class="brow-rating-stars" aria-label="评分星级">${stars}</div>
+            <span class="brow-rating-count">${escapeHtml(b.ratingCount)}</span>
+          </div>
+        </a>
+      `.trim();
+    }).join('\n');
+
+    return `
+      <section class="domain" id="${dom.id}">
+        <div class="domain-header">
+          <h2>${escapeHtml(dom.name)}<span class="count">${escapeHtml(dom.count)}</span></h2>
+          <p class="intro">${escapeHtml(dom.intro)}</p>
+        </div>
+        <div class="book-list">
+          ${bookRows}
+        </div>
+      </section>
+    `.trim();
+  }).join('\n');
+
+  const navLinks = site.domains.map((dom, idx) => {
+    return `<a href="#${dom.id}" data-target="${dom.id}" class="${idx === 0 ? 'active' : ''}">${escapeHtml(dom.name)}</a>`;
+  }).join('');
+
+  const html = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${escapeHtml(site.title)}</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="sitehead">
+      <div class="sitehead-inner">
+        <a class="brand" href="index.html">
+          ${escapeHtml(site.brand)}
+          <small>${escapeHtml(site.brandSub)}</small>
+        </a>
+        <span class="sitehead-tag">40 本精选</span>
+      </div>
+    </header>
+
+    <div class="hero">
+      <h1>
+        ${escapeHtml(site.heroTitle)}
+        <span class="hero-subtitle">${escapeHtml(site.heroTag)}</span>
+      </h1>
+      <p>${escapeHtml(site.heroDesc)}</p>
+
+      <div class="search-box">
+        <div class="search-input-wrap">
+          <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="search" class="search-input" id="bookSearch" placeholder="搜索书名、作者、出版社或关键词..." autocomplete="off">
+          <button type="button" class="search-clear" id="searchClear" aria-label="清除搜索">×</button>
+        </div>
+        <div class="search-meta" id="searchMeta">共找到 <b id="matchCount">0</b> 本相关图书</div>
+      </div>
+    </div>
+  </div>
+
+  <nav class="dnav" id="stickyNav">
+    <div class="dnav-inner">
+      ${navLinks}
+    </div>
+  </nav>
+
+  <main>
+    <div class="wrap">
+      <div id="domainsContainer">
+        ${domainSections}
+      </div>
+
+      <div class="search-empty" id="searchEmpty">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <p>未找到匹配的图书，试试其他关键词或作者姓名</p>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <div class="wrap">
+      <p>${escapeHtml(site.footerNote)}</p>
+      <p>${escapeHtml(site.footerVerify)}</p>
+    </div>
+  </footer>
+
+  <script>
+    (function() {
+      // 1. Instant Search
+      const searchInput = document.getElementById('bookSearch');
+      const searchClear = document.getElementById('searchClear');
+      const searchMeta = document.getElementById('searchMeta');
+      const matchCountEl = document.getElementById('matchCount');
+      const searchEmpty = document.getElementById('searchEmpty');
+      const bookRows = Array.from(document.querySelectorAll('.brow'));
+      const domainSections = Array.from(document.querySelectorAll('.domain'));
+
+      function handleSearch() {
+        const query = (searchInput.value || '').trim().toLowerCase();
+        
+        if (query.length > 0) {
+          searchClear.style.display = 'flex';
+          searchMeta.style.display = 'block';
+        } else {
+          searchClear.style.display = 'none';
+          searchMeta.style.display = 'none';
+        }
+
+        let matchCount = 0;
+
+        domainSections.forEach(section => {
+          const rows = Array.from(section.querySelectorAll('.brow'));
+          let sectionMatchCount = 0;
+
+          rows.forEach(row => {
+            const title = (row.dataset.title || '').toLowerCase();
+            const author = (row.dataset.author || '').toLowerCase();
+            const pub = (row.dataset.publisher || '').toLowerCase();
+            const dom = (row.dataset.domain || '').toLowerCase();
+            const intro = (row.dataset.intro || '').toLowerCase();
+
+            const isMatch = !query || 
+              title.includes(query) || 
+              author.includes(query) || 
+              pub.includes(query) || 
+              dom.includes(query) || 
+              intro.includes(query);
+
+            if (isMatch) {
+              row.style.display = 'flex';
+              sectionMatchCount++;
+              matchCount++;
+            } else {
+              row.style.display = 'none';
+            }
+          });
+
+          // Show/hide section header if empty
+          section.style.display = (sectionMatchCount > 0 || !query) ? 'block' : 'none';
+        });
+
+        matchCountEl.textContent = matchCount;
+        searchEmpty.style.display = (matchCount === 0 && query) ? 'block' : 'none';
+      }
+
+      searchInput.addEventListener('input', handleSearch);
+      searchClear.addEventListener('click', function() {
+        searchInput.value = '';
+        searchInput.focus();
+        handleSearch();
+      });
+
+      // 2. Sticky Nav ScrollSpy
+      const navLinks = Array.from(document.querySelectorAll('.dnav a'));
+      const observerOptions = {
+        root: null,
+        rootMargin: '-80px 0px -60% 0px',
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            navLinks.forEach(link => {
+              if (link.getAttribute('data-target') === id) {
+                link.classList.add('active');
+                // Scroll pill into view smoothly in mobile nav
+                link.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+              } else {
+                link.classList.remove('active');
+              }
+            });
+          }
+        });
+      }, observerOptions);
+
+      domainSections.forEach(sec => observer.observe(sec));
+
+      // 3. Scroll position preservation
+      function restoreScroll() {
+        try {
+          const y = sessionStorage.getItem('idxScroll');
+          if (y !== null) {
+            sessionStorage.removeItem('idxScroll');
+            window.scrollTo(0, parseInt(y, 10));
+          }
+        } catch (e) {}
+      }
+      function saveScroll() {
+        try {
+          sessionStorage.setItem('idxScroll', String(window.scrollY));
+        } catch (e) {}
+      }
+      window.addEventListener('DOMContentLoaded', restoreScroll);
+      window.addEventListener('pageshow', function(e) { if (e.persisted) restoreScroll(); });
+      window.addEventListener('pagehide', saveScroll);
+    })();
+  </script>
+</body>
+</html>
+`;
+
+  fs.writeFileSync(path.join(ROOT_DIR, 'index.html'), html, 'utf-8');
+  console.log('✓ Generated index.html');
+}
+
+// 2. Build Book Detail Pages
+function buildBooks() {
+  books.forEach((book, idx) => {
+    const prevBook = idx > 0 ? books[idx - 1] : null;
+    const nextBook = idx < books.length - 1 ? books[idx + 1] : null;
+    const stars = getStars(book.rating);
+
+    // Thesis paragraphs
+    const thesisHtml = book.thesis.map(p => `<p>${escapeHtml(p)}</p>`).join('\n');
+
+    // Ideas list
+    const ideasHtml = book.ideas.map(idea => `
+      <li class="idea-item">
+        <p class="idea-title"><b>${idea.num}. ${escapeHtml(idea.title)}</b></p>
+        <p class="idea-desc">${escapeHtml(idea.desc)}</p>
+        <div class="example-box"><span class="tag">例 ·</span>${escapeHtml(idea.example)}</div>
+      </li>
+    `.trim()).join('\n');
+
+    // Structure list
+    const structureHtml = book.structure.map(part => `
+      <li class="part-item">
+        <p class="part-title"><b>${escapeHtml(part.title)}</b></p>
+        <p class="part-desc">${escapeHtml(part.desc)}</p>
+        <div class="example-box"><span class="tag">例 ·</span>${escapeHtml(part.example)}</div>
+      </li>
+    `.trim()).join('\n');
+
+    // Prev / Next Nav (Cover Cards)
+    const prevHtml = prevBook
+      ? `<a class="prev${!nextBook ? ' solo' : ''}" href="${prevBook.slug}.html">
+          <img src="${prevBook.cover}" alt="${escapeHtml(prevBook.title)}封面" loading="lazy">
+          <span class="t"><span>← 上一本</span>${escapeHtml(prevBook.title)}</span>
+         </a>`
+      : '';
+
+    const nextHtml = nextBook
+      ? `<a class="next${!prevBook ? ' solo' : ''}" href="${nextBook.slug}.html">
+          <img src="${nextBook.cover}" alt="${escapeHtml(nextBook.title)}封面" loading="lazy">
+          <span class="t"><span>下一本 →</span>${escapeHtml(nextBook.title)}</span>
+         </a>`
+      : '';
+
+    // Target domain anchor on index
+    const domObj = site.domains.find(d => d.name === book.domain);
+    const domainAnchor = domObj ? `index.html#${domObj.id}` : 'index.html';
+
+    const origTitleRow = book.originalTitle ? `
+      <div class="detail-meta-item">
+        <span class="label">原作名：</span>
+        <span class="value">${escapeHtml(book.originalTitle)}</span>
+      </div>
+    `.trim() : '';
+
+    const html = `<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>${escapeHtml(book.title)} · 四十本经典书</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="sitehead">
+      <div class="sitehead-inner">
+        <a class="brand" href="index.html">
+          ${escapeHtml(site.brand)}
+          <small>${escapeHtml(site.brandSub)}</small>
+        </a>
+        <span class="sitehead-tag">${escapeHtml(book.domain)}</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="back-nav">
+        <a class="back-link" href="${domainAnchor}">← 全部 40 本</a>
+        <span class="detail-domain-tag">${escapeHtml(book.domain)} · ${escapeHtml(book.domainOrder)}</span>
+      </div>
+
+      <div class="book-title-header">
+        <h1>${escapeHtml(book.title)}</h1>
+      </div>
+
+      <div class="detail-top">
+        <div class="detail-cover-wrap">
+          <img class="detail-cover" src="${book.cover}" alt="${escapeHtml(book.title)}封面" width="138" height="200">
+        </div>
+        <div class="detail-meta">
+          <div class="detail-meta-item">
+            <span class="label">作者：</span>
+            <span class="value">${escapeHtml(book.author)}</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版社：</span>
+            <span class="value">${escapeHtml(book.publisher)}</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版年：</span>
+            <span class="value">${escapeHtml(book.publishYear)}</span>
+          </div>
+          ${origTitleRow}
+          <div class="detail-meta-item">
+            <span class="label">领域：</span>
+            <span class="value">${escapeHtml(book.domain)} · ${escapeHtml(book.domainOrder)}</span>
+          </div>
+          <div class="detail-meta-item" style="margin-top: 0.4rem;">
+            <a class="douban-link" href="${book.doubanUrl}" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ratebox">
+        <span class="ratebox-num">${book.rating}</span>
+        <div class="ratebox-info">
+          <div class="ratebox-stars" aria-label="评分星级">${stars}</div>
+          <div class="ratebox-label"><b>豆瓣评分</b> · ${escapeHtml(book.ratingCount)}</div>
+        </div>
+      </div>
+
+      <div class="intro-quote">
+        ${escapeHtml(book.intro)}
+      </div>
+
+      <section class="section-block">
+        <h2>总体观点</h2>
+        <div class="thesis-body">
+          ${thesisHtml}
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>核心观点 <span class="badge">共 ${book.ideas.length} 条</span></h2>
+        <ol class="idea-list">
+          ${ideasHtml}
+        </ol>
+      </section>
+
+      <section class="section-block">
+        <h2>全书结构 <span class="badge">${book.structure.length} 部分</span></h2>
+        <ol class="part-list">
+          ${structureHtml}
+        </ol>
+      </section>
+
+      <nav class="pn">
+        ${prevHtml}
+        ${nextHtml}
+      </nav>
+
+      <a class="nav-back-catalog" href="${domainAnchor}">返回 ${escapeHtml(book.domain)} 目录</a>
+    </main>
+
+    <footer>
+      <p>${escapeHtml(site.footerNote)}</p>
+      <p>${escapeHtml(site.footerVerify)}</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+</body>
+</html>
+`;
+
+    fs.writeFileSync(path.join(ROOT_DIR, `${book.slug}.html`), html, 'utf-8');
+  });
+
+  console.log(`✓ Generated 40 book detail pages`);
+}
+
+// Run build
+console.log('Building forty-classic-books static website...');
+buildIndex();
+buildBooks();
+console.log('Build completed successfully!');

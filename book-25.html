@@ -1,117 +1,193 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>《写给大家看的设计书》· 四十本经典书</title><style>
-:root{--green:#007722;--ink:#1a1a1a;--muted:#767676;--hair:#e9e6df;--paper:#ffffff;--soft:#f7f5f0}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.8}
-.wrap{max-width:46rem;margin:0 auto;padding:0 1.15rem}
-a{color:var(--green)}
-h1,h2{font-family:"Songti SC","Noto Serif SC","STSong",serif}
-::selection{background:#dcefe2}
-/* header */
-.sitehead{border-bottom:1px solid var(--hair);padding:1rem 0 .9rem}
-.sitehead .brand{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.25rem;font-weight:700;color:var(--ink);text-decoration:none}
-.sitehead .brand small{font-family:sans-serif;font-weight:400;font-size:.75rem;color:var(--muted);margin-left:.6rem;letter-spacing:.1em}
-/* domain */
-.domain{padding:2rem 0 .5rem;scroll-margin-top:3.4rem}
-.dnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
-.dnav-inner{max-width:46rem;margin:0 auto;padding:.55rem 1.15rem;display:flex;gap:.5rem;overflow-x:auto}
-.dnav a{flex:1 0 auto;text-align:center;font-size:.85rem;text-decoration:none;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:.32rem .8rem;white-space:nowrap}
-.dnav a:active{background:var(--green);color:#fff;border-color:var(--green)}
-.domain h2{font-size:1.3rem;margin:0 0 .2rem;display:flex;align-items:baseline;gap:.6rem}
-.domain h2 .count{font-family:sans-serif;font-size:.75rem;color:var(--muted);font-weight:400}
-.domain .intro{color:var(--muted);font-size:.88rem;margin:0 0 1rem}
-/* book rows (douban search-result style) */
-.brow{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-top:1px solid var(--hair);text-decoration:none;color:var(--ink)}
-.brow:last-child{border-bottom:1px solid var(--hair)}
-.brow img{width:64px;height:auto;flex:0 0 auto;box-shadow:0 1px 4px rgba(0,0,0,.14)}
-.brow .t{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.05rem;font-weight:700;margin:0 0 .15rem;line-height:1.5}
-.brow .m{font-size:.8rem;color:var(--muted);margin:0;line-height:1.7}
-.brow .r{margin-left:auto;flex:0 0 auto;text-align:right}
-.brow .r b{font-size:1.25rem;color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
-.brow .r span{display:block;font-size:.72rem;color:var(--muted)}
-.brow:active{background:var(--soft)}
-/* detail page */
-.back{display:inline-block;font-size:.85rem;text-decoration:none;margin:1.1rem 0 .4rem}
-.bookhead h1{font-size:1.7rem;margin:.2rem 0 1rem;line-height:1.4}
-.topblock{display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:1.4rem}
-.topblock img.cover{width:132px;height:auto;flex:0 0 auto;box-shadow:0 2px 10px rgba(0,0,0,.16)}
-.info{font-size:.88rem;line-height:2}
-.info .k{color:var(--muted)}
-.info a{text-decoration:none;border-bottom:1px solid var(--green)}
-.ratebox{display:flex;align-items:baseline;gap:.7rem;background:var(--soft);border:1px solid var(--hair);border-radius:.5rem;padding:.8rem 1rem;margin:0 0 1.6rem}
-.ratebox .num{font-size:2.4rem;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums;line-height:1}
-.ratebox .lbl{font-size:.8rem;color:var(--muted)}
-.ratebox .lbl b{color:var(--ink)}
-section.blk{margin:0 0 2rem}
-section.blk h2{font-size:1.15rem;margin:0 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--ink)}
-.thesis p{margin:0 0 .7rem}
-ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
-.ideas li,.parts li{padding:.7rem 0;border-top:1px solid var(--hair)}
-.ideas li:last-child,.parts li:last-child{border-bottom:1px solid var(--hair)}
-.idea,.part{margin:0;font-size:.96rem}
-.ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
-.ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next cards */
-.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
-.pn a:active{background:var(--soft)}
-.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
-.pn a.next{flex-direction:row-reverse;text-align:right}
-.pn a.solo{grid-column:1/-1}
-footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
-footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
-@media(min-width:640px){
-  .topblock img.cover{width:168px}
-  .bookhead h1{font-size:2rem}
-  .brow img{width:76px}
-}
-</style></head>
-<body><div class="wrap"><header class="sitehead"><a class="brand" href="index.html">四十本经典书<small>BOOK GUIDE · VOL.01</small></a></header></div>
-<div class="wrap"><main>
-<a class="back" href="index.html">← 全部 40 本</a>
-<div class="bookhead"><h1>《写给大家看的设计书》</h1></div>
-<div class="topblock">
-<img class="cover" src="covers/s3323633.jpg" alt="《写给大家看的设计书》封面">
-<div class="info">
-<div><span class="k">作者：</span>罗宾·威廉姆斯</div>
-<div><span class="k">出版社：</span>人民邮电出版社</div>
-<div><span class="k">出版年：</span>2009-1</div>
-<div><span class="k">原作名：</span>The Non-Designer's Design Book</div>
-<div><span class="k">领域：</span>UI/UX 设计 · 第 25 本</div>
-<div style="margin-top:.4rem"><a href="https://book.douban.com/subject/3323633/" target="_blank" rel="noopener">豆瓣读书 →</a></div>
-</div></div>
-<div class="ratebox"><span class="num">8.6</span><span class="lbl"><b>豆瓣评分</b><br>13047人评价</span></div>
-<p style="font-size:1.02rem;border-left:3px solid var(--green);padding-left:.8rem;margin:0 0 1.8rem">非设计师的救星：四个简单原则，让你的 PPT、海报从“业余”变“专业”。</p>
-<section class="blk"><h2>总体观点</h2><div class="thesis"><p>很多人不是没审美，是没人告诉他规则。作者把平面设计归纳成四个原则：亲密性、对齐、重复、对比。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《写给大家看的设计书》 · 四十本经典书</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="sitehead">
+      <div class="sitehead-inner">
+        <a class="brand" href="index.html">
+          四十本经典书
+          <small>BOOK GUIDE · VOL.01</small>
+        </a>
+        <span class="sitehead-tag">UI/UX 设计</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="back-nav">
+        <a class="back-link" href="index.html#dom-3">← 全部 40 本</a>
+        <span class="detail-domain-tag">UI/UX 设计 · 第 25 本</span>
+      </div>
+
+      <div class="book-title-header">
+        <h1>《写给大家看的设计书》</h1>
+      </div>
+
+      <div class="detail-top">
+        <div class="detail-cover-wrap">
+          <img class="detail-cover" src="covers/s3323633.jpg" alt="《写给大家看的设计书》封面" width="138" height="200">
+        </div>
+        <div class="detail-meta">
+          <div class="detail-meta-item">
+            <span class="label">作者：</span>
+            <span class="value">罗宾·威廉姆斯</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版社：</span>
+            <span class="value">人民邮电出版社</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版年：</span>
+            <span class="value">2009-1</span>
+          </div>
+          <div class="detail-meta-item">
+        <span class="label">原作名：</span>
+        <span class="value">The Non-Designer's Design Book</span>
+      </div>
+          <div class="detail-meta-item">
+            <span class="label">领域：</span>
+            <span class="value">UI/UX 设计 · 第 25 本</span>
+          </div>
+          <div class="detail-meta-item" style="margin-top: 0.4rem;">
+            <a class="douban-link" href="https://book.douban.com/subject/3323633/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ratebox">
+        <span class="ratebox-num">8.6</span>
+        <div class="ratebox-info">
+          <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
+          <div class="ratebox-label"><b>豆瓣评分</b> · 13047人评价</div>
+        </div>
+      </div>
+
+      <div class="intro-quote">
+        非设计师的救星：四个简单原则，让你的 PPT、海报从“业余”变“专业”。
+      </div>
+
+      <section class="section-block">
+        <h2>总体观点</h2>
+        <div class="thesis-body">
+          <p>很多人不是没审美，是没人告诉他规则。作者把平面设计归纳成四个原则：亲密性、对齐、重复、对比。</p>
 <p>核心论点：设计不是天赋，是手艺。业余和专业的差距，是几个基本原则，不是灵感。</p>
-<p>全书都是“错误示范 vs 正确示范”的对比图，看完立刻能用。无数人的设计启蒙都是它。</p></div></section>
-<section class="blk"><h2>核心观点 · 7</h2><ol class="ideas"><li><p class="idea"><b>1. 亲密性：关系近的放一起，关系远的分开</b> 距离近，读者默认它们是一伙的；离得远，默认没关系。别把标题和正文隔老远，也别把不相关的字挤在一起。分组是最便宜的信息组织手段。</p><p class="ex">菜单上“宫保鸡丁 38 元”：菜名价格必须挨着，一眼是一对。价格全对齐右边、菜名在左边，客人得来回找。</p></li>
-<li><p class="idea"><b>2. 对齐：每个元素都要和另一个元素发生关系</b> 页面上任何东西都不能随手乱放。每个元素都要和另一个元素有视觉连线。左对齐、居中都行，关键是“有意识”。业余感的最大来源，就是元素各摆各的。</p><p class="ex">简历里时间都右对齐、公司名都左对齐，立刻整齐。时间忽左忽右，HR 看着就累。</p></li>
-<li><p class="idea"><b>3. 重复：让页面有“一家子”的感觉</b> 把某些视觉元素在全篇重复：同样的标题样式、色块、线条装饰。重复带来统一感和专业感，还能形成品牌记忆。一页 PPT 用五种标题颜色，看着像拼盘。</p><p class="ex">咖啡店菜单、海报、外卖袋都用同一种牛皮纸色和手写体，你立刻记得住它。每次换风格，你就记不住。</p></li>
-<li><p class="idea"><b>4. 对比：要对比就对比得彻底，犹犹豫豫最难看</b> 大小、粗细、颜色拉开差距就拉干脆。最忌“有点不一样又不太一样”：标题只比正文大一号，读者以为是排错了。对比让重点一眼跳出来。</p><p class="ex">海报主标题 72 号加粗、副标题 24 号细体，一眼分清主次。主标题 36 号、副标题 32 号，看着就像没调好。</p></li>
-<li><p class="idea"><b>5. 字体分六大家族，先认家族再谈搭配</b> 英文字体六大类：古典衬线、现代衬线、粗衬线、无衬线、手写体、装饰体。中文也有对应感觉：宋体正式，黑体利落。认出“家族”，才知道什么气质往哪儿用。</p><p class="ex">婚礼请柬用手写体，科技发布会用无衬线黑体。儿童乐园海报用严肃宋体加粗，就像让会计主持婚礼，浑身别扭。</p></li>
-<li><p class="idea"><b>6. 字体搭配的铁律：要么极像，要么极不像</b> 两种“有点像又不太像”的字体放一起，像穿错袜子。要么用同一家族的粗细变化，要么选反差极大的两种。一份设计里字体别超过三种。</p><p class="ex">标题粗黑体、正文细黑体：同一家族，稳。标题宋体、正文仿宋：远看像双胞胎、细看又不是，处处别扭。</p></li>
-<li><p class="idea"><b>7. 去掉“默认感”：软件默认样式是业余的代名词</b> Word 默认宋体五号、PPT 默认模板——这些“默认”看着业余。因为它们没经过任何设计决策。专业第一步不是加特效，是把默认的东西亲手调一遍：字号、行距、对齐、间距。</p><p class="ex">同样一份通知，改成“段落间空一行、关键句加粗”。立刻从“随手一贴”变成“正式文件”。设计感来自克制，不是装饰。</p></li></ol></section>
-<section class="blk"><h2>全书结构</h2><ol class="parts"><li><p class="part"><b>第一部分 设计原理之一：亲密性</b> 第一个原则：用距离远近分组信息，大量“改前 vs 改后”对比实例。</p><p class="ex">名片上姓名电话抱团、公司信息抱团，立刻清爽。就像整理抽屉：袜子和袜子放一起。</p></li>
-<li><p class="part"><b>第一部分 设计原理之二：对齐</b> 对齐的几种方式和威力：全篇统一、有意识，左对齐最稳。</p><p class="ex">海报上时间地点联系方式左对齐成一条线，观众顺着读不费劲。每行都居中，眼睛得左右找。</p></li>
-<li><p class="part"><b>第一部分 设计原理之三：重复</b> 用重复制造统一感：重复颜色、形状、线条、字体，让零散元素成整体。</p><p class="ex">系列海报每张顶部同一条红色横线，观众立刻知道是一套的。像音乐里的副歌，一响就知道“到这儿了”。</p></li>
-<li><p class="part"><b>第一部分 设计原理之四：对比</b> 对比的运用和禁忌：大小粗细颜色都能对比，但半吊子对比不如不做。</p><p class="ex">促销海报“5 折”巨大加粗，重点自己跳出来。只大一点点，顾客还以为你心虚。</p></li>
-<li><p class="part"><b>第二部分 字体设计之一：认识六大字体类别</b> 六大字体家族：古典衬线、现代衬线、粗衬线、无衬线、手写体、装饰体。</p><p class="ex">银行年报用古典衬线体显得可信，音乐节海报用装饰体显得好玩。选错家族像穿拖鞋去面试。</p></li>
-<li><p class="part"><b>第二部分 字体设计之二：字体对比与搭配规则</b> 字体搭配规则：对比要强烈、避免冲突，一页不超过三种字体。</p><p class="ex">请柬标题用华丽手写体、正文用朴素宋体：反差大，反而互相成就。</p></li>
-<li><p class="part"><b>第三部分 设计小知识与综合练习</b> 致命细节：寡妇孤儿行、首字下沉、标点规范，外加四个原则的综合实战。</p><p class="ex">段落最后一行一个字孤零零掉下来（寡妇行），像衣服线头没剪。调一下字距就能收回去。</p></li></ol></section>
-<nav class="pn"><a class="prev" href="book-24.html"><img src="covers/s3279105.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《交互设计精髓》</span></a><a class="next" href="book-26.html"><img src="covers/s23708491.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《设计师要懂心理学》</span></a></nav>
-</main></div><footer><div class="wrap">
-<p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
-<p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer>
-<script>
-document.addEventListener('keydown',function(e){
-  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
-  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
-  if(e.key==='ArrowRight'&&n){location.href=n.href;}
-});
-</script>
-</body></html>
+<p>全书都是“错误示范 vs 正确示范”的对比图，看完立刻能用。无数人的设计启蒙都是它。</p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>核心观点 <span class="badge">共 7 条</span></h2>
+        <ol class="idea-list">
+          <li class="idea-item">
+        <p class="idea-title"><b>1. 亲密性：关系近的放一起，关系远的分开</b></p>
+        <p class="idea-desc">距离近，读者默认它们是一伙的；离得远，默认没关系。别把标题和正文隔老远，也别把不相关的字挤在一起。分组是最便宜的信息组织手段。</p>
+        <div class="example-box"><span class="tag">例 ·</span>菜单上“宫保鸡丁 38 元”：菜名价格必须挨着，一眼是一对。价格全对齐右边、菜名在左边，客人得来回找。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>2. 对齐：每个元素都要和另一个元素发生关系</b></p>
+        <p class="idea-desc">页面上任何东西都不能随手乱放。每个元素都要和另一个元素有视觉连线。左对齐、居中都行，关键是“有意识”。业余感的最大来源，就是元素各摆各的。</p>
+        <div class="example-box"><span class="tag">例 ·</span>简历里时间都右对齐、公司名都左对齐，立刻整齐。时间忽左忽右，HR 看着就累。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>3. 重复：让页面有“一家子”的感觉</b></p>
+        <p class="idea-desc">把某些视觉元素在全篇重复：同样的标题样式、色块、线条装饰。重复带来统一感和专业感，还能形成品牌记忆。一页 PPT 用五种标题颜色，看着像拼盘。</p>
+        <div class="example-box"><span class="tag">例 ·</span>咖啡店菜单、海报、外卖袋都用同一种牛皮纸色和手写体，你立刻记得住它。每次换风格，你就记不住。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>4. 对比：要对比就对比得彻底，犹犹豫豫最难看</b></p>
+        <p class="idea-desc">大小、粗细、颜色拉开差距就拉干脆。最忌“有点不一样又不太一样”：标题只比正文大一号，读者以为是排错了。对比让重点一眼跳出来。</p>
+        <div class="example-box"><span class="tag">例 ·</span>海报主标题 72 号加粗、副标题 24 号细体，一眼分清主次。主标题 36 号、副标题 32 号，看着就像没调好。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>5. 字体分六大家族，先认家族再谈搭配</b></p>
+        <p class="idea-desc">英文字体六大类：古典衬线、现代衬线、粗衬线、无衬线、手写体、装饰体。中文也有对应感觉：宋体正式，黑体利落。认出“家族”，才知道什么气质往哪儿用。</p>
+        <div class="example-box"><span class="tag">例 ·</span>婚礼请柬用手写体，科技发布会用无衬线黑体。儿童乐园海报用严肃宋体加粗，就像让会计主持婚礼，浑身别扭。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>6. 字体搭配的铁律：要么极像，要么极不像</b></p>
+        <p class="idea-desc">两种“有点像又不太像”的字体放一起，像穿错袜子。要么用同一家族的粗细变化，要么选反差极大的两种。一份设计里字体别超过三种。</p>
+        <div class="example-box"><span class="tag">例 ·</span>标题粗黑体、正文细黑体：同一家族，稳。标题宋体、正文仿宋：远看像双胞胎、细看又不是，处处别扭。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>7. 去掉“默认感”：软件默认样式是业余的代名词</b></p>
+        <p class="idea-desc">Word 默认宋体五号、PPT 默认模板——这些“默认”看着业余。因为它们没经过任何设计决策。专业第一步不是加特效，是把默认的东西亲手调一遍：字号、行距、对齐、间距。</p>
+        <div class="example-box"><span class="tag">例 ·</span>同样一份通知，改成“段落间空一行、关键句加粗”。立刻从“随手一贴”变成“正式文件”。设计感来自克制，不是装饰。</div>
+      </li>
+        </ol>
+      </section>
+
+      <section class="section-block">
+        <h2>全书结构 <span class="badge">7 部分</span></h2>
+        <ol class="part-list">
+          <li class="part-item">
+        <p class="part-title"><b>第一部分 设计原理之一：亲密性</b></p>
+        <p class="part-desc">第一个原则：用距离远近分组信息，大量“改前 vs 改后”对比实例。</p>
+        <div class="example-box"><span class="tag">例 ·</span>名片上姓名电话抱团、公司信息抱团，立刻清爽。就像整理抽屉：袜子和袜子放一起。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第一部分 设计原理之二：对齐</b></p>
+        <p class="part-desc">对齐的几种方式和威力：全篇统一、有意识，左对齐最稳。</p>
+        <div class="example-box"><span class="tag">例 ·</span>海报上时间地点联系方式左对齐成一条线，观众顺着读不费劲。每行都居中，眼睛得左右找。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第一部分 设计原理之三：重复</b></p>
+        <p class="part-desc">用重复制造统一感：重复颜色、形状、线条、字体，让零散元素成整体。</p>
+        <div class="example-box"><span class="tag">例 ·</span>系列海报每张顶部同一条红色横线，观众立刻知道是一套的。像音乐里的副歌，一响就知道“到这儿了”。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第一部分 设计原理之四：对比</b></p>
+        <p class="part-desc">对比的运用和禁忌：大小粗细颜色都能对比，但半吊子对比不如不做。</p>
+        <div class="example-box"><span class="tag">例 ·</span>促销海报“5 折”巨大加粗，重点自己跳出来。只大一点点，顾客还以为你心虚。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第二部分 字体设计之一：认识六大字体类别</b></p>
+        <p class="part-desc">六大字体家族：古典衬线、现代衬线、粗衬线、无衬线、手写体、装饰体。</p>
+        <div class="example-box"><span class="tag">例 ·</span>银行年报用古典衬线体显得可信，音乐节海报用装饰体显得好玩。选错家族像穿拖鞋去面试。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第二部分 字体设计之二：字体对比与搭配规则</b></p>
+        <p class="part-desc">字体搭配规则：对比要强烈、避免冲突，一页不超过三种字体。</p>
+        <div class="example-box"><span class="tag">例 ·</span>请柬标题用华丽手写体、正文用朴素宋体：反差大，反而互相成就。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第三部分 设计小知识与综合练习</b></p>
+        <p class="part-desc">致命细节：寡妇孤儿行、首字下沉、标点规范，外加四个原则的综合实战。</p>
+        <div class="example-box"><span class="tag">例 ·</span>段落最后一行一个字孤零零掉下来（寡妇行），像衣服线头没剪。调一下字距就能收回去。</div>
+      </li>
+        </ol>
+      </section>
+
+      <nav class="pn">
+        <a class="prev" href="book-24.html">
+          <img src="covers/s3279105.jpg" alt="《交互设计精髓》封面" loading="lazy">
+          <span class="t"><span>← 上一本</span>《交互设计精髓》</span>
+         </a>
+        <a class="next" href="book-26.html">
+          <img src="covers/s23708491.jpg" alt="《设计师要懂心理学》封面" loading="lazy">
+          <span class="t"><span>下一本 →</span>《设计师要懂心理学》</span>
+         </a>
+      </nav>
+
+      <a class="nav-back-catalog" href="index.html#dom-3">返回 UI/UX 设计 目录</a>
+    </main>
+
+    <footer>
+      <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+      <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+</body>
+</html>

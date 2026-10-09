@@ -1,115 +1,183 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>《发布！软件的设计与部署》· 四十本经典书</title><style>
-:root{--green:#007722;--ink:#1a1a1a;--muted:#767676;--hair:#e9e6df;--paper:#ffffff;--soft:#f7f5f0}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.8}
-.wrap{max-width:46rem;margin:0 auto;padding:0 1.15rem}
-a{color:var(--green)}
-h1,h2{font-family:"Songti SC","Noto Serif SC","STSong",serif}
-::selection{background:#dcefe2}
-/* header */
-.sitehead{border-bottom:1px solid var(--hair);padding:1rem 0 .9rem}
-.sitehead .brand{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.25rem;font-weight:700;color:var(--ink);text-decoration:none}
-.sitehead .brand small{font-family:sans-serif;font-weight:400;font-size:.75rem;color:var(--muted);margin-left:.6rem;letter-spacing:.1em}
-/* domain */
-.domain{padding:2rem 0 .5rem;scroll-margin-top:3.4rem}
-.dnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
-.dnav-inner{max-width:46rem;margin:0 auto;padding:.55rem 1.15rem;display:flex;gap:.5rem;overflow-x:auto}
-.dnav a{flex:1 0 auto;text-align:center;font-size:.85rem;text-decoration:none;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:.32rem .8rem;white-space:nowrap}
-.dnav a:active{background:var(--green);color:#fff;border-color:var(--green)}
-.domain h2{font-size:1.3rem;margin:0 0 .2rem;display:flex;align-items:baseline;gap:.6rem}
-.domain h2 .count{font-family:sans-serif;font-size:.75rem;color:var(--muted);font-weight:400}
-.domain .intro{color:var(--muted);font-size:.88rem;margin:0 0 1rem}
-/* book rows (douban search-result style) */
-.brow{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-top:1px solid var(--hair);text-decoration:none;color:var(--ink)}
-.brow:last-child{border-bottom:1px solid var(--hair)}
-.brow img{width:64px;height:auto;flex:0 0 auto;box-shadow:0 1px 4px rgba(0,0,0,.14)}
-.brow .t{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.05rem;font-weight:700;margin:0 0 .15rem;line-height:1.5}
-.brow .m{font-size:.8rem;color:var(--muted);margin:0;line-height:1.7}
-.brow .r{margin-left:auto;flex:0 0 auto;text-align:right}
-.brow .r b{font-size:1.25rem;color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
-.brow .r span{display:block;font-size:.72rem;color:var(--muted)}
-.brow:active{background:var(--soft)}
-/* detail page */
-.back{display:inline-block;font-size:.85rem;text-decoration:none;margin:1.1rem 0 .4rem}
-.bookhead h1{font-size:1.7rem;margin:.2rem 0 1rem;line-height:1.4}
-.topblock{display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:1.4rem}
-.topblock img.cover{width:132px;height:auto;flex:0 0 auto;box-shadow:0 2px 10px rgba(0,0,0,.16)}
-.info{font-size:.88rem;line-height:2}
-.info .k{color:var(--muted)}
-.info a{text-decoration:none;border-bottom:1px solid var(--green)}
-.ratebox{display:flex;align-items:baseline;gap:.7rem;background:var(--soft);border:1px solid var(--hair);border-radius:.5rem;padding:.8rem 1rem;margin:0 0 1.6rem}
-.ratebox .num{font-size:2.4rem;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums;line-height:1}
-.ratebox .lbl{font-size:.8rem;color:var(--muted)}
-.ratebox .lbl b{color:var(--ink)}
-section.blk{margin:0 0 2rem}
-section.blk h2{font-size:1.15rem;margin:0 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--ink)}
-.thesis p{margin:0 0 .7rem}
-ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
-.ideas li,.parts li{padding:.7rem 0;border-top:1px solid var(--hair)}
-.ideas li:last-child,.parts li:last-child{border-bottom:1px solid var(--hair)}
-.idea,.part{margin:0;font-size:.96rem}
-.ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
-.ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next cards */
-.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
-.pn a:active{background:var(--soft)}
-.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
-.pn a.next{flex-direction:row-reverse;text-align:right}
-.pn a.solo{grid-column:1/-1}
-footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
-footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
-@media(min-width:640px){
-  .topblock img.cover{width:168px}
-  .bookhead h1{font-size:2rem}
-  .brow img{width:76px}
-}
-</style></head>
-<body><div class="wrap"><header class="sitehead"><a class="brand" href="index.html">四十本经典书<small>BOOK GUIDE · VOL.01</small></a></header></div>
-<div class="wrap"><main>
-<a class="back" href="index.html">← 全部 40 本</a>
-<div class="bookhead"><h1>《发布！软件的设计与部署》</h1></div>
-<div class="topblock">
-<img class="cover" src="covers/s26304417.jpg" alt="《发布！软件的设计与部署》封面">
-<div class="info">
-<div><span class="k">作者：</span>迈克尔·尼加德</div>
-<div><span class="k">出版社：</span>人民邮电出版社</div>
-<div><span class="k">出版年：</span>2015-2-1</div>
-<div><span class="k">原作名：</span>Release It!: Design and Deploy Production-Ready Software</div>
-<div><span class="k">领域：</span>系统设计 · 第 16 本</div>
-<div style="margin-top:.4rem"><a href="https://book.douban.com/subject/26304417/" target="_blank" rel="noopener">豆瓣读书 →</a></div>
-</div></div>
-<div class="ratebox"><span class="num">7.7</span><span class="lbl"><b>豆瓣评分</b><br>72人评价</span></div>
-<p style="font-size:1.02rem;border-left:3px solid var(--green);padding-left:.8rem;margin:0 0 1.8rem">测试环境好好的，一上线就崩？这本书专讲“生产环境”这头怪兽：它怎么杀死你的系统。以及怎么设计才能活下来。</p>
-<section class="blk"><h2>总体观点</h2><div class="thesis"><p>开发环境和生产环境是两个世界：生产环境有真实流量、会断的网络、会挂的依赖、半夜三点的电话。99%的架构书教“把功能做出来”，这本教“怎么在生产环境活下来”。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《发布！软件的设计与部署》 · 四十本经典书</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="sitehead">
+      <div class="sitehead-inner">
+        <a class="brand" href="index.html">
+          四十本经典书
+          <small>BOOK GUIDE · VOL.01</small>
+        </a>
+        <span class="sitehead-tag">系统设计</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="back-nav">
+        <a class="back-link" href="index.html#dom-2">← 全部 40 本</a>
+        <span class="detail-domain-tag">系统设计 · 第 16 本</span>
+      </div>
+
+      <div class="book-title-header">
+        <h1>《发布！软件的设计与部署》</h1>
+      </div>
+
+      <div class="detail-top">
+        <div class="detail-cover-wrap">
+          <img class="detail-cover" src="covers/s26304417.jpg" alt="《发布！软件的设计与部署》封面" width="138" height="200">
+        </div>
+        <div class="detail-meta">
+          <div class="detail-meta-item">
+            <span class="label">作者：</span>
+            <span class="value">迈克尔·尼加德</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版社：</span>
+            <span class="value">人民邮电出版社</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版年：</span>
+            <span class="value">2015-2-1</span>
+          </div>
+          <div class="detail-meta-item">
+        <span class="label">原作名：</span>
+        <span class="value">Release It!: Design and Deploy Production-Ready Software</span>
+      </div>
+          <div class="detail-meta-item">
+            <span class="label">领域：</span>
+            <span class="value">系统设计 · 第 16 本</span>
+          </div>
+          <div class="detail-meta-item" style="margin-top: 0.4rem;">
+            <a class="douban-link" href="https://book.douban.com/subject/26304417/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ratebox">
+        <span class="ratebox-num">7.7</span>
+        <div class="ratebox-info">
+          <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
+          <div class="ratebox-label"><b>豆瓣评分</b> · 72人评价</div>
+        </div>
+      </div>
+
+      <div class="intro-quote">
+        测试环境好好的，一上线就崩？这本书专讲“生产环境”这头怪兽：它怎么杀死你的系统。以及怎么设计才能活下来。
+      </div>
+
+      <section class="section-block">
+        <h2>总体观点</h2>
+        <div class="thesis-body">
+          <p>开发环境和生产环境是两个世界：生产环境有真实流量、会断的网络、会挂的依赖、半夜三点的电话。99%的架构书教“把功能做出来”，这本教“怎么在生产环境活下来”。</p>
 <p>核心论点：稳定性是可以设计的。书里总结了“稳定性模式”（超时、熔断器、舱壁、限流）和“反模式”（集成点爆炸、级联重试、资源无上限）。绝大多数生产事故不是代码bug，而是“一个变慢的依赖拖死整个系统”的级联故障。设计时能防住，靠运维祈祷没用。</p>
-<p>它是“为生产而设计”的开山之作。“熔断器”“舱壁”这些微服务里的高频词，很多从这本书普及开。至今仍是SRE和架构师的必读书。</p></div></section>
-<section class="blk"><h2>核心观点 · 7</h2><ol class="ideas"><li><p class="idea"><b>1. 为生产而设计，而不是为演示而设计</b> 很多系统开发机上跑得飞起，一上线就跪。设计时只想“功能通不通”，没想“依赖挂了怎么办、流量翻十倍怎么办、磁盘满了怎么办”。</p><p class="ex">买车试驾都好开，得问“高速爆胎怎么办、冬天打不着火怎么办”。某系统没人问“短信网关挂了怎么办”，大促时网关一抖，用户收不到验证码，全站登录瘫痪。设计没留后路，出事只能干瞪眼。</p></li>
-<li><p class="idea"><b>2. 级联故障：一个慢服务能拖死全站</b> A调B，B变慢，A的线程全卡在“等B返回”上；A的线程池耗尽，调A的C也跟着卡。多米诺骨牌：一个点的“慢”扩散成全站的“死”。这是生产事故最常见的死法，和代码bug无关，是架构病——设计时没做隔离，迟早要还。</p><p class="ex">高速连环追尾：第一辆急刹，后面一辆接一辆撞上去。某电商大促，一个边缘的“推荐”服务变慢，拖死了下单主流程——主流程只是“顺手调了一下”推荐，却一起陪葬。</p></li>
-<li><p class="idea"><b>3. 熔断器：对方挂了，就别再去敲门</b> 保险丝：电流过大就断开，保护全屋。熔断器一样：下游连续失败就“跳闸”，直接返回降级结果，不再发请求；过会儿放一个请求试探，好了就“合闸”。既不把挂掉的服务打得更挂，也不被它拖死。</p><p class="ex">对方一直占线，别每隔十秒重拨——打不通，还把自己手机打没电。等半小时再试一次。支付系统给银行通道加熔断，银行抖动时自动切备用通道，用户只觉得“慢了一点”，而不是直接报错。</p></li>
-<li><p class="idea"><b>4. 舱壁：把系统隔成“水密舱”</b> 船被鱼雷打中不沉，靠水密舱：一个舱进水，其他舱不受影响。软件里就是资源隔离：不同依赖配独立的线程池、连接池，一个hang死只耗尽自己的池子，不连累别人。隔离做好，故障“爆炸半径”就小。</p><p class="ex">家里电路分路：空调一路、照明一路，空调短路只跳自己的闸，灯还亮着。某系统“下单”和“发券”共用一个线程池，发券hang死拖垮下单；拆成两个池子后，发券再挂也不影响收钱。</p></li>
-<li><p class="idea"><b>5. 超时和限流：给每个操作上“紧箍咒”</b> 不设超时，等于“无限期等一个可能永远不回的人”；不限流，等于“来多少都接待、挤爆为止”。超时是“3秒不回就放弃”，限流是“门口保安数人头，满了排队或劝返”。两件小事防住一大半生产事故，却最容易被遗忘。</p><p class="ex">饭店：等位超1小时客人就走（超时），满座不再放人进（限流）。让500人挤进只能坐50人的店，所有人都吃不上饭，厨师也崩溃。</p></li>
-<li><p class="idea"><b>6. 反模式：集成点越多，死得越快</b> 每多接一个外部系统（支付、短信、地图、风控），就多一个“它挂了我也挂”的风险。集成点多到两只手数不过来，架构就有问题：要么砍掉非必要的，要么每个配上熔断降级。依赖是负债，不是资产。</p><p class="ex">装修找20个分包队，任何一个掉链子，工期全拖。靠谱做法：关键路径的分包必须有备选（B队）。每个外部依赖都要有“B计划”。</p></li>
-<li><p class="idea"><b>7. 透明度：看不见的系统救不回来</b> 线上出问题，第一问永远是“现在到底发生了什么”。日志、指标、业务仪表盘是救命的东西。重点记“业务指标”（每分钟下单量、支付成功率），不只看CPU内存——机器看着没事，业务可能已经挂了。</p><p class="ex">开车只看“发动机转不转”（CPU），不看“车速多少”（业务量），抛锚了都不知道是没油还是爆胎。某公司大促CPU才40%，支付成功率却掉了20%——看业务指标才发现是第三方风控接口超时。</p></li></ol></section>
-<section class="blk"><h2>全书结构</h2><ol class="parts"><li><p class="part"><b>第一部分：活在生产环境</b> 开篇先带你认清现实：生产环境和开发、测试环境完全是两个世界。真实流量、不可靠的网络、会挂的依赖，以及永远在半夜响起的电话。</p><p class="ex">新兵下连队：训练场打十环不算本事，战场上枪林弹雨活下来才算。这部分就是告诉你战场到底什么样。</p></li>
-<li><p class="part"><b>第二部分：反模式——灾难的种子</b> 总结那些“看起来没问题、一上线就爆炸”的设计：集成点爆炸、级联重试、无上限使用资源。认出这些反模式，是防住事故的第一步。</p><p class="ex">医生先学认病：发烧咳嗽对应什么病，心里有谱。看到“一个请求串行调8个外部接口”，老手后背发凉——这就是反模式的“症状”。</p></li>
-<li><p class="part"><b>第三部分：稳定性模式——保命的招式</b> 全书的核心：超时、熔断器、舱壁、限流、快速失败。每个模式都讲清“解决什么问题、付出什么代价、代码大概怎么写”。</p><p class="ex">就像武术套路：每个招式都拆解给你看——这招防什么、那招什么时候用。熔断器是“盾”，舱壁是“甲”，超时是“见势不妙先撤”，组合起来用才完整。</p></li>
-<li><p class="part"><b>第四部分：中间件——稳定性的杀手</b> 专门讲那些你控制不了的东西：消息队列、应用服务器、数据库连接池。中间件出问题最隐蔽，也最致命，得用专门的手段对付。</p><p class="ex">合租室友：自己的房间（代码）你能收拾，室友的房间（中间件）管不着，但他把厨房炸了你也得饿肚子。提前约法三章：超时、隔离、监控。</p></li>
-<li><p class="part"><b>第五部分：交付——为生产而设计</b> 收尾：需求阶段就要考虑生产（容量规划、透明度、运维协作），而不是写完代码扔给运维。发布不是终点，是另一场战斗的起点。</p><p class="ex">盖楼：设计图阶段就得考虑消防通道、承重、电梯维护，而不是盖好了才发现消防车进不来。“以后怎么活”要提前到“现在怎么画图”里。</p></li></ol></section>
-<nav class="pn"><a class="prev" href="book-15.html"><img src="covers/s26875239.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《SRE：Google运维解密》</span></a><a class="next" href="book-17.html"><img src="covers/s25723064.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《大型网站技术架构：核心原理与案例分析》</span></a></nav>
-</main></div><footer><div class="wrap">
-<p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
-<p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer>
-<script>
-document.addEventListener('keydown',function(e){
-  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
-  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
-  if(e.key==='ArrowRight'&&n){location.href=n.href;}
-});
-</script>
-</body></html>
+<p>它是“为生产而设计”的开山之作。“熔断器”“舱壁”这些微服务里的高频词，很多从这本书普及开。至今仍是SRE和架构师的必读书。</p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>核心观点 <span class="badge">共 7 条</span></h2>
+        <ol class="idea-list">
+          <li class="idea-item">
+        <p class="idea-title"><b>1. 为生产而设计，而不是为演示而设计</b></p>
+        <p class="idea-desc">很多系统开发机上跑得飞起，一上线就跪。设计时只想“功能通不通”，没想“依赖挂了怎么办、流量翻十倍怎么办、磁盘满了怎么办”。</p>
+        <div class="example-box"><span class="tag">例 ·</span>买车试驾都好开，得问“高速爆胎怎么办、冬天打不着火怎么办”。某系统没人问“短信网关挂了怎么办”，大促时网关一抖，用户收不到验证码，全站登录瘫痪。设计没留后路，出事只能干瞪眼。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>2. 级联故障：一个慢服务能拖死全站</b></p>
+        <p class="idea-desc">A调B，B变慢，A的线程全卡在“等B返回”上；A的线程池耗尽，调A的C也跟着卡。多米诺骨牌：一个点的“慢”扩散成全站的“死”。这是生产事故最常见的死法，和代码bug无关，是架构病——设计时没做隔离，迟早要还。</p>
+        <div class="example-box"><span class="tag">例 ·</span>高速连环追尾：第一辆急刹，后面一辆接一辆撞上去。某电商大促，一个边缘的“推荐”服务变慢，拖死了下单主流程——主流程只是“顺手调了一下”推荐，却一起陪葬。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>3. 熔断器：对方挂了，就别再去敲门</b></p>
+        <p class="idea-desc">保险丝：电流过大就断开，保护全屋。熔断器一样：下游连续失败就“跳闸”，直接返回降级结果，不再发请求；过会儿放一个请求试探，好了就“合闸”。既不把挂掉的服务打得更挂，也不被它拖死。</p>
+        <div class="example-box"><span class="tag">例 ·</span>对方一直占线，别每隔十秒重拨——打不通，还把自己手机打没电。等半小时再试一次。支付系统给银行通道加熔断，银行抖动时自动切备用通道，用户只觉得“慢了一点”，而不是直接报错。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>4. 舱壁：把系统隔成“水密舱”</b></p>
+        <p class="idea-desc">船被鱼雷打中不沉，靠水密舱：一个舱进水，其他舱不受影响。软件里就是资源隔离：不同依赖配独立的线程池、连接池，一个hang死只耗尽自己的池子，不连累别人。隔离做好，故障“爆炸半径”就小。</p>
+        <div class="example-box"><span class="tag">例 ·</span>家里电路分路：空调一路、照明一路，空调短路只跳自己的闸，灯还亮着。某系统“下单”和“发券”共用一个线程池，发券hang死拖垮下单；拆成两个池子后，发券再挂也不影响收钱。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>5. 超时和限流：给每个操作上“紧箍咒”</b></p>
+        <p class="idea-desc">不设超时，等于“无限期等一个可能永远不回的人”；不限流，等于“来多少都接待、挤爆为止”。超时是“3秒不回就放弃”，限流是“门口保安数人头，满了排队或劝返”。两件小事防住一大半生产事故，却最容易被遗忘。</p>
+        <div class="example-box"><span class="tag">例 ·</span>饭店：等位超1小时客人就走（超时），满座不再放人进（限流）。让500人挤进只能坐50人的店，所有人都吃不上饭，厨师也崩溃。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>6. 反模式：集成点越多，死得越快</b></p>
+        <p class="idea-desc">每多接一个外部系统（支付、短信、地图、风控），就多一个“它挂了我也挂”的风险。集成点多到两只手数不过来，架构就有问题：要么砍掉非必要的，要么每个配上熔断降级。依赖是负债，不是资产。</p>
+        <div class="example-box"><span class="tag">例 ·</span>装修找20个分包队，任何一个掉链子，工期全拖。靠谱做法：关键路径的分包必须有备选（B队）。每个外部依赖都要有“B计划”。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>7. 透明度：看不见的系统救不回来</b></p>
+        <p class="idea-desc">线上出问题，第一问永远是“现在到底发生了什么”。日志、指标、业务仪表盘是救命的东西。重点记“业务指标”（每分钟下单量、支付成功率），不只看CPU内存——机器看着没事，业务可能已经挂了。</p>
+        <div class="example-box"><span class="tag">例 ·</span>开车只看“发动机转不转”（CPU），不看“车速多少”（业务量），抛锚了都不知道是没油还是爆胎。某公司大促CPU才40%，支付成功率却掉了20%——看业务指标才发现是第三方风控接口超时。</div>
+      </li>
+        </ol>
+      </section>
+
+      <section class="section-block">
+        <h2>全书结构 <span class="badge">5 部分</span></h2>
+        <ol class="part-list">
+          <li class="part-item">
+        <p class="part-title"><b>第一部分：活在生产环境</b></p>
+        <p class="part-desc">开篇先带你认清现实：生产环境和开发、测试环境完全是两个世界。真实流量、不可靠的网络、会挂的依赖，以及永远在半夜响起的电话。</p>
+        <div class="example-box"><span class="tag">例 ·</span>新兵下连队：训练场打十环不算本事，战场上枪林弹雨活下来才算。这部分就是告诉你战场到底什么样。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第二部分：反模式——灾难的种子</b></p>
+        <p class="part-desc">总结那些“看起来没问题、一上线就爆炸”的设计：集成点爆炸、级联重试、无上限使用资源。认出这些反模式，是防住事故的第一步。</p>
+        <div class="example-box"><span class="tag">例 ·</span>医生先学认病：发烧咳嗽对应什么病，心里有谱。看到“一个请求串行调8个外部接口”，老手后背发凉——这就是反模式的“症状”。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第三部分：稳定性模式——保命的招式</b></p>
+        <p class="part-desc">全书的核心：超时、熔断器、舱壁、限流、快速失败。每个模式都讲清“解决什么问题、付出什么代价、代码大概怎么写”。</p>
+        <div class="example-box"><span class="tag">例 ·</span>就像武术套路：每个招式都拆解给你看——这招防什么、那招什么时候用。熔断器是“盾”，舱壁是“甲”，超时是“见势不妙先撤”，组合起来用才完整。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第四部分：中间件——稳定性的杀手</b></p>
+        <p class="part-desc">专门讲那些你控制不了的东西：消息队列、应用服务器、数据库连接池。中间件出问题最隐蔽，也最致命，得用专门的手段对付。</p>
+        <div class="example-box"><span class="tag">例 ·</span>合租室友：自己的房间（代码）你能收拾，室友的房间（中间件）管不着，但他把厨房炸了你也得饿肚子。提前约法三章：超时、隔离、监控。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第五部分：交付——为生产而设计</b></p>
+        <p class="part-desc">收尾：需求阶段就要考虑生产（容量规划、透明度、运维协作），而不是写完代码扔给运维。发布不是终点，是另一场战斗的起点。</p>
+        <div class="example-box"><span class="tag">例 ·</span>盖楼：设计图阶段就得考虑消防通道、承重、电梯维护，而不是盖好了才发现消防车进不来。“以后怎么活”要提前到“现在怎么画图”里。</div>
+      </li>
+        </ol>
+      </section>
+
+      <nav class="pn">
+        <a class="prev" href="book-15.html">
+          <img src="covers/s26875239.jpg" alt="《SRE：Google运维解密》封面" loading="lazy">
+          <span class="t"><span>← 上一本</span>《SRE：Google运维解密》</span>
+         </a>
+        <a class="next" href="book-17.html">
+          <img src="covers/s25723064.jpg" alt="《大型网站技术架构：核心原理与案例分析》封面" loading="lazy">
+          <span class="t"><span>下一本 →</span>《大型网站技术架构：核心原理与案例分析》</span>
+         </a>
+      </nav>
+
+      <a class="nav-back-catalog" href="index.html#dom-2">返回 系统设计 目录</a>
+    </main>
+
+    <footer>
+      <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+      <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+</body>
+</html>

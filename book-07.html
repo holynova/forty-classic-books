@@ -1,116 +1,188 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>《设计模式：可复用面向对象软件的基础》· 四十本经典书</title><style>
-:root{--green:#007722;--ink:#1a1a1a;--muted:#767676;--hair:#e9e6df;--paper:#ffffff;--soft:#f7f5f0}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.8}
-.wrap{max-width:46rem;margin:0 auto;padding:0 1.15rem}
-a{color:var(--green)}
-h1,h2{font-family:"Songti SC","Noto Serif SC","STSong",serif}
-::selection{background:#dcefe2}
-/* header */
-.sitehead{border-bottom:1px solid var(--hair);padding:1rem 0 .9rem}
-.sitehead .brand{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.25rem;font-weight:700;color:var(--ink);text-decoration:none}
-.sitehead .brand small{font-family:sans-serif;font-weight:400;font-size:.75rem;color:var(--muted);margin-left:.6rem;letter-spacing:.1em}
-/* domain */
-.domain{padding:2rem 0 .5rem;scroll-margin-top:3.4rem}
-.dnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
-.dnav-inner{max-width:46rem;margin:0 auto;padding:.55rem 1.15rem;display:flex;gap:.5rem;overflow-x:auto}
-.dnav a{flex:1 0 auto;text-align:center;font-size:.85rem;text-decoration:none;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:.32rem .8rem;white-space:nowrap}
-.dnav a:active{background:var(--green);color:#fff;border-color:var(--green)}
-.domain h2{font-size:1.3rem;margin:0 0 .2rem;display:flex;align-items:baseline;gap:.6rem}
-.domain h2 .count{font-family:sans-serif;font-size:.75rem;color:var(--muted);font-weight:400}
-.domain .intro{color:var(--muted);font-size:.88rem;margin:0 0 1rem}
-/* book rows (douban search-result style) */
-.brow{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-top:1px solid var(--hair);text-decoration:none;color:var(--ink)}
-.brow:last-child{border-bottom:1px solid var(--hair)}
-.brow img{width:64px;height:auto;flex:0 0 auto;box-shadow:0 1px 4px rgba(0,0,0,.14)}
-.brow .t{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.05rem;font-weight:700;margin:0 0 .15rem;line-height:1.5}
-.brow .m{font-size:.8rem;color:var(--muted);margin:0;line-height:1.7}
-.brow .r{margin-left:auto;flex:0 0 auto;text-align:right}
-.brow .r b{font-size:1.25rem;color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
-.brow .r span{display:block;font-size:.72rem;color:var(--muted)}
-.brow:active{background:var(--soft)}
-/* detail page */
-.back{display:inline-block;font-size:.85rem;text-decoration:none;margin:1.1rem 0 .4rem}
-.bookhead h1{font-size:1.7rem;margin:.2rem 0 1rem;line-height:1.4}
-.topblock{display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:1.4rem}
-.topblock img.cover{width:132px;height:auto;flex:0 0 auto;box-shadow:0 2px 10px rgba(0,0,0,.16)}
-.info{font-size:.88rem;line-height:2}
-.info .k{color:var(--muted)}
-.info a{text-decoration:none;border-bottom:1px solid var(--green)}
-.ratebox{display:flex;align-items:baseline;gap:.7rem;background:var(--soft);border:1px solid var(--hair);border-radius:.5rem;padding:.8rem 1rem;margin:0 0 1.6rem}
-.ratebox .num{font-size:2.4rem;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums;line-height:1}
-.ratebox .lbl{font-size:.8rem;color:var(--muted)}
-.ratebox .lbl b{color:var(--ink)}
-section.blk{margin:0 0 2rem}
-section.blk h2{font-size:1.15rem;margin:0 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--ink)}
-.thesis p{margin:0 0 .7rem}
-ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
-.ideas li,.parts li{padding:.7rem 0;border-top:1px solid var(--hair)}
-.ideas li:last-child,.parts li:last-child{border-bottom:1px solid var(--hair)}
-.idea,.part{margin:0;font-size:.96rem}
-.ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
-.ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next cards */
-.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
-.pn a:active{background:var(--soft)}
-.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
-.pn a.next{flex-direction:row-reverse;text-align:right}
-.pn a.solo{grid-column:1/-1}
-footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
-footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
-@media(min-width:640px){
-  .topblock img.cover{width:168px}
-  .bookhead h1{font-size:2rem}
-  .brow img{width:76px}
-}
-</style></head>
-<body><div class="wrap"><header class="sitehead"><a class="brand" href="index.html">四十本经典书<small>BOOK GUIDE · VOL.01</small></a></header></div>
-<div class="wrap"><main>
-<a class="back" href="index.html">← 全部 40 本</a>
-<div class="bookhead"><h1>《设计模式：可复用面向对象软件的基础》</h1></div>
-<div class="topblock">
-<img class="cover" src="covers/s1052241.jpg" alt="《设计模式：可复用面向对象软件的基础》封面">
-<div class="info">
-<div><span class="k">作者：</span>Erich Gamma、Richard Helm、Ralph Johnson、John Vlissides</div>
-<div><span class="k">出版社：</span>机械工业出版社</div>
-<div><span class="k">出版年：</span>2000-9</div>
-<div><span class="k">原作名：</span>Design Patterns: Elements of Reusable Object-Oriented Software</div>
-<div><span class="k">领域：</span>软件工程 · 第 07 本</div>
-<div style="margin-top:.4rem"><a href="https://book.douban.com/subject/1052241/" target="_blank" rel="noopener">豆瓣读书 →</a></div>
-</div></div>
-<div class="ratebox"><span class="num">9</span><span class="lbl"><b>豆瓣评分</b><br>3221人评价</span></div>
-<p style="font-size:1.02rem;border-left:3px solid var(--green);padding-left:.8rem;margin:0 0 1.8rem">GoF 四位大神总结的 23 个“前人踩坑换来的套路”：识别反复出现的问题，直接用被验证过的方案，不用重新发明轮子。</p>
-<section class="blk"><h2>总体观点</h2><div class="thesis"><p>1994 年，四位博士（人称 GoF）总结 23 种设计模式。在此之前，高手的“套路”只可意会不可言传；这本书起了名字、画了图、写成标准，全世界程序员有了共同的设计语言。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《设计模式：可复用面向对象软件的基础》 · 四十本经典书</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="sitehead">
+      <div class="sitehead-inner">
+        <a class="brand" href="index.html">
+          四十本经典书
+          <small>BOOK GUIDE · VOL.01</small>
+        </a>
+        <span class="sitehead-tag">软件工程</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="back-nav">
+        <a class="back-link" href="index.html#dom-1">← 全部 40 本</a>
+        <span class="detail-domain-tag">软件工程 · 第 07 本</span>
+      </div>
+
+      <div class="book-title-header">
+        <h1>《设计模式：可复用面向对象软件的基础》</h1>
+      </div>
+
+      <div class="detail-top">
+        <div class="detail-cover-wrap">
+          <img class="detail-cover" src="covers/s1052241.jpg" alt="《设计模式：可复用面向对象软件的基础》封面" width="138" height="200">
+        </div>
+        <div class="detail-meta">
+          <div class="detail-meta-item">
+            <span class="label">作者：</span>
+            <span class="value">Erich Gamma、Richard Helm、Ralph Johnson、John Vlissides</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版社：</span>
+            <span class="value">机械工业出版社</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版年：</span>
+            <span class="value">2000-9</span>
+          </div>
+          <div class="detail-meta-item">
+        <span class="label">原作名：</span>
+        <span class="value">Design Patterns: Elements of Reusable Object-Oriented Software</span>
+      </div>
+          <div class="detail-meta-item">
+            <span class="label">领域：</span>
+            <span class="value">软件工程 · 第 07 本</span>
+          </div>
+          <div class="detail-meta-item" style="margin-top: 0.4rem;">
+            <a class="douban-link" href="https://book.douban.com/subject/1052241/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ratebox">
+        <span class="ratebox-num">9</span>
+        <div class="ratebox-info">
+          <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
+          <div class="ratebox-label"><b>豆瓣评分</b> · 3221人评价</div>
+        </div>
+      </div>
+
+      <div class="intro-quote">
+        GoF 四位大神总结的 23 个“前人踩坑换来的套路”：识别反复出现的问题，直接用被验证过的方案，不用重新发明轮子。
+      </div>
+
+      <section class="section-block">
+        <h2>总体观点</h2>
+        <div class="thesis-body">
+          <p>1994 年，四位博士（人称 GoF）总结 23 种设计模式。在此之前，高手的“套路”只可意会不可言传；这本书起了名字、画了图、写成标准，全世界程序员有了共同的设计语言。</p>
 <p>核心观点：很多问题反复出现，就有被验证过的优雅解法——这就是“模式”。模式不是代码，是“解决问题的思路模板”。最大好处不只是写代码，更是沟通：说“这里用观察者模式”，同事立刻懂。</p>
-<p>它开创了一个领域：面试必问的单例、工厂、观察者、策略全从这里出来。三十年语言换几代，模式还在用——因为它们针对的是“变化”本身。但作者也提醒：别为用模式而用模式。</p></div></section>
-<section class="blk"><h2>核心观点 · 7</h2><ol class="ideas"><li><p class="idea"><b>1. 针对接口编程，不针对实现编程</b> 代码依赖“抽象”（接口长什么样），不依赖“具体”（它到底是谁）。接口是契约，实现是干活的人——换人不用换契约，具体实现随便换，调用方不用改。</p><p class="ex">代码里到处直接创建 MySQL 存储对象，换 MongoDB 得改几十处。依赖统一存储接口，换时只写个新实现类，调用方一行不动。</p></li>
-<li><p class="idea"><b>2. 优先用组合，而不是继承</b> 新手最爱用继承：“狗继承动物，警犬继承狗”，结果改爷爷类孙子类全受影响。能用“组合”（对象里装着另一个对象）解决的别用继承——组合更灵活，想换就换，不用动祖宗。</p><p class="ex">鸭子游戏：绿头鸭继承鸭子，后来加“橡皮鸭”不会飞，继承来的飞行方法成 bug。改成组合：想飞装会飞的行为，不想飞装不会飞的，随时换。</p></li>
-<li><p class="idea"><b>3. 模式是套路，不是银弹</b> 模式是“特定场景下被验证过的解法”，不是“用了就高级”的勋章。最简单的方案往往最好，为炫技硬套模式只会把代码搞复杂。判断标准：不套模式，这段代码是不是真难受？</p><p class="ex">全项目只有一个地方创建对象，非要上“抽象工厂模式”，三层类套下来别人得翻五个文件。直接创建一个对象就行——模式是止痛药不是维生素，没病别乱吃。</p></li>
-<li><p class="idea"><b>4. 23种模式分三类</b> 23 种模式按用途分三类：创建型（5 种，管“对象怎么生出来”）、结构型（7 种，管“怎么组装”）、行为型（11 种，管“怎么协作”）。找模式先想：卡在创建、组装，还是协作上，一下缩小范围。</p><p class="ex">“根据配置创建不同支付方式”是创建问题→工厂方法；“好多对象要互相通知”是协作问题→观察者。</p></li>
-<li><p class="idea"><b>5. 观察者模式：一对多广播</b> 一对多依赖：一个对象状态变了，所有依赖它的自动收到通知。像公众号：你关注了号主，一发文所有粉丝自动收到推送，不用轮询“更新了吗”。</p><p class="ex">股票 App：股价一变，所有打开这只股票页面的手机都要刷新。股价对象只管广播“我变了”，加 100 个新页面，股价对象一行不用改。</p></li>
-<li><p class="idea"><b>6. 策略模式：算法随便换</b> 把一堆“二选一、多选一”的算法封装成独立的类，互相替换。调用方只管“我要算”，不管“怎么算”。加新算法，加个类就行，不碰老代码。</p><p class="ex">商城打折：普通 95 折、VIP 85 折、员工 7 折。不用策略就是一堆 if-else，加一种用户就得改核心代码。用策略，加“合作伙伴 8 折”新建一个类，老代码不动。</p></li>
-<li><p class="idea"><b>7. 工厂模式：把创建对象的事藏起来</b> 创建对象别让调用方直接动手，交给“工厂”管。调用方只说“我要个日志记录器”，工厂决定给控制台版还是文件版。“怎么创建”和“怎么使用”解耦，换实现不影响调用方。</p><p class="ex">日志系统：开发环境打控制台，生产环境写文件。调用方找工厂要记录器，从开发切生产改个配置就行，业务代码一个字不动。</p></li></ol></section>
-<section class="blk"><h2>全书结构</h2><ol class="parts"><li><p class="part"><b>第一章：引言</b> 讲“什么是设计模式”：四个要素（名称、问题、解法、效果），以及怎么分类、怎么描述——先统一语言。</p><p class="ex">学象棋先认识车马炮怎么走：先把“模式”这个词讲清楚，后面不鸡同鸭讲。</p></li>
-<li><p class="part"><b>第二章：案例研究</b> 用文档编辑器的完整设计案例，演示模式在真实设计中怎么被发现、被使用——理论结合实战。</p><p class="ex">不光看菜谱，还看大厨完整做一道菜：遇到“撤销功能”，大厨自然用上命令模式。</p></li>
-<li><p class="part"><b>第三章：创建型模式</b> 5 种管“对象怎么生出来”：抽象工厂、生成器、工厂方法、原型、单例——把创建的学问讲透。</p><p class="ex">开工厂的生产线：什么时候流水线（工厂方法），什么时候定制（生成器），什么时候全公司只造一台（单例）。</p></li>
-<li><p class="part"><b>第四章：结构型模式</b> 7 种管“对象怎么组装”：适配器、桥接、组合、装饰、外观、享元、代理——拼出更大的结构。</p><p class="ex">乐高拼装说明书：小零件拼成城堡，拼完还能拆、还能换。</p></li>
-<li><p class="part"><b>第五章：行为型模式</b> 11 种管“对象怎么协作”：观察者、策略、命令、状态……数量最多、日常最常用。</p><p class="ex">球队战术手册：球怎么传、谁跑位、教练怎么指挥，一套完整配合打法。</p></li>
-<li><p class="part"><b>第六章：结论</b> 收尾：模式怎么用、什么时候不用、模式的未来——别把模式当宗教，保持清醒。</p><p class="ex">秘籍最后一页：武功再高也怕菜刀。模式再好只是工具，解决实际问题才是目的。</p></li></ol></section>
-<nav class="pn"><a class="prev" href="book-06.html"><img src="covers/s4199741.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《代码整洁之道》</span></a><a class="next" href="book-08.html"><img src="covers/s1467587.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《UNIX编程艺术》</span></a></nav>
-</main></div><footer><div class="wrap">
-<p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
-<p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer>
-<script>
-document.addEventListener('keydown',function(e){
-  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
-  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
-  if(e.key==='ArrowRight'&&n){location.href=n.href;}
-});
-</script>
-</body></html>
+<p>它开创了一个领域：面试必问的单例、工厂、观察者、策略全从这里出来。三十年语言换几代，模式还在用——因为它们针对的是“变化”本身。但作者也提醒：别为用模式而用模式。</p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>核心观点 <span class="badge">共 7 条</span></h2>
+        <ol class="idea-list">
+          <li class="idea-item">
+        <p class="idea-title"><b>1. 针对接口编程，不针对实现编程</b></p>
+        <p class="idea-desc">代码依赖“抽象”（接口长什么样），不依赖“具体”（它到底是谁）。接口是契约，实现是干活的人——换人不用换契约，具体实现随便换，调用方不用改。</p>
+        <div class="example-box"><span class="tag">例 ·</span>代码里到处直接创建 MySQL 存储对象，换 MongoDB 得改几十处。依赖统一存储接口，换时只写个新实现类，调用方一行不动。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>2. 优先用组合，而不是继承</b></p>
+        <p class="idea-desc">新手最爱用继承：“狗继承动物，警犬继承狗”，结果改爷爷类孙子类全受影响。能用“组合”（对象里装着另一个对象）解决的别用继承——组合更灵活，想换就换，不用动祖宗。</p>
+        <div class="example-box"><span class="tag">例 ·</span>鸭子游戏：绿头鸭继承鸭子，后来加“橡皮鸭”不会飞，继承来的飞行方法成 bug。改成组合：想飞装会飞的行为，不想飞装不会飞的，随时换。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>3. 模式是套路，不是银弹</b></p>
+        <p class="idea-desc">模式是“特定场景下被验证过的解法”，不是“用了就高级”的勋章。最简单的方案往往最好，为炫技硬套模式只会把代码搞复杂。判断标准：不套模式，这段代码是不是真难受？</p>
+        <div class="example-box"><span class="tag">例 ·</span>全项目只有一个地方创建对象，非要上“抽象工厂模式”，三层类套下来别人得翻五个文件。直接创建一个对象就行——模式是止痛药不是维生素，没病别乱吃。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>4. 23种模式分三类</b></p>
+        <p class="idea-desc">23 种模式按用途分三类：创建型（5 种，管“对象怎么生出来”）、结构型（7 种，管“怎么组装”）、行为型（11 种，管“怎么协作”）。找模式先想：卡在创建、组装，还是协作上，一下缩小范围。</p>
+        <div class="example-box"><span class="tag">例 ·</span>“根据配置创建不同支付方式”是创建问题→工厂方法；“好多对象要互相通知”是协作问题→观察者。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>5. 观察者模式：一对多广播</b></p>
+        <p class="idea-desc">一对多依赖：一个对象状态变了，所有依赖它的自动收到通知。像公众号：你关注了号主，一发文所有粉丝自动收到推送，不用轮询“更新了吗”。</p>
+        <div class="example-box"><span class="tag">例 ·</span>股票 App：股价一变，所有打开这只股票页面的手机都要刷新。股价对象只管广播“我变了”，加 100 个新页面，股价对象一行不用改。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>6. 策略模式：算法随便换</b></p>
+        <p class="idea-desc">把一堆“二选一、多选一”的算法封装成独立的类，互相替换。调用方只管“我要算”，不管“怎么算”。加新算法，加个类就行，不碰老代码。</p>
+        <div class="example-box"><span class="tag">例 ·</span>商城打折：普通 95 折、VIP 85 折、员工 7 折。不用策略就是一堆 if-else，加一种用户就得改核心代码。用策略，加“合作伙伴 8 折”新建一个类，老代码不动。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>7. 工厂模式：把创建对象的事藏起来</b></p>
+        <p class="idea-desc">创建对象别让调用方直接动手，交给“工厂”管。调用方只说“我要个日志记录器”，工厂决定给控制台版还是文件版。“怎么创建”和“怎么使用”解耦，换实现不影响调用方。</p>
+        <div class="example-box"><span class="tag">例 ·</span>日志系统：开发环境打控制台，生产环境写文件。调用方找工厂要记录器，从开发切生产改个配置就行，业务代码一个字不动。</div>
+      </li>
+        </ol>
+      </section>
+
+      <section class="section-block">
+        <h2>全书结构 <span class="badge">6 部分</span></h2>
+        <ol class="part-list">
+          <li class="part-item">
+        <p class="part-title"><b>第一章：引言</b></p>
+        <p class="part-desc">讲“什么是设计模式”：四个要素（名称、问题、解法、效果），以及怎么分类、怎么描述——先统一语言。</p>
+        <div class="example-box"><span class="tag">例 ·</span>学象棋先认识车马炮怎么走：先把“模式”这个词讲清楚，后面不鸡同鸭讲。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第二章：案例研究</b></p>
+        <p class="part-desc">用文档编辑器的完整设计案例，演示模式在真实设计中怎么被发现、被使用——理论结合实战。</p>
+        <div class="example-box"><span class="tag">例 ·</span>不光看菜谱，还看大厨完整做一道菜：遇到“撤销功能”，大厨自然用上命令模式。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第三章：创建型模式</b></p>
+        <p class="part-desc">5 种管“对象怎么生出来”：抽象工厂、生成器、工厂方法、原型、单例——把创建的学问讲透。</p>
+        <div class="example-box"><span class="tag">例 ·</span>开工厂的生产线：什么时候流水线（工厂方法），什么时候定制（生成器），什么时候全公司只造一台（单例）。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第四章：结构型模式</b></p>
+        <p class="part-desc">7 种管“对象怎么组装”：适配器、桥接、组合、装饰、外观、享元、代理——拼出更大的结构。</p>
+        <div class="example-box"><span class="tag">例 ·</span>乐高拼装说明书：小零件拼成城堡，拼完还能拆、还能换。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第五章：行为型模式</b></p>
+        <p class="part-desc">11 种管“对象怎么协作”：观察者、策略、命令、状态……数量最多、日常最常用。</p>
+        <div class="example-box"><span class="tag">例 ·</span>球队战术手册：球怎么传、谁跑位、教练怎么指挥，一套完整配合打法。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第六章：结论</b></p>
+        <p class="part-desc">收尾：模式怎么用、什么时候不用、模式的未来——别把模式当宗教，保持清醒。</p>
+        <div class="example-box"><span class="tag">例 ·</span>秘籍最后一页：武功再高也怕菜刀。模式再好只是工具，解决实际问题才是目的。</div>
+      </li>
+        </ol>
+      </section>
+
+      <nav class="pn">
+        <a class="prev" href="book-06.html">
+          <img src="covers/s4199741.jpg" alt="《代码整洁之道》封面" loading="lazy">
+          <span class="t"><span>← 上一本</span>《代码整洁之道》</span>
+         </a>
+        <a class="next" href="book-08.html">
+          <img src="covers/s1467587.jpg" alt="《UNIX编程艺术》封面" loading="lazy">
+          <span class="t"><span>下一本 →</span>《UNIX编程艺术》</span>
+         </a>
+      </nav>
+
+      <a class="nav-back-catalog" href="index.html#dom-1">返回 软件工程 目录</a>
+    </main>
+
+    <footer>
+      <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+      <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+</body>
+</html>

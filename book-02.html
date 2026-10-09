@@ -1,115 +1,187 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>《人件》· 四十本经典书</title><style>
-:root{--green:#007722;--ink:#1a1a1a;--muted:#767676;--hair:#e9e6df;--paper:#ffffff;--soft:#f7f5f0}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.8}
-.wrap{max-width:46rem;margin:0 auto;padding:0 1.15rem}
-a{color:var(--green)}
-h1,h2{font-family:"Songti SC","Noto Serif SC","STSong",serif}
-::selection{background:#dcefe2}
-/* header */
-.sitehead{border-bottom:1px solid var(--hair);padding:1rem 0 .9rem}
-.sitehead .brand{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.25rem;font-weight:700;color:var(--ink);text-decoration:none}
-.sitehead .brand small{font-family:sans-serif;font-weight:400;font-size:.75rem;color:var(--muted);margin-left:.6rem;letter-spacing:.1em}
-/* domain */
-.domain{padding:2rem 0 .5rem;scroll-margin-top:3.4rem}
-.dnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
-.dnav-inner{max-width:46rem;margin:0 auto;padding:.55rem 1.15rem;display:flex;gap:.5rem;overflow-x:auto}
-.dnav a{flex:1 0 auto;text-align:center;font-size:.85rem;text-decoration:none;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:.32rem .8rem;white-space:nowrap}
-.dnav a:active{background:var(--green);color:#fff;border-color:var(--green)}
-.domain h2{font-size:1.3rem;margin:0 0 .2rem;display:flex;align-items:baseline;gap:.6rem}
-.domain h2 .count{font-family:sans-serif;font-size:.75rem;color:var(--muted);font-weight:400}
-.domain .intro{color:var(--muted);font-size:.88rem;margin:0 0 1rem}
-/* book rows (douban search-result style) */
-.brow{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-top:1px solid var(--hair);text-decoration:none;color:var(--ink)}
-.brow:last-child{border-bottom:1px solid var(--hair)}
-.brow img{width:64px;height:auto;flex:0 0 auto;box-shadow:0 1px 4px rgba(0,0,0,.14)}
-.brow .t{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.05rem;font-weight:700;margin:0 0 .15rem;line-height:1.5}
-.brow .m{font-size:.8rem;color:var(--muted);margin:0;line-height:1.7}
-.brow .r{margin-left:auto;flex:0 0 auto;text-align:right}
-.brow .r b{font-size:1.25rem;color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
-.brow .r span{display:block;font-size:.72rem;color:var(--muted)}
-.brow:active{background:var(--soft)}
-/* detail page */
-.back{display:inline-block;font-size:.85rem;text-decoration:none;margin:1.1rem 0 .4rem}
-.bookhead h1{font-size:1.7rem;margin:.2rem 0 1rem;line-height:1.4}
-.topblock{display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:1.4rem}
-.topblock img.cover{width:132px;height:auto;flex:0 0 auto;box-shadow:0 2px 10px rgba(0,0,0,.16)}
-.info{font-size:.88rem;line-height:2}
-.info .k{color:var(--muted)}
-.info a{text-decoration:none;border-bottom:1px solid var(--green)}
-.ratebox{display:flex;align-items:baseline;gap:.7rem;background:var(--soft);border:1px solid var(--hair);border-radius:.5rem;padding:.8rem 1rem;margin:0 0 1.6rem}
-.ratebox .num{font-size:2.4rem;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums;line-height:1}
-.ratebox .lbl{font-size:.8rem;color:var(--muted)}
-.ratebox .lbl b{color:var(--ink)}
-section.blk{margin:0 0 2rem}
-section.blk h2{font-size:1.15rem;margin:0 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--ink)}
-.thesis p{margin:0 0 .7rem}
-ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
-.ideas li,.parts li{padding:.7rem 0;border-top:1px solid var(--hair)}
-.ideas li:last-child,.parts li:last-child{border-bottom:1px solid var(--hair)}
-.idea,.part{margin:0;font-size:.96rem}
-.ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
-.ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next cards */
-.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
-.pn a:active{background:var(--soft)}
-.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
-.pn a.next{flex-direction:row-reverse;text-align:right}
-.pn a.solo{grid-column:1/-1}
-footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
-footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
-@media(min-width:640px){
-  .topblock img.cover{width:168px}
-  .bookhead h1{font-size:2rem}
-  .brow img{width:76px}
-}
-</style></head>
-<body><div class="wrap"><header class="sitehead"><a class="brand" href="index.html">四十本经典书<small>BOOK GUIDE · VOL.01</small></a></header></div>
-<div class="wrap"><main>
-<a class="back" href="index.html">← 全部 40 本</a>
-<div class="bookhead"><h1>《人件》</h1></div>
-<div class="topblock">
-<img class="cover" src="covers/s1108725.jpg" alt="《人件》封面">
-<div class="info">
-<div><span class="k">作者：</span>汤姆·迪马科、蒂莫西·李斯特</div>
-<div><span class="k">出版社：</span>清华大学出版社</div>
-<div><span class="k">出版年：</span>2003-6</div>
-<div><span class="k">原作名：</span>Peopleware: Productive Projects and Teams</div>
-<div><span class="k">领域：</span>软件工程 · 第 02 本</div>
-<div style="margin-top:.4rem"><a href="https://book.douban.com/subject/1108725/" target="_blank" rel="noopener">豆瓣读书 →</a></div>
-</div></div>
-<div class="ratebox"><span class="num">8.2</span><span class="lbl"><b>豆瓣评分</b><br>1204人评价</span></div>
-<p style="font-size:1.02rem;border-left:3px solid var(--green);padding-left:.8rem;margin:0 0 1.8rem">软件项目最大的问题不在技术，在人。怎么管好人这个最贵资产，而不是把程序员当零件用。</p>
-<section class="blk"><h2>总体观点</h2><div class="thesis"><p>两位作者干了几十年软件咨询，核心判断：管软件团队先是社会学问题，其次才是技术问题。士气、信任、专注度，才是成败关键。</p>
-<p>软件业最大的浪费不在技术落后，在管理者在人上犯蠢：吵闹办公室、频繁打断、理所当然的加班、走马灯式的人员流动。和《人月神话》并称软件管理“两朵奇葩”：一个讲事，一个讲人。</p></div></section>
-<section class="blk"><h2>核心观点 · 7</h2><ol class="ideas"><li><p class="idea"><b>1. 管理软件团队，首先是社会学问题，不是技术问题</b> 管理者爱琢磨流程工具，但成败更多取决于人的状态。人的问题解决了，技术问题自己顺；人心散了，再好的工具也白搭。</p><p class="ex">孩子成绩下滑，先搞清楚他是不是没睡好、在学校被欺负了，而不是直接报更多补习班。根子在人，补课治标不治本。</p></li>
-<li><p class="idea"><b>2. 程序员需要“流”：不被打断的整块时间</b> “流”是完全沉浸、忘记时间的专注状态，程序员最有产出的时刻。进入流要 15 分钟预热，一个电话就能击碎。一天被打断五六次，等于一天没干活。</p><p class="ex">煲汤要小火慢炖才入味，每隔十分钟揭一次盖子，这锅汤永远煲不好。频繁打断，思路永远停在“烧开水”阶段。</p></li>
-<li><p class="idea"><b>3. 办公室环境直接决定生产力</b> 吵闹的开放式办公室、没窗户的工位、动不动被叫去开会——环境对效率的伤害远超想象。环境不是福利，是生产资料。</p><p class="ex">让孩子在菜市场门口写作业和在安静书房写，效果能一样吗？花大钱买人体工学椅，却舍不得给个安静角落——捡芝麻丢西瓜。</p></li>
-<li><p class="idea"><b>4. 加班是个谎言：长期加班越多，质量越差</b> 短期冲刺可以，长期加班只会让人疲劳、出错、士气低落。很多加班不是为赶进度，是为“显得努力”、为出事免责。高效团队靠上班时的专注，不靠下班耗时间。</p><p class="ex">考试前通宵刷题：熬到凌晨三点脑子成浆糊，错题更多，第二天照样栽。不如每天高效学 6 小时睡个好觉。</p></li>
-<li><p class="idea"><b>5. “质量如果时间允许”——这句话本身就是病</b> 把质量当可选项，时间够就做好一点——牺牲质量省下的时间，后面以十倍代价还回来：修 bug、返工、客户投诉。“将就一下”是最贵的选择。</p><p class="ex">装修用电线细一号的便宜货，省几百块，三年后线路老化砸墙重装花几万。代码里每次“将就”，都是未来的“砸墙重装”。</p></li>
-<li><p class="idea"><b>6. 好团队是“胶冻”出来的，不是拼凑出来的</b> 高效团队像果冻一样“凝”在一起：互相信任、目标一致。但防御性管理、官僚主义、频繁打散重组、不可能的 deadline，会杀死这种凝聚力。</p><p class="ex">五个各怀心思的明星，不如五个配合默契的普通球员。天天拆散重组、朝令夕改，队伍永远凝不起来。</p></li>
-<li><p class="idea"><b>7. 人是最贵的资产，别把人当零件换</b> 程序员不是标准件，换一个人，几个月达不到原来人的产出。招聘、培训、知识流失、士气打击，隐性成本巨大。留人比招人重要：给挑战、给尊重、给好环境。</p><p class="ex">老字号餐馆大厨走了，招牌菜味道三个月回不来，熟客跟着流失。省下的工资，跟流失的客人比，不值一提。</p></li></ol></section>
-<section class="blk"><h2>全书结构</h2><ol class="parts"><li><p class="part"><b>第一部分：管理人力资源（游戏的名称、高科技的幻觉、不存在加班的谎言、质量——如果时间允许、帕金森定律……）</b> 拆穿管理幻觉：没有神奇方法让生产力翻倍，加班解决不了问题，质量不能“时间允许再说”。</p><p class="ex">家长觉得“换个补习班成绩就上去了”——不解决孩子本身的状态，换多少补习班都是折腾。</p></li>
-<li><p class="part"><b>第二部分：办公环境（流、亲密梯度、窗户与噪音……）</b> 物理环境决定脑力产出：安静、私密、有窗户才能进入“流”；噪音和打断是隐形杀手。</p><p class="ex">图书馆和夜市大排档旁看书，一晚上读进去的页数差好几倍——环境是脑力劳动的生产资料。</p></li>
-<li><p class="part"><b>第三部分：选对人、用好人（招聘、面试、团队化学……）</b> 看真实做过的事而不是简历话术；招进来后让人快速融入、发挥所长，不把人当螺丝钉。</p><p class="ex">相亲光看简历不如深聊一次；“结婚”之后，磨合期的相处方式决定关系能走多远。</p></li>
-<li><p class="part"><b>第四部分：让团队“胶冻”起来（胶冻团队、黑衣团队、团队自杀手册……）</b> 高效团队如何形成，以及管理者无意中杀死团队的行为：不信任、官僚、频繁打散、伪造 deadline。</p><p class="ex">熬果冻老去搅它、加水、倒来倒去，永远成不了形。团队也一样，瞎折腾就是最大的破坏。</p></li>
-<li><p class="part"><b>第五部分：在这里工作应该是开心的（童年的终结、在这儿很开心、离职率……）</b> 留人靠有挑战的工作、被尊重的感觉、持续成长的机会。留不住人先照镜子，别怪年轻人不吃苦。</p><p class="ex">好餐馆留回头客靠菜好吃、服务舒服，不靠优惠券。好公司留人靠“干得爽”，不是“走了找不到更好的”。</p></li>
-<li><p class="part"><b>第六部分：新版新增——直面现代职场病（谈谈领导力、会议文化、（邪恶）邮件、与风险共舞……）</b> 第三版新增 6 章，专治现代公司病：病态领导力、开不完的会、淹没人的邮件、假装风险不存在。</p><p class="ex">以前是“办公室太吵”，现在是“微信群 24 小时 @所有人”——病变了，药方也得更新。</p></li></ol></section>
-<nav class="pn"><a class="prev" href="book-01.html"><img src="covers/s1102259.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《人月神话》</span></a><a class="next" href="book-03.html"><img src="covers/s1477390.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《代码大全（第2版）》</span></a></nav>
-</main></div><footer><div class="wrap">
-<p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
-<p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer>
-<script>
-document.addEventListener('keydown',function(e){
-  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
-  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
-  if(e.key==='ArrowRight'&&n){location.href=n.href;}
-});
-</script>
-</body></html>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《人件》 · 四十本经典书</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="sitehead">
+      <div class="sitehead-inner">
+        <a class="brand" href="index.html">
+          四十本经典书
+          <small>BOOK GUIDE · VOL.01</small>
+        </a>
+        <span class="sitehead-tag">软件工程</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="back-nav">
+        <a class="back-link" href="index.html#dom-1">← 全部 40 本</a>
+        <span class="detail-domain-tag">软件工程 · 第 02 本</span>
+      </div>
+
+      <div class="book-title-header">
+        <h1>《人件》</h1>
+      </div>
+
+      <div class="detail-top">
+        <div class="detail-cover-wrap">
+          <img class="detail-cover" src="covers/s1108725.jpg" alt="《人件》封面" width="138" height="200">
+        </div>
+        <div class="detail-meta">
+          <div class="detail-meta-item">
+            <span class="label">作者：</span>
+            <span class="value">汤姆·迪马科、蒂莫西·李斯特</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版社：</span>
+            <span class="value">清华大学出版社</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版年：</span>
+            <span class="value">2003-6</span>
+          </div>
+          <div class="detail-meta-item">
+        <span class="label">原作名：</span>
+        <span class="value">Peopleware: Productive Projects and Teams</span>
+      </div>
+          <div class="detail-meta-item">
+            <span class="label">领域：</span>
+            <span class="value">软件工程 · 第 02 本</span>
+          </div>
+          <div class="detail-meta-item" style="margin-top: 0.4rem;">
+            <a class="douban-link" href="https://book.douban.com/subject/1108725/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ratebox">
+        <span class="ratebox-num">8.2</span>
+        <div class="ratebox-info">
+          <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
+          <div class="ratebox-label"><b>豆瓣评分</b> · 1204人评价</div>
+        </div>
+      </div>
+
+      <div class="intro-quote">
+        软件项目最大的问题不在技术，在人。怎么管好人这个最贵资产，而不是把程序员当零件用。
+      </div>
+
+      <section class="section-block">
+        <h2>总体观点</h2>
+        <div class="thesis-body">
+          <p>两位作者干了几十年软件咨询，核心判断：管软件团队先是社会学问题，其次才是技术问题。士气、信任、专注度，才是成败关键。</p>
+<p>软件业最大的浪费不在技术落后，在管理者在人上犯蠢：吵闹办公室、频繁打断、理所当然的加班、走马灯式的人员流动。和《人月神话》并称软件管理“两朵奇葩”：一个讲事，一个讲人。</p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>核心观点 <span class="badge">共 7 条</span></h2>
+        <ol class="idea-list">
+          <li class="idea-item">
+        <p class="idea-title"><b>1. 管理软件团队，首先是社会学问题，不是技术问题</b></p>
+        <p class="idea-desc">管理者爱琢磨流程工具，但成败更多取决于人的状态。人的问题解决了，技术问题自己顺；人心散了，再好的工具也白搭。</p>
+        <div class="example-box"><span class="tag">例 ·</span>孩子成绩下滑，先搞清楚他是不是没睡好、在学校被欺负了，而不是直接报更多补习班。根子在人，补课治标不治本。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>2. 程序员需要“流”：不被打断的整块时间</b></p>
+        <p class="idea-desc">“流”是完全沉浸、忘记时间的专注状态，程序员最有产出的时刻。进入流要 15 分钟预热，一个电话就能击碎。一天被打断五六次，等于一天没干活。</p>
+        <div class="example-box"><span class="tag">例 ·</span>煲汤要小火慢炖才入味，每隔十分钟揭一次盖子，这锅汤永远煲不好。频繁打断，思路永远停在“烧开水”阶段。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>3. 办公室环境直接决定生产力</b></p>
+        <p class="idea-desc">吵闹的开放式办公室、没窗户的工位、动不动被叫去开会——环境对效率的伤害远超想象。环境不是福利，是生产资料。</p>
+        <div class="example-box"><span class="tag">例 ·</span>让孩子在菜市场门口写作业和在安静书房写，效果能一样吗？花大钱买人体工学椅，却舍不得给个安静角落——捡芝麻丢西瓜。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>4. 加班是个谎言：长期加班越多，质量越差</b></p>
+        <p class="idea-desc">短期冲刺可以，长期加班只会让人疲劳、出错、士气低落。很多加班不是为赶进度，是为“显得努力”、为出事免责。高效团队靠上班时的专注，不靠下班耗时间。</p>
+        <div class="example-box"><span class="tag">例 ·</span>考试前通宵刷题：熬到凌晨三点脑子成浆糊，错题更多，第二天照样栽。不如每天高效学 6 小时睡个好觉。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>5. “质量如果时间允许”——这句话本身就是病</b></p>
+        <p class="idea-desc">把质量当可选项，时间够就做好一点——牺牲质量省下的时间，后面以十倍代价还回来：修 bug、返工、客户投诉。“将就一下”是最贵的选择。</p>
+        <div class="example-box"><span class="tag">例 ·</span>装修用电线细一号的便宜货，省几百块，三年后线路老化砸墙重装花几万。代码里每次“将就”，都是未来的“砸墙重装”。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>6. 好团队是“胶冻”出来的，不是拼凑出来的</b></p>
+        <p class="idea-desc">高效团队像果冻一样“凝”在一起：互相信任、目标一致。但防御性管理、官僚主义、频繁打散重组、不可能的 deadline，会杀死这种凝聚力。</p>
+        <div class="example-box"><span class="tag">例 ·</span>五个各怀心思的明星，不如五个配合默契的普通球员。天天拆散重组、朝令夕改，队伍永远凝不起来。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>7. 人是最贵的资产，别把人当零件换</b></p>
+        <p class="idea-desc">程序员不是标准件，换一个人，几个月达不到原来人的产出。招聘、培训、知识流失、士气打击，隐性成本巨大。留人比招人重要：给挑战、给尊重、给好环境。</p>
+        <div class="example-box"><span class="tag">例 ·</span>老字号餐馆大厨走了，招牌菜味道三个月回不来，熟客跟着流失。省下的工资，跟流失的客人比，不值一提。</div>
+      </li>
+        </ol>
+      </section>
+
+      <section class="section-block">
+        <h2>全书结构 <span class="badge">6 部分</span></h2>
+        <ol class="part-list">
+          <li class="part-item">
+        <p class="part-title"><b>第一部分：管理人力资源（游戏的名称、高科技的幻觉、不存在加班的谎言、质量——如果时间允许、帕金森定律……）</b></p>
+        <p class="part-desc">拆穿管理幻觉：没有神奇方法让生产力翻倍，加班解决不了问题，质量不能“时间允许再说”。</p>
+        <div class="example-box"><span class="tag">例 ·</span>家长觉得“换个补习班成绩就上去了”——不解决孩子本身的状态，换多少补习班都是折腾。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第二部分：办公环境（流、亲密梯度、窗户与噪音……）</b></p>
+        <p class="part-desc">物理环境决定脑力产出：安静、私密、有窗户才能进入“流”；噪音和打断是隐形杀手。</p>
+        <div class="example-box"><span class="tag">例 ·</span>图书馆和夜市大排档旁看书，一晚上读进去的页数差好几倍——环境是脑力劳动的生产资料。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第三部分：选对人、用好人（招聘、面试、团队化学……）</b></p>
+        <p class="part-desc">看真实做过的事而不是简历话术；招进来后让人快速融入、发挥所长，不把人当螺丝钉。</p>
+        <div class="example-box"><span class="tag">例 ·</span>相亲光看简历不如深聊一次；“结婚”之后，磨合期的相处方式决定关系能走多远。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第四部分：让团队“胶冻”起来（胶冻团队、黑衣团队、团队自杀手册……）</b></p>
+        <p class="part-desc">高效团队如何形成，以及管理者无意中杀死团队的行为：不信任、官僚、频繁打散、伪造 deadline。</p>
+        <div class="example-box"><span class="tag">例 ·</span>熬果冻老去搅它、加水、倒来倒去，永远成不了形。团队也一样，瞎折腾就是最大的破坏。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第五部分：在这里工作应该是开心的（童年的终结、在这儿很开心、离职率……）</b></p>
+        <p class="part-desc">留人靠有挑战的工作、被尊重的感觉、持续成长的机会。留不住人先照镜子，别怪年轻人不吃苦。</p>
+        <div class="example-box"><span class="tag">例 ·</span>好餐馆留回头客靠菜好吃、服务舒服，不靠优惠券。好公司留人靠“干得爽”，不是“走了找不到更好的”。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第六部分：新版新增——直面现代职场病（谈谈领导力、会议文化、（邪恶）邮件、与风险共舞……）</b></p>
+        <p class="part-desc">第三版新增 6 章，专治现代公司病：病态领导力、开不完的会、淹没人的邮件、假装风险不存在。</p>
+        <div class="example-box"><span class="tag">例 ·</span>以前是“办公室太吵”，现在是“微信群 24 小时 @所有人”——病变了，药方也得更新。</div>
+      </li>
+        </ol>
+      </section>
+
+      <nav class="pn">
+        <a class="prev" href="book-01.html">
+          <img src="covers/s1102259.jpg" alt="《人月神话》封面" loading="lazy">
+          <span class="t"><span>← 上一本</span>《人月神话》</span>
+         </a>
+        <a class="next" href="book-03.html">
+          <img src="covers/s1477390.jpg" alt="《代码大全（第2版）》封面" loading="lazy">
+          <span class="t"><span>下一本 →</span>《代码大全（第2版）》</span>
+         </a>
+      </nav>
+
+      <a class="nav-back-catalog" href="index.html#dom-1">返回 软件工程 目录</a>
+    </main>
+
+    <footer>
+      <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+      <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+</body>
+</html>

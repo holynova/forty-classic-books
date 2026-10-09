@@ -1,116 +1,188 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>《微服务设计》· 四十本经典书</title><style>
-:root{--green:#007722;--ink:#1a1a1a;--muted:#767676;--hair:#e9e6df;--paper:#ffffff;--soft:#f7f5f0}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.8}
-.wrap{max-width:46rem;margin:0 auto;padding:0 1.15rem}
-a{color:var(--green)}
-h1,h2{font-family:"Songti SC","Noto Serif SC","STSong",serif}
-::selection{background:#dcefe2}
-/* header */
-.sitehead{border-bottom:1px solid var(--hair);padding:1rem 0 .9rem}
-.sitehead .brand{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.25rem;font-weight:700;color:var(--ink);text-decoration:none}
-.sitehead .brand small{font-family:sans-serif;font-weight:400;font-size:.75rem;color:var(--muted);margin-left:.6rem;letter-spacing:.1em}
-/* domain */
-.domain{padding:2rem 0 .5rem;scroll-margin-top:3.4rem}
-.dnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
-.dnav-inner{max-width:46rem;margin:0 auto;padding:.55rem 1.15rem;display:flex;gap:.5rem;overflow-x:auto}
-.dnav a{flex:1 0 auto;text-align:center;font-size:.85rem;text-decoration:none;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:.32rem .8rem;white-space:nowrap}
-.dnav a:active{background:var(--green);color:#fff;border-color:var(--green)}
-.domain h2{font-size:1.3rem;margin:0 0 .2rem;display:flex;align-items:baseline;gap:.6rem}
-.domain h2 .count{font-family:sans-serif;font-size:.75rem;color:var(--muted);font-weight:400}
-.domain .intro{color:var(--muted);font-size:.88rem;margin:0 0 1rem}
-/* book rows (douban search-result style) */
-.brow{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-top:1px solid var(--hair);text-decoration:none;color:var(--ink)}
-.brow:last-child{border-bottom:1px solid var(--hair)}
-.brow img{width:64px;height:auto;flex:0 0 auto;box-shadow:0 1px 4px rgba(0,0,0,.14)}
-.brow .t{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.05rem;font-weight:700;margin:0 0 .15rem;line-height:1.5}
-.brow .m{font-size:.8rem;color:var(--muted);margin:0;line-height:1.7}
-.brow .r{margin-left:auto;flex:0 0 auto;text-align:right}
-.brow .r b{font-size:1.25rem;color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
-.brow .r span{display:block;font-size:.72rem;color:var(--muted)}
-.brow:active{background:var(--soft)}
-/* detail page */
-.back{display:inline-block;font-size:.85rem;text-decoration:none;margin:1.1rem 0 .4rem}
-.bookhead h1{font-size:1.7rem;margin:.2rem 0 1rem;line-height:1.4}
-.topblock{display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:1.4rem}
-.topblock img.cover{width:132px;height:auto;flex:0 0 auto;box-shadow:0 2px 10px rgba(0,0,0,.16)}
-.info{font-size:.88rem;line-height:2}
-.info .k{color:var(--muted)}
-.info a{text-decoration:none;border-bottom:1px solid var(--green)}
-.ratebox{display:flex;align-items:baseline;gap:.7rem;background:var(--soft);border:1px solid var(--hair);border-radius:.5rem;padding:.8rem 1rem;margin:0 0 1.6rem}
-.ratebox .num{font-size:2.4rem;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums;line-height:1}
-.ratebox .lbl{font-size:.8rem;color:var(--muted)}
-.ratebox .lbl b{color:var(--ink)}
-section.blk{margin:0 0 2rem}
-section.blk h2{font-size:1.15rem;margin:0 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--ink)}
-.thesis p{margin:0 0 .7rem}
-ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
-.ideas li,.parts li{padding:.7rem 0;border-top:1px solid var(--hair)}
-.ideas li:last-child,.parts li:last-child{border-bottom:1px solid var(--hair)}
-.idea,.part{margin:0;font-size:.96rem}
-.ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
-.ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next cards */
-.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
-.pn a:active{background:var(--soft)}
-.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
-.pn a.next{flex-direction:row-reverse;text-align:right}
-.pn a.solo{grid-column:1/-1}
-footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
-footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
-@media(min-width:640px){
-  .topblock img.cover{width:168px}
-  .bookhead h1{font-size:2rem}
-  .brow img{width:76px}
-}
-</style></head>
-<body><div class="wrap"><header class="sitehead"><a class="brand" href="index.html">四十本经典书<small>BOOK GUIDE · VOL.01</small></a></header></div>
-<div class="wrap"><main>
-<a class="back" href="index.html">← 全部 40 本</a>
-<div class="bookhead"><h1>《微服务设计》</h1></div>
-<div class="topblock">
-<img class="cover" src="covers/s26772677.jpg" alt="《微服务设计》封面">
-<div class="info">
-<div><span class="k">作者：</span>桑·纽曼</div>
-<div><span class="k">出版社：</span>人民邮电出版社</div>
-<div><span class="k">出版年：</span>2016-5</div>
-<div><span class="k">原作名：</span>Building Microservices</div>
-<div><span class="k">领域：</span>系统设计 · 第 13 本</div>
-<div style="margin-top:.4rem"><a href="https://book.douban.com/subject/26772677/" target="_blank" rel="noopener">豆瓣读书 →</a></div>
-</div></div>
-<div class="ratebox"><span class="num">8.1</span><span class="lbl"><b>豆瓣评分</b><br>978人评价</span></div>
-<p style="font-size:1.02rem;border-left:3px solid var(--green);padding-left:.8rem;margin:0 0 1.8rem">把大系统拆成小而独立的服务，各自独立开发上线：什么时候该拆、怎么拆、拆完怎么管，微服务领域的开山之作。</p>
-<section class="blk"><h2>总体观点</h2><div class="thesis"><p>人人喊拆服务，但很多人拆完更痛苦：部署复杂、排查困难，一个请求串过十几个服务，出问题都不知道找谁。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《微服务设计》 · 四十本经典书</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="sitehead">
+      <div class="sitehead-inner">
+        <a class="brand" href="index.html">
+          四十本经典书
+          <small>BOOK GUIDE · VOL.01</small>
+        </a>
+        <span class="sitehead-tag">系统设计</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="back-nav">
+        <a class="back-link" href="index.html#dom-2">← 全部 40 本</a>
+        <span class="detail-domain-tag">系统设计 · 第 13 本</span>
+      </div>
+
+      <div class="book-title-header">
+        <h1>《微服务设计》</h1>
+      </div>
+
+      <div class="detail-top">
+        <div class="detail-cover-wrap">
+          <img class="detail-cover" src="covers/s26772677.jpg" alt="《微服务设计》封面" width="138" height="200">
+        </div>
+        <div class="detail-meta">
+          <div class="detail-meta-item">
+            <span class="label">作者：</span>
+            <span class="value">桑·纽曼</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版社：</span>
+            <span class="value">人民邮电出版社</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版年：</span>
+            <span class="value">2016-5</span>
+          </div>
+          <div class="detail-meta-item">
+        <span class="label">原作名：</span>
+        <span class="value">Building Microservices</span>
+      </div>
+          <div class="detail-meta-item">
+            <span class="label">领域：</span>
+            <span class="value">系统设计 · 第 13 本</span>
+          </div>
+          <div class="detail-meta-item" style="margin-top: 0.4rem;">
+            <a class="douban-link" href="https://book.douban.com/subject/26772677/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ratebox">
+        <span class="ratebox-num">8.1</span>
+        <div class="ratebox-info">
+          <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
+          <div class="ratebox-label"><b>豆瓣评分</b> · 978人评价</div>
+        </div>
+      </div>
+
+      <div class="intro-quote">
+        把大系统拆成小而独立的服务，各自独立开发上线：什么时候该拆、怎么拆、拆完怎么管，微服务领域的开山之作。
+      </div>
+
+      <section class="section-block">
+        <h2>总体观点</h2>
+        <div class="thesis-body">
+          <p>人人喊拆服务，但很多人拆完更痛苦：部署复杂、排查困难，一个请求串过十几个服务，出问题都不知道找谁。</p>
 <p>微服务不是目的，是手段：把系统按业务边界切成能独立演进的小块，小步快跑、独立试错。但它有代价——分布式复杂度、运维成本、一致性难题一个都躲不掉。小团队、业务没想清楚、没自动化运维能力，单体可能是更好的选择。</p>
-<p>它把“微服务”从时髦口号变成有章可循的工程实践：业务建模、独立部署、为失败而设计、可观察性。这些至今仍是云原生时代的常识。</p></div></section>
-<section class="blk"><h2>核心观点 · 7</h2><ol class="ideas"><li><p class="idea"><b>1. 先按业务拆，不按技术拆（康威定律）</b> 拆服务按“下单、支付、库存”这样的业务能力，不按“前端队、后端队”分。康威定律：系统架构会复制组织沟通结构。反过来用：想让系统长成什么样，就先把团队按那个样子组织起来。</p><p class="ex">开餐厅别按“切菜组、炒菜组”分，按“川菜档、粤菜档”分，每个档口从点菜到上菜一条龙。促销和订单拆成两个服务后，促销团队双十一前一周还能独立上线新玩法，不用排队等排期。</p></li>
-<li><p class="idea"><b>2. 服务必须能独立部署，否则白拆</b> “微”不在代码量小，而在改一行代码只上线这一个服务，不用全站陪绑。改A必须连B、C一起上线，那就是“分布式单体”：享受了分布式的痛苦，没得到微服务的好处。</p><p class="ex">用户中心独立成服务后，头像功能一周上三个版本，订单系统一次没重启——这就是独立部署的价值。</p></li>
-<li><p class="idea"><b>3. 数据也要分家，别共用一个数据库</b> 两个服务连同一个库，改表结构就得一起改、一起上线——拆了个寂寞。每个服务管自己的数据，别人走接口来要。跨服务一致性用“最终一致”（发消息异步同步）解决，不靠数据库事务。</p><p class="ex">订单和库存共用一张表，库存加个字段，订单的SQL全挂了。最后花两个月才把库拆开，代价比一开始就拆大得多。</p></li>
-<li><p class="idea"><b>4. 为失败而设计：服务一定会挂</b> 保命四招：超时（别无限等）、熔断器（对方挂了别再敲门）。舱壁（一个服务hang死别拖死线程池）、重试加退避。</p><p class="ex">家里一个房间短路，空开只断这一间，不会整栋停电。支付网关给银行接口加熔断，银行宕机时几十秒自动切备用通道，用户只觉得“慢了一点”，而不是全站报错。</p></li>
-<li><p class="idea"><b>5. 智能端点、哑管道：服务之间通信尽量简单</b> 别搞中央总线（ESB）那种“聪明的管道”：逻辑全塞总线，一升级全站陪葬。用简单的REST或消息队列传数据（哑管道），业务逻辑留在服务自己手里（智能端点）。管道越傻，系统越灵活。</p><p class="ex">小区快递柜：快递员只管放件（哑管道），取件码、身份验证都在App里（智能端点）。要是每个快递员都得去物业大厅登记审批，双十一那天大厅直接被堵死。</p></li>
-<li><p class="idea"><b>6. 先单体，痛了再拆：架构是演进出来的</b> 新项目别一上来就微服务：业务没跑通，边界在哪都不知道，拆错比不拆还贵。先写单体，等哪个模块“改不动、一改全回归”了再拆出去。好边界是长出来的，不是画出来的。</p><p class="ex">装修先住进去，知道哪面墙碍事再砸，而不是毛坯就按五年后的家庭结构砌墙。某创业公司单体三个月上线，跑一年后才把“拼团”拆成独立服务——那时才真正搞清边界在哪。</p></li>
-<li><p class="idea"><b>7. 看不见就管不了：可观察性是必修课</b> 微服务里一个请求串过十几个服务，日志散在十几台机器上。三件套缺一不可：日志聚合、关联ID（一个请求一个编号、全链路追踪）、监控告警。不然线上出问题只能靠猜。</p><p class="ex">给每个请求打上TraceID：一次“下单偶发超时”，十分钟定位到优惠券服务的慢SQL。以前得人肉对十几个服务的日志，至少半天。</p></li></ol></section>
-<section class="blk"><h2>全书结构</h2><ol class="parts"><li><p class="part"><b>第一部分：微服务到底是什么</b> 给微服务下定义：小、自治、围绕业务建模、独立部署。讲清楚它解决什么问题，又会带来哪些新代价，先泼一盆冷水。</p><p class="ex">买车先看缺点：保养贵、油耗高，知道了再决定买不买。开篇先讲微服务的代价，免得你只看到好处一头扎进去。</p></li>
-<li><p class="part"><b>第二部分：架构师的角色与建模</b> 讲“演进式架构师”：架构师不是画图纸的，而是定原则、划边界、保证大家不跑偏的。建模要用领域驱动设计的有界上下文来找服务的边界。</p><p class="ex">就像城市规划师：不规定每栋楼盖几层，但划定商业区、住宅区，定下消防和间距红线。边界内各家自由发挥，城市整体不乱。</p></li>
-<li><p class="part"><b>第三部分：怎么拆：从单体到微服务</b> 给单体“动手术”的几种拆法：按业务能力拆、绞杀者模式（新老并行、逐步替换）、按分支抽象逐步剥离。</p><p class="ex">绞杀者模式像给老房子加装电梯：不拆楼，旁边盖新的，一层层搬功能过去，最后老楼只剩空壳。用户全程无感知，风险一次只冒一点。</p></li>
-<li><p class="part"><b>第四部分：拆完怎么连：集成与数据</b> 服务间通信怎么选（REST、RPC、消息队列），以及最难的数据分家。从共享库到各管各的，数据同步和一致性怎么处理。</p><p class="ex">离婚分财产：房子车子一人一套容易，最难的是共同账户的钱怎么分、以后孩子的学费怎么给。数据分家也一样：接口好定，一致性难搞。</p></li>
-<li><p class="part"><b>第五部分：部署、测试、监控与安全</b> 每个服务独立流水线、容器化部署；分布式系统的测试策略（契约测试）；监控三件套；服务间认证与纵深防御。</p><p class="ex">连锁餐厅：分店独立装修开业（独立部署），总部神秘顾客抽查（契约测试）。装摄像头看后厨（监控），进后厨刷卡（安全）。缺一样，开到第十家店就乱套。</p></li>
-<li><p class="part"><b>第六部分：组织与规模化</b> 康威定律与团队组织：按服务组建全功能小团队。服务多到几十上百个之后：版本治理、服务发现、弹性伸缩。</p><p class="ex">就像乐队：三个人时怎么排都行，变成交响乐团就得有声部、有指挥、有总谱。服务少时靠自觉，服务多了就得靠平台和规范。</p></li></ol></section>
-<nav class="pn"><a class="prev" href="book-12.html"><img src="covers/s30333919.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《架构整洁之道》</span></a><a class="next" href="book-14.html"><img src="covers/s1230559.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《企业应用架构模式》</span></a></nav>
-</main></div><footer><div class="wrap">
-<p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
-<p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer>
-<script>
-document.addEventListener('keydown',function(e){
-  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
-  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
-  if(e.key==='ArrowRight'&&n){location.href=n.href;}
-});
-</script>
-</body></html>
+<p>它把“微服务”从时髦口号变成有章可循的工程实践：业务建模、独立部署、为失败而设计、可观察性。这些至今仍是云原生时代的常识。</p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>核心观点 <span class="badge">共 7 条</span></h2>
+        <ol class="idea-list">
+          <li class="idea-item">
+        <p class="idea-title"><b>1. 先按业务拆，不按技术拆（康威定律）</b></p>
+        <p class="idea-desc">拆服务按“下单、支付、库存”这样的业务能力，不按“前端队、后端队”分。康威定律：系统架构会复制组织沟通结构。反过来用：想让系统长成什么样，就先把团队按那个样子组织起来。</p>
+        <div class="example-box"><span class="tag">例 ·</span>开餐厅别按“切菜组、炒菜组”分，按“川菜档、粤菜档”分，每个档口从点菜到上菜一条龙。促销和订单拆成两个服务后，促销团队双十一前一周还能独立上线新玩法，不用排队等排期。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>2. 服务必须能独立部署，否则白拆</b></p>
+        <p class="idea-desc">“微”不在代码量小，而在改一行代码只上线这一个服务，不用全站陪绑。改A必须连B、C一起上线，那就是“分布式单体”：享受了分布式的痛苦，没得到微服务的好处。</p>
+        <div class="example-box"><span class="tag">例 ·</span>用户中心独立成服务后，头像功能一周上三个版本，订单系统一次没重启——这就是独立部署的价值。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>3. 数据也要分家，别共用一个数据库</b></p>
+        <p class="idea-desc">两个服务连同一个库，改表结构就得一起改、一起上线——拆了个寂寞。每个服务管自己的数据，别人走接口来要。跨服务一致性用“最终一致”（发消息异步同步）解决，不靠数据库事务。</p>
+        <div class="example-box"><span class="tag">例 ·</span>订单和库存共用一张表，库存加个字段，订单的SQL全挂了。最后花两个月才把库拆开，代价比一开始就拆大得多。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>4. 为失败而设计：服务一定会挂</b></p>
+        <p class="idea-desc">保命四招：超时（别无限等）、熔断器（对方挂了别再敲门）。舱壁（一个服务hang死别拖死线程池）、重试加退避。</p>
+        <div class="example-box"><span class="tag">例 ·</span>家里一个房间短路，空开只断这一间，不会整栋停电。支付网关给银行接口加熔断，银行宕机时几十秒自动切备用通道，用户只觉得“慢了一点”，而不是全站报错。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>5. 智能端点、哑管道：服务之间通信尽量简单</b></p>
+        <p class="idea-desc">别搞中央总线（ESB）那种“聪明的管道”：逻辑全塞总线，一升级全站陪葬。用简单的REST或消息队列传数据（哑管道），业务逻辑留在服务自己手里（智能端点）。管道越傻，系统越灵活。</p>
+        <div class="example-box"><span class="tag">例 ·</span>小区快递柜：快递员只管放件（哑管道），取件码、身份验证都在App里（智能端点）。要是每个快递员都得去物业大厅登记审批，双十一那天大厅直接被堵死。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>6. 先单体，痛了再拆：架构是演进出来的</b></p>
+        <p class="idea-desc">新项目别一上来就微服务：业务没跑通，边界在哪都不知道，拆错比不拆还贵。先写单体，等哪个模块“改不动、一改全回归”了再拆出去。好边界是长出来的，不是画出来的。</p>
+        <div class="example-box"><span class="tag">例 ·</span>装修先住进去，知道哪面墙碍事再砸，而不是毛坯就按五年后的家庭结构砌墙。某创业公司单体三个月上线，跑一年后才把“拼团”拆成独立服务——那时才真正搞清边界在哪。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>7. 看不见就管不了：可观察性是必修课</b></p>
+        <p class="idea-desc">微服务里一个请求串过十几个服务，日志散在十几台机器上。三件套缺一不可：日志聚合、关联ID（一个请求一个编号、全链路追踪）、监控告警。不然线上出问题只能靠猜。</p>
+        <div class="example-box"><span class="tag">例 ·</span>给每个请求打上TraceID：一次“下单偶发超时”，十分钟定位到优惠券服务的慢SQL。以前得人肉对十几个服务的日志，至少半天。</div>
+      </li>
+        </ol>
+      </section>
+
+      <section class="section-block">
+        <h2>全书结构 <span class="badge">6 部分</span></h2>
+        <ol class="part-list">
+          <li class="part-item">
+        <p class="part-title"><b>第一部分：微服务到底是什么</b></p>
+        <p class="part-desc">给微服务下定义：小、自治、围绕业务建模、独立部署。讲清楚它解决什么问题，又会带来哪些新代价，先泼一盆冷水。</p>
+        <div class="example-box"><span class="tag">例 ·</span>买车先看缺点：保养贵、油耗高，知道了再决定买不买。开篇先讲微服务的代价，免得你只看到好处一头扎进去。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第二部分：架构师的角色与建模</b></p>
+        <p class="part-desc">讲“演进式架构师”：架构师不是画图纸的，而是定原则、划边界、保证大家不跑偏的。建模要用领域驱动设计的有界上下文来找服务的边界。</p>
+        <div class="example-box"><span class="tag">例 ·</span>就像城市规划师：不规定每栋楼盖几层，但划定商业区、住宅区，定下消防和间距红线。边界内各家自由发挥，城市整体不乱。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第三部分：怎么拆：从单体到微服务</b></p>
+        <p class="part-desc">给单体“动手术”的几种拆法：按业务能力拆、绞杀者模式（新老并行、逐步替换）、按分支抽象逐步剥离。</p>
+        <div class="example-box"><span class="tag">例 ·</span>绞杀者模式像给老房子加装电梯：不拆楼，旁边盖新的，一层层搬功能过去，最后老楼只剩空壳。用户全程无感知，风险一次只冒一点。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第四部分：拆完怎么连：集成与数据</b></p>
+        <p class="part-desc">服务间通信怎么选（REST、RPC、消息队列），以及最难的数据分家。从共享库到各管各的，数据同步和一致性怎么处理。</p>
+        <div class="example-box"><span class="tag">例 ·</span>离婚分财产：房子车子一人一套容易，最难的是共同账户的钱怎么分、以后孩子的学费怎么给。数据分家也一样：接口好定，一致性难搞。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第五部分：部署、测试、监控与安全</b></p>
+        <p class="part-desc">每个服务独立流水线、容器化部署；分布式系统的测试策略（契约测试）；监控三件套；服务间认证与纵深防御。</p>
+        <div class="example-box"><span class="tag">例 ·</span>连锁餐厅：分店独立装修开业（独立部署），总部神秘顾客抽查（契约测试）。装摄像头看后厨（监控），进后厨刷卡（安全）。缺一样，开到第十家店就乱套。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第六部分：组织与规模化</b></p>
+        <p class="part-desc">康威定律与团队组织：按服务组建全功能小团队。服务多到几十上百个之后：版本治理、服务发现、弹性伸缩。</p>
+        <div class="example-box"><span class="tag">例 ·</span>就像乐队：三个人时怎么排都行，变成交响乐团就得有声部、有指挥、有总谱。服务少时靠自觉，服务多了就得靠平台和规范。</div>
+      </li>
+        </ol>
+      </section>
+
+      <nav class="pn">
+        <a class="prev" href="book-12.html">
+          <img src="covers/s30333919.jpg" alt="《架构整洁之道》封面" loading="lazy">
+          <span class="t"><span>← 上一本</span>《架构整洁之道》</span>
+         </a>
+        <a class="next" href="book-14.html">
+          <img src="covers/s1230559.jpg" alt="《企业应用架构模式》封面" loading="lazy">
+          <span class="t"><span>下一本 →</span>《企业应用架构模式》</span>
+         </a>
+      </nav>
+
+      <a class="nav-back-catalog" href="index.html#dom-2">返回 系统设计 目录</a>
+    </main>
+
+    <footer>
+      <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+      <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+</body>
+</html>

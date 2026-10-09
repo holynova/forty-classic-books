@@ -1,115 +1,183 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>《点石成金》· 四十本经典书</title><style>
-:root{--green:#007722;--ink:#1a1a1a;--muted:#767676;--hair:#e9e6df;--paper:#ffffff;--soft:#f7f5f0}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.8}
-.wrap{max-width:46rem;margin:0 auto;padding:0 1.15rem}
-a{color:var(--green)}
-h1,h2{font-family:"Songti SC","Noto Serif SC","STSong",serif}
-::selection{background:#dcefe2}
-/* header */
-.sitehead{border-bottom:1px solid var(--hair);padding:1rem 0 .9rem}
-.sitehead .brand{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.25rem;font-weight:700;color:var(--ink);text-decoration:none}
-.sitehead .brand small{font-family:sans-serif;font-weight:400;font-size:.75rem;color:var(--muted);margin-left:.6rem;letter-spacing:.1em}
-/* domain */
-.domain{padding:2rem 0 .5rem;scroll-margin-top:3.4rem}
-.dnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
-.dnav-inner{max-width:46rem;margin:0 auto;padding:.55rem 1.15rem;display:flex;gap:.5rem;overflow-x:auto}
-.dnav a{flex:1 0 auto;text-align:center;font-size:.85rem;text-decoration:none;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:.32rem .8rem;white-space:nowrap}
-.dnav a:active{background:var(--green);color:#fff;border-color:var(--green)}
-.domain h2{font-size:1.3rem;margin:0 0 .2rem;display:flex;align-items:baseline;gap:.6rem}
-.domain h2 .count{font-family:sans-serif;font-size:.75rem;color:var(--muted);font-weight:400}
-.domain .intro{color:var(--muted);font-size:.88rem;margin:0 0 1rem}
-/* book rows (douban search-result style) */
-.brow{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-top:1px solid var(--hair);text-decoration:none;color:var(--ink)}
-.brow:last-child{border-bottom:1px solid var(--hair)}
-.brow img{width:64px;height:auto;flex:0 0 auto;box-shadow:0 1px 4px rgba(0,0,0,.14)}
-.brow .t{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.05rem;font-weight:700;margin:0 0 .15rem;line-height:1.5}
-.brow .m{font-size:.8rem;color:var(--muted);margin:0;line-height:1.7}
-.brow .r{margin-left:auto;flex:0 0 auto;text-align:right}
-.brow .r b{font-size:1.25rem;color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
-.brow .r span{display:block;font-size:.72rem;color:var(--muted)}
-.brow:active{background:var(--soft)}
-/* detail page */
-.back{display:inline-block;font-size:.85rem;text-decoration:none;margin:1.1rem 0 .4rem}
-.bookhead h1{font-size:1.7rem;margin:.2rem 0 1rem;line-height:1.4}
-.topblock{display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:1.4rem}
-.topblock img.cover{width:132px;height:auto;flex:0 0 auto;box-shadow:0 2px 10px rgba(0,0,0,.16)}
-.info{font-size:.88rem;line-height:2}
-.info .k{color:var(--muted)}
-.info a{text-decoration:none;border-bottom:1px solid var(--green)}
-.ratebox{display:flex;align-items:baseline;gap:.7rem;background:var(--soft);border:1px solid var(--hair);border-radius:.5rem;padding:.8rem 1rem;margin:0 0 1.6rem}
-.ratebox .num{font-size:2.4rem;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums;line-height:1}
-.ratebox .lbl{font-size:.8rem;color:var(--muted)}
-.ratebox .lbl b{color:var(--ink)}
-section.blk{margin:0 0 2rem}
-section.blk h2{font-size:1.15rem;margin:0 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--ink)}
-.thesis p{margin:0 0 .7rem}
-ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
-.ideas li,.parts li{padding:.7rem 0;border-top:1px solid var(--hair)}
-.ideas li:last-child,.parts li:last-child{border-bottom:1px solid var(--hair)}
-.idea,.part{margin:0;font-size:.96rem}
-.ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
-.ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next cards */
-.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
-.pn a:active{background:var(--soft)}
-.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
-.pn a.next{flex-direction:row-reverse;text-align:right}
-.pn a.solo{grid-column:1/-1}
-footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
-footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
-@media(min-width:640px){
-  .topblock img.cover{width:168px}
-  .bookhead h1{font-size:2rem}
-  .brow img{width:76px}
-}
-</style></head>
-<body><div class="wrap"><header class="sitehead"><a class="brand" href="index.html">四十本经典书<small>BOOK GUIDE · VOL.01</small></a></header></div>
-<div class="wrap"><main>
-<a class="back" href="index.html">← 全部 40 本</a>
-<div class="bookhead"><h1>《点石成金》</h1></div>
-<div class="topblock">
-<img class="cover" src="covers/s1827702.jpg" alt="《点石成金》封面">
-<div class="info">
-<div><span class="k">作者：</span>史蒂夫·克鲁格</div>
-<div><span class="k">出版社：</span>机械工业出版社</div>
-<div><span class="k">出版年：</span>2006-8</div>
-<div><span class="k">原作名：</span>Don't Make Me Think</div>
-<div><span class="k">领域：</span>UI/UX 设计 · 第 21 本</div>
-<div style="margin-top:.4rem"><a href="https://book.douban.com/subject/1827702/" target="_blank" rel="noopener">豆瓣读书 →</a></div>
-</div></div>
-<div class="ratebox"><span class="num">8.5</span><span class="lbl"><b>豆瓣评分</b><br>7273人评价</span></div>
-<p style="font-size:1.02rem;border-left:3px solid var(--green);padding-left:.8rem;margin:0 0 1.8rem">做网站和 App 的实战小册子：别让用户动脑子，薄、幽默、句句拿来就能用。</p>
-<section class="blk"><h2>总体观点</h2><div class="thesis"><p>一个页面好不好用，不看视觉多酷，只看用户能不能不假思索地完成任务。用户停下来想“我该点哪儿”，设计就已经输了。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《点石成金》 · 四十本经典书</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="sitehead">
+      <div class="sitehead-inner">
+        <a class="brand" href="index.html">
+          四十本经典书
+          <small>BOOK GUIDE · VOL.01</small>
+        </a>
+        <span class="sitehead-tag">UI/UX 设计</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="back-nav">
+        <a class="back-link" href="index.html#dom-3">← 全部 40 本</a>
+        <span class="detail-domain-tag">UI/UX 设计 · 第 21 本</span>
+      </div>
+
+      <div class="book-title-header">
+        <h1>《点石成金》</h1>
+      </div>
+
+      <div class="detail-top">
+        <div class="detail-cover-wrap">
+          <img class="detail-cover" src="covers/s1827702.jpg" alt="《点石成金》封面" width="138" height="200">
+        </div>
+        <div class="detail-meta">
+          <div class="detail-meta-item">
+            <span class="label">作者：</span>
+            <span class="value">史蒂夫·克鲁格</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版社：</span>
+            <span class="value">机械工业出版社</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版年：</span>
+            <span class="value">2006-8</span>
+          </div>
+          <div class="detail-meta-item">
+        <span class="label">原作名：</span>
+        <span class="value">Don't Make Me Think</span>
+      </div>
+          <div class="detail-meta-item">
+            <span class="label">领域：</span>
+            <span class="value">UI/UX 设计 · 第 21 本</span>
+          </div>
+          <div class="detail-meta-item" style="margin-top: 0.4rem;">
+            <a class="douban-link" href="https://book.douban.com/subject/1827702/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ratebox">
+        <span class="ratebox-num">8.5</span>
+        <div class="ratebox-info">
+          <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
+          <div class="ratebox-label"><b>豆瓣评分</b> · 7273人评价</div>
+        </div>
+      </div>
+
+      <div class="intro-quote">
+        做网站和 App 的实战小册子：别让用户动脑子，薄、幽默、句句拿来就能用。
+      </div>
+
+      <section class="section-block">
+        <h2>总体观点</h2>
+        <div class="thesis-body">
+          <p>一个页面好不好用，不看视觉多酷，只看用户能不能不假思索地完成任务。用户停下来想“我该点哪儿”，设计就已经输了。</p>
 <p>用户不是在阅读页面，而是在扫描；做选择时不是精挑细选，而是差不多就行。这本书把可用性从实验室里的高深学问，变成了人人能用的常识。</p>
-<p>它提出了“一天 10 美分”测试法。找 3 个用户，一个上午测一次，下午就改。从此“小步快测”成了整个互联网行业的标配动作。</p></div></section>
-<section class="blk"><h2>核心观点 · 7</h2><ol class="ideas"><li><p class="idea"><b>1. 别让我思考：好页面不用动脑子</b> 用户打开页面时大脑处于省电模式，只想赶紧把事办完。每个按钮、每段文字都要一眼就懂。让用户犹豫超过一秒的设计，都是在添堵。</p><p class="ex">注册按钮写“免费注册”，用户秒懂。写成“开启您的数字化之旅”，用户就得愣住：这是注册吗？淘宝的“立即购买”大按钮又大又红，不用想就知道点它能下单。</p></li>
-<li><p class="idea"><b>2. 用户不读页面，他们只扫描</b> 用户像雷达一样扫页面，只抓关键词、大标题、加粗字，剩下的直接跳过。页面是写给“扫描仪”看的，得经得起扫：层级分明、重点突出。</p><p class="ex">微信公众号文章没人逐字读，都是先扫标题和小标题，觉得有料才细看。所以多用小标题分段、关键词加粗、要点用列表排开。</p></li>
-<li><p class="idea"><b>3. 差不多就行：用户不做最优选择</b> “满意即可”：用户点第一个看起来靠谱的选项，错了再回头。试错成本太低了，点错了点返回就行，谁还费脑子比较？</p><p class="ex">百度搜“北京好吃的火锅”，你会点第一个标题顺眼的进去，不行再退回来。搜索结果页的关键是让每个结果都清晰可信，用户敢放心点下去。</p></li>
-<li><p class="idea"><b>4. 点击几次无所谓，每次点击要明确</b> 用户不怕多点几下，怕的是每点一下都要赌一把：“点这个对吗？会去哪儿？”只要每一步都清清楚楚，点十次也乐意。</p><p class="ex">美团外卖从首页到结算七八步，但每一步都知道自己在哪、下一步去哪，所以不累。反倒是某些网站的按钮写着“了解更多”，点下去是报价单还是广告全靠猜。</p></li>
-<li><p class="idea"><b>5. 删掉一半文字，再把剩下的删掉一半</b> 网页上的字 90% 没人看，却全是噪音。它们让真正重要的信息更难被扫到。先删一半，再删一半，留下的每个字都得是“不写用户就办不成事”的。</p><p class="ex">很多公司官网首页写“欢迎光临，我公司成立于 2003 年……”。用户只想找客服电话，这些字全是路障。苹果官网一句话：“iPhone 16，强，翻天。”</p></li>
-<li><p class="idea"><b>6. 导航要像街头指示牌，一眼看懂</b> 好导航像马路上的指示牌：需要的时候准时出现、清晰醒目。再配上面包屑“首页 &gt; 女装 &gt; 连衣裙”。用户随时知道自己在哪、怎么回去。</p><p class="ex">淘宝把“首页、购物车、我的”固定在底部。不管逛多深，一抬手就能回家。用户在网站里迷路，和在商场里迷路一样，只想赶紧出去。</p></li>
-<li><p class="idea"><b>7. 可用性测试不用贵：找 3 个人，一个上午测一次</b> 别把可用性测试当科研项目。找 3 个普通用户，给几个典型任务，看着他们用，记下卡住的地方。一个上午就能发现 80% 的问题。精髓是早测、常测。</p><p class="ex">点餐小程序原型做好，直接拉 3 个同事来“帮我点一份宫保鸡丁”。有人在支付页卡住，有人找不到优惠券入口，10 分钟问题全暴露了。</p></li></ol></section>
-<section class="blk"><h2>全书结构</h2><ol class="parts"><li><p class="part"><b>第一部分：可用性的基本原则（第 1–6 章）</b> 三条定律加用户真实行为：用户扫描不阅读、选择差不多就行。设计手法：为扫描设计、借用惯例、视觉层级分明、删繁就简、导航清晰。</p><p class="ex">就像高速公路广告牌：司机只有 3 秒钟看，字大、信息少、一眼懂。网页也一样，用户只给你几秒钟，这部分教你在这几秒里把事说清楚。</p></li>
-<li><p class="part"><b>第二部分：让用户顺利上路（第 7 章）</b> 首页是网站的“大堂”，几秒钟内必须回答三个问题：这是什么网站？我能干什么？为什么选你不选别人？</p><p class="ex">携程首页一眼就懂：订机票酒店的，搜索框在正中间。反观某些企业官网，一屏轮播图配“携手共创美好未来”，三个问题一个都没回答。</p></li>
-<li><p class="part"><b>可用性之争：农夫和牧牛人为什么总吵架（第 8 章）</b> 团队里关于可用性的争论吵不出结果，因为人人都从自己立场出发。解法是别争对错，让真实用户投票——也就是做测试。</p><p class="ex">老板要首页加轮播大图，设计师说没人看。别吵，找 5 个用户来，看看有几个人点轮播图，数据一摆出来，争论自然结束。</p></li>
-<li><p class="part"><b>自己动手的可用性测试（第 9–10 章）</b> 低成本测试全流程：怎么招人、怎么出任务、测试时只看不说。核心一句话：可用性就是基本礼貌，别给用户添麻烦。</p><p class="ex">每月抽一个上午，请 3 个用户用 20 分钟。你会发现一堆自己天天看却视而不见的问题。</p></li>
-<li><p class="part"><b>移动时代与“救命，老板要我……”（第 11–13 章）</b> 移动端屏幕小、场景碎片化，可用性要求更高。最后一章教你怎么跟老板沟通：把“你错了”说成“我们一起让用户更爽”。</p><p class="ex">老板要在首页塞 8 个入口，别硬顶。“我们找 3 个用户试试，看他们找不找得到充值入口？”争论变成一次 30 分钟的小测试。</p></li></ol></section>
-<nav class="pn"><a class="prev" href="book-20.html"><img src="covers/s26765979.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《架构即未来》</span></a><a class="next" href="book-22.html"><img src="covers/s2297549.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《用户体验的要素》</span></a></nav>
-</main></div><footer><div class="wrap">
-<p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
-<p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer>
-<script>
-document.addEventListener('keydown',function(e){
-  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
-  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
-  if(e.key==='ArrowRight'&&n){location.href=n.href;}
-});
-</script>
-</body></html>
+<p>它提出了“一天 10 美分”测试法。找 3 个用户，一个上午测一次，下午就改。从此“小步快测”成了整个互联网行业的标配动作。</p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>核心观点 <span class="badge">共 7 条</span></h2>
+        <ol class="idea-list">
+          <li class="idea-item">
+        <p class="idea-title"><b>1. 别让我思考：好页面不用动脑子</b></p>
+        <p class="idea-desc">用户打开页面时大脑处于省电模式，只想赶紧把事办完。每个按钮、每段文字都要一眼就懂。让用户犹豫超过一秒的设计，都是在添堵。</p>
+        <div class="example-box"><span class="tag">例 ·</span>注册按钮写“免费注册”，用户秒懂。写成“开启您的数字化之旅”，用户就得愣住：这是注册吗？淘宝的“立即购买”大按钮又大又红，不用想就知道点它能下单。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>2. 用户不读页面，他们只扫描</b></p>
+        <p class="idea-desc">用户像雷达一样扫页面，只抓关键词、大标题、加粗字，剩下的直接跳过。页面是写给“扫描仪”看的，得经得起扫：层级分明、重点突出。</p>
+        <div class="example-box"><span class="tag">例 ·</span>微信公众号文章没人逐字读，都是先扫标题和小标题，觉得有料才细看。所以多用小标题分段、关键词加粗、要点用列表排开。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>3. 差不多就行：用户不做最优选择</b></p>
+        <p class="idea-desc">“满意即可”：用户点第一个看起来靠谱的选项，错了再回头。试错成本太低了，点错了点返回就行，谁还费脑子比较？</p>
+        <div class="example-box"><span class="tag">例 ·</span>百度搜“北京好吃的火锅”，你会点第一个标题顺眼的进去，不行再退回来。搜索结果页的关键是让每个结果都清晰可信，用户敢放心点下去。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>4. 点击几次无所谓，每次点击要明确</b></p>
+        <p class="idea-desc">用户不怕多点几下，怕的是每点一下都要赌一把：“点这个对吗？会去哪儿？”只要每一步都清清楚楚，点十次也乐意。</p>
+        <div class="example-box"><span class="tag">例 ·</span>美团外卖从首页到结算七八步，但每一步都知道自己在哪、下一步去哪，所以不累。反倒是某些网站的按钮写着“了解更多”，点下去是报价单还是广告全靠猜。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>5. 删掉一半文字，再把剩下的删掉一半</b></p>
+        <p class="idea-desc">网页上的字 90% 没人看，却全是噪音。它们让真正重要的信息更难被扫到。先删一半，再删一半，留下的每个字都得是“不写用户就办不成事”的。</p>
+        <div class="example-box"><span class="tag">例 ·</span>很多公司官网首页写“欢迎光临，我公司成立于 2003 年……”。用户只想找客服电话，这些字全是路障。苹果官网一句话：“iPhone 16，强，翻天。”</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>6. 导航要像街头指示牌，一眼看懂</b></p>
+        <p class="idea-desc">好导航像马路上的指示牌：需要的时候准时出现、清晰醒目。再配上面包屑“首页 &amp;gt; 女装 &amp;gt; 连衣裙”。用户随时知道自己在哪、怎么回去。</p>
+        <div class="example-box"><span class="tag">例 ·</span>淘宝把“首页、购物车、我的”固定在底部。不管逛多深，一抬手就能回家。用户在网站里迷路，和在商场里迷路一样，只想赶紧出去。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>7. 可用性测试不用贵：找 3 个人，一个上午测一次</b></p>
+        <p class="idea-desc">别把可用性测试当科研项目。找 3 个普通用户，给几个典型任务，看着他们用，记下卡住的地方。一个上午就能发现 80% 的问题。精髓是早测、常测。</p>
+        <div class="example-box"><span class="tag">例 ·</span>点餐小程序原型做好，直接拉 3 个同事来“帮我点一份宫保鸡丁”。有人在支付页卡住，有人找不到优惠券入口，10 分钟问题全暴露了。</div>
+      </li>
+        </ol>
+      </section>
+
+      <section class="section-block">
+        <h2>全书结构 <span class="badge">5 部分</span></h2>
+        <ol class="part-list">
+          <li class="part-item">
+        <p class="part-title"><b>第一部分：可用性的基本原则（第 1–6 章）</b></p>
+        <p class="part-desc">三条定律加用户真实行为：用户扫描不阅读、选择差不多就行。设计手法：为扫描设计、借用惯例、视觉层级分明、删繁就简、导航清晰。</p>
+        <div class="example-box"><span class="tag">例 ·</span>就像高速公路广告牌：司机只有 3 秒钟看，字大、信息少、一眼懂。网页也一样，用户只给你几秒钟，这部分教你在这几秒里把事说清楚。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第二部分：让用户顺利上路（第 7 章）</b></p>
+        <p class="part-desc">首页是网站的“大堂”，几秒钟内必须回答三个问题：这是什么网站？我能干什么？为什么选你不选别人？</p>
+        <div class="example-box"><span class="tag">例 ·</span>携程首页一眼就懂：订机票酒店的，搜索框在正中间。反观某些企业官网，一屏轮播图配“携手共创美好未来”，三个问题一个都没回答。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>可用性之争：农夫和牧牛人为什么总吵架（第 8 章）</b></p>
+        <p class="part-desc">团队里关于可用性的争论吵不出结果，因为人人都从自己立场出发。解法是别争对错，让真实用户投票——也就是做测试。</p>
+        <div class="example-box"><span class="tag">例 ·</span>老板要首页加轮播大图，设计师说没人看。别吵，找 5 个用户来，看看有几个人点轮播图，数据一摆出来，争论自然结束。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>自己动手的可用性测试（第 9–10 章）</b></p>
+        <p class="part-desc">低成本测试全流程：怎么招人、怎么出任务、测试时只看不说。核心一句话：可用性就是基本礼貌，别给用户添麻烦。</p>
+        <div class="example-box"><span class="tag">例 ·</span>每月抽一个上午，请 3 个用户用 20 分钟。你会发现一堆自己天天看却视而不见的问题。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>移动时代与“救命，老板要我……”（第 11–13 章）</b></p>
+        <p class="part-desc">移动端屏幕小、场景碎片化，可用性要求更高。最后一章教你怎么跟老板沟通：把“你错了”说成“我们一起让用户更爽”。</p>
+        <div class="example-box"><span class="tag">例 ·</span>老板要在首页塞 8 个入口，别硬顶。“我们找 3 个用户试试，看他们找不找得到充值入口？”争论变成一次 30 分钟的小测试。</div>
+      </li>
+        </ol>
+      </section>
+
+      <nav class="pn">
+        <a class="prev" href="book-20.html">
+          <img src="covers/s26765979.jpg" alt="《架构即未来》封面" loading="lazy">
+          <span class="t"><span>← 上一本</span>《架构即未来》</span>
+         </a>
+        <a class="next" href="book-22.html">
+          <img src="covers/s2297549.jpg" alt="《用户体验的要素》封面" loading="lazy">
+          <span class="t"><span>下一本 →</span>《用户体验的要素》</span>
+         </a>
+      </nav>
+
+      <a class="nav-back-catalog" href="index.html#dom-3">返回 UI/UX 设计 目录</a>
+    </main>
+
+    <footer>
+      <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+      <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+</body>
+</html>

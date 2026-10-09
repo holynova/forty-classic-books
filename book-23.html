@@ -1,116 +1,188 @@
-<!DOCTYPE html><html lang="zh-CN"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>《设计心理学》· 四十本经典书</title><style>
-:root{--green:#007722;--ink:#1a1a1a;--muted:#767676;--hair:#e9e6df;--paper:#ffffff;--soft:#f7f5f0}
-*{box-sizing:border-box}
-html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei",sans-serif;font-size:16px;line-height:1.8}
-.wrap{max-width:46rem;margin:0 auto;padding:0 1.15rem}
-a{color:var(--green)}
-h1,h2{font-family:"Songti SC","Noto Serif SC","STSong",serif}
-::selection{background:#dcefe2}
-/* header */
-.sitehead{border-bottom:1px solid var(--hair);padding:1rem 0 .9rem}
-.sitehead .brand{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.25rem;font-weight:700;color:var(--ink);text-decoration:none}
-.sitehead .brand small{font-family:sans-serif;font-weight:400;font-size:.75rem;color:var(--muted);margin-left:.6rem;letter-spacing:.1em}
-/* domain */
-.domain{padding:2rem 0 .5rem;scroll-margin-top:3.4rem}
-.dnav{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.93);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border-bottom:1px solid var(--hair)}
-.dnav-inner{max-width:46rem;margin:0 auto;padding:.55rem 1.15rem;display:flex;gap:.5rem;overflow-x:auto}
-.dnav a{flex:1 0 auto;text-align:center;font-size:.85rem;text-decoration:none;color:var(--muted);border:1px solid var(--hair);border-radius:999px;padding:.32rem .8rem;white-space:nowrap}
-.dnav a:active{background:var(--green);color:#fff;border-color:var(--green)}
-.domain h2{font-size:1.3rem;margin:0 0 .2rem;display:flex;align-items:baseline;gap:.6rem}
-.domain h2 .count{font-family:sans-serif;font-size:.75rem;color:var(--muted);font-weight:400}
-.domain .intro{color:var(--muted);font-size:.88rem;margin:0 0 1rem}
-/* book rows (douban search-result style) */
-.brow{display:flex;gap:.9rem;align-items:flex-start;padding:.9rem 0;border-top:1px solid var(--hair);text-decoration:none;color:var(--ink)}
-.brow:last-child{border-bottom:1px solid var(--hair)}
-.brow img{width:64px;height:auto;flex:0 0 auto;box-shadow:0 1px 4px rgba(0,0,0,.14)}
-.brow .t{font-family:"Songti SC","Noto Serif SC",serif;font-size:1.05rem;font-weight:700;margin:0 0 .15rem;line-height:1.5}
-.brow .m{font-size:.8rem;color:var(--muted);margin:0;line-height:1.7}
-.brow .r{margin-left:auto;flex:0 0 auto;text-align:right}
-.brow .r b{font-size:1.25rem;color:var(--green);font-weight:700;font-variant-numeric:tabular-nums}
-.brow .r span{display:block;font-size:.72rem;color:var(--muted)}
-.brow:active{background:var(--soft)}
-/* detail page */
-.back{display:inline-block;font-size:.85rem;text-decoration:none;margin:1.1rem 0 .4rem}
-.bookhead h1{font-size:1.7rem;margin:.2rem 0 1rem;line-height:1.4}
-.topblock{display:flex;gap:1.2rem;align-items:flex-start;margin-bottom:1.4rem}
-.topblock img.cover{width:132px;height:auto;flex:0 0 auto;box-shadow:0 2px 10px rgba(0,0,0,.16)}
-.info{font-size:.88rem;line-height:2}
-.info .k{color:var(--muted)}
-.info a{text-decoration:none;border-bottom:1px solid var(--green)}
-.ratebox{display:flex;align-items:baseline;gap:.7rem;background:var(--soft);border:1px solid var(--hair);border-radius:.5rem;padding:.8rem 1rem;margin:0 0 1.6rem}
-.ratebox .num{font-size:2.4rem;font-weight:700;color:var(--green);font-variant-numeric:tabular-nums;line-height:1}
-.ratebox .lbl{font-size:.8rem;color:var(--muted)}
-.ratebox .lbl b{color:var(--ink)}
-section.blk{margin:0 0 2rem}
-section.blk h2{font-size:1.15rem;margin:0 0 .8rem;padding-bottom:.4rem;border-bottom:2px solid var(--ink)}
-.thesis p{margin:0 0 .7rem}
-ol.ideas,ol.parts{list-style:none;margin:0;padding:0}
-.ideas li,.parts li{padding:.7rem 0;border-top:1px solid var(--hair)}
-.ideas li:last-child,.parts li:last-child{border-bottom:1px solid var(--hair)}
-.idea,.part{margin:0;font-size:.96rem}
-.ex{margin:.3rem 0 0;font-size:.85rem;color:var(--muted)}
-.ex::before{content:"例 · ";color:var(--green);font-weight:600}
-/* prev next cards */
-.pn{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;border-top:1px solid var(--hair);padding:1.2rem 0 0;margin:0 0 1rem}
-.pn a{display:flex;gap:.65rem;align-items:center;text-decoration:none;border:1px solid var(--hair);border-radius:.6rem;padding:.65rem .7rem;color:var(--ink);background:#fff;min-width:0}
-.pn a:active{background:var(--soft)}
-.pn a img{width:42px;height:auto;flex:0 0 auto;box-shadow:0 1px 3px rgba(0,0,0,.15)}
-.pn a .t{font-size:.82rem;line-height:1.55;min-width:0;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical}
-.pn a .t span{display:block;font-size:.72rem;color:var(--green);font-weight:600}
-.pn a.next{flex-direction:row-reverse;text-align:right}
-.pn a.solo{grid-column:1/-1}
-footer{border-top:1px solid var(--hair);margin-top:2.5rem;padding:1.2rem 0 3rem}
-footer p{font-size:.76rem;color:var(--muted);margin:0 0 .3rem}
-@media(min-width:640px){
-  .topblock img.cover{width:168px}
-  .bookhead h1{font-size:2rem}
-  .brow img{width:76px}
-}
-</style></head>
-<body><div class="wrap"><header class="sitehead"><a class="brand" href="index.html">四十本经典书<small>BOOK GUIDE · VOL.01</small></a></header></div>
-<div class="wrap"><main>
-<a class="back" href="index.html">← 全部 40 本</a>
-<div class="bookhead"><h1>《设计心理学》</h1></div>
-<div class="topblock">
-<img class="cover" src="covers/s1288844.jpg" alt="《设计心理学》封面">
-<div class="info">
-<div><span class="k">作者：</span>唐纳德·诺曼</div>
-<div><span class="k">出版社：</span>中信出版社</div>
-<div><span class="k">出版年：</span>2003-10-1</div>
-<div><span class="k">原作名：</span>The Design of Everyday Things</div>
-<div><span class="k">领域：</span>UI/UX 设计 · 第 23 本</div>
-<div style="margin-top:.4rem"><a href="https://book.douban.com/subject/1288844/" target="_blank" rel="noopener">豆瓣读书 →</a></div>
-</div></div>
-<div class="ratebox"><span class="num">8.2</span><span class="lbl"><b>豆瓣评分</b><br>4051人评价</span></div>
-<p style="font-size:1.02rem;border-left:3px solid var(--green);padding-left:.8rem;margin:0 0 1.8rem">从“门总推错”讲起：用户犯错通常不是人笨，是设计蠢，好设计顺着人的心理来。</p>
-<section class="blk"><h2>总体观点</h2><div class="thesis"><p>当用户用不好一个产品时，错的不是用户，是设计。诺曼用认知心理学解释人机交互。人靠心智模型猜测产品怎么工作，靠产品给的提示验证。设计要做的，就是填平“执行鸿沟”和“评估鸿沟”。让人知道怎么下手，也知道做成了没。</p>
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>《设计心理学》 · 四十本经典书</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="wrap">
+    <header class="sitehead">
+      <div class="sitehead-inner">
+        <a class="brand" href="index.html">
+          四十本经典书
+          <small>BOOK GUIDE · VOL.01</small>
+        </a>
+        <span class="sitehead-tag">UI/UX 设计</span>
+      </div>
+    </header>
+
+    <main>
+      <div class="back-nav">
+        <a class="back-link" href="index.html#dom-3">← 全部 40 本</a>
+        <span class="detail-domain-tag">UI/UX 设计 · 第 23 本</span>
+      </div>
+
+      <div class="book-title-header">
+        <h1>《设计心理学》</h1>
+      </div>
+
+      <div class="detail-top">
+        <div class="detail-cover-wrap">
+          <img class="detail-cover" src="covers/s1288844.jpg" alt="《设计心理学》封面" width="138" height="200">
+        </div>
+        <div class="detail-meta">
+          <div class="detail-meta-item">
+            <span class="label">作者：</span>
+            <span class="value">唐纳德·诺曼</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版社：</span>
+            <span class="value">中信出版社</span>
+          </div>
+          <div class="detail-meta-item">
+            <span class="label">出版年：</span>
+            <span class="value">2003-10-1</span>
+          </div>
+          <div class="detail-meta-item">
+        <span class="label">原作名：</span>
+        <span class="value">The Design of Everyday Things</span>
+      </div>
+          <div class="detail-meta-item">
+            <span class="label">领域：</span>
+            <span class="value">UI/UX 设计 · 第 23 本</span>
+          </div>
+          <div class="detail-meta-item" style="margin-top: 0.4rem;">
+            <a class="douban-link" href="https://book.douban.com/subject/1288844/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="ratebox">
+        <span class="ratebox-num">8.2</span>
+        <div class="ratebox-info">
+          <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
+          <div class="ratebox-label"><b>豆瓣评分</b> · 4051人评价</div>
+        </div>
+      </div>
+
+      <div class="intro-quote">
+        从“门总推错”讲起：用户犯错通常不是人笨，是设计蠢，好设计顺着人的心理来。
+      </div>
+
+      <section class="section-block">
+        <h2>总体观点</h2>
+        <div class="thesis-body">
+          <p>当用户用不好一个产品时，错的不是用户，是设计。诺曼用认知心理学解释人机交互。人靠心智模型猜测产品怎么工作，靠产品给的提示验证。设计要做的，就是填平“执行鸿沟”和“评估鸿沟”。让人知道怎么下手，也知道做成了没。</p>
 <p>1988 年出版时设计界还在比造型，诺曼第一个系统地把认知心理学搬进设计。他开创了“以用户为中心的设计”。那扇分不清推拉的“诺曼门”，成了全世界设计课的开场案例。</p>
-<p>它重新定义了“错误”：用户犯的每一个错，都是设计欠用户的一个解释。防呆设计、可用性测试、以用户为中心的设计流程，全都从这里生根发芽。</p></div></section>
-<section class="blk"><h2>核心观点 · 7</h2><ol class="ideas"><li><p class="idea"><b>1. 不是你笨，是那扇门有问题（诺曼门）</b> 分不清推拉的门，不是用户观察力差，是设计没把“怎么开”这件事说清楚。不需要说明书、不需要试错的东西，才是好设计。</p><p class="ex">双手抱着快递走到玻璃门前，推一下没开，拉一下开了，进去又被第二扇门挡住。装横杆的门只能推、装把手的门只能拉——设计本身就该把答案写好。</p></li>
-<li><p class="idea"><b>2. 示能：东西要“长得像”它的用法</b> “示能”指东西的外形材质本身就在告诉你它能怎么用：椅子示能坐，按钮示能按。好的示能让用户不用学、不用猜，看一眼就知道怎么下手。</p><p class="ex">剪刀的指环明明白白告诉你手指伸哪儿、怎么用力。微波炉上一排一模一样的按钮，每个都示能按。却没一个告诉你按了会发生什么。</p></li>
-<li><p class="idea"><b>3. 意符：明确告诉用户“这里可以动手”</b> “意符”是“请在这里操作”的明确信号。比如按钮的阴影、链接的下划线、“向右滑动解锁”的箭头。没有意符，用户面对能用的东西也不知道从哪儿下手。</p><p class="ex">App 里纯文字“提交”，用户不敢点。加上圆角边框和阴影，立刻有了“按钮感”。电梯开门键上的“◀▶”符号也是意符。</p></li>
-<li><p class="idea"><b>4. 映射：控制器和效果的对应关系要符合直觉</b> “映射”指控制器和它控制的东西的对应关系。空间排布对应、方向对应：往上推就是开大，往左拨就是选左边，顺着人的直觉来。</p><p class="ex">老式燃气灶四个炉头排成方形、四个旋钮排成一排，永远记不住哪个管哪个。把旋钮也排成方形一一对应，看一眼就会。</p></li>
-<li><p class="idea"><b>5. 心智模型：用户脑子里对“这怎么工作”的猜想</b> 用户永远是靠猜来用产品的：猜对了用得顺，猜错了就犯错。设计师的任务是让产品符合用户已有的猜想，或帮用户建立正确的猜想。</p><p class="ex">很多人以为把文件拖进回收站就是彻底删除了，结果只是挪了个地方，硬盘照样满。好的设计顺着用户的心智模型来，不嘲笑它。</p></li>
-<li><p class="idea"><b>6. 错误分两种：手滑和想错，好设计都要防得住</b> “手滑”是想得对但手没跟上（点错按钮），“想错”是理解就错了（转错人）。手滑靠撤销、确认兜底，想错靠提示和反馈纠正。人一定会犯错，设计要把代价降到最低。</p><p class="ex">微信消息两分钟内可撤回，就是给手滑兜底。某些 App“删除聊天记录”一点就没，连确认都没有。这是在惩罚人类的正常失误。</p></li>
-<li><p class="idea"><b>7. 反馈和约束：做了要吭声，关键处要设限</b> “反馈”是操作后给个回应（声音、震动、动画），让人知道成了没成。“约束”是主动限制错误发生（插不错、跳不过）。反馈管事后安心，约束管事前防呆。</p><p class="ex">洗衣机按启动键“滴”一声、亮灯、开始转，三重反馈告诉你“收到”。SIM 卡一角斜切，只能以唯一正确的方向插进去。物理约束让你想犯错都没机会。</p></li></ol></section>
-<section class="blk"><h2>全书结构</h2><ol class="parts"><li><p class="part"><b>第一章：日常用品的“心理病理学”</b> 一堆“坏设计”展览。分不清推拉的门、记不清旋钮管哪个炉头的灶、总按错的电话机。用户受苦，病根在设计。</p><p class="ex">读完你会发现生活中处处是“带病上岗”的设计，而你受的那些气，真不是你的错。</p></li>
-<li><p class="part"><b>第二章：日常行为的心理学——行动的七个阶段</b> 人完成行动要经过七个阶段：定目标、定意图、定动作、执行、感知、解释、评估。好设计填平“执行鸿沟”（不知道怎么下手）和“评估鸿沟”（不知道做成了没）。</p><p class="ex">调空调到 26 度：遥控器按钮太多找不到温度键，就是执行鸿沟。按了没任何显示，你不知道设没设上，就是评估鸿沟。</p></li>
-<li><p class="part"><b>第三章：头脑中的知识与世界上的知识</b> 人做事靠两种知识：记在脑子里的和写在世界上的。好设计尽量把知识放在世界上，别考验用户的记忆力。</p><p class="ex">朋友家 8 个电灯开关，你一个个试，这是在逼你瞎猜。旁边贴个小标签“客厅”“阳台”，就不用猜了。</p></li>
-<li><p class="part"><b>第四章：知道要做什么——约束、可发现性与反馈</b> 让用户“知道该干嘛”的三大法宝：约束、可发现性、反馈。约束限制错误可能，可发现性靠示能和意符，反馈是做了给回应。这是全书最实用的设计工具箱。</p><p class="ex">乐高积木凸起和凹槽只有一种拼法，拼错了根本卡不进去。约束的大师：小孩不用教就会玩。</p></li>
-<li><p class="part"><b>第五章：人为错误？不，是糟糕的设计</b> 系统讲错误：手滑 vs 想错、为什么指责用户没用，以及防错设计的方法。从根上让错误发生不了，或让错误代价足够小。</p><p class="ex">药瓶“按压再旋转”瓶盖：小孩打不开，大人一看就懂。软件里删文件前输入文件名确认，高危操作不让你手滑就酿大祸。</p></li>
-<li><p class="part"><b>第六、七章：设计思维与商业中的设计</b> 从单品设计上升到方法论。以用户为中心的设计流程：观察、想法、原型、测试，不断迭代。以及设计如何在商业组织里落地。</p><p class="ex">像做菜：先尝一口（观察用户）、想想缺啥（想法）。小火试做一份（原型）、请人试吃（测试）。不好吃就回炉。</p></li></ol></section>
-<nav class="pn"><a class="prev" href="book-22.html"><img src="covers/s2297549.jpg" alt="" loading="lazy"><span class="t"><span>← 上一本</span>《用户体验的要素》</span></a><a class="next" href="book-24.html"><img src="covers/s3279105.jpg" alt="" loading="lazy"><span class="t"><span>下一本 →</span>《交互设计精髓》</span></a></nav>
-</main></div><footer><div class="wrap">
-<p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
-<p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
-</div></footer>
-<script>
-document.addEventListener('keydown',function(e){
-  var p=document.querySelector('.pn a.prev'),n=document.querySelector('.pn a.next');
-  if(e.key==='ArrowLeft'&&p){location.href=p.href;}
-  if(e.key==='ArrowRight'&&n){location.href=n.href;}
-});
-</script>
-</body></html>
+<p>它重新定义了“错误”：用户犯的每一个错，都是设计欠用户的一个解释。防呆设计、可用性测试、以用户为中心的设计流程，全都从这里生根发芽。</p>
+        </div>
+      </section>
+
+      <section class="section-block">
+        <h2>核心观点 <span class="badge">共 7 条</span></h2>
+        <ol class="idea-list">
+          <li class="idea-item">
+        <p class="idea-title"><b>1. 不是你笨，是那扇门有问题（诺曼门）</b></p>
+        <p class="idea-desc">分不清推拉的门，不是用户观察力差，是设计没把“怎么开”这件事说清楚。不需要说明书、不需要试错的东西，才是好设计。</p>
+        <div class="example-box"><span class="tag">例 ·</span>双手抱着快递走到玻璃门前，推一下没开，拉一下开了，进去又被第二扇门挡住。装横杆的门只能推、装把手的门只能拉——设计本身就该把答案写好。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>2. 示能：东西要“长得像”它的用法</b></p>
+        <p class="idea-desc">“示能”指东西的外形材质本身就在告诉你它能怎么用：椅子示能坐，按钮示能按。好的示能让用户不用学、不用猜，看一眼就知道怎么下手。</p>
+        <div class="example-box"><span class="tag">例 ·</span>剪刀的指环明明白白告诉你手指伸哪儿、怎么用力。微波炉上一排一模一样的按钮，每个都示能按。却没一个告诉你按了会发生什么。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>3. 意符：明确告诉用户“这里可以动手”</b></p>
+        <p class="idea-desc">“意符”是“请在这里操作”的明确信号。比如按钮的阴影、链接的下划线、“向右滑动解锁”的箭头。没有意符，用户面对能用的东西也不知道从哪儿下手。</p>
+        <div class="example-box"><span class="tag">例 ·</span>App 里纯文字“提交”，用户不敢点。加上圆角边框和阴影，立刻有了“按钮感”。电梯开门键上的“◀▶”符号也是意符。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>4. 映射：控制器和效果的对应关系要符合直觉</b></p>
+        <p class="idea-desc">“映射”指控制器和它控制的东西的对应关系。空间排布对应、方向对应：往上推就是开大，往左拨就是选左边，顺着人的直觉来。</p>
+        <div class="example-box"><span class="tag">例 ·</span>老式燃气灶四个炉头排成方形、四个旋钮排成一排，永远记不住哪个管哪个。把旋钮也排成方形一一对应，看一眼就会。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>5. 心智模型：用户脑子里对“这怎么工作”的猜想</b></p>
+        <p class="idea-desc">用户永远是靠猜来用产品的：猜对了用得顺，猜错了就犯错。设计师的任务是让产品符合用户已有的猜想，或帮用户建立正确的猜想。</p>
+        <div class="example-box"><span class="tag">例 ·</span>很多人以为把文件拖进回收站就是彻底删除了，结果只是挪了个地方，硬盘照样满。好的设计顺着用户的心智模型来，不嘲笑它。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>6. 错误分两种：手滑和想错，好设计都要防得住</b></p>
+        <p class="idea-desc">“手滑”是想得对但手没跟上（点错按钮），“想错”是理解就错了（转错人）。手滑靠撤销、确认兜底，想错靠提示和反馈纠正。人一定会犯错，设计要把代价降到最低。</p>
+        <div class="example-box"><span class="tag">例 ·</span>微信消息两分钟内可撤回，就是给手滑兜底。某些 App“删除聊天记录”一点就没，连确认都没有。这是在惩罚人类的正常失误。</div>
+      </li>
+<li class="idea-item">
+        <p class="idea-title"><b>7. 反馈和约束：做了要吭声，关键处要设限</b></p>
+        <p class="idea-desc">“反馈”是操作后给个回应（声音、震动、动画），让人知道成了没成。“约束”是主动限制错误发生（插不错、跳不过）。反馈管事后安心，约束管事前防呆。</p>
+        <div class="example-box"><span class="tag">例 ·</span>洗衣机按启动键“滴”一声、亮灯、开始转，三重反馈告诉你“收到”。SIM 卡一角斜切，只能以唯一正确的方向插进去。物理约束让你想犯错都没机会。</div>
+      </li>
+        </ol>
+      </section>
+
+      <section class="section-block">
+        <h2>全书结构 <span class="badge">6 部分</span></h2>
+        <ol class="part-list">
+          <li class="part-item">
+        <p class="part-title"><b>第一章：日常用品的“心理病理学”</b></p>
+        <p class="part-desc">一堆“坏设计”展览。分不清推拉的门、记不清旋钮管哪个炉头的灶、总按错的电话机。用户受苦，病根在设计。</p>
+        <div class="example-box"><span class="tag">例 ·</span>读完你会发现生活中处处是“带病上岗”的设计，而你受的那些气，真不是你的错。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第二章：日常行为的心理学——行动的七个阶段</b></p>
+        <p class="part-desc">人完成行动要经过七个阶段：定目标、定意图、定动作、执行、感知、解释、评估。好设计填平“执行鸿沟”（不知道怎么下手）和“评估鸿沟”（不知道做成了没）。</p>
+        <div class="example-box"><span class="tag">例 ·</span>调空调到 26 度：遥控器按钮太多找不到温度键，就是执行鸿沟。按了没任何显示，你不知道设没设上，就是评估鸿沟。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第三章：头脑中的知识与世界上的知识</b></p>
+        <p class="part-desc">人做事靠两种知识：记在脑子里的和写在世界上的。好设计尽量把知识放在世界上，别考验用户的记忆力。</p>
+        <div class="example-box"><span class="tag">例 ·</span>朋友家 8 个电灯开关，你一个个试，这是在逼你瞎猜。旁边贴个小标签“客厅”“阳台”，就不用猜了。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第四章：知道要做什么——约束、可发现性与反馈</b></p>
+        <p class="part-desc">让用户“知道该干嘛”的三大法宝：约束、可发现性、反馈。约束限制错误可能，可发现性靠示能和意符，反馈是做了给回应。这是全书最实用的设计工具箱。</p>
+        <div class="example-box"><span class="tag">例 ·</span>乐高积木凸起和凹槽只有一种拼法，拼错了根本卡不进去。约束的大师：小孩不用教就会玩。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第五章：人为错误？不，是糟糕的设计</b></p>
+        <p class="part-desc">系统讲错误：手滑 vs 想错、为什么指责用户没用，以及防错设计的方法。从根上让错误发生不了，或让错误代价足够小。</p>
+        <div class="example-box"><span class="tag">例 ·</span>药瓶“按压再旋转”瓶盖：小孩打不开，大人一看就懂。软件里删文件前输入文件名确认，高危操作不让你手滑就酿大祸。</div>
+      </li>
+<li class="part-item">
+        <p class="part-title"><b>第六、七章：设计思维与商业中的设计</b></p>
+        <p class="part-desc">从单品设计上升到方法论。以用户为中心的设计流程：观察、想法、原型、测试，不断迭代。以及设计如何在商业组织里落地。</p>
+        <div class="example-box"><span class="tag">例 ·</span>像做菜：先尝一口（观察用户）、想想缺啥（想法）。小火试做一份（原型）、请人试吃（测试）。不好吃就回炉。</div>
+      </li>
+        </ol>
+      </section>
+
+      <nav class="pn">
+        <a class="prev" href="book-22.html">
+          <img src="covers/s2297549.jpg" alt="《用户体验的要素》封面" loading="lazy">
+          <span class="t"><span>← 上一本</span>《用户体验的要素》</span>
+         </a>
+        <a class="next" href="book-24.html">
+          <img src="covers/s3279105.jpg" alt="《交互设计精髓》封面" loading="lazy">
+          <span class="t"><span>下一本 →</span>《交互设计精髓》</span>
+         </a>
+      </nav>
+
+      <a class="nav-back-catalog" href="index.html#dom-3">返回 UI/UX 设计 目录</a>
+    </main>
+
+    <footer>
+      <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+      <p>豆瓣评分与评价人数为 2026-10-08 逐本人工核实当天的数值。</p>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+</body>
+</html>
