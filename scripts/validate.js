@@ -19,16 +19,26 @@ if (!fs.existsSync(path.join(DATA_DIR, 'site.json'))) {
 const books = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'books.json'), 'utf-8'));
 const site = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'site.json'), 'utf-8'));
 
-// 验收项 1: 70 本书，一本不少，7 个主题分区正确，每分区 10 本
-if (books.length !== 70) {
-  errors.push(`书籍总数应为 70 本，实为 ${books.length} 本`);
+// 验收项 1: 170 本书，一本不少，8 个主题分区正确
+if (books.length !== 170) {
+  errors.push(`书籍总数应为 170 本，实为 ${books.length} 本`);
 }
 
-const expectedDomains = ['软件工程', '系统设计', 'UI/UX 设计', '产品经理', '中国历史', '建筑学', '艺术'];
-expectedDomains.forEach(domName => {
-  const domBooks = books.filter(b => b.domain === domName);
-  if (domBooks.length !== 10) {
-    errors.push(`分区 [${domName}] 书籍数量应为 10 本，实为 ${domBooks.length} 本`);
+const expectedDomains = [
+  { name: '软件工程', count: 10 },
+  { name: '系统设计', count: 10 },
+  { name: 'UI/UX 设计', count: 10 },
+  { name: '产品经理', count: 10 },
+  { name: '中国历史', count: 10 },
+  { name: '建筑学', count: 10 },
+  { name: '艺术', count: 10 },
+  { name: '主理人五星精选', count: 100 }
+];
+
+expectedDomains.forEach(dom => {
+  const domBooks = books.filter(b => b.domain === dom.name);
+  if (domBooks.length !== dom.count) {
+    errors.push(`分区 [${dom.name}] 书籍数量应为 ${dom.count} 本，实为 ${domBooks.length} 本`);
   }
 });
 
@@ -60,7 +70,7 @@ books.forEach(b => {
   }
 });
 
-// 验收项 3: 70 张封面全部正确（与书名对应），本地加载
+// 验收项 3: 170 张封面全部正确（与书名对应），本地加载
 books.forEach(b => {
   const coverPath = path.join(ROOT_DIR, b.cover);
   if (!fs.existsSync(coverPath)) {
@@ -79,7 +89,7 @@ if (!fs.existsSync(indexPath)) {
   errors.push('index.html 不存在');
 } else {
   const indexHtml = fs.readFileSync(indexPath, 'utf-8');
-  ['dom-1', 'dom-2', 'dom-3', 'dom-4', 'dom-5', 'dom-6', 'dom-7'].forEach(id => {
+  ['dom-1', 'dom-2', 'dom-3', 'dom-4', 'dom-5', 'dom-6', 'dom-7', 'dom-8'].forEach(id => {
     if (!indexHtml.includes(`id="${id}"`)) {
       errors.push(`index.html 缺失主题锚点 id="${id}"`);
     }
@@ -95,8 +105,8 @@ if (!fs.existsSync(indexPath)) {
   }
 }
 
-// 验收项 5: 70 个详情页：评分、信息、上下本导航、返回目录都可用
-for (let i = 1; i <= 70; i++) {
+// 验收项 5: 170 个详情页：评分、信息、上下本导航、返回目录都可用
+for (let i = 1; i <= 170; i++) {
   const pad = String(i).padStart(2, '0');
   const bookFile = path.join(ROOT_DIR, `book-${pad}.html`);
   if (!fs.existsSync(bookFile)) {
@@ -116,7 +126,7 @@ for (let i = 1; i <= 70; i++) {
       errors.push(`book-${pad}.html 缺失上一本链接 book-${prevPad}.html`);
     }
   }
-  if (i < 70) {
+  if (i < 170) {
     const nextPad = String(i + 1).padStart(2, '0');
     if (!content.includes(`book-${nextPad}.html`)) {
       errors.push(`book-${pad}.html 缺失下一本链接 book-${nextPad}.html`);
@@ -144,10 +154,10 @@ if (errors.length > 0) {
   process.exit(1);
 } else {
   console.log('✅ 全部验收项检查通过！');
-  console.log('  [x] 70 本书，一本不少，7 个主题分区正确 (各 10 本)');
+  console.log('  [x] 170 本书，一本不少，8 个主题分区正确 (7 分区各 10 本 + 主理人五星精选 100 本)');
   console.log('  [x] 每本书：导读 + 总体观点 (2-4段) + 5-8 个核心观点（带例子）+ 全书结构（带例子）');
-  console.log('  [x] 70 张封面全部正确且本地加载 (covers/ 目录)');
-  console.log('  [x] 首页吸顶导航 7 个主题跳转可用');
-  console.log('  [x] 70 个详情页：评分、信息、上下本导航、返回目录完整可用');
+  console.log('  [x] 170 张封面全部正确且本地加载 (covers/ 目录)');
+  console.log('  [x] 首页吸顶导航 8 个主题跳转可用');
+  console.log('  [x] 170 个详情页：评分、信息、上下本导航、返回目录完整可用');
   console.log('  [x] 样式表与移动端优先排版正常，支持即时搜索与 Scrollspy 高亮');
 }
