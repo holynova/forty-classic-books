@@ -21,8 +21,9 @@
   --hair: #e8e5de;
   --hair-strong: #d0ccc0;
   
-  --serif: "Songti SC", "Noto Serif SC", "Source Han Serif SC", "STSong", Georgia, serif;
-  --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", sans-serif;
+  --sans: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+  --display: -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Segoe UI", system-ui, sans-serif;
+  --serif: var(--sans);
   --mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
   
   --radius-sm: 4px;
@@ -73,10 +74,10 @@ a:hover {
 }
 
 h1, h2, h3 {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-weight: 700;
   color: var(--ink);
-  letter-spacing: -0.01em;
+  letter-spacing: -0.015em;
 }
 
 p {
@@ -113,7 +114,7 @@ img {
 }
 
 .sitehead .brand {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 1.25rem;
   font-weight: 700;
   color: var(--ink);
@@ -121,6 +122,7 @@ img {
   display: inline-flex;
   align-items: baseline;
   gap: 0.6rem;
+  letter-spacing: -0.015em;
 }
 
 .sitehead .brand small {
@@ -390,8 +392,8 @@ img {
 }
 
 .brow-title {
-  font-family: var(--serif);
-  font-size: 1.08rem;
+  font-family: var(--display);
+  font-size: 1.05rem;
   font-weight: 700;
   margin: 0 0 0.25rem;
   line-height: 1.45;
@@ -399,6 +401,7 @@ img {
   display: flex;
   align-items: baseline;
   gap: 0.4rem;
+  letter-spacing: -0.01em;
 }
 
 .brow-meta {
@@ -773,7 +776,7 @@ img {
 }
 
 .pn a .t {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 0.88rem;
   font-weight: 700;
   line-height: 1.45;
@@ -782,6 +785,7 @@ img {
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
+  letter-spacing: -0.01em;
 }
 
 .pn a .t span {
@@ -990,11 +994,12 @@ body.sidebar-open .global-sidebar {
 }
 
 .sidebar-brand-title {
-  font-family: var(--serif);
+  font-family: var(--display);
   font-size: 1.12rem;
   font-weight: 700;
   color: var(--ink);
   line-height: 1.25;
+  letter-spacing: -0.015em;
 }
 
 .sidebar-brand-sub {
@@ -1180,7 +1185,7 @@ body.sidebar-open .global-sidebar {
 }
 
 .sb-title {
-  font-family: var(--serif);
+  font-family: var(--sans);
   flex: 1 1 auto;
   white-space: nowrap;
   overflow: hidden;
