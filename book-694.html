@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>《系统设计面试指南》 · 经典书导读</title>
+  <link rel="stylesheet" href="style.css?v=ad4f3308">
+</head>
+<body>
+  <div class="layout-container">
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <aside class="global-sidebar" id="globalSidebar" aria-label="全书目录导航">
+    <div class="sidebar-header">
+      <a class="sidebar-brand" href="index.html">
+        <span class="sidebar-brand-title">经典书导读</span>
+        <span class="sidebar-brand-sub">10 大领域 · 667 本精选 · 经典书导读</span>
+      </a>
+      <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="关闭目录">×</button>
+    </div>
+
+    <div class="sidebar-search">
+      <div class="sidebar-search-wrap">
+        <svg viewBox="0 0 24 24" class="sb-search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" id="sidebarSearchInput" placeholder="快速检索 667 本书..." autocomplete="off">
+        <button type="button" id="sidebarSearchClear" class="sb-search-clear" aria-label="清除">×</button>
+      </div>
+      <div class="sidebar-search-empty" id="sidebarSearchEmpty">无匹配图书</div>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebarNav" data-current-id="694">
+      
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="index.html" class="sidebar-catalog-link">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>全部书单首页</span>
+      </a>
+      <span class="sidebar-kbd-hint"><kbd>M</kbd> 切换</span>
+    </div>
+  </aside>
+
+    <div class="main-wrapper">
+      <div class="wrap">
+        <header class="sitehead">
+          <div class="sitehead-inner">
+            <div class="sitehead-left">
+              <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="切换全书目录" title="打开/收起目录 (快捷键 M)">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <span>目录</span>
+                <span class="kbd-pill"><kbd>M</kbd></span>
+              </button>
+              <a class="brand" href="index.html">
+                经典书导读
+                <small>CLASSIC BOOKS · 607 MASTERPIECES</small>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <main>
+          <div class="back-nav">
+            <a class="back-link" href="index.html#dom-10">← 全部书单</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">主理人心愿精选</span>
+          </div>
+
+          <div class="book-title-header">
+            <h1>《系统设计面试指南》</h1>
+          </div>
+
+          <div class="detail-top">
+            <div class="detail-cover-wrap">
+              <picture><source srcset="covers/detail/system-design-interview--an-insider39s-guide.webp" type="image/webp"><img class="detail-cover" src="covers/system-design-interview--an-insider39s-guide.jpg" alt="《系统设计面试指南》封面" fetchpriority="high" decoding="async" width="138" height="200"></picture>
+            </div>
+            <div class="detail-meta">
+              <div class="detail-meta-item">
+                <span class="label">作者：</span>
+                <span class="value">Alex Xu (许利杰)</span>
+              </div>
+              <div class="detail-meta-item">
+                <span class="label">出版社：</span>
+                <span class="value">机械工业出版社</span>
+              </div>
+              <div class="detail-meta-item">
+                <span class="label">出版年：</span>
+                <span class="value"></span>
+              </div>
+              
+              <div class="detail-meta-item detail-meta-link">
+                <a class="douban-link" href="undefined" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="ratebox">
+            <span class="ratebox-num tabular">9.2</span>
+            <div class="ratebox-info">
+              <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
+              <div class="ratebox-label">豆瓣评分 · 7,650 人评价</div>
+            </div>
+          </div>
+
+          <div class="intro-quote">
+            硅谷一线技术面试官Alex Xu享誉全球的系统设计红宝书！以极具工程实操性的四步法，系统拆解限流器、一致性哈希、唯一ID生成、信息流与海量视频系统的高并发架构心法。
+          </div>
+
+          <section class="section-block">
+            <h2>总体观点</h2>
+            <div class="thesis-body">
+              <p>《系统设计面试指南》（System Design Interview: An Insider's Guide）是当代互联网高并发分布式系统架构领域流传最广、实用性最强的工业级指南。在硅谷与国内顶级科技公司的技术面试与晋升答辩中，系统设计（System Design）往往是考察候选人架构视野与技术天花板最残酷的试金石。前Twitter与Apple资深架构师Alex Xu（许利杰）在本书中彻底打破了以往同类书籍脱离实际、纸上谈兵的空洞毛病，提炼出了一套标准、通用的“系统设计四步法”实战框架。</p>
+<p>全书以极其清晰美观的架构拓扑图与精练的工程算式展开。作者从第一章“如何将单机系统平滑扩展至数百万用户”切入，由浅入深讲解了无状态Web层水平扩展、读写分离主从复制、分布式内存缓存、CDN边缘加速以及数据库水平分库分表（Sharding）的演进脉络；随后系统性剖析了支撑现代海量并发系统的底层关键技术组件——从令牌桶/漏桶算法限流器、缓解分布式节点扩缩容倾斜的一致性哈希算法，到每秒并发数十万高可用的Snowflake分布式唯一ID生成器架构。</p>
+<p>更难能可贵的是，本书第二部分倾囊相授了十余个工业界最经典的真实高并发系统完整设计全景：涵盖短网址服务（TinyURL）、高容错分布式网络爬虫、跨平台实时通知推送平台、推拉结合的社交网络信息流Feed系统、基于WebSocket的万人即时通讯群聊架构、支撑十亿级QPS的搜索自动补全Trie树前缀系统、以及PB级分布式云盘存储架构。这不仅是一本程序员斩获顶级大厂Offer的通关秘籍，更是一份献给软件工程师构建高可用、高扩展、抗脆弱分布式系统的必备参考图谱。</p>
+            </div>
+          </section>
+
+          <section class="section-block">
+            <h2>核心观点</h2>
+            <ol class="idea-list">
+              <li class="idea-item">
+        <h3 class="idea-title">1. 系统设计面试四步法：在不确定性需求中建立结构化沟通闭环</h3>
+        <p class="idea-desc">拿到题目绝不能立即盲目画架构图。卓越的架构师必须遵循“厘清需求与规模估算 -&gt; 提出高层设计 -&gt; 深入细节攻坚 -&gt; 总结与性能瓶颈反思”的严谨闭环。</p>
+        <div class="example-box">设计短网址系统前，先与面试官对齐功能：每天生成多少条短链接？链接有效期多久？读写比率是多少？据此推算出QPS与未来五年存储PB级容量。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">2. 一致性哈希算法：化解分布式集群节点扩缩容的数据大动荡</h3>
+        <p class="idea-desc">传统取模哈希在增加或减少一个服务器节点时，会导致全网几乎100%的缓存键命中失效引发雪崩。一致性哈希将哈希空间连成环，辅以虚拟节点解决数据倾斜。</p>
+        <div class="example-box">在由数十台Redis节点构成的一致性哈希环上，新增一台机器时，全网仅有相邻环区间内的少量数据需要发生物理迁移，缓存命中率维持在99%以上。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">3. 限流器的多层防线：保护核心后端服务免受恶意突发流量冲击</h3>
+        <p class="idea-desc">没有限流保护的高并发系统在爬虫或DDoS洪峰面前脆弱不堪。基于Redis内存的令牌桶（Token Bucket）算法能兼顾突发流量平滑放行与严格阈值拦截。</p>
+        <div class="example-box">API网关层部署基于Lua脚本原子执行的Token Bucket，当某IP在一秒内发起超过一百次请求时，直接返回HTTP 429 Too Many Requests阻断请求透传。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">4. 信息流系统的推拉折衷：Fan-out-on-write与Fan-out-on-read的混合架构</h3>
+        <p class="idea-desc">社交Feed流设计没有银弹。普通用户发动态采用“写扩散（Push）”瞬间推送到好友收件箱；拥有数千万粉丝的名人发布采用“读扩散（Pull）”，杜绝消息写爆炸。</p>
+        <div class="example-box">当粉丝破亿的明星发一条微博时，系统绝不往一亿个好友收件箱里写入数据，而是只存一份，粉丝打开APP拉取信息流时在内存中动态实时聚合排序。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">5. 分布式唯一ID的生成哲学：放弃中央数据库自增拥抱Snowflake雪花算法</h3>
+        <p class="idea-desc">依赖单点数据库自增主键是高并发系统的最大瓶颈。Twitter Snowflake利用64位整数，将毫秒时间戳、数据中心ID、机器节点ID与序列号无锁自增融为一体。</p>
+        <div class="example-box">每台分布式工作机在本地独立生成ID，无需网络通信RPC开销，单机每秒可稳定产出超过400万个全局唯一、趋势递增且高防碰撞的64位整型ID。</div>
+      </li>
+            </ol>
+          </section>
+
+          <section class="section-block">
+            <h2>全书结构</h2>
+            <ol class="part-list">
+              <li class="part-item">
+        <h3 class="part-title">第1至3章 单机到百万并发演进脉络与容量估算心法</h3>
+        <p class="part-desc">梳理Web层扩展、数据读写分离、Memcached/Redis缓存接入、分库分表与异步消息队列；讲解QPS、存储吞吐量与网络带宽的粗略计算法则。</p>
+        <div class="example-box">给出2的幂次方估算表格，演示如何根据月活用户数一分钟估算峰值读写QPS与每日新增数据量级。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第4至7章 基础分布式基础设施构建（限流、哈希、KV与唯一ID）</h3>
+        <p class="part-desc">系统拆解令牌桶限流器设计、一致性哈希环虚拟节点实现、分布式键值存储CAP定理权衡以及Snowflake雪花ID生成器原理与时钟回拨处理。</p>
+        <div class="example-box">详述NTP网络时间同步导致服务器时钟回拨时，Snowflake算法如何通过预留备用时钟位或自旋等待规避生成重复ID。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第8至11章 短网址系统、网络爬虫、通知中心与信息流Feed设计</h3>
+        <p class="part-desc">深入实战应用场景，详细给出短网址Base62编码转换、分布式爬虫去重布隆过滤器、多通道消息通知优先级队列以及Feed流推拉结合架构图。</p>
+        <div class="example-box">设计针对数亿网页的抓取系统时，利用布隆过滤器（Bloom Filter）在几十兆内存中高效完成海量URL的高速排重判断。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第12至15章 实时聊天系统、搜索自动补全与海量流媒体视频系统</h3>
+        <p class="part-desc">解剖基于WebSocket长连接的心跳检测与在线状态服务、Trie树前缀补全的预计算热度缓存、YouTube视频转码流水线与分片断点续传。</p>
+        <div class="example-box">YouTube上传大视频时，展示如何将数十GB的大文件切分为4MB小块分片并发上传至对象存储，并利用DAG工作流异步转码为多分辨率视频流。</div>
+      </li>
+            </ol>
+          </section>
+
+          <nav class="pn">
+            <a class="prev" href="book-693.html">
+          <picture><source srcset="covers/thumbs/clean-architecture软件架构与设计匠艺英文版.webp" type="image/webp"><img src="covers/clean-architecture软件架构与设计匠艺英文版.jpg" alt="《Clean Architecture》封面" loading="lazy" decoding="async" width="68" height="98"></picture>
+          <span class="t"><span>← 上一本</span>《Clean Architecture》</span>
+         </a>
+            <a class="next" href="book-695.html">
+          <picture><source srcset="covers/thumbs/unit-testing--principles-patterns-and-practices.webp" type="image/webp"><img src="covers/unit-testing--principles-patterns-and-practices.jpg" alt="《单元测试的艺术》封面" loading="lazy" decoding="async" width="68" height="98"></picture>
+          <span class="t"><span>下一本 →</span>《单元测试的艺术》</span>
+         </a>
+          </nav>
+
+          <a class="nav-back-catalog" href="index.html#dom-10">返回 主理人心愿精选 目录</a>
+        </main>
+
+        <footer>
+          <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+          <p>豆瓣评分与评价人数为逐本人工核实当天的数值。 · <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> · <span class="footer-version">v1.0.0</span></p>
+        </footer>
+      </div>
+
+      <button type="button" class="floating-menu-btn" id="floatingMenuBtn" aria-label="打开全部图书目录">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <span>目录</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+
+  
+  <script>
+    (function() {
+      // Sidebar drawer & lazy hydration controls
+      var sidebar = document.getElementById('globalSidebar');
+      var backdrop = document.getElementById('sidebarBackdrop');
+      var toggleBtn = document.getElementById('sidebarToggleBtn');
+      var floatBtn = document.getElementById('floatingMenuBtn');
+      var closeBtn = document.getElementById('sidebarCloseBtn');
+      var searchInput = document.getElementById('sidebarSearchInput');
+      var searchClear = document.getElementById('sidebarSearchClear');
+      var searchEmpty = document.getElementById('sidebarSearchEmpty');
+      var sidebarNav = document.getElementById('sidebarNav');
+
+      var isHydrated = sidebarNav && sidebarNav.children.length > 0;
+      var isHydrating = false;
+      var currentBookId = sidebarNav ? sidebarNav.getAttribute('data-current-id') : null;
+
+      function highlightActive() {
+        if (!sidebarNav || !currentBookId) return;
+        var active = sidebarNav.querySelector('.sidebar-link[data-id="' + currentBookId + '"]');
+        if (active) {
+          active.classList.add('active');
+          active.setAttribute('aria-current', 'page');
+        }
+      }
+
+      function hydrateSidebar(cb) {
+        if (isHydrated) {
+          if (cb) cb();
+          return;
+        }
+        if (sidebarNav && sidebarNav.children.length > 0) {
+          isHydrated = true;
+          highlightActive();
+          if (cb) cb();
+          return;
+        }
+        if (isHydrating) return;
+        isHydrating = true;
+
+        fetch('sidebar-nav.html')
+          .then(function(res) { return res.text(); })
+          .then(function(html) {
+            if (sidebarNav) {
+              sidebarNav.innerHTML = html;
+              isHydrated = true;
+              isHydrating = false;
+              highlightActive();
+            }
+            if (cb) cb();
+          })
+          .catch(function(err) {
+            isHydrating = false;
+          });
+      }
+
+      // Preload sidebar during idle time
+      if (!isHydrated) {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() { hydrateSidebar(); }, { timeout: 2000 });
+        } else {
+          setTimeout(function() { hydrateSidebar(); }, 1200);
+        }
+      }
+
+      function openSidebar() {
+        document.body.classList.add('sidebar-open');
+        hydrateSidebar(function() {
+          var activeLink = document.querySelector('.sidebar-link.active');
+          if (activeLink) {
+            activeLink.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }
+        });
+      }
+
+      function closeSidebar() {
+        document.body.classList.remove('sidebar-open');
+      }
+
+      function toggleSidebar() {
+        if (document.body.classList.contains('sidebar-open')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleSidebar);
+        toggleBtn.addEventListener('mouseenter', function() { hydrateSidebar(); }, { passive: true });
+      }
+      if (floatBtn) {
+        floatBtn.addEventListener('click', toggleSidebar);
+        floatBtn.addEventListener('mouseenter', function() { hydrateSidebar(); }, { passive: true });
+      }
+      if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+      if (backdrop) backdrop.addEventListener('click', closeSidebar);
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeSidebar();
+        }
+        if ((e.key === 'm' || e.key === 'M') && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          toggleSidebar();
+        }
+      });
+
+      // Quick search within sidebar
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          var q = (this.value || '').trim().toLowerCase();
+          if (searchClear) searchClear.style.display = q ? 'block' : 'none';
+          var matchCount = 0;
+          var groups = Array.from(sidebarNav ? sidebarNav.querySelectorAll('.sidebar-group') : []);
+
+          groups.forEach(function(group) {
+            var groupMatches = 0;
+            var items = Array.from(group.querySelectorAll('.sidebar-link'));
+            items.forEach(function(item) {
+              var title = (item.dataset.title || '').toLowerCase();
+              var author = (item.dataset.author || '').toLowerCase();
+              var matched = !q || title.includes(q) || author.includes(q);
+              item.parentElement.style.display = matched ? 'block' : 'none';
+              if (matched) {
+                groupMatches++;
+                matchCount++;
+              }
+            });
+            group.style.display = (groupMatches > 0 || !q) ? 'block' : 'none';
+          });
+
+          if (searchEmpty) {
+            searchEmpty.style.display = (matchCount === 0 && q) ? 'block' : 'none';
+          }
+        });
+
+        if (searchClear) {
+          searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.focus();
+          });
+        }
+      }
+
+      // Auto scroll active book into view on page load if already rendered
+      var currentActive = document.querySelector('.sidebar-link.active');
+      if (currentActive) {
+        setTimeout(function() {
+          currentActive.scrollIntoView({ block: 'center' });
+        }, 120);
+      }
+    })();
+  </script>
+
+  
+  <script>
+    (function() {
+      // 1. Instant hover & touch prefetch for near-zero latency page switches
+      var prefetched = new Set();
+      function prefetch(url) {
+        if (!url || prefetched.has(url)) return;
+        prefetched.add(url);
+        var link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = url;
+        document.head.appendChild(link);
+      }
+      document.addEventListener('mouseover', function(e) {
+        var a = e.target.closest('a');
+        if (a && a.href && a.origin === location.origin && (a.pathname.endsWith('.html') || a.pathname.includes('/book-'))) {
+          prefetch(a.href);
+        }
+      }, { passive: true });
+      document.addEventListener('touchstart', function(e) {
+        var a = e.target.closest('a');
+        if (a && a.href && a.origin === location.origin && (a.pathname.endsWith('.html') || a.pathname.includes('/book-'))) {
+          prefetch(a.href);
+        }
+      }, { passive: true });
+
+      // 2. Idle deferred analytics loader with graceful error handling (silent on ad-blocker)
+      function loadAnalytics() {
+        try {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://cloud.umami.is/script.js';
+          s.setAttribute('data-website-id', 'e01c9f78-4607-4e60-b01c-77c8190b12b4');
+          s.onerror = function() {}; // Silently catch ad-blocker rejections
+          document.head.appendChild(s);
+        } catch (e) {}
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadAnalytics, { timeout: 3000 });
+      } else {
+        setTimeout(loadAnalytics, 2000);
+      }
+    })();
+  </script>
+
+</body>
+</html>
