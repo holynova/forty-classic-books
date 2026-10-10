@@ -11,6 +11,14 @@ export default {
     }
     url.pathname = '/' + url.pathname.slice(BASE.length);
     let response = await env.ASSETS.fetch(new Request(url, request));
+    if (response.status === 404 && !url.pathname.includes('.') && !url.pathname.endsWith('/')) {
+      const htmlUrl = new URL(url);
+      htmlUrl.pathname = url.pathname + '.html';
+      const htmlResp = await env.ASSETS.fetch(new Request(htmlUrl, request));
+      if (htmlResp.status === 200) {
+        response = htmlResp;
+      }
+    }
     const location = response.headers.get('location');
     if (location) {
       const redirect = new URL(location, url);
