@@ -4,9 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>经典书导读 · 10 大领域 · 232 本严选精读指南</title>
-  <link rel="dns-prefetch" href="https://cloud.umami.is">
   <link rel="stylesheet" href="style.css">
-  <script defer src="https://cloud.umami.is/script.js" data-website-id="e01c9f78-4607-4e60-b01c-77c8190b12b4"></script>
 </head>
 <body>
   <div class="layout-container">
@@ -5599,23 +5597,77 @@
   
   <script>
     (function() {
-      // Sidebar drawer & collapse controls
-      const sidebar = document.getElementById('globalSidebar');
-      const backdrop = document.getElementById('sidebarBackdrop');
-      const toggleBtn = document.getElementById('sidebarToggleBtn');
-      const floatBtn = document.getElementById('floatingMenuBtn');
-      const closeBtn = document.getElementById('sidebarCloseBtn');
-      const searchInput = document.getElementById('sidebarSearchInput');
-      const searchClear = document.getElementById('sidebarSearchClear');
-      const searchEmpty = document.getElementById('sidebarSearchEmpty');
-      const groups = Array.from(document.querySelectorAll('.sidebar-group'));
+      // Sidebar drawer & lazy hydration controls
+      var sidebar = document.getElementById('globalSidebar');
+      var backdrop = document.getElementById('sidebarBackdrop');
+      var toggleBtn = document.getElementById('sidebarToggleBtn');
+      var floatBtn = document.getElementById('floatingMenuBtn');
+      var closeBtn = document.getElementById('sidebarCloseBtn');
+      var searchInput = document.getElementById('sidebarSearchInput');
+      var searchClear = document.getElementById('sidebarSearchClear');
+      var searchEmpty = document.getElementById('sidebarSearchEmpty');
+      var sidebarNav = document.getElementById('sidebarNav');
+
+      var isHydrated = sidebarNav && sidebarNav.children.length > 0;
+      var isHydrating = false;
+      var currentBookId = sidebarNav ? sidebarNav.getAttribute('data-current-id') : null;
+
+      function highlightActive() {
+        if (!sidebarNav || !currentBookId) return;
+        var active = sidebarNav.querySelector('.sidebar-link[data-id="' + currentBookId + '"]');
+        if (active) {
+          active.classList.add('active');
+          active.setAttribute('aria-current', 'page');
+        }
+      }
+
+      function hydrateSidebar(cb) {
+        if (isHydrated) {
+          if (cb) cb();
+          return;
+        }
+        if (sidebarNav && sidebarNav.children.length > 0) {
+          isHydrated = true;
+          highlightActive();
+          if (cb) cb();
+          return;
+        }
+        if (isHydrating) return;
+        isHydrating = true;
+
+        fetch('sidebar-nav.html')
+          .then(function(res) { return res.text(); })
+          .then(function(html) {
+            if (sidebarNav) {
+              sidebarNav.innerHTML = html;
+              isHydrated = true;
+              isHydrating = false;
+              highlightActive();
+            }
+            if (cb) cb();
+          })
+          .catch(function(err) {
+            isHydrating = false;
+          });
+      }
+
+      // Preload sidebar during idle time
+      if (!isHydrated) {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() { hydrateSidebar(); }, { timeout: 2000 });
+        } else {
+          setTimeout(function() { hydrateSidebar(); }, 1200);
+        }
+      }
 
       function openSidebar() {
         document.body.classList.add('sidebar-open');
-        const activeLink = document.querySelector('.sidebar-link.active');
-        if (activeLink) {
-          activeLink.scrollIntoView({ block: 'center', behavior: 'smooth' });
-        }
+        hydrateSidebar(function() {
+          var activeLink = document.querySelector('.sidebar-link.active');
+          if (activeLink) {
+            activeLink.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }
+        });
       }
 
       function closeSidebar() {
@@ -5630,8 +5682,14 @@
         }
       }
 
-      if (toggleBtn) toggleBtn.addEventListener('click', toggleSidebar);
-      if (floatBtn) floatBtn.addEventListener('click', toggleSidebar);
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleSidebar);
+        toggleBtn.addEventListener('mouseenter', function() { hydrateSidebar(); }, { passive: true });
+      }
+      if (floatBtn) {
+        floatBtn.addEventListener('click', toggleSidebar);
+        floatBtn.addEventListener('mouseenter', function() { hydrateSidebar(); }, { passive: true });
+      }
       if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
       if (backdrop) backdrop.addEventListener('click', closeSidebar);
 
@@ -5648,17 +5706,18 @@
       // Quick search within sidebar
       if (searchInput) {
         searchInput.addEventListener('input', function() {
-          const q = (this.value || '').trim().toLowerCase();
+          var q = (this.value || '').trim().toLowerCase();
           if (searchClear) searchClear.style.display = q ? 'block' : 'none';
-          let matchCount = 0;
+          var matchCount = 0;
+          var groups = Array.from(sidebarNav ? sidebarNav.querySelectorAll('.sidebar-group') : []);
 
-          groups.forEach(group => {
-            let groupMatches = 0;
-            const items = Array.from(group.querySelectorAll('.sidebar-link'));
-            items.forEach(item => {
-              const title = (item.dataset.title || '').toLowerCase();
-              const author = (item.dataset.author || '').toLowerCase();
-              const matched = !q || title.includes(q) || author.includes(q);
+          groups.forEach(function(group) {
+            var groupMatches = 0;
+            var items = Array.from(group.querySelectorAll('.sidebar-link'));
+            items.forEach(function(item) {
+              var title = (item.dataset.title || '').toLowerCase();
+              var author = (item.dataset.author || '').toLowerCase();
+              var matched = !q || title.includes(q) || author.includes(q);
               item.parentElement.style.display = matched ? 'block' : 'none';
               if (matched) {
                 groupMatches++;
@@ -5682,12 +5741,57 @@
         }
       }
 
-      // Auto scroll active book into view on page load
-      const currentActive = document.querySelector('.sidebar-link.active');
+      // Auto scroll active book into view on page load if already rendered
+      var currentActive = document.querySelector('.sidebar-link.active');
       if (currentActive) {
         setTimeout(function() {
           currentActive.scrollIntoView({ block: 'center' });
         }, 120);
+      }
+    })();
+  </script>
+
+  
+  <script>
+    (function() {
+      // 1. Instant hover & touch prefetch for near-zero latency page switches
+      var prefetched = new Set();
+      function prefetch(url) {
+        if (!url || prefetched.has(url)) return;
+        prefetched.add(url);
+        var link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = url;
+        document.head.appendChild(link);
+      }
+      document.addEventListener('mouseover', function(e) {
+        var a = e.target.closest('a');
+        if (a && a.href && a.origin === location.origin && (a.pathname.endsWith('.html') || a.pathname.includes('/book-'))) {
+          prefetch(a.href);
+        }
+      }, { passive: true });
+      document.addEventListener('touchstart', function(e) {
+        var a = e.target.closest('a');
+        if (a && a.href && a.origin === location.origin && (a.pathname.endsWith('.html') || a.pathname.includes('/book-'))) {
+          prefetch(a.href);
+        }
+      }, { passive: true });
+
+      // 2. Idle deferred analytics loader with graceful error handling (silent on ad-blocker)
+      function loadAnalytics() {
+        try {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://cloud.umami.is/script.js';
+          s.setAttribute('data-website-id', 'e01c9f78-4607-4e60-b01c-77c8190b12b4');
+          s.onerror = function() {}; // Silently catch ad-blocker rejections
+          document.head.appendChild(s);
+        } catch (e) {}
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadAnalytics, { timeout: 3000 });
+      } else {
+        setTimeout(loadAnalytics, 2000);
       }
     })();
   </script>
