@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">系统设计</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-2">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">系统设计 · 第 13 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">系统设计</span>
           </div>
 
           <div class="book-title-header">
@@ -93,10 +90,6 @@
         <span class="label">原作名：</span>
         <span class="value">Building Microservices</span>
       </div>
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">系统设计 · 第 13 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/26772677/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -104,20 +97,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">8.1</span>
+            <span class="ratebox-num tabular">8.1</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 978人评价</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="13" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="13" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 978人评价 人评价</div>
             </div>
           </div>
 
@@ -135,119 +118,108 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 7 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 先按业务拆，不按技术拆（康威定律）</b></p>
+        <h3 class="idea-title">1. 先按业务拆，不按技术拆（康威定律）</h3>
         <p class="idea-desc">拆服务按“下单、支付、库存”这样的业务能力，不按“前端队、后端队”分。康威定律：系统架构会复制组织沟通结构。反过来用：想让系统长成什么样，就先把团队按那个样子组织起来。</p>
-        <div class="example-box"><span class="tag">例 ·</span>开餐厅别按“切菜组、炒菜组”分，按“川菜档、粤菜档”分，每个档口从点菜到上菜一条龙。促销和订单拆成两个服务后，促销团队双十一前一周还能独立上线新玩法，不用排队等排期。</div>
+        <div class="example-box">开餐厅别按“切菜组、炒菜组”分，按“川菜档、粤菜档”分，每个档口从点菜到上菜一条龙。促销和订单拆成两个服务后，促销团队双十一前一周还能独立上线新玩法，不用排队等排期。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 服务必须能独立部署，否则白拆</b></p>
+        <h3 class="idea-title">2. 服务必须能独立部署，否则白拆</h3>
         <p class="idea-desc">“微”不在代码量小，而在改一行代码只上线这一个服务，不用全站陪绑。改A必须连B、C一起上线，那就是“分布式单体”：享受了分布式的痛苦，没得到微服务的好处。</p>
-        <div class="example-box"><span class="tag">例 ·</span>用户中心独立成服务后，头像功能一周上三个版本，订单系统一次没重启——这就是独立部署的价值。</div>
+        <div class="example-box">用户中心独立成服务后，头像功能一周上三个版本，订单系统一次没重启——这就是独立部署的价值。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 数据也要分家，别共用一个数据库</b></p>
+        <h3 class="idea-title">3. 数据也要分家，别共用一个数据库</h3>
         <p class="idea-desc">两个服务连同一个库，改表结构就得一起改、一起上线——拆了个寂寞。每个服务管自己的数据，别人走接口来要。跨服务一致性用“最终一致”（发消息异步同步）解决，不靠数据库事务。</p>
-        <div class="example-box"><span class="tag">例 ·</span>订单和库存共用一张表，库存加个字段，订单的SQL全挂了。最后花两个月才把库拆开，代价比一开始就拆大得多。</div>
+        <div class="example-box">订单和库存共用一张表，库存加个字段，订单的SQL全挂了。最后花两个月才把库拆开，代价比一开始就拆大得多。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 为失败而设计：服务一定会挂</b></p>
+        <h3 class="idea-title">4. 为失败而设计：服务一定会挂</h3>
         <p class="idea-desc">保命四招：超时（别无限等）、熔断器（对方挂了别再敲门）。舱壁（一个服务hang死别拖死线程池）、重试加退避。</p>
-        <div class="example-box"><span class="tag">例 ·</span>家里一个房间短路，空开只断这一间，不会整栋停电。支付网关给银行接口加熔断，银行宕机时几十秒自动切备用通道，用户只觉得“慢了一点”，而不是全站报错。</div>
+        <div class="example-box">家里一个房间短路，空开只断这一间，不会整栋停电。支付网关给银行接口加熔断，银行宕机时几十秒自动切备用通道，用户只觉得“慢了一点”，而不是全站报错。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. 智能端点、哑管道：服务之间通信尽量简单</b></p>
+        <h3 class="idea-title">5. 智能端点、哑管道：服务之间通信尽量简单</h3>
         <p class="idea-desc">别搞中央总线（ESB）那种“聪明的管道”：逻辑全塞总线，一升级全站陪葬。用简单的REST或消息队列传数据（哑管道），业务逻辑留在服务自己手里（智能端点）。管道越傻，系统越灵活。</p>
-        <div class="example-box"><span class="tag">例 ·</span>小区快递柜：快递员只管放件（哑管道），取件码、身份验证都在App里（智能端点）。要是每个快递员都得去物业大厅登记审批，双十一那天大厅直接被堵死。</div>
+        <div class="example-box">小区快递柜：快递员只管放件（哑管道），取件码、身份验证都在App里（智能端点）。要是每个快递员都得去物业大厅登记审批，双十一那天大厅直接被堵死。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 先单体，痛了再拆：架构是演进出来的</b></p>
+        <h3 class="idea-title">6. 先单体，痛了再拆：架构是演进出来的</h3>
         <p class="idea-desc">新项目别一上来就微服务：业务没跑通，边界在哪都不知道，拆错比不拆还贵。先写单体，等哪个模块“改不动、一改全回归”了再拆出去。好边界是长出来的，不是画出来的。</p>
-        <div class="example-box"><span class="tag">例 ·</span>装修先住进去，知道哪面墙碍事再砸，而不是毛坯就按五年后的家庭结构砌墙。某创业公司单体三个月上线，跑一年后才把“拼团”拆成独立服务——那时才真正搞清边界在哪。</div>
+        <div class="example-box">装修先住进去，知道哪面墙碍事再砸，而不是毛坯就按五年后的家庭结构砌墙。某创业公司单体三个月上线，跑一年后才把“拼团”拆成独立服务——那时才真正搞清边界在哪。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. 看不见就管不了：可观察性是必修课</b></p>
+        <h3 class="idea-title">7. 看不见就管不了：可观察性是必修课</h3>
         <p class="idea-desc">微服务里一个请求串过十几个服务，日志散在十几台机器上。三件套缺一不可：日志聚合、关联ID（一个请求一个编号、全链路追踪）、监控告警。不然线上出问题只能靠猜。</p>
-        <div class="example-box"><span class="tag">例 ·</span>给每个请求打上TraceID：一次“下单偶发超时”，十分钟定位到优惠券服务的慢SQL。以前得人肉对十几个服务的日志，至少半天。</div>
+        <div class="example-box">给每个请求打上TraceID：一次“下单偶发超时”，十分钟定位到优惠券服务的慢SQL。以前得人肉对十几个服务的日志，至少半天。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">12 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第1章 微服务</b></p>
+        <h3 class="part-title">第1章 微服务</h3>
         <p class="part-desc">微服务是围绕业务领域建模、高度自治、具有单一职责且可独立部署的小型分布式服务集合。</p>
-        <div class="example-box"><span class="tag">例 ·</span>电商团队将原本几百万行的巨型应用拆分为商品、库存、订单等独立服务，各服务由独立小团队用最适合的语言独立演进。</div>
+        <div class="example-box">电商团队将原本几百万行的巨型应用拆分为商品、库存、订单等独立服务，各服务由独立小团队用最适合的语言独立演进。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2章 演化式架构师</b></p>
+        <h3 class="part-title">第2章 演化式架构师</h3>
         <p class="part-desc">架构师应当像城市规划师而非建筑师：定义好各个区域的建设边界、通信标准与安全红线，把内部具体实现留给团队自治。</p>
-        <div class="example-box"><span class="tag">例 ·</span>架构师规定全公司所有服务必须暴露统一的健康检查路由与遵循标准日志规范，但服务内部是用 Java 还是 Go 由团队自主决定。</div>
+        <div class="example-box">架构师规定全公司所有服务必须暴露统一的健康检查路由与遵循标准日志规范，但服务内部是用 Java 还是 Go 由团队自主决定。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第3章 如何建模服务</b></p>
+        <h3 class="part-title">第3章 如何建模服务</h3>
         <p class="part-desc">借鉴领域驱动设计（DDD）的限界上下文（Bounded Context）划定服务边界，追求服务间低耦合与业务高内聚。</p>
-        <div class="example-box"><span class="tag">例 ·</span>“用户”在营销服务中关注积分与促销画像，而在财务结算服务中关注银行账号与开票信息，两个服务各自拥有独立模型。</div>
+        <div class="example-box">“用户”在营销服务中关注积分与促销画像，而在财务结算服务中关注银行账号与开票信息，两个服务各自拥有独立模型。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第4章 集成</b></p>
+        <h3 class="part-title">第4章 集成</h3>
         <p class="part-desc">遵循“智能端点与哑管道”原则，坚决杜绝不同微服务共用同一个数据库，在 RESTful 与异步事件发布订阅间权衡选型。</p>
-        <div class="example-box"><span class="tag">例 ·</span>订单服务创建成功后向消息队列投递 OrderCreated 事件，库存服务异步订阅并扣减，两服务通过消息解耦且各自独享数据库。</div>
+        <div class="example-box">订单服务创建成功后向消息队列投递 OrderCreated 事件，库存服务异步订阅并扣减，两服务通过消息解耦且各自独享数据库。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第5章 分解单块系统</b></p>
+        <h3 class="part-title">第5章 分解单块系统</h3>
         <p class="part-desc">采用绞杀者模式（Strangler Fig）逐步从单体中蚕食迁移功能，优先剥离边界清晰、变更频繁或有特殊伸缩诉求的模块。</p>
-        <div class="example-box"><span class="tag">例 ·</span>不推倒重来，而是把图片转码这种极耗 CPU 的独立模块先从单体抽离成独立微服务，单体负载骤降且迁移风险极低。</div>
+        <div class="example-box">不推倒重来，而是把图片转码这种极耗 CPU 的独立模块先从单体抽离成独立微服务，单体负载骤降且迁移风险极低。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第6章 部署</b></p>
+        <h3 class="part-title">第6章 部署</h3>
         <p class="part-desc">推行基于容器化与不可变基础设施的自动化持续交付（CI/CD），确保每个微服务能在一分钟内独立构建与安全上线。</p>
-        <div class="example-box"><span class="tag">例 ·</span>每个微服务拥有独立的 Git 仓库与部署流水线，修改发布订单服务无需拉上十几个团队开联调封版大会。</div>
+        <div class="example-box">每个微服务拥有独立的 Git 仓库与部署流水线，修改发布订单服务无需拉上十几个团队开联调封版大会。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第7章 测试</b></p>
+        <h3 class="part-title">第7章 测试</h3>
         <p class="part-desc">坚守测试金字塔，利用面向消费者的契约测试（Pact）验证跨服务通信兼容性，严格控制端到端集成测试的数量。</p>
-        <div class="example-box"><span class="tag">例 ·</span>客户端用 Pact 编写对下游接口的响应契约，下游服务在 CI 阶段自动校验契约，无需拉起二十个微服务全家桶就能确认兼容性。</div>
+        <div class="example-box">客户端用 Pact 编写对下游接口的响应契约，下游服务在 CI 阶段自动校验契约，无需拉起二十个微服务全家桶就能确认兼容性。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第8章 监控</b></p>
+        <h3 class="part-title">第8章 监控</h3>
         <p class="part-desc">集中化日志检索（ELK）、分布式全链路追踪（Trace ID）与关键服务健康度看板是微服务生存的强制基础设施。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在所有跨服务 HTTP 和 RPC 请求头中透传全局 TraceId，线上出现慢请求时一键在监控大盘中拉出完整的服务调用耗时瀑布图。</div>
+        <div class="example-box">在所有跨服务 HTTP 和 RPC 请求头中透传全局 TraceId，线上出现慢请求时一键在监控大盘中拉出完整的服务调用耗时瀑布图。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第9章 安全</b></p>
+        <h3 class="part-title">第9章 安全</h3>
         <p class="part-desc">在 API 网关统一完成身份鉴权与限流，微服务内部通信推行相互 TLS（mTLS）加密认证与基于角色的最小特权授权。</p>
-        <div class="example-box"><span class="tag">例 ·</span>外部客户端在网关层换取 JWT 令牌，微服务之间通信强制校验证书签名，避免内网单点被攻破后黑客随意横向嗅探。</div>
+        <div class="example-box">外部客户端在网关层换取 JWT 令牌，微服务之间通信强制校验证书签名，避免内网单点被攻破后黑客随意横向嗅探。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第10章 康威定律和系统设计</b></p>
+        <h3 class="part-title">第10章 康威定律和系统设计</h3>
         <p class="part-desc">系统架构必然反映设计该系统的组织沟通结构，全功能、端到端负责全生命周期的双披萨团队是微服务成功的组织基石。</p>
-        <div class="example-box"><span class="tag">例 ·</span>把按“前端组、后端组、DBA组”划分的职能孤岛，改组为围绕“交易域、用户域”端到端闭环的跨职能微服务小团队。</div>
+        <div class="example-box">把按“前端组、后端组、DBA组”划分的职能孤岛，改组为围绕“交易域、用户域”端到端闭环的跨职能微服务小团队。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第11章 规模化微服务</b></p>
+        <h3 class="part-title">第11章 规模化微服务</h3>
         <p class="part-desc">应用断路器（Circuit Breaker）、隔离舱壁（Bulkhead）与超时降级机制抵御级联故障，利用客户端负载均衡抵御单点抖动。</p>
-        <div class="example-box"><span class="tag">例 ·</span>下游推荐服务响应超时，断路器立即熔断跳闸并返回兜底兜底的热门排行榜数据，阻止请求堆积拖垮核心结算线程池。</div>
+        <div class="example-box">下游推荐服务响应超时，断路器立即熔断跳闸并返回兜底兜底的热门排行榜数据，阻止请求堆积拖垮核心结算线程池。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第12章 总结</b></p>
+        <h3 class="part-title">第12章 总结</h3>
         <p class="part-desc">微服务不是默认选项也不是万能银弹；单体系统在团队小、业务不明朗时往往更高效，唯有规模爆发时才应拥抱微服务。</p>
-        <div class="example-box"><span class="tag">例 ·</span>早期初创公司三个人若硬拆十个微服务，会被分布式运维和网络延迟折腾死；先做优美单体，业务规模跑起来后再顺理成章拆分。</div>
+        <div class="example-box">早期初创公司三个人若硬拆十个微服务，会被分布式运维和网络延迟折腾死；先做优美单体，业务规模跑起来后再顺理成章拆分。</div>
       </li>
             </ol>
           </section>
@@ -285,78 +257,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 13;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

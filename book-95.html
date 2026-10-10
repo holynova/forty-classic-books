@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">主理人五星精选</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-8">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">主理人五星精选 · 第 25 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">主理人五星精选</span>
           </div>
 
           <div class="book-title-header">
@@ -93,10 +90,6 @@
         <span class="label">原作名：</span>
         <span class="value">Professional JavaScript for Web</span>
       </div>
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">主理人五星精选 · 第 25 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/10546125/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -104,20 +97,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">9.3</span>
+            <span class="ratebox-num tabular">9.3</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 2637人评价</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="95" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="95" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 2637人评价 人评价</div>
             </div>
           </div>
 
@@ -135,84 +118,73 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 7 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 执行环境、作用域链与垃圾收集构成了JavaScript程序运行的底座</b></p>
+        <h3 class="idea-title">1. 执行环境、作用域链与垃圾收集构成了JavaScript程序运行的底座</h3>
         <p class="idea-desc">代码执行时在栈中创建执行环境上下文，变量查找沿着作用域链逐级向上回溯，标记清除算法自动回收无引用内存。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在闭包中如果长期持有对外部大型DOM元素的引用，会导致标记清除无法释放该DOM内存，引发典型的客户端内存泄漏。</div>
+        <div class="example-box">在闭包中如果长期持有对外部大型DOM元素的引用，会导致标记清除无法释放该DOM内存，引发典型的客户端内存泄漏。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 寄生组合式继承是ES5面向对象类继承的最优雅高效实现方案</b></p>
+        <h3 class="idea-title">2. 寄生组合式继承是ES5面向对象类继承的最优雅高效实现方案</h3>
         <p class="idea-desc">借用构造函数继承属性，通过原型链混入寄生原型继承方法，既消除了构造函数重复调用的性能损耗，又保持了instanceof的精确性。</p>
-        <div class="example-box"><span class="tag">例 ·</span>通过inheritPrototype(subType, superType)手写寄生组合继承，避免了传统组合继承中new SuperType()导致超类属性在原型上冗余存在。</div>
+        <div class="example-box">通过inheritPrototype(subType, superType)手写寄生组合继承，避免了传统组合继承中new SuperType()导致超类属性在原型上冗余存在。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 坚持“能力检测（Feature Detection）”，彻底摒弃脆弱的用户代理嗅探</b></p>
+        <h3 class="idea-title">3. 坚持“能力检测（Feature Detection）”，彻底摒弃脆弱的用户代理嗅探</h3>
         <p class="idea-desc">永远不要根据navigator.userAgent去猜测浏览器品牌版本，而是直接检测目标对象或API是否存在，代码才能经得起未来兼容考验。</p>
-        <div class="example-box"><span class="tag">例 ·</span>编写AJAX兼容函数时，优先检测window.XMLHttpRequest是否存在，存在即实例化，不存在才降级尝试ActiveXObject控件。</div>
+        <div class="example-box">编写AJAX兼容函数时，优先检测window.XMLHttpRequest是否存在，存在即实例化，不存在才降级尝试ActiveXObject控件。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 利用DOM事件冒泡与事件委托机制，化解高频交互中的内存暴涨隐患</b></p>
+        <h3 class="idea-title">4. 利用DOM事件冒泡与事件委托机制，化解高频交互中的内存暴涨隐患</h3>
         <p class="idea-desc">事件流包含捕获阶段、处于目标阶段与冒泡阶段；利用冒泡将大量子节点的事件监听器统一部署在父级容器上，极大优化内存与性能。</p>
-        <div class="example-box"><span class="tag">例 ·</span>渲染一个包含10000行数据的动态表格时，不给每个tr绑定click，而是在table外壳上监听一次event.target，内存占用瞬间缩减数个数量级。</div>
+        <div class="example-box">渲染一个包含10000行数据的动态表格时，不给每个tr绑定click，而是在table外壳上监听一次event.target，内存占用瞬间缩减数个数量级。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. 防抖（Debounce）与节流（Throttle）是拦截高频调用、防止浏览器假死的利剑</b></p>
+        <h3 class="idea-title">5. 防抖（Debounce）与节流（Throttle）是拦截高频调用、防止浏览器假死的利剑</h3>
         <p class="idea-desc">针对window.resize、scroll与input高频触发场景，利用闭包定时器强制控制执行频率，避免触发密集DOM重排导致帧率暴跌。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在页面滚动监听中挂载函数节流器，强制规定每100毫秒最多执行一次计算，原本卡顿不堪的滚动视差效果瞬间丝滑流畅。</div>
+        <div class="example-box">在页面滚动监听中挂载函数节流器，强制规定每100毫秒最多执行一次计算，原本卡顿不堪的滚动视差效果瞬间丝滑流畅。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. CORS跨域资源共享规范彻底取代了JSONP等早期脆弱黑客技巧</b></p>
+        <h3 class="idea-title">6. CORS跨域资源共享规范彻底取代了JSONP等早期脆弱黑客技巧</h3>
         <p class="idea-desc">通过浏览器与服务器自动协商HTTP响应头（如Access-Control-Allow-Origin），在保障同源安全策略的同时实现了健壮的跨域通信。</p>
-        <div class="example-box"><span class="tag">例 ·</span>发送带自定义Header的跨域POST请求时，浏览器自动发送OPTIONS预检请求向服务器确认权限，验证通过后安全传输真正业务数据。</div>
+        <div class="example-box">发送带自定义Header的跨域POST请求时，浏览器自动发送OPTIONS预检请求向服务器确认权限，验证通过后安全传输真正业务数据。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. 减少全局作用域漫游与局部变量缓存是提升前端执行性能的黄金法则</b></p>
+        <h3 class="idea-title">7. 减少全局作用域漫游与局部变量缓存是提升前端执行性能的黄金法则</h3>
         <p class="idea-desc">访问局部变量的速度远快于漫游作用域链查找全局变量；在大型循环中将全局document或长属性链缓存为局部指针能显著加速。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在百万次循环计算前写var doc = document;并在循环中用doc，避免每次都漫游到作用域链最顶层window，循环耗时下降30%以上。</div>
+        <div class="example-box">在百万次循环计算前写var doc = document;并在循环中用doc，避免每次都漫游到作用域链最顶层window，循环耗时下降30%以上。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">5 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第一部分：ECMAScript核心与面向对象（第1-7章）</b></p>
+        <h3 class="part-title">第一部分：ECMAScript核心与面向对象（第1-7章）</h3>
         <p class="part-desc">详述语言语法、七大数据类型转换、执行环境作用域链与垃圾回收机制，解剖寄生组合式继承与高级闭包私有变量。</p>
-        <div class="example-box"><span class="tag">例 ·</span>手写寄生组合式继承（Parasitic Combination Inheritance），完美解决组合继承中调用两次超类构造函数的内存浪费与属性重复问题。</div>
+        <div class="example-box">手写寄生组合式继承（Parasitic Combination Inheritance），完美解决组合继承中调用两次超类构造函数的内存浪费与属性重复问题。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分：浏览器对象模型与客户端检测（第8-9章）</b></p>
+        <h3 class="part-title">第二部分：浏览器对象模型与客户端检测（第8-9章）</h3>
         <p class="part-desc">深入window/location/navigator等BOM核心对象，传授能力检测优先于用户代理（User-Agent）嗅探的健壮编程哲学。</p>
-        <div class="example-box"><span class="tag">例 ·</span>编写客户端检测逻辑时，坚持“能力检测（Feature Detection）”原则，判断document.getElementById是否存在，而非脆弱地匹配浏览器版本字符串。</div>
+        <div class="example-box">编写客户端检测逻辑时，坚持“能力检测（Feature Detection）”原则，判断document.getElementById是否存在，而非脆弱地匹配浏览器版本字符串。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第三部分：DOM体系与跨浏览器事件机制（第10-14章）</b></p>
+        <h3 class="part-title">第三部分：DOM体系与跨浏览器事件机制（第10-14章）</h3>
         <p class="part-desc">剖析Node节点层级遍历、Selectors API选择符，解构DOM事件流（捕获、目标与冒泡）及跨浏览器事件委托优化实战。</p>
-        <div class="example-box"><span class="tag">例 ·</span>为ul列表中上千个li绑定点击事件时，不单独遍历绑定，而是利用事件冒泡将监听器统一部署在父级ul上，内存占用降低99%。</div>
+        <div class="example-box">为ul列表中上千个li绑定点击事件时，不单独遍历绑定，而是利用事件冒泡将监听器统一部署在父级ul上，内存占用降低99%。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第四部分：HTML5脚本、Canvas与数据处理（第15-20章）</b></p>
+        <h3 class="part-title">第四部分：HTML5脚本、Canvas与数据处理（第15-20章）</h3>
         <p class="part-desc">介绍Canvas 2D绘图、跨文档消息postMessage、原生拖放API，以及JSON的原生解析与序列化替换繁琐XML的历史飞跃。</p>
-        <div class="example-box"><span class="tag">例 ·</span>使用原生JSON.stringify的replacer参数过滤敏感字段，或结合reviver还原Date对象，取代性能低下且易注入的eval解析方式。</div>
+        <div class="example-box">使用原生JSON.stringify的replacer参数过滤敏感字段，或结合reviver还原Date对象，取代性能低下且易注入的eval解析方式。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第五部分：网络通信、客户端存储与最佳实践（第21-25章）</b></p>
+        <h3 class="part-title">第五部分：网络通信、客户端存储与最佳实践（第21-25章）</h3>
         <p class="part-desc">详述XHR生命周期、CORS跨域资源共享与Comet长轮询，传授localStorage/IndexedDB离线存储、函数节流与防抖及性能部署最佳实践。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在window.onresize高频事件中运用函数节流（Throttle）算法，将事件处理频率限制在每200毫秒一次，防止浏览器DOM频繁重排引发严重卡顿。</div>
+        <div class="example-box">在window.onresize高频事件中运用函数节流（Throttle）算法，将事件处理频率限制在每200毫秒一次，防止浏览器DOM频繁重排引发严重卡顿。</div>
       </li>
             </ol>
           </section>
@@ -250,78 +222,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 95;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

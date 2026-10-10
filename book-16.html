@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">系统设计</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-2">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">系统设计 · 第 16 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">系统设计</span>
           </div>
 
           <div class="book-title-header">
@@ -93,10 +90,6 @@
         <span class="label">原作名：</span>
         <span class="value">Release It!: Design and Deploy Production-Ready Software</span>
       </div>
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">系统设计 · 第 16 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/26304417/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -104,20 +97,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">7.7</span>
+            <span class="ratebox-num tabular">7.7</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 72人评价</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="16" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="16" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 72人评价 人评价</div>
             </div>
           </div>
 
@@ -135,84 +118,73 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 7 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 为生产而设计，而不是为演示而设计</b></p>
+        <h3 class="idea-title">1. 为生产而设计，而不是为演示而设计</h3>
         <p class="idea-desc">很多系统开发机上跑得飞起，一上线就跪。设计时只想“功能通不通”，没想“依赖挂了怎么办、流量翻十倍怎么办、磁盘满了怎么办”。</p>
-        <div class="example-box"><span class="tag">例 ·</span>买车试驾都好开，得问“高速爆胎怎么办、冬天打不着火怎么办”。某系统没人问“短信网关挂了怎么办”，大促时网关一抖，用户收不到验证码，全站登录瘫痪。设计没留后路，出事只能干瞪眼。</div>
+        <div class="example-box">买车试驾都好开，得问“高速爆胎怎么办、冬天打不着火怎么办”。某系统没人问“短信网关挂了怎么办”，大促时网关一抖，用户收不到验证码，全站登录瘫痪。设计没留后路，出事只能干瞪眼。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 级联故障：一个慢服务能拖死全站</b></p>
+        <h3 class="idea-title">2. 级联故障：一个慢服务能拖死全站</h3>
         <p class="idea-desc">A调B，B变慢，A的线程全卡在“等B返回”上；A的线程池耗尽，调A的C也跟着卡。多米诺骨牌：一个点的“慢”扩散成全站的“死”。这是生产事故最常见的死法，和代码bug无关，是架构病——设计时没做隔离，迟早要还。</p>
-        <div class="example-box"><span class="tag">例 ·</span>高速连环追尾：第一辆急刹，后面一辆接一辆撞上去。某电商大促，一个边缘的“推荐”服务变慢，拖死了下单主流程——主流程只是“顺手调了一下”推荐，却一起陪葬。</div>
+        <div class="example-box">高速连环追尾：第一辆急刹，后面一辆接一辆撞上去。某电商大促，一个边缘的“推荐”服务变慢，拖死了下单主流程——主流程只是“顺手调了一下”推荐，却一起陪葬。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 熔断器：对方挂了，就别再去敲门</b></p>
+        <h3 class="idea-title">3. 熔断器：对方挂了，就别再去敲门</h3>
         <p class="idea-desc">保险丝：电流过大就断开，保护全屋。熔断器一样：下游连续失败就“跳闸”，直接返回降级结果，不再发请求；过会儿放一个请求试探，好了就“合闸”。既不把挂掉的服务打得更挂，也不被它拖死。</p>
-        <div class="example-box"><span class="tag">例 ·</span>对方一直占线，别每隔十秒重拨——打不通，还把自己手机打没电。等半小时再试一次。支付系统给银行通道加熔断，银行抖动时自动切备用通道，用户只觉得“慢了一点”，而不是直接报错。</div>
+        <div class="example-box">对方一直占线，别每隔十秒重拨——打不通，还把自己手机打没电。等半小时再试一次。支付系统给银行通道加熔断，银行抖动时自动切备用通道，用户只觉得“慢了一点”，而不是直接报错。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 舱壁：把系统隔成“水密舱”</b></p>
+        <h3 class="idea-title">4. 舱壁：把系统隔成“水密舱”</h3>
         <p class="idea-desc">船被鱼雷打中不沉，靠水密舱：一个舱进水，其他舱不受影响。软件里就是资源隔离：不同依赖配独立的线程池、连接池，一个hang死只耗尽自己的池子，不连累别人。隔离做好，故障“爆炸半径”就小。</p>
-        <div class="example-box"><span class="tag">例 ·</span>家里电路分路：空调一路、照明一路，空调短路只跳自己的闸，灯还亮着。某系统“下单”和“发券”共用一个线程池，发券hang死拖垮下单；拆成两个池子后，发券再挂也不影响收钱。</div>
+        <div class="example-box">家里电路分路：空调一路、照明一路，空调短路只跳自己的闸，灯还亮着。某系统“下单”和“发券”共用一个线程池，发券hang死拖垮下单；拆成两个池子后，发券再挂也不影响收钱。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. 超时和限流：给每个操作上“紧箍咒”</b></p>
+        <h3 class="idea-title">5. 超时和限流：给每个操作上“紧箍咒”</h3>
         <p class="idea-desc">不设超时，等于“无限期等一个可能永远不回的人”；不限流，等于“来多少都接待、挤爆为止”。超时是“3秒不回就放弃”，限流是“门口保安数人头，满了排队或劝返”。两件小事防住一大半生产事故，却最容易被遗忘。</p>
-        <div class="example-box"><span class="tag">例 ·</span>饭店：等位超1小时客人就走（超时），满座不再放人进（限流）。让500人挤进只能坐50人的店，所有人都吃不上饭，厨师也崩溃。</div>
+        <div class="example-box">饭店：等位超1小时客人就走（超时），满座不再放人进（限流）。让500人挤进只能坐50人的店，所有人都吃不上饭，厨师也崩溃。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 反模式：集成点越多，死得越快</b></p>
+        <h3 class="idea-title">6. 反模式：集成点越多，死得越快</h3>
         <p class="idea-desc">每多接一个外部系统（支付、短信、地图、风控），就多一个“它挂了我也挂”的风险。集成点多到两只手数不过来，架构就有问题：要么砍掉非必要的，要么每个配上熔断降级。依赖是负债，不是资产。</p>
-        <div class="example-box"><span class="tag">例 ·</span>装修找20个分包队，任何一个掉链子，工期全拖。靠谱做法：关键路径的分包必须有备选（B队）。每个外部依赖都要有“B计划”。</div>
+        <div class="example-box">装修找20个分包队，任何一个掉链子，工期全拖。靠谱做法：关键路径的分包必须有备选（B队）。每个外部依赖都要有“B计划”。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. 透明度：看不见的系统救不回来</b></p>
+        <h3 class="idea-title">7. 透明度：看不见的系统救不回来</h3>
         <p class="idea-desc">线上出问题，第一问永远是“现在到底发生了什么”。日志、指标、业务仪表盘是救命的东西。重点记“业务指标”（每分钟下单量、支付成功率），不只看CPU内存——机器看着没事，业务可能已经挂了。</p>
-        <div class="example-box"><span class="tag">例 ·</span>开车只看“发动机转不转”（CPU），不看“车速多少”（业务量），抛锚了都不知道是没油还是爆胎。某公司大促CPU才40%，支付成功率却掉了20%——看业务指标才发现是第三方风控接口超时。</div>
+        <div class="example-box">开车只看“发动机转不转”（CPU），不看“车速多少”（业务量），抛锚了都不知道是没油还是爆胎。某公司大促CPU才40%，支付成功率却掉了20%——看业务指标才发现是第三方风控接口超时。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">5 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第1章 引言</b></p>
+        <h3 class="part-title">第1章 引言</h3>
         <p class="part-desc">生产环境是冷酷无情的真实战场而非理想温室，架构设计的出发点必须是为企业的商业底线与系统长期生存负责。</p>
-        <div class="example-box"><span class="tag">例 ·</span>代码在开发和测试环境运行一切正常，但上线一遭遇公网延迟抖动与用户非预期狂点，瞬间发生内存泄漏直接拖垮全服。</div>
+        <div class="example-box">代码在开发和测试环境运行一切正常，但上线一遭遇公网延迟抖动与用户非预期狂点，瞬间发生内存泄漏直接拖垮全服。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第一部分 稳定性</b></p>
+        <h3 class="part-title">第一部分 稳定性</h3>
         <p class="part-desc">剖析航空订票系统宕机等经典事故，识别集成点依赖、重试风暴与连锁故障等反模式，建立熔断器、舱壁与超时等稳定模式。</p>
-        <div class="example-box"><span class="tag">例 ·</span>下游积分服务响应卡死，上游系统没有设置 HTTP 超时导致几百个工作线程全部被挂起耗尽，采用熔断器模式后能在异常时快速熔断跳闸。</div>
+        <div class="example-box">下游积分服务响应卡死，上游系统没有设置 HTTP 超时导致几百个工作线程全部被挂起耗尽，采用熔断器模式后能在异常时快速熔断跳闸。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分 容量</b></p>
+        <h3 class="part-title">第二部分 容量</h3>
         <p class="part-desc">深度解析用户激增带来的容量挤压，识别无限制会话膨胀、连接泄漏与数据库连接池竞争等反模式，推行水平伸缩与资源池化。</p>
-        <div class="example-box"><span class="tag">例 ·</span>某系统将大量未支付购物车数据常驻保存在 Web 服务器内存 Session 中，双十一大促用户涌入导致 JVM 频繁触发 Full GC 并直接 OOM 崩溃。</div>
+        <div class="example-box">某系统将大量未支付购物车数据常驻保存在 Web 服务器内存 Session 中，双十一大促用户涌入导致 JVM 频繁触发 Full GC 并直接 OOM 崩溃。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第三部分 一般设计问题</b></p>
+        <h3 class="part-title">第三部分 一般设计问题</h3>
         <p class="part-desc">明确网络通信阻塞、敏感配置外泄、高可用故障自动转移与中间件基础设施管理的工程边界与防御性设计原则。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在跨机房专线调用中严格限制网络读写超时时间，并在重试机制中引入指数退避（Exponential Backoff）与随机抖动，避免引发自杀式重试风暴。</div>
+        <div class="example-box">在跨机房专线调用中严格限制网络读写超时时间，并在重试机制中引入指数退避（Exponential Backoff）与随机抖动，避免引发自杀式重试风暴。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第四部分 运营</b></p>
+        <h3 class="part-title">第四部分 运营</h3>
         <p class="part-desc">打造系统生产环境透明度，提供结构化日志、健康探针（Health Check）与白盒指标大盘，构建面对线上异常自愈的适应性架构。</p>
-        <div class="example-box"><span class="tag">例 ·</span>每个微服务暴露出 `/health` 和 `/metrics` 端点，Kubernetes 探针一旦检测到容器连续三次无响应，自动杀掉僵死容器并重新调度拉起新实例。</div>
+        <div class="example-box">每个微服务暴露出 `/health` 和 `/metrics` 端点，Kubernetes 探针一旦检测到容器连续三次无响应，自动杀掉僵死容器并重新调度拉起新实例。</div>
       </li>
             </ol>
           </section>
@@ -250,78 +222,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 16;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

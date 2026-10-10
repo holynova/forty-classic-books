@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">主理人四星精选</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-9">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">主理人四星精选 · 第 19 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">主理人四星精选</span>
           </div>
 
           <div class="book-title-header">
@@ -90,10 +87,6 @@
                 <span class="value">2009</span>
               </div>
               
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">主理人四星精选 · 第 19 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/4148183/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -101,20 +94,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">8.8</span>
+            <span class="ratebox-num tabular">8.8</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 35,000+</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="189" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="189" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 35,000+ 人评价</div>
             </div>
           </div>
 
@@ -132,104 +115,93 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 6 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 前后台系统向RTOS演进是嵌入式复杂度的必然跨越</b></p>
+        <h3 class="idea-title">1. 前后台系统向RTOS演进是嵌入式复杂度的必然跨越</h3>
         <p class="idea-desc">传统的无限大循环+中断服务（前后台架构）在系统规模扩大时响应时间极其不确定；抢占式RTOS将功能解耦为独立任务，保障高优先级响应。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在电机控制中一旦温度超标报警，抢占式内核能在几个微秒内打断当前正在跑的显示刷新任务，立即切入紧急制动处理任务。</div>
+        <div class="example-box">在电机控制中一旦温度超标报警，抢占式内核能在几个微秒内打断当前正在跑的显示刷新任务，立即切入紧急制动处理任务。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 基于查表法的优先级调度算法保证了恒定O(1)调度耗时</b></p>
+        <h3 class="idea-title">2. 基于查表法的优先级调度算法保证了恒定O(1)调度耗时</h3>
         <p class="idea-desc">利用优先级就绪表OSRdyTbl与查表映射OSUnMapTbl，无论系统中有多少个任务，寻找当前最高优先级的耗时永远恒定，杜绝遍历开销。</p>
-        <div class="example-box"><span class="tag">例 ·</span>利用位操作矩阵和仅256字节的只读查找表，仅需两行位移与查表指令即可在常数时钟周期内锁定最高就绪任务的优先级号。</div>
+        <div class="example-box">利用位操作矩阵和仅256字节的只读查找表，仅需两行位移与查表指令即可在常数时钟周期内锁定最高就绪任务的优先级号。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 任务上下文切换的本质是CPU寄存器与私有任务堆栈的搬移</b></p>
+        <h3 class="idea-title">3. 任务上下文切换的本质是CPU寄存器与私有任务堆栈的搬移</h3>
         <p class="idea-desc">每个任务拥有独立的RAM堆栈空间。任务切换时，触发软中断将CPU寄存器压入当前任务堆栈，再从目标任务堆栈弹出寄存器恢复现场。</p>
-        <div class="example-box"><span class="tag">例 ·</span>OS_TASK_SW通过执行一条软中断指令，伪造出一次硬件中断调用的效果，将PC指针和通用寄存器完美切换到新任务的执行点。</div>
+        <div class="example-box">OS_TASK_SW通过执行一条软中断指令，伪造出一次硬件中断调用的效果，将PC指针和通用寄存器完美切换到新任务的执行点。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 优先级反转（Priority Inversion）是并发共享资源的致命隐患</b></p>
+        <h3 class="idea-title">4. 优先级反转（Priority Inversion）是并发共享资源的致命隐患</h3>
         <p class="idea-desc">当低优先级任务持有高优先级任务所需资源时，中优先级任务可能插队剥夺CPU，导致高优先级任务被无限期延迟；必须用互斥信号量解决。</p>
-        <div class="example-box"><span class="tag">例 ·</span>火星探路者号在火星发生看门狗复位的经典事故，就是因为缺乏互斥信号量的优先级继承机制，导致高优先级任务被中优先级任务饿死。</div>
+        <div class="example-box">火星探路者号在火星发生看门狗复位的经典事故，就是因为缺乏互斥信号量的优先级继承机制，导致高优先级任务被中优先级任务饿死。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. 事件控制块（ECB）统一抽象了信号量、邮箱与队列模型</b></p>
+        <h3 class="idea-title">5. 事件控制块（ECB）统一抽象了信号量、邮箱与队列模型</h3>
         <p class="idea-desc">μC/OS-II通过统一的OS_EVENT结构体管理等待队列与同步原语，任何因等待资源而阻塞的任务都会被挂入对应事件的等待任务列表中。</p>
-        <div class="example-box"><span class="tag">例 ·</span>无论是等待一个信号量（OSSemPend）还是等待一条邮箱消息（OSMboxPend），底层均复用ECB的等待位图机制，架构高度精炼内聚。</div>
+        <div class="example-box">无论是等待一个信号量（OSSemPend）还是等待一条邮箱消息（OSMboxPend），底层均复用ECB的等待位图机制，架构高度精炼内聚。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 固定大小的动态内存分区管理从根本上杜绝内存碎片化</b></p>
+        <h3 class="idea-title">6. 固定大小的动态内存分区管理从根本上杜绝内存碎片化</h3>
         <p class="idea-desc">严禁在嵌入式实时系统中使用malloc/free动态分配，因为碎片化会导致系统长时间运行后突然无内存可用崩溃；必须使用内存池分区。</p>
-        <div class="example-box"><span class="tag">例 ·</span>预先向内核申请一块划分为100个各64字节小块的固定内存池，任务申请释放只需修改单向链表指针，耗时恒定且绝无碎片。</div>
+        <div class="example-box">预先向内核申请一块划分为100个各64字节小块的固定内存池，任务申请释放只需修改单向链表指针，耗时恒定且绝无碎片。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">10 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第1章 嵌入式实时操作系统的基本概念</b></p>
+        <h3 class="part-title">第1章 嵌入式实时操作系统的基本概念</h3>
         <p class="part-desc">界定嵌入式实时系统核心概念：对比前后台系统与多任务系统，详解硬实时与软实时指标、内核可剥夺性与任务优先级的战略意义。</p>
-        <div class="example-box"><span class="tag">例 ·</span>对比数字示波器采用RTOS与无操作系统单片机方案，论证波形采集高优先级硬实时抢占对于避免波形数据丢失的关键作用。</div>
+        <div class="example-box">对比数字示波器采用RTOS与无操作系统单片机方案，论证波形采集高优先级硬实时抢占对于避免波形数据丢失的关键作用。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2章 预备知识</b></p>
+        <h3 class="part-title">第2章 预备知识</h3>
         <p class="part-desc">打通C语言与汇编底层关节：剖析ANSI C在嵌入式中的扩展、结构体指针对齐、函数调用栈帧布局、处理器工作模式与中断开关宏实现。</p>
-        <div class="example-box"><span class="tag">例 ·</span>解析OS_ENTER_CRITICAL()与OS_EXIT_CRITICAL()如何通过保存状态寄存器压栈实现绝对安全的中断临界区保护。</div>
+        <div class="example-box">解析OS_ENTER_CRITICAL()与OS_EXIT_CRITICAL()如何通过保存状态寄存器压栈实现绝对安全的中断临界区保护。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第3章 μC/OS-II中的任务</b></p>
+        <h3 class="part-title">第3章 μC/OS-II中的任务</h3>
         <p class="part-desc">全书基石：深入剖析任务控制块OS_TCB字段定义、空闲任务与统计任务、任务的5种状态流转、任务堆栈初始化与任务创建/删除API。</p>
-        <div class="example-box"><span class="tag">例 ·</span>手把手演示OSTaskCreateExt如何按照硬件压栈顺序伪造初始堆栈现场，使得新任务第一次被调度时能像从中断正常返回一样启动。</div>
+        <div class="example-box">手把手演示OSTaskCreateExt如何按照硬件压栈顺序伪造初始堆栈现场，使得新任务第一次被调度时能像从中断正常返回一样启动。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第4章 μC/OS-II的中断和时钟</b></p>
+        <h3 class="part-title">第4章 μC/OS-II的中断和时钟</h3>
         <p class="part-desc">解密中断处理流水线：中断嵌套计数器OSIntNesting、中断退出调度器OSIntExit，以及硬件定时器驱动的系统时钟节拍OSTimeTick服务。</p>
-        <div class="example-box"><span class="tag">例 ·</span>详细跟踪一次外部硬件中断产生后，中断服务程序ISR如何通知内核暂缓任务调度，并在所有嵌套中断全部处理完毕后统一触发抢占。</div>
+        <div class="example-box">详细跟踪一次外部硬件中断产生后，中断服务程序ISR如何通知内核暂缓任务调度，并在所有嵌套中断全部处理完毕后统一触发抢占。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第5章 任务的同步与通信</b></p>
+        <h3 class="part-title">第5章 任务的同步与通信</h3>
         <p class="part-desc">总览任务协作理论框架：剖析事件控制块（OS_EVENT）结构设计、事件等待列表位图算法，以及任务在等待资源时的休眠与唤醒流程。</p>
-        <div class="example-box"><span class="tag">例 ·</span>演示一个传感器数据采集任务在没有数据时调用OSSemPend主动让出CPU挂起，数据到达时中断触发OSSemPost将其瞬间唤醒。</div>
+        <div class="example-box">演示一个传感器数据采集任务在没有数据时调用OSSemPend主动让出CPU挂起，数据到达时中断触发OSSemPost将其瞬间唤醒。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第6章 信号量与互斥信号量</b></p>
+        <h3 class="part-title">第6章 信号量与互斥信号量</h3>
         <p class="part-desc">深入信号量（OS_SEM）作为计数器与二值信号量的应用，剖析互斥信号量（OS_MUTEX）利用优先级继承机制彻底消灭优先级反转的算法实现。</p>
-        <div class="example-box"><span class="tag">例 ·</span>对比普通信号量与互斥信号量在共享串口打印时的表现，演示Mutex如何在低优先级任务持有锁时临时将其提速至高优先级以防止插队。</div>
+        <div class="example-box">对比普通信号量与互斥信号量在共享串口打印时的表现，演示Mutex如何在低优先级任务持有锁时临时将其提速至高优先级以防止插队。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第7章 消息邮箱与消息队列</b></p>
+        <h3 class="part-title">第7章 消息邮箱与消息队列</h3>
         <p class="part-desc">解析指针传递的高性能通信利器：消息邮箱（OS_MBOX）单指针投递与消息队列（OS_Q）指针环形数组缓冲区的读写操作与同步机制。</p>
-        <div class="example-box"><span class="tag">例 ·</span>按键扫描任务检测到底层物理按键按下后，封装一个包含按键码与长按时长的事件结构体指针，通过OSQPost投递给UI业务处理任务。</div>
+        <div class="example-box">按键扫描任务检测到底层物理按键按下后，封装一个包含按键码与长按时长的事件结构体指针，通过OSQPost投递给UI业务处理任务。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第8章 内存管理</b></p>
+        <h3 class="part-title">第8章 内存管理</h3>
         <p class="part-desc">揭示动态内存管理的防碎片化设计：内存控制块OS_MEM、固定内存分区的创建（OSMemCreate）与内存块原子申请/释放算法。</p>
-        <div class="example-box"><span class="tag">例 ·</span>为一个网络数据包收发驱动创建包含32个各1500字节网卡缓冲区的固定内存池，每次收到报文秒级申请、发完即刻归还链表。</div>
+        <div class="example-box">为一个网络数据包收发驱动创建包含32个各1500字节网卡缓冲区的固定内存池，每次收到报文秒级申请、发完即刻归还链表。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第9章 μC/OS-II在微处理器上的移植</b></p>
+        <h3 class="part-title">第9章 μC/OS-II在微处理器上的移植</h3>
         <p class="part-desc">拆解内核移植三大件：OS_CPU.H（宏定义与数据类型）、OS_CPU_C.C（堆栈初始化）与OS_CPU_A.ASM（上下文切换核心汇编指令）。</p>
-        <div class="example-box"><span class="tag">例 ·</span>手写底层汇编函数OSCtxSw与OSIntCtxSw，精准操作SP堆栈指针寄存器，完成将旧任务上下文保存并将新任务上下文载入CPU。</div>
+        <div class="example-box">手写底层汇编函数OSCtxSw与OSIntCtxSw，精准操作SP堆栈指针寄存器，完成将旧任务上下文保存并将新任务上下文载入CPU。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第10章 μC/OS-II应用开发与实验</b></p>
+        <h3 class="part-title">第10章 μC/OS-II应用开发与实验</h3>
         <p class="part-desc">综合工程实战：基于PC模拟器与典型嵌入式单片机，演练多任务系统规划、优先级分配策略、栈溢出检测与工业级综合应用排障。</p>
-        <div class="example-box"><span class="tag">例 ·</span>设计一个工业环境监测仪项目：划分出AD采集、按键处理、LCD显示和网络上传四个任务，合理赋予优先级并利用消息队列协同作业。</div>
+        <div class="example-box">设计一个工业环境监测仪项目：划分出AD采集、按键处理、LCD显示和网络上传四个任务，合理赋予优先级并利用消息队列协同作业。</div>
       </li>
             </ol>
           </section>
@@ -267,78 +239,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 189;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

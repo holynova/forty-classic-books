@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">主理人四星精选</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-9">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">主理人四星精选 · 第 09 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">主理人四星精选</span>
           </div>
 
           <div class="book-title-header">
@@ -90,10 +87,6 @@
                 <span class="value">2009</span>
               </div>
               
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">主理人四星精选 · 第 09 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/3590768/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -101,20 +94,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">8.8</span>
+            <span class="ratebox-num tabular">8.8</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 35,000+</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="179" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="179" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 35,000+ 人评价</div>
             </div>
           </div>
 
@@ -132,104 +115,93 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 6 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 坚决隔离全局变量，使用模块化与闭包保护私有状态</b></p>
+        <h3 class="idea-title">1. 坚决隔离全局变量，使用模块化与闭包保护私有状态</h3>
         <p class="idea-desc">全局变量是JavaScript最严重的致命原罪；任何变量泄露到全局作用域都会导致命名冲突与无法追踪的隐蔽依赖崩溃。</p>
-        <div class="example-box"><span class="tag">例 ·</span>利用立即执行函数表达式（IIFE）构建独立闭包沙箱，将内部变量对外严格隐藏，仅向外暴露一个受限的公共API对象。</div>
+        <div class="example-box">利用立即执行函数表达式（IIFE）构建独立闭包沙箱，将内部变量对外严格隐藏，仅向外暴露一个受限的公共API对象。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 函数是一等公民，闭包是面向对象的更优解</b></p>
+        <h3 class="idea-title">2. 函数是一等公民，闭包是面向对象的更优解</h3>
         <p class="idea-desc">JavaScript的函数是真正的对象，能作为参数传递也能作为返回值；闭包天然提供了比传统Class更严谨的数据封装与私有性。</p>
-        <div class="example-box"><span class="tag">例 ·</span>编写一个计数器构造函数，内部count变量仅通过闭包函数递增，外部代码哪怕用尽黑客手段也无法直接恶意篡改count值。</div>
+        <div class="example-box">编写一个计数器构造函数，内部count变量仅通过闭包函数递增，外部代码哪怕用尽黑客手段也无法直接恶意篡改count值。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 拥抱原型继承，停止笨拙地模拟类（Class）</b></p>
+        <h3 class="idea-title">3. 拥抱原型继承，停止笨拙地模拟类（Class）</h3>
         <p class="idea-desc">JavaScript天然基于原型链（Prototypal Inheritance）；不要死搬Java的类层次继承，直接用Object.create实现差异化继承更自然。</p>
-        <div class="example-box"><span class="tag">例 ·</span>创建高级经理对象时，直接让其原型指向普通员工对象，只需额外附加经理专属的approveExpense方法，无需定义冗长类层级。</div>
+        <div class="example-box">创建高级经理对象时，直接让其原型指向普通员工对象，只需额外附加经理专属的approveExpense方法，无需定义冗长类层级。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 对象字面量是现代数据交换格式JSON的母体</b></p>
+        <h3 class="idea-title">4. 对象字面量是现代数据交换格式JSON的母体</h3>
         <p class="idea-desc">JavaScript发明了世界上最优雅的对象与数组字面量表示法，它彻底淘汰了笨重复杂的XML，成为全互联网通信的标准介质。</p>
-        <div class="example-box"><span class="tag">例 ·</span>直接写let user = { name: 'Alice', age: 30 }即瞬间完成对象初始化，比在Java中繁琐实例化Bean和调用setter省下90%代码。</div>
+        <div class="example-box">直接写let user = { name: 'Alice', age: 30 }即瞬间完成对象初始化，比在Java中繁琐实例化Bean和调用setter省下90%代码。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. 果断弃用语言中的糟粕：with、eval与void</b></p>
+        <h3 class="idea-title">5. 果断弃用语言中的糟粕：with、eval与void</h3>
         <p class="idea-desc">语言中有很多设计拙劣的历史遗留特性，它们会严重摧毁词法作用域分析、拖慢JIT执行速度并引入巨大的XSS安全漏洞，必须彻底封杀。</p>
-        <div class="example-box"><span class="tag">例 ·</span>严禁使用eval解析JSON字符串，改用原生的JSON.parse，既消灭了恶意脚本注入后门，执行效率又提升了数个数量级。</div>
+        <div class="example-box">严禁使用eval解析JSON字符串，改用原生的JSON.parse，既消灭了恶意脚本注入后门，执行效率又提升了数个数量级。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 严格使用静态代码审查工具（JSLint）约束风格</b></p>
+        <h3 class="idea-title">6. 严格使用静态代码审查工具（JSLint）约束风格</h3>
         <p class="idea-desc">好程序员通过严格纪律克制自由散漫；利用静态分析工具在提交前自动拦截潜在陷阱，确保团队代码库始终遵循最佳实践子集。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在CI流水线中集成JSLint检测，强制禁止使用宽松相等==，一律要求使用全等===，从源头上杜绝隐式类型转换导致的偶发故障。</div>
+        <div class="example-box">在CI流水线中集成JSLint检测，强制禁止使用宽松相等==，一律要求使用全等===，从源头上杜绝隐式类型转换导致的偶发故障。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">10 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第1章 精华</b></p>
+        <h3 class="part-title">第1章 精华</h3>
         <p class="part-desc">阐明全书核心宗旨：剖析JavaScript这门语言的双重人格，论证为何挑选精纯子集能大幅提升工程质量。</p>
-        <div class="example-box"><span class="tag">例 ·</span>指出JavaScript不仅包含了优秀函数式基因，也混杂着糟粕，只有提炼精华才能免受语言陷阱的折磨。</div>
+        <div class="example-box">指出JavaScript不仅包含了优秀函数式基因，也混杂着糟粕，只有提炼精华才能免受语言陷阱的折磨。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2章 语法</b></p>
+        <h3 class="part-title">第2章 语法</h3>
         <p class="part-desc">梳理语言的基础语法要素：空白与换行隐患、数字表示法、字符串转义、语句控制流及避免自动分号插入错误的规范。</p>
-        <div class="example-box"><span class="tag">例 ·</span>详细演示左花括号若放在新行开头会诱发编译器自动插入分号导致返回undefined，确立K&amp;R代码风格的刚性规范。</div>
+        <div class="example-box">详细演示左花括号若放在新行开头会诱发编译器自动插入分号导致返回undefined，确立K&amp;R代码风格的刚性规范。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第3章 对象</b></p>
+        <h3 class="part-title">第3章 对象</h3>
         <p class="part-desc">解析对象字面量、属性检索、引用传递机制、原型链委托查找（Prototype Link）以及使用delete安全删除属性。</p>
-        <div class="example-box"><span class="tag">例 ·</span>演示查找对象属性时如何自动沿prototype链向上追溯直到Object.prototype，解释委托模型的轻量内存优势。</div>
+        <div class="example-box">演示查找对象属性时如何自动沿prototype链向上追溯直到Object.prototype，解释委托模型的轻量内存优势。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第4章 函数</b></p>
+        <h3 class="part-title">第4章 函数</h3>
         <p class="part-desc">全书精髓：详解函数对象、调用模式（方法/函数/构造器/apply）、arguments伪数组、作用域、闭包及模块模式。</p>
-        <div class="example-box"><span class="tag">例 ·</span>通过闭包实现函数柯里化（Currying）与惰性求值函数，将原本需要重复接收多个参数的函数重构成单参数链式调用。</div>
+        <div class="example-box">通过闭包实现函数柯里化（Currying）与惰性求值函数，将原本需要重复接收多个参数的函数重构成单参数链式调用。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第5章 继承</b></p>
+        <h3 class="part-title">第5章 继承</h3>
         <p class="part-desc">解构伪类模式（new与prototype）、对象说明符、原型模式与函数化构造模式，展示如何构建真正的私有属性封装。</p>
-        <div class="example-box"><span class="tag">例 ·</span>使用函数化构造模式编写Mammal与Cat对象，完全绕过new关键字的潜在风险，实现绝对安全的数据私有封装。</div>
+        <div class="example-box">使用函数化构造模式编写Mammal与Cat对象，完全绕过new关键字的潜在风险，实现绝对安全的数据私有封装。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第6章 数组</b></p>
+        <h3 class="part-title">第6章 数组</h3>
         <p class="part-desc">揭示JavaScript中数组本质上是拥有length魔法属性的普通对象，辨析伪数组陷阱并推荐高效的数组内置方法操作。</p>
-        <div class="example-box"><span class="tag">例 ·</span>解释为什么在JS数组中设置array[100] = 'x'不会在内存中连续分配空间，而是产生稀疏数组，警告谨慎使用数组for-in遍历。</div>
+        <div class="example-box">解释为什么在JS数组中设置array[100] = 'x'不会在内存中连续分配空间，而是产生稀疏数组，警告谨慎使用数组for-in遍历。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第7章 正则表达式</b></p>
+        <h3 class="part-title">第7章 正则表达式</h3>
         <p class="part-desc">解析正则表达式在JavaScript中的实现与性能开销，教授如何构造可读性好且无灾难性回溯的正则模式。</p>
-        <div class="example-box"><span class="tag">例 ·</span>拆解一段用于解析URL协议、域名、端口和路径的高效正则表达式，逐个字符类剖析匹配原理与捕获组结构。</div>
+        <div class="example-box">拆解一段用于解析URL协议、域名、端口和路径的高效正则表达式，逐个字符类剖析匹配原理与捕获组结构。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第8章 方法</b></p>
+        <h3 class="part-title">第8章 方法</h3>
         <p class="part-desc">系统盘点Array、Function、Number、Object、RegExp、String等核心标准库中真正实用且高质量的内置方法集合。</p>
-        <div class="example-box"><span class="tag">例 ·</span>示范String.prototype.replace结合正则捕获组与替换函数的高级玩法，完成富文本模板变量的批量动态插值。</div>
+        <div class="example-box">示范String.prototype.replace结合正则捕获组与替换函数的高级玩法，完成富文本模板变量的批量动态插值。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第9章 代码风格</b></p>
+        <h3 class="part-title">第9章 代码风格</h3>
         <p class="part-desc">论证统一、严苛、整洁的代码风格在动态语言中的救命意义，倡导通过严格自律消灭一切容易误导读者的语法歧义。</p>
-        <div class="example-box"><span class="tag">例 ·</span>强调即使if语句只有一行也必须强制写大括号，防范后人在维护时不经意加了一行代码却脱离控制范围的经典事故。</div>
+        <div class="example-box">强调即使if语句只有一行也必须强制写大括号，防范后人在维护时不经意加了一行代码却脱离控制范围的经典事故。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第10章 优美的特性</b></p>
+        <h3 class="part-title">第10章 优美的特性</h3>
         <p class="part-desc">全书压轴总结：回归极简主义，回顾函数字面量、动态对象、松散类型与原型继承共同构筑的高表现力编程世界。</p>
-        <div class="example-box"><span class="tag">例 ·</span>通过一个精炼的JSON解析器和微型语法求值器，证明仅凭JavaScript精华子集就能编写出令人惊叹的自举程序。</div>
+        <div class="example-box">通过一个精炼的JSON解析器和微型语法求值器，证明仅凭JavaScript精华子集就能编写出令人惊叹的自举程序。</div>
       </li>
             </ol>
           </section>
@@ -267,78 +239,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 179;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

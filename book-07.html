@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">软件工程</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-1">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">软件工程 · 第 07 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">软件工程</span>
           </div>
 
           <div class="book-title-header">
@@ -93,10 +90,6 @@
         <span class="label">原作名：</span>
         <span class="value">Design Patterns: Elements of Reusable Object-Oriented Software</span>
       </div>
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">软件工程 · 第 07 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/1052241/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -104,20 +97,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">9</span>
+            <span class="ratebox-num tabular">9</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 3221人评价</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="7" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="7" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 3221人评价 人评价</div>
             </div>
           </div>
 
@@ -135,89 +118,78 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 7 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 针对接口编程，不针对实现编程</b></p>
+        <h3 class="idea-title">1. 针对接口编程，不针对实现编程</h3>
         <p class="idea-desc">代码依赖“抽象”（接口长什么样），不依赖“具体”（它到底是谁）。接口是契约，实现是干活的人——换人不用换契约，具体实现随便换，调用方不用改。</p>
-        <div class="example-box"><span class="tag">例 ·</span>代码里到处直接创建 MySQL 存储对象，换 MongoDB 得改几十处。依赖统一存储接口，换时只写个新实现类，调用方一行不动。</div>
+        <div class="example-box">代码里到处直接创建 MySQL 存储对象，换 MongoDB 得改几十处。依赖统一存储接口，换时只写个新实现类，调用方一行不动。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 优先用组合，而不是继承</b></p>
+        <h3 class="idea-title">2. 优先用组合，而不是继承</h3>
         <p class="idea-desc">新手最爱用继承：“狗继承动物，警犬继承狗”，结果改爷爷类孙子类全受影响。能用“组合”（对象里装着另一个对象）解决的别用继承——组合更灵活，想换就换，不用动祖宗。</p>
-        <div class="example-box"><span class="tag">例 ·</span>鸭子游戏：绿头鸭继承鸭子，后来加“橡皮鸭”不会飞，继承来的飞行方法成 bug。改成组合：想飞装会飞的行为，不想飞装不会飞的，随时换。</div>
+        <div class="example-box">鸭子游戏：绿头鸭继承鸭子，后来加“橡皮鸭”不会飞，继承来的飞行方法成 bug。改成组合：想飞装会飞的行为，不想飞装不会飞的，随时换。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 模式是套路，不是银弹</b></p>
+        <h3 class="idea-title">3. 模式是套路，不是银弹</h3>
         <p class="idea-desc">模式是“特定场景下被验证过的解法”，不是“用了就高级”的勋章。最简单的方案往往最好，为炫技硬套模式只会把代码搞复杂。判断标准：不套模式，这段代码是不是真难受？</p>
-        <div class="example-box"><span class="tag">例 ·</span>全项目只有一个地方创建对象，非要上“抽象工厂模式”，三层类套下来别人得翻五个文件。直接创建一个对象就行——模式是止痛药不是维生素，没病别乱吃。</div>
+        <div class="example-box">全项目只有一个地方创建对象，非要上“抽象工厂模式”，三层类套下来别人得翻五个文件。直接创建一个对象就行——模式是止痛药不是维生素，没病别乱吃。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 23种模式分三类</b></p>
+        <h3 class="idea-title">4. 23种模式分三类</h3>
         <p class="idea-desc">23 种模式按用途分三类：创建型（5 种，管“对象怎么生出来”）、结构型（7 种，管“怎么组装”）、行为型（11 种，管“怎么协作”）。找模式先想：卡在创建、组装，还是协作上，一下缩小范围。</p>
-        <div class="example-box"><span class="tag">例 ·</span>“根据配置创建不同支付方式”是创建问题→工厂方法；“好多对象要互相通知”是协作问题→观察者。</div>
+        <div class="example-box">“根据配置创建不同支付方式”是创建问题→工厂方法；“好多对象要互相通知”是协作问题→观察者。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. 观察者模式：一对多广播</b></p>
+        <h3 class="idea-title">5. 观察者模式：一对多广播</h3>
         <p class="idea-desc">一对多依赖：一个对象状态变了，所有依赖它的自动收到通知。像公众号：你关注了号主，一发文所有粉丝自动收到推送，不用轮询“更新了吗”。</p>
-        <div class="example-box"><span class="tag">例 ·</span>股票 App：股价一变，所有打开这只股票页面的手机都要刷新。股价对象只管广播“我变了”，加 100 个新页面，股价对象一行不用改。</div>
+        <div class="example-box">股票 App：股价一变，所有打开这只股票页面的手机都要刷新。股价对象只管广播“我变了”，加 100 个新页面，股价对象一行不用改。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 策略模式：算法随便换</b></p>
+        <h3 class="idea-title">6. 策略模式：算法随便换</h3>
         <p class="idea-desc">把一堆“二选一、多选一”的算法封装成独立的类，互相替换。调用方只管“我要算”，不管“怎么算”。加新算法，加个类就行，不碰老代码。</p>
-        <div class="example-box"><span class="tag">例 ·</span>商城打折：普通 95 折、VIP 85 折、员工 7 折。不用策略就是一堆 if-else，加一种用户就得改核心代码。用策略，加“合作伙伴 8 折”新建一个类，老代码不动。</div>
+        <div class="example-box">商城打折：普通 95 折、VIP 85 折、员工 7 折。不用策略就是一堆 if-else，加一种用户就得改核心代码。用策略，加“合作伙伴 8 折”新建一个类，老代码不动。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. 工厂模式：把创建对象的事藏起来</b></p>
+        <h3 class="idea-title">7. 工厂模式：把创建对象的事藏起来</h3>
         <p class="idea-desc">创建对象别让调用方直接动手，交给“工厂”管。调用方只说“我要个日志记录器”，工厂决定给控制台版还是文件版。“怎么创建”和“怎么使用”解耦，换实现不影响调用方。</p>
-        <div class="example-box"><span class="tag">例 ·</span>日志系统：开发环境打控制台，生产环境写文件。调用方找工厂要记录器，从开发切生产改个配置就行，业务代码一个字不动。</div>
+        <div class="example-box">日志系统：开发环境打控制台，生产环境写文件。调用方找工厂要记录器，从开发切生产改个配置就行，业务代码一个字不动。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">6 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第1章 引言</b></p>
+        <h3 class="part-title">第1章 引言</h3>
         <p class="part-desc">确立设计模式核心定义（名称、问题、解决方案、效果），确立“针对接口编程”与“优先使用组合而非继承”两大面向对象设计基石。</p>
-        <div class="example-box"><span class="tag">例 ·</span>不直接将业务逻辑绑定在某个具体的 MySQL 连接类上，而是面向通用的 DatabaseConnection 接口编程，切换数据库无需改动上层业务。</div>
+        <div class="example-box">不直接将业务逻辑绑定在某个具体的 MySQL 连接类上，而是面向通用的 DatabaseConnection 接口编程，切换数据库无需改动上层业务。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2章 实例研究：设计一个文档编辑器</b></p>
+        <h3 class="part-title">第2章 实例研究：设计一个文档编辑器</h3>
         <p class="part-desc">以文档编辑器 Lexi 为例，贯穿运用组合模式组织文档树、策略模式排版文本、装饰模式添加边框以及命令模式支持撤销重做。</p>
-        <div class="example-box"><span class="tag">例 ·</span>文字、图片和行容器统一实现 Glyph 接口（组合模式），排版算法单独抽象为 Compositor 策略，新增两端对齐算法完全无需触动文档结构。</div>
+        <div class="example-box">文字、图片和行容器统一实现 Glyph 接口（组合模式），排版算法单独抽象为 Compositor 策略，新增两端对齐算法完全无需触动文档结构。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第3章 创建型模式</b></p>
+        <h3 class="part-title">第3章 创建型模式</h3>
         <p class="part-desc">抽象工厂、工厂方法、单例、建造者与原型模式，将对象的实例化过程与客户端解耦，控制对象创建的灵活性。</p>
-        <div class="example-box"><span class="tag">例 ·</span>使用建造者模式（Builder）按步骤逐步装配包含几十个复杂网络配置项的 HttpClient，避免使用冗长且容易传错位置的重载构造函数。</div>
+        <div class="example-box">使用建造者模式（Builder）按步骤逐步装配包含几十个复杂网络配置项的 HttpClient，避免使用冗长且容易传错位置的重载构造函数。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第4章 结构型模式</b></p>
+        <h3 class="part-title">第4章 结构型模式</h3>
         <p class="part-desc">适配器、桥接、组合、装饰、外观、享元与代理模式，灵活组合类和对象以构建更大规模且低耦合的软件结构。</p>
-        <div class="example-box"><span class="tag">例 ·</span>使用适配器模式（Adapter）将旧系统的 XML 消息接口转换为新系统的 JSON 接口，老服务无需推倒重来即可接入全新中台。</div>
+        <div class="example-box">使用适配器模式（Adapter）将旧系统的 XML 消息接口转换为新系统的 JSON 接口，老服务无需推倒重来即可接入全新中台。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第5章 行为模式</b></p>
+        <h3 class="part-title">第5章 行为模式</h3>
         <p class="part-desc">职责链、命令、解释器、迭代器、中介者、备忘录、观察者、状态、策略、模板方法与访问者模式，分配职责与协调对象通信。</p>
-        <div class="example-box"><span class="tag">例 ·</span>利用状态模式（State）管理订单状态流转（待付款、已发货、已完成），每个状态封装自身的合法流转行为，消除庞大脆弱的 switch-case。</div>
+        <div class="example-box">利用状态模式（State）管理订单状态流转（待付款、已发货、已完成），每个状态封装自身的合法流转行为，消除庞大脆弱的 switch-case。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第6章 结论</b></p>
+        <h3 class="part-title">第6章 结论</h3>
         <p class="part-desc">总结面向对象设计模式的认知图谱，警惕把模式当教条强行套用，拥抱简约原则，在演化中识别设计模式的真正时机。</p>
-        <div class="example-box"><span class="tag">例 ·</span>开发初期采用最简单清晰的直接实现，当业务发展出现多处变化与扩展痛点时，再针对性引入策略或工厂模式重构。</div>
+        <div class="example-box">开发初期采用最简单清晰的直接实现，当业务发展出现多处变化与扩展痛点时，再针对性引入策略或工厂模式重构。</div>
       </li>
             </ol>
           </section>
@@ -255,78 +227,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 7;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

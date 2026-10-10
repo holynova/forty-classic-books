@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">系统设计</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-2">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">系统设计 · 第 19 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">系统设计</span>
           </div>
 
           <div class="book-title-header">
@@ -93,10 +90,6 @@
         <span class="label">原作名：</span>
         <span class="value">Microservices Patterns: With Examples in Java</span>
       </div>
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">系统设计 · 第 19 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/33425123/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -104,20 +97,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">9.0</span>
+            <span class="ratebox-num tabular">9.0</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 718人评价</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="19" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="19" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 718人评价 人评价</div>
             </div>
           </div>
 
@@ -135,129 +118,118 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 8 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 先想清楚再拆：单体地狱和微服务地狱一样可怕</b></p>
+        <h3 class="idea-title">1. 先想清楚再拆：单体地狱和微服务地狱一样可怕</h3>
         <p class="idea-desc">单体做大变“单体地狱”：代码耦合、部署半小时、改一行提心吊胆。微服务拆不好变“微服务地狱”：分布式事务、网络延迟、运维爆炸。微服务不是银弹，团队小、业务简单时，单体可能是更好的选择。</p>
-        <div class="example-box"><span class="tag">例 ·</span>5个人、2万行代码拆成20个微服务：部署协调20个仓库，出问题查20份日志。新人三个月看不懂全貌——这就是微服务地狱。</div>
+        <div class="example-box">5个人、2万行代码拆成20个微服务：部署协调20个仓库，出问题查20份日志。新人三个月看不懂全貌——这就是微服务地狱。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 怎么拆服务：跟着业务拆，别跟着技术拆</b></p>
+        <h3 class="idea-title">2. 怎么拆服务：跟着业务拆，别跟着技术拆</h3>
         <p class="idea-desc">两套方法：按业务能力拆（电商天然有商品、订单、支付），或按子域拆（DDD的“限界上下文”）。核心一条：高内聚、低耦合，一个服务只干一类事，服务之间少废话。</p>
-        <div class="example-box"><span class="tag">例 ·</span>按“商品、订单、支付、库存”拆成四个服务，各有自己的库和团队。这就是限界上下文：一个服务管好一块业务，谁也别伸手到别人地盘。</div>
+        <div class="example-box">按“商品、订单、支付、库存”拆成四个服务，各有自己的库和团队。这就是限界上下文：一个服务管好一块业务，谁也别伸手到别人地盘。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 服务之间怎么说话：同步像打电话，异步像发微信</b></p>
+        <h3 class="idea-title">3. 服务之间怎么说话：同步像打电话，异步像发微信</h3>
         <p class="idea-desc">两种说话方式：同步（REST、gRPC，像打电话，实时但互相等）和异步（消息队列，像发微信，解耦但有延迟）。</p>
-        <div class="example-box"><span class="tag">例 ·</span>查订单详情调订单服务，订单服务又调商品和用户服务——同步像套娃，一层慢层层慢，一个挂全挂。能异步就异步：下单成功发个“订单已创建”事件，库存、物流各自订阅处理，谁也不用等谁。</div>
+        <div class="example-box">查订单详情调订单服务，订单服务又调商品和用户服务——同步像套娃，一层慢层层慢，一个挂全挂。能异步就异步：下单成功发个“订单已创建”事件，库存、物流各自订阅处理，谁也不用等谁。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. Saga模式：没有分布式事务，就用“分步提交+补偿”</b></p>
+        <h3 class="idea-title">4. Saga模式：没有分布式事务，就用“分步提交+补偿”</h3>
         <p class="idea-desc">微服务处理分布式事务的标准答案：大事务拆成一串本地小事务。每步成功发事件触发下一步；哪步失败，反向执行补偿操作撤销前面。</p>
-        <div class="example-box"><span class="tag">例 ·</span>下单要做三件事：创建订单、扣库存、扣钱，三个服务三个库，没有传统事务。Saga：前两步成功、第三步扣钱失败，别慌，执行补偿——库存加回去、订单标失败。没有“要么全成功”，只有“失败了能撤销”。</div>
+        <div class="example-box">下单要做三件事：创建订单、扣库存、扣钱，三个服务三个库，没有传统事务。Saga：前两步成功、第三步扣钱失败，别慌，执行补偿——库存加回去、订单标失败。没有“要么全成功”，只有“失败了能撤销”。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. CQRS：读写分开，查得快才重要</b></p>
+        <h3 class="idea-title">5. CQRS：读写分开，查得快才重要</h3>
         <p class="idea-desc">命令查询职责分离：写和读用不同模型。微服务里数据散在各处，跨服务查又慢又复杂，干脆为查询单独建模、单独优化。代价是数据有短暂延迟（最终一致），换来查询性能大幅提升。</p>
-        <div class="example-box"><span class="tag">例 ·</span>CQRS建一个“查询服务”，平时订阅各服务事件把数据拼好存自己这。用户查详情只问它，一个请求搞定，又快又稳。</div>
+        <div class="example-box">CQRS建一个“查询服务”，平时订阅各服务事件把数据拼好存自己这。用户查详情只问它，一个请求搞定，又快又稳。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 事件溯源：不记余额，只记每一笔流水</b></p>
+        <h3 class="idea-title">6. 事件溯源：不记余额，只记每一笔流水</h3>
         <p class="idea-desc">不直接存“当前状态”，存“导致状态变化的一串事件”。状态随时重放算出来，天然带审计日志，调试回滚都方便。代价是概念绕、查询要额外建模，适合审计追溯要求高的场景（金融、订单）。</p>
-        <div class="example-box"><span class="tag">例 ·</span>账户100元花了30：传统做法把余额改成70，事件溯源记一笔“支出30元”，余额是算出来的。想查账，把所有流水重放一遍就行，一笔都丢不了。</div>
+        <div class="example-box">账户100元花了30：传统做法把余额改成70，事件溯源记一笔“支出30元”，余额是算出来的。想查账，把所有流水重放一遍就行，一笔都丢不了。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. API网关：给前端一个统一的门面</b></p>
+        <h3 class="idea-title">7. API网关：给前端一个统一的门面</h3>
         <p class="idea-desc">前端不该直接面对几十个微服务。API网关是统一门面：鉴权、限流、路由、拼装一站式搞定。BFF更进一步：给每种客户端定制专属接口，App要的和网页要的可以不一样。</p>
-        <div class="example-box"><span class="tag">例 ·</span>App只调一个API网关，网关在后面把20个调用拼好一次返回。还可以给App、网页、小程序各配专属网关，各取所需。</div>
+        <div class="example-box">App只调一个API网关，网关在后面把20个调用拼好一次返回。还可以给App、网页、小程序各配专属网关，各取所需。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>8. 绞杀者模式：别重写老系统，一点点“勒死”它</b></p>
+        <h3 class="idea-title">8. 绞杀者模式：别重写老系统，一点点“勒死”它</h3>
         <p class="idea-desc">全书压轴，也最实用：别想“推倒重写”，那是找死。在老系统外套一层新服务，新功能走新服务，老功能逐步迁移，流量一点点切。风险可控、随时回滚，是绝大多数团队落地微服务的真实路径。</p>
-        <div class="example-box"><span class="tag">例 ·</span>10年历史的老单体谁也不敢重写：新功能做成微服务挡在前面，流量一点点切过去。几年后老系统只剩空壳，自然退役——像绞杀榕缠死大树一样。</div>
+        <div class="example-box">10年历史的老单体谁也不敢重写：新功能做成微服务挡在前面，流量一点点切过去。几年后老系统只剩空壳，自然退役——像绞杀榕缠死大树一样。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">13 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第1章 逃离单体地狱</b></p>
+        <h3 class="part-title">第1章 逃离单体地狱</h3>
         <p class="part-desc">单体系统在团队与代码膨胀后必然陷入交付迟缓、部署恐惧的单体地狱；微服务通过模块化与数据库私有化恢复研发敏捷。</p>
-        <div class="example-box"><span class="tag">例 ·</span>FTGO 餐饮配送单体系统代码库过大导致本地启动需20分钟，一次微小改动需全公司协调测试两周，拆分微服务成为重获新生的唯一出路。</div>
+        <div class="example-box">FTGO 餐饮配送单体系统代码库过大导致本地启动需20分钟，一次微小改动需全公司协调测试两周，拆分微服务成为重获新生的唯一出路。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2章 服务的拆分策略</b></p>
+        <h3 class="part-title">第2章 服务的拆分策略</h3>
         <p class="part-desc">依据业务能力或领域驱动设计（DDD）的子域拆分服务边界，确保每个服务松耦合且高度内聚，遵循单一职责。</p>
-        <div class="example-box"><span class="tag">例 ·</span>按照订餐、送餐、餐厅管理与计费四大业务子域划分出对应的独立微服务，每个服务由一个专注的专属小组全权负责。</div>
+        <div class="example-box">按照订餐、送餐、餐厅管理与计费四大业务子域划分出对应的独立微服务，每个服务由一个专注的专属小组全权负责。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第3章 微服务架构中的进程间通信</b></p>
+        <h3 class="part-title">第3章 微服务架构中的进程间通信</h3>
         <p class="part-desc">同步 REST/gRPC 与异步消息队列（Message Broker）通信模式的选型与权衡，利用事务性发件箱（Transactional Outbox）确保消息不丢。</p>
-        <div class="example-box"><span class="tag">例 ·</span>更新本地数据库与发送消息在同一个本地数据库事务中先写入 `outbox` 表，再由独立轮询或 CDC 进程将消息可靠推至 Kafka 队列。</div>
+        <div class="example-box">更新本地数据库与发送消息在同一个本地数据库事务中先写入 `outbox` 表，再由独立轮询或 CDC 进程将消息可靠推至 Kafka 队列。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第4章 使用Saga管理事务</b></p>
+        <h3 class="part-title">第4章 使用Saga管理事务</h3>
         <p class="part-desc">在没有分布式 2PC 强一致事务的环境中，运用 Saga 模式通过协同式（Choreography）或编排式（Orchestration）的本地小事务加补偿事务保证最终一致。</p>
-        <div class="example-box"><span class="tag">例 ·</span>用户下单时 Saga 编排器依次调用订单、客户额度与餐厅服务；当餐厅拒绝接单时，编排器自动反向调用补偿事务撤销客户冻结额度并关闭订单。</div>
+        <div class="example-box">用户下单时 Saga 编排器依次调用订单、客户额度与餐厅服务；当餐厅拒绝接单时，编排器自动反向调用补偿事务撤销客户冻结额度并关闭订单。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第5章 微服务架构中的业务逻辑设计</b></p>
+        <h3 class="part-title">第5章 微服务架构中的业务逻辑设计</h3>
         <p class="part-desc">结合 DDD 聚合（Aggregate）模式组织业务逻辑，聚合边界即 ACID 事务边界，状态变更后发布领域事件驱动外部协作。</p>
-        <div class="example-box"><span class="tag">例 ·</span>Order 聚合根在内部校验修改商品明细并保证总价正确，状态变更后发布 OrderRevised 事件，其他服务通过事件订阅完成联动。</div>
+        <div class="example-box">Order 聚合根在内部校验修改商品明细并保证总价正确，状态变更后发布 OrderRevised 事件，其他服务通过事件订阅完成联动。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第6章 使用事件溯源开发业务逻辑</b></p>
+        <h3 class="part-title">第6章 使用事件溯源开发业务逻辑</h3>
         <p class="part-desc">以不可变的领域事件序列作为状态真实持久化的唯一事实源，消除对象-关系阻抗失配，天然具备完备审计日志与时间旅行回溯能力。</p>
-        <div class="example-box"><span class="tag">例 ·</span>不直接将银行账户余额覆盖更新为 70 元，而是顺序追加存储一条 `MoneyDebited(30)` 事件，当前余额通过按序重放事件流累加求出。</div>
+        <div class="example-box">不直接将银行账户余额覆盖更新为 70 元，而是顺序追加存储一条 `MoneyDebited(30)` 事件，当前余额通过按序重放事件流累加求出。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第7章 在微服务架构中实现查询</b></p>
+        <h3 class="part-title">第7章 在微服务架构中实现查询</h3>
         <p class="part-desc">使用命令查询职责分离（CQRS）为跨服务数据视图单独建模与维护只读副本，彻底解决微服务各持数据库后无法跨库关联查询的痛点。</p>
-        <div class="example-box"><span class="tag">例 ·</span>订单历史查询服务订阅来自订单、餐馆和配送服务的事件流，在本地 Elasticsearch 中维护宽表只读视图，用户查询历史订单仅需单次极速检索。</div>
+        <div class="example-box">订单历史查询服务订阅来自订单、餐馆和配送服务的事件流，在本地 Elasticsearch 中维护宽表只读视图，用户查询历史订单仅需单次极速检索。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第8章 外部API模式</b></p>
+        <h3 class="part-title">第8章 外部API模式</h3>
         <p class="part-desc">引入 API 网关与 BFF（Backend For Frontend）模式，为移动 App、网页等不同终端提供统一入口、路由协议转换与数据聚合。</p>
-        <div class="example-box"><span class="tag">例 ·</span>手机客户端发起一次网络请求，API 网关在内网并发调用商品、促销与用户服务并将结果拼装成适配手机屏幕的 DTO 一并返回。</div>
+        <div class="example-box">手机客户端发起一次网络请求，API 网关在内网并发调用商品、促销与用户服务并将结果拼装成适配手机屏幕的 DTO 一并返回。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第9章 微服务架构中的测试策略（上）</b></p>
+        <h3 class="part-title">第9章 微服务架构中的测试策略（上）</h3>
         <p class="part-desc">坚守测试金字塔基础，深入实施针对实体与领域服务的细粒度单元测试，运用桩（Stub）与模拟（Mock）隔离外部基础设施依赖。</p>
-        <div class="example-box"><span class="tag">例 ·</span>为订单聚合根编写密集的单元测试验证各种边界折扣计算，完全无需启动真实的 Spring 容器或连接真实的数据库，毫秒级执行完毕。</div>
+        <div class="example-box">为订单聚合根编写密集的单元测试验证各种边界折扣计算，完全无需启动真实的 Spring 容器或连接真实的数据库，毫秒级执行完毕。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第10章 微服务架构中的测试策略（下）</b></p>
+        <h3 class="part-title">第10章 微服务架构中的测试策略（下）</h3>
         <p class="part-desc">采用消费者驱动契约测试（CDC）与组件测试（Component Test），替代成本高昂、执行极慢且脆弱易崩的大爆炸端到端集成测试。</p>
-        <div class="example-box"><span class="tag">例 ·</span>订单服务利用 Spring Cloud Contract 模拟下游计费服务并进行契约断言，在单服务隔离环境下快速完成接近真实的集成行为验证。</div>
+        <div class="example-box">订单服务利用 Spring Cloud Contract 模拟下游计费服务并进行契约断言，在单服务隔离环境下快速完成接近真实的集成行为验证。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第11章 开发面向生产环境的微服务应用</b></p>
+        <h3 class="part-title">第11章 开发面向生产环境的微服务应用</h3>
         <p class="part-desc">构建生产就绪能力：安全认证、外部化配置中心、健康检查端点、Prometheus 指标埋点、集中式审计日志与分布式分布式链路追踪。</p>
-        <div class="example-box"><span class="tag">例 ·</span>服务启动时自动从 Consul/Nacos 动态拉取环境配置，并通过 Micrometer 暴露连接池利用率与 P99 延迟指标给 Prometheus 实时抓取监控。</div>
+        <div class="example-box">服务启动时自动从 Consul/Nacos 动态拉取环境配置，并通过 Micrometer 暴露连接池利用率与 P99 延迟指标给 Prometheus 实时抓取监控。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第12章 部署微服务应用</b></p>
+        <h3 class="part-title">第12章 部署微服务应用</h3>
         <p class="part-desc">全面评估虚拟机、Docker 容器、Kubernetes 编排以及 Serverless 部署模式的成本效益，推行基于服务网格（Service Mesh）的现代化运维。</p>
-        <div class="example-box"><span class="tag">例 ·</span>使用 Kubernetes Deployment 管理微服务容器的副本数与滚动更新，并通过 Istio 边车代理（Sidecar）透明实现金丝雀灰度引流与跨服务 mTLS 加密。</div>
+        <div class="example-box">使用 Kubernetes Deployment 管理微服务容器的副本数与滚动更新，并通过 Istio 边车代理（Sidecar）透明实现金丝雀灰度引流与跨服务 mTLS 加密。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第13章 微服务架构的重构策略</b></p>
+        <h3 class="part-title">第13章 微服务架构的重构策略</h3>
         <p class="part-desc">采用绞杀者模式（Strangler Pattern）逐步将单体功能迁移至微服务，严禁推倒重来，通过胶水层（防腐层）打通新旧系统平滑过渡。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在老单体前面架设路由反向代理，优先把送餐管理模块实现为全新微服务并把对应 URL 流量切过来，老单体逐步被蚕食镂空直至安全下线。</div>
+        <div class="example-box">在老单体前面架设路由反向代理，优先把送餐管理模块实现为全新微服务并把对应 URL 流量切过来，老单体逐步被蚕食镂空直至安全下线。</div>
       </li>
             </ol>
           </section>
@@ -295,78 +267,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 19;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

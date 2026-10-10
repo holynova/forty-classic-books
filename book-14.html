@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">系统设计</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-2">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">系统设计 · 第 14 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">系统设计</span>
           </div>
 
           <div class="book-title-header">
@@ -93,10 +90,6 @@
         <span class="label">原作名：</span>
         <span class="value">Patterns of Enterprise Application Architecture</span>
       </div>
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">系统设计 · 第 14 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/1230559/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -104,20 +97,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">8.7</span>
+            <span class="ratebox-num tabular">8.7</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 414人评价</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="14" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="14" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 414人评价 人评价</div>
             </div>
           </div>
 
@@ -135,104 +118,93 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 7 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 业务逻辑三种放法：事务脚本、表模块、领域模型</b></p>
+        <h3 class="idea-title">1. 业务逻辑三种放法：事务脚本、表模块、领域模型</h3>
         <p class="idea-desc">事务脚本：一个请求写一个过程，简单直接，适合小系统。表模块：按表组织、一个表配一个类，适合中等复杂度。领域模型：按业务概念建模，“订单”是有行为的对象，适合复杂业务。复杂度越高越往领域模型走；小项目硬上就是大炮打蚊子。</p>
-        <div class="example-box"><span class="tag">例 ·</span>个人记账用流水账本（事务脚本）就行，小公司按科目设账（表模块），上市公司得有完整会计体系（领域模型）。报销小工具用事务脚本两周上线；核心交易系统用领域模型，三年后加新业务不用推倒重来。</div>
+        <div class="example-box">个人记账用流水账本（事务脚本）就行，小公司按科目设账（表模块），上市公司得有完整会计体系（领域模型）。报销小工具用事务脚本两周上线；核心交易系统用领域模型，三年后加新业务不用推倒重来。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 分层：表现层、领域层、数据源层各干各的</b></p>
+        <h3 class="idea-title">2. 分层：表现层、领域层、数据源层各干各的</h3>
         <p class="idea-desc">三层：页面只管展示，业务规则放中间层，数据库访问放底层。上层调下层，不许反过来。换数据库、换前端都不动业务逻辑，测试也能一层层测。这是全书的地基。</p>
-        <div class="example-box"><span class="tag">例 ·</span>餐厅：服务员只管点菜上菜，厨师只管做菜，采购只管进货。换收银系统不用重训厨师，换供应商不用重印菜单，各层独立变化、互不牵连。</div>
+        <div class="example-box">餐厅：服务员只管点菜上菜，厨师只管做菜，采购只管进货。换收银系统不用重训厨师，换供应商不用重印菜单，各层独立变化、互不牵连。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 对象和数据库天生不对付，得请个“翻译”（数据映射器）</b></p>
+        <h3 class="idea-title">3. 对象和数据库天生不对付，得请个“翻译”（数据映射器）</h3>
         <p class="idea-desc">面向对象讲“对象套对象”，关系数据库讲“表和外键”，硬凑就是又臭又长的SQL拼接。数据映射器是个专职翻译：对象只管业务，翻译负责存进表、捞出来拼回对象。Hibernate、MyBatis本质上就是干这个的。</p>
-        <div class="example-box"><span class="tag">例 ·</span>中外合资谈判得配翻译：中方说中文（对象），外方说英文（SQL）。没翻译，双方只能互相学对方语言，最后两边都说不利索——代码里SQL和业务逻辑搅成一锅粥，谁也改不动。</div>
+        <div class="example-box">中外合资谈判得配翻译：中方说中文（对象），外方说英文（SQL）。没翻译，双方只能互相学对方语言，最后两边都说不利索——代码里SQL和业务逻辑搅成一锅粥，谁也改不动。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 工作单元：一次业务操作，要么全存，要么全不存</b></p>
+        <h3 class="idea-title">4. 工作单元：一次业务操作，要么全存，要么全不存</h3>
         <p class="idea-desc">下单要写订单表、扣库存、记流水，中间崩了怎么办？工作单元是个“记账本”：改动先记下来，最后统一提交。失败整体回滚，数据不会一半一半，还把多次数据库交互合并成一次。</p>
-        <div class="example-box"><span class="tag">例 ·</span>银行转账：扣A的钱和给B加钱必须同时成功，绝不能只扣不加。工作单元就是“同时”的保证人：要么两边一起变，要么当没发生过。</div>
+        <div class="example-box">银行转账：扣A的钱和给B加钱必须同时成功，绝不能只扣不加。工作单元就是“同时”的保证人：要么两边一起变，要么当没发生过。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. 延迟加载：用到了再去查</b></p>
+        <h3 class="idea-title">5. 延迟加载：用到了再去查</h3>
         <p class="idea-desc">查订单顺带把1000条明细全查出来？太浪费。延迟加载：先查个壳，用到明细时再去拿。省内存省查询，但用不好会变成“查一次触发1000次小查询”（N+1问题），省的全吐回去还倒贴。</p>
-        <div class="example-box"><span class="tag">例 ·</span>看电子书：先加载目录，点进哪章才加载正文。打开书就把500页全下载，流量直接爆炸；但每翻一页都重新下载，还不如一开始全下完。分寸要拿捏好。</div>
+        <div class="example-box">看电子书：先加载目录，点进哪章才加载正文。打开书就把500页全下载，流量直接爆炸；但每翻一页都重新下载，还不如一开始全下完。分寸要拿捏好。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 服务层：给业务逻辑开个统一的“前台”</b></p>
+        <h3 class="idea-title">6. 服务层：给业务逻辑开个统一的“前台”</h3>
         <p class="idea-desc">网页、App、第三方都要调“下单”，不能各调各的。服务层在领域逻辑外包一层统一入口：校验参数、调领域逻辑、记日志、管事务，套路收拢到一起。对外只有一个门，里面再复杂也不怕。</p>
-        <div class="example-box"><span class="tag">例 ·</span>公司前台：访客、快递、外卖先登记再分发，不让人直接闯进办公室找人。前台顺手做访客登记（日志）和身份核验（校验）。</div>
+        <div class="example-box">公司前台：访客、快递、外卖先登记再分发，不让人直接闯进办公室找人。前台顺手做访客登记（日志）和身份核验（校验）。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. 模式是词汇，不是教条</b></p>
+        <h3 class="idea-title">7. 模式是词汇，不是教条</h3>
         <p class="idea-desc">模式是“准确讨论设计”的共同语言，不是“必须这么写”的圣经。开会说“这里用个数据映射器”，团队立刻懂你在解决什么、付出什么代价。但生搬硬套和不用一样糟——脱离上下文谈模式就是耍流氓。</p>
-        <div class="example-box"><span class="tag">例 ·</span>“爆炒”“清蒸”是词汇，告诉你火候手法的区别；放多少盐还得看今天的菜。评审时说“这块事务脚本就够了，别上领域模型”，一句话大家就懂——模式语言让讨论变精确。</div>
+        <div class="example-box">“爆炒”“清蒸”是词汇，告诉你火候手法的区别；放多少盐还得看今天的菜。评审时说“这块事务脚本就够了，别上领域模型”，一句话大家就懂——模式语言让讨论变精确。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">9 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第1章 分层</b></p>
+        <h3 class="part-title">第1章 分层</h3>
         <p class="part-desc">将企业级系统严格划分为表现层、领域层与数据源层，层与层单向依赖，高层不知晓底层技术细节以实现隔离演进。</p>
-        <div class="example-box"><span class="tag">例 ·</span>表现层由网页切换为微信小程序或原生 App 时，只需适配接口传输格式，底层的订单领域计算与数据库操作完全无需改动。</div>
+        <div class="example-box">表现层由网页切换为微信小程序或原生 App 时，只需适配接口传输格式，底层的订单领域计算与数据库操作完全无需改动。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2章 组织领域逻辑</b></p>
+        <h3 class="part-title">第2章 组织领域逻辑</h3>
         <p class="part-desc">在事务脚本（简单直线业务）、表模块（基于结构化数据集）与领域模型（复杂对象行为网络）三大范式之间权衡选型。</p>
-        <div class="example-box"><span class="tag">例 ·</span>简单的后台录入页面用事务脚本十几行写完最快；而涵盖阶梯计费、优惠叠加与退款拆单的复杂电商结算必须使用领域模型。</div>
+        <div class="example-box">简单的后台录入页面用事务脚本十几行写完最快；而涵盖阶梯计费、优惠叠加与退款拆单的复杂电商结算必须使用领域模型。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第3章 映射到关系数据库</b></p>
+        <h3 class="part-title">第3章 映射到关系数据库</h3>
         <p class="part-desc">化解对象与关系数据库之间的阻抗失配（类继承、多对多关联），在表数据入口、活动记录与数据映射器间做出架构抉择。</p>
-        <div class="example-box"><span class="tag">例 ·</span>复杂企业应用选用数据映射器（Data Mapper，如 Hibernate/MyBatis），将内存中的业务对象与数据库表结构完全解耦。</div>
+        <div class="example-box">复杂企业应用选用数据映射器（Data Mapper，如 Hibernate/MyBatis），将内存中的业务对象与数据库表结构完全解耦。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第4章 Web表现层</b></p>
+        <h3 class="part-title">第4章 Web表现层</h3>
         <p class="part-desc">运用 MVC 模式分离输入处理、模型更新与界面渲染，在页面控制器（Page Controller）与前端控制器（Front Controller）间选型。</p>
-        <div class="example-box"><span class="tag">例 ·</span>Spring MVC 和众多 Web 框架采用前端控制器（DispatcherServlet）统一拦截请求、完成鉴权与日志，再分发给具体的业务 Controller。</div>
+        <div class="example-box">Spring MVC 和众多 Web 框架采用前端控制器（DispatcherServlet）统一拦截请求、完成鉴权与日志，再分发给具体的业务 Controller。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第5章 并发</b></p>
+        <h3 class="part-title">第5章 并发</h3>
         <p class="part-desc">处理跨请求长时间业务交互时的并发冲突，权衡悲观离线锁、乐观离线锁（基于版本号 version）与粗粒度锁的适用场景。</p>
-        <div class="example-box"><span class="tag">例 ·</span>用户编辑合同草稿时在数据库加一个 `version` 字段，提交时执行 `WHERE id=1 AND version=2`，如果被他人抢先修改则提示冲突。</div>
+        <div class="example-box">用户编辑合同草稿时在数据库加一个 `version` 字段，提交时执行 `WHERE id=1 AND version=2`，如果被他人抢先修改则提示冲突。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第6章 会话状态</b></p>
+        <h3 class="part-title">第6章 会话状态</h3>
         <p class="part-desc">在客户端会话（Cookie/Token）、服务器端内存 Session 与集中式数据库/Redis 会话间权衡系统无状态性与性能开销。</p>
-        <div class="example-box"><span class="tag">例 ·</span>集群环境下将用户登录会话统一放在 Redis 集中缓存中，应用服务器保持完全无状态，使得前端节点可以随时弹性增减。</div>
+        <div class="example-box">集群环境下将用户登录会话统一放在 Redis 集中缓存中，应用服务器保持完全无状态，使得前端节点可以随时弹性增减。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第7章 分布策略</b></p>
+        <h3 class="part-title">第7章 分布策略</h3>
         <p class="part-desc">分布式进程间通信开销极其昂贵，分布式系统的首要定律是“不要分布”；若必须跨网络，则采用粗粒度的远程门面与 DTO。</p>
-        <div class="example-box"><span class="tag">例 ·</span>避免循环发起二十次网络 RPC 请求分别获取商品属性，而是通过远程门面（Remote Facade）一个接口打包返回所需的完整 DTO。</div>
+        <div class="example-box">避免循环发起二十次网络 RPC 请求分别获取商品属性，而是通过远程门面（Remote Facade）一个接口打包返回所需的完整 DTO。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第8章 通盘考虑</b></p>
+        <h3 class="part-title">第8章 通盘考虑</h3>
         <p class="part-desc">综合考虑业务复杂度、并发吞吐要求、重构成本与团队技能水平，严密组合各个模式词汇，杜绝过度设计的教条主义。</p>
-        <div class="example-box"><span class="tag">例 ·</span>初创期内部报表系统选择简单的 Active Record 快速开发上线，随着业务规则膨胀演化后再平滑重构为分层的领域模型。</div>
+        <div class="example-box">初创期内部报表系统选择简单的 Active Record 快速开发上线，随着业务规则膨胀演化后再平滑重构为分层的领域模型。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分 模式（领域逻辑、数据源、对象-关系与Web模式）</b></p>
+        <h3 class="part-title">第二部分 模式（领域逻辑、数据源、对象-关系与Web模式）</h3>
         <p class="part-desc">企业级持久化底层百科：工作单元（跟踪变更合并事务）、标识映射（确保同一记录唯一实例）与延迟加载（按需加载关联）。</p>
-        <div class="example-box"><span class="tag">例 ·</span>工作单元（Unit of Work）记录一次业务操作中所有新增、修改和删除的对象，在事务提交前按最优顺序执行单次批量数据库写入。</div>
+        <div class="example-box">工作单元（Unit of Work）记录一次业务操作中所有新增、修改和删除的对象，在事务提交前按最优顺序执行单次批量数据库写入。</div>
       </li>
             </ol>
           </section>
@@ -270,78 +242,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 14;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

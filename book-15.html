@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">系统设计</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-2">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">系统设计 · 第 15 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">系统设计</span>
           </div>
 
           <div class="book-title-header">
@@ -93,10 +90,6 @@
         <span class="label">原作名：</span>
         <span class="value">Site Reliability Engineering: How Google Runs Production Systems</span>
       </div>
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">系统设计 · 第 15 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/26875239/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -104,20 +97,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">8.9</span>
+            <span class="ratebox-num tabular">8.9</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 646人评价</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="15" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="15" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 646人评价 人评价</div>
             </div>
           </div>
 
@@ -135,84 +118,73 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 7 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 错误预算：允许系统“合法地”出点小问题</b></p>
+        <h3 class="idea-title">1. 错误预算：允许系统“合法地”出点小问题</h3>
         <p class="idea-desc">SLO“99.9%的请求200ms内成功”，剩下0.1%就是错误预算：一个月允许宕机约43分钟。预算没花完放心发版，花超了停新功能、全力修稳定。“稳定还是迭代”从扯皮变成算术题。</p>
-        <div class="example-box"><span class="tag">例 ·</span>减肥每天允许一小块蛋糕，没超标不用自责，超标第二天多运动。用数字代替“我觉得不稳定”，开发和运维不用在会议室吵架，看仪表盘说话。</div>
+        <div class="example-box">减肥每天允许一小块蛋糕，没超标不用自责，超标第二天多运动。用数字代替“我觉得不稳定”，开发和运维不用在会议室吵架，看仪表盘说话。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 100% 可靠是浪费</b></p>
+        <h3 class="idea-title">2. 100% 可靠是浪费</h3>
         <p class="idea-desc">99.9%做到99.99%，成本翻几倍，用户几乎感知不到。可靠性只要“足够好”，省下的精力做用户真正需要的功能。别为用户不在乎的小数点买单。</p>
-        <div class="example-box"><span class="tag">例 ·</span>小区门禁“基本上安全”就行。为防电影里的特工装三层虹膜识别，业主每天进门折腾五分钟——没人觉得这是好物业，只觉得添堵。</div>
+        <div class="example-box">小区门禁“基本上安全”就行。为防电影里的特工装三层虹膜识别，业主每天进门折腾五分钟——没人觉得这是好物业，只觉得添堵。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 消灭琐事：手工运维超过一半时间就必须停下来</b></p>
+        <h3 class="idea-title">3. 消灭琐事：手工运维超过一半时间就必须停下来</h3>
         <p class="idea-desc">Toil（琐事）指手工、重复、没营养、还得人肉干的活，比如每天手动重启服务。Google规矩：琐事超50%就停下所有新需求、全力做自动化。靠人肉撑的系统，规模一大必崩，人也崩。</p>
-        <div class="example-box"><span class="tag">例 ·</span>客人少时手洗碗还行，客人多了还手洗，洗碗工崩溃、碗也洗不干净，必须上洗碗机。某团队每天两小时手动发布，自动化后十分钟搞定、零失误。</div>
+        <div class="example-box">客人少时手洗碗还行，客人多了还手洗，洗碗工崩溃、碗也洗不干净，必须上洗碗机。某团队每天两小时手动发布，自动化后十分钟搞定、零失误。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 监控只看四个黄金信号</b></p>
+        <h3 class="idea-title">4. 监控只看四个黄金信号</h3>
         <p class="idea-desc">从用户视角看系统健康就四个数：延迟（多快）、流量（多少请求）、错误（多少失败）、饱和度（资源有多满）。告警只发“能行动的”：半夜叫醒人结果是“明天再说”，这种噪音迟早让人对告警麻木。</p>
-        <div class="example-box"><span class="tag">例 ·</span>看病看体温、血压、心率、血氧四个数，基本能判断健康，不用一上来就全身CT。某公司把告警从200条砍到30条“必须马上处理”，值班终于能睡整觉，真正的故障一次没漏。</div>
+        <div class="example-box">看病看体温、血压、心率、血氧四个数，基本能判断健康，不用一上来就全身CT。某公司把告警从200条砍到30条“必须马上处理”，值班终于能睡整觉，真正的故障一次没漏。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. 复盘对事不对人</b></p>
+        <h3 class="idea-title">5. 复盘对事不对人</h3>
         <p class="idea-desc">复盘不许说“是谁的错”，只问“系统哪里给了犯错的机会”。人一定会犯错，“下次小心点”防不住；把系统改成“犯错也出不了大事”才算真改进。不甩锅的复盘是Google持续进步的秘密。</p>
-        <div class="example-box"><span class="tag">例 ·</span>航空事故调查不追究飞行员个人，查的是“仪表盘是不是容易看错”。某大厂删库事故后，复盘结论是“删生产库必须双人确认加二次验证”，之后同类事故归零。</div>
+        <div class="example-box">航空事故调查不追究飞行员个人，查的是“仪表盘是不是容易看错”。某大厂删库事故后，复盘结论是“删生产库必须双人确认加二次验证”，之后同类事故归零。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 渐进式发布：发布应该是日常小事</b></p>
+        <h3 class="idea-title">6. 渐进式发布：发布应该是日常小事</h3>
         <p class="idea-desc">别攒两个月搞“大版本上线”，那是赌博。小步快走：先给1%用户（金丝雀发布），没问题再扩大，出问题一键回滚。发布越频繁、每次越小，“爆炸半径”越可控，风险越低。</p>
-        <div class="example-box"><span class="tag">例 ·</span>新菜先让一桌客人试吃，好吃再全店推，总比直接换菜单、开业当天被全网吐槽强。某App灰度发布，一次闪退bug只影响1%用户就回滚了，全量发布就是P0事故。</div>
+        <div class="example-box">新菜先让一桌客人试吃，好吃再全店推，总比直接换菜单、开业当天被全网吐槽强。某App灰度发布，一次闪退bug只影响1%用户就回滚了，全量发布就是P0事故。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. on-call 不是“背锅侠”，而是有制度的轮值</b></p>
+        <h3 class="idea-title">7. on-call 不是“背锅侠”，而是有制度的轮值</h3>
         <p class="idea-desc">半夜被叫起来不可怕，可怕的是“天天被叫、叫起来还修不好”。Google规矩：值班有补偿、有交接，“叫醒必须能处理”。频繁被叫醒说明系统该修了，不是人不够警醒。好的on-call制度倒逼系统变好。</p>
-        <div class="example-box"><span class="tag">例 ·</span>小区保安夜班偶尔处理个把事正常，每晚被叫醒十次说明门锁系统该修了，不是保安不够警醒。把“人受的苦”转成“系统要改的项”，值班越值越轻松。</div>
+        <div class="example-box">小区保安夜班偶尔处理个把事正常，每晚被叫醒十次说明门锁系统该修了，不是保安不够警醒。把“人受的苦”转成“系统要改的项”，值班越值越轻松。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">5 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第Ⅰ部分 概览</b></p>
+        <h3 class="part-title">第Ⅰ部分 概览</h3>
         <p class="part-desc">SRE（站点可靠性工程）是由软件工程师来设计和管理运维系统；将运维视作软件工程问题，用代码实现大规模系统的自治。</p>
-        <div class="example-box"><span class="tag">例 ·</span>Google 招聘拥有高水平软件开发能力的工程师组建 SRE 团队，通过开发自动化集群管理系统 Borg 取代繁重的人工运维操作。</div>
+        <div class="example-box">Google 招聘拥有高水平软件开发能力的工程师组建 SRE 团队，通过开发自动化集群管理系统 Borg 取代繁重的人工运维操作。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第Ⅱ部分 指导思想</b></p>
+        <h3 class="part-title">第Ⅱ部分 指导思想</h3>
         <p class="part-desc">拥抱风险并设定 SLI/SLO；用错误预算（Error Budget）平衡研发发布速度与线上稳定性；严格杜绝超过50%工时的无脑琐事（Toil）。</p>
-        <div class="example-box"><span class="tag">例 ·</span>当季度错误预算还剩充足额度时，允许研发团队放手快速发布新特性；一旦故障超标耗尽预算，全团队立即冻结新需求全力排查隐患。</div>
+        <div class="example-box">当季度错误预算还剩充足额度时，允许研发团队放手快速发布新特性；一旦故障超标耗尽预算，全团队立即冻结新需求全力排查隐患。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第Ⅲ部分 具体实践</b></p>
+        <h3 class="part-title">第Ⅲ部分 具体实践</h3>
         <p class="part-desc">on-call 制度化轮值、无指责事后复盘（Blameless Postmortem）、聚焦四个黄金信号监控、全链路过载保护与多级容灾调度。</p>
-        <div class="example-box"><span class="tag">例 ·</span>重大事故发生后不惩罚具体敲错命令的工程师，而是深入分析为什么系统没有二次确认防护机制，通过补全系统防护根除同类隐患。</div>
+        <div class="example-box">重大事故发生后不惩罚具体敲错命令的工程师，而是深入分析为什么系统没有二次确认防护机制，通过补全系统防护根除同类隐患。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第Ⅳ部分 管理</b></p>
+        <h3 class="part-title">第Ⅳ部分 管理</h3>
         <p class="part-desc">建立健康包容的 SRE 工程师文化，科学分流中断性任务，推行嵌入式 SRE 模式解救深陷低水平救火泥潭的业务开发团队。</p>
-        <div class="example-box"><span class="tag">例 ·</span>某核心业务由于架构缺陷每周报警上千次，SRE 强行介入接管其运维控制权，协助研发重构异步架构并将报警压降至每周两次。</div>
+        <div class="example-box">某核心业务由于架构缺陷每周报警上千次，SRE 强行介入接管其运维控制权，协助研发重构异步架构并将报警压降至每周两次。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第Ⅴ部分 结束语</b></p>
+        <h3 class="part-title">第Ⅴ部分 结束语</h3>
         <p class="part-desc">汲取大规模分布式计算生产运维的跨行业实践经验，持续将重复人工操作转化为自愈、自适应的韧性软件基础设施。</p>
-        <div class="example-box"><span class="tag">例 ·</span>全自动健康检查和故障漂移机制可以在服务器硬盘或机架断电时，无需人工介入，在数十秒内自动将流量和容器迁移到健康机房。</div>
+        <div class="example-box">全自动健康检查和故障漂移机制可以在服务器硬盘或机架断电时，无需人工介入，在数十秒内自动将流量和容器迁移到健康机房。</div>
       </li>
             </ol>
           </section>
@@ -250,78 +222,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 15;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

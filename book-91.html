@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">主理人五星精选</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-8">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">主理人五星精选 · 第 21 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">主理人五星精选</span>
           </div>
 
           <div class="book-title-header">
@@ -90,10 +87,6 @@
                 <span class="value">2015-4-1</span>
               </div>
               
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">主理人五星精选 · 第 21 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/26351021/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -101,20 +94,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">9.3</span>
+            <span class="ratebox-num tabular">9.3</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 1180人评价</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="91" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="91" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 1180人评价 人评价</div>
             </div>
           </div>
 
@@ -132,84 +115,73 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 7 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. JavaScript是一门编译型语言，代码在执行前经历严密的编译阶段</b></p>
+        <h3 class="idea-title">1. JavaScript是一门编译型语言，代码在执行前经历严密的编译阶段</h3>
         <p class="idea-desc">JS引擎在运行前短短几微秒内执行分词、词法分析、代码生成，任何变量查找都由词法作用域与作用域链精确界定。</p>
-        <div class="example-box"><span class="tag">例 ·</span>区分LHS赋值查询（试图找到变量容器）与RHS取值查询，当RHS在严格模式下找不到变量时抛出ReferenceError，而非静默创建全局变量。</div>
+        <div class="example-box">区分LHS赋值查询（试图找到变量容器）与RHS取值查询，当RHS在严格模式下找不到变量时抛出ReferenceError，而非静默创建全局变量。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 词法作用域由书写位置决定，欺骗词法（eval/with）会摧毁编译优化</b></p>
+        <h3 class="idea-title">2. 词法作用域由书写位置决定，欺骗词法（eval/with）会摧毁编译优化</h3>
         <p class="idea-desc">引擎在编译期根据静态书写位置确定作用域关系并做内联优化；使用eval或with会迫使引擎放弃预编译优化，导致性能暴跌。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在函数中引入eval(str)动态修改作用域，会导致V8引擎关闭此作用域内所有寄存器缓存与JIT优化，执行耗时成倍增加。</div>
+        <div class="example-box">在函数中引入eval(str)动态修改作用域，会导致V8引擎关闭此作用域内所有寄存器缓存与JIT优化，执行耗时成倍增加。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 提升（Hoisting）的本质是编译阶段声明优先进入符号表</b></p>
+        <h3 class="idea-title">3. 提升（Hoisting）的本质是编译阶段声明优先进入符号表</h3>
         <p class="idea-desc">先有声明后有赋值；函数声明会被提升到作用域最顶端，且优先级高于变量声明，函数表达式则不会被提前调用。</p>
-        <div class="example-box"><span class="tag">例 ·</span>同名标识符下，函数声明foo()会被优先提升，后续重复的var foo声明会被忽略，但后续的同名函数声明会覆盖前面的定义。</div>
+        <div class="example-box">同名标识符下，函数声明foo()会被优先提升，后续重复的var foo声明会被忽略，但后续的同名函数声明会覆盖前面的定义。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 闭包是函数记住了并坚守对其词法作用域的访问能力</b></p>
+        <h3 class="idea-title">4. 闭包是函数记住了并坚守对其词法作用域的访问能力</h3>
         <p class="idea-desc">当函数在其原始词法作用域之外被调用执行时，仍然能够保持对定义时所在作用域变量的活动引用，这便是闭包。</p>
-        <div class="example-box"><span class="tag">例 ·</span>经典的for循环setTimeout输出全为6的问题，利用立即执行函数表达式（IIFE）或let块级绑定为每次迭代固定作用域副本，解决闭包捕获。</div>
+        <div class="example-box">经典的for循环setTimeout输出全为6的问题，利用立即执行函数表达式（IIFE）或let块级绑定为每次迭代固定作用域副本，解决闭包捕获。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. this既不指向函数自身，也不指向词法作用域，它完全由调用位置决定</b></p>
+        <h3 class="idea-title">5. this既不指向函数自身，也不指向词法作用域，它完全由调用位置决定</h3>
         <p class="idea-desc">this是在运行时动态绑定的上下文指针，严格遵循四大规则：默认绑定、隐式绑定、显式绑定（call/apply/bind）与new绑定。</p>
-        <div class="example-box"><span class="tag">例 ·</span>把对象方法赋值给全局变量var bar = obj.foo;执行bar()时，隐式绑定瞬间丢失降级为默认绑定，导致this指向window或undefined。</div>
+        <div class="example-box">把对象方法赋值给全局变量var bar = obj.foo;执行bar()时，隐式绑定瞬间丢失降级为默认绑定，导致this指向window或undefined。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. JavaScript根本没有传统的“类”，类语法糖只是原型的包装粉饰</b></p>
+        <h3 class="idea-title">6. JavaScript根本没有传统的“类”，类语法糖只是原型的包装粉饰</h3>
         <p class="idea-desc">class关键字并没有引入传统面向对象的类实例化拷贝机制，它在底层依然完全基于[[Prototype]]原型委托链运作。</p>
-        <div class="example-box"><span class="tag">例 ·</span>传统的类实例化意味着复制属性和方法到新内存空间，而在JS中无论创建多少个实例，方法都只挂载在原型对象上，通过委托查找执行。</div>
+        <div class="example-box">传统的类实例化意味着复制属性和方法到新内存空间，而在JS中无论创建多少个实例，方法都只挂载在原型对象上，通过委托查找执行。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. 拥抱对象关联（OLOO）委托设计，比伪造面向对象类更简洁优雅</b></p>
+        <h3 class="idea-title">7. 拥抱对象关联（OLOO）委托设计，比伪造面向对象类更简洁优雅</h3>
         <p class="idea-desc">利用Object.create直接在对象与对象之间建立关联委托关系，彻底扔掉复杂的new、prototype与constructor脑力负担。</p>
-        <div class="example-box"><span class="tag">例 ·</span>设计UI组件系统时，Button组件直接通过Object.create(Widget)关联委托基础组件，方法重名无需考虑super，结构极其平坦清晰。</div>
+        <div class="example-box">设计UI组件系统时，Button组件直接通过Object.create(Widget)关联委托基础组件，方法重名无需考虑super，结构极其平坦清晰。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">5 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第一部分 作用域和闭包：第1-2章 作用域与词法作用域</b></p>
+        <h3 class="part-title">第一部分 作用域和闭包：第1-2章 作用域与词法作用域</h3>
         <p class="part-desc">解密JavaScript引擎、编译器与作用域的三方对话机制，深入词法阶段与eval/with欺骗词法带来的严重性能惩罚。</p>
-        <div class="example-box"><span class="tag">例 ·</span>通过LHS与RHS查询全流程追踪变量赋值，剖析引擎在找不到变量时抛出ReferenceError与TypeError的底层差异。</div>
+        <div class="example-box">通过LHS与RHS查询全流程追踪变量赋值，剖析引擎在找不到变量时抛出ReferenceError与TypeError的底层差异。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第一部分 作用域和闭包：第3-5章 块作用域、提升与闭包实战</b></p>
+        <h3 class="part-title">第一部分 作用域和闭包：第3-5章 块作用域、提升与闭包实战</h3>
         <p class="part-desc">详述函数作用域与let/const块级绑定，解剖函数优先提升原理，透彻剖析闭包如何在函数脱离词法作用域后仍维持对变量引用的机制。</p>
-        <div class="example-box"><span class="tag">例 ·</span>剖析经典的for循环setTimeout输出全都是6的问题，展示如何利用IIFE立即执行函数或let块级作用域捕获每次迭代变量实现闭包。</div>
+        <div class="example-box">剖析经典的for循环setTimeout输出全都是6的问题，展示如何利用IIFE立即执行函数或let块级作用域捕获每次迭代变量实现闭包。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分 this和对象原型：第1-2章 关于this与this四大绑定规则</b></p>
+        <h3 class="part-title">第二部分 this和对象原型：第1-2章 关于this与this四大绑定规则</h3>
         <p class="part-desc">破除“this指向函数自身或词法作用域”的常见误解，系统确立调用位置决定的四大绑定规则及优先级体系。</p>
-        <div class="example-box"><span class="tag">例 ·</span>手写比较默认绑定、隐式绑定（obj.fn()丢失this）、显式绑定（call/apply/bind）与new绑定的优先级，以及ES6箭头函数的词法this机制。</div>
+        <div class="example-box">手写比较默认绑定、隐式绑定（obj.fn()丢失this）、显式绑定（call/apply/bind）与new绑定的优先级，以及ES6箭头函数的词法this机制。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分 this和对象原型：第3-4章 对象核心属性与“类”的机械混入</b></p>
+        <h3 class="part-title">第二部分 this和对象原型：第3-4章 对象核心属性与“类”的机械混入</h3>
         <p class="part-desc">剖析属性描述符（Writable/Enumerable/Configurable）、对象不变性策略，深刻批判在JS中模拟传统面向对象类的别扭与反模式。</p>
-        <div class="example-box"><span class="tag">例 ·</span>使用Object.defineProperty设置不可配置与不可写属性，演示Object.freeze实现浅冻结，以及显式混入在继承中带来的脆弱耦合。</div>
+        <div class="example-box">使用Object.defineProperty设置不可配置与不可写属性，演示Object.freeze实现浅冻结，以及显式混入在继承中带来的脆弱耦合。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分 this和对象原型：第5-6章 原型链真相与行为委托（OLOO模式）</b></p>
+        <h3 class="part-title">第二部分 this和对象原型：第5-6章 原型链真相与行为委托（OLOO模式）</h3>
         <p class="part-desc">揭秘[[Prototype]]查找机制与原型继承真相，提倡抛弃伪类思维，拥抱基于Object.create的对象委托现代设计哲学。</p>
-        <div class="example-box"><span class="tag">例 ·</span>用对象关联（Objects Linked to Other Objects, OLOO）模式重构UI组件，子组件直接通过Object.create委托通用组件，完全避开new与prototype黑魔法。</div>
+        <div class="example-box">用对象关联（Objects Linked to Other Objects, OLOO）模式重构UI组件，子组件直接通过Object.create委托通用组件，完全避开new与prototype黑魔法。</div>
       </li>
             </ol>
           </section>
@@ -247,78 +219,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 91;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

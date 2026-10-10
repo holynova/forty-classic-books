@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">系统设计</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-2">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">系统设计 · 第 17 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">系统设计</span>
           </div>
 
           <div class="book-title-header">
@@ -90,10 +87,6 @@
                 <span class="value">2013-9-1</span>
               </div>
               
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">系统设计 · 第 17 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/25723064/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -101,20 +94,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">7.8</span>
+            <span class="ratebox-num tabular">7.8</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 1894人评价</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="17" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="17" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 1894人评价 人评价</div>
             </div>
           </div>
 
@@ -132,99 +115,88 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 7 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 大型网站的架构是演化出来的，不是设计出来的</b></p>
+        <h3 class="idea-title">1. 大型网站的架构是演化出来的，不是设计出来的</h3>
         <p class="idea-desc">没有大网站第一天就是“能撑一亿用户”的样子。淘宝最早也是个简单网站，用户多了、扛不住了，才一步步拆分、加缓存、上集群。架构像城市路网，随人口增长一点点修出来，不是一张蓝图盖到老。别追求“一步到位”，每个阶段解决当下最痛的问题。</p>
-        <div class="example-box"><span class="tag">例 ·</span>开餐馆：夫妻店两个人起步，客人多了请帮工（加机器），再多开分店（拆业务），分店多了建中央厨房（分布式服务）。三桌客人的时候建中央厨房就是浪费，超前设计同理。</div>
+        <div class="example-box">开餐馆：夫妻店两个人起步，客人多了请帮工（加机器），再多开分店（拆业务），分店多了建中央厨房（分布式服务）。三桌客人的时候建中央厨房就是浪费，超前设计同理。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 架构设计的九大模式：分层、分割、分布、集群、缓存、异步、冗余、自动化、安全</b></p>
+        <h3 class="idea-title">2. 架构设计的九大模式：分层、分割、分布、集群、缓存、异步、冗余、自动化、安全</h3>
         <p class="idea-desc">大厂招数提炼成九个模式：分层、分割、分布、集群、缓存、异步、冗余、自动化、安全。分层是切成表现层、应用层、数据层；分割是按业务切小；分布是部署到不同机器；集群是多部署几份；缓存是热点放内存；异步是不着急的排队做；冗余是关键备双份；自动化是发布运维靠机器；安全是防攻击。</p>
-        <div class="example-box"><span class="tag">例 ·</span>双十一零点每秒几十万订单，下单、扣库存、付款全同步做，系统瞬间卡死。实际做法：下单请求先进消息队列排队（异步），库存慢慢扣，用户看到“排队中”而不是转圈——异步在救命。</div>
+        <div class="example-box">双十一零点每秒几十万订单，下单、扣库存、付款全同步做，系统瞬间卡死。实际做法：下单请求先进消息队列排队（异步），库存慢慢扣，用户看到“排队中”而不是转圈——异步在救命。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 评判架构的五个标尺：高性能、高可用、可伸缩、可扩展、安全性</b></p>
+        <h3 class="idea-title">3. 评判架构的五个标尺：高性能、高可用、可伸缩、可扩展、安全性</h3>
         <p class="idea-desc">高性能是快，高可用是稳，可伸缩是加机器就扛更多流量，可扩展是加新功能不伤筋动骨，安全性是防黑客。架构师每天在这五个目标间取舍——它们经常打架，极致性能和极致安全就很难兼得。</p>
-        <div class="example-box"><span class="tag">例 ·</span>12306春运抢票：别卡、别崩、春运加机器、以后加候补购票、防黄牛脚本，五个一个不能少。架构评审会上吵的，就是这五个指标怎么排优先级。</div>
+        <div class="example-box">12306春运抢票：别卡、别崩、春运加机器、以后加候补购票、防黄牛脚本，五个一个不能少。架构评审会上吵的，就是这五个指标怎么排优先级。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 缓存是性能优化的第一手段：网站访问遵循二八定律</b></p>
+        <h3 class="idea-title">4. 缓存是性能优化的第一手段：网站访问遵循二八定律</h3>
         <p class="idea-desc">80%访问集中在20%热点数据上：首页、爆款、明星微博，永远那一小撮被反复看。何必每次都查慢吞吞的数据库？热点放内存（缓存），快几十上百倍。缓存分多层：浏览器、CDN、反向代理、本地、分布式，层层设防。</p>
-        <div class="example-box"><span class="tag">例 ·</span>热搜第一的绯闻一分钟被刷几百万次，每次都查数据库早趴下了。实际是这条微博缓存在内存里，几百万人读同一份拷贝，数据库只被问一次——这就是缓存的威力。</div>
+        <div class="example-box">热搜第一的绯闻一分钟被刷几百万次，每次都查数据库早趴下了。实际是这条微博缓存在内存里，几百万人读同一份拷贝，数据库只被问一次——这就是缓存的威力。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. 高可用：先假设一定会出故障，再来设计</b></p>
+        <h3 class="idea-title">5. 高可用：先假设一定会出故障，再来设计</h3>
         <p class="idea-desc">服务器会宕机、硬盘会坏、机房会断电。故障不是“会不会来”，是“什么时候来”。高可用就是不把鸡蛋放一个篮子：服务部署多份、数据多存几份、机房建两个。这叫冗余，贵，但比宕机一分钟损失几百万便宜。</p>
-        <div class="example-box"><span class="tag">例 ·</span>支付宝数据库至少两份实时同步，一台机房断电，几秒内切到备用机房，用户付款没感觉。你从没遇到“支付宝挂了”，背后就是这套冗余在烧钱。</div>
+        <div class="example-box">支付宝数据库至少两份实时同步，一台机房断电，几秒内切到备用机房，用户付款没感觉。你从没遇到“支付宝挂了”，背后就是这套冗余在烧钱。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 异步解耦：让系统学会“排队”，而不是“堵死”</b></p>
+        <h3 class="idea-title">6. 异步解耦：让系统学会“排队”，而不是“堵死”</h3>
         <p class="idea-desc">同步像打电话，对方不接你就干等；异步像发微信，发完干别的，对方回了再处理。消息队列把上下游解耦：上游只管扔任务进队列，下游按自己节奏消费。流量洪峰来时，队列就是蓄水池，削峰填谷。</p>
-        <div class="example-box"><span class="tag">例 ·</span>秒杀100万人同时点“抢购”，不会让100万请求同时扣库存。而是让它们在消息队列排队，库存服务不紧不慢一个个处理。</div>
+        <div class="example-box">秒杀100万人同时点“抢购”，不会让100万请求同时扣库存。而是让它们在消息队列排队，库存服务不紧不慢一个个处理。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. 安全是架构设计的一部分，不是上线前才想起来的补丁</b></p>
+        <h3 class="idea-title">7. 安全是架构设计的一部分，不是上线前才想起来的补丁</h3>
         <p class="idea-desc">系统做好了才想“防一下黑客”，就像给漏水的船贴胶带。安全要融进架构：分层天然有隔离效果，敏感数据加密存，关键操作做风控。电商、金融网站一次拖库可能就是灭顶之灾。</p>
-        <div class="example-box"><span class="tag">例 ·</span>淘宝支付时突然要求短信验证：系统发现交易“有点可疑”（异地登录、大额），自动加一道验证。安全架构平时看不见，出事时救命。</div>
+        <div class="example-box">淘宝支付时突然要求短信验证：系统发现交易“有点可疑”（异地登录、大额），自动加一道验证。安全架构平时看不见，出事时救命。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">8 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第1篇 概述（第1-3章）</b></p>
+        <h3 class="part-title">第1篇 概述（第1-3章）</h3>
         <p class="part-desc">大型网站架构是随着业务发展演化出来的而非一步到位凭空设计；梳理九大架构模式并确立五大核心架构要素作为评判标尺。</p>
-        <div class="example-box"><span class="tag">例 ·</span>淘宝从初期的单体 PHP 脚本配合单一 MySQL 数据库，随交易规模爆发逐步演进到 Java 垂直拆分，再到分布式服务与数据分片的演变路径。</div>
+        <div class="example-box">淘宝从初期的单体 PHP 脚本配合单一 MySQL 数据库，随交易规模爆发逐步演进到 Java 垂直拆分，再到分布式服务与数据分片的演变路径。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2篇 高性能架构（第4章 瞬时响应）</b></p>
+        <h3 class="part-title">第2篇 高性能架构（第4章 瞬时响应）</h3>
         <p class="part-desc">运用浏览器端缓存、CDN 边缘加速、反向代理、应用本地缓存、分布式 Redis 集群与异步队列，全面压降用户访问端到端延迟。</p>
-        <div class="example-box"><span class="tag">例 ·</span>将商品静态图片与前端 JS/CSS 资源全量推送到全国 CDN 节点，95%以上的静态资源请求在边缘就近返回，大幅减轻源站网络带宽压力。</div>
+        <div class="example-box">将商品静态图片与前端 JS/CSS 资源全量推送到全国 CDN 节点，95%以上的静态资源请求在边缘就近返回，大幅减轻源站网络带宽压力。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2篇 高可用架构（第5章 万无一失）</b></p>
+        <h3 class="part-title">第2篇 高可用架构（第5章 万无一失）</h3>
         <p class="part-desc">假设硬件与网络必定出故障；应用服务器无状态化集群部署，服务提供熔断降级预案，数据库主从热备与自动故障迁移保障业务不中断。</p>
-        <div class="example-box"><span class="tag">例 ·</span>核心业务服务器采用两地三中心多活部署，当某个机房遭遇市政施工挖断光缆事故时，智能 DNS 在三十秒内将全量流量无损切往备用机房。</div>
+        <div class="example-box">核心业务服务器采用两地三中心多活部署，当某个机房遭遇市政施工挖断光缆事故时，智能 DNS 在三十秒内将全量流量无损切往备用机房。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2篇 伸缩性架构（第6章 永无止境）</b></p>
+        <h3 class="part-title">第2篇 伸缩性架构（第6章 永无止境）</h3>
         <p class="part-desc">通过软硬件负载均衡（LVS/Nginx）、应用集群水平扩展以及关系型数据库分库分表（Sharding），实现系统处理能力无限平滑伸缩。</p>
-        <div class="example-box"><span class="tag">例 ·</span>单机数据库存储达到数亿行瓶颈时，按照用户 ID 取模哈希将订单表水平拆分到 64 个物理数据库实例，使存储与查询吞吐量提升几十倍。</div>
+        <div class="example-box">单机数据库存储达到数亿行瓶颈时，按照用户 ID 取模哈希将订单表水平拆分到 64 个物理数据库实例，使存储与查询吞吐量提升几十倍。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2篇 可扩展架构（第7章 随需应变）</b></p>
+        <h3 class="part-title">第2篇 可扩展架构（第7章 随需应变）</h3>
         <p class="part-desc">引入分布式消息队列（RocketMQ/Kafka）实现系统依赖异步解耦，基于高性能分布式 RPC 框架（Dubbo）实现模块化服务治理。</p>
-        <div class="example-box"><span class="tag">例 ·</span>用户支付成功后只需往消息队列发送一条消息，库存、发票、短信、积分等八个下游服务各自异步消费，新增下游业务无需改动交易核心代码。</div>
+        <div class="example-box">用户支付成功后只需往消息队列发送一条消息，库存、发票、短信、积分等八个下游服务各自异步消费，新增下游业务无需改动交易核心代码。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2篇 安全架构（第8章 固若金汤）</b></p>
+        <h3 class="part-title">第2篇 安全架构（第8章 固若金汤）</h3>
         <p class="part-desc">全面防御 XSS、SQL 注入与 CSRF 攻击，全链路敏感数据加密传输与脱敏存储，搭建风控反作弊与防刷策略引擎保护业务安全。</p>
-        <div class="example-box"><span class="tag">例 ·</span>电商防刷系统在秒杀接口引入滑动拼图人机校验，结合 IP 与设备指纹限频，拦截 99% 的黑产黄牛自动化爬虫抢购脚本。</div>
+        <div class="example-box">电商防刷系统在秒杀接口引入滑动拼图人机校验，结合 IP 与设备指纹限频，拦截 99% 的黑产黄牛自动化爬虫抢购脚本。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第3篇 案例（第9-13章）</b></p>
+        <h3 class="part-title">第3篇 案例（第9-13章）</h3>
         <p class="part-desc">深入拆解淘宝网架构变迁、维基百科高性能实践、海量分布式存储 Doris 以及秒杀系统设计与典型线上重大故障根因复盘。</p>
-        <div class="example-box"><span class="tag">例 ·</span>秒杀抢购系统采用静态页面 CDN 缓存、前端按钮置灰倒计时、网关层限流排队与库存内存预扣减四道防线，保障海量瞬时冲击下数据库不被打死。</div>
+        <div class="example-box">秒杀抢购系统采用静态页面 CDN 缓存、前端按钮置灰倒计时、网关层限流排队与库存内存预扣减四道防线，保障海量瞬时冲击下数据库不被打死。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第4篇 架构师（第14-16章）</b></p>
+        <h3 class="part-title">第4篇 架构师（第14-16章）</h3>
         <p class="part-desc">架构师不仅要掌握深厚的技术选型硬实力，更要具备跨部门领导力、业务发展洞察力与技术沟通说服力的职场软实力。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在推行全公司级基础框架升级时，架构师主动用通俗的数据与业务 ROI 向业务线负责人讲清收益，赢得多方支持平稳落地。</div>
+        <div class="example-box">在推行全公司级基础框架升级时，架构师主动用通俗的数据与业务 ROI 向业务线负责人讲清收益，赢得多方支持平稳落地。</div>
       </li>
             </ol>
           </section>
@@ -262,78 +234,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 17;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

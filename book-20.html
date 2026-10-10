@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">系统设计</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-2">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">系统设计 · 第 20 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">系统设计</span>
           </div>
 
           <div class="book-title-header">
@@ -93,10 +90,6 @@
         <span class="label">原作名：</span>
         <span class="value">The Art of Scalability (2nd Edition)</span>
       </div>
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">系统设计 · 第 20 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/26765979/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -104,20 +97,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">8</span>
+            <span class="ratebox-num tabular">8</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 326人评价</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="20" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="20" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 326人评价 人评价</div>
             </div>
           </div>
 
@@ -135,79 +118,68 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 7 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. AKF扩展立方体：扩展只有三个方向</b></p>
+        <h3 class="idea-title">1. AKF扩展立方体：扩展只有三个方向</h3>
         <p class="idea-desc">“系统怎么扩展”抽象成一个立方体：X轴水平克隆，Y轴按功能拆分，Z轴按数据拆分。任何扩展手段都能归到这三个轴上，讨论扩展有了共同语言。</p>
-        <div class="example-box"><span class="tag">例 ·</span>用户量涨10倍系统变慢：短期X轴加机器顶住（最快），中期Y轴拆“图片处理”成独立服务（治本）。长期Z轴按用户ID分库（根治）。三个方向清清楚楚，不再碰运气。</div>
+        <div class="example-box">用户量涨10倍系统变慢：短期X轴加机器顶住（最快），中期Y轴拆“图片处理”成独立服务（治本）。长期Z轴按用户ID分库（根治）。三个方向清清楚楚，不再碰运气。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. X轴：水平克隆——加机器，最简单的扩展</b></p>
+        <h3 class="idea-title">2. X轴：水平克隆——加机器，最简单的扩展</h3>
         <p class="idea-desc">最简单粗暴的扩展：应用原样复制多份，前面用负载均衡分发流量。不改代码，见效最快。但有天花板：有状态的部分（数据库、文件存储）克隆不了，所以X轴通常是第一步，不是终点。</p>
-        <div class="example-box"><span class="tag">例 ·</span>流量翻倍，最快就是再买几台服务器装同样的程序，前面加负载均衡分流。代码一行不改，半小时搞定。但数据库还是那一个，加再多机器，瓶颈迟早卡在没法克隆的地方。</div>
+        <div class="example-box">流量翻倍，最快就是再买几台服务器装同样的程序，前面加负载均衡分流。代码一行不改，半小时搞定。但数据库还是那一个，加再多机器，瓶颈迟早卡在没法克隆的地方。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. Y轴：按功能拆分——微服务思想的老祖宗</b></p>
+        <h3 class="idea-title">3. Y轴：按功能拆分——微服务思想的老祖宗</h3>
         <p class="idea-desc">按功能、业务把系统拆开：不同功能拆成不同服务，各自独立扩展、独立部署。好处是资源利用率高，哪里压力大加哪里；代价是系统变复杂，服务之间要通信、要治理。</p>
-        <div class="example-box"><span class="tag">例 ·</span>电商网站拆成“商品浏览”“下单支付”“图片处理”三个服务：图片处理吃CPU就多配机器，商品浏览压力大就加缓存。各服务独立扩展，钱花在刀刃上——这就是“微服务”思想的老祖宗。</div>
+        <div class="example-box">电商网站拆成“商品浏览”“下单支付”“图片处理”三个服务：图片处理吃CPU就多配机器，商品浏览压力大就加缓存。各服务独立扩展，钱花在刀刃上——这就是“微服务”思想的老祖宗。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. Z轴：按数据拆分——分库分表的理论源头</b></p>
+        <h3 class="idea-title">4. Z轴：按数据拆分——分库分表的理论源头</h3>
         <p class="idea-desc">把数据切成互不重叠的片，分散到不同机器：按客户、按地域、按哈希切。好处是扩展性最强（理论上无限加机器）；代价是跨片查询变复杂、事务难做。数据库扩展的终极手段：分库分表。</p>
-        <div class="example-box"><span class="tag">例 ·</span>用户表1亿行越查越慢：按用户ID哈希分到10个库，1号库只存ID尾号1的用户。查询先算“这个用户在哪”，再去对应库查——每个库1000万行，速度回来了。</div>
+        <div class="example-box">用户表1亿行越查越慢：按用户ID哈希分到10个库，1号库只存ID尾号1的用户。查询先算“这个用户在哪”，再去对应库查——每个库1000万行，速度回来了。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. 扩展不只是技术的事：人、流程、技术三驾马车</b></p>
+        <h3 class="idea-title">5. 扩展不只是技术的事：人、流程、技术三驾马车</h3>
         <p class="idea-desc">见过太多“技术没问题但扩不上去”的案例，结论：扩展性是人、流程、技术三者的乘积。组织不合理（200人的大团队）、流程有瓶颈（发布层层审批），技术再好也白搭。三者一起设计。</p>
-        <div class="example-box"><span class="tag">例 ·</span>团队天天加班，发布还是慢：不是技术不行，是流程卡住了——每次发布五个领导审批，等两周。“流程”这条腿瘸了。技术、流程、组织三条腿，瘸一条都跑不快。</div>
+        <div class="example-box">团队天天加班，发布还是慢：不是技术不行，是流程卡住了——每次发布五个领导审批，等两周。“流程”这条腿瘸了。技术、流程、组织三条腿，瘸一条都跑不快。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 架构原则：为扩展而设计，而不是事后补救</b></p>
+        <h3 class="idea-title">6. 架构原则：为扩展而设计，而不是事后补救</h3>
         <p class="idea-desc">与其事后救火，不如事前设计。架构原则：无状态设计、异步解耦、缓存优先、水平扩展友好——让系统“天生就好扩展”。扩展性不是运维阶段才考虑，是画第一张架构图时就要想好的。</p>
-        <div class="example-box"><span class="tag">例 ·</span>设计之初就规定：应用服务器不存本地状态（登录态放Redis）。X轴加机器才无压力；耗时操作全走异步队列，Y轴拆分才顺滑。</div>
+        <div class="example-box">设计之初就规定：应用服务器不存本地状态（登录态放Redis）。X轴加机器才无压力；耗时操作全走异步队列，Y轴拆分才顺滑。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. 先找到瓶颈再动手：度量先行，加错机器等于白花钱</b></p>
+        <h3 class="idea-title">7. 先找到瓶颈再动手：度量先行，加错机器等于白花钱</h3>
         <p class="idea-desc">扩展第一步永远是度量：先找到瓶颈，再选对应的轴。一慢就加机器，结果瓶颈在数据库，加100台应用服务器也没用。AKF立方体的价值就是一张“排查地图”，顺着三个轴一个个排除。</p>
-        <div class="example-box"><span class="tag">例 ·</span>系统变慢别急着加机器。CPU满了，走X轴加机器；服务太重，走Y轴拆分；单表太大，走Z轴分片。量体裁衣、对症下药，加错方向的机器都是白花钱。</div>
+        <div class="example-box">系统变慢别急着加机器。CPU满了，走X轴加机器；服务太重，走Y轴拆分；单表太大，走Z轴分片。量体裁衣、对症下药，加错方向的机器都是白花钱。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">4 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第一部分 可扩展性组织的人员配置</b></p>
+        <h3 class="part-title">第一部分 可扩展性组织的人员配置</h3>
         <p class="part-desc">可扩展性首先是人的问题；组织架构与团队自主性决定系统上限，用 RASCI 矩阵明确权责分工，打破 IT 与业务的对立思维。</p>
-        <div class="example-box"><span class="tag">例 ·</span>运用 RASCI 矩阵清晰界定架构师（负责人 R）、业务主管（审批人 A）与开发（支持人 S）的分工，彻底根除跨部门推诿扯皮。</div>
+        <div class="example-box">运用 RASCI 矩阵清晰界定架构师（负责人 R）、业务主管（审批人 A）与开发（支持人 S）的分工，彻底根除跨部门推诿扯皮。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分 构建可扩展的过程</b></p>
+        <h3 class="part-title">第二部分 构建可扩展的过程</h3>
         <p class="part-desc">规范的流程是规模化扩张的倍增器：推行故障根因复盘、设立变更控制委员会（CAB）与架构审查委员会（ARB），科学规划容量预留空间。</p>
-        <div class="example-box"><span class="tag">例 ·</span>每周召开变更审查会议评估高风险生产变更，每次重大故障必须产出带有时间线的无指责复盘报告，沉淀防止同类故障再次发生的防御机制。</div>
+        <div class="example-box">每周召开变更审查会议评估高风险生产变更，每次重大故障必须产出带有时间线的无指责复盘报告，沉淀防止同类故障再次发生的防御机制。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第三部分 可扩展的架构方案</b></p>
+        <h3 class="part-title">第三部分 可扩展的架构方案</h3>
         <p class="part-desc">核心理论“AKF 扩展立方体”：X轴水平克隆加机器、Y轴按业务功能拆服务、Z轴按客户与数据分片，构建故障隔离池与多级缓存异步架构。</p>
-        <div class="example-box"><span class="tag">例 ·</span>系统性能告急时，短期先用 X 轴加机器顶住，中期按 Y 轴把订单和用户拆为独立服务，长期按 Z 轴按用户 ID 哈希将数据库拆分到多个物理集群。</div>
+        <div class="example-box">系统性能告急时，短期先用 X 轴加机器顶住，中期按 Y 轴把订单和用户拆为独立服务，长期按 Z 轴按用户 ID 哈希将数据库拆分到多个物理集群。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第四部分 其他的问题和挑战</b></p>
+        <h3 class="part-title">第四部分 其他的问题和挑战</h3>
         <p class="part-desc">科学权衡海量数据成本收益比，审慎评估云计算与自建数据中心时机，构建全方位立体化立体化监控大盘与多活数据中心灾备方案。</p>
-        <div class="example-box"><span class="tag">例 ·</span>对海量历史日志数据推行分级冷热存储策略，热数据放 SSD 高速检索，冷数据自动沉降到低成本云对象存储，大幅压降服务器运营成本。</div>
+        <div class="example-box">对海量历史日志数据推行分级冷热存储策略，热数据放 SSD 高速检索，冷数据自动沉降到低成本云对象存储，大幅压降服务器运营成本。</div>
       </li>
             </ol>
           </section>
@@ -245,78 +217,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 20;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

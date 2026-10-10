@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">主理人四星精选</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-9">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">主理人四星精选 · 第 08 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">主理人四星精选</span>
           </div>
 
           <div class="book-title-header">
@@ -90,10 +87,6 @@
                 <span class="value">2016</span>
               </div>
               
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">主理人四星精选 · 第 08 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/26854244/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -101,20 +94,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">8.8</span>
+            <span class="ratebox-num tabular">8.8</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 35,000+</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="178" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="178" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 35,000+ 人评价</div>
             </div>
           </div>
 
@@ -132,109 +115,98 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 6 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. JavaScript中变量没有类型，只有‘值’才有类型</b></p>
+        <h3 class="idea-title">1. JavaScript中变量没有类型，只有‘值’才有类型</h3>
         <p class="idea-desc">变量只是指向值的词法容器；typeof运算符返回的并不是变量本身的类型，而是当前赋给它的值所属的内置类型。</p>
-        <div class="example-box"><span class="tag">例 ·</span>声明let a = 42后执行typeof a返回'number'，随后a = 'hello'返回'string'，这说明底层值拥有类型而变量可以随心承载。</div>
+        <div class="example-box">声明let a = 42后执行typeof a返回'number'，随后a = 'hello'返回'string'，这说明底层值拥有类型而变量可以随心承载。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 特殊数值NaN并不等于自身，void 0是安全的undefined</b></p>
+        <h3 class="idea-title">2. 特殊数值NaN并不等于自身，void 0是安全的undefined</h3>
         <p class="idea-desc">深入理解IEEE 754浮点数的边界特例（如+0与-0、NaN、Infinity），掌握使用Object.is与Number.isNaN进行精准比对。</p>
-        <div class="example-box"><span class="tag">例 ·</span>全局isNaN('foo')会错误返回true，而ES6标准Number.isNaN('foo')则准确返回false，消灭隐蔽的比对缺陷。</div>
+        <div class="example-box">全局isNaN('foo')会错误返回true，而ES6标准Number.isNaN('foo')则准确返回false，消灭隐蔽的比对缺陷。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 隐式强制转换是一套确定性的规则，而非不可控的魔法</b></p>
+        <h3 class="idea-title">3. 隐式强制转换是一套确定性的规则，而非不可控的魔法</h3>
         <p class="idea-desc">==与===的真正区别不是‘是否检查类型’，而是‘是否允许强制转换’。彻底理解ToNumber与ToPrimitive规则就能驾驭转换。</p>
-        <div class="example-box"><span class="tag">例 ·</span>使用+new Date()快速获取时间戳，使用!!value快速转布尔值，利用规则写出既惯用又安全的惯用法。</div>
+        <div class="example-box">使用+new Date()快速获取时间戳，使用!!value快速转布尔值，利用规则写出既惯用又安全的惯用法。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 回调地狱的根本缺陷不是缩进嵌套，而是‘信任危机’</b></p>
+        <h3 class="idea-title">4. 回调地狱的根本缺陷不是缩进嵌套，而是‘信任危机’</h3>
         <p class="idea-desc">将回调函数传给第三方库意味着放弃了控制反转（Inversion of Control），你无法保证回调会被调用一次、多次还是永远不调用。</p>
-        <div class="example-box"><span class="tag">例 ·</span>调用第三方结账SDK传入支付回调，一旦第三方库由于并发bug将你的回调执行了两次，用户就会被重复扣款两次。</div>
+        <div class="example-box">调用第三方结账SDK传入支付回调，一旦第三方库由于并发bug将你的回调执行了两次，用户就会被重复扣款两次。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. Promise通过可信任的单一决议，夺回了异步控制权</b></p>
+        <h3 class="idea-title">5. Promise通过可信任的单一决议，夺回了异步控制权</h3>
         <p class="idea-desc">Promise是一套解决控制反转的承诺机制：只能决议一次、状态不可逆、异步微任务保证顺序，为异步操作建立可预测的契约。</p>
-        <div class="example-box"><span class="tag">例 ·</span>Promise一旦从pending变为fulfilled，无论后续代码如何调用then，回调都只能按契约在微任务队列中被安全触发一次。</div>
+        <div class="example-box">Promise一旦从pending变为fulfilled，无论后续代码如何调用then，回调都只能按契约在微任务队列中被安全触发一次。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 生成器（Generator）打破了‘运行至完成’的函数传统</b></p>
+        <h3 class="idea-title">6. 生成器（Generator）打破了‘运行至完成’的函数传统</h3>
         <p class="idea-desc">通过yield关键字暂停函数执行、交出执行权，并在外部通过next()输入输出数据，为编写同步语感的异步代码开辟道路。</p>
-        <div class="example-box"><span class="tag">例 ·</span>结合Generator与Promise实现微型co执行器，让开发者能像写同步代码一样yield promiseTask()，成为async/await的原型基石。</div>
+        <div class="example-box">结合Generator与Promise实现微型co执行器，让开发者能像写同步代码一样yield promiseTask()，成为async/await的原型基石。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">11 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第一部分第1章 类型</b></p>
+        <h3 class="part-title">第一部分第1章 类型</h3>
         <p class="part-desc">剖析JavaScript的7种内置类型（null, undefined, boolean, number, string, object, symbol）及typeof的历史遗留特例。</p>
-        <div class="example-box"><span class="tag">例 ·</span>解析为什么typeof null会荒谬地返回'object'：这是早期C语言底层变量标签位设计留下的历史bug。</div>
+        <div class="example-box">解析为什么typeof null会荒谬地返回'object'：这是早期C语言底层变量标签位设计留下的历史bug。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第一部分第2章 值</b></p>
+        <h3 class="part-title">第一部分第2章 值</h3>
         <p class="part-desc">深入数组、类数组对象、字符串的借用机制，以及数字在IEEE 754规范下的特殊值（NaN、+0/-0）和深浅拷贝细节。</p>
-        <div class="example-box"><span class="tag">例 ·</span>演示1 / +0返回Infinity，而1 / -0返回-Infinity，解析在涉及物体运动方向动画计算中保留符号位负零的物理意义。</div>
+        <div class="example-box">演示1 / +0返回Infinity，而1 / -0返回-Infinity，解析在涉及物体运动方向动画计算中保留符号位负零的物理意义。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第一部分第3章 原生函数</b></p>
+        <h3 class="part-title">第一部分第3章 原生函数</h3>
         <p class="part-desc">解构String、Number、Boolean等包装对象的本质，解释内部属性[[Class]]与拆箱（ToPrimitive）操作的运作逻辑。</p>
-        <div class="example-box"><span class="tag">例 ·</span>说明new Boolean(false)其实是一个真值对象的陷阱，在if(new Boolean(false))判断中会导致逻辑完全走反。</div>
+        <div class="example-box">说明new Boolean(false)其实是一个真值对象的陷阱，在if(new Boolean(false))判断中会导致逻辑完全走反。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第一部分第4章 强制类型转换</b></p>
+        <h3 class="part-title">第一部分第4章 强制类型转换</h3>
         <p class="part-desc">全书重头戏：详述ToString、ToNumber、ToBoolean三大抽象转换规则，对比宽松相等==与严格相等===的真正规范路径。</p>
-        <div class="example-box"><span class="tag">例 ·</span>拆解[] == ![]为何为true的完整推演：![]先转为false，再将[]与false转为数字0进行比对，展现抽象算法的确定性。</div>
+        <div class="example-box">拆解[] == ![]为何为true的完整推演：![]先转为false，再将[]与false转为数字0进行比对，展现抽象算法的确定性。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第一部分第5章 语法详细</b></p>
+        <h3 class="part-title">第一部分第5章 语法详细</h3>
         <p class="part-desc">解析语句与表达式的差异、操作符优先级与关联性、自动分号插入（ASI）机制以及代码块标签语法的冷知识。</p>
-        <div class="example-box"><span class="tag">例 ·</span>分析return后面换行导致ASI自动插入分号返回undefined的经典惨剧，明确规范推崇的大括号不换行编码风格。</div>
+        <div class="example-box">分析return后面换行导致ASI自动插入分号返回undefined的经典惨剧，明确规范推崇的大括号不换行编码风格。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分第1章 异步：现在与将来</b></p>
+        <h3 class="part-title">第二部分第1章 异步：现在与将来</h3>
         <p class="part-desc">拆解JavaScript单线程执行栈与宿主环境的事件循环（Event Loop），对比宏任务与微任务（Job Queue）的时序调度。</p>
-        <div class="example-box"><span class="tag">例 ·</span>分析包含setTimeout与Promise.resolve的代码片段，精准预测宏任务等待计时与微任务即时插入当前轮询末尾的执行序列。</div>
+        <div class="example-box">分析包含setTimeout与Promise.resolve的代码片段，精准预测宏任务等待计时与微任务即时插入当前轮询末尾的执行序列。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分第2章 回调</b></p>
+        <h3 class="part-title">第二部分第2章 回调</h3>
         <p class="part-desc">深刻揭露回调函数的两大不可调和缺陷：线性思维在回调地狱中的断裂，以及控制权反转导致的信任崩溃。</p>
-        <div class="example-box"><span class="tag">例 ·</span>分析分析追踪回调是否被调用、是否过早调用、是否调用过多次所需的数百行防御性代码，论证回调模式的脆弱性。</div>
+        <div class="example-box">分析分析追踪回调是否被调用、是否过早调用、是否调用过多次所需的数百行防御性代码，论证回调模式的脆弱性。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分第3章 Promise</b></p>
+        <h3 class="part-title">第二部分第3章 Promise</h3>
         <p class="part-desc">全方位剖析Promise状态机、链式流转、异常静默冒泡以及Promise.all/race等并发原语的正确构建模式。</p>
-        <div class="example-box"><span class="tag">例 ·</span>利用Promise链式传递自动处理错误捕获，避免在每个异步步骤手写err优先判断，保证错误一直穿透到最后的.catch。</div>
+        <div class="example-box">利用Promise链式传递自动处理错误捕获，避免在每个异步步骤手写err优先判断，保证错误一直穿透到最后的.catch。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分第4章 生成器</b></p>
+        <h3 class="part-title">第二部分第4章 生成器</h3>
         <p class="part-desc">解析Generator的yield/next协程消息通道，演示如何结合Promise构建优雅的异步迭代流与并发执行器。</p>
-        <div class="example-box"><span class="tag">例 ·</span>手写一个简易的Runner函数自动递归驱动生成器迭代，让复杂异步网络调用在视觉上呈现完美的纯同步代码结构。</div>
+        <div class="example-box">手写一个简易的Runner函数自动递归驱动生成器迭代，让复杂异步网络调用在视觉上呈现完美的纯同步代码结构。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分第5章 程序性能</b></p>
+        <h3 class="part-title">第二部分第5章 程序性能</h3>
         <p class="part-desc">探讨Web Worker多线程并行计算、SIMD指令集架构以及微观任务拆分避免阻塞主线程UI渲染的优化手段。</p>
-        <div class="example-box"><span class="tag">例 ·</span>将100万条庞大数组的重度图形渲染数据处理任务转移给后台Web Worker子线程，主线程帧率始终维持在丝滑的60fps。</div>
+        <div class="example-box">将100万条庞大数组的重度图形渲染数据处理任务转移给后台Web Worker子线程，主线程帧率始终维持在丝滑的60fps。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第二部分第6章 性能测试与调优</b></p>
+        <h3 class="part-title">第二部分第6章 性能测试与调优</h3>
         <p class="part-desc">破除微基准测试（Microbenchmarking）的常见迷思，讲解JIT编译器优化假设、尾调用优化（TCO）与Benchmark.js的科学使用。</p>
-        <div class="example-box"><span class="tag">例 ·</span>揭示为什么单纯写一个for循环测试++i与i++耗时没有意义：V8引擎的JIT热点编译会直接将无副作用的无意义空循环优化消除。</div>
+        <div class="example-box">揭示为什么单纯写一个for循环测试++i与i++耗时没有意义：V8引擎的JIT热点编译会直接将无副作用的无意义空循环优化消除。</div>
       </li>
             </ol>
           </section>
@@ -272,78 +244,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 178;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

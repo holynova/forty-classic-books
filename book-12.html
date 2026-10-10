@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">系统设计</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-2">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">系统设计 · 第 12 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">系统设计</span>
           </div>
 
           <div class="book-title-header">
@@ -93,10 +90,6 @@
         <span class="label">原作名：</span>
         <span class="value">Clean Architecture</span>
       </div>
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">系统设计 · 第 12 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/30333919/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -104,20 +97,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">8.7</span>
+            <span class="ratebox-num tabular">8.7</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 988人评价</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="12" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="12" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 988人评价 人评价</div>
             </div>
           </div>
 
@@ -135,94 +118,83 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 8 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 依赖规则：内圈的代码，永远不许知道外圈的存在</b></p>
+        <h3 class="idea-title">1. 依赖规则：内圈的代码，永远不许知道外圈的存在</h3>
         <p class="idea-desc">全书最重要的铁律：依赖只能由外向内。内圈是业务规则（“买满200减20”），外圈是数据库、界面、框架。内圈定义接口、外圈实现，内圈绝不直接调用外圈的具体东西。换数据库、换框架，生意逻辑一行不用改。</p>
-        <div class="example-box"><span class="tag">例 ·</span>餐馆的核心是菜谱（内圈），用煤气还是电磁炉（外圈）不该影响它。菜谱里只写“加热”，不写“开煤气阀门”；换电磁炉，菜谱不用改一个字。</div>
+        <div class="example-box">餐馆的核心是菜谱（内圈），用煤气还是电磁炉（外圈）不该影响它。菜谱里只写“加热”，不写“开煤气阀门”；换电磁炉，菜谱不用改一个字。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 同心圆：一个系统就四层，各就各位</b></p>
+        <h3 class="idea-title">2. 同心圆：一个系统就四层，各就各位</h3>
         <p class="idea-desc">四个同心圆：最里实体（订单、折扣规则），往外是用例（下单、退款）。再往外是接口适配器（控制器、网关），最外是框架和驱动。越往里越稳定、越不常变。</p>
-        <div class="example-box"><span class="tag">例 ·</span>打车软件：实体是“行程”“计价规则”，用例是“下单”“接单”。适配器把App请求转成用例，最外层是MySQL、Spring。换库只动最外层，改计价只动实体。</div>
+        <div class="example-box">打车软件：实体是“行程”“计价规则”，用例是“下单”“接单”。适配器把App请求转成用例，最外层是MySQL、Spring。换库只动最外层，改计价只动实体。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. SOLID：五个让代码好改的原则</b></p>
+        <h3 class="idea-title">3. SOLID：五个让代码好改的原则</h3>
         <p class="idea-desc">五个原则：单一职责（一个类只干一件事）、开闭（加功能靠扩展不改旧代码）、里氏替换（子类能顶替父类）。接口隔离（别逼实现用不上的接口）、依赖反转（依赖抽象不依赖具体）。全书都用这套尺子量代码。</p>
-        <div class="example-box"><span class="tag">例 ·</span>“订单类”既算价格又发短信还写库，改短信模板可能搞坏算价，拆成三个类各干各的。下单逻辑不调“支付宝SDK”而调“支付接口”，换渠道时下单逻辑不动。</div>
+        <div class="example-box">“订单类”既算价格又发短信还写库，改短信模板可能搞坏算价，拆成三个类各干各的。下单逻辑不调“支付宝SDK”而调“支付接口”，换渠道时下单逻辑不动。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 软件有两种价值：“能跑”和“好改”，后者更重要</b></p>
+        <h3 class="idea-title">4. 软件有两种价值：“能跑”和“好改”，后者更重要</h3>
         <p class="idea-desc">行为价值是“能干活”（下单成功），架构价值是“好改”（下周加新玩法不费劲）。老板只看得见前者，但“能跑改不动”的系统加个小功能要三周。架构师的天职是守护架构价值，让软件一直“软”下去。</p>
-        <div class="example-box"><span class="tag">例 ·</span>两个外卖系统都能下单：A加“拼团”要改20个文件、回归一周；B边界清晰，加个用例类两天上线。A团队每加一个功能慢一点，一年后基本不敢动代码——这就是架构价值被透支。</div>
+        <div class="example-box">两个外卖系统都能下单：A加“拼团”要改20个文件、回归一周；B边界清晰，加个用例类两天上线。A团队每加一个功能慢一点，一年后基本不敢动代码——这就是架构价值被透支。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. 编程范式不是给你“更多能力”，而是给你“立规矩”</b></p>
+        <h3 class="idea-title">5. 编程范式不是给你“更多能力”，而是给你“立规矩”</h3>
         <p class="idea-desc">结构化拿走了goto（不许乱跳），面向对象拿走了函数指针乱指（必须走多态）。函数式拿走了可变变量（状态不能随便改）。每种范式都是少点自由、多份纪律，换来代码更好推理、更少怪bug。</p>
-        <div class="example-box"><span class="tag">例 ·</span>红绿灯限制了“随时走”的自由，换来路口不撞车。函数式不让变量随便改，“下单金额”定下来就没人能半路篡改，并发bug少一大半。限制让大规模协作成为可能。</div>
+        <div class="example-box">红绿灯限制了“随时走”的自由，换来路口不撞车。函数式不让变量随便改，“下单金额”定下来就没人能半路篡改，并发bug少一大半。限制让大规模协作成为可能。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 组件怎么分：聚什么、拆什么，都有讲究</b></p>
+        <h3 class="idea-title">6. 组件怎么分：聚什么、拆什么，都有讲究</h3>
         <p class="idea-desc">六条原则：三个管“哪些类放一起”（一起变的放一起），三个管“组件间怎么依赖”（依赖指向更稳定的方向）。别让底层牵着高层走。微服务拆成“分布式单体”，病根多半在这里。</p>
-        <div class="example-box"><span class="tag">例 ·</span>“用户中心”和“订单中心”拆成两个服务，改个手机号订单服务也得发版——该放一起的被拆开了。反过来，天天变的“短信发送”和稳定的“计价规则”绑一起，改短信总要重测计价。边界画错比不拆还难受。</div>
+        <div class="example-box">“用户中心”和“订单中心”拆成两个服务，改个手机号订单服务也得发版——该放一起的被拆开了。反过来，天天变的“短信发送”和稳定的“计价规则”绑一起，改短信总要重测计价。边界画错比不拆还难受。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. 画出边界，把难做的决定往后推</b></p>
+        <h3 class="idea-title">7. 画出边界，把难做的决定往后推</h3>
         <p class="idea-desc">MySQL还是Mongo？Spring还是Django？都是“细节”。好架构让你晚做决定、随时反悔：业务核心和技术细节之间画边界、中间用接口隔开。业务代码只认接口，上线时再把具体实现“插”进来。</p>
-        <div class="example-box"><span class="tag">例 ·</span>“下单用例”只依赖“订单仓库接口”，先用MySQL顶着。用户量爆了，重写一个实现类插上去，用例代码一行不改。</div>
+        <div class="example-box">“下单用例”只依赖“订单仓库接口”，先用MySQL顶着。用户量爆了，重写一个实现类插上去，用例代码一行不改。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>8. 好架构的四个试金石：可测试、能并行开发、能独立部署、技术可换</b></p>
+        <h3 class="idea-title">8. 好架构的四个试金石：可测试、能并行开发、能独立部署、技术可换</h3>
         <p class="idea-desc">四个检验标准：业务逻辑能否脱离数据库界面单独测试；多团队能否各干各的不打架；组件能否单独上线；换框架数据库要不要伤筋动骨。全满足就是干净的，有一个不行就是边界没画对。</p>
-        <div class="example-box"><span class="tag">例 ·</span>装修：水电走完后换灯具品牌不该砸墙；木工油漆工能同时进场不打架；卫生间可单独验收。拿这四条一套，立刻知道架构合不合格。</div>
+        <div class="example-box">装修：水电走完后换灯具品牌不该砸墙；木工油漆工能同时进场不打架；卫生间可单独验收。拿这四条一套，立刻知道架构合不合格。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">6 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第1部分 概述</b></p>
+        <h3 class="part-title">第1部分 概述</h3>
         <p class="part-desc">软件架构的终极目标是最小化构建和维护系统所需的人力成本；易于修改的架构价值远高于当下能跑的行为价值。</p>
-        <div class="example-box"><span class="tag">例 ·</span>初版上线虽快但代码混乱，六个月后每加一个微小功能都需要十个人联调两周，人力成本呈指数爆炸式攀升。</div>
+        <div class="example-box">初版上线虽快但代码混乱，六个月后每加一个微小功能都需要十个人联调两周，人力成本呈指数爆炸式攀升。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2部分 从基础构件开始：编程范式</b></p>
+        <h3 class="part-title">第2部分 从基础构件开始：编程范式</h3>
         <p class="part-desc">编程范式不是赋予更多能力而是施加限制：结构化限制 goto、面向对象通过多态反转限制函数指针、函数式限制可变状态。</p>
-        <div class="example-box"><span class="tag">例 ·</span>利用面向对象的多态性将业务核心与设备驱动解耦，替换硬件驱动只需实现标准接口，业务代码一行无需修改。</div>
+        <div class="example-box">利用面向对象的多态性将业务核心与设备驱动解耦，替换硬件驱动只需实现标准接口，业务代码一行无需修改。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第3部分 设计原则</b></p>
+        <h3 class="part-title">第3部分 设计原则</h3>
         <p class="part-desc">SOLID 五大原则指导模块构建，单一职责（SRP）与依赖反转（DIP）为核心，使代码保持高弹性与低耦合。</p>
-        <div class="example-box"><span class="tag">例 ·</span>报表生成模块的高层策略只依赖报表格式抽象接口，具体的 PDF 导出或 Excel 导出作为实现细节注入，完全符合开闭原则（OCP）。</div>
+        <div class="example-box">报表生成模块的高层策略只依赖报表格式抽象接口，具体的 PDF 导出或 Excel 导出作为实现细节注入，完全符合开闭原则（OCP）。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第4部分 组件构建原则</b></p>
+        <h3 class="part-title">第4部分 组件构建原则</h3>
         <p class="part-desc">指导代码包如何内聚（REP/CCP/CRP）与解耦，遵循无环依赖原则（ADP）、稳定依赖原则（SDP）与稳定抽象原则（SAP）。</p>
-        <div class="example-box"><span class="tag">例 ·</span>包与包之间决不允许循环依赖；不稳定的底层业务包必须单向依赖极其稳定的核心抽象包，保证核心不受外围摇摆冲击。</div>
+        <div class="example-box">包与包之间决不允许循环依赖；不稳定的底层业务包必须单向依赖极其稳定的核心抽象包，保证核心不受外围摇摆冲击。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第5部分 软件架构</b></p>
+        <h3 class="part-title">第5部分 软件架构</h3>
         <p class="part-desc">整洁架构同心圆与依赖规则：代码依赖必须永远单向指向内圈高阶业务实体，用例主导架构，外围技术均属插件。</p>
-        <div class="example-box"><span class="tag">例 ·</span>核心业务实体在最内圈，外圈的 Web Controller 或命令行工具都只是调用内圈用例（UseCase）的简单外壳，随时可替换。</div>
+        <div class="example-box">核心业务实体在最内圈，外圈的 Web Controller 或命令行工具都只是调用内圈用例（UseCase）的简单外壳，随时可替换。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第6部分 实现细节</b></p>
+        <h3 class="part-title">第6部分 实现细节</h3>
         <p class="part-desc">数据库、Web 框架、UI 界面甚至外部通信都是可以推迟决定的外围实现细节，好架构必须清晰尖叫着表达其业务本身。</p>
-        <div class="example-box"><span class="tag">例 ·</span>系统架构的顶层目录一眼看去是订单、库存、借贷等业务概念（尖叫架构），而不是 Controller、View、DAO 等千篇一律的框架八股骨架。</div>
+        <div class="example-box">系统架构的顶层目录一眼看去是订单、库存、借贷等业务概念（尖叫架构），而不是 Controller、View、DAO 等千篇一律的框架八股骨架。</div>
       </li>
             </ol>
           </section>
@@ -260,78 +232,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 12;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

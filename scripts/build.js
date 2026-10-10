@@ -324,44 +324,28 @@ function buildIndex() {
   const domainSections = site.domains.map(dom => {
     const domainBooks = books.filter(b => b.domain === dom.name);
     const bookRows = domainBooks.map((b, bIdx) => {
-      const padId = String(b.id).padStart(2, '0');
       const stars = getStars(b.rating);
       // Performance optimization: Prioritize LCP images above the fold (first 3 books); lazy-load offscreen images
       const isAboveFold = b.id <= 3;
       const pictureHtml = getCoverPicture(b.cover, b.title, isAboveFold, false);
-      const ratingNum = parseFloat(b.rating) || 0;
-      const reviewsNum = parseInt(String(b.ratingCount).replace(/[^0-9]/g, ''), 10) || 0;
-      const yearNum = parseInt(String(b.publishYear).slice(0, 4), 10) || 0;
 
       return `
-        <a class="brow" href="${b.slug}.html" data-id="${b.id}" data-domain="${escapeHtml(b.domain)}" data-order="${bIdx + 1}" data-rating="${ratingNum}" data-reviews="${reviewsNum}" data-year="${yearNum}">
+        <a class="brow" href="${b.slug}.html" data-id="${b.id}" data-domain="${escapeHtml(b.domain)}">
           <div class="brow-cover-wrap">
             ${pictureHtml}
           </div>
           <div class="brow-body">
-            <h3 class="brow-title"><span class="tabular brow-id">${padId}.</span> <span class="brow-name">${escapeHtml(b.title)}</span>${b.verified ? '<span class="brow-verified-badge" title="原书目录已严格校准"><span class="badge-icon">✓</span> <span class="badge-txt">目录已核验</span></span>' : ''}</h3>
-            <div class="brow-rating-inline">
-              <span class="brow-rating-num tabular">${b.rating}</span>
-              <span class="brow-rating-stars">${stars}</span>
-              <span class="brow-rating-count">(${escapeHtml(b.ratingCount)})</span>
+            <h3 class="brow-title"><span class="brow-name">${escapeHtml(b.title)}</span></h3>
+            <div class="brow-meta">
+              <span class="brow-meta-info">${escapeHtml(b.author)} / ${escapeHtml(b.publisher)} / ${escapeHtml(b.publishYear)}</span>
+              <span class="brow-meta-sep">·</span>
+              <span class="brow-rating-chip">
+                <span class="brow-rating-stars">${stars}</span>
+                <span class="brow-rating-score tabular">${b.rating}</span>
+                <span class="brow-rating-count">(${escapeHtml(b.ratingCount)})</span>
+              </span>
             </div>
-            <p class="brow-meta">${escapeHtml(b.author)} / ${escapeHtml(b.publisher)} / ${escapeHtml(b.publishYear)}</p>
             <p class="brow-desc">${escapeHtml(b.intro)}</p>
-            <div class="brow-shelf-actions">
-              <button type="button" class="shelf-pill-btn btn-read" data-id="${b.id}" aria-label="标记为已读" title="标记为已读">
-                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>已读</span>
-              </button>
-              <button type="button" class="shelf-pill-btn btn-dislike" data-id="${b.id}" aria-label="标记为不感兴趣" title="标记为不感兴趣并自动隐藏">
-                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
-            </div>
-          </div>
-          <div class="brow-rating">
-            <span class="brow-rating-num tabular">${b.rating}</span>
-            <div class="brow-rating-stars" aria-label="评分星级">${stars}</div>
-            <span class="brow-rating-count">${escapeHtml(b.ratingCount)}</span>
           </div>
         </a>
       `.trim();
@@ -370,7 +354,7 @@ function buildIndex() {
     return `
       <section class="domain" id="${dom.id}">
         <div class="domain-header">
-          <h2>${escapeHtml(dom.name)}<span class="count">${escapeHtml(dom.count)}</span></h2>
+          <h2>${escapeHtml(dom.name)}</h2>
           <p class="intro">${escapeHtml(dom.intro)}</p>
         </div>
         <div class="book-list">
@@ -413,15 +397,11 @@ function buildIndex() {
                 <small>${escapeHtml(site.brandSub)}</small>
               </a>
             </div>
-            <span class="sitehead-tag">${books.length} 本精选</span>
           </div>
         </header>
 
         <div class="hero">
-          <h1>
-            ${escapeHtml(site.heroTitle)}
-            <span class="hero-subtitle">${escapeHtml(site.heroTag)}</span>
-          </h1>
+          <h1>${escapeHtml(site.heroTitle)}</h1>
           <p>${escapeHtml(site.heroDesc)}</p>
 
           <div class="search-box">
@@ -430,7 +410,7 @@ function buildIndex() {
               <input type="search" class="search-input" id="bookSearch" placeholder="搜索书名、作者、出版社或关键词..." autocomplete="off">
               <button type="button" class="search-clear" id="searchClear" aria-label="清除搜索">×</button>
             </div>
-            <div class="search-meta" id="searchMeta">共找到 <b id="matchCount">0</b> 本相关图书</div>
+            <div class="search-meta" id="searchMeta">找到 <b id="matchCount">0</b> 本相关图书</div>
           </div>
         </div>
       </div>
@@ -438,23 +418,6 @@ function buildIndex() {
       <nav class="dnav" id="stickyNav">
         <div class="dnav-inner">
           ${navLinks}
-        </div>
-        <div class="sort-bar" id="sortBar">
-          <div class="sort-bar-inner">
-            <div class="sort-group">
-              <span class="sort-label">排序：</span>
-              <button type="button" class="sort-btn active" data-sort="default">🎯 推荐序</button>
-              <button type="button" class="sort-btn" data-sort="rating">⭐ 高分优先</button>
-              <button type="button" class="sort-btn" data-sort="reviews">🔥 评价热度</button>
-              <button type="button" class="sort-btn" data-sort="year">⏳ 最新出版</button>
-            </div>
-            <div class="filter-group">
-              <span class="sort-divider">|</span>
-              <button type="button" class="filter-btn" id="filterUnreadBtn" data-filter="unread" title="仅查看未读图书">📖 仅看未读</button>
-              <button type="button" class="filter-btn" id="filterReadBtn" data-filter="read" title="查看已标记读过的图书">✓ 已读 (<span id="readCount">0</span>)</button>
-              <button type="button" class="filter-btn active" id="filterHideDislikeBtn" data-filter="hide-dislike" title="点击切换是否隐藏不喜欢的书">⊘ 隐藏不感兴趣 (<span id="dislikeCount">0</span>)</button>
-            </div>
-          </div>
         </div>
       </nav>
 
@@ -487,25 +450,6 @@ function buildIndex() {
 
   <script>
     (function() {
-      // Local Shelf Storage & Actions (localStorage)
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var currentSort = 'default';
-      var currentFilter = 'all'; // 'all' | 'unread' | 'read'
-      var hideDislike = true; // default hide disliked books
-
       const searchInput = document.getElementById('bookSearch');
       const searchClear = document.getElementById('searchClear');
       const searchMeta = document.getElementById('searchMeta');
@@ -522,11 +466,8 @@ function buildIndex() {
         rowSearchText.set(row, text);
       });
 
-      function applyFiltersAndSort() {
-        var shelf = getShelf();
-        var readSet = new Set(shelf.read || []);
-        var dislikeSet = new Set(shelf.dislike || []);
-        var query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+      function doSearch() {
+        const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
 
         if (query.length > 0) {
           if (searchClear) searchClear.style.display = 'flex';
@@ -536,96 +477,14 @@ function buildIndex() {
           if (searchMeta) searchMeta.style.display = 'none';
         }
 
-        var readCountEl = document.getElementById('readCount');
-        var dislikeCountEl = document.getElementById('dislikeCount');
-        if (readCountEl) readCountEl.textContent = readSet.size;
-        if (dislikeCountEl) dislikeCountEl.textContent = dislikeSet.size;
-
-        var totalVisible = 0;
-
+        let totalVisible = 0;
         domainSections.forEach(section => {
-          var bookList = section.querySelector('.book-list');
-          if (!bookList) return;
-          var rows = Array.from(bookList.querySelectorAll('.brow'));
+          const rows = Array.from(section.querySelectorAll('.brow'));
+          let sectionVisibleCount = 0;
 
-          // 1. Sort rows
-          rows.sort((a, b) => {
-            if (currentSort === 'rating') {
-              var rA = parseFloat(a.getAttribute('data-rating')) || 0;
-              var rB = parseFloat(b.getAttribute('data-rating')) || 0;
-              if (rB !== rA) return rB - rA;
-              var rvA = parseInt(a.getAttribute('data-reviews'), 10) || 0;
-              var rvB = parseInt(b.getAttribute('data-reviews'), 10) || 0;
-              return rvB - rvA;
-            } else if (currentSort === 'reviews') {
-              var rvA = parseInt(a.getAttribute('data-reviews'), 10) || 0;
-              var rvB = parseInt(b.getAttribute('data-reviews'), 10) || 0;
-              if (rvB !== rvA) return rvB - rvA;
-              var rA = parseFloat(a.getAttribute('data-rating')) || 0;
-              var rB = parseFloat(b.getAttribute('data-rating')) || 0;
-              return rB - rA;
-            } else if (currentSort === 'year') {
-              var yA = parseInt(a.getAttribute('data-year'), 10) || 0;
-              var yB = parseInt(b.getAttribute('data-year'), 10) || 0;
-              if (yB !== yA) return yB - yA;
-              var rA = parseFloat(a.getAttribute('data-rating')) || 0;
-              var rB = parseFloat(b.getAttribute('data-rating')) || 0;
-              return rB - rA;
-            } else {
-              // default original order
-              var oA = parseInt(a.getAttribute('data-order'), 10) || 0;
-              var oB = parseInt(b.getAttribute('data-order'), 10) || 0;
-              return oA - oB;
-            }
-          });
-
-          // Re-append sorted rows
-          rows.forEach(row => bookList.appendChild(row));
-
-          // 2. Filter & Search visibility
-          var sectionVisibleCount = 0;
           rows.forEach(row => {
-            var id = parseInt(row.getAttribute('data-id'), 10);
-            var isRead = readSet.has(id);
-            var isDislike = dislikeSet.has(id);
-
-            // Update row UI states
-            var readBtn = row.querySelector('.btn-read');
-            var dislikeBtn = row.querySelector('.btn-dislike');
-            if (readBtn) {
-              if (isRead) readBtn.classList.add('active');
-              else readBtn.classList.remove('active');
-            }
-            if (dislikeBtn) {
-              if (isDislike) {
-                dislikeBtn.classList.add('active');
-                dislikeBtn.querySelector('span').textContent = '已忽略';
-              } else {
-                dislikeBtn.classList.remove('active');
-                dislikeBtn.querySelector('span').textContent = '不感兴趣';
-              }
-            }
-
-            if (isRead) row.classList.add('is-read');
-            else row.classList.remove('is-read');
-
-            if (isDislike) row.classList.add('is-dislike');
-            else row.classList.remove('is-dislike');
-
-            // Apply filter logic
-            var passFilter = true;
-            if (hideDislike && isDislike) {
-              passFilter = false;
-            } else if (currentFilter === 'unread' && isRead) {
-              passFilter = false;
-            } else if (currentFilter === 'read' && !isRead) {
-              passFilter = false;
-            }
-
-            var text = rowSearchText.get(row) || '';
-            var passSearch = !query || text.includes(query);
-
-            var isVisible = passFilter && passSearch;
+            const text = rowSearchText.get(row) || '';
+            const isVisible = !query || text.includes(query);
             row.style.display = isVisible ? 'flex' : 'none';
             if (isVisible) {
               sectionVisibleCount++;
@@ -640,117 +499,18 @@ function buildIndex() {
         if (searchEmpty) searchEmpty.style.display = (totalVisible === 0) ? 'block' : 'none';
       }
 
-      // Sort button listeners
-      var sortBtns = Array.from(document.querySelectorAll('.sort-btn'));
-      sortBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
-          sortBtns.forEach(b => b.classList.remove('active'));
-          this.classList.add('active');
-          currentSort = this.getAttribute('data-sort');
-          applyFiltersAndSort();
-        });
-      });
-
-      // Shelf filter listeners
-      var filterUnreadBtn = document.getElementById('filterUnreadBtn');
-      var filterReadBtn = document.getElementById('filterReadBtn');
-      var filterHideDislikeBtn = document.getElementById('filterHideDislikeBtn');
-
-      if (filterUnreadBtn) {
-        filterUnreadBtn.addEventListener('click', function() {
-          if (currentFilter === 'unread') {
-            currentFilter = 'all';
-            this.classList.remove('active');
-          } else {
-            currentFilter = 'unread';
-            this.classList.add('active');
-            if (filterReadBtn) filterReadBtn.classList.remove('active');
-          }
-          applyFiltersAndSort();
-        });
-      }
-
-      if (filterReadBtn) {
-        filterReadBtn.addEventListener('click', function() {
-          if (currentFilter === 'read') {
-            currentFilter = 'all';
-            this.classList.remove('active');
-          } else {
-            currentFilter = 'read';
-            this.classList.add('active');
-            if (filterUnreadBtn) filterUnreadBtn.classList.remove('active');
-          }
-          applyFiltersAndSort();
-        });
-      }
-
-      if (filterHideDislikeBtn) {
-        filterHideDislikeBtn.addEventListener('click', function() {
-          hideDislike = !hideDislike;
-          this.classList.toggle('active', hideDislike);
-          this.title = hideDislike ? '已默认隐藏不感兴趣的书' : '已显示所有标记不感兴趣的书';
-          applyFiltersAndSort();
-        });
-      }
-
-      // Card action button delegation
-      document.addEventListener('click', function(e) {
-        var readBtn = e.target.closest('.btn-read');
-        if (readBtn) {
-          e.preventDefault();
-          e.stopPropagation();
-          var id = parseInt(readBtn.getAttribute('data-id'), 10);
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(id);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(id);
-            var dIdx = (s.dislike || []).indexOf(id);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          applyFiltersAndSort();
-          return;
-        }
-
-        var dislikeBtn = e.target.closest('.btn-dislike');
-        if (dislikeBtn) {
-          e.preventDefault();
-          e.stopPropagation();
-          var id = parseInt(dislikeBtn.getAttribute('data-id'), 10);
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(id);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(id);
-            var rIdx = (s.read || []).indexOf(id);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          applyFiltersAndSort();
-          return;
-        }
-      });
-
       let searchRaf = null;
       function debouncedSearch() {
         if (searchRaf) cancelAnimationFrame(searchRaf);
-        searchRaf = requestAnimationFrame(applyFiltersAndSort);
+        searchRaf = requestAnimationFrame(doSearch);
       }
 
       if (searchInput) searchInput.addEventListener('input', debouncedSearch);
       if (searchClear) searchClear.addEventListener('click', function() {
         searchInput.value = '';
         searchInput.focus();
-        applyFiltersAndSort();
+        doSearch();
       });
-
-      // Initial run to reflect localStorage state
-      applyFiltersAndSort();
 
       // 2. Sticky Nav Navigation & ScrollSpy
       const dnav = document.getElementById('stickyNav');
@@ -928,18 +688,18 @@ function buildBooks() {
     // Ideas list
     const ideasHtml = book.ideas.map(idea => `
       <li class="idea-item">
-        <p class="idea-title"><b>${idea.num}. ${escapeHtml(idea.title)}</b></p>
+        <h3 class="idea-title">${idea.num}. ${escapeHtml(idea.title)}</h3>
         <p class="idea-desc">${escapeHtml(idea.desc)}</p>
-        <div class="example-box"><span class="tag">例 ·</span>${escapeHtml(idea.example)}</div>
+        <div class="example-box">${escapeHtml(idea.example)}</div>
       </li>
     `.trim()).join('\n');
 
     // Structure list
     const structureHtml = book.structure.map(part => `
       <li class="part-item">
-        <p class="part-title"><b>${escapeHtml(part.title)}</b></p>
+        <h3 class="part-title">${escapeHtml(part.title)}</h3>
         <p class="part-desc">${escapeHtml(part.desc)}</p>
-        <div class="example-box"><span class="tag">例 ·</span>${escapeHtml(part.example)}</div>
+        <div class="example-box">${escapeHtml(part.example)}</div>
       </li>
     `.trim()).join('\n');
 
@@ -998,17 +758,14 @@ function buildBooks() {
                 <small>${escapeHtml(site.brandSub)}</small>
               </a>
             </div>
-            <span class="sitehead-tag">${escapeHtml(book.domain)}</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="${domainAnchor}">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">${escapeHtml(book.domain)} · ${escapeHtml(book.domainOrder)}</span>
-              ${book.verified ? `<span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>` : ''}
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">${escapeHtml(book.domain)}</span>
           </div>
 
           <div class="book-title-header">
@@ -1033,10 +790,6 @@ function buildBooks() {
                 <span class="value">${escapeHtml(book.publishYear)}</span>
               </div>
               ${origTitleRow}
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">${escapeHtml(book.domain)} · ${escapeHtml(book.domainOrder)}</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="${book.doubanUrl}" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -1044,20 +797,10 @@ function buildBooks() {
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">${book.rating}</span>
+            <span class="ratebox-num tabular">${book.rating}</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">${stars}</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · ${escapeHtml(book.ratingCount)}</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="${book.id}" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="${book.id}" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · ${escapeHtml(book.ratingCount)} 人评价</div>
             </div>
           </div>
 
@@ -1073,25 +816,14 @@ function buildBooks() {
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 ${book.ideas.length} 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               ${ideasHtml}
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">${book.structure.length} 部分</span>
-                ${book.verified ? ` <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>` : ''}
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               ${structureHtml}
             </ol>
@@ -1124,78 +856,6 @@ function buildBooks() {
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = ${book.id};
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   ${sidebarScript}

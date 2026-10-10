@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">系统设计</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-2">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">系统设计 · 第 11 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">系统设计</span>
           </div>
 
           <div class="book-title-header">
@@ -93,10 +90,6 @@
         <span class="label">原作名：</span>
         <span class="value">Designing Data-Intensive Applications</span>
       </div>
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">系统设计 · 第 11 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/30329536/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -104,20 +97,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">9.6</span>
+            <span class="ratebox-num tabular">9.6</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 1943人评价</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="11" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="11" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 1943人评价 人评价</div>
             </div>
           </div>
 
@@ -135,124 +118,113 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 8 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 好系统有三个标准：别宕机、能长大、好维护</b></p>
+        <h3 class="idea-title">1. 好系统有三个标准：别宕机、能长大、好维护</h3>
         <p class="idea-desc">评价数据系统，看三件事。可靠性（出故障还能不能干活）、可扩展性（量涨上去跟不跟得上）、可维护性（换人接手费不费劲）。很多系统不是被流量压垮的，是被自己养出的复杂度拖垮的。</p>
-        <div class="example-box"><span class="tag">例 ·</span>大促流量涨50倍：可靠性差，支付一抖订单就丢；可扩展性差，加机器也扛不住。可维护性差，加个“满减”功能改三天不敢上线。选型前，先拿这三条量一量。</div>
+        <div class="example-box">大促流量涨50倍：可靠性差，支付一抖订单就丢；可扩展性差，加机器也扛不住。可维护性差，加个“满减”功能改三天不敢上线。选型前，先拿这三条量一量。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 没有银弹：一个数据库搞不定所有事</b></p>
+        <h3 class="idea-title">2. 没有银弹：一个数据库搞不定所有事</h3>
         <p class="idea-desc">不存在全场景最优的数据库。关系型擅长事务，搜索引擎擅长全文检索，缓存擅长扛读压力。正确姿势是组合拳：每种工具干最擅长的事，再用数据流串起来。</p>
-        <div class="example-box"><span class="tag">例 ·</span>内容平台也一样：用户放MySQL，搜索用Elasticsearch，热点放Redis，日志扔进Kafka。各司其职才顺手。</div>
+        <div class="example-box">内容平台也一样：用户放MySQL，搜索用Elasticsearch，热点放Redis，日志扔进Kafka。各司其职才顺手。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 数据模型选错了，后面全是坑</b></p>
+        <h3 class="idea-title">3. 数据模型选错了，后面全是坑</h3>
         <p class="idea-desc">数据模型就是“数据怎么组织”：关系型用表，文档型用JSON，图用节点和边。表严谨但难改，文档灵活但关联查询费劲，图表达关系无敌。选型看数据天生的形状。</p>
-        <div class="example-box"><span class="tag">例 ·</span>“A的朋友的朋友”这种查询，图数据库一句话搞定，关系型得写好几层JOIN，数据量一大就慢。反过来，规矩的订单明细用表最自然。先看清数据的长相，再挑模型。</div>
+        <div class="example-box">“A的朋友的朋友”这种查询，图数据库一句话搞定，关系型得写好几层JOIN，数据量一大就慢。反过来，规矩的订单明细用表最自然。先看清数据的长相，再挑模型。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. LSM树和B树：一个擅写，一个擅读</b></p>
+        <h3 class="idea-title">4. LSM树和B树：一个擅写，一个擅读</h3>
         <p class="idea-desc">数据在磁盘上怎么摆，决定了读快还是写快。B树像整理好的字典，读快、写要原地改；LSM树像记流水账，写只管追加、飞快，读时再合并。日志类爱用LSM，传统业务爱用B树。</p>
-        <div class="example-box"><span class="tag">例 ·</span>记家庭账本：B树派每笔工整记到分类页，查得快、记得慢。LSM树派来一笔往最后随手一记，记得飞快、月底再归拢。朋友圈点赞适合后者，银行查余额适合前者。</div>
+        <div class="example-box">记家庭账本：B树派每笔工整记到分类页，查得快、记得慢。LSM树派来一笔往最后随手一记，记得飞快、月底再归拢。朋友圈点赞适合后者，银行查余额适合前者。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. CAP：网络一分区，一致性和可用性只能保一个</b></p>
+        <h3 class="idea-title">5. CAP：网络一分区，一致性和可用性只能保一个</h3>
         <p class="idea-desc">CAP是分布式的不可能三角：一致性（看到的数据一样）、可用性（每个请求有回应）、分区容忍性（断网还能跑）。平时可兼得，但网络分区时必须二选一。</p>
-        <div class="example-box"><span class="tag">例 ·</span>两地机房专线抖了一下：保一致，用户转圈等；保可用，杭州先收单、等网络好了再同步，但北京暂时查不到。没有对错，看业务更怕“下不了单”还是“数据对不上”。</div>
+        <div class="example-box">两地机房专线抖了一下：保一致，用户转圈等；保可用，杭州先收单、等网络好了再同步，但北京暂时查不到。没有对错，看业务更怕“下不了单”还是“数据对不上”。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 一致性是有档位的，越强越贵</b></p>
+        <h3 class="idea-title">6. 一致性是有档位的，越强越贵</h3>
         <p class="idea-desc">一致性不是有或没有，而是一档档的旋钮：从最终一致（早晚会一样）到线性一致（所有人看到的都一样）。档位越高，延迟越高、可用性越低。给每个业务选刚好够用的那档。</p>
-        <div class="example-box"><span class="tag">例 ·</span>微博点赞晚几秒更新没人投诉，用最终一致就行；银行转账绝不能出现“钱扣了、没到账”的中间态，必须强一致。别为点赞数花转账的钱。</div>
+        <div class="example-box">微博点赞晚几秒更新没人投诉，用最终一致就行；银行转账绝不能出现“钱扣了、没到账”的中间态，必须强一致。别为点赞数花转账的钱。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. ACID之外，还有一堆弱隔离的暗礁</b></p>
+        <h3 class="idea-title">7. ACID之外，还有一堆弱隔离的暗礁</h3>
         <p class="idea-desc">很多数据库默认用的不是严格可串行化，而是弱隔离级别（读已提交、快照隔离等）。各有各的坑：脏读、丢失更新、写偏斜。选型前先搞清自己在用什么、在冒什么险。</p>
-        <div class="example-box"><span class="tag">例 ·</span>两个运营同时改库存：都看到10件，A改成20，B改成15，先后提交后变成15，A的修改悄悄丢了。这就是“丢失更新”。卖演唱会门票时，多卖的票就得退票道歉。</div>
+        <div class="example-box">两个运营同时改库存：都看到10件，A改成20，B改成15，先后提交后变成15，A的修改悄悄丢了。这就是“丢失更新”。卖演唱会门票时，多卖的票就得退票道歉。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>8. 批处理和流处理：一桶一桶算，还是像水一样流</b></p>
+        <h3 class="idea-title">8. 批处理和流处理：一桶一桶算，还是像水一样流</h3>
         <p class="idea-desc">批处理是攒够一堆再算（每天凌晨算报表），流处理是来一条算一条（实时风控）。Lambda架构是两套一起跑、互相校对；Kappa只用流处理，一套搞定。</p>
-        <div class="example-box"><span class="tag">例 ·</span>直播热度榜：批处理每小时汇总一次，榜单每小时变；流处理每条打赏都更新分数，榜单秒级跳动。大厂常用Lambda架构：流处理出实时榜，批处理每天校对一次，又快又准。</div>
+        <div class="example-box">直播热度榜：批处理每小时汇总一次，榜单每小时变；流处理每条打赏都更新分数，榜单秒级跳动。大厂常用Lambda架构：流处理出实时榜，批处理每天校对一次，又快又准。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">12 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第1章 可靠、可扩展与可维护的应用系统</b></p>
+        <h3 class="part-title">第1章 可靠、可扩展与可维护的应用系统</h3>
         <p class="part-desc">确立现代数据系统三大基石，以服务质量目标（SLO）与百分位延迟（P99/P999）量化评估系统承载能力。</p>
-        <div class="example-box"><span class="tag">例 ·</span>评估电商结算接口性能不看平均响应时间（平均值会掩盖卡顿），而是要求 P99 延迟稳定在 200ms 以内，保障绝大多数真实用户体验。</div>
+        <div class="example-box">评估电商结算接口性能不看平均响应时间（平均值会掩盖卡顿），而是要求 P99 延迟稳定在 200ms 以内，保障绝大多数真实用户体验。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2章 数据模型与查询语言</b></p>
+        <h3 class="part-title">第2章 数据模型与查询语言</h3>
         <p class="part-desc">对比关系模型、文档模型与图模型的表达范式，数据模型直接决定了业务代码的复杂度与查询性能天花板。</p>
-        <div class="example-box"><span class="tag">例 ·</span>简历展示天然具有层次树状属性，适合用文档模型；而复杂的社交好友与反洗钱关系图谱，用图数据库查询效率远超几十重 SQL JOIN。</div>
+        <div class="example-box">简历展示天然具有层次树状属性，适合用文档模型；而复杂的社交好友与反洗钱关系图谱，用图数据库查询效率远超几十重 SQL JOIN。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第3章 数据存储与检索</b></p>
+        <h3 class="part-title">第3章 数据存储与检索</h3>
         <p class="part-desc">深入存储引擎底层原理，对比 LSM-Tree（追加写与日志合并，写入极致）与 B-Tree（就地覆写，点读稳定）的核心权衡。</p>
-        <div class="example-box"><span class="tag">例 ·</span>日志收集与时序系统（如 Cassandra/ClickHouse）选用 LSM-Tree 支撑极高写入吞吐；而传统交易型银行系统更偏好成熟的 B-Tree 索引。</div>
+        <div class="example-box">日志收集与时序系统（如 Cassandra/ClickHouse）选用 LSM-Tree 支撑极高写入吞吐；而传统交易型银行系统更偏好成熟的 B-Tree 索引。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第4章 数据编码与演化</b></p>
+        <h3 class="part-title">第4章 数据编码与演化</h3>
         <p class="part-desc">对比 JSON/XML 与 Protocol Buffers/Avro 等二进制序列化协议，依靠字段编号与模式演化保障前后向兼容性。</p>
-        <div class="example-box"><span class="tag">例 ·</span>微服务接口升级时给 Protobuf 结构新增可选字段，老版本客户端收到新数据会自动忽略未知字段，实现平滑滚动发布。</div>
+        <div class="example-box">微服务接口升级时给 Protobuf 结构新增可选字段，老版本客户端收到新数据会自动忽略未知字段，实现平滑滚动发布。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第5章 数据复制</b></p>
+        <h3 class="part-title">第5章 数据复制</h3>
         <p class="part-desc">剖析单主、多主与无主节点（Dynamo 风格）复制架构，权衡网络延迟、复制滞后（Replication Lag）与最终一致性。</p>
-        <div class="example-box"><span class="tag">例 ·</span>用户刚发完一条动态刷新个人主页却看不到（读写分离主从同步延迟），通过“写后读一致性”策略强制从主库读取刚刚修改的数据。</div>
+        <div class="example-box">用户刚发完一条动态刷新个人主页却看不到（读写分离主从同步延迟），通过“写后读一致性”策略强制从主库读取刚刚修改的数据。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第6章 数据分区</b></p>
+        <h3 class="part-title">第6章 数据分区</h3>
         <p class="part-desc">基于键范围或一致性哈希实施数据分片（Sharding），解决海量数据倾斜、热点访问瓶颈以及集群动态再平衡运维难题。</p>
-        <div class="example-box"><span class="tag">例 ·</span>大 V 用户发表微博引发单分区热点，在用户 ID 后拼接随机哈希后缀将写入分散到不同分片，避免单机 CPU 被打爆。</div>
+        <div class="example-box">大 V 用户发表微博引发单分区热点，在用户 ID 后拼接随机哈希后缀将写入分散到不同分片，避免单机 CPU 被打爆。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第7章 事务</b></p>
+        <h3 class="part-title">第7章 事务</h3>
         <p class="part-desc">解构 ACID 的真实内涵，剖析读已提交、快照隔离（可重复读）以及可串行化背后的各种并发写入冲突（如写偏差）暗礁。</p>
-        <div class="example-box"><span class="tag">例 ·</span>两个医生在同一时刻同时申请值班请假，两人各自基于当前有两人值班的快照检查通过并提交，导致无人值班（典型的写偏差异常）。</div>
+        <div class="example-box">两个医生在同一时刻同时申请值班请假，两人各自基于当前有两人值班的快照检查通过并提交，导致无人值班（典型的写偏差异常）。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第8章 分布式系统的挑战</b></p>
+        <h3 class="part-title">第8章 分布式系统的挑战</h3>
         <p class="part-desc">直面分布式环境中的不可靠网络丢包、不可靠硬件时钟时序漂移以及不可预测的垃圾回收长停顿（GC Pause）现实。</p>
-        <div class="example-box"><span class="tag">例 ·</span>不能依赖单机本地时间作为全局事件严格先后的基准，否则 NTP 同步跳跃几百毫秒就会彻底搞乱数据版本覆盖逻辑。</div>
+        <div class="example-box">不能依赖单机本地时间作为全局事件严格先后的基准，否则 NTP 同步跳跃几百毫秒就会彻底搞乱数据版本覆盖逻辑。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第9章 一致性与共识</b></p>
+        <h3 class="part-title">第9章 一致性与共识</h3>
         <p class="part-desc">线性一致性代价极高，深入剖析两阶段提交（2PC）的阻塞缺陷与 Raft/Paxos 分布式共识算法的高可用选举边界。</p>
-        <div class="example-box"><span class="tag">例 ·</span>Zookeeper 和 etcd 依靠共识算法在多数派节点存活时选出唯一 Leader 并提供强一致元数据服务，充当分布式服务发现与协调的中枢。</div>
+        <div class="example-box">Zookeeper 和 etcd 依靠共识算法在多数派节点存活时选出唯一 Leader 并提供强一致元数据服务，充当分布式服务发现与协调的中枢。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第10章 批处理系统</b></p>
+        <h3 class="part-title">第10章 批处理系统</h3>
         <p class="part-desc">以 MapReduce 和 Spark 为代表的离线批处理系统，通过不可变输入数据集、确定性转换与无副作用重放处理海量数据。</p>
-        <div class="example-box"><span class="tag">例 ·</span>每天凌晨自动运行批处理作业计算千万商家的昨日营收总账，即使某台计算节点在运算中途死机，只需重新调度该分片任务即可自动恢复。</div>
+        <div class="example-box">每天凌晨自动运行批处理作业计算千万商家的昨日营收总账，即使某台计算节点在运算中途死机，只需重新调度该分片任务即可自动恢复。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第11章 流处理系统</b></p>
+        <h3 class="part-title">第11章 流处理系统</h3>
         <p class="part-desc">以 Kafka 和 Flink 为代表的实时流处理，基于事件时间窗口与端到端两阶段提交实现微秒级低延迟与精确一次（Exactly-Once）语义。</p>
-        <div class="example-box"><span class="tag">例 ·</span>银行实时风控引擎实时消费支付事件流，在滑动5分钟时间窗口内检测同一张卡是否在异地发生两笔以上大额刷卡，毫秒级触发阻断拦截。</div>
+        <div class="example-box">银行实时风控引擎实时消费支付事件流，在滑动5分钟时间窗口内检测同一张卡是否在异地发生两笔以上大额刷卡，毫秒级触发阻断拦截。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第12章 数据系统的未来</b></p>
+        <h3 class="part-title">第12章 数据系统的未来</h3>
         <p class="part-desc">解构单体数据库，用不可变的日志流作为全真事实源，驱动物化视图与衍生数据系统，构建端到端正确性与负责任的数据架构。</p>
-        <div class="example-box"><span class="tag">例 ·</span>核心业务写入不可变事务事件日志，搜索系统订阅日志构建 Elasticsearch 索引，分析系统订阅构建数据仓库，各系统通过事件流自然保持同步。</div>
+        <div class="example-box">核心业务写入不可变事务事件日志，搜索系统订阅日志构建 Elasticsearch 索引，分析系统订阅构建数据仓库，各系统通过事件流自然保持同步。</div>
       </li>
             </ol>
           </section>
@@ -290,78 +262,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 11;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   

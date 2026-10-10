@@ -55,17 +55,14 @@
                 <small>CLASSIC BOOKS · 277 MASTERPIECES</small>
               </a>
             </div>
-            <span class="sitehead-tag">主理人四星精选</span>
           </div>
         </header>
 
         <main>
           <div class="back-nav">
             <a class="back-link" href="index.html#dom-9">← 全部书单</a>
-            <div class="back-nav-tags">
-              <span class="detail-domain-tag">主理人四星精选 · 第 01 本</span>
-              <span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-            </div>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">主理人四星精选</span>
           </div>
 
           <div class="book-title-header">
@@ -90,10 +87,6 @@
                 <span class="value">2012</span>
               </div>
               
-              <div class="detail-meta-item">
-                <span class="label">领域：</span>
-                <span class="value">主理人四星精选 · 第 01 本</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/10797189/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -101,20 +94,10 @@
           </div>
 
           <div class="ratebox">
-            <span class="ratebox-num">8.8</span>
+            <span class="ratebox-num tabular">8.8</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
-              <div class="ratebox-label"><b>豆瓣评分</b> · 35,000+</div>
-            </div>
-            <div class="detail-shelf-actions" id="detailShelfActions">
-              <button type="button" class="detail-shelf-btn btn-read" data-id="171" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>标记已读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-dislike" data-id="171" aria-label="标记为不感兴趣">
-                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
-                <span>不感兴趣</span>
-              </button>
+              <div class="ratebox-label">豆瓣评分 · 35,000+ 人评价</div>
             </div>
           </div>
 
@@ -132,134 +115,123 @@
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">核心观点</span>
-              <span class="sec-meta">
-                <span class="badge">共 7 条</span>
-              </span>
-            </h2>
+            <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
-        <p class="idea-title"><b>1. 可读性的核心定理：使他人理解代码所需的时间最小化</b></p>
+        <h3 class="idea-title">1. 可读性的核心定理：使他人理解代码所需的时间最小化</h3>
         <p class="idea-desc">评估代码好坏的唯一客观尺度，不是写得有多炫技或代码行有多短，而是新成员读懂它需要耗费多长时间。</p>
-        <div class="example-box"><span class="tag">例 ·</span>一段一行流的三元嵌套表达式看似精简，但新人需要反复琢磨两分钟才能理解，不如拆成四行清晰的if判断三秒看懂。</div>
+        <div class="example-box">一段一行流的三元嵌套表达式看似精简，但新人需要反复琢磨两分钟才能理解，不如拆成四行清晰的if判断三秒看懂。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>2. 把关键信息精准打包进变量与函数名中</b></p>
+        <h3 class="idea-title">2. 把关键信息精准打包进变量与函数名中</h3>
         <p class="idea-desc">避免使用tmp、retval等无意义的模糊命名，在名字中明确单位、边界与属性，消灭歧义。</p>
-        <div class="example-box"><span class="tag">例 ·</span>将变量delay改名为delay_secs，将size_limit改名为max_kb_allowed，避免调用方误把毫秒当秒、字节当KB传递。</div>
+        <div class="example-box">将变量delay改名为delay_secs，将size_limit改名为max_kb_allowed，避免调用方误把毫秒当秒、字节当KB传递。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>3. 控制流越扁平越好，尽早返回消灭深层嵌套</b></p>
+        <h3 class="idea-title">3. 控制流越扁平越好，尽早返回消灭深层嵌套</h3>
         <p class="idea-desc">把守卫条件（Guard Clauses）提到函数最顶端，不满足条件立即return，让主干业务逻辑保持零缩进。</p>
-        <div class="example-box"><span class="tag">例 ·</span>原本嵌套四层if判断用户权限与登录态的代码，改成三行前置校验并直接return，核心业务代码直接平铺在最外层。</div>
+        <div class="example-box">原本嵌套四层if判断用户权限与登录态的代码，改成三行前置校验并直接return，核心业务代码直接平铺在最外层。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>4. 积极抽取不相关的子问题，让主函数专心表达意图</b></p>
+        <h3 class="idea-title">4. 积极抽取不相关的子问题，让主函数专心表达意图</h3>
         <p class="idea-desc">如果一段代码做的事情和当前函数的核心业务无直接关联（如格式清洗、网络重试），必须果断抽离成纯工具函数。</p>
-        <div class="example-box"><span class="tag">例 ·</span>处理订单的业务函数中夹杂着复杂的经纬度曼哈顿距离计算逻辑，将其抽离为独立的calculate_distance辅助函数。</div>
+        <div class="example-box">处理订单的业务函数中夹杂着复杂的经纬度曼哈顿距离计算逻辑，将其抽离为独立的calculate_distance辅助函数。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>5. 注释不要复述代码做了什么，而要解释为什么这么做</b></p>
+        <h3 class="idea-title">5. 注释不要复述代码做了什么，而要解释为什么这么做</h3>
         <p class="idea-desc">好的代码本身就是自解释的，注释的真正价值是记录背后的设计意图、特殊业务约束、已知缺陷或避坑原因。</p>
-        <div class="example-box"><span class="tag">例 ·</span>不写//将x加1，而是写//加1是为了兼容旧版本SDK在月末最后一天跨时区的边缘bug。</div>
+        <div class="example-box">不写//将x加1，而是写//加1是为了兼容旧版本SDK在月末最后一天跨时区的边缘bug。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>6. 收敛变量的作用域，让变量活得越短越好</b></p>
+        <h3 class="idea-title">6. 收敛变量的作用域，让变量活得越短越好</h3>
         <p class="idea-desc">变量可见的代码行越多，读者需要放进工作记忆中的负担就越重；尽可能把变量定义在使用点的最近一行并设为只读。</p>
-        <div class="example-box"><span class="tag">例 ·</span>将函数顶部统一声明的10个局部变量，移动到各自被引用的循环或代码块内部，避免上下翻看排查变量篡改。</div>
+        <div class="example-box">将函数顶部统一声明的10个局部变量，移动到各自被引用的循环或代码块内部，避免上下翻看排查变量篡改。</div>
       </li>
 <li class="idea-item">
-        <p class="idea-title"><b>7. 最可读的代码就是压根不用写代码</b></p>
+        <h3 class="idea-title">7. 最可读的代码就是压根不用写代码</h3>
         <p class="idea-desc">减少项目代码总量是提升可读性的终极手段；复用标准库功能，剪掉过度设计的需求，不要自己造蹩脚的轮子。</p>
-        <div class="example-box"><span class="tag">例 ·</span>手写100行有漏洞的深拷贝与字符串修剪函数，直接替换为成熟标准库的方法，既消灭隐患又减少团队维护代码量。</div>
+        <div class="example-box">手写100行有漏洞的深拷贝与字符串修剪函数，直接替换为成熟标准库的方法，既消灭隐患又减少团队维护代码量。</div>
       </li>
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>
-              <span class="sec-title">全书结构</span>
-              <span class="sec-meta">
-                <span class="badge">15 部分</span>
-                 <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>
-              </span>
-            </h2>
+            <h2>全书结构</h2>
             <ol class="part-list">
               <li class="part-item">
-        <p class="part-title"><b>第1章 代码应当易于理解</b></p>
+        <h3 class="part-title">第1章 代码应当易于理解</h3>
         <p class="part-desc">确立全书核心基准：代码编写必须以他人理解代码所需时间最小化为第一法则。</p>
-        <div class="example-box"><span class="tag">例 ·</span>对比两段功能完全一致的代码，一段紧凑但晦涩，一段直白但略显平铺，论证可读性对团队工程效率的决定性影响。</div>
+        <div class="example-box">对比两段功能完全一致的代码，一段紧凑但晦涩，一段直白但略显平铺，论证可读性对团队工程效率的决定性影响。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第2章 把信息装到名字里</b></p>
+        <h3 class="part-title">第2章 把信息装到名字里</h3>
         <p class="part-desc">通过挑选专业词汇、附带单位后缀、附加关键属性等手段，让名字自解释并具备高信息量。</p>
-        <div class="example-box"><span class="tag">例 ·</span>将盲目的GetPage()根据内部开销与行为精准细化为FetchPage()或DownloadPage()，并给超时变量加上_ms后缀。</div>
+        <div class="example-box">将盲目的GetPage()根据内部开销与行为精准细化为FetchPage()或DownloadPage()，并给超时变量加上_ms后缀。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第3章 不会误解的名字</b></p>
+        <h3 class="part-title">第3章 不会误解的名字</h3>
         <p class="part-desc">审视命名是否会引发读者的歧义，明确范围闭合（first/last）与极限值（min/max）的最佳实践。</p>
-        <div class="example-box"><span class="tag">例 ·</span>使用filter()容易让人误解是过滤保留还是过滤排除，改用select()或exclude()彻底消除语意歧义。</div>
+        <div class="example-box">使用filter()容易让人误解是过滤保留还是过滤排除，改用select()或exclude()彻底消除语意歧义。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第4章 审美</b></p>
+        <h3 class="part-title">第4章 审美</h3>
         <p class="part-desc">利用一致的排版、对齐、分组和方法段落，让视觉流线清晰规整，降低大脑扫描负担。</p>
-        <div class="example-box"><span class="tag">例 ·</span>将长串无序的参数赋值代码按列垂直对齐，字段按业务逻辑成组空行分隔，使新增配置一目了然。</div>
+        <div class="example-box">将长串无序的参数赋值代码按列垂直对齐，字段按业务逻辑成组空行分隔，使新增配置一目了然。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第5章 该写什么样的注释</b></p>
+        <h3 class="part-title">第5章 该写什么样的注释</h3>
         <p class="part-desc">明确注释的真正价值：记录代码无法自白的心路历程、架构取舍、背景假设与踩坑防错提示。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在看似低效的暴力遍历处注释：由于数组长度严格小于10，使用哈希表反而会因初始化开销导致性能变慢。</div>
+        <div class="example-box">在看似低效的暴力遍历处注释：由于数组长度严格小于10，使用哈希表反而会因初始化开销导致性能变慢。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第6章 写出言简意赅的注释</b></p>
+        <h3 class="part-title">第6章 写出言简意赅的注释</h3>
         <p class="part-desc">注释必须言之有物且文字凝练，用精准的技术术语和具象的入参输出用例替代冗长的口水话。</p>
-        <div class="example-box"><span class="tag">例 ·</span>用一句符合规范的单行用例注释// Example: foo('a/b/c') -&gt; ['a', 'b', 'c']，代替三段含糊其辞的操作描述。</div>
+        <div class="example-box">用一句符合规范的单行用例注释// Example: foo('a/b/c') -&gt; ['a', 'b', 'c']，代替三段含糊其辞的操作描述。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第7章 把控制流变得易读</b></p>
+        <h3 class="part-title">第7章 把控制流变得易读</h3>
         <p class="part-desc">优化条件分支走向，消除深层嵌套，采用早期返回与先处理正向/简单分支的原则。</p>
-        <div class="example-box"><span class="tag">例 ·</span>把多层if-else金字塔嵌套重构为卫语句结构，提前拦截异常参数返回，让核心逻辑始终位于函数零层缩进。</div>
+        <div class="example-box">把多层if-else金字塔嵌套重构为卫语句结构，提前拦截异常参数返回，让核心逻辑始终位于函数零层缩进。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第8章 拆分超长表达式</b></p>
+        <h3 class="part-title">第8章 拆分超长表达式</h3>
         <p class="part-desc">将晦涩难懂的巨大表达式拆解为带有解释性名称的中间变量，利用德摩根定律简化布尔逻辑。</p>
-        <div class="example-box"><span class="tag">例 ·</span>将长达三行的URL正则匹配条件拆分为is_admin_request和has_valid_token两个布尔解释变量后再进行判断。</div>
+        <div class="example-box">将长达三行的URL正则匹配条件拆分为is_admin_request和has_valid_token两个布尔解释变量后再进行判断。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第9章 变量与可读性</b></p>
+        <h3 class="part-title">第9章 变量与可读性</h3>
         <p class="part-desc">通过消除不必要的中间变量、收窄变量生存期以及使用只读修饰，大幅降低读者心理追踪负担。</p>
-        <div class="example-box"><span class="tag">例 ·</span>移除仅被使用一次的临时返回值变量，直接在计算完成处返回结果，杜绝变量被后续代码无意篡改的可能。</div>
+        <div class="example-box">移除仅被使用一次的临时返回值变量，直接在计算完成处返回结果，杜绝变量被后续代码无意篡改的可能。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第10章 抽取不相关的子问题</b></p>
+        <h3 class="part-title">第10章 抽取不相关的子问题</h3>
         <p class="part-desc">识别代码中偏离主线业务的纯技术支撑逻辑，勇敢抽离为高内聚、可复用的独立子程序。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在核心用户推荐算法中，把提取URL查询参数和格式化日期的杂乱逻辑彻底抽离成独立的纯函数。</div>
+        <div class="example-box">在核心用户推荐算法中，把提取URL查询参数和格式化日期的杂乱逻辑彻底抽离成独立的纯函数。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第11章 一次只做一件事</b></p>
+        <h3 class="part-title">第11章 一次只做一件事</h3>
         <p class="part-desc">确保每个函数和代码段落专注于单一职责，将复杂的混合处理流程分解为清晰的线性执行管道。</p>
-        <div class="example-box"><span class="tag">例 ·</span>将一个同时负责解析CSV、校验数据合规性并落库的庞大函数，拆分为逐行解析、独立校验与批量写入三个小步骤。</div>
+        <div class="example-box">将一个同时负责解析CSV、校验数据合规性并落库的庞大函数，拆分为逐行解析、独立校验与批量写入三个小步骤。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第12章 把想法变成代码</b></p>
+        <h3 class="part-title">第12章 把想法变成代码</h3>
         <p class="part-desc">先用大白话向同事描述解决问题的直观逻辑，然后对照口头表述直接写出结构对齐的优雅代码。</p>
-        <div class="example-box"><span class="tag">例 ·</span>在写复杂权限计算时，先用一句自然语言写出规则：如果是超级管理员或者属于该部门且拥有写权限则通过，代码直接对应翻译。</div>
+        <div class="example-box">在写复杂权限计算时，先用一句自然语言写出规则：如果是超级管理员或者属于该部门且拥有写权限则通过，代码直接对应翻译。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第13章 少写代码</b></p>
+        <h3 class="part-title">第13章 少写代码</h3>
         <p class="part-desc">最高境界的可读性是克制编码：通过削减无用需求、熟悉并复用系统标准库与外部开源轮子。</p>
-        <div class="example-box"><span class="tag">例 ·</span>团队计划自己手写一个LRU缓存，查阅标准库后发现已有经过严苛测试的成熟模块，直接引入省去数百行维护代码。</div>
+        <div class="example-box">团队计划自己手写一个LRU缓存，查阅标准库后发现已有经过严苛测试的成熟模块，直接引入省去数百行维护代码。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第14章 测试与可读性</b></p>
+        <h3 class="part-title">第14章 测试与可读性</h3>
         <p class="part-desc">测试代码应当成为系统的第一手活文档，用极简的测试数据输入输出展现被测功能的真实契约。</p>
-        <div class="example-box"><span class="tag">例 ·</span>消除单元测试中繁琐冗长的准备代码，编写自定义的assert_response_ok辅助断言，突出核心输入与预期返回值。</div>
+        <div class="example-box">消除单元测试中繁琐冗长的准备代码，编写自定义的assert_response_ok辅助断言，突出核心输入与预期返回值。</div>
       </li>
 <li class="part-item">
-        <p class="part-title"><b>第15章 设计并改进“分钟/小时计数器”</b></p>
+        <h3 class="part-title">第15章 设计并改进“分钟/小时计数器”</h3>
         <p class="part-desc">通过一个真实完整的工程案例，演示如何运用全书原则从简陋实现一步步重构成优雅高内聚的工业级代码。</p>
-        <div class="example-box"><span class="tag">例 ·</span>从一个内存暴涨、缺乏并发保护的朴素计数器开始，逐步重构成滑动时间窗口、职责边界分明的模块化实现。</div>
+        <div class="example-box">从一个内存暴涨、缺乏并发保护的朴素计数器开始，逐步重构成滑动时间窗口、职责边界分明的模块化实现。</div>
       </li>
             </ol>
           </section>
@@ -297,78 +269,6 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
-
-    (function() {
-      var SHELF_KEY = 'cbg_books_shelf';
-      function getShelf() {
-        try {
-          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
-        } catch(e) {
-          return { read: [], dislike: [] };
-        }
-      }
-      function saveShelf(data) {
-        try {
-          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
-        } catch(e) {}
-      }
-
-      var bookId = 171;
-      var readBtn = document.querySelector('#detailShelfActions .btn-read');
-      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
-
-      function updateUI() {
-        var s = getShelf();
-        var isRead = (s.read || []).indexOf(bookId) >= 0;
-        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
-        if (readBtn) {
-          readBtn.classList.toggle('active', isRead);
-          var txt = readBtn.querySelector('span');
-          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
-        }
-        if (dislikeBtn) {
-          dislikeBtn.classList.toggle('active', isDislike);
-          var txt = dislikeBtn.querySelector('span');
-          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
-        }
-      }
-
-      if (readBtn) {
-        readBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.read || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.read.splice(idx, 1);
-          } else {
-            s.read = s.read || [];
-            s.read.push(bookId);
-            var dIdx = (s.dislike || []).indexOf(bookId);
-            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      if (dislikeBtn) {
-        dislikeBtn.addEventListener('click', function() {
-          var s = getShelf();
-          var idx = (s.dislike || []).indexOf(bookId);
-          if (idx >= 0) {
-            s.dislike.splice(idx, 1);
-          } else {
-            s.dislike = s.dislike || [];
-            s.dislike.push(bookId);
-            var rIdx = (s.read || []).indexOf(bookId);
-            if (rIdx >= 0) s.read.splice(rIdx, 1);
-          }
-          saveShelf(s);
-          updateUI();
-        });
-      }
-
-      updateUI();
-    })();
   </script>
 
   
