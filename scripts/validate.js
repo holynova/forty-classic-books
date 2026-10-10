@@ -155,11 +155,11 @@ if (errors.length > 0) {
   process.exit(1);
 } else {
   console.log('✅ 全部验收项检查通过！');
-  console.log(`  [x] ${books.length} 本书，全部经过真实目录与内容核实，8 个主题分区严谨准确`);
+  console.log(`  [x] ${books.length} 本书，全部经过真实目录与内容核实，${site.domains.length} 个主题分区严谨准确`);
   console.log('  [x] 每本书：导读 + 总体观点 (2-4段) + 5-8 个核心观点（带例子）+ 全书结构（对齐原书真实目录且带例子）');
   console.log(`  [x] ${books.length} 张封面全部正确且本地加载 (covers/ 目录)`);
   console.log('  [x] 重点书籍检验通过：《小家大变局》真实章节（趋势1 显大、趋势2 实用、趋势3 适老）完整覆盖');
-  console.log('  [x] 首页吸顶导航 8 个主题跳转与无障碍属性可用');
+  console.log(`  [x] 首页吸顶导航 ${site.domains.length} 个主题跳转与无障碍属性可用`);
   console.log(`  [x] ${books.length} 个详情页：评分、信息、真实相邻上下本导航、返回目录完整可用`);
   console.log('  [x] 样式表与移动端优先排版正常，支持即时搜索与 Scrollspy 高亮');
 }
