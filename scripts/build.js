@@ -17,6 +17,20 @@ function getStars(ratingStr) {
   return '★'.repeat(full) + (half ? '★' : '') + '☆'.repeat(empty);
 }
 
+function formatRatingCount(count) {
+  if (!count) return '';
+  const num = String(count).replace(/[^0-9]/g, '');
+  if (!num) return String(count);
+  return Number(num).toLocaleString() + ' 人评价';
+}
+
+function formatRatingCountShort(count) {
+  if (!count) return '';
+  const num = String(count).replace(/[^0-9]/g, '');
+  if (!num) return String(count);
+  return Number(num).toLocaleString() + '人评价';
+}
+
 function escapeHtml(str) {
   if (str === null || str === undefined) return '';
   return String(str)
@@ -342,7 +356,7 @@ function buildIndex() {
               <span class="brow-rating-chip">
                 <span class="brow-rating-stars">${stars}</span>
                 <span class="brow-rating-score tabular">${b.rating}</span>
-                <span class="brow-rating-count">(${escapeHtml(b.ratingCount)})</span>
+                <span class="brow-rating-count">(${formatRatingCountShort(b.ratingCount)})</span>
               </span>
             </div>
             <p class="brow-desc">${escapeHtml(b.intro)}</p>
@@ -800,7 +814,7 @@ function buildBooks() {
             <span class="ratebox-num tabular">${book.rating}</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">${stars}</div>
-              <div class="ratebox-label">豆瓣评分 · ${escapeHtml(book.ratingCount)} 人评价</div>
+              <div class="ratebox-label">豆瓣评分 · ${formatRatingCount(book.ratingCount)}</div>
             </div>
           </div>
 
