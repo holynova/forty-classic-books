@@ -18,9 +18,21 @@ export default {
         redirect.pathname = BASE + redirect.pathname.replace(/^\//, '');
         const headers = new Headers(response.headers);
         headers.set('location', redirect.toString());
-        response = new Response(response.body, { status: response.status, headers });
+        return new Response(response.body, { status: response.status, headers });
       }
     }
+
+    if (response.status === 200) {
+      const headers = new Headers(response.headers);
+      const sub = url.pathname;
+      if (sub.startsWith('/covers/') || sub.endsWith('.css') || sub.endsWith('.webp') || sub.endsWith('.jpg') || sub.endsWith('.png') || sub.endsWith('.js')) {
+        headers.set('Cache-Control', 'public, max-age=2592000, stale-while-revalidate=86400');
+      } else {
+        headers.set('Cache-Control', 'public, max-age=0, must-revalidate');
+      }
+      return new Response(response.body, { status: response.status, headers });
+    }
+
     return response;
   }
 };

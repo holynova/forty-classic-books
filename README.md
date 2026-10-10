@@ -1,8 +1,8 @@
-# Forty Classic Books / 经典书导读 (70 本经典书)
+# 经典书导读 / Classic Books Guide (170 本精选)
 
-中文：精选软件工程、系统设计、UI/UX 设计、产品经理、中国历史、建筑学、艺术 7 大核心领域各 10 本豆瓣高分经典，共 70 本书深度导读。每本书包含总体观点、5-8 个核心观点（配实际生动案例）与全书结构剖析，坚持纯干货、说人话。纯静态网页，内置全局搜索、吸顶目录与沉浸式默认隐藏侧边导航抽屉。
+中文：精选软件工程、系统设计、UI/UX 设计、产品经理、中国历史、建筑学、艺术与主理人五星精选 8 大核心领域，共 170 本豆瓣高分经典深度导读。每本书包含总体观点、5-8 个核心观点（配实际生动案例）与全书结构剖析，坚持纯干货、说人话。纯静态网页，内置全局搜索、吸顶目录、沉浸式默认隐藏侧边导航抽屉，并全链路优化 WebP 响应式图片与离屏渲染性能。
 
-English: Curated reading guide for 70 classic books across 7 core domains: Software Engineering, System Design, UI/UX Design, Product Management, Chinese History, Architecture, and Art (10 books per domain). Each book features core concepts with real-world examples and structured outlines. Zero-dependency static site with instant search and distraction-free collapsible navigation.
+English: Curated reading guide for 170 classic books across 8 core domains: Software Engineering, System Design, UI/UX Design, Product Management, Chinese History, Architecture, Art, and Curator's 5-Star Favorites. Each book features core concepts with real-world examples and structured outlines. Zero-dependency static site with instant search, distraction-free collapsible navigation, and performance-optimized WebP responsive images.
 
 ![Project screenshot](./assets/screenshot.png)
 

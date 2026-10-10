@@ -26,6 +26,20 @@ function escapeHtml(str) {
     .replace(/"/g, '&quot;');
 }
 
+function getCoverPicture(coverPath, title, isAboveFold, isDetail = false) {
+  const baseName = path.basename(coverPath, path.extname(coverPath));
+  const subDir = isDetail ? 'detail' : 'thumbs';
+  const width = isDetail ? 138 : 68;
+  const height = isDetail ? 200 : 98;
+  const webpPath = `covers/${subDir}/${baseName}.webp`;
+  const imgAttrs = isAboveFold
+    ? 'fetchpriority="high" decoding="async"'
+    : 'loading="lazy" decoding="async"';
+  const classAttr = isDetail ? ' class="detail-cover"' : '';
+
+  return `<picture><source srcset="${webpPath}" type="image/webp"><img${classAttr} src="${coverPath}" alt="${escapeHtml(title)}封面" ${imgAttrs} width="${width}" height="${height}"></picture>`;
+}
+
 // Global Sidebar Component
 function renderSidebar(currentBookId = null) {
   const groupsHtml = site.domains.map(dom => {
@@ -63,7 +77,7 @@ function renderSidebar(currentBookId = null) {
     <div class="sidebar-header">
       <a class="sidebar-brand" href="index.html">
         <span class="sidebar-brand-title">${escapeHtml(site.brand)}</span>
-        <span class="sidebar-brand-sub">${site.domains.length} 领域 × 10 本 · 经典书导读</span>
+        <span class="sidebar-brand-sub">${site.domains.length} 大领域 · ${books.length} 本精选 · 经典书导读</span>
       </a>
       <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="关闭目录">×</button>
     </div>
@@ -197,14 +211,13 @@ function buildIndex() {
     const bookRows = domainBooks.map(b => {
       const padId = String(b.id).padStart(2, '0');
       const stars = getStars(b.rating);
-      // Performance optimization: Prioritize LCP images above the fold; lazy-load offscreen images
-      const imgAttrs = b.id <= 2
-        ? 'fetchpriority="high" decoding="async"'
-        : 'loading="lazy" decoding="async"';
+      // Performance optimization: Prioritize LCP images above the fold (first 3 books); lazy-load offscreen images
+      const isAboveFold = b.id <= 3;
+      const pictureHtml = getCoverPicture(b.cover, b.title, isAboveFold, false);
       return `
-        <a class="brow" href="${b.slug}.html" data-title="${escapeHtml(b.title)}" data-author="${escapeHtml(b.author)}" data-publisher="${escapeHtml(b.publisher)}" data-domain="${escapeHtml(b.domain)}" data-intro="${escapeHtml(b.intro)}">
+        <a class="brow" href="${b.slug}.html" data-domain="${escapeHtml(b.domain)}">
           <div class="brow-cover-wrap">
-            <img src="${b.cover}" alt="${escapeHtml(b.title)}封面" ${imgAttrs} width="68" height="98">
+            ${pictureHtml}
           </div>
           <div class="brow-body">
             <h3 class="brow-title"><span class="tabular">${padId}.</span> ${escapeHtml(b.title)}</h3>
@@ -334,6 +347,14 @@ function buildIndex() {
       const bookRows = Array.from(document.querySelectorAll('.brow'));
       const domainSections = Array.from(document.querySelectorAll('.domain'));
 
+      // Cache search text for high performance
+      const rowSearchText = new WeakMap();
+      bookRows.forEach(row => {
+        const domain = row.getAttribute('data-domain') || '';
+        const text = (domain + ' ' + (row.textContent || '')).toLowerCase();
+        rowSearchText.set(row, text);
+      });
+
       function handleSearch() {
         const query = (searchInput.value || '').trim().toLowerCase();
         
@@ -352,18 +373,8 @@ function buildIndex() {
           let sectionMatchCount = 0;
 
           rows.forEach(row => {
-            const title = (row.dataset.title || '').toLowerCase();
-            const author = (row.dataset.author || '').toLowerCase();
-            const pub = (row.dataset.publisher || '').toLowerCase();
-            const dom = (row.dataset.domain || '').toLowerCase();
-            const intro = (row.dataset.intro || '').toLowerCase();
-
-            const isMatch = !query || 
-              title.includes(query) || 
-              author.includes(query) || 
-              pub.includes(query) || 
-              dom.includes(query) || 
-              intro.includes(query);
+            const text = rowSearchText.get(row) || '';
+            const isMatch = !query || text.includes(query);
 
             if (isMatch) {
               row.style.display = 'flex';
@@ -587,14 +598,14 @@ function buildBooks() {
     // Prev / Next Nav (Cover Cards)
     const prevHtml = prevBook
       ? `<a class="prev${!nextBook ? ' solo' : ''}" href="${prevBook.slug}.html">
-          <img src="${prevBook.cover}" alt="${escapeHtml(prevBook.title)}封面" loading="lazy" decoding="async">
+          ${getCoverPicture(prevBook.cover, prevBook.title, false, false)}
           <span class="t"><span>← 上一本</span>${escapeHtml(prevBook.title)}</span>
          </a>`
       : '';
 
     const nextHtml = nextBook
       ? `<a class="next${!prevBook ? ' solo' : ''}" href="${nextBook.slug}.html">
-          <img src="${nextBook.cover}" alt="${escapeHtml(nextBook.title)}封面" loading="lazy" decoding="async">
+          ${getCoverPicture(nextBook.cover, nextBook.title, false, false)}
           <span class="t"><span>下一本 →</span>${escapeHtml(nextBook.title)}</span>
          </a>`
       : '';
@@ -657,7 +668,7 @@ function buildBooks() {
 
           <div class="detail-top">
             <div class="detail-cover-wrap">
-              <img class="detail-cover" src="${book.cover}" alt="${escapeHtml(book.title)}封面" fetchpriority="high" decoding="async" width="138" height="200">
+              ${getCoverPicture(book.cover, book.title, true, true)}
             </div>
             <div class="detail-meta">
               <div class="detail-meta-item">
@@ -757,7 +768,7 @@ function buildBooks() {
 }
 
 // Run build
-console.log('Building forty-classic-books static website with global navigation...');
+console.log('Building classic-books-guide static website with performance optimizations...');
 buildIndex();
 buildBooks();
 console.log('Build completed successfully!');

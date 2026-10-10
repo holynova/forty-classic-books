@@ -4,7 +4,7 @@ const path = require('path');
 const ROOT_DIR = path.resolve(__dirname, '..');
 const DATA_DIR = path.join(ROOT_DIR, 'data');
 
-console.log('--- 正在执行《四十本经典书网站》严格验收检查 ---');
+console.log('--- 正在执行《经典书导读网站》严格验收检查 ---');
 
 let errors = [];
 
