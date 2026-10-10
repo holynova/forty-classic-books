@@ -335,7 +335,7 @@ function buildIndex() {
             ${pictureHtml}
           </div>
           <div class="brow-body">
-            <h3 class="brow-title"><span class="tabular">${padId}.</span> ${escapeHtml(b.title)}</h3>
+            <h3 class="brow-title"><span class="tabular">${padId}.</span> ${escapeHtml(b.title)}${b.verified ? '<span class="brow-verified-badge" title="原书目录已严格校准">✓ 官方目录已核验</span>' : ''}</h3>
             <p class="brow-meta">${escapeHtml(b.author)} / ${escapeHtml(b.publisher)} / ${escapeHtml(b.publishYear)}</p>
             <p class="brow-desc">${escapeHtml(b.intro)}</p>
           </div>
@@ -772,6 +772,7 @@ function buildBooks() {
           <div class="back-nav">
             <a class="back-link" href="${domainAnchor}">← 全部书单</a>
             <span class="detail-domain-tag">${escapeHtml(book.domain)} · ${escapeHtml(book.domainOrder)}</span>
+            ${book.verified ? `<span class="verified-badge"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>` : ''}
           </div>
 
           <div class="book-title-header">
@@ -833,7 +834,7 @@ function buildBooks() {
           </section>
 
           <section class="section-block">
-            <h2>全书结构 <span class="badge">${book.structure.length} 部分</span></h2>
+            <h2>全书结构 <span class="badge">${book.structure.length} 部分</span>${book.verified ? ` <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>` : ''}</h2>
             <ol class="part-list">
               ${structureHtml}
             </ol>
