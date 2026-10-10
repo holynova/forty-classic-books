@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>《Web性能权威指南》 · 经典书导读</title>
+  <link rel="stylesheet" href="style.css?v=ad4f3308">
+</head>
+<body>
+  <div class="layout-container">
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <aside class="global-sidebar" id="globalSidebar" aria-label="全书目录导航">
+    <div class="sidebar-header">
+      <a class="sidebar-brand" href="index.html">
+        <span class="sidebar-brand-title">经典书导读</span>
+        <span class="sidebar-brand-sub">10 大领域 · 637 本精选 · 经典书导读</span>
+      </a>
+      <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="关闭目录">×</button>
+    </div>
+
+    <div class="sidebar-search">
+      <div class="sidebar-search-wrap">
+        <svg viewBox="0 0 24 24" class="sb-search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" id="sidebarSearchInput" placeholder="快速检索 637 本书..." autocomplete="off">
+        <button type="button" id="sidebarSearchClear" class="sb-search-clear" aria-label="清除">×</button>
+      </div>
+      <div class="sidebar-search-empty" id="sidebarSearchEmpty">无匹配图书</div>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebarNav" data-current-id="656">
+      
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="index.html" class="sidebar-catalog-link">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>全部书单首页</span>
+      </a>
+      <span class="sidebar-kbd-hint"><kbd>M</kbd> 切换</span>
+    </div>
+  </aside>
+
+    <div class="main-wrapper">
+      <div class="wrap">
+        <header class="sitehead">
+          <div class="sitehead-inner">
+            <div class="sitehead-left">
+              <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="切换全书目录" title="打开/收起目录 (快捷键 M)">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <span>目录</span>
+                <span class="kbd-pill"><kbd>M</kbd></span>
+              </button>
+              <a class="brand" href="index.html">
+                经典书导读
+                <small>CLASSIC BOOKS · 607 MASTERPIECES</small>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <main>
+          <div class="back-nav">
+            <a class="back-link" href="index.html#dom-10">← 全部书单</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">主理人心愿精选</span>
+          </div>
+
+          <div class="book-title-header">
+            <h1>《Web性能权威指南》</h1>
+          </div>
+
+          <div class="detail-top">
+            <div class="detail-cover-wrap">
+              <picture><source srcset="covers/detail/web性能权威指南.webp" type="image/webp"><img class="detail-cover" src="covers/web性能权威指南.jpg" alt="《Web性能权威指南》封面" fetchpriority="high" decoding="async" width="138" height="200"></picture>
+            </div>
+            <div class="detail-meta">
+              <div class="detail-meta-item">
+                <span class="label">作者：</span>
+                <span class="value">Ilya Grigorik</span>
+              </div>
+              <div class="detail-meta-item">
+                <span class="label">出版社：</span>
+                <span class="value">人民邮电出版社</span>
+              </div>
+              <div class="detail-meta-item">
+                <span class="label">出版年：</span>
+                <span class="value"></span>
+              </div>
+              
+              <div class="detail-meta-item detail-meta-link">
+                <a class="douban-link" href="undefined" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="ratebox">
+            <span class="ratebox-num tabular">8.9</span>
+            <div class="ratebox-info">
+              <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
+              <div class="ratebox-label">豆瓣评分 · 2,460 人评价</div>
+            </div>
+          </div>
+
+          <div class="intro-quote">
+            谷歌Web性能领军专家Ilya Grigorik的集大成之作，从TCP拥塞、移动基站时延到HTTP/2二进制分帧与WebRTC，全方位拆解网络吞吐与延时的底层物理法则。
+          </div>
+
+          <section class="section-block">
+            <h2>总体观点</h2>
+            <div class="thesis-body">
+              <p>《Web性能权威指南》（High Performance Browser Networking）是现代网络性能工程领域的最高权威读本。谷歌性能总监Ilya Grigorik在书中树立了颠覆性的核心认知：在宽带普及的今天，制约Web应用速度的瓶颈早已不是“带宽”，而是“延迟（Latency）”与物理光速所决定的往返传播时间（RTT）。</p>
+<p>全书自底向上层层剖析，先深入计算机网络的物理底层，系统拆解TCP三次握手、慢启动、拥塞控制机制以及TLS加密握手对首包响应造成的巨大开销；随后深入无线与移动蜂窝网络（3G/4G/WiFi），揭示无线电资源控制（RRC）状态机在唤醒与休眠之间的秒级延迟黑洞。作者论证了为何任何脱离底层传输特性的前端优化都是盲人摸象。</p>
+<p>在应用层，本书详尽剖析了HTTP/1.X时代队头阻塞、管道化缺陷与雪碧图/域名分片等权宜之计，深入论证了HTTP/2二进制分帧层如何通过单连接多路复用彻底重塑现代Web架构；最后全面解析了WebSocket全双工长连接与WebRTC点对点媒体通信协议。这不仅是一本前端工程师的性能必修书，更是一部透视互联网底层运转精髓的网络通信工程巨典。</p>
+            </div>
+          </section>
+
+          <section class="section-block">
+            <h2>核心观点</h2>
+            <ol class="idea-list">
+              <li class="idea-item">
+        <h3 class="idea-title">1. 光速不可逾越：延迟才是网络时代最坚硬的性能瓶颈</h3>
+        <p class="idea-desc">带宽可以通过增加光纤与升级基站无限扩容，但信号在光纤中以三分之二光速传播的物理限制不可逾越。每一个多余的网络往返（RTT）都会直接侵蚀用户体验。</p>
+        <div class="example-box">从纽约到悉尼的光纤单程往返时间最低约为160毫秒，无论将宽带从10Mbps升级到1000Mbps，仅TCP握手与TLS连接就要白白耗费数百毫秒的基础物理时延。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">2. TCP慢启动的代价：连接生命周期初期的吞吐量被动压制</h3>
+        <p class="idea-desc">新建立的TCP连接为了防止网络拥塞，必须从极小的拥塞窗口（CWND）开始谨慎倍增探测网络容量。如果突发短连接频繁关闭，整个传输将永远停留在低速爬坡期。</p>
+        <div class="example-box">加载一个仅几百KB的关键CSS资源时，由于新连接需要数个RTT才能让拥塞窗口增长到足够大，若未开启连接复用，资源下载时间将几乎全部浪费在慢启动等待上。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">3. 移动无线网络的RRC隐形延迟：无线电唤醒的秒级代价</h3>
+        <p class="idea-desc">手机移动蜂窝网络为了省电，在空闲时会退回到低功耗休眠模式。每一次新的网络请求都会触发基站信令交互与芯片唤醒，导致额外的数百毫秒冷启动延迟。</p>
+        <div class="example-box">定时心跳包轮询如果在后台每隔10秒发送一次几字节的ping，会导致手机无线电芯片永远无法进入深度休眠，不仅电池电量骤降，每次通信还伴随着高昂的射频唤醒时延。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">4. HTTP/2二进制分帧：彻底终结TCP连接级别的队头阻塞</h3>
+        <p class="idea-desc">HTTP/2将传统的ASCII文本消息分割为细粒度的二进制帧，所有请求与响应在单一TCP连接上交错传输与多路复用，彻底摒弃了HTTP/1.1依赖建立多个TCP连接的陋习。</p>
+        <div class="example-box">在HTTP/2架构下，浏览器不再需要6个并发TCP连接去分别拉取图片与脚本，一个长连接上并行处理数十个异步请求，域名分片（Domain Sharding）和图片雪碧图反倒成了反模式。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">5. 最高效的请求就是没有请求：缓存与连接预建立的终极艺术</h3>
+        <p class="idea-desc">再快的网络传输也比不上直接从本地内存和磁盘读取。合理利用Cache-Control强缓存、预解析DNS（dns-prefetch）与预连接（preconnect）是性能优化的最高阶武器。</p>
+        <div class="example-box">通过在HTML头部声明preconnect标签，浏览器在用户尚未真正点击下一页链接时就提前完成了DNS解析、TCP握手与TLS会话复用，下一页资源加载时间被直接抹平。</div>
+      </li>
+            </ol>
+          </section>
+
+          <section class="section-block">
+            <h2>全书结构</h2>
+            <ol class="part-list">
+              <li class="part-item">
+        <h3 class="part-title">第一部分：网络技术底层基础（TCP、UDP与TLS）</h3>
+        <p class="part-desc">深入剖析传输层协议的运作机制，解析三次握手、慢启动、拥塞避免算法以及TLS握手加解密的时延代价与调优参数。</p>
+        <div class="example-box">通过真实抓包数据演示TCP Fast Open与会话票证（Session Ticket）如何将TLS建连从两个RTT压低到一个RTT。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第二部分：移动与无线网络性能瓶颈</h3>
+        <p class="part-desc">剖析Wi-Fi信道争用与3G/4G蜂窝网络无线电资源控制（RRC）状态机，指导如何设计顺应移动网络特性的数据传输策略。</p>
+        <div class="example-box">给出消除高频小请求、将网络数据批处理打包（Batching）以最大化利用射频工作周期的工程准则。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第三部分：HTTP演进与现代传输架构</h3>
+        <p class="part-desc">系统复盘HTTP/0.9至HTTP/1.1的演化历程与妥协产物，详尽解析HTTP/2的二进制分帧、流优先级、头部压缩（HPACK）与服务端推送。</p>
+        <div class="example-box">对比展示在丢包率较高的高延迟链路下，HTTP/2单连接与HTTP/1.1多连接在资源竞态下的真实吞吐曲线。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第四部分：浏览器高级网络API与未来协议</h3>
+        <p class="part-desc">探讨WebSocket实现服务端双向实时事件流的机制，并深入讲解WebRTC利用UDP和STUN/TURN实现低延迟P2P流媒体传输的内核架构。</p>
+        <div class="example-box">演示如何利用WebRTC DataChannel传输低延迟游戏控制指令，避开TCP强可靠性校验所带来的重传阻滞。</div>
+      </li>
+            </ol>
+          </section>
+
+          <nav class="pn">
+            <a class="prev" href="book-655.html">
+          <picture><source srcset="covers/thumbs/图解设计模式.webp" type="image/webp"><img src="covers/图解设计模式.jpg" alt="《图解设计模式》封面" loading="lazy" decoding="async" width="68" height="98"></picture>
+          <span class="t"><span>← 上一本</span>《图解设计模式》</span>
+         </a>
+            <a class="next" href="book-657.html">
+          <picture><source srcset="covers/thumbs/the-elements-of-computing-systems.webp" type="image/webp"><img src="covers/the-elements-of-computing-systems.jpg" alt="《计算机系统要素》封面" loading="lazy" decoding="async" width="68" height="98"></picture>
+          <span class="t"><span>下一本 →</span>《计算机系统要素》</span>
+         </a>
+          </nav>
+
+          <a class="nav-back-catalog" href="index.html#dom-10">返回 主理人心愿精选 目录</a>
+        </main>
+
+        <footer>
+          <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+          <p>豆瓣评分与评价人数为逐本人工核实当天的数值。 · <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> · <span class="footer-version">v1.0.0</span></p>
+        </footer>
+      </div>
+
+      <button type="button" class="floating-menu-btn" id="floatingMenuBtn" aria-label="打开全部图书目录">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <span>目录</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+
+  
+  <script>
+    (function() {
+      // Sidebar drawer & lazy hydration controls
+      var sidebar = document.getElementById('globalSidebar');
+      var backdrop = document.getElementById('sidebarBackdrop');
+      var toggleBtn = document.getElementById('sidebarToggleBtn');
+      var floatBtn = document.getElementById('floatingMenuBtn');
+      var closeBtn = document.getElementById('sidebarCloseBtn');
+      var searchInput = document.getElementById('sidebarSearchInput');
+      var searchClear = document.getElementById('sidebarSearchClear');
+      var searchEmpty = document.getElementById('sidebarSearchEmpty');
+      var sidebarNav = document.getElementById('sidebarNav');
+
+      var isHydrated = sidebarNav && sidebarNav.children.length > 0;
+      var isHydrating = false;
+      var currentBookId = sidebarNav ? sidebarNav.getAttribute('data-current-id') : null;
+
+      function highlightActive() {
+        if (!sidebarNav || !currentBookId) return;
+        var active = sidebarNav.querySelector('.sidebar-link[data-id="' + currentBookId + '"]');
+        if (active) {
+          active.classList.add('active');
+          active.setAttribute('aria-current', 'page');
+        }
+      }
+
+      function hydrateSidebar(cb) {
+        if (isHydrated) {
+          if (cb) cb();
+          return;
+        }
+        if (sidebarNav && sidebarNav.children.length > 0) {
+          isHydrated = true;
+          highlightActive();
+          if (cb) cb();
+          return;
+        }
+        if (isHydrating) return;
+        isHydrating = true;
+
+        fetch('sidebar-nav.html')
+          .then(function(res) { return res.text(); })
+          .then(function(html) {
+            if (sidebarNav) {
+              sidebarNav.innerHTML = html;
+              isHydrated = true;
+              isHydrating = false;
+              highlightActive();
+            }
+            if (cb) cb();
+          })
+          .catch(function(err) {
+            isHydrating = false;
+          });
+      }
+
+      // Preload sidebar during idle time
+      if (!isHydrated) {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() { hydrateSidebar(); }, { timeout: 2000 });
+        } else {
+          setTimeout(function() { hydrateSidebar(); }, 1200);
+        }
+      }
+
+      function openSidebar() {
+        document.body.classList.add('sidebar-open');
+        hydrateSidebar(function() {
+          var activeLink = document.querySelector('.sidebar-link.active');
+          if (activeLink) {
+            activeLink.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }
+        });
+      }
+
+      function closeSidebar() {
+        document.body.classList.remove('sidebar-open');
+      }
+
+      function toggleSidebar() {
+        if (document.body.classList.contains('sidebar-open')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleSidebar);
+        toggleBtn.addEventListener('mouseenter', function() { hydrateSidebar(); }, { passive: true });
+      }
+      if (floatBtn) {
+        floatBtn.addEventListener('click', toggleSidebar);
+        floatBtn.addEventListener('mouseenter', function() { hydrateSidebar(); }, { passive: true });
+      }
+      if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+      if (backdrop) backdrop.addEventListener('click', closeSidebar);
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeSidebar();
+        }
+        if ((e.key === 'm' || e.key === 'M') && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          toggleSidebar();
+        }
+      });
+
+      // Quick search within sidebar
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          var q = (this.value || '').trim().toLowerCase();
+          if (searchClear) searchClear.style.display = q ? 'block' : 'none';
+          var matchCount = 0;
+          var groups = Array.from(sidebarNav ? sidebarNav.querySelectorAll('.sidebar-group') : []);
+
+          groups.forEach(function(group) {
+            var groupMatches = 0;
+            var items = Array.from(group.querySelectorAll('.sidebar-link'));
+            items.forEach(function(item) {
+              var title = (item.dataset.title || '').toLowerCase();
+              var author = (item.dataset.author || '').toLowerCase();
+              var matched = !q || title.includes(q) || author.includes(q);
+              item.parentElement.style.display = matched ? 'block' : 'none';
+              if (matched) {
+                groupMatches++;
+                matchCount++;
+              }
+            });
+            group.style.display = (groupMatches > 0 || !q) ? 'block' : 'none';
+          });
+
+          if (searchEmpty) {
+            searchEmpty.style.display = (matchCount === 0 && q) ? 'block' : 'none';
+          }
+        });
+
+        if (searchClear) {
+          searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.focus();
+          });
+        }
+      }
+
+      // Auto scroll active book into view on page load if already rendered
+      var currentActive = document.querySelector('.sidebar-link.active');
+      if (currentActive) {
+        setTimeout(function() {
+          currentActive.scrollIntoView({ block: 'center' });
+        }, 120);
+      }
+    })();
+  </script>
+
+  
+  <script>
+    (function() {
+      // 1. Instant hover & touch prefetch for near-zero latency page switches
+      var prefetched = new Set();
+      function prefetch(url) {
+        if (!url || prefetched.has(url)) return;
+        prefetched.add(url);
+        var link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = url;
+        document.head.appendChild(link);
+      }
+      document.addEventListener('mouseover', function(e) {
+        var a = e.target.closest('a');
+        if (a && a.href && a.origin === location.origin && (a.pathname.endsWith('.html') || a.pathname.includes('/book-'))) {
+          prefetch(a.href);
+        }
+      }, { passive: true });
+      document.addEventListener('touchstart', function(e) {
+        var a = e.target.closest('a');
+        if (a && a.href && a.origin === location.origin && (a.pathname.endsWith('.html') || a.pathname.includes('/book-'))) {
+          prefetch(a.href);
+        }
+      }, { passive: true });
+
+      // 2. Idle deferred analytics loader with graceful error handling (silent on ad-blocker)
+      function loadAnalytics() {
+        try {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://cloud.umami.is/script.js';
+          s.setAttribute('data-website-id', 'e01c9f78-4607-4e60-b01c-77c8190b12b4');
+          s.onerror = function() {}; // Silently catch ad-blocker rejections
+          document.head.appendChild(s);
+        } catch (e) {}
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadAnalytics, { timeout: 3000 });
+      } else {
+        setTimeout(loadAnalytics, 2000);
+      }
+    })();
+  </script>
+
+</body>
+</html>
