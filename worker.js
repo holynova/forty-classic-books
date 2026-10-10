@@ -32,6 +32,7 @@ export default {
 
     if (response.status === 200) {
       const headers = new Headers(response.headers);
+      const sub = url.pathname;
       if (sub.startsWith('/covers/') || sub.endsWith('.webp') || sub.endsWith('.jpg') || sub.endsWith('.png')) {
         headers.set('Cache-Control', 'public, max-age=2592000, stale-while-revalidate=86400');
       } else if (sub.endsWith('.css') || sub.endsWith('.js') || sub.endsWith('sidebar-nav.html')) {
