@@ -317,10 +317,102 @@ img {
   font-weight: 600;
 }
 
+/* Sticky Sort & Filter Bar */
+.sort-bar {
+  background: rgba(250, 250, 249, 0.96);
+  border-top: 1px solid var(--hair);
+  padding: 0.45rem 1.25rem;
+}
+
+.sort-bar-inner {
+  max-width: 46rem;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.sort-bar-inner::-webkit-scrollbar {
+  display: none;
+}
+
+.sort-group,
+.filter-group {
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.sort-label {
+  font-size: 0.76rem;
+  color: var(--muted);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.sort-divider {
+  color: var(--hair);
+  font-size: 0.8rem;
+  margin: 0 0.15rem;
+  user-select: none;
+}
+
+.sort-btn,
+.filter-btn {
+  font-family: var(--sans);
+  font-size: 0.76rem;
+  font-weight: 500;
+  color: var(--ink-secondary);
+  background: var(--paper);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-pill);
+  padding: 0.22rem 0.65rem;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  line-height: 1.35;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.sort-btn:hover,
+.filter-btn:hover {
+  color: var(--green);
+  border-color: var(--green-border);
+  background: var(--green-subtle);
+}
+
+.sort-btn.active,
+.filter-btn.active {
+  background: var(--green);
+  color: #ffffff;
+  border-color: var(--green);
+  font-weight: 600;
+}
+
+#filterHideDislikeBtn.active {
+  background: #fef2f2;
+  color: #dc2626;
+  border-color: #fecaca;
+  font-weight: 500;
+}
+
+#filterHideDislikeBtn:hover {
+  background: #fee2e2;
+  border-color: #f87171;
+  color: #b91c1c;
+}
+
 /* Domain Sections */
 .domain {
   padding: 2.2rem 0 0.5rem;
-  scroll-margin-top: 60px;
+  scroll-margin-top: 96px;
 }
 
 .domain-header {
@@ -498,6 +590,63 @@ img {
   color: var(--faint);
   margin-top: 0.15rem;
   white-space: nowrap;
+}
+
+/* Card Local Shelf Actions */
+.brow-shelf-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  margin-top: 0.45rem;
+}
+
+.shelf-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.2rem 0.52rem;
+  font-size: 0.73rem;
+  font-family: var(--sans);
+  line-height: 1.2;
+  color: var(--muted);
+  background: var(--paper);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.shelf-pill-btn:hover {
+  color: var(--ink);
+  border-color: #cbd5e1;
+  background: var(--soft);
+}
+
+.shelf-pill-btn.btn-read.active {
+  background: #ecfdf5;
+  color: var(--green);
+  border-color: var(--green-border);
+  font-weight: 600;
+}
+
+.shelf-pill-btn.btn-dislike.active {
+  background: #fef2f2;
+  color: #dc2626;
+  border-color: #fca5a5;
+  font-weight: 600;
+}
+
+/* Card Visual States when Marked */
+.brow.is-read {
+  border-left: 3px solid var(--green);
+  padding-left: calc(0.5rem - 3px);
+  background: rgba(16, 185, 129, 0.02);
+}
+
+.brow.is-dislike {
+  opacity: 0.45;
 }
 
 /* Empty Search State */
@@ -740,6 +889,52 @@ img {
 
 .ratebox-label b {
   color: var(--ink);
+  font-weight: 600;
+}
+
+/* Detail Page Shelf Actions */
+.detail-shelf-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.detail-shelf-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.38rem 0.85rem;
+  font-size: 0.8rem;
+  font-weight: 500;
+  font-family: var(--sans);
+  color: var(--ink-secondary);
+  background: var(--paper);
+  border: 1px solid var(--hair);
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all 0.15s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.detail-shelf-btn:hover {
+  background: var(--soft);
+  border-color: #cbd5e1;
+  color: var(--ink);
+}
+
+.detail-shelf-btn.btn-read.active {
+  background: #ecfdf5;
+  color: var(--green);
+  border-color: var(--green-border);
+  font-weight: 600;
+}
+
+.detail-shelf-btn.btn-dislike.active {
+  background: #fef2f2;
+  color: #dc2626;
+  border-color: #fca5a5;
   font-weight: 600;
 }
 
@@ -1091,10 +1286,37 @@ footer p {
     flex-shrink: 0;
   }
 
+  /* Sticky Sort Bar on Mobile */
+  .sort-bar {
+    padding: 0.35rem 0.75rem;
+  }
+
+  .sort-bar-inner {
+    gap: 0.5rem;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+  }
+
+  .sort-group,
+  .filter-group {
+    gap: 0.28rem;
+  }
+
+  .sort-label {
+    font-size: 0.72rem;
+  }
+
+  .sort-btn,
+  .filter-btn {
+    font-size: 0.73rem;
+    padding: 0.2rem 0.52rem;
+    min-height: 28px;
+  }
+
   /* Domain header */
   .domain {
     padding: 1.8rem 0 0.4rem;
-    scroll-margin-top: 52px;
+    scroll-margin-top: 86px;
   }
 
   .domain h2 {
@@ -1240,6 +1462,23 @@ footer p {
     padding: 0.75rem 0.95rem;
     margin: 0 0 1.3rem;
     gap: 0.85rem;
+    flex-wrap: wrap;
+  }
+
+  .detail-shelf-actions {
+    margin-left: 0;
+    width: 100%;
+    padding-top: 0.65rem;
+    margin-top: 0.2rem;
+    border-top: 1px solid var(--hair);
+    gap: 0.5rem;
+  }
+
+  .detail-shelf-btn {
+    flex: 1;
+    justify-content: center;
+    padding: 0.42rem 0.5rem;
+    min-height: 36px;
   }
 
   .ratebox-num {

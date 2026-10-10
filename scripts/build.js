@@ -323,14 +323,18 @@ const perfAndAnalyticsScript = `
 function buildIndex() {
   const domainSections = site.domains.map(dom => {
     const domainBooks = books.filter(b => b.domain === dom.name);
-    const bookRows = domainBooks.map(b => {
+    const bookRows = domainBooks.map((b, bIdx) => {
       const padId = String(b.id).padStart(2, '0');
       const stars = getStars(b.rating);
       // Performance optimization: Prioritize LCP images above the fold (first 3 books); lazy-load offscreen images
       const isAboveFold = b.id <= 3;
       const pictureHtml = getCoverPicture(b.cover, b.title, isAboveFold, false);
+      const ratingNum = parseFloat(b.rating) || 0;
+      const reviewsNum = parseInt(String(b.ratingCount).replace(/[^0-9]/g, ''), 10) || 0;
+      const yearNum = parseInt(String(b.publishYear).slice(0, 4), 10) || 0;
+
       return `
-        <a class="brow" href="${b.slug}.html" data-domain="${escapeHtml(b.domain)}">
+        <a class="brow" href="${b.slug}.html" data-id="${b.id}" data-domain="${escapeHtml(b.domain)}" data-order="${bIdx + 1}" data-rating="${ratingNum}" data-reviews="${reviewsNum}" data-year="${yearNum}">
           <div class="brow-cover-wrap">
             ${pictureHtml}
           </div>
@@ -343,6 +347,16 @@ function buildIndex() {
             </div>
             <p class="brow-meta">${escapeHtml(b.author)} / ${escapeHtml(b.publisher)} / ${escapeHtml(b.publishYear)}</p>
             <p class="brow-desc">${escapeHtml(b.intro)}</p>
+            <div class="brow-shelf-actions">
+              <button type="button" class="shelf-pill-btn btn-read" data-id="${b.id}" aria-label="标记为已读" title="标记为已读">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>已读</span>
+              </button>
+              <button type="button" class="shelf-pill-btn btn-dislike" data-id="${b.id}" aria-label="标记为不感兴趣" title="标记为不感兴趣并自动隐藏">
+                <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                <span>不感兴趣</span>
+              </button>
+            </div>
           </div>
           <div class="brow-rating">
             <span class="brow-rating-num tabular">${b.rating}</span>
@@ -425,6 +439,23 @@ function buildIndex() {
         <div class="dnav-inner">
           ${navLinks}
         </div>
+        <div class="sort-bar" id="sortBar">
+          <div class="sort-bar-inner">
+            <div class="sort-group">
+              <span class="sort-label">排序：</span>
+              <button type="button" class="sort-btn active" data-sort="default">🎯 推荐序</button>
+              <button type="button" class="sort-btn" data-sort="rating">⭐ 高分优先</button>
+              <button type="button" class="sort-btn" data-sort="reviews">🔥 评价热度</button>
+              <button type="button" class="sort-btn" data-sort="year">⏳ 最新出版</button>
+            </div>
+            <div class="filter-group">
+              <span class="sort-divider">|</span>
+              <button type="button" class="filter-btn" id="filterUnreadBtn" data-filter="unread" title="仅查看未读图书">📖 仅看未读</button>
+              <button type="button" class="filter-btn" id="filterReadBtn" data-filter="read" title="查看已标记读过的图书">✓ 已读 (<span id="readCount">0</span>)</button>
+              <button type="button" class="filter-btn active" id="filterHideDislikeBtn" data-filter="hide-dislike" title="点击切换是否隐藏不喜欢的书">⊘ 隐藏不感兴趣 (<span id="dislikeCount">0</span>)</button>
+            </div>
+          </div>
+        </div>
       </nav>
 
       <main>
@@ -456,7 +487,25 @@ function buildIndex() {
 
   <script>
     (function() {
-      // 1. Instant Search on Index
+      // Local Shelf Storage & Actions (localStorage)
+      var SHELF_KEY = 'cbg_books_shelf';
+      function getShelf() {
+        try {
+          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
+        } catch(e) {
+          return { read: [], dislike: [] };
+        }
+      }
+      function saveShelf(data) {
+        try {
+          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
+        } catch(e) {}
+      }
+
+      var currentSort = 'default';
+      var currentFilter = 'all'; // 'all' | 'unread' | 'read'
+      var hideDislike = true; // default hide disliked books
+
       const searchInput = document.getElementById('bookSearch');
       const searchClear = document.getElementById('searchClear');
       const searchMeta = document.getElementById('searchMeta');
@@ -473,55 +522,235 @@ function buildIndex() {
         rowSearchText.set(row, text);
       });
 
-      function handleSearch() {
-        const query = (searchInput.value || '').trim().toLowerCase();
-        
+      function applyFiltersAndSort() {
+        var shelf = getShelf();
+        var readSet = new Set(shelf.read || []);
+        var dislikeSet = new Set(shelf.dislike || []);
+        var query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+
         if (query.length > 0) {
-          searchClear.style.display = 'flex';
-          searchMeta.style.display = 'block';
+          if (searchClear) searchClear.style.display = 'flex';
+          if (searchMeta) searchMeta.style.display = 'block';
         } else {
-          searchClear.style.display = 'none';
-          searchMeta.style.display = 'none';
+          if (searchClear) searchClear.style.display = 'none';
+          if (searchMeta) searchMeta.style.display = 'none';
         }
 
-        let matchCount = 0;
+        var readCountEl = document.getElementById('readCount');
+        var dislikeCountEl = document.getElementById('dislikeCount');
+        if (readCountEl) readCountEl.textContent = readSet.size;
+        if (dislikeCountEl) dislikeCountEl.textContent = dislikeSet.size;
+
+        var totalVisible = 0;
 
         domainSections.forEach(section => {
-          const rows = Array.from(section.querySelectorAll('.brow'));
-          let sectionMatchCount = 0;
+          var bookList = section.querySelector('.book-list');
+          if (!bookList) return;
+          var rows = Array.from(bookList.querySelectorAll('.brow'));
 
-          rows.forEach(row => {
-            const text = rowSearchText.get(row) || '';
-            const isMatch = !query || text.includes(query);
-
-            if (isMatch) {
-              row.style.display = 'flex';
-              sectionMatchCount++;
-              matchCount++;
+          // 1. Sort rows
+          rows.sort((a, b) => {
+            if (currentSort === 'rating') {
+              var rA = parseFloat(a.getAttribute('data-rating')) || 0;
+              var rB = parseFloat(b.getAttribute('data-rating')) || 0;
+              if (rB !== rA) return rB - rA;
+              var rvA = parseInt(a.getAttribute('data-reviews'), 10) || 0;
+              var rvB = parseInt(b.getAttribute('data-reviews'), 10) || 0;
+              return rvB - rvA;
+            } else if (currentSort === 'reviews') {
+              var rvA = parseInt(a.getAttribute('data-reviews'), 10) || 0;
+              var rvB = parseInt(b.getAttribute('data-reviews'), 10) || 0;
+              if (rvB !== rvA) return rvB - rvA;
+              var rA = parseFloat(a.getAttribute('data-rating')) || 0;
+              var rB = parseFloat(b.getAttribute('data-rating')) || 0;
+              return rB - rA;
+            } else if (currentSort === 'year') {
+              var yA = parseInt(a.getAttribute('data-year'), 10) || 0;
+              var yB = parseInt(b.getAttribute('data-year'), 10) || 0;
+              if (yB !== yA) return yB - yA;
+              var rA = parseFloat(a.getAttribute('data-rating')) || 0;
+              var rB = parseFloat(b.getAttribute('data-rating')) || 0;
+              return rB - rA;
             } else {
-              row.style.display = 'none';
+              // default original order
+              var oA = parseInt(a.getAttribute('data-order'), 10) || 0;
+              var oB = parseInt(b.getAttribute('data-order'), 10) || 0;
+              return oA - oB;
             }
           });
 
-          section.style.display = (sectionMatchCount > 0 || !query) ? 'block' : 'none';
+          // Re-append sorted rows
+          rows.forEach(row => bookList.appendChild(row));
+
+          // 2. Filter & Search visibility
+          var sectionVisibleCount = 0;
+          rows.forEach(row => {
+            var id = parseInt(row.getAttribute('data-id'), 10);
+            var isRead = readSet.has(id);
+            var isDislike = dislikeSet.has(id);
+
+            // Update row UI states
+            var readBtn = row.querySelector('.btn-read');
+            var dislikeBtn = row.querySelector('.btn-dislike');
+            if (readBtn) {
+              if (isRead) readBtn.classList.add('active');
+              else readBtn.classList.remove('active');
+            }
+            if (dislikeBtn) {
+              if (isDislike) {
+                dislikeBtn.classList.add('active');
+                dislikeBtn.querySelector('span').textContent = '已忽略';
+              } else {
+                dislikeBtn.classList.remove('active');
+                dislikeBtn.querySelector('span').textContent = '不感兴趣';
+              }
+            }
+
+            if (isRead) row.classList.add('is-read');
+            else row.classList.remove('is-read');
+
+            if (isDislike) row.classList.add('is-dislike');
+            else row.classList.remove('is-dislike');
+
+            // Apply filter logic
+            var passFilter = true;
+            if (hideDislike && isDislike) {
+              passFilter = false;
+            } else if (currentFilter === 'unread' && isRead) {
+              passFilter = false;
+            } else if (currentFilter === 'read' && !isRead) {
+              passFilter = false;
+            }
+
+            var text = rowSearchText.get(row) || '';
+            var passSearch = !query || text.includes(query);
+
+            var isVisible = passFilter && passSearch;
+            row.style.display = isVisible ? 'flex' : 'none';
+            if (isVisible) {
+              sectionVisibleCount++;
+              totalVisible++;
+            }
+          });
+
+          section.style.display = sectionVisibleCount > 0 ? 'block' : 'none';
         });
 
-        matchCountEl.textContent = matchCount;
-        searchEmpty.style.display = (matchCount === 0 && query) ? 'block' : 'none';
+        if (matchCountEl) matchCountEl.textContent = totalVisible;
+        if (searchEmpty) searchEmpty.style.display = (totalVisible === 0) ? 'block' : 'none';
       }
+
+      // Sort button listeners
+      var sortBtns = Array.from(document.querySelectorAll('.sort-btn'));
+      sortBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+          sortBtns.forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+          currentSort = this.getAttribute('data-sort');
+          applyFiltersAndSort();
+        });
+      });
+
+      // Shelf filter listeners
+      var filterUnreadBtn = document.getElementById('filterUnreadBtn');
+      var filterReadBtn = document.getElementById('filterReadBtn');
+      var filterHideDislikeBtn = document.getElementById('filterHideDislikeBtn');
+
+      if (filterUnreadBtn) {
+        filterUnreadBtn.addEventListener('click', function() {
+          if (currentFilter === 'unread') {
+            currentFilter = 'all';
+            this.classList.remove('active');
+          } else {
+            currentFilter = 'unread';
+            this.classList.add('active');
+            if (filterReadBtn) filterReadBtn.classList.remove('active');
+          }
+          applyFiltersAndSort();
+        });
+      }
+
+      if (filterReadBtn) {
+        filterReadBtn.addEventListener('click', function() {
+          if (currentFilter === 'read') {
+            currentFilter = 'all';
+            this.classList.remove('active');
+          } else {
+            currentFilter = 'read';
+            this.classList.add('active');
+            if (filterUnreadBtn) filterUnreadBtn.classList.remove('active');
+          }
+          applyFiltersAndSort();
+        });
+      }
+
+      if (filterHideDislikeBtn) {
+        filterHideDislikeBtn.addEventListener('click', function() {
+          hideDislike = !hideDislike;
+          this.classList.toggle('active', hideDislike);
+          this.title = hideDislike ? '已默认隐藏不感兴趣的书' : '已显示所有标记不感兴趣的书';
+          applyFiltersAndSort();
+        });
+      }
+
+      // Card action button delegation
+      document.addEventListener('click', function(e) {
+        var readBtn = e.target.closest('.btn-read');
+        if (readBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          var id = parseInt(readBtn.getAttribute('data-id'), 10);
+          var s = getShelf();
+          var idx = (s.read || []).indexOf(id);
+          if (idx >= 0) {
+            s.read.splice(idx, 1);
+          } else {
+            s.read = s.read || [];
+            s.read.push(id);
+            var dIdx = (s.dislike || []).indexOf(id);
+            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
+          }
+          saveShelf(s);
+          applyFiltersAndSort();
+          return;
+        }
+
+        var dislikeBtn = e.target.closest('.btn-dislike');
+        if (dislikeBtn) {
+          e.preventDefault();
+          e.stopPropagation();
+          var id = parseInt(dislikeBtn.getAttribute('data-id'), 10);
+          var s = getShelf();
+          var idx = (s.dislike || []).indexOf(id);
+          if (idx >= 0) {
+            s.dislike.splice(idx, 1);
+          } else {
+            s.dislike = s.dislike || [];
+            s.dislike.push(id);
+            var rIdx = (s.read || []).indexOf(id);
+            if (rIdx >= 0) s.read.splice(rIdx, 1);
+          }
+          saveShelf(s);
+          applyFiltersAndSort();
+          return;
+        }
+      });
 
       let searchRaf = null;
       function debouncedSearch() {
         if (searchRaf) cancelAnimationFrame(searchRaf);
-        searchRaf = requestAnimationFrame(handleSearch);
+        searchRaf = requestAnimationFrame(applyFiltersAndSort);
       }
 
       if (searchInput) searchInput.addEventListener('input', debouncedSearch);
       if (searchClear) searchClear.addEventListener('click', function() {
         searchInput.value = '';
         searchInput.focus();
-        handleSearch();
+        applyFiltersAndSort();
       });
+
+      // Initial run to reflect localStorage state
+      applyFiltersAndSort();
 
       // 2. Sticky Nav Navigation & ScrollSpy
       const dnav = document.getElementById('stickyNav');
@@ -820,6 +1049,16 @@ function buildBooks() {
               <div class="ratebox-stars" aria-label="评分星级">${stars}</div>
               <div class="ratebox-label"><b>豆瓣评分</b> · ${escapeHtml(book.ratingCount)}</div>
             </div>
+            <div class="detail-shelf-actions" id="detailShelfActions">
+              <button type="button" class="detail-shelf-btn btn-read" data-id="${book.id}" aria-label="标记为已读">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>标记已读</span>
+              </button>
+              <button type="button" class="detail-shelf-btn btn-dislike" data-id="${book.id}" aria-label="标记为不感兴趣">
+                <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"></line></svg>
+                <span>不感兴趣</span>
+              </button>
+            </div>
           </div>
 
           <div class="intro-quote">
@@ -885,6 +1124,78 @@ function buildBooks() {
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
+
+    (function() {
+      var SHELF_KEY = 'cbg_books_shelf';
+      function getShelf() {
+        try {
+          return JSON.parse(localStorage.getItem(SHELF_KEY) || '{"read":[],"dislike":[]}');
+        } catch(e) {
+          return { read: [], dislike: [] };
+        }
+      }
+      function saveShelf(data) {
+        try {
+          localStorage.setItem(SHELF_KEY, JSON.stringify(data));
+        } catch(e) {}
+      }
+
+      var bookId = ${book.id};
+      var readBtn = document.querySelector('#detailShelfActions .btn-read');
+      var dislikeBtn = document.querySelector('#detailShelfActions .btn-dislike');
+
+      function updateUI() {
+        var s = getShelf();
+        var isRead = (s.read || []).indexOf(bookId) >= 0;
+        var isDislike = (s.dislike || []).indexOf(bookId) >= 0;
+        if (readBtn) {
+          readBtn.classList.toggle('active', isRead);
+          var txt = readBtn.querySelector('span');
+          if (txt) txt.textContent = isRead ? '✓ 已读' : '标记已读';
+        }
+        if (dislikeBtn) {
+          dislikeBtn.classList.toggle('active', isDislike);
+          var txt = dislikeBtn.querySelector('span');
+          if (txt) txt.textContent = isDislike ? '⊘ 已忽略' : '不感兴趣';
+        }
+      }
+
+      if (readBtn) {
+        readBtn.addEventListener('click', function() {
+          var s = getShelf();
+          var idx = (s.read || []).indexOf(bookId);
+          if (idx >= 0) {
+            s.read.splice(idx, 1);
+          } else {
+            s.read = s.read || [];
+            s.read.push(bookId);
+            var dIdx = (s.dislike || []).indexOf(bookId);
+            if (dIdx >= 0) s.dislike.splice(dIdx, 1);
+          }
+          saveShelf(s);
+          updateUI();
+        });
+      }
+
+      if (dislikeBtn) {
+        dislikeBtn.addEventListener('click', function() {
+          var s = getShelf();
+          var idx = (s.dislike || []).indexOf(bookId);
+          if (idx >= 0) {
+            s.dislike.splice(idx, 1);
+          } else {
+            s.dislike = s.dislike || [];
+            s.dislike.push(bookId);
+            var rIdx = (s.read || []).indexOf(bookId);
+            if (rIdx >= 0) s.read.splice(rIdx, 1);
+          }
+          saveShelf(s);
+          updateUI();
+        });
+      }
+
+      updateUI();
+    })();
   </script>
 
   ${sidebarScript}
