@@ -32,12 +32,17 @@ export default {
 
     if (response.status === 200) {
       const headers = new Headers(response.headers);
-      const sub = url.pathname;
-      if (sub.startsWith('/covers/') || sub.endsWith('.css') || sub.endsWith('.webp') || sub.endsWith('.jpg') || sub.endsWith('.png') || sub.endsWith('.js') || sub.endsWith('sidebar-nav.html')) {
+      if (sub.startsWith('/covers/') || sub.endsWith('.webp') || sub.endsWith('.jpg') || sub.endsWith('.png')) {
         headers.set('Cache-Control', 'public, max-age=2592000, stale-while-revalidate=86400');
+      } else if (sub.endsWith('.css') || sub.endsWith('.js') || sub.endsWith('sidebar-nav.html')) {
+        if (url.searchParams.has('v')) {
+          headers.set('Cache-Control', 'public, max-age=2592000, immutable');
+        } else {
+          headers.set('Cache-Control', 'public, max-age=60, stale-while-revalidate=600');
+        }
       } else {
-        // High-performance caching for HTML: 10 minutes in browser, 24 hours on Cloudflare edge CDN
-        headers.set('Cache-Control', 'public, max-age=600, s-maxage=86400, stale-while-revalidate=86400');
+        // High-freshness caching for HTML: browser revalidates immediately, edge caches for 10 minutes
+        headers.set('Cache-Control', 'public, max-age=0, s-maxage=600, must-revalidate');
       }
       return new Response(response.body, { status: response.status, headers });
     }

@@ -7,6 +7,10 @@ const DATA_DIR = path.join(ROOT_DIR, 'data');
 const site = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'site.json'), 'utf-8'));
 const books = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'books.json'), 'utf-8'));
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'package.json'), 'utf-8'));
+const crypto = require('crypto');
+const cssContent = fs.readFileSync(path.join(ROOT_DIR, 'style.css'), 'utf-8');
+const cssHash = crypto.createHash('md5').update(cssContent).digest('hex').slice(0, 8);
+const cssHref = `style.css?v=${cssHash}`;
 
 function getStars(ratingStr) {
   const r = parseFloat(ratingStr) || 0;
@@ -390,7 +394,7 @@ function buildIndex() {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>${escapeHtml(site.title)}</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="${cssHref}">
 </head>
 <body>
   <div class="layout-container">
@@ -751,7 +755,7 @@ function buildBooks() {
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>${escapeHtml(book.title)} · 经典书导读</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="${cssHref}">
 </head>
 <body>
   <div class="layout-container">
