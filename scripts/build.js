@@ -335,7 +335,12 @@ function buildIndex() {
             ${pictureHtml}
           </div>
           <div class="brow-body">
-            <h3 class="brow-title"><span class="tabular">${padId}.</span> ${escapeHtml(b.title)}${b.verified ? '<span class="brow-verified-badge" title="原书目录已严格校准">✓ 官方目录已核验</span>' : ''}</h3>
+            <h3 class="brow-title"><span class="tabular brow-id">${padId}.</span> <span class="brow-name">${escapeHtml(b.title)}</span>${b.verified ? '<span class="brow-verified-badge" title="原书目录已严格校准"><span class="badge-icon">✓</span> <span class="badge-txt">目录已核验</span></span>' : ''}</h3>
+            <div class="brow-rating-inline">
+              <span class="brow-rating-num tabular">${b.rating}</span>
+              <span class="brow-rating-stars">${stars}</span>
+              <span class="brow-rating-count">(${escapeHtml(b.ratingCount)})</span>
+            </div>
             <p class="brow-meta">${escapeHtml(b.author)} / ${escapeHtml(b.publisher)} / ${escapeHtml(b.publishYear)}</p>
             <p class="brow-desc">${escapeHtml(b.intro)}</p>
           </div>
@@ -371,7 +376,7 @@ function buildIndex() {
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>${escapeHtml(site.title)}</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -741,7 +746,7 @@ function buildBooks() {
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>${escapeHtml(book.title)} · 经典书导读</title>
   <link rel="stylesheet" href="style.css">
 </head>
@@ -771,8 +776,10 @@ function buildBooks() {
         <main>
           <div class="back-nav">
             <a class="back-link" href="${domainAnchor}">← 全部书单</a>
-            <span class="detail-domain-tag">${escapeHtml(book.domain)} · ${escapeHtml(book.domainOrder)}</span>
-            ${book.verified ? `<span class="verified-badge"><svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>` : ''}
+            <div class="back-nav-tags">
+              <span class="detail-domain-tag">${escapeHtml(book.domain)} · ${escapeHtml(book.domainOrder)}</span>
+              ${book.verified ? `<span class="verified-badge"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>` : ''}
+            </div>
           </div>
 
           <div class="book-title-header">
@@ -801,7 +808,7 @@ function buildBooks() {
                 <span class="label">领域：</span>
                 <span class="value">${escapeHtml(book.domain)} · ${escapeHtml(book.domainOrder)}</span>
               </div>
-              <div class="detail-meta-item" style="margin-top: 0.4rem;">
+              <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="${book.doubanUrl}" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
             </div>
@@ -827,14 +834,25 @@ function buildBooks() {
           </section>
 
           <section class="section-block">
-            <h2>核心观点 <span class="badge">共 ${book.ideas.length} 条</span></h2>
+            <h2>
+              <span class="sec-title">核心观点</span>
+              <span class="sec-meta">
+                <span class="badge">共 ${book.ideas.length} 条</span>
+              </span>
+            </h2>
             <ol class="idea-list">
               ${ideasHtml}
             </ol>
           </section>
 
           <section class="section-block">
-            <h2>全书结构 <span class="badge">${book.structure.length} 部分</span>${book.verified ? ` <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>` : ''}</h2>
+            <h2>
+              <span class="sec-title">全书结构</span>
+              <span class="sec-meta">
+                <span class="badge">${book.structure.length} 部分</span>
+                ${book.verified ? ` <span class="verified-badge-inline"><svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg> 官方目录已核验</span>` : ''}
+              </span>
+            </h2>
             <ol class="part-list">
               ${structureHtml}
             </ol>
