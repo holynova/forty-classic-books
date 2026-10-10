@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>《函数式编程思维》 · 经典书导读</title>
+  <link rel="stylesheet" href="style.css?v=ad4f3308">
+</head>
+<body>
+  <div class="layout-container">
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <aside class="global-sidebar" id="globalSidebar" aria-label="全书目录导航">
+    <div class="sidebar-header">
+      <a class="sidebar-brand" href="index.html">
+        <span class="sidebar-brand-title">经典书导读</span>
+        <span class="sidebar-brand-sub">10 大领域 · 517 本精选 · 经典书导读</span>
+      </a>
+      <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="关闭目录">×</button>
+    </div>
+
+    <div class="sidebar-search">
+      <div class="sidebar-search-wrap">
+        <svg viewBox="0 0 24 24" class="sb-search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" id="sidebarSearchInput" placeholder="快速检索 517 本书..." autocomplete="off">
+        <button type="button" id="sidebarSearchClear" class="sb-search-clear" aria-label="清除">×</button>
+      </div>
+      <div class="sidebar-search-empty" id="sidebarSearchEmpty">无匹配图书</div>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebarNav" data-current-id="546">
+      
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="index.html" class="sidebar-catalog-link">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>全部书单首页</span>
+      </a>
+      <span class="sidebar-kbd-hint"><kbd>M</kbd> 切换</span>
+    </div>
+  </aside>
+
+    <div class="main-wrapper">
+      <div class="wrap">
+        <header class="sitehead">
+          <div class="sitehead-inner">
+            <div class="sitehead-left">
+              <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="切换全书目录" title="打开/收起目录 (快捷键 M)">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <span>目录</span>
+                <span class="kbd-pill"><kbd>M</kbd></span>
+              </button>
+              <a class="brand" href="index.html">
+                经典书导读
+                <small>CLASSIC BOOKS · 517 MASTERPIECES</small>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <main>
+          <div class="back-nav">
+            <a class="back-link" href="index.html#dom-10">← 全部书单</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">主理人心愿精选</span>
+          </div>
+
+          <div class="book-title-header">
+            <h1>《函数式编程思维》</h1>
+          </div>
+
+          <div class="detail-top">
+            <div class="detail-cover-wrap">
+              <picture><source srcset="covers/detail/函数式编程思维.webp" type="image/webp"><img class="detail-cover" src="covers/函数式编程思维.jpg" alt="《函数式编程思维》封面" fetchpriority="high" decoding="async" width="138" height="200"></picture>
+            </div>
+            <div class="detail-meta">
+              <div class="detail-meta-item">
+                <span class="label">作者：</span>
+                <span class="value">[美] 尼尔·福特 (Neal Ford)</span>
+              </div>
+              <div class="detail-meta-item">
+                <span class="label">出版社：</span>
+                <span class="value">人民邮电出版社</span>
+              </div>
+              <div class="detail-meta-item">
+                <span class="label">出版年：</span>
+                <span class="value"></span>
+              </div>
+              
+              <div class="detail-meta-item detail-meta-link">
+                <a class="douban-link" href="undefined" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="ratebox">
+            <span class="ratebox-num tabular">8.4</span>
+            <div class="ratebox-info">
+              <div class="ratebox-stars" aria-label="评分星级">★★★★☆</div>
+              <div class="ratebox-label">豆瓣评分 · 3,800 人评价</div>
+            </div>
+          </div>
+
+          <div class="intro-quote">
+            软件工程思维升级经典，带你跳出传统命令式代码泥潭，从纯函数、不可变性与高阶抽象中领悟优雅健壮的编程范式。
+          </div>
+
+          <section class="section-block">
+            <h2>总体观点</h2>
+            <div class="thesis-body">
+              <p>函数式编程的核心转变在于‘从关注怎样做（How to do）转向关注做什么（What to do）’。传统面向对象和命令式编程充斥着可变状态与细枝末节的循环索引控制，使得系统行为极易因共享状态竞态条件而崩溃；函数式范式则将运算视为纯数学函数的复合，大幅消除了副作用与心智摩擦。</p>
+<p>不可变性（Immutability）是征服多核并发时代的终极武器。在多线程环境中，绝大部分诡异的死锁与数据撕裂Bug都源自‘多个线程同时修改同一块内存可变状态’。通过严格限制状态修改并使用结构共享不可变数据结构，程序员可以在无需繁琐加锁的情况下天然获得线程安全与无痛并发能力。</p>
+<p>推崇‘用高阶抽象组合取代繁复控制流’。函数式语言将函数视为一等公民，通过Filter、Map、Reduce（折叠）三大高阶组合子，能够将数十行冗长的嵌套循环与条件分支浓缩为意图高度聚焦的链式管道，使代码的可读性、可测试性与代码复用率跃迁至全新高度。</p>
+            </div>
+          </section>
+
+          <section class="section-block">
+            <h2>核心观点</h2>
+            <ol class="idea-list">
+              <li class="idea-item">
+        <h3 class="idea-title">1. 命令式与声明式的思维裂变</h3>
+        <p class="idea-desc">命令式代码像是在指挥计算机移动每一个齿轮和计数器；声明式代码则是向计算机宣告我们期望的数据转换流水线。把底层迭代细节交由底层运行时优化，代码意图更加清澈见底。</p>
+        <div class="example-box">从一个包含上万名字的列表中筛选出长度大于五且首字母大写的名字，传统Java使用三层for循环加局部临时变量，而函数式一行`filter().map()`链式调用即可优雅直达结果。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">2. 纯函数与确定性测试红利</h3>
+        <p class="idea-desc">纯函数满足两个铁律：给定相同输入必产生相同输出，且执行过程中不产生任何副作用（不修改全局变量、不写磁盘、不发网络请求）。纯函数如同数学公理，其单元测试几乎不需要任何Mock桩，极其纯粹。</p>
+        <div class="example-box">计算用户税后薪资的函数只依赖传入的税率和基本工资参数，没有任何对外部数据库状态的暗度陈仓依赖，使其并发测试无论在多少核CPU上并行执行都绝不会翻车。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">3. 柯里化与偏函数应用的力量</h3>
+        <p class="idea-desc">柯里化（Currying）将一个接收多参数的函数转变为一系列接收单一参数的连续函数链。这使得程序员能够轻松‘固定’部分配置参数，生成高度特化的复用工具函数。</p>
+        <div class="example-box">先定义通用日志输出函数`logger(level, module, message)`，通过柯里化提前固定`level='ERROR'`和`module='AUTH'`，便轻巧派生出专门捕获认证模块崩溃的专职闭包函数。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">4. 惰性求值与无穷数据流处理</h3>
+        <p class="idea-desc">惰性求值（Lazy Evaluation）延迟表达式的计算，直至其结果真正被消费的最后一刻才触发执行。这打破了内存一次性装载全部数据集的物理上限，使得在内存中处理理论上的无穷素数流成为可能。</p>
+        <div class="example-box">处理数吉字节的服务器日志文件时，惰性流只在每次遍历到具体某一行时才从磁盘块按需读取解码，避免了一次性OOM崩溃，处理完毕立即被垃圾回收回收。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">5. 记忆化缓存消除重复开销</h3>
+        <p class="idea-desc">由于纯函数的输出严格只由输入决定，因此函数式语言可以通过高阶函数‘记忆化’（Memoization）自动将历史入参与结果缓存起来，在无需修改原有业务逻辑代码的情况下将指数级递归算法瞬间降维为常数级复杂度。</p>
+        <div class="example-box">计算斐波那契数列第100项时，未记忆化的递归算法需要数十万年运算，而挂载记忆化拦截装饰器后，每一次子节点计算结果被哈希表缓存，毫秒级即可秒出结果。</div>
+      </li>
+            </ol>
+          </section>
+
+          <section class="section-block">
+            <h2>全书结构</h2>
+            <ol class="part-list">
+              <li class="part-item">
+        <h3 class="part-title">第一章 范式转变：为什么要拥抱函数式</h3>
+        <p class="part-desc">直面多核处理器硬件时代带来的并发危机，揭示传统面向对象状态封装在分布式微服务与海量并发面前遭遇的瓶颈痛点。</p>
+        <div class="example-box">对比传统Java线程锁synchronized带来的性能开销与死锁噩梦，展示Scala与Clojure如何凭借无共享状态架构轻松驾驭并发。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第二章 转变：基础构建块与高阶抽象</h3>
+        <p class="part-desc">从细节入手，深入解析Filter、Map、Reduce（Fold）三大核心组合子的代数性质，展示如何用折叠操作重构任意聚合运算。</p>
+        <div class="example-box">演示如何仅用一行Reduce函数实现列表反转、元素计数、最大值提取与扁平化展开，揭示折叠操作作为一切数据流处理之母的底蕴。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第三章 权衡：可变与不可变性的较量</h3>
+        <p class="part-desc">剖析不可变数据结构的内部实现机理（红黑树、Trie字典树结构共享），粉碎关于不可变性‘频繁拷贝导致内存耗尽’的浅薄偏见。</p>
+        <div class="example-box">展示Clojure持久化向量在添加新元素时，如何复用99%的原有树节点指针，实现对数级时间与空间复杂度的优雅不可变更新。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第四章 组合与复用：柯里化与高阶函数</h3>
+        <p class="part-desc">探讨函数的组装哲学，展示函数如何像乐高积木一样通过管道（Pipe）与组合子（Compose）拼接成庞大而条理井然的业务系统。</p>
+        <div class="example-box">构建一套电商订单结算流水线，将折扣计算、优惠券校验、会员积分累加与税金折算四个小函数单向串联成一条无懈可击的纯函数链。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第五章 现代函数式演进：混合范式与实用主义</h3>
+        <p class="part-desc">全书结语，客观评判主流语言（Java 8+、Kotlin、JavaScript、Python）对函数式特性的吸纳融合，倡导在工程实践中做一名务实的混合范式工匠。</p>
+        <div class="example-box">总结‘面向对象用于划定系统的粗粒度模块边界，函数式用于实现模块内部的数据转换流’这一企业级架构最佳实践法则。</div>
+      </li>
+            </ol>
+          </section>
+
+          <nav class="pn">
+            <a class="prev" href="book-545.html">
+          <picture><source srcset="covers/thumbs/世界现代设计史.webp" type="image/webp"><img src="covers/世界现代设计史.jpg" alt="《世界现代设计史》封面" loading="lazy" decoding="async" width="68" height="98"></picture>
+          <span class="t"><span>← 上一本</span>《世界现代设计史》</span>
+         </a>
+            <a class="next" href="book-547.html">
+          <picture><source srcset="covers/thumbs/手把手教你玩脱口秀.webp" type="image/webp"><img src="covers/手把手教你玩脱口秀.jpg" alt="《手把手教你玩脱口秀》封面" loading="lazy" decoding="async" width="68" height="98"></picture>
+          <span class="t"><span>下一本 →</span>《手把手教你玩脱口秀》</span>
+         </a>
+          </nav>
+
+          <a class="nav-back-catalog" href="index.html#dom-10">返回 主理人心愿精选 目录</a>
+        </main>
+
+        <footer>
+          <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+          <p>豆瓣评分与评价人数为逐本人工核实当天的数值。 · <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> · <span class="footer-version">v1.0.0</span></p>
+        </footer>
+      </div>
+
+      <button type="button" class="floating-menu-btn" id="floatingMenuBtn" aria-label="打开全部图书目录">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <span>目录</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+
+  
+  <script>
+    (function() {
+      // Sidebar drawer & lazy hydration controls
+      var sidebar = document.getElementById('globalSidebar');
+      var backdrop = document.getElementById('sidebarBackdrop');
+      var toggleBtn = document.getElementById('sidebarToggleBtn');
+      var floatBtn = document.getElementById('floatingMenuBtn');
+      var closeBtn = document.getElementById('sidebarCloseBtn');
+      var searchInput = document.getElementById('sidebarSearchInput');
+      var searchClear = document.getElementById('sidebarSearchClear');
+      var searchEmpty = document.getElementById('sidebarSearchEmpty');
+      var sidebarNav = document.getElementById('sidebarNav');
+
+      var isHydrated = sidebarNav && sidebarNav.children.length > 0;
+      var isHydrating = false;
+      var currentBookId = sidebarNav ? sidebarNav.getAttribute('data-current-id') : null;
+
+      function highlightActive() {
+        if (!sidebarNav || !currentBookId) return;
+        var active = sidebarNav.querySelector('.sidebar-link[data-id="' + currentBookId + '"]');
+        if (active) {
+          active.classList.add('active');
+          active.setAttribute('aria-current', 'page');
+        }
+      }
+
+      function hydrateSidebar(cb) {
+        if (isHydrated) {
+          if (cb) cb();
+          return;
+        }
+        if (sidebarNav && sidebarNav.children.length > 0) {
+          isHydrated = true;
+          highlightActive();
+          if (cb) cb();
+          return;
+        }
+        if (isHydrating) return;
+        isHydrating = true;
+
+        fetch('sidebar-nav.html')
+          .then(function(res) { return res.text(); })
+          .then(function(html) {
+            if (sidebarNav) {
+              sidebarNav.innerHTML = html;
+              isHydrated = true;
+              isHydrating = false;
+              highlightActive();
+            }
+            if (cb) cb();
+          })
+          .catch(function(err) {
+            isHydrating = false;
+          });
+      }
+
+      // Preload sidebar during idle time
+      if (!isHydrated) {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() { hydrateSidebar(); }, { timeout: 2000 });
+        } else {
+          setTimeout(function() { hydrateSidebar(); }, 1200);
+        }
+      }
+
+      function openSidebar() {
+        document.body.classList.add('sidebar-open');
+        hydrateSidebar(function() {
+          var activeLink = document.querySelector('.sidebar-link.active');
+          if (activeLink) {
+            activeLink.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }
+        });
+      }
+
+      function closeSidebar() {
+        document.body.classList.remove('sidebar-open');
+      }
+
+      function toggleSidebar() {
+        if (document.body.classList.contains('sidebar-open')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleSidebar);
+        toggleBtn.addEventListener('mouseenter', function() { hydrateSidebar(); }, { passive: true });
+      }
+      if (floatBtn) {
+        floatBtn.addEventListener('click', toggleSidebar);
+        floatBtn.addEventListener('mouseenter', function() { hydrateSidebar(); }, { passive: true });
+      }
+      if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+      if (backdrop) backdrop.addEventListener('click', closeSidebar);
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeSidebar();
+        }
+        if ((e.key === 'm' || e.key === 'M') && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          toggleSidebar();
+        }
+      });
+
+      // Quick search within sidebar
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          var q = (this.value || '').trim().toLowerCase();
+          if (searchClear) searchClear.style.display = q ? 'block' : 'none';
+          var matchCount = 0;
+          var groups = Array.from(sidebarNav ? sidebarNav.querySelectorAll('.sidebar-group') : []);
+
+          groups.forEach(function(group) {
+            var groupMatches = 0;
+            var items = Array.from(group.querySelectorAll('.sidebar-link'));
+            items.forEach(function(item) {
+              var title = (item.dataset.title || '').toLowerCase();
+              var author = (item.dataset.author || '').toLowerCase();
+              var matched = !q || title.includes(q) || author.includes(q);
+              item.parentElement.style.display = matched ? 'block' : 'none';
+              if (matched) {
+                groupMatches++;
+                matchCount++;
+              }
+            });
+            group.style.display = (groupMatches > 0 || !q) ? 'block' : 'none';
+          });
+
+          if (searchEmpty) {
+            searchEmpty.style.display = (matchCount === 0 && q) ? 'block' : 'none';
+          }
+        });
+
+        if (searchClear) {
+          searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.focus();
+          });
+        }
+      }
+
+      // Auto scroll active book into view on page load if already rendered
+      var currentActive = document.querySelector('.sidebar-link.active');
+      if (currentActive) {
+        setTimeout(function() {
+          currentActive.scrollIntoView({ block: 'center' });
+        }, 120);
+      }
+    })();
+  </script>
+
+  
+  <script>
+    (function() {
+      // 1. Instant hover & touch prefetch for near-zero latency page switches
+      var prefetched = new Set();
+      function prefetch(url) {
+        if (!url || prefetched.has(url)) return;
+        prefetched.add(url);
+        var link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = url;
+        document.head.appendChild(link);
+      }
+      document.addEventListener('mouseover', function(e) {
+        var a = e.target.closest('a');
+        if (a && a.href && a.origin === location.origin && (a.pathname.endsWith('.html') || a.pathname.includes('/book-'))) {
+          prefetch(a.href);
+        }
+      }, { passive: true });
+      document.addEventListener('touchstart', function(e) {
+        var a = e.target.closest('a');
+        if (a && a.href && a.origin === location.origin && (a.pathname.endsWith('.html') || a.pathname.includes('/book-'))) {
+          prefetch(a.href);
+        }
+      }, { passive: true });
+
+      // 2. Idle deferred analytics loader with graceful error handling (silent on ad-blocker)
+      function loadAnalytics() {
+        try {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://cloud.umami.is/script.js';
+          s.setAttribute('data-website-id', 'e01c9f78-4607-4e60-b01c-77c8190b12b4');
+          s.onerror = function() {}; // Silently catch ad-blocker rejections
+          document.head.appendChild(s);
+        } catch (e) {}
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadAnalytics, { timeout: 3000 });
+      } else {
+        setTimeout(loadAnalytics, 2000);
+      }
+    })();
+  </script>
+
+</body>
+</html>
