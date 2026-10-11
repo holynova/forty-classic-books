@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Unit Testing : Principles, Patterns and Practices · 经典书导读</title>
+  <link rel="stylesheet" href="style.css?v=ad4f3308">
+</head>
+<body>
+  <div class="layout-container">
+    <div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+  <aside class="global-sidebar" id="globalSidebar" aria-label="全书目录导航">
+    <div class="sidebar-header">
+      <a class="sidebar-brand" href="index.html">
+        <span class="sidebar-brand-title">经典书导读</span>
+        <span class="sidebar-brand-sub">10 大领域 · 907 本精选 · 经典书导读</span>
+      </a>
+      <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="关闭目录">×</button>
+    </div>
+
+    <div class="sidebar-search">
+      <div class="sidebar-search-wrap">
+        <svg viewBox="0 0 24 24" class="sb-search-icon"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+        <input type="search" id="sidebarSearchInput" placeholder="快速检索 907 本书..." autocomplete="off">
+        <button type="button" id="sidebarSearchClear" class="sb-search-clear" aria-label="清除">×</button>
+      </div>
+      <div class="sidebar-search-empty" id="sidebarSearchEmpty">无匹配图书</div>
+    </div>
+
+    <nav class="sidebar-nav" id="sidebarNav" data-current-id="922">
+      
+    </nav>
+
+    <div class="sidebar-footer">
+      <a href="index.html" class="sidebar-catalog-link">
+        <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2" fill="none"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        <span>全部书单首页</span>
+      </a>
+      <span class="sidebar-kbd-hint"><kbd>M</kbd> 切换</span>
+    </div>
+  </aside>
+
+    <div class="main-wrapper">
+      <div class="wrap">
+        <header class="sitehead">
+          <div class="sitehead-inner">
+            <div class="sitehead-left">
+              <button type="button" class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="切换全书目录" title="打开/收起目录 (快捷键 M)">
+                <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+                <span>目录</span>
+                <span class="kbd-pill"><kbd>M</kbd></span>
+              </button>
+              <a class="brand" href="index.html">
+                经典书导读
+                <small>CLASSIC BOOKS · 607 MASTERPIECES</small>
+              </a>
+            </div>
+          </div>
+        </header>
+
+        <main>
+          <div class="back-nav">
+            <a class="back-link" href="index.html#dom-10">← 全部书单</a>
+            <span class="breadcrumb-sep">/</span>
+            <span class="breadcrumb-domain">主理人心愿精选</span>
+          </div>
+
+          <div class="book-title-header">
+            <h1>Unit Testing : Principles, Patterns and Practices</h1>
+          </div>
+
+          <div class="detail-top">
+            <div class="detail-cover-wrap">
+              <picture><source srcset="covers/detail/Unit Testing : Principles, Patterns and Practices.webp" type="image/webp"><img class="detail-cover" src="covers/Unit Testing : Principles, Patterns and Practices.jpg" alt="Unit Testing : Principles, Patterns and Practices封面" fetchpriority="high" decoding="async" width="138" height="200"></picture>
+            </div>
+            <div class="detail-meta">
+              <div class="detail-meta-item">
+                <span class="label">作者：</span>
+                <span class="value">Vladimir Khorikov</span>
+              </div>
+              <div class="detail-meta-item">
+                <span class="label">出版社：</span>
+                <span class="value">Manning Publications</span>
+              </div>
+              <div class="detail-meta-item">
+                <span class="label">出版年：</span>
+                <span class="value"></span>
+              </div>
+              
+              <div class="detail-meta-item detail-meta-link">
+                <a class="douban-link" href="undefined" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+              </div>
+            </div>
+          </div>
+
+          <div class="ratebox">
+            <span class="ratebox-num tabular">9.3</span>
+            <div class="ratebox-info">
+              <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
+              <div class="ratebox-label">豆瓣评分 · 3,800 人评价</div>
+            </div>
+          </div>
+
+          <div class="intro-quote">
+            软件工程测试领域的划时代巨著！微软MVP弗拉基米尔·霍里科夫系统解构良好单元测试的四大支柱，彻底厘清经典学派与伦敦学派之争，指导开发者摆脱伪测试与测试代码腐化的泥潭，构筑坚不可摧的企业级代码护盾。
+          </div>
+
+          <section class="section-block">
+            <h2>总体观点</h2>
+            <div class="thesis-body">
+              <p>《Unit Testing : Principles, Patterns and Practices》（单元测试的原则、模式与实践）是著名软件架构师Vladimir Khorikov于2020年由Manning出版的技术名著。在现代敏捷开发与持续集成的浪潮中，许多团队写了成千上万个测试用例，却不仅没能提高软件质量，反而陷入了修改一行生产代码导致几百个测试全部飘红的‘测试维护地狱’。该书直击这一痛点，深刻重构了整个行业对测试有效性的认知。</p>
+<p>全书最具颠覆性的贡献在于确立了评价优秀单元测试的‘四大支柱’：防退化能力、抗重构能力、快速反馈、易维护性，并旗帜鲜明地指出‘抗重构能力（Protection against false alarms/虚假警报）是决定测试资产价值不可妥协的基石’。作者系统对比了底特律学派（经典派）与伦敦学派（Mock派），指出过度Mock内部协作会导致测试与实现细节紧密耦合。全书提倡基于可观察行为进行验证，倡导富领域模型与函数式架构风格，是每一位追求代码卓越的程序员不可多得的内功心法。</p>
+            </div>
+          </section>
+
+          <section class="section-block">
+            <h2>核心观点</h2>
+            <ol class="idea-list">
+              <li class="idea-item">
+        <h3 class="idea-title">1. 优秀单元测试的四大支柱评估模型</h3>
+        <p class="idea-desc">任何测试用例都必须在这四项指标中求得最优解，其中抗重构能力是非黑即白的刚性前提。</p>
+        <div class="example-box">四大支柱包含：对代码Bug的防退化性、代码重构时不产生虚假警报的抗重构性、秒级执行的快速反馈、代码简洁短小的易维护性。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">2. 经典学派对决伦敦学派：拒绝过度使用Mock</h3>
+        <p class="idea-desc">伦敦学派崇尚隔离所有依赖进行Mock，导致测试验证的是实现流程而非业务结果；经典派主张使用真实依赖验证最终状态。</p>
+        <div class="example-box">验证用户购买逻辑时，经典派直接断言数据库或聚合根中用户的最终余额与库存，伦敦派却去断言内部辅助方法是否被调用了2次。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">3. 黑盒测试与可观察行为：关注What而非How</h3>
+        <p class="idea-desc">测试代码应当像客户代码一样只与公开API交互，严禁刺探类的私有状态或内部算法中间临时变量。</p>
+        <div class="example-box">重构快速排序为归并排序，如果测试关注的是输入数组与有序输出，则测试依然稳健通过；若测试关注内部递归步数则会全盘崩溃。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">4. 代码四象限分类与针对性测试策略</h3>
+        <p class="idea-desc">根据代码复杂度与外部依赖数量将代码分为四个象限，将核心精力倾注在‘高复杂度、低依赖’的业务领域逻辑上。</p>
+        <div class="example-box">复杂的业务领域模型（高复杂度无依赖）最适合高性价比单元测试；而贫血模型与重度胶水代码则应通过集成测试覆盖或直接重构。</div>
+      </li>
+<li class="idea-item">
+        <h3 class="idea-title">5. 测试坏味道根除：摆脱脆弱与无意义的覆盖率执念</h3>
+        <p class="idea-desc">盲目追求100%代码覆盖率往往催生毫无断言的‘断言轮空’与自我欺骗，测试的真正价值在于赋予团队放心重构的底气。</p>
+        <div class="example-box">为了凑覆盖率去给纯粹的Getter/Setter写测试不仅浪费精力，更在未来字段重命名时制造大量无意义的测试编译修改成本。</div>
+      </li>
+            </ol>
+          </section>
+
+          <section class="section-block">
+            <h2>全书结构</h2>
+            <ol class="part-list">
+              <li class="part-item">
+        <h3 class="part-title">第一部分：单元测试的宏观目标与四大支柱</h3>
+        <p class="part-desc">重新定义单元测试的目标是实现软件项目的可持续增长，提出四大支柱模型并定义虚假警报的破坏性。</p>
+        <div class="example-box">通过数学坐标轴详细推演‘防退化能力’与‘抗重构能力’的内在张力，论证为什么虚假警报会摧毁团队对测试的信任。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第二部分：学派之争与测试替身深度剖析</h3>
+        <p class="part-desc">全面界定Mock（模拟对象）、Stub（存根）、Dummy、Fake等测试替身，深入对比底特律学派与伦敦学派的利弊。</p>
+        <div class="example-box">对比指出：Mock用于模拟‘非托管外部依赖’的发出交互（如发邮件），而Stub仅用于提供输入查询数据，不应在Stub上做验证。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第三部分：测试风格、代码重构与金字塔落地</h3>
+        <p class="part-desc">讲解基于输出的测试、基于状态的测试与基于通信的测试三种风格，指导重构代码使之更具可测试性。</p>
+        <div class="example-box">演示如何将依赖深重的贫血控制服务（Controller），重构成领域模型与无状态处理器，将不可测试的代码转化为极佳的函数式测试。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第四部分：集成测试与外部依赖治理实战</h3>
+        <p class="part-desc">区分托管依赖（如私有DB）与非托管依赖（如第三方支付API），设计真实容器化环境下的高质量集成测试。</p>
+        <div class="example-box">在Docker中拉起真实的PostgreSQL实例进行集成测试，确保事务隔离、并发锁竞争与数据库迁移脚本的真实有效性。</div>
+      </li>
+<li class="part-item">
+        <h3 class="part-title">第五部分：反模式识别与日常单元测试重构指南</h3>
+        <p class="part-desc">盘点私有方法测试、暴露内部状态、时间依赖与测试污染等十余种常见测试坏味道，提供工业级修复范本。</p>
+        <div class="example-box">通过引入自定义的时钟接口（IClock）封装系统当前时间，彻底根除因本地机器时区或秒级边界跳变导致的偶发测试失败。</div>
+      </li>
+            </ol>
+          </section>
+
+          <nav class="pn">
+            <a class="prev" href="book-921.html">
+          <picture><source srcset="covers/thumbs/System Design Interview : An Insider&#39;s Guide.webp" type="image/webp"><img src="covers/System Design Interview : An Insider&#39;s Guide.jpg" alt="System Design Interview : An Insider's Guide封面" loading="lazy" decoding="async" width="68" height="98"></picture>
+          <span class="t"><span>← 上一本</span>System Design Interview : An Insider's Guide</span>
+         </a>
+            <a class="next" href="book-923.html">
+          <picture><source srcset="covers/thumbs/關於地球的運動1.webp" type="image/webp"><img src="covers/關於地球的運動1.jpg" alt="關於地球的運動1封面" loading="lazy" decoding="async" width="68" height="98"></picture>
+          <span class="t"><span>下一本 →</span>關於地球的運動1</span>
+         </a>
+          </nav>
+
+          <a class="nav-back-catalog" href="index.html#dom-10">返回 主理人心愿精选 目录</a>
+        </main>
+
+        <footer>
+          <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
+          <p>豆瓣评分与评价人数为逐本人工核实当天的数值。 · <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> · <span class="footer-version">v1.0.0</span></p>
+        </footer>
+      </div>
+
+      <button type="button" class="floating-menu-btn" id="floatingMenuBtn" aria-label="打开全部图书目录">
+        <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2" fill="none"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
+        <span>目录</span>
+      </button>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('keydown', function(e) {
+      var p = document.querySelector('.pn a.prev'), n = document.querySelector('.pn a.next');
+      if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
+      if (e.key === 'ArrowRight' && n) { location.href = n.href; }
+    });
+  </script>
+
+  
+  <script>
+    (function() {
+      // Sidebar drawer & lazy hydration controls
+      var sidebar = document.getElementById('globalSidebar');
+      var backdrop = document.getElementById('sidebarBackdrop');
+      var toggleBtn = document.getElementById('sidebarToggleBtn');
+      var floatBtn = document.getElementById('floatingMenuBtn');
+      var closeBtn = document.getElementById('sidebarCloseBtn');
+      var searchInput = document.getElementById('sidebarSearchInput');
+      var searchClear = document.getElementById('sidebarSearchClear');
+      var searchEmpty = document.getElementById('sidebarSearchEmpty');
+      var sidebarNav = document.getElementById('sidebarNav');
+
+      var isHydrated = sidebarNav && sidebarNav.children.length > 0;
+      var isHydrating = false;
+      var currentBookId = sidebarNav ? sidebarNav.getAttribute('data-current-id') : null;
+
+      function highlightActive() {
+        if (!sidebarNav || !currentBookId) return;
+        var active = sidebarNav.querySelector('.sidebar-link[data-id="' + currentBookId + '"]');
+        if (active) {
+          active.classList.add('active');
+          active.setAttribute('aria-current', 'page');
+        }
+      }
+
+      function hydrateSidebar(cb) {
+        if (isHydrated) {
+          if (cb) cb();
+          return;
+        }
+        if (sidebarNav && sidebarNav.children.length > 0) {
+          isHydrated = true;
+          highlightActive();
+          if (cb) cb();
+          return;
+        }
+        if (isHydrating) return;
+        isHydrating = true;
+
+        fetch('sidebar-nav.html')
+          .then(function(res) { return res.text(); })
+          .then(function(html) {
+            if (sidebarNav) {
+              sidebarNav.innerHTML = html;
+              isHydrated = true;
+              isHydrating = false;
+              highlightActive();
+            }
+            if (cb) cb();
+          })
+          .catch(function(err) {
+            isHydrating = false;
+          });
+      }
+
+      // Preload sidebar during idle time
+      if (!isHydrated) {
+        if ('requestIdleCallback' in window) {
+          requestIdleCallback(function() { hydrateSidebar(); }, { timeout: 2000 });
+        } else {
+          setTimeout(function() { hydrateSidebar(); }, 1200);
+        }
+      }
+
+      function openSidebar() {
+        document.body.classList.add('sidebar-open');
+        hydrateSidebar(function() {
+          var activeLink = document.querySelector('.sidebar-link.active');
+          if (activeLink) {
+            activeLink.scrollIntoView({ block: 'center', behavior: 'smooth' });
+          }
+        });
+      }
+
+      function closeSidebar() {
+        document.body.classList.remove('sidebar-open');
+      }
+
+      function toggleSidebar() {
+        if (document.body.classList.contains('sidebar-open')) {
+          closeSidebar();
+        } else {
+          openSidebar();
+        }
+      }
+
+      if (toggleBtn) {
+        toggleBtn.addEventListener('click', toggleSidebar);
+        toggleBtn.addEventListener('mouseenter', function() { hydrateSidebar(); }, { passive: true });
+      }
+      if (floatBtn) {
+        floatBtn.addEventListener('click', toggleSidebar);
+        floatBtn.addEventListener('mouseenter', function() { hydrateSidebar(); }, { passive: true });
+      }
+      if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+      if (backdrop) backdrop.addEventListener('click', closeSidebar);
+
+      // Keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+          closeSidebar();
+        }
+        if ((e.key === 'm' || e.key === 'M') && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          toggleSidebar();
+        }
+      });
+
+      // Quick search within sidebar
+      if (searchInput) {
+        searchInput.addEventListener('input', function() {
+          var q = (this.value || '').trim().toLowerCase();
+          if (searchClear) searchClear.style.display = q ? 'block' : 'none';
+          var matchCount = 0;
+          var groups = Array.from(sidebarNav ? sidebarNav.querySelectorAll('.sidebar-group') : []);
+
+          groups.forEach(function(group) {
+            var groupMatches = 0;
+            var items = Array.from(group.querySelectorAll('.sidebar-link'));
+            items.forEach(function(item) {
+              var title = (item.dataset.title || '').toLowerCase();
+              var author = (item.dataset.author || '').toLowerCase();
+              var matched = !q || title.includes(q) || author.includes(q);
+              item.parentElement.style.display = matched ? 'block' : 'none';
+              if (matched) {
+                groupMatches++;
+                matchCount++;
+              }
+            });
+            group.style.display = (groupMatches > 0 || !q) ? 'block' : 'none';
+          });
+
+          if (searchEmpty) {
+            searchEmpty.style.display = (matchCount === 0 && q) ? 'block' : 'none';
+          }
+        });
+
+        if (searchClear) {
+          searchClear.addEventListener('click', function() {
+            searchInput.value = '';
+            searchInput.dispatchEvent(new Event('input'));
+            searchInput.focus();
+          });
+        }
+      }
+
+      // Auto scroll active book into view on page load if already rendered
+      var currentActive = document.querySelector('.sidebar-link.active');
+      if (currentActive) {
+        setTimeout(function() {
+          currentActive.scrollIntoView({ block: 'center' });
+        }, 120);
+      }
+    })();
+  </script>
+
+  
+  <script>
+    (function() {
+      // 1. Instant hover & touch prefetch for near-zero latency page switches
+      var prefetched = new Set();
+      function prefetch(url) {
+        if (!url || prefetched.has(url)) return;
+        prefetched.add(url);
+        var link = document.createElement('link');
+        link.rel = 'prefetch';
+        link.href = url;
+        document.head.appendChild(link);
+      }
+      document.addEventListener('mouseover', function(e) {
+        var a = e.target.closest('a');
+        if (a && a.href && a.origin === location.origin && (a.pathname.endsWith('.html') || a.pathname.includes('/book-'))) {
+          prefetch(a.href);
+        }
+      }, { passive: true });
+      document.addEventListener('touchstart', function(e) {
+        var a = e.target.closest('a');
+        if (a && a.href && a.origin === location.origin && (a.pathname.endsWith('.html') || a.pathname.includes('/book-'))) {
+          prefetch(a.href);
+        }
+      }, { passive: true });
+
+      // 2. Idle deferred analytics loader with graceful error handling (silent on ad-blocker)
+      function loadAnalytics() {
+        try {
+          var s = document.createElement('script');
+          s.async = true;
+          s.src = 'https://cloud.umami.is/script.js';
+          s.setAttribute('data-website-id', 'e01c9f78-4607-4e60-b01c-77c8190b12b4');
+          s.onerror = function() {}; // Silently catch ad-blocker rejections
+          document.head.appendChild(s);
+        } catch (e) {}
+      }
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(loadAnalytics, { timeout: 3000 });
+      } else {
+        setTimeout(loadAnalytics, 2000);
+      }
+    })();
+  </script>
+
+</body>
+</html>
