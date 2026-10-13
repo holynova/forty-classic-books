@@ -337,6 +337,607 @@ const perfAndAnalyticsScript = `
   </script>
 `;
 
+// Build Search Index (search-index.json) for Cmd+K instant search
+function buildSearchIndex() {
+  const searchList = books.map(b => ({
+    id: b.id,
+    slug: b.slug,
+    title: b.title,
+    author: b.author,
+    domain: b.domain,
+    rating: b.rating,
+    ratingCount: formatRatingCountShort(b.ratingCount),
+    cover: b.cover,
+    publisher: b.publisher,
+    publishYear: b.publishYear,
+    intro: b.intro,
+    originalTitle: b.originalTitle || ''
+  }));
+  fs.writeFileSync(path.join(ROOT_DIR, 'search-index.json'), JSON.stringify(searchList), 'utf-8');
+  console.log('✓ Generated search-index.json');
+}
+
+// Global Cmd+K Dialog Modal HTML Template
+function renderCmdkModalHtml() {
+  const domainPillsHtml = site.domains.map(dom => {
+    const label = dom.name.replace('主理人', '').replace('精选', '选');
+    return `<button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="${escapeHtml(dom.name)}">${escapeHtml(label)}</button>`;
+  }).join('');
+
+  return `
+  <div class="cmdk-backdrop" id="cmdkBackdrop" aria-hidden="true">
+    <div class="cmdk-dialog" id="cmdkDialog" role="dialog" aria-modal="true" aria-label="全书搜索与快速标记">
+      <div class="cmdk-head">
+        <div class="cmdk-input-wrap">
+          <svg class="cmdk-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="search" class="cmdk-input" id="cmdkSearchInput" placeholder="搜索书名、作者、分类，或输入“想读 / 已读”..." autocomplete="off" spellcheck="false">
+          <button type="button" class="cmdk-input-clear" id="cmdkInputClear" aria-label="清空">×</button>
+        </div>
+        <button type="button" class="cmdk-close-btn" id="cmdkCloseBtn" aria-label="关闭搜索">ESC</button>
+      </div>
+
+      <div class="cmdk-pills-bar" id="cmdkPillsBar">
+        <button type="button" class="cmdk-pill active" data-filter-type="status" data-filter-val="all">全部</button>
+        <button type="button" class="cmdk-pill pill-want" data-filter-type="status" data-filter-val="want">★ 想读 <span class="cmdk-pill-cnt" id="cmdkCountWant">0</span></button>
+        <button type="button" class="cmdk-pill pill-read" data-filter-type="status" data-filter-val="read">✓ 已读 <span class="cmdk-pill-cnt" id="cmdkCountRead">0</span></button>
+        <span class="cmdk-pill-sep"></span>
+        ${domainPillsHtml}
+      </div>
+
+      <div class="cmdk-body" id="cmdkBody">
+        <ul class="cmdk-results" id="cmdkResults" role="listbox"></ul>
+        <div class="cmdk-empty" id="cmdkEmpty" style="display:none;">
+          <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <p class="cmdk-empty-text">未找到相关图书</p>
+          <p class="cmdk-empty-sub">可尝试书名关键词、作者姓名或点击上方分类切换</p>
+        </div>
+      </div>
+
+      <div class="cmdk-foot">
+        <div class="cmdk-foot-hints">
+          <span class="cmdk-hint"><kbd>↑</kbd><kbd>↓</kbd> 选择</span>
+          <span class="cmdk-hint"><kbd>↵</kbd> 打开</span>
+          <span class="cmdk-hint"><kbd>ESC</kbd> 退出</span>
+        </div>
+        <div class="cmdk-foot-stats" id="cmdkFootStats">共 ${books.length} 本经典书</div>
+      </div>
+    </div>
+  </div>
+  `.trim();
+}
+
+// Client-side script for User Book Store & Cmd+K Controller
+const cmdkAndStoreScript = `
+  <script>
+    (function() {
+      // 1. User Reading Status LocalStorage Management
+      var STORAGE_KEY = 'classic_books_user_status';
+
+      function getStatusMap() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : {};
+        } catch (e) {
+          return {};
+        }
+      }
+
+      function setStatusMap(map) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
+        } catch (e) {}
+        broadcastStatus(map);
+      }
+
+      function getUserStatus(bookId) {
+        var map = getStatusMap();
+        return map[String(bookId)] || null;
+      }
+
+      function toggleUserStatus(bookId, targetStatus) {
+        var map = getStatusMap();
+        var idStr = String(bookId);
+        var cur = map[idStr] || null;
+        var newStatus = null;
+        if (cur === targetStatus) {
+          delete map[idStr];
+          newStatus = null;
+        } else {
+          map[idStr] = targetStatus;
+          newStatus = targetStatus;
+        }
+        setStatusMap(map);
+        return newStatus;
+      }
+
+      function getStatusCounts() {
+        var map = getStatusMap();
+        var want = 0, read = 0;
+        Object.keys(map).forEach(function(k) {
+          if (map[k] === 'want') want++;
+          else if (map[k] === 'read') read++;
+        });
+        return { want: want, read: read, total: want + read };
+      }
+
+      function broadcastStatus(map) {
+        window.dispatchEvent(new CustomEvent('book-status-changed', { detail: map }));
+      }
+
+      window.addEventListener('storage', function(e) {
+        if (e.key === STORAGE_KEY) {
+          broadcastStatus(getStatusMap());
+        }
+      });
+
+      // Toast Notification Component
+      var toastTimer = null;
+      function showToast(msg) {
+        var toast = document.getElementById('statusToast');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.id = 'statusToast';
+          toast.className = 'status-toast';
+          document.body.appendChild(toast);
+        }
+        toast.textContent = msg;
+        toast.classList.add('visible');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function() {
+          toast.classList.remove('visible');
+        }, 2200);
+      }
+
+      // 2. Search Index Loader (Lazy + Idle Preload)
+      var searchIndex = null;
+      var isIndexLoading = false;
+      var indexCallbacks = [];
+
+      function loadSearchIndex(cb) {
+        if (searchIndex) {
+          if (cb) cb(searchIndex);
+          return;
+        }
+        if (cb) indexCallbacks.push(cb);
+        if (isIndexLoading) return;
+        isIndexLoading = true;
+
+        fetch('search-index.json')
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            searchIndex = data;
+            isIndexLoading = false;
+            while (indexCallbacks.length) {
+              var fn = indexCallbacks.shift();
+              try { fn(searchIndex); } catch (e) {}
+            }
+          })
+          .catch(function(err) {
+            isIndexLoading = false;
+          });
+      }
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() { loadSearchIndex(); }, { timeout: 3000 });
+      } else {
+        setTimeout(function() { loadSearchIndex(); }, 2000);
+      }
+
+      // 3. Cmd+K Dialog Controller
+      var backdrop = document.getElementById('cmdkBackdrop');
+      var input = document.getElementById('cmdkSearchInput');
+      var clearBtn = document.getElementById('cmdkInputClear');
+      var closeBtn = document.getElementById('cmdkCloseBtn');
+      var pillsBar = document.getElementById('cmdkPillsBar');
+      var resultsList = document.getElementById('cmdkResults');
+      var emptyEl = document.getElementById('cmdkEmpty');
+      var footStats = document.getElementById('cmdkFootStats');
+      var triggerBtn = document.getElementById('cmdkTriggerBtn');
+
+      var currentStatusFilter = 'all';
+      var currentDomainFilter = 'all';
+      var selectedIndex = 0;
+      var renderedItems = [];
+
+      function updatePillCounts() {
+        var counts = getStatusCounts();
+        var cntWant = document.getElementById('cmdkCountWant');
+        var cntRead = document.getElementById('cmdkCountRead');
+        if (cntWant) cntWant.textContent = counts.want;
+        if (cntRead) cntRead.textContent = counts.read;
+      }
+
+      function openCmdk() {
+        if (!backdrop) return;
+        backdrop.classList.add('is-open');
+        document.body.classList.add('cmdk-modal-open');
+        updatePillCounts();
+        loadSearchIndex(function() {
+          renderResults();
+        });
+        if (input) {
+          input.focus();
+          input.select();
+        }
+      }
+
+      function closeCmdk() {
+        if (!backdrop) return;
+        backdrop.classList.remove('is-open');
+        document.body.classList.remove('cmdk-modal-open');
+      }
+
+      function toggleCmdk() {
+        if (backdrop && backdrop.classList.contains('is-open')) {
+          closeCmdk();
+        } else {
+          openCmdk();
+        }
+      }
+
+      // Global Keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+          e.preventDefault();
+          toggleCmdk();
+          return;
+        }
+        if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          e.preventDefault();
+          openCmdk();
+          return;
+        }
+        if (e.key === 'Escape' && backdrop && backdrop.classList.contains('is-open')) {
+          e.preventDefault();
+          closeCmdk();
+          return;
+        }
+        if (backdrop && backdrop.classList.contains('is-open')) {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            navigateResults(1);
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            navigateResults(-1);
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            openSelectedResult();
+          }
+        }
+      });
+
+      if (triggerBtn) {
+        triggerBtn.addEventListener('click', openCmdk);
+      }
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeCmdk);
+      }
+      if (backdrop) {
+        backdrop.addEventListener('click', function(e) {
+          if (e.target === backdrop) closeCmdk();
+        });
+      }
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+          if (input) {
+            input.value = '';
+            input.focus();
+            clearBtn.style.display = 'none';
+            selectedIndex = 0;
+            renderResults();
+          }
+        });
+      }
+
+      if (pillsBar) {
+        pillsBar.addEventListener('click', function(e) {
+          var pill = e.target.closest('.cmdk-pill');
+          if (!pill) return;
+          var fType = pill.getAttribute('data-filter-type');
+          var fVal = pill.getAttribute('data-filter-val');
+
+          if (fType === 'status') {
+            currentStatusFilter = fVal;
+            pillsBar.querySelectorAll('.cmdk-pill[data-filter-type="status"]').forEach(function(p) {
+              p.classList.toggle('active', p === pill);
+            });
+          } else if (fType === 'domain') {
+            if (currentDomainFilter === fVal) {
+              currentDomainFilter = 'all';
+              pill.classList.remove('active');
+            } else {
+              currentDomainFilter = fVal;
+              pillsBar.querySelectorAll('.cmdk-pill[data-filter-type="domain"]').forEach(function(p) {
+                p.classList.toggle('active', p === pill);
+              });
+            }
+          }
+          selectedIndex = 0;
+          renderResults();
+        });
+      }
+
+      if (input) {
+        input.addEventListener('input', function() {
+          if (clearBtn) clearBtn.style.display = input.value ? 'flex' : 'none';
+          selectedIndex = 0;
+          renderResults();
+        });
+      }
+
+      function escapeRegex(str) {
+        return str.replace(/[.*+?^$\\{}()|[\\]\\\\]/g, '\\\\$&');
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function highlightText(text, q) {
+        if (!text) return '';
+        if (!q) return escapeHtml(text);
+        var cleanQ = q.replace(/[《》]/g, '').trim();
+        if (!cleanQ) return escapeHtml(text);
+        var re = new RegExp('(' + escapeRegex(cleanQ) + ')', 'gi');
+        return escapeHtml(text).replace(re, '<mark class="cmdk-highlight">$1</mark>');
+      }
+
+      function renderResults() {
+        if (!searchIndex) return;
+        var q = (input ? input.value : '').trim().toLowerCase();
+        var statusMap = getStatusMap();
+
+        var filtered = searchIndex.filter(function(b) {
+          if (currentStatusFilter === 'want' && statusMap[b.id] !== 'want') return false;
+          if (currentStatusFilter === 'read' && statusMap[b.id] !== 'read') return false;
+
+          if (currentDomainFilter !== 'all') {
+            if (!b.domain.includes(currentDomainFilter) && !currentDomainFilter.includes(b.domain.slice(0, 4))) return false;
+          }
+
+          if (!q) return true;
+
+          var titleClean = b.title.replace(/[《》]/g, '').toLowerCase();
+          var matchTitle = titleClean.includes(q);
+          var matchAuthor = (b.author || '').toLowerCase().includes(q);
+          var matchDomain = (b.domain || '').toLowerCase().includes(q);
+          var matchIntro = (b.intro || '').toLowerCase().includes(q);
+          var matchPub = (b.publisher || '').toLowerCase().includes(q);
+          var matchOrig = (b.originalTitle || '').toLowerCase().includes(q);
+
+          var matchKw = false;
+          if (q === '想读' || q === '想看') matchKw = (statusMap[b.id] === 'want');
+          if (q === '已读' || q === '看过') matchKw = (statusMap[b.id] === 'read');
+
+          return matchTitle || matchAuthor || matchDomain || matchIntro || matchPub || matchOrig || matchKw;
+        });
+
+        if (q) {
+          var scored = filtered.map(function(b) {
+            var score = 0;
+            var titleClean = b.title.replace(/[《》]/g, '').toLowerCase();
+            if (titleClean === q) score += 200;
+            else if (titleClean.startsWith(q)) score += 120;
+            else if (titleClean.includes(q)) score += 80;
+
+            if ((b.author || '').toLowerCase().includes(q)) score += 50;
+            if ((b.domain || '').toLowerCase().includes(q)) score += 35;
+            if ((b.intro || '').toLowerCase().includes(q)) score += 15;
+            if ((b.originalTitle || '').toLowerCase().includes(q)) score += 20;
+
+            var r = parseFloat(b.rating) || 0;
+            score += r * 2;
+            return { b: b, score: score };
+          });
+          scored.sort(function(a, b) { return b.score - a.score; });
+          renderedItems = scored.slice(0, 40).map(function(item) { return item.b; });
+        } else {
+          renderedItems = filtered.slice(0, 40);
+        }
+
+        if (emptyEl) {
+          emptyEl.style.display = renderedItems.length === 0 ? 'flex' : 'none';
+          var emptyText = emptyEl.querySelector('.cmdk-empty-text');
+          if (emptyText) {
+            if (currentStatusFilter === 'want' && !q) {
+              emptyText.textContent = '您还没有标记「想读」图书';
+            } else if (currentStatusFilter === 'read' && !q) {
+              emptyText.textContent = '您还没有标记「已读」图书';
+            } else {
+              emptyText.textContent = '未找到相关图书';
+            }
+          }
+        }
+
+        if (footStats) {
+          footStats.textContent = renderedItems.length === 0
+            ? '无匹配结果'
+            : '显示 ' + renderedItems.length + ' / ' + filtered.length + ' 本书';
+        }
+
+        if (!resultsList) return;
+        resultsList.innerHTML = '';
+
+        renderedItems.forEach(function(b, idx) {
+          var isSel = idx === selectedIndex;
+          var userSt = statusMap[b.id] || null;
+          var tagHtml = '';
+          if (userSt === 'want') tagHtml = '<span class="cmdk-item-tag tag-want">★ 想读</span>';
+          else if (userSt === 'read') tagHtml = '<span class="cmdk-item-tag tag-read">✓ 已读</span>';
+
+          var li = document.createElement('li');
+          li.className = 'cmdk-item' + (isSel ? ' is-selected' : '');
+          li.setAttribute('role', 'option');
+          li.setAttribute('aria-selected', isSel ? 'true' : 'false');
+          li.setAttribute('data-index', idx);
+          li.setAttribute('data-slug', b.slug);
+          li.setAttribute('data-id', b.id);
+
+          var coverBase = b.cover.split('/').pop().replace(/\\.[^.]+$/, '');
+          var thumbWebp = 'covers/thumbs/' + coverBase + '.webp';
+
+          li.innerHTML = 
+            '<a class="cmdk-item-link" href="' + b.slug + '.html">' +
+              '<div class="cmdk-item-cover">' +
+                '<img src="' + thumbWebp + '" onerror="this.src=\\'' + b.cover + '\\'" alt="' + escapeHtml(b.title) + '" loading="lazy" width="38" height="54">' +
+              '</div>' +
+              '<div class="cmdk-item-info">' +
+                '<div class="cmdk-item-title-row">' +
+                  '<span class="cmdk-item-title">' + highlightText(b.title, q) + '</span>' +
+                  '<span class="cmdk-item-domain">' + escapeHtml(b.domain) + '</span>' +
+                  tagHtml +
+                '</div>' +
+                '<div class="cmdk-item-meta">' +
+                  '<span class="cmdk-item-author">' + highlightText(b.author, q) + '</span>' +
+                  '<span class="cmdk-item-sep">/</span>' +
+                  '<span class="cmdk-item-rating">★ ' + b.rating + '</span>' +
+                  '<span class="cmdk-item-count">(' + escapeHtml(b.ratingCount) + ')</span>' +
+                '</div>' +
+                '<div class="cmdk-item-intro">' + highlightText(b.intro, q) + '</div>' +
+              '</div>' +
+            '</a>' +
+            '<div class="cmdk-item-actions">' +
+              '<button type="button" class="cmdk-act-btn cmdk-act-want' + (userSt === 'want' ? ' active' : '') + '" data-status="want" data-id="' + b.id + '" title="标记为想读">★ 想读</button>' +
+              '<button type="button" class="cmdk-act-btn cmdk-act-read' + (userSt === 'read' ? ' active' : '') + '" data-status="read" data-id="' + b.id + '" title="标记为已读">✓ 已读</button>' +
+            '</div>';
+
+          resultsList.appendChild(li);
+        });
+      }
+
+      function navigateResults(dir) {
+        if (renderedItems.length === 0) return;
+        selectedIndex += dir;
+        if (selectedIndex < 0) selectedIndex = renderedItems.length - 1;
+        if (selectedIndex >= renderedItems.length) selectedIndex = 0;
+
+        var items = resultsList ? resultsList.querySelectorAll('.cmdk-item') : [];
+        items.forEach(function(item, idx) {
+          var isSel = idx === selectedIndex;
+          item.classList.toggle('is-selected', isSel);
+          item.setAttribute('aria-selected', isSel ? 'true' : 'false');
+          if (isSel) {
+            item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          }
+        });
+      }
+
+      function openSelectedResult() {
+        if (renderedItems.length === 0) return;
+        var b = renderedItems[selectedIndex];
+        if (b) {
+          location.href = b.slug + '.html';
+        }
+      }
+
+      if (resultsList) {
+        resultsList.addEventListener('click', function(e) {
+          var actBtn = e.target.closest('.cmdk-act-btn');
+          if (actBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            var bId = actBtn.getAttribute('data-id');
+            var targetSt = actBtn.getAttribute('data-status');
+            var newSt = toggleUserStatus(bId, targetSt);
+            if (newSt === 'want') showToast('已加入「想读」');
+            else if (newSt === 'read') showToast('已标记为「已读」');
+            else showToast('已取消标记');
+            updatePillCounts();
+            renderResults();
+            return;
+          }
+
+          var item = e.target.closest('.cmdk-item');
+          if (item && !e.target.closest('.cmdk-item-actions')) {
+            var slug = item.getAttribute('data-slug');
+            if (slug) location.href = slug + '.html';
+          }
+        });
+
+        resultsList.addEventListener('mousemove', function(e) {
+          var item = e.target.closest('.cmdk-item');
+          if (item) {
+            var idx = parseInt(item.getAttribute('data-index'), 10);
+            if (!isNaN(idx) && idx !== selectedIndex) {
+              selectedIndex = idx;
+              var all = resultsList.querySelectorAll('.cmdk-item');
+              all.forEach(function(el, i) {
+                el.classList.toggle('is-selected', i === selectedIndex);
+              });
+            }
+          }
+        });
+      }
+
+      // 4. Detail Page Shelf Sync Hook
+      var detailShelf = document.querySelector('.detail-user-shelf');
+      if (detailShelf) {
+        var bookId = detailShelf.getAttribute('data-book-id');
+        var badgeEl = document.getElementById('detailShelfBadge');
+        var wantBtn = detailShelf.querySelector('.btn-want');
+        var readBtn = detailShelf.querySelector('.btn-read');
+
+        function syncDetailShelfUI() {
+          var st = getUserStatus(bookId);
+          if (wantBtn) {
+            wantBtn.classList.toggle('active', st === 'want');
+            wantBtn.setAttribute('aria-pressed', st === 'want' ? 'true' : 'false');
+          }
+          if (readBtn) {
+            readBtn.classList.toggle('active', st === 'read');
+            readBtn.setAttribute('aria-pressed', st === 'read' ? 'true' : 'false');
+          }
+          if (badgeEl) {
+            if (st === 'want') {
+              badgeEl.textContent = '★ 已标记想读';
+              badgeEl.className = 'shelf-status-badge badge-want';
+            } else if (st === 'read') {
+              badgeEl.textContent = '✓ 已标记已读';
+              badgeEl.className = 'shelf-status-badge badge-read';
+            } else {
+              badgeEl.textContent = '未标记阅读状态';
+              badgeEl.className = 'shelf-status-badge';
+            }
+          }
+        }
+
+        if (wantBtn) {
+          wantBtn.addEventListener('click', function() {
+            var newSt = toggleUserStatus(bookId, 'want');
+            if (newSt === 'want') showToast('已加入「想读」书单');
+            else showToast('已取消「想读」标记');
+            syncDetailShelfUI();
+          });
+        }
+        if (readBtn) {
+          readBtn.addEventListener('click', function() {
+            var newSt = toggleUserStatus(bookId, 'read');
+            if (newSt === 'read') showToast('已标记为「已读」图书');
+            else showToast('已取消「已读」标记');
+            syncDetailShelfUI();
+          });
+        }
+
+        syncDetailShelfUI();
+        window.addEventListener('book-status-changed', syncDetailShelfUI);
+      }
+
+      window.addEventListener('book-status-changed', updatePillCounts);
+
+      // Expose globally for index page coordination
+      window.ClassicUserStore = {
+        getStatus: getUserStatus,
+        toggleStatus: toggleUserStatus,
+        getStatusMap: getStatusMap,
+        getCounts: getStatusCounts,
+        showToast: showToast,
+        openCmdk: openCmdk
+      };
+    })();
+  </script>
+`;
+
 // 1. Build Index HTML
 function buildIndex() {
   const domainSections = site.domains.map(dom => {
@@ -353,7 +954,10 @@ function buildIndex() {
             ${pictureHtml}
           </div>
           <div class="brow-body">
-            <h3 class="brow-title"><span class="brow-name">${escapeHtml(b.title)}</span></h3>
+            <div class="brow-title-row">
+              <h3 class="brow-title"><span class="brow-name">${escapeHtml(b.title)}</span></h3>
+              <span class="brow-user-tag" data-tag-id="${b.id}"></span>
+            </div>
             <div class="brow-meta">
               <span class="brow-meta-info">${escapeHtml(b.author)} / ${escapeHtml(b.publisher)} / ${escapeHtml(b.publishYear)}</span>
               <span class="brow-meta-sep">·</span>
@@ -364,6 +968,16 @@ function buildIndex() {
               </span>
             </div>
             <p class="brow-desc">${escapeHtml(b.intro)}</p>
+          </div>
+          <div class="brow-actions" data-act-id="${b.id}">
+            <button type="button" class="brow-act-btn brow-act-want" data-status="want" title="标记为想读" aria-label="想读">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+              <span>想读</span>
+            </button>
+            <button type="button" class="brow-act-btn brow-act-read" data-status="read" title="标记为已读" aria-label="已读">
+              <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>已读</span>
+            </button>
           </div>
         </a>
       `.trim();
@@ -415,6 +1029,13 @@ function buildIndex() {
                 <small>${escapeHtml(site.brandSub)}</small>
               </a>
             </div>
+            <div class="sitehead-right">
+              <button type="button" class="cmdk-trigger-btn" id="cmdkTriggerBtn" aria-label="搜索图书" title="全局搜索 (快捷键 ⌘K 或 /)">
+                <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <span class="cmdk-trigger-text">搜索全书</span>
+                <span class="cmdk-trigger-kbd"><kbd>⌘K</kbd></span>
+              </button>
+            </div>
           </div>
         </header>
 
@@ -427,6 +1048,11 @@ function buildIndex() {
               <svg class="search-icon" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
               <input type="search" class="search-input" id="bookSearch" placeholder="搜索书名、作者、出版社或关键词..." autocomplete="off">
               <button type="button" class="search-clear" id="searchClear" aria-label="清除搜索">×</button>
+            </div>
+            <div class="shelf-filter-bar" id="shelfFilterBar" role="tablist" aria-label="书架状态筛选">
+              <button type="button" class="shelf-pill active" data-filter="all" role="tab" aria-selected="true">全部图书 <span class="shelf-count" id="shelfCountAll">${books.length}</span></button>
+              <button type="button" class="shelf-pill pill-want" data-filter="want" role="tab" aria-selected="false">★ 想读 <span class="shelf-count" id="shelfCountWant">0</span></button>
+              <button type="button" class="shelf-pill pill-read" data-filter="read" role="tab" aria-selected="false">✓ 已读 <span class="shelf-count" id="shelfCountRead">0</span></button>
             </div>
             <div class="search-meta" id="searchMeta">找到 <b id="matchCount">0</b> 本相关图书</div>
           </div>
@@ -484,8 +1110,46 @@ function buildIndex() {
         rowSearchText.set(row, text);
       });
 
+      var activeShelfFilter = 'all';
+      const shelfFilterBar = document.getElementById('shelfFilterBar');
+
+      function syncIndexCardsStatus() {
+        if (!window.ClassicUserStore) return;
+        var statusMap = window.ClassicUserStore.getStatusMap();
+        var counts = window.ClassicUserStore.getCounts();
+        var cntAll = document.getElementById('shelfCountAll');
+        var cntWant = document.getElementById('shelfCountWant');
+        var cntRead = document.getElementById('shelfCountRead');
+        if (cntAll) cntAll.textContent = bookRows.length;
+        if (cntWant) cntWant.textContent = counts.want;
+        if (cntRead) cntRead.textContent = counts.read;
+
+        bookRows.forEach(row => {
+          var id = row.getAttribute('data-id');
+          var st = statusMap[id] || null;
+          var tag = row.querySelector('.brow-user-tag');
+          if (tag) {
+            if (st === 'want') {
+              tag.textContent = '★ 想读';
+              tag.className = 'brow-user-tag tag-want';
+            } else if (st === 'read') {
+              tag.textContent = '✓ 已读';
+              tag.className = 'brow-user-tag tag-read';
+            } else {
+              tag.textContent = '';
+              tag.className = 'brow-user-tag';
+            }
+          }
+          var btnWant = row.querySelector('.brow-act-want');
+          var btnRead = row.querySelector('.brow-act-read');
+          if (btnWant) btnWant.classList.toggle('active', st === 'want');
+          if (btnRead) btnRead.classList.toggle('active', st === 'read');
+        });
+      }
+
       function doSearch() {
         const query = (searchInput ? searchInput.value : '').trim().toLowerCase();
+        const statusMap = window.ClassicUserStore ? window.ClassicUserStore.getStatusMap() : {};
 
         if (query.length > 0) {
           if (searchClear) searchClear.style.display = 'flex';
@@ -501,8 +1165,17 @@ function buildIndex() {
           let sectionVisibleCount = 0;
 
           rows.forEach(row => {
+            const id = row.getAttribute('data-id');
+            const st = statusMap[id] || null;
+
+            let passShelf = true;
+            if (activeShelfFilter === 'want') passShelf = (st === 'want');
+            else if (activeShelfFilter === 'read') passShelf = (st === 'read');
+
             const text = rowSearchText.get(row) || '';
-            const isVisible = !query || text.includes(query);
+            const passQuery = !query || text.includes(query);
+
+            const isVisible = passShelf && passQuery;
             row.style.display = isVisible ? 'flex' : 'none';
             if (isVisible) {
               sectionVisibleCount++;
@@ -514,8 +1187,62 @@ function buildIndex() {
         });
 
         if (matchCountEl) matchCountEl.textContent = totalVisible;
-        if (searchEmpty) searchEmpty.style.display = (totalVisible === 0) ? 'block' : 'none';
+        if (searchEmpty) {
+          if (totalVisible === 0) {
+            searchEmpty.style.display = 'block';
+            if (activeShelfFilter === 'want' && !query) {
+              searchEmpty.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><p>您还没有标记任何「想读」图书。<br><button type="button" class="empty-action-btn" onclick="window.ClassicUserStore && window.ClassicUserStore.openCmdk()">按 ⌘K 全局搜索并标记</button></p>';
+            } else if (activeShelfFilter === 'read' && !query) {
+              searchEmpty.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><p>您还没有标记任何「已读」图书。<br><button type="button" class="empty-action-btn" onclick="window.ClassicUserStore && window.ClassicUserStore.openCmdk()">按 ⌘K 全局搜索并标记</button></p>';
+            } else {
+              searchEmpty.innerHTML = '<svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg><p>未找到匹配的图书，试试其他关键词或作者姓名</p>';
+            }
+          } else {
+            searchEmpty.style.display = 'none';
+          }
+        }
       }
+
+      if (shelfFilterBar) {
+        shelfFilterBar.addEventListener('click', function(e) {
+          var pill = e.target.closest('.shelf-pill');
+          if (!pill) return;
+          activeShelfFilter = pill.getAttribute('data-filter') || 'all';
+          shelfFilterBar.querySelectorAll('.shelf-pill').forEach(function(p) {
+            p.classList.toggle('active', p === pill);
+            p.setAttribute('aria-selected', p === pill ? 'true' : 'false');
+          });
+          doSearch();
+        });
+      }
+
+      // Quick card status toggle handler
+      document.addEventListener('click', function(e) {
+        var btn = e.target.closest('.brow-act-btn');
+        if (!btn || !window.ClassicUserStore) return;
+        e.preventDefault();
+        e.stopPropagation();
+        var actionsWrap = btn.closest('.brow-actions');
+        var id = actionsWrap ? actionsWrap.getAttribute('data-act-id') : null;
+        var targetSt = btn.getAttribute('data-status');
+        if (id) {
+          var newSt = window.ClassicUserStore.toggleStatus(id, targetSt);
+          if (newSt === 'want') window.ClassicUserStore.showToast('已加入「想读」');
+          else if (newSt === 'read') window.ClassicUserStore.showToast('已标记为「已读」');
+          else window.ClassicUserStore.showToast('已取消标记');
+          syncIndexCardsStatus();
+          if (activeShelfFilter !== 'all') {
+            doSearch();
+          }
+        }
+      });
+
+      window.addEventListener('book-status-changed', function() {
+        syncIndexCardsStatus();
+        if (activeShelfFilter !== 'all') doSearch();
+      });
+
+      setTimeout(syncIndexCardsStatus, 0);
 
       let searchRaf = null;
       function debouncedSearch() {
@@ -683,6 +1410,8 @@ function buildIndex() {
     })();
   </script>
 
+  ${renderCmdkModalHtml()}
+  ${cmdkAndStoreScript}
   ${sidebarScript}
   ${perfAndAnalyticsScript}
 </body>
@@ -776,6 +1505,13 @@ function buildBooks() {
                 <small>${escapeHtml(site.brandSub)}</small>
               </a>
             </div>
+            <div class="sitehead-right">
+              <button type="button" class="cmdk-trigger-btn" id="cmdkTriggerBtn" aria-label="搜索图书" title="全局搜索 (快捷键 ⌘K 或 /)">
+                <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <span class="cmdk-trigger-text">搜索全书</span>
+                <span class="cmdk-trigger-kbd"><kbd>⌘K</kbd></span>
+              </button>
+            </div>
           </div>
         </header>
 
@@ -820,6 +1556,20 @@ function buildBooks() {
               <div class="ratebox-stars" aria-label="评分星级">${stars}</div>
               <div class="ratebox-label">豆瓣评分 · ${formatRatingCount(book.ratingCount)}</div>
             </div>
+          </div>
+
+          <div class="detail-user-shelf" data-book-id="${book.id}">
+            <div class="shelf-action-group">
+              <button type="button" class="detail-shelf-btn btn-want" data-status="want" aria-pressed="false" aria-label="标记为想读">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                <span>想读</span>
+              </button>
+              <button type="button" class="detail-shelf-btn btn-read" data-status="read" aria-pressed="false" aria-label="标记为已读">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>已读</span>
+              </button>
+            </div>
+            <div class="shelf-status-badge" id="detailShelfBadge">未标记阅读状态</div>
           </div>
 
           <div class="intro-quote">
@@ -876,6 +1626,8 @@ function buildBooks() {
     });
   </script>
 
+  ${renderCmdkModalHtml()}
+  ${cmdkAndStoreScript}
   ${sidebarScript}
   ${perfAndAnalyticsScript}
 </body>
@@ -897,7 +1649,9 @@ function buildSidebarNav() {
 
 // Run build
 console.log('Building classic-books-guide static website with performance optimizations...');
+buildSearchIndex();
 buildSidebarNav();
 buildIndex();
 buildBooks();
 console.log('Build completed successfully!');
+

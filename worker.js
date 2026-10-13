@@ -35,7 +35,7 @@ export default {
       const sub = url.pathname;
       if (sub.startsWith('/covers/') || sub.endsWith('.webp') || sub.endsWith('.jpg') || sub.endsWith('.png')) {
         headers.set('Cache-Control', 'public, max-age=2592000, stale-while-revalidate=86400');
-      } else if (sub.endsWith('.css') || sub.endsWith('.js') || sub.endsWith('sidebar-nav.html')) {
+      } else if (sub.endsWith('.css') || sub.endsWith('.js') || sub.endsWith('.json') || sub.endsWith('sidebar-nav.html')) {
         if (url.searchParams.has('v')) {
           headers.set('Cache-Control', 'public, max-age=2592000, immutable');
         } else {
