@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>《架构整洁之道》 · 经典书导读</title>
-  <link rel="stylesheet" href="style.css?v=ad4f3308">
+  <link rel="stylesheet" href="style.css?v=fea06185">
 </head>
 <body>
   <div class="layout-container">
@@ -55,6 +55,13 @@
                 <small>CLASSIC BOOKS · 607 MASTERPIECES</small>
               </a>
             </div>
+            <div class="sitehead-right">
+              <button type="button" class="cmdk-trigger-btn" id="cmdkTriggerBtn" aria-label="搜索图书" title="全局搜索 (快捷键 ⌘K 或 /)">
+                <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <span class="cmdk-trigger-text">搜索全书</span>
+                <span class="cmdk-trigger-kbd"><kbd>⌘K</kbd></span>
+              </button>
+            </div>
           </div>
         </header>
 
@@ -102,6 +109,20 @@
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
               <div class="ratebox-label">豆瓣评分 · 988 人评价</div>
             </div>
+          </div>
+
+          <div class="detail-user-shelf" data-book-id="12">
+            <div class="shelf-action-group">
+              <button type="button" class="detail-shelf-btn btn-want" data-status="want" aria-pressed="false" aria-label="标记为想读">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                <span>想读</span>
+              </button>
+              <button type="button" class="detail-shelf-btn btn-read" data-status="read" aria-pressed="false" aria-label="标记为已读">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>已读</span>
+              </button>
+            </div>
+            <div class="shelf-status-badge" id="detailShelfBadge">未标记阅读状态</div>
           </div>
 
           <div class="intro-quote">
@@ -162,6 +183,389 @@
       </li>
             </ol>
           </section>
+
+          <section class="section-block mindmap-section" id="mindmapSection">
+      <div class="mindmap-header">
+        <div class="mindmap-header-left">
+          <span class="mindmap-badge">知识脉络</span>
+          <h2 class="mindmap-title">全书思维导图</h2>
+        </div>
+        <div class="mindmap-actions">
+          <button type="button" class="mm-btn mm-btn-toggle" id="mmToggleAllBtn" title="全部折叠/展开">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+            <span class="mm-toggle-text">全部收起</span>
+          </button>
+          <button type="button" class="mm-btn mm-btn-copy" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>复制大纲</span>
+          </button>
+          <button type="button" class="mm-btn mm-btn-fullscreen" id="mmFullscreenBtn" title="全屏沉浸式全景模式">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+            <span>全屏全景</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mindmap-container" id="mindmapContainer">
+        <div class="mm-root-card">
+          <div class="mm-root-pill">核心主旨</div>
+          <div class="mm-root-title">《架构整洁之道》</div>
+          <div class="mm-root-theme">架构终极目标与双重价值、三大编程范式、SOLID原则、组件内聚耦合与整洁同心圆</div>
+        </div>
+
+        <div class="mm-tree-body">
+          <div class="mm-branch" data-branch-index="0">
+        <div class="mm-branch-header">
+          <span class="mm-branch-toggle-icon">▼</span>
+          <span class="mm-branch-title">一、软件架构的终极目标与双重价值</span>
+          <span class="mm-branch-desc">软件之所以称之为‘软’的根本原因</span>
+        </div>
+        <div class="mm-branch-content">
+          <div class="mm-topics-grid">
+            <div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">终极目标与人力成本曲线</h4>
+          </div>
+          <p class="mm-topic-desc">架构好坏的唯一客观衡量标准</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">终极目标：用最小的人力成本来满足系统构建与维护的业务需求</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">代码行数与人员成本背离悲剧：不良架构导致随着代码量增加，新功能开发效率无限趋近于零，工程团队沦为修补救火队</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">唯有写好代码才能跑得快：‘先凑合上线后面再重构’是一句永远不会兑现的谎言</span>
+        </li>
+          </ul>
+        </div>
+<div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">行为价值 vs 架构价值</h4>
+          </div>
+          <p class="mm-topic-desc">艾森豪威尔紧急与重要象限的博弈</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">行为价值（Behavioral Value）：机器按照需求文档正确运行并赚钱（紧急但不总是重要）</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">架构价值（Architectural Value）：系统容易应对未来改变、易于演化（重要但不紧急）</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">架构师的不可推卸天职：坚决捍卫软件的‘可修改性’，抵制业务方将架构价值完全让位于短期行为价值的冲动</span>
+        </li>
+          </ul>
+        </div>
+          </div>
+        </div>
+      </div>
+<div class="mm-branch" data-branch-index="1">
+        <div class="mm-branch-header">
+          <span class="mm-branch-toggle-icon">▼</span>
+          <span class="mm-branch-title">二、三大编程范式的约束本质</span>
+          <span class="mm-branch-desc">范式并不赋予新能力，而是剥夺危险能力</span>
+        </div>
+        <div class="mm-branch-content">
+          <div class="mm-topics-grid">
+            <div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">结构化、面向对象与函数式编程</h4>
+          </div>
+          <p class="mm-topic-desc">近半个世纪软件工程的三大理论基石</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">结构化编程（Dijkstra）：剥夺 goto 语句，通过顺序、选择、循环三种控制结构实现代码的局部证明与分块递归分解</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">面向对象编程（OO）：通过多态机制实现‘控制反转’（IoC）；核心不是封装或继承，而是允许源码依赖方向跨越架构边界并反向于控制流</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">函数式编程（Functional）：剥夺赋值与可变变量（Immutability），消除多线程并发中的资源竞争、死锁与状态竞争问题</span>
+        </li>
+          </ul>
+        </div>
+          </div>
+        </div>
+      </div>
+<div class="mm-branch" data-branch-index="2">
+        <div class="mm-branch-header">
+          <span class="mm-branch-toggle-icon">▼</span>
+          <span class="mm-branch-title">三、SOLID 面向对象设计原则</span>
+          <span class="mm-branch-desc">指导类与模块级设计的不变法门</span>
+        </div>
+        <div class="mm-branch-content">
+          <div class="mm-topics-grid">
+            <div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">单一职责与开闭原则（SRP &amp; OCP）</h4>
+          </div>
+          <p class="mm-topic-desc">应对变化与职责分离</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">单一职责原则（SRP）：任何一个模块应该只对某一类行为者（Actor）负责；不是‘一个函数只干一件事’，而是防止 CFO 的计算逻辑改动破坏 COO 的报表</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">开闭原则（OCP）：软件实体应当对扩展开放，对修改关闭；通过接口抽象与依赖反转，使新功能能通过添加新代码实现，而非修改已有代码</span>
+        </li>
+          </ul>
+        </div>
+<div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">里氏替换、接口隔离与依赖反转（LSP, ISP, DIP）</h4>
+          </div>
+          <p class="mm-topic-desc">子类兼容、接口契约与依赖倒置</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">里氏替换原则（LSP）：子类型必须能够替换掉它们的基类型而行为不破坏调用者；著名的‘正方形不是长方形’继承反模式</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">接口隔离原则（ISP）：不应强迫客户端依赖它们用不到的接口；胖接口必须拆分为细粒度的客户端专用接口</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">依赖反转原则（DIP）：高层业务策略模块绝不应依赖低层细节实现模块，二者都应依赖于抽象；抽象不应依赖细节，细节必须依赖抽象</span>
+        </li>
+          </ul>
+        </div>
+          </div>
+        </div>
+      </div>
+<div class="mm-branch" data-branch-index="3">
+        <div class="mm-branch-header">
+          <span class="mm-branch-toggle-icon">▼</span>
+          <span class="mm-branch-title">四、组件构建原则（内聚与耦合）</span>
+          <span class="mm-branch-desc">指导 JAR / NPM / DLL 包与服务粒度划分</span>
+        </div>
+        <div class="mm-branch-content">
+          <div class="mm-topics-grid">
+            <div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">组件内聚性三大原则（REP, CCP, CRP）</h4>
+          </div>
+          <p class="mm-topic-desc">决定哪些类应该打包放在一起</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">复用/发布等价原则（REP）：软件复用的最小粒度等同于其发布的最小粒度，必须有版本追踪与发布文档支持</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">共同闭包原则（CCP）：因为同样原因需要修改的类应该被组织在同一个组件中；这是 SRP 原则在组件级别的大尺度映射</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">共同复用原则（CRP）：不要强迫组件的用户依赖他们用不到的类；这是 ISP 原则在组件级别的对应物</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">内聚张力三角：REP/CCP/CRP 彼此制衡，项目早期偏重开发便利（CCP），成熟期偏重复用便利（REP/CRP）</span>
+        </li>
+          </ul>
+        </div>
+<div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">组件耦合性三大原则（ADP, SDP, SAP）</h4>
+          </div>
+          <p class="mm-topic-desc">管理组件间依赖关系与稳定性</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">无环依赖原则（ADP）：组件依赖关系图绝对不允许出现环；解除循环依赖可通过 DIP 引入新抽象接口或抽取公用组件</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">稳定依赖原则（SDP）：组件应该依赖于比自己更稳定的组件；稳定性指标 I = 传入依赖 / (传入依赖 + 传出依赖)，0为极稳定，1为极不稳定</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">稳定抽象原则（SAP）：组件的抽象程度（A）应该与其稳定性（I）成正比；极稳定的组件必须高度抽象，避免陷入‘痛苦区’（高稳定且高具象）</span>
+        </li>
+          </ul>
+        </div>
+          </div>
+        </div>
+      </div>
+<div class="mm-branch" data-branch-index="4">
+        <div class="mm-branch-header">
+          <span class="mm-branch-toggle-icon">▼</span>
+          <span class="mm-branch-title">五、整洁架构（Clean Architecture）模型与边界划分</span>
+          <span class="mm-branch-desc">洋葱同心圆与独立于技术细节的纯粹业务内核</span>
+        </div>
+        <div class="mm-branch-content">
+          <div class="mm-topics-grid">
+            <div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">同心圆结构与依赖规则（Dependency Rule）</h4>
+          </div>
+          <p class="mm-topic-desc">外圈是机制，内圈是策略</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">依赖规则：源代码依赖方向必须且只能指向同心圆内层；内层绝不允许出现任何外层的类、函数、变量或技术框架名称</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">实体层（Entities）：封装企业最核心的高阶业务规则与实体对象，不受任何外部应用场景变动影响</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">用例层（Use Cases）：封装特定应用的业务流程编排，接收输入、调用实体、产出结果，对具体 UI 和存储完全不知情</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">接口适配器层（Interface Adapters）：将用例与实体需要的数据格式转为外部技术所需的格式（Controllers, Gateways, Presenters）</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">框架与驱动层（Frameworks &amp; Drivers）：最外层的易变细节，包括 Web 框架、数据库驱动、UI 控件、消息中间件等</span>
+        </li>
+          </ul>
+        </div>
+<div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">边界划分与推迟关键决策</h4>
+          </div>
+          <p class="mm-topic-desc">将所有框架和数据库视为可替换的插件</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">架构的插件化（Plugin Architecture）：让数据库、Web 服务器、消息总线都成为系统核心业务的插头（Plugin），随时可插拔替换</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">推迟决策（Deferring Decisions）：优秀架构师的标志是尽可能晚地做具体技术选型决策，在获得足够业务事实前保留最大的灵活性</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">测试作为架构的第一等公民：良好的架构天然具备高度可测试性（Testability），无需启动真实数据库和 Web 容器即可完成核心业务测试</span>
+        </li>
+          </ul>
+        </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+
+      <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true"># 《架构整洁之道》 思维导图
+
+&gt; 核心主题：架构终极目标与双重价值、三大编程范式、SOLID原则、组件内聚耦合与整洁同心圆
+
+## 一、软件架构的终极目标与双重价值
+*软件之所以称之为‘软’的根本原因*
+
+### 终极目标与人力成本曲线
+架构好坏的唯一客观衡量标准
+- 终极目标：用最小的人力成本来满足系统构建与维护的业务需求
+- 代码行数与人员成本背离悲剧：不良架构导致随着代码量增加，新功能开发效率无限趋近于零，工程团队沦为修补救火队
+- 唯有写好代码才能跑得快：‘先凑合上线后面再重构’是一句永远不会兑现的谎言
+
+### 行为价值 vs 架构价值
+艾森豪威尔紧急与重要象限的博弈
+- 行为价值（Behavioral Value）：机器按照需求文档正确运行并赚钱（紧急但不总是重要）
+- 架构价值（Architectural Value）：系统容易应对未来改变、易于演化（重要但不紧急）
+- 架构师的不可推卸天职：坚决捍卫软件的‘可修改性’，抵制业务方将架构价值完全让位于短期行为价值的冲动
+
+## 二、三大编程范式的约束本质
+*范式并不赋予新能力，而是剥夺危险能力*
+
+### 结构化、面向对象与函数式编程
+近半个世纪软件工程的三大理论基石
+- 结构化编程（Dijkstra）：剥夺 goto 语句，通过顺序、选择、循环三种控制结构实现代码的局部证明与分块递归分解
+- 面向对象编程（OO）：通过多态机制实现‘控制反转’（IoC）；核心不是封装或继承，而是允许源码依赖方向跨越架构边界并反向于控制流
+- 函数式编程（Functional）：剥夺赋值与可变变量（Immutability），消除多线程并发中的资源竞争、死锁与状态竞争问题
+
+## 三、SOLID 面向对象设计原则
+*指导类与模块级设计的不变法门*
+
+### 单一职责与开闭原则（SRP &amp; OCP）
+应对变化与职责分离
+- 单一职责原则（SRP）：任何一个模块应该只对某一类行为者（Actor）负责；不是‘一个函数只干一件事’，而是防止 CFO 的计算逻辑改动破坏 COO 的报表
+- 开闭原则（OCP）：软件实体应当对扩展开放，对修改关闭；通过接口抽象与依赖反转，使新功能能通过添加新代码实现，而非修改已有代码
+
+### 里氏替换、接口隔离与依赖反转（LSP, ISP, DIP）
+子类兼容、接口契约与依赖倒置
+- 里氏替换原则（LSP）：子类型必须能够替换掉它们的基类型而行为不破坏调用者；著名的‘正方形不是长方形’继承反模式
+- 接口隔离原则（ISP）：不应强迫客户端依赖它们用不到的接口；胖接口必须拆分为细粒度的客户端专用接口
+- 依赖反转原则（DIP）：高层业务策略模块绝不应依赖低层细节实现模块，二者都应依赖于抽象；抽象不应依赖细节，细节必须依赖抽象
+
+## 四、组件构建原则（内聚与耦合）
+*指导 JAR / NPM / DLL 包与服务粒度划分*
+
+### 组件内聚性三大原则（REP, CCP, CRP）
+决定哪些类应该打包放在一起
+- 复用/发布等价原则（REP）：软件复用的最小粒度等同于其发布的最小粒度，必须有版本追踪与发布文档支持
+- 共同闭包原则（CCP）：因为同样原因需要修改的类应该被组织在同一个组件中；这是 SRP 原则在组件级别的大尺度映射
+- 共同复用原则（CRP）：不要强迫组件的用户依赖他们用不到的类；这是 ISP 原则在组件级别的对应物
+- 内聚张力三角：REP/CCP/CRP 彼此制衡，项目早期偏重开发便利（CCP），成熟期偏重复用便利（REP/CRP）
+
+### 组件耦合性三大原则（ADP, SDP, SAP）
+管理组件间依赖关系与稳定性
+- 无环依赖原则（ADP）：组件依赖关系图绝对不允许出现环；解除循环依赖可通过 DIP 引入新抽象接口或抽取公用组件
+- 稳定依赖原则（SDP）：组件应该依赖于比自己更稳定的组件；稳定性指标 I = 传入依赖 / (传入依赖 + 传出依赖)，0为极稳定，1为极不稳定
+- 稳定抽象原则（SAP）：组件的抽象程度（A）应该与其稳定性（I）成正比；极稳定的组件必须高度抽象，避免陷入‘痛苦区’（高稳定且高具象）
+
+## 五、整洁架构（Clean Architecture）模型与边界划分
+*洋葱同心圆与独立于技术细节的纯粹业务内核*
+
+### 同心圆结构与依赖规则（Dependency Rule）
+外圈是机制，内圈是策略
+- 依赖规则：源代码依赖方向必须且只能指向同心圆内层；内层绝不允许出现任何外层的类、函数、变量或技术框架名称
+- 实体层（Entities）：封装企业最核心的高阶业务规则与实体对象，不受任何外部应用场景变动影响
+- 用例层（Use Cases）：封装特定应用的业务流程编排，接收输入、调用实体、产出结果，对具体 UI 和存储完全不知情
+- 接口适配器层（Interface Adapters）：将用例与实体需要的数据格式转为外部技术所需的格式（Controllers, Gateways, Presenters）
+- 框架与驱动层（Frameworks &amp; Drivers）：最外层的易变细节，包括 Web 框架、数据库驱动、UI 控件、消息中间件等
+
+### 边界划分与推迟关键决策
+将所有框架和数据库视为可替换的插件
+- 架构的插件化（Plugin Architecture）：让数据库、Web 服务器、消息总线都成为系统核心业务的插头（Plugin），随时可插拔替换
+- 推迟决策（Deferring Decisions）：优秀架构师的标志是尽可能晚地做具体技术选型决策，在获得足够业务事实前保留最大的灵活性
+- 测试作为架构的第一等公民：良好的架构天然具备高度可测试性（Testability），无需启动真实数据库和 Web 容器即可完成核心业务测试</textarea>
+
+      <!-- Fullscreen Modal View -->
+      <div class="mindmap-modal" id="mindmapModal" aria-hidden="true" role="dialog" aria-label="思维导图全景全屏视图">
+        <div class="mm-modal-container">
+          <div class="mm-modal-header">
+            <div class="mm-modal-title-wrap">
+              <span class="mm-modal-tag">思维导图全景</span>
+              <span class="mm-modal-book-title">《架构整洁之道》</span>
+              <span class="mm-modal-theme">架构终极目标与双重价值、三大编程范式、SOLID原则、组件内聚耦合与整洁同心圆</span>
+            </div>
+            <div class="mm-modal-controls">
+              <button type="button" class="mm-btn" id="mmModalToggleAllBtn">
+                <span class="mm-modal-toggle-text">全部收起</span>
+              </button>
+              <button type="button" class="mm-modal-close-btn" id="mmModalCloseBtn" aria-label="关闭全屏">×</button>
+            </div>
+          </div>
+          <div class="mm-modal-body" id="mmModalBody"></div>
+        </div>
+      </div>
+
+      <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
+    </section>
 
           <section class="section-block">
             <h2>全书结构</h2>
@@ -232,6 +636,715 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
+  </script>
+
+  
+  <script>
+    (function() {
+      var mmSection = document.getElementById('mindmapSection');
+      if (!mmSection) return;
+
+      var container = document.getElementById('mindmapContainer');
+      var toggleAllBtn = document.getElementById('mmToggleAllBtn');
+      var copyBtn = document.getElementById('mmCopyMarkdownBtn');
+      var fullscreenBtn = document.getElementById('mmFullscreenBtn');
+      var modal = document.getElementById('mindmapModal');
+      var modalCloseBtn = document.getElementById('mmModalCloseBtn');
+      var modalBody = document.getElementById('mmModalBody');
+      var modalToggleAllBtn = document.getElementById('mmModalToggleAllBtn');
+      var toast = document.getElementById('mmToast');
+      var mdSource = document.getElementById('mmMarkdownSource');
+
+      var isAllCollapsed = false;
+
+      function bindBranchHeaders(root) {
+        var headers = root.querySelectorAll('.mm-branch-header');
+        headers.forEach(function(header) {
+          header.addEventListener('click', function() {
+            var branch = header.closest('.mm-branch');
+            if (branch) {
+              branch.classList.toggle('is-collapsed');
+            }
+          });
+        });
+      }
+
+      bindBranchHeaders(container);
+
+      // Toggle all in main view
+      if (toggleAllBtn) {
+        toggleAllBtn.addEventListener('click', function() {
+          isAllCollapsed = !isAllCollapsed;
+          var branches = container.querySelectorAll('.mm-branch');
+          branches.forEach(function(b) {
+            if (isAllCollapsed) {
+              b.classList.add('is-collapsed');
+            } else {
+              b.classList.remove('is-collapsed');
+            }
+          });
+          var txt = toggleAllBtn.querySelector('.mm-toggle-text');
+          if (txt) txt.textContent = isAllCollapsed ? '全部展开' : '全部收起';
+        });
+      }
+
+      // Copy Markdown Outline
+      function showToast(msg) {
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add('active');
+        setTimeout(function() {
+          toast.classList.remove('active');
+        }, 2200);
+      }
+
+      if (copyBtn && mdSource) {
+        copyBtn.addEventListener('click', function() {
+          var text = mdSource.value;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function() {
+              showToast('✓ 已复制思维导图大纲到剪贴板！');
+            }).catch(function() {
+              fallbackCopy(text);
+            });
+          } else {
+            fallbackCopy(text);
+          }
+        });
+      }
+
+      function fallbackCopy(text) {
+        try {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          showToast('✓ 已复制思维导图大纲到剪贴板！');
+        } catch (e) {
+          showToast('复制失败，请手动选取复制');
+        }
+      }
+
+      // Fullscreen Modal Logic
+      function openModal() {
+        if (!modal || !modalBody) return;
+        modalBody.innerHTML = container.innerHTML;
+        bindBranchHeaders(modalBody);
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', openModal);
+      }
+      if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
+      }
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) closeModal();
+        });
+      }
+
+      if (modalToggleAllBtn) {
+        modalToggleAllBtn.addEventListener('click', function() {
+          var branches = modalBody.querySelectorAll('.mm-branch');
+          var shouldCollapse = !branches[0].classList.contains('is-collapsed');
+          branches.forEach(function(b) {
+            if (shouldCollapse) b.classList.add('is-collapsed');
+            else b.classList.remove('is-collapsed');
+          });
+          var txt = modalToggleAllBtn.querySelector('.mm-modal-toggle-text');
+          if (txt) txt.textContent = shouldCollapse ? '全部展开' : '全部收起';
+        });
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+
+  <div class="cmdk-backdrop" id="cmdkBackdrop" aria-hidden="true">
+    <div class="cmdk-dialog" id="cmdkDialog" role="dialog" aria-modal="true" aria-label="全书搜索与快速标记">
+      <div class="cmdk-head">
+        <div class="cmdk-input-wrap">
+          <svg class="cmdk-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="search" class="cmdk-input" id="cmdkSearchInput" placeholder="搜索书名、作者、分类，或输入“想读 / 已读”..." autocomplete="off" spellcheck="false">
+          <button type="button" class="cmdk-input-clear" id="cmdkInputClear" aria-label="清空">×</button>
+        </div>
+        <button type="button" class="cmdk-close-btn" id="cmdkCloseBtn" aria-label="关闭搜索">ESC</button>
+      </div>
+
+      <div class="cmdk-pills-bar" id="cmdkPillsBar">
+        <button type="button" class="cmdk-pill active" data-filter-type="status" data-filter-val="all">全部</button>
+        <button type="button" class="cmdk-pill pill-want" data-filter-type="status" data-filter-val="want">★ 想读 <span class="cmdk-pill-cnt" id="cmdkCountWant">0</span></button>
+        <button type="button" class="cmdk-pill pill-read" data-filter-type="status" data-filter-val="read">✓ 已读 <span class="cmdk-pill-cnt" id="cmdkCountRead">0</span></button>
+        <span class="cmdk-pill-sep"></span>
+        <button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="软件工程">软件工程</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="系统设计">系统设计</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="UI/UX 设计">UI/UX 设计</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="产品经理">产品经理</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="中国历史">中国历史</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="建筑学">建筑学</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="艺术">艺术</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="主理人五星精选">五星选</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="主理人四星精选">四星选</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="主理人心愿精选">心愿选</button>
+      </div>
+
+      <div class="cmdk-body" id="cmdkBody">
+        <ul class="cmdk-results" id="cmdkResults" role="listbox"></ul>
+        <div class="cmdk-empty" id="cmdkEmpty" style="display:none;">
+          <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <p class="cmdk-empty-text">未找到相关图书</p>
+          <p class="cmdk-empty-sub">可尝试书名关键词、作者姓名或点击上方分类切换</p>
+        </div>
+      </div>
+
+      <div class="cmdk-foot">
+        <div class="cmdk-foot-hints">
+          <span class="cmdk-hint"><kbd>↑</kbd><kbd>↓</kbd> 选择</span>
+          <span class="cmdk-hint"><kbd>↵</kbd> 打开</span>
+          <span class="cmdk-hint"><kbd>ESC</kbd> 退出</span>
+        </div>
+        <div class="cmdk-foot-stats" id="cmdkFootStats">共 921 本经典书</div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    (function() {
+      // 1. User Reading Status LocalStorage Management
+      var STORAGE_KEY = 'classic_books_user_status';
+
+      function getStatusMap() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : {};
+        } catch (e) {
+          return {};
+        }
+      }
+
+      function setStatusMap(map) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
+        } catch (e) {}
+        broadcastStatus(map);
+      }
+
+      function getUserStatus(bookId) {
+        var map = getStatusMap();
+        return map[String(bookId)] || null;
+      }
+
+      function toggleUserStatus(bookId, targetStatus) {
+        var map = getStatusMap();
+        var idStr = String(bookId);
+        var cur = map[idStr] || null;
+        var newStatus = null;
+        if (cur === targetStatus) {
+          delete map[idStr];
+          newStatus = null;
+        } else {
+          map[idStr] = targetStatus;
+          newStatus = targetStatus;
+        }
+        setStatusMap(map);
+        return newStatus;
+      }
+
+      function getStatusCounts() {
+        var map = getStatusMap();
+        var want = 0, read = 0;
+        Object.keys(map).forEach(function(k) {
+          if (map[k] === 'want') want++;
+          else if (map[k] === 'read') read++;
+        });
+        return { want: want, read: read, total: want + read };
+      }
+
+      function broadcastStatus(map) {
+        window.dispatchEvent(new CustomEvent('book-status-changed', { detail: map }));
+      }
+
+      window.addEventListener('storage', function(e) {
+        if (e.key === STORAGE_KEY) {
+          broadcastStatus(getStatusMap());
+        }
+      });
+
+      // Toast Notification Component
+      var toastTimer = null;
+      function showToast(msg) {
+        var toast = document.getElementById('statusToast');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.id = 'statusToast';
+          toast.className = 'status-toast';
+          document.body.appendChild(toast);
+        }
+        toast.textContent = msg;
+        toast.classList.add('visible');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function() {
+          toast.classList.remove('visible');
+        }, 2200);
+      }
+
+      // 2. Search Index Loader (Lazy + Idle Preload)
+      var searchIndex = null;
+      var isIndexLoading = false;
+      var indexCallbacks = [];
+
+      function loadSearchIndex(cb) {
+        if (searchIndex) {
+          if (cb) cb(searchIndex);
+          return;
+        }
+        if (cb) indexCallbacks.push(cb);
+        if (isIndexLoading) return;
+        isIndexLoading = true;
+
+        fetch('search-index.json')
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            searchIndex = data;
+            isIndexLoading = false;
+            while (indexCallbacks.length) {
+              var fn = indexCallbacks.shift();
+              try { fn(searchIndex); } catch (e) {}
+            }
+          })
+          .catch(function(err) {
+            isIndexLoading = false;
+          });
+      }
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() { loadSearchIndex(); }, { timeout: 3000 });
+      } else {
+        setTimeout(function() { loadSearchIndex(); }, 2000);
+      }
+
+      // 3. Cmd+K Dialog Controller
+      var backdrop = document.getElementById('cmdkBackdrop');
+      var input = document.getElementById('cmdkSearchInput');
+      var clearBtn = document.getElementById('cmdkInputClear');
+      var closeBtn = document.getElementById('cmdkCloseBtn');
+      var pillsBar = document.getElementById('cmdkPillsBar');
+      var resultsList = document.getElementById('cmdkResults');
+      var emptyEl = document.getElementById('cmdkEmpty');
+      var footStats = document.getElementById('cmdkFootStats');
+      var triggerBtn = document.getElementById('cmdkTriggerBtn');
+
+      var currentStatusFilter = 'all';
+      var currentDomainFilter = 'all';
+      var selectedIndex = 0;
+      var renderedItems = [];
+
+      function updatePillCounts() {
+        var counts = getStatusCounts();
+        var cntWant = document.getElementById('cmdkCountWant');
+        var cntRead = document.getElementById('cmdkCountRead');
+        if (cntWant) cntWant.textContent = counts.want;
+        if (cntRead) cntRead.textContent = counts.read;
+      }
+
+      function openCmdk() {
+        if (!backdrop) return;
+        backdrop.classList.add('is-open');
+        document.body.classList.add('cmdk-modal-open');
+        updatePillCounts();
+        loadSearchIndex(function() {
+          renderResults();
+        });
+        if (input) {
+          input.focus();
+          input.select();
+        }
+      }
+
+      function closeCmdk() {
+        if (!backdrop) return;
+        backdrop.classList.remove('is-open');
+        document.body.classList.remove('cmdk-modal-open');
+      }
+
+      function toggleCmdk() {
+        if (backdrop && backdrop.classList.contains('is-open')) {
+          closeCmdk();
+        } else {
+          openCmdk();
+        }
+      }
+
+      // Global Keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+          e.preventDefault();
+          toggleCmdk();
+          return;
+        }
+        if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          e.preventDefault();
+          openCmdk();
+          return;
+        }
+        if (e.key === 'Escape' && backdrop && backdrop.classList.contains('is-open')) {
+          e.preventDefault();
+          closeCmdk();
+          return;
+        }
+        if (backdrop && backdrop.classList.contains('is-open')) {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            navigateResults(1);
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            navigateResults(-1);
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            openSelectedResult();
+          }
+        }
+      });
+
+      if (triggerBtn) {
+        triggerBtn.addEventListener('click', openCmdk);
+      }
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeCmdk);
+      }
+      if (backdrop) {
+        backdrop.addEventListener('click', function(e) {
+          if (e.target === backdrop) closeCmdk();
+        });
+      }
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+          if (input) {
+            input.value = '';
+            input.focus();
+            clearBtn.style.display = 'none';
+            selectedIndex = 0;
+            renderResults();
+          }
+        });
+      }
+
+      if (pillsBar) {
+        pillsBar.addEventListener('click', function(e) {
+          var pill = e.target.closest('.cmdk-pill');
+          if (!pill) return;
+          var fType = pill.getAttribute('data-filter-type');
+          var fVal = pill.getAttribute('data-filter-val');
+
+          if (fType === 'status') {
+            currentStatusFilter = fVal;
+            pillsBar.querySelectorAll('.cmdk-pill[data-filter-type="status"]').forEach(function(p) {
+              p.classList.toggle('active', p === pill);
+            });
+          } else if (fType === 'domain') {
+            if (currentDomainFilter === fVal) {
+              currentDomainFilter = 'all';
+              pill.classList.remove('active');
+            } else {
+              currentDomainFilter = fVal;
+              pillsBar.querySelectorAll('.cmdk-pill[data-filter-type="domain"]').forEach(function(p) {
+                p.classList.toggle('active', p === pill);
+              });
+            }
+          }
+          selectedIndex = 0;
+          renderResults();
+        });
+      }
+
+      if (input) {
+        input.addEventListener('input', function() {
+          if (clearBtn) clearBtn.style.display = input.value ? 'flex' : 'none';
+          selectedIndex = 0;
+          renderResults();
+        });
+      }
+
+      function escapeRegex(str) {
+        return str.replace(/[.*+?^$\{}()|[\]\\]/g, '\\$&');
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function highlightText(text, q) {
+        if (!text) return '';
+        if (!q) return escapeHtml(text);
+        var cleanQ = q.replace(/[《》]/g, '').trim();
+        if (!cleanQ) return escapeHtml(text);
+        var re = new RegExp('(' + escapeRegex(cleanQ) + ')', 'gi');
+        return escapeHtml(text).replace(re, '<mark class="cmdk-highlight">$1</mark>');
+      }
+
+      function renderResults() {
+        if (!searchIndex) return;
+        var q = (input ? input.value : '').trim().toLowerCase();
+        var statusMap = getStatusMap();
+
+        var filtered = searchIndex.filter(function(b) {
+          if (currentStatusFilter === 'want' && statusMap[b.id] !== 'want') return false;
+          if (currentStatusFilter === 'read' && statusMap[b.id] !== 'read') return false;
+
+          if (currentDomainFilter !== 'all') {
+            if (!b.domain.includes(currentDomainFilter) && !currentDomainFilter.includes(b.domain.slice(0, 4))) return false;
+          }
+
+          if (!q) return true;
+
+          var titleClean = b.title.replace(/[《》]/g, '').toLowerCase();
+          var matchTitle = titleClean.includes(q);
+          var matchAuthor = (b.author || '').toLowerCase().includes(q);
+          var matchDomain = (b.domain || '').toLowerCase().includes(q);
+          var matchIntro = (b.intro || '').toLowerCase().includes(q);
+          var matchPub = (b.publisher || '').toLowerCase().includes(q);
+          var matchOrig = (b.originalTitle || '').toLowerCase().includes(q);
+
+          var matchKw = false;
+          if (q === '想读' || q === '想看') matchKw = (statusMap[b.id] === 'want');
+          if (q === '已读' || q === '看过') matchKw = (statusMap[b.id] === 'read');
+
+          return matchTitle || matchAuthor || matchDomain || matchIntro || matchPub || matchOrig || matchKw;
+        });
+
+        if (q) {
+          var scored = filtered.map(function(b) {
+            var score = 0;
+            var titleClean = b.title.replace(/[《》]/g, '').toLowerCase();
+            if (titleClean === q) score += 200;
+            else if (titleClean.startsWith(q)) score += 120;
+            else if (titleClean.includes(q)) score += 80;
+
+            if ((b.author || '').toLowerCase().includes(q)) score += 50;
+            if ((b.domain || '').toLowerCase().includes(q)) score += 35;
+            if ((b.intro || '').toLowerCase().includes(q)) score += 15;
+            if ((b.originalTitle || '').toLowerCase().includes(q)) score += 20;
+
+            var r = parseFloat(b.rating) || 0;
+            score += r * 2;
+            return { b: b, score: score };
+          });
+          scored.sort(function(a, b) { return b.score - a.score; });
+          renderedItems = scored.slice(0, 40).map(function(item) { return item.b; });
+        } else {
+          renderedItems = filtered.slice(0, 40);
+        }
+
+        if (emptyEl) {
+          emptyEl.style.display = renderedItems.length === 0 ? 'flex' : 'none';
+          var emptyText = emptyEl.querySelector('.cmdk-empty-text');
+          if (emptyText) {
+            if (currentStatusFilter === 'want' && !q) {
+              emptyText.textContent = '您还没有标记「想读」图书';
+            } else if (currentStatusFilter === 'read' && !q) {
+              emptyText.textContent = '您还没有标记「已读」图书';
+            } else {
+              emptyText.textContent = '未找到相关图书';
+            }
+          }
+        }
+
+        if (footStats) {
+          footStats.textContent = renderedItems.length === 0
+            ? '无匹配结果'
+            : '显示 ' + renderedItems.length + ' / ' + filtered.length + ' 本书';
+        }
+
+        if (!resultsList) return;
+        resultsList.innerHTML = '';
+
+        renderedItems.forEach(function(b, idx) {
+          var isSel = idx === selectedIndex;
+          var userSt = statusMap[b.id] || null;
+          var tagHtml = '';
+          if (userSt === 'want') tagHtml = '<span class="cmdk-item-tag tag-want">★ 想读</span>';
+          else if (userSt === 'read') tagHtml = '<span class="cmdk-item-tag tag-read">✓ 已读</span>';
+
+          var li = document.createElement('li');
+          li.className = 'cmdk-item' + (isSel ? ' is-selected' : '');
+          li.setAttribute('role', 'option');
+          li.setAttribute('aria-selected', isSel ? 'true' : 'false');
+          li.setAttribute('data-index', idx);
+          li.setAttribute('data-slug', b.slug);
+          li.setAttribute('data-id', b.id);
+
+          var coverBase = b.cover.split('/').pop().replace(/\.[^.]+$/, '');
+          var thumbWebp = 'covers/thumbs/' + coverBase + '.webp';
+
+          li.innerHTML = 
+            '<a class="cmdk-item-link" href="' + b.slug + '.html">' +
+              '<div class="cmdk-item-cover">' +
+                '<img src="' + thumbWebp + '" onerror="this.src=\'' + b.cover + '\'" alt="' + escapeHtml(b.title) + '" loading="lazy" width="38" height="54">' +
+              '</div>' +
+              '<div class="cmdk-item-info">' +
+                '<div class="cmdk-item-title-row">' +
+                  '<span class="cmdk-item-title">' + highlightText(b.title, q) + '</span>' +
+                  '<span class="cmdk-item-domain">' + escapeHtml(b.domain) + '</span>' +
+                  tagHtml +
+                '</div>' +
+                '<div class="cmdk-item-meta">' +
+                  '<span class="cmdk-item-author">' + highlightText(b.author, q) + '</span>' +
+                  '<span class="cmdk-item-sep">/</span>' +
+                  '<span class="cmdk-item-rating">★ ' + b.rating + '</span>' +
+                  '<span class="cmdk-item-count">(' + escapeHtml(b.ratingCount) + ')</span>' +
+                '</div>' +
+                '<div class="cmdk-item-intro">' + highlightText(b.intro, q) + '</div>' +
+              '</div>' +
+            '</a>' +
+            '<div class="cmdk-item-actions">' +
+              '<button type="button" class="cmdk-act-btn cmdk-act-want' + (userSt === 'want' ? ' active' : '') + '" data-status="want" data-id="' + b.id + '" title="标记为想读">★ 想读</button>' +
+              '<button type="button" class="cmdk-act-btn cmdk-act-read' + (userSt === 'read' ? ' active' : '') + '" data-status="read" data-id="' + b.id + '" title="标记为已读">✓ 已读</button>' +
+            '</div>';
+
+          resultsList.appendChild(li);
+        });
+      }
+
+      function navigateResults(dir) {
+        if (renderedItems.length === 0) return;
+        selectedIndex += dir;
+        if (selectedIndex < 0) selectedIndex = renderedItems.length - 1;
+        if (selectedIndex >= renderedItems.length) selectedIndex = 0;
+
+        var items = resultsList ? resultsList.querySelectorAll('.cmdk-item') : [];
+        items.forEach(function(item, idx) {
+          var isSel = idx === selectedIndex;
+          item.classList.toggle('is-selected', isSel);
+          item.setAttribute('aria-selected', isSel ? 'true' : 'false');
+          if (isSel) {
+            item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          }
+        });
+      }
+
+      function openSelectedResult() {
+        if (renderedItems.length === 0) return;
+        var b = renderedItems[selectedIndex];
+        if (b) {
+          location.href = b.slug + '.html';
+        }
+      }
+
+      if (resultsList) {
+        resultsList.addEventListener('click', function(e) {
+          var actBtn = e.target.closest('.cmdk-act-btn');
+          if (actBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            var bId = actBtn.getAttribute('data-id');
+            var targetSt = actBtn.getAttribute('data-status');
+            var newSt = toggleUserStatus(bId, targetSt);
+            if (newSt === 'want') showToast('已加入「想读」');
+            else if (newSt === 'read') showToast('已标记为「已读」');
+            else showToast('已取消标记');
+            updatePillCounts();
+            renderResults();
+            return;
+          }
+
+          var item = e.target.closest('.cmdk-item');
+          if (item && !e.target.closest('.cmdk-item-actions')) {
+            var slug = item.getAttribute('data-slug');
+            if (slug) location.href = slug + '.html';
+          }
+        });
+
+        resultsList.addEventListener('mousemove', function(e) {
+          var item = e.target.closest('.cmdk-item');
+          if (item) {
+            var idx = parseInt(item.getAttribute('data-index'), 10);
+            if (!isNaN(idx) && idx !== selectedIndex) {
+              selectedIndex = idx;
+              var all = resultsList.querySelectorAll('.cmdk-item');
+              all.forEach(function(el, i) {
+                el.classList.toggle('is-selected', i === selectedIndex);
+              });
+            }
+          }
+        });
+      }
+
+      // 4. Detail Page Shelf Sync Hook
+      var detailShelf = document.querySelector('.detail-user-shelf');
+      if (detailShelf) {
+        var bookId = detailShelf.getAttribute('data-book-id');
+        var badgeEl = document.getElementById('detailShelfBadge');
+        var wantBtn = detailShelf.querySelector('.btn-want');
+        var readBtn = detailShelf.querySelector('.btn-read');
+
+        function syncDetailShelfUI() {
+          var st = getUserStatus(bookId);
+          if (wantBtn) {
+            wantBtn.classList.toggle('active', st === 'want');
+            wantBtn.setAttribute('aria-pressed', st === 'want' ? 'true' : 'false');
+          }
+          if (readBtn) {
+            readBtn.classList.toggle('active', st === 'read');
+            readBtn.setAttribute('aria-pressed', st === 'read' ? 'true' : 'false');
+          }
+          if (badgeEl) {
+            if (st === 'want') {
+              badgeEl.textContent = '★ 已标记想读';
+              badgeEl.className = 'shelf-status-badge badge-want';
+            } else if (st === 'read') {
+              badgeEl.textContent = '✓ 已标记已读';
+              badgeEl.className = 'shelf-status-badge badge-read';
+            } else {
+              badgeEl.textContent = '未标记阅读状态';
+              badgeEl.className = 'shelf-status-badge';
+            }
+          }
+        }
+
+        if (wantBtn) {
+          wantBtn.addEventListener('click', function() {
+            var newSt = toggleUserStatus(bookId, 'want');
+            if (newSt === 'want') showToast('已加入「想读」书单');
+            else showToast('已取消「想读」标记');
+            syncDetailShelfUI();
+          });
+        }
+        if (readBtn) {
+          readBtn.addEventListener('click', function() {
+            var newSt = toggleUserStatus(bookId, 'read');
+            if (newSt === 'read') showToast('已标记为「已读」图书');
+            else showToast('已取消「已读」标记');
+            syncDetailShelfUI();
+          });
+        }
+
+        syncDetailShelfUI();
+        window.addEventListener('book-status-changed', syncDetailShelfUI);
+      }
+
+      window.addEventListener('book-status-changed', updatePillCounts);
+
+      // Expose globally for index page coordination
+      window.ClassicUserStore = {
+        getStatus: getUserStatus,
+        toggleStatus: toggleUserStatus,
+        getStatusMap: getStatusMap,
+        getCounts: getStatusCounts,
+        showToast: showToast,
+        openCmdk: openCmdk
+      };
+    })();
   </script>
 
   

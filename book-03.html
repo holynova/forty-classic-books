@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>《代码大全（第2版）》 · 经典书导读</title>
-  <link rel="stylesheet" href="style.css?v=ad4f3308">
+  <link rel="stylesheet" href="style.css?v=fea06185">
 </head>
 <body>
   <div class="layout-container">
@@ -55,6 +55,13 @@
                 <small>CLASSIC BOOKS · 607 MASTERPIECES</small>
               </a>
             </div>
+            <div class="sitehead-right">
+              <button type="button" class="cmdk-trigger-btn" id="cmdkTriggerBtn" aria-label="搜索图书" title="全局搜索 (快捷键 ⌘K 或 /)">
+                <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" stroke-width="2" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                <span class="cmdk-trigger-text">搜索全书</span>
+                <span class="cmdk-trigger-kbd"><kbd>⌘K</kbd></span>
+              </button>
+            </div>
           </div>
         </header>
 
@@ -102,6 +109,20 @@
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
               <div class="ratebox-label">豆瓣评分 · 4,285 人评价</div>
             </div>
+          </div>
+
+          <div class="detail-user-shelf" data-book-id="3">
+            <div class="shelf-action-group">
+              <button type="button" class="detail-shelf-btn btn-want" data-status="want" aria-pressed="false" aria-label="标记为想读">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                <span>想读</span>
+              </button>
+              <button type="button" class="detail-shelf-btn btn-read" data-status="read" aria-pressed="false" aria-label="标记为已读">
+                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                <span>已读</span>
+              </button>
+            </div>
+            <div class="shelf-status-badge" id="detailShelfBadge">未标记阅读状态</div>
           </div>
 
           <div class="intro-quote">
@@ -161,6 +182,411 @@
       </li>
             </ol>
           </section>
+
+          <section class="section-block mindmap-section" id="mindmapSection">
+      <div class="mindmap-header">
+        <div class="mindmap-header-left">
+          <span class="mindmap-badge">知识脉络</span>
+          <h2 class="mindmap-title">全书思维导图</h2>
+        </div>
+        <div class="mindmap-actions">
+          <button type="button" class="mm-btn mm-btn-toggle" id="mmToggleAllBtn" title="全部折叠/展开">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+            <span class="mm-toggle-text">全部收起</span>
+          </button>
+          <button type="button" class="mm-btn mm-btn-copy" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>复制大纲</span>
+          </button>
+          <button type="button" class="mm-btn mm-btn-fullscreen" id="mmFullscreenBtn" title="全屏沉浸式全景模式">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+            <span>全屏全景</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mindmap-container" id="mindmapContainer">
+        <div class="mm-root-card">
+          <div class="mm-root-pill">核心主旨</div>
+          <div class="mm-root-title">《代码大全（第2版）》</div>
+          <div class="mm-root-theme">软件构建全景工艺、高质量代码设计与防御式编程</div>
+        </div>
+
+        <div class="mm-tree-body">
+          <div class="mm-branch" data-branch-index="0">
+        <div class="mm-branch-header">
+          <span class="mm-branch-toggle-icon">▼</span>
+          <span class="mm-branch-title">一、前期准备与构建决策</span>
+          <span class="mm-branch-desc">在敲下第一行代码前的战略思考与质量奠基</span>
+        </div>
+        <div class="mm-branch-content">
+          <div class="mm-topics-grid">
+            <div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">隐喻与准备工作</h4>
+          </div>
+          <p class="mm-topic-desc">用恰当的隐喻理解软件开发，前置解决致命风险</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">软件隐喻：将软件开发比作‘建造大楼’强调结构先决，比作‘培育作物’强调逐步生长与修剪</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">缺陷修复成本曲线：需求阶段消除一个缺陷花 1 块钱，架构阶段花 3 块，编码阶段花 10 块，系统测试花 40 块，上线后需花 100 块</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">先做设计还是先编码？构建活动必须建立在清晰无歧义的架构蓝图之上</span>
+        </li>
+          </ul>
+        </div>
+<div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">软件构建中的设计原则</h4>
+          </div>
+          <p class="mm-topic-desc">管理软件复杂性是所有设计活动的核心第一要义</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">管理复杂性：人类大脑短期只能容纳 7±2 个信息块，设计必须通过分层与抽象降低瞬时认知负荷</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">高内聚、低耦合、信息隐藏（Information Hiding）：把极易变化的细节封装在内部，仅对外暴露稳定契约</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">启发式设计：寻找现实世界对象、形成一致的抽象、隔离易变区域</span>
+        </li>
+          </ul>
+        </div>
+          </div>
+        </div>
+      </div>
+<div class="mm-branch" data-branch-index="1">
+        <div class="mm-branch-header">
+          <span class="mm-branch-toggle-icon">▼</span>
+          <span class="mm-branch-title">二、类与高质量子程序</span>
+          <span class="mm-branch-desc">面向对象构造块的严苛质量准则</span>
+        </div>
+        <div class="mm-branch-content">
+          <div class="mm-topics-grid">
+            <div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">可以工作的类（Classes）</h4>
+          </div>
+          <p class="mm-topic-desc">抽象数据类型ADT与类的封装完整性</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">类接口必须展现一致的抽象层次：不要将高层业务逻辑与底层字节操作混在同一个类里</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">限制类的可访问性：尽可能将成员变量与辅助方法设为 private，减少意外暴露</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">优先组合而非继承：警惕多重继承与深度过深的继承树（建议深度不超过 2-3 层）</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">迪米特法则：只与亲密朋友通信，杜绝 a.getB().getC().doSomething() 的调用链</span>
+        </li>
+          </ul>
+        </div>
+<div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">高质量的子程序（Routines）</h4>
+          </div>
+          <p class="mm-topic-desc">编写精悍、单一职责的函数与方法</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">创建子程序的正当理由：降低复杂度、引入中间抽象、避免代码重复、隐藏实现顺序</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">单一职责：一个子程序只做一件事，且子程序名称必须能够准确完整地描述其全部行为</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">子程序长度：通常建议在 50-100 行内，过长必然意味着职责分散需要拆分</span>
+        </li>
+          </ul>
+        </div>
+          </div>
+        </div>
+      </div>
+<div class="mm-branch" data-branch-index="2">
+        <div class="mm-branch-header">
+          <span class="mm-branch-toggle-icon">▼</span>
+          <span class="mm-branch-title">三、防御式编程与数据管理</span>
+          <span class="mm-branch-desc">用严密的技术手段保护代码免遭非法数据破坏</span>
+        </div>
+        <div class="mm-branch-content">
+          <div class="mm-topics-grid">
+            <div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">防御式编程（Defensive Programming）</h4>
+          </div>
+          <p class="mm-topic-desc">假定程序在运行期必然遭遇脏数据与异常状态</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">保护代码免受非法输入侵害：建立防火墙隔离区（Barricade），在入口校验并清洗所有外部数据</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">断言（Assertions）用于排查绝对不该发生的情景（代码自身Bug），错误处理代码用于应对运行期可预期的异常（如文件不存在）</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">隔栏策略：隔离区外部是肮脏的现实世界，隔栏内部是绝对纯净受保护的数据上下文</span>
+        </li>
+          </ul>
+        </div>
+<div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">变量命名与控制结构</h4>
+          </div>
+          <p class="mm-topic-desc">变量与流程控制的精湛工艺</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">变量名力量：名副其实，好的名称指明‘是什么’而非‘如何计算’；作用域越广名字越长，循环变量作用域越小名字越短</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">表驱动法（Table-Driven Methods）：用数组或查表替代庞大冗长、难以维护的嵌套 if-else 或 switch-case 分支</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">结构化控制：提前返回（Guard Clauses）降低嵌套深度，将最常见情况放在最显眼位置</span>
+        </li>
+          </ul>
+        </div>
+          </div>
+        </div>
+      </div>
+<div class="mm-branch" data-branch-index="3">
+        <div class="mm-branch-header">
+          <span class="mm-branch-toggle-icon">▼</span>
+          <span class="mm-branch-title">四、协同构建与开发者测试</span>
+          <span class="mm-branch-desc">代码审查、结对编程与开发阶段的严密测试</span>
+        </div>
+        <div class="mm-branch-content">
+          <div class="mm-topics-grid">
+            <div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">协同构建（Collaborative Construction）</h4>
+          </div>
+          <p class="mm-topic-desc">集体代码评审是消除Bug最经济高效的技术手段</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">正式代码走查与同行评审（Inspections）：通常能发现 60% 到 90% 的隐蔽逻辑缺陷</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">结对编程（Pair Programming）：实时持续审查、促进技术知识无损传递、提高代码所有权认同</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">无指责走查原则：评审的是代码本身，绝不能上升为对编写者个人的品评与攻击</span>
+        </li>
+          </ul>
+        </div>
+<div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">开发者测试（Developer Testing）</h4>
+          </div>
+          <p class="mm-topic-desc">编写代码的人最清楚边界与脆弱点所在</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">先写测试用例：在编码之前编写用例能够强迫自己从使用者视角审视接口易用性</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">边界值分析：几乎所有 Bug 都潜伏在大于、小于、等于、0、空指针与最大值的交界处</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">代码覆盖率：追求 100% 覆盖是歧途，核心是覆盖复杂的控制流分支与异常处置路径</span>
+        </li>
+          </ul>
+        </div>
+          </div>
+        </div>
+      </div>
+<div class="mm-branch" data-branch-index="4">
+        <div class="mm-branch-header">
+          <span class="mm-branch-toggle-icon">▼</span>
+          <span class="mm-branch-title">五、代码调整与软件工艺</span>
+          <span class="mm-branch-desc">科学重构、性能剖析与专业工程师素养</span>
+        </div>
+        <div class="mm-branch-content">
+          <div class="mm-topics-grid">
+            <div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">代码调整策略（Code Tuning）</h4>
+          </div>
+          <p class="mm-topic-desc">不要过早优化，用数据替代无根据的直觉</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">过早优化的陷阱：未经测量的优化往往徒劳无功，反而破坏代码结构的可读性</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">二八定律：程序 80% 的时间耗费在 20% 的核心代码段中</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">三步法：先写出正确清晰的代码 → 借助 Profiler 性能分析工具精确定位热点 → 仅针对热点瓶颈进行精细调整</span>
+        </li>
+          </ul>
+        </div>
+<div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">自说明代码与专业素养</h4>
+          </div>
+          <p class="mm-topic-desc">写给人看，顺便能在机器上跑的代码</p>
+          <ul class="mm-points-list">
+            <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">好代码本身就是最好的文档：清晰的命名与优雅的结构能消除 90% 的注释需求</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">注释的艺术：说明代码的‘意图’（Why）和‘高层设计’，绝不要重复解释代码的‘执行过程’（How）</span>
+        </li>
+<li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">专业主义：持续学习、谦逊接受审阅、对交付的每一行代码质量负责</span>
+        </li>
+          </ul>
+        </div>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+
+      <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true"># 《代码大全（第2版）》 思维导图
+
+&gt; 核心主题：软件构建全景工艺、高质量代码设计与防御式编程
+
+## 一、前期准备与构建决策
+*在敲下第一行代码前的战略思考与质量奠基*
+
+### 隐喻与准备工作
+用恰当的隐喻理解软件开发，前置解决致命风险
+- 软件隐喻：将软件开发比作‘建造大楼’强调结构先决，比作‘培育作物’强调逐步生长与修剪
+- 缺陷修复成本曲线：需求阶段消除一个缺陷花 1 块钱，架构阶段花 3 块，编码阶段花 10 块，系统测试花 40 块，上线后需花 100 块
+- 先做设计还是先编码？构建活动必须建立在清晰无歧义的架构蓝图之上
+
+### 软件构建中的设计原则
+管理软件复杂性是所有设计活动的核心第一要义
+- 管理复杂性：人类大脑短期只能容纳 7±2 个信息块，设计必须通过分层与抽象降低瞬时认知负荷
+- 高内聚、低耦合、信息隐藏（Information Hiding）：把极易变化的细节封装在内部，仅对外暴露稳定契约
+- 启发式设计：寻找现实世界对象、形成一致的抽象、隔离易变区域
+
+## 二、类与高质量子程序
+*面向对象构造块的严苛质量准则*
+
+### 可以工作的类（Classes）
+抽象数据类型ADT与类的封装完整性
+- 类接口必须展现一致的抽象层次：不要将高层业务逻辑与底层字节操作混在同一个类里
+- 限制类的可访问性：尽可能将成员变量与辅助方法设为 private，减少意外暴露
+- 优先组合而非继承：警惕多重继承与深度过深的继承树（建议深度不超过 2-3 层）
+- 迪米特法则：只与亲密朋友通信，杜绝 a.getB().getC().doSomething() 的调用链
+
+### 高质量的子程序（Routines）
+编写精悍、单一职责的函数与方法
+- 创建子程序的正当理由：降低复杂度、引入中间抽象、避免代码重复、隐藏实现顺序
+- 单一职责：一个子程序只做一件事，且子程序名称必须能够准确完整地描述其全部行为
+- 子程序长度：通常建议在 50-100 行内，过长必然意味着职责分散需要拆分
+
+## 三、防御式编程与数据管理
+*用严密的技术手段保护代码免遭非法数据破坏*
+
+### 防御式编程（Defensive Programming）
+假定程序在运行期必然遭遇脏数据与异常状态
+- 保护代码免受非法输入侵害：建立防火墙隔离区（Barricade），在入口校验并清洗所有外部数据
+- 断言（Assertions）用于排查绝对不该发生的情景（代码自身Bug），错误处理代码用于应对运行期可预期的异常（如文件不存在）
+- 隔栏策略：隔离区外部是肮脏的现实世界，隔栏内部是绝对纯净受保护的数据上下文
+
+### 变量命名与控制结构
+变量与流程控制的精湛工艺
+- 变量名力量：名副其实，好的名称指明‘是什么’而非‘如何计算’；作用域越广名字越长，循环变量作用域越小名字越短
+- 表驱动法（Table-Driven Methods）：用数组或查表替代庞大冗长、难以维护的嵌套 if-else 或 switch-case 分支
+- 结构化控制：提前返回（Guard Clauses）降低嵌套深度，将最常见情况放在最显眼位置
+
+## 四、协同构建与开发者测试
+*代码审查、结对编程与开发阶段的严密测试*
+
+### 协同构建（Collaborative Construction）
+集体代码评审是消除Bug最经济高效的技术手段
+- 正式代码走查与同行评审（Inspections）：通常能发现 60% 到 90% 的隐蔽逻辑缺陷
+- 结对编程（Pair Programming）：实时持续审查、促进技术知识无损传递、提高代码所有权认同
+- 无指责走查原则：评审的是代码本身，绝不能上升为对编写者个人的品评与攻击
+
+### 开发者测试（Developer Testing）
+编写代码的人最清楚边界与脆弱点所在
+- 先写测试用例：在编码之前编写用例能够强迫自己从使用者视角审视接口易用性
+- 边界值分析：几乎所有 Bug 都潜伏在大于、小于、等于、0、空指针与最大值的交界处
+- 代码覆盖率：追求 100% 覆盖是歧途，核心是覆盖复杂的控制流分支与异常处置路径
+
+## 五、代码调整与软件工艺
+*科学重构、性能剖析与专业工程师素养*
+
+### 代码调整策略（Code Tuning）
+不要过早优化，用数据替代无根据的直觉
+- 过早优化的陷阱：未经测量的优化往往徒劳无功，反而破坏代码结构的可读性
+- 二八定律：程序 80% 的时间耗费在 20% 的核心代码段中
+- 三步法：先写出正确清晰的代码 → 借助 Profiler 性能分析工具精确定位热点 → 仅针对热点瓶颈进行精细调整
+
+### 自说明代码与专业素养
+写给人看，顺便能在机器上跑的代码
+- 好代码本身就是最好的文档：清晰的命名与优雅的结构能消除 90% 的注释需求
+- 注释的艺术：说明代码的‘意图’（Why）和‘高层设计’，绝不要重复解释代码的‘执行过程’（How）
+- 专业主义：持续学习、谦逊接受审阅、对交付的每一行代码质量负责</textarea>
+
+      <!-- Fullscreen Modal View -->
+      <div class="mindmap-modal" id="mindmapModal" aria-hidden="true" role="dialog" aria-label="思维导图全景全屏视图">
+        <div class="mm-modal-container">
+          <div class="mm-modal-header">
+            <div class="mm-modal-title-wrap">
+              <span class="mm-modal-tag">思维导图全景</span>
+              <span class="mm-modal-book-title">《代码大全（第2版）》</span>
+              <span class="mm-modal-theme">软件构建全景工艺、高质量代码设计与防御式编程</span>
+            </div>
+            <div class="mm-modal-controls">
+              <button type="button" class="mm-btn" id="mmModalToggleAllBtn">
+                <span class="mm-modal-toggle-text">全部收起</span>
+              </button>
+              <button type="button" class="mm-modal-close-btn" id="mmModalCloseBtn" aria-label="关闭全屏">×</button>
+            </div>
+          </div>
+          <div class="mm-modal-body" id="mmModalBody"></div>
+        </div>
+      </div>
+
+      <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
+    </section>
 
           <section class="section-block">
             <h2>全书结构</h2>
@@ -376,6 +802,715 @@
       if (e.key === 'ArrowLeft' && p) { location.href = p.href; }
       if (e.key === 'ArrowRight' && n) { location.href = n.href; }
     });
+  </script>
+
+  
+  <script>
+    (function() {
+      var mmSection = document.getElementById('mindmapSection');
+      if (!mmSection) return;
+
+      var container = document.getElementById('mindmapContainer');
+      var toggleAllBtn = document.getElementById('mmToggleAllBtn');
+      var copyBtn = document.getElementById('mmCopyMarkdownBtn');
+      var fullscreenBtn = document.getElementById('mmFullscreenBtn');
+      var modal = document.getElementById('mindmapModal');
+      var modalCloseBtn = document.getElementById('mmModalCloseBtn');
+      var modalBody = document.getElementById('mmModalBody');
+      var modalToggleAllBtn = document.getElementById('mmModalToggleAllBtn');
+      var toast = document.getElementById('mmToast');
+      var mdSource = document.getElementById('mmMarkdownSource');
+
+      var isAllCollapsed = false;
+
+      function bindBranchHeaders(root) {
+        var headers = root.querySelectorAll('.mm-branch-header');
+        headers.forEach(function(header) {
+          header.addEventListener('click', function() {
+            var branch = header.closest('.mm-branch');
+            if (branch) {
+              branch.classList.toggle('is-collapsed');
+            }
+          });
+        });
+      }
+
+      bindBranchHeaders(container);
+
+      // Toggle all in main view
+      if (toggleAllBtn) {
+        toggleAllBtn.addEventListener('click', function() {
+          isAllCollapsed = !isAllCollapsed;
+          var branches = container.querySelectorAll('.mm-branch');
+          branches.forEach(function(b) {
+            if (isAllCollapsed) {
+              b.classList.add('is-collapsed');
+            } else {
+              b.classList.remove('is-collapsed');
+            }
+          });
+          var txt = toggleAllBtn.querySelector('.mm-toggle-text');
+          if (txt) txt.textContent = isAllCollapsed ? '全部展开' : '全部收起';
+        });
+      }
+
+      // Copy Markdown Outline
+      function showToast(msg) {
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add('active');
+        setTimeout(function() {
+          toast.classList.remove('active');
+        }, 2200);
+      }
+
+      if (copyBtn && mdSource) {
+        copyBtn.addEventListener('click', function() {
+          var text = mdSource.value;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function() {
+              showToast('✓ 已复制思维导图大纲到剪贴板！');
+            }).catch(function() {
+              fallbackCopy(text);
+            });
+          } else {
+            fallbackCopy(text);
+          }
+        });
+      }
+
+      function fallbackCopy(text) {
+        try {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          showToast('✓ 已复制思维导图大纲到剪贴板！');
+        } catch (e) {
+          showToast('复制失败，请手动选取复制');
+        }
+      }
+
+      // Fullscreen Modal Logic
+      function openModal() {
+        if (!modal || !modalBody) return;
+        modalBody.innerHTML = container.innerHTML;
+        bindBranchHeaders(modalBody);
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', openModal);
+      }
+      if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
+      }
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) closeModal();
+        });
+      }
+
+      if (modalToggleAllBtn) {
+        modalToggleAllBtn.addEventListener('click', function() {
+          var branches = modalBody.querySelectorAll('.mm-branch');
+          var shouldCollapse = !branches[0].classList.contains('is-collapsed');
+          branches.forEach(function(b) {
+            if (shouldCollapse) b.classList.add('is-collapsed');
+            else b.classList.remove('is-collapsed');
+          });
+          var txt = modalToggleAllBtn.querySelector('.mm-modal-toggle-text');
+          if (txt) txt.textContent = shouldCollapse ? '全部展开' : '全部收起';
+        });
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
+    })();
+  </script>
+
+  <div class="cmdk-backdrop" id="cmdkBackdrop" aria-hidden="true">
+    <div class="cmdk-dialog" id="cmdkDialog" role="dialog" aria-modal="true" aria-label="全书搜索与快速标记">
+      <div class="cmdk-head">
+        <div class="cmdk-input-wrap">
+          <svg class="cmdk-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <input type="search" class="cmdk-input" id="cmdkSearchInput" placeholder="搜索书名、作者、分类，或输入“想读 / 已读”..." autocomplete="off" spellcheck="false">
+          <button type="button" class="cmdk-input-clear" id="cmdkInputClear" aria-label="清空">×</button>
+        </div>
+        <button type="button" class="cmdk-close-btn" id="cmdkCloseBtn" aria-label="关闭搜索">ESC</button>
+      </div>
+
+      <div class="cmdk-pills-bar" id="cmdkPillsBar">
+        <button type="button" class="cmdk-pill active" data-filter-type="status" data-filter-val="all">全部</button>
+        <button type="button" class="cmdk-pill pill-want" data-filter-type="status" data-filter-val="want">★ 想读 <span class="cmdk-pill-cnt" id="cmdkCountWant">0</span></button>
+        <button type="button" class="cmdk-pill pill-read" data-filter-type="status" data-filter-val="read">✓ 已读 <span class="cmdk-pill-cnt" id="cmdkCountRead">0</span></button>
+        <span class="cmdk-pill-sep"></span>
+        <button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="软件工程">软件工程</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="系统设计">系统设计</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="UI/UX 设计">UI/UX 设计</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="产品经理">产品经理</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="中国历史">中国历史</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="建筑学">建筑学</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="艺术">艺术</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="主理人五星精选">五星选</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="主理人四星精选">四星选</button><button type="button" class="cmdk-pill" data-filter-type="domain" data-filter-val="主理人心愿精选">心愿选</button>
+      </div>
+
+      <div class="cmdk-body" id="cmdkBody">
+        <ul class="cmdk-results" id="cmdkResults" role="listbox"></ul>
+        <div class="cmdk-empty" id="cmdkEmpty" style="display:none;">
+          <svg viewBox="0 0 24 24" width="32" height="32" stroke="currentColor" stroke-width="1.5" fill="none"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          <p class="cmdk-empty-text">未找到相关图书</p>
+          <p class="cmdk-empty-sub">可尝试书名关键词、作者姓名或点击上方分类切换</p>
+        </div>
+      </div>
+
+      <div class="cmdk-foot">
+        <div class="cmdk-foot-hints">
+          <span class="cmdk-hint"><kbd>↑</kbd><kbd>↓</kbd> 选择</span>
+          <span class="cmdk-hint"><kbd>↵</kbd> 打开</span>
+          <span class="cmdk-hint"><kbd>ESC</kbd> 退出</span>
+        </div>
+        <div class="cmdk-foot-stats" id="cmdkFootStats">共 921 本经典书</div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    (function() {
+      // 1. User Reading Status LocalStorage Management
+      var STORAGE_KEY = 'classic_books_user_status';
+
+      function getStatusMap() {
+        try {
+          var raw = localStorage.getItem(STORAGE_KEY);
+          return raw ? JSON.parse(raw) : {};
+        } catch (e) {
+          return {};
+        }
+      }
+
+      function setStatusMap(map) {
+        try {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(map));
+        } catch (e) {}
+        broadcastStatus(map);
+      }
+
+      function getUserStatus(bookId) {
+        var map = getStatusMap();
+        return map[String(bookId)] || null;
+      }
+
+      function toggleUserStatus(bookId, targetStatus) {
+        var map = getStatusMap();
+        var idStr = String(bookId);
+        var cur = map[idStr] || null;
+        var newStatus = null;
+        if (cur === targetStatus) {
+          delete map[idStr];
+          newStatus = null;
+        } else {
+          map[idStr] = targetStatus;
+          newStatus = targetStatus;
+        }
+        setStatusMap(map);
+        return newStatus;
+      }
+
+      function getStatusCounts() {
+        var map = getStatusMap();
+        var want = 0, read = 0;
+        Object.keys(map).forEach(function(k) {
+          if (map[k] === 'want') want++;
+          else if (map[k] === 'read') read++;
+        });
+        return { want: want, read: read, total: want + read };
+      }
+
+      function broadcastStatus(map) {
+        window.dispatchEvent(new CustomEvent('book-status-changed', { detail: map }));
+      }
+
+      window.addEventListener('storage', function(e) {
+        if (e.key === STORAGE_KEY) {
+          broadcastStatus(getStatusMap());
+        }
+      });
+
+      // Toast Notification Component
+      var toastTimer = null;
+      function showToast(msg) {
+        var toast = document.getElementById('statusToast');
+        if (!toast) {
+          toast = document.createElement('div');
+          toast.id = 'statusToast';
+          toast.className = 'status-toast';
+          document.body.appendChild(toast);
+        }
+        toast.textContent = msg;
+        toast.classList.add('visible');
+        if (toastTimer) clearTimeout(toastTimer);
+        toastTimer = setTimeout(function() {
+          toast.classList.remove('visible');
+        }, 2200);
+      }
+
+      // 2. Search Index Loader (Lazy + Idle Preload)
+      var searchIndex = null;
+      var isIndexLoading = false;
+      var indexCallbacks = [];
+
+      function loadSearchIndex(cb) {
+        if (searchIndex) {
+          if (cb) cb(searchIndex);
+          return;
+        }
+        if (cb) indexCallbacks.push(cb);
+        if (isIndexLoading) return;
+        isIndexLoading = true;
+
+        fetch('search-index.json')
+          .then(function(res) { return res.json(); })
+          .then(function(data) {
+            searchIndex = data;
+            isIndexLoading = false;
+            while (indexCallbacks.length) {
+              var fn = indexCallbacks.shift();
+              try { fn(searchIndex); } catch (e) {}
+            }
+          })
+          .catch(function(err) {
+            isIndexLoading = false;
+          });
+      }
+
+      if ('requestIdleCallback' in window) {
+        requestIdleCallback(function() { loadSearchIndex(); }, { timeout: 3000 });
+      } else {
+        setTimeout(function() { loadSearchIndex(); }, 2000);
+      }
+
+      // 3. Cmd+K Dialog Controller
+      var backdrop = document.getElementById('cmdkBackdrop');
+      var input = document.getElementById('cmdkSearchInput');
+      var clearBtn = document.getElementById('cmdkInputClear');
+      var closeBtn = document.getElementById('cmdkCloseBtn');
+      var pillsBar = document.getElementById('cmdkPillsBar');
+      var resultsList = document.getElementById('cmdkResults');
+      var emptyEl = document.getElementById('cmdkEmpty');
+      var footStats = document.getElementById('cmdkFootStats');
+      var triggerBtn = document.getElementById('cmdkTriggerBtn');
+
+      var currentStatusFilter = 'all';
+      var currentDomainFilter = 'all';
+      var selectedIndex = 0;
+      var renderedItems = [];
+
+      function updatePillCounts() {
+        var counts = getStatusCounts();
+        var cntWant = document.getElementById('cmdkCountWant');
+        var cntRead = document.getElementById('cmdkCountRead');
+        if (cntWant) cntWant.textContent = counts.want;
+        if (cntRead) cntRead.textContent = counts.read;
+      }
+
+      function openCmdk() {
+        if (!backdrop) return;
+        backdrop.classList.add('is-open');
+        document.body.classList.add('cmdk-modal-open');
+        updatePillCounts();
+        loadSearchIndex(function() {
+          renderResults();
+        });
+        if (input) {
+          input.focus();
+          input.select();
+        }
+      }
+
+      function closeCmdk() {
+        if (!backdrop) return;
+        backdrop.classList.remove('is-open');
+        document.body.classList.remove('cmdk-modal-open');
+      }
+
+      function toggleCmdk() {
+        if (backdrop && backdrop.classList.contains('is-open')) {
+          closeCmdk();
+        } else {
+          openCmdk();
+        }
+      }
+
+      // Global Keyboard shortcuts
+      document.addEventListener('keydown', function(e) {
+        if ((e.metaKey || e.ctrlKey) && (e.key === 'k' || e.key === 'K')) {
+          e.preventDefault();
+          toggleCmdk();
+          return;
+        }
+        if (e.key === '/' && !['INPUT', 'TEXTAREA'].includes(document.activeElement.tagName)) {
+          e.preventDefault();
+          openCmdk();
+          return;
+        }
+        if (e.key === 'Escape' && backdrop && backdrop.classList.contains('is-open')) {
+          e.preventDefault();
+          closeCmdk();
+          return;
+        }
+        if (backdrop && backdrop.classList.contains('is-open')) {
+          if (e.key === 'ArrowDown') {
+            e.preventDefault();
+            navigateResults(1);
+          } else if (e.key === 'ArrowUp') {
+            e.preventDefault();
+            navigateResults(-1);
+          } else if (e.key === 'Enter') {
+            e.preventDefault();
+            openSelectedResult();
+          }
+        }
+      });
+
+      if (triggerBtn) {
+        triggerBtn.addEventListener('click', openCmdk);
+      }
+      if (closeBtn) {
+        closeBtn.addEventListener('click', closeCmdk);
+      }
+      if (backdrop) {
+        backdrop.addEventListener('click', function(e) {
+          if (e.target === backdrop) closeCmdk();
+        });
+      }
+      if (clearBtn) {
+        clearBtn.addEventListener('click', function() {
+          if (input) {
+            input.value = '';
+            input.focus();
+            clearBtn.style.display = 'none';
+            selectedIndex = 0;
+            renderResults();
+          }
+        });
+      }
+
+      if (pillsBar) {
+        pillsBar.addEventListener('click', function(e) {
+          var pill = e.target.closest('.cmdk-pill');
+          if (!pill) return;
+          var fType = pill.getAttribute('data-filter-type');
+          var fVal = pill.getAttribute('data-filter-val');
+
+          if (fType === 'status') {
+            currentStatusFilter = fVal;
+            pillsBar.querySelectorAll('.cmdk-pill[data-filter-type="status"]').forEach(function(p) {
+              p.classList.toggle('active', p === pill);
+            });
+          } else if (fType === 'domain') {
+            if (currentDomainFilter === fVal) {
+              currentDomainFilter = 'all';
+              pill.classList.remove('active');
+            } else {
+              currentDomainFilter = fVal;
+              pillsBar.querySelectorAll('.cmdk-pill[data-filter-type="domain"]').forEach(function(p) {
+                p.classList.toggle('active', p === pill);
+              });
+            }
+          }
+          selectedIndex = 0;
+          renderResults();
+        });
+      }
+
+      if (input) {
+        input.addEventListener('input', function() {
+          if (clearBtn) clearBtn.style.display = input.value ? 'flex' : 'none';
+          selectedIndex = 0;
+          renderResults();
+        });
+      }
+
+      function escapeRegex(str) {
+        return str.replace(/[.*+?^$\{}()|[\]\\]/g, '\\$&');
+      }
+
+      function escapeHtml(str) {
+        if (!str) return '';
+        return String(str).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+      }
+
+      function highlightText(text, q) {
+        if (!text) return '';
+        if (!q) return escapeHtml(text);
+        var cleanQ = q.replace(/[《》]/g, '').trim();
+        if (!cleanQ) return escapeHtml(text);
+        var re = new RegExp('(' + escapeRegex(cleanQ) + ')', 'gi');
+        return escapeHtml(text).replace(re, '<mark class="cmdk-highlight">$1</mark>');
+      }
+
+      function renderResults() {
+        if (!searchIndex) return;
+        var q = (input ? input.value : '').trim().toLowerCase();
+        var statusMap = getStatusMap();
+
+        var filtered = searchIndex.filter(function(b) {
+          if (currentStatusFilter === 'want' && statusMap[b.id] !== 'want') return false;
+          if (currentStatusFilter === 'read' && statusMap[b.id] !== 'read') return false;
+
+          if (currentDomainFilter !== 'all') {
+            if (!b.domain.includes(currentDomainFilter) && !currentDomainFilter.includes(b.domain.slice(0, 4))) return false;
+          }
+
+          if (!q) return true;
+
+          var titleClean = b.title.replace(/[《》]/g, '').toLowerCase();
+          var matchTitle = titleClean.includes(q);
+          var matchAuthor = (b.author || '').toLowerCase().includes(q);
+          var matchDomain = (b.domain || '').toLowerCase().includes(q);
+          var matchIntro = (b.intro || '').toLowerCase().includes(q);
+          var matchPub = (b.publisher || '').toLowerCase().includes(q);
+          var matchOrig = (b.originalTitle || '').toLowerCase().includes(q);
+
+          var matchKw = false;
+          if (q === '想读' || q === '想看') matchKw = (statusMap[b.id] === 'want');
+          if (q === '已读' || q === '看过') matchKw = (statusMap[b.id] === 'read');
+
+          return matchTitle || matchAuthor || matchDomain || matchIntro || matchPub || matchOrig || matchKw;
+        });
+
+        if (q) {
+          var scored = filtered.map(function(b) {
+            var score = 0;
+            var titleClean = b.title.replace(/[《》]/g, '').toLowerCase();
+            if (titleClean === q) score += 200;
+            else if (titleClean.startsWith(q)) score += 120;
+            else if (titleClean.includes(q)) score += 80;
+
+            if ((b.author || '').toLowerCase().includes(q)) score += 50;
+            if ((b.domain || '').toLowerCase().includes(q)) score += 35;
+            if ((b.intro || '').toLowerCase().includes(q)) score += 15;
+            if ((b.originalTitle || '').toLowerCase().includes(q)) score += 20;
+
+            var r = parseFloat(b.rating) || 0;
+            score += r * 2;
+            return { b: b, score: score };
+          });
+          scored.sort(function(a, b) { return b.score - a.score; });
+          renderedItems = scored.slice(0, 40).map(function(item) { return item.b; });
+        } else {
+          renderedItems = filtered.slice(0, 40);
+        }
+
+        if (emptyEl) {
+          emptyEl.style.display = renderedItems.length === 0 ? 'flex' : 'none';
+          var emptyText = emptyEl.querySelector('.cmdk-empty-text');
+          if (emptyText) {
+            if (currentStatusFilter === 'want' && !q) {
+              emptyText.textContent = '您还没有标记「想读」图书';
+            } else if (currentStatusFilter === 'read' && !q) {
+              emptyText.textContent = '您还没有标记「已读」图书';
+            } else {
+              emptyText.textContent = '未找到相关图书';
+            }
+          }
+        }
+
+        if (footStats) {
+          footStats.textContent = renderedItems.length === 0
+            ? '无匹配结果'
+            : '显示 ' + renderedItems.length + ' / ' + filtered.length + ' 本书';
+        }
+
+        if (!resultsList) return;
+        resultsList.innerHTML = '';
+
+        renderedItems.forEach(function(b, idx) {
+          var isSel = idx === selectedIndex;
+          var userSt = statusMap[b.id] || null;
+          var tagHtml = '';
+          if (userSt === 'want') tagHtml = '<span class="cmdk-item-tag tag-want">★ 想读</span>';
+          else if (userSt === 'read') tagHtml = '<span class="cmdk-item-tag tag-read">✓ 已读</span>';
+
+          var li = document.createElement('li');
+          li.className = 'cmdk-item' + (isSel ? ' is-selected' : '');
+          li.setAttribute('role', 'option');
+          li.setAttribute('aria-selected', isSel ? 'true' : 'false');
+          li.setAttribute('data-index', idx);
+          li.setAttribute('data-slug', b.slug);
+          li.setAttribute('data-id', b.id);
+
+          var coverBase = b.cover.split('/').pop().replace(/\.[^.]+$/, '');
+          var thumbWebp = 'covers/thumbs/' + coverBase + '.webp';
+
+          li.innerHTML = 
+            '<a class="cmdk-item-link" href="' + b.slug + '.html">' +
+              '<div class="cmdk-item-cover">' +
+                '<img src="' + thumbWebp + '" onerror="this.src=\'' + b.cover + '\'" alt="' + escapeHtml(b.title) + '" loading="lazy" width="38" height="54">' +
+              '</div>' +
+              '<div class="cmdk-item-info">' +
+                '<div class="cmdk-item-title-row">' +
+                  '<span class="cmdk-item-title">' + highlightText(b.title, q) + '</span>' +
+                  '<span class="cmdk-item-domain">' + escapeHtml(b.domain) + '</span>' +
+                  tagHtml +
+                '</div>' +
+                '<div class="cmdk-item-meta">' +
+                  '<span class="cmdk-item-author">' + highlightText(b.author, q) + '</span>' +
+                  '<span class="cmdk-item-sep">/</span>' +
+                  '<span class="cmdk-item-rating">★ ' + b.rating + '</span>' +
+                  '<span class="cmdk-item-count">(' + escapeHtml(b.ratingCount) + ')</span>' +
+                '</div>' +
+                '<div class="cmdk-item-intro">' + highlightText(b.intro, q) + '</div>' +
+              '</div>' +
+            '</a>' +
+            '<div class="cmdk-item-actions">' +
+              '<button type="button" class="cmdk-act-btn cmdk-act-want' + (userSt === 'want' ? ' active' : '') + '" data-status="want" data-id="' + b.id + '" title="标记为想读">★ 想读</button>' +
+              '<button type="button" class="cmdk-act-btn cmdk-act-read' + (userSt === 'read' ? ' active' : '') + '" data-status="read" data-id="' + b.id + '" title="标记为已读">✓ 已读</button>' +
+            '</div>';
+
+          resultsList.appendChild(li);
+        });
+      }
+
+      function navigateResults(dir) {
+        if (renderedItems.length === 0) return;
+        selectedIndex += dir;
+        if (selectedIndex < 0) selectedIndex = renderedItems.length - 1;
+        if (selectedIndex >= renderedItems.length) selectedIndex = 0;
+
+        var items = resultsList ? resultsList.querySelectorAll('.cmdk-item') : [];
+        items.forEach(function(item, idx) {
+          var isSel = idx === selectedIndex;
+          item.classList.toggle('is-selected', isSel);
+          item.setAttribute('aria-selected', isSel ? 'true' : 'false');
+          if (isSel) {
+            item.scrollIntoView({ block: 'nearest', behavior: 'smooth' });
+          }
+        });
+      }
+
+      function openSelectedResult() {
+        if (renderedItems.length === 0) return;
+        var b = renderedItems[selectedIndex];
+        if (b) {
+          location.href = b.slug + '.html';
+        }
+      }
+
+      if (resultsList) {
+        resultsList.addEventListener('click', function(e) {
+          var actBtn = e.target.closest('.cmdk-act-btn');
+          if (actBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            var bId = actBtn.getAttribute('data-id');
+            var targetSt = actBtn.getAttribute('data-status');
+            var newSt = toggleUserStatus(bId, targetSt);
+            if (newSt === 'want') showToast('已加入「想读」');
+            else if (newSt === 'read') showToast('已标记为「已读」');
+            else showToast('已取消标记');
+            updatePillCounts();
+            renderResults();
+            return;
+          }
+
+          var item = e.target.closest('.cmdk-item');
+          if (item && !e.target.closest('.cmdk-item-actions')) {
+            var slug = item.getAttribute('data-slug');
+            if (slug) location.href = slug + '.html';
+          }
+        });
+
+        resultsList.addEventListener('mousemove', function(e) {
+          var item = e.target.closest('.cmdk-item');
+          if (item) {
+            var idx = parseInt(item.getAttribute('data-index'), 10);
+            if (!isNaN(idx) && idx !== selectedIndex) {
+              selectedIndex = idx;
+              var all = resultsList.querySelectorAll('.cmdk-item');
+              all.forEach(function(el, i) {
+                el.classList.toggle('is-selected', i === selectedIndex);
+              });
+            }
+          }
+        });
+      }
+
+      // 4. Detail Page Shelf Sync Hook
+      var detailShelf = document.querySelector('.detail-user-shelf');
+      if (detailShelf) {
+        var bookId = detailShelf.getAttribute('data-book-id');
+        var badgeEl = document.getElementById('detailShelfBadge');
+        var wantBtn = detailShelf.querySelector('.btn-want');
+        var readBtn = detailShelf.querySelector('.btn-read');
+
+        function syncDetailShelfUI() {
+          var st = getUserStatus(bookId);
+          if (wantBtn) {
+            wantBtn.classList.toggle('active', st === 'want');
+            wantBtn.setAttribute('aria-pressed', st === 'want' ? 'true' : 'false');
+          }
+          if (readBtn) {
+            readBtn.classList.toggle('active', st === 'read');
+            readBtn.setAttribute('aria-pressed', st === 'read' ? 'true' : 'false');
+          }
+          if (badgeEl) {
+            if (st === 'want') {
+              badgeEl.textContent = '★ 已标记想读';
+              badgeEl.className = 'shelf-status-badge badge-want';
+            } else if (st === 'read') {
+              badgeEl.textContent = '✓ 已标记已读';
+              badgeEl.className = 'shelf-status-badge badge-read';
+            } else {
+              badgeEl.textContent = '未标记阅读状态';
+              badgeEl.className = 'shelf-status-badge';
+            }
+          }
+        }
+
+        if (wantBtn) {
+          wantBtn.addEventListener('click', function() {
+            var newSt = toggleUserStatus(bookId, 'want');
+            if (newSt === 'want') showToast('已加入「想读」书单');
+            else showToast('已取消「想读」标记');
+            syncDetailShelfUI();
+          });
+        }
+        if (readBtn) {
+          readBtn.addEventListener('click', function() {
+            var newSt = toggleUserStatus(bookId, 'read');
+            if (newSt === 'read') showToast('已标记为「已读」图书');
+            else showToast('已取消「已读」标记');
+            syncDetailShelfUI();
+          });
+        }
+
+        syncDetailShelfUI();
+        window.addEventListener('book-status-changed', syncDetailShelfUI);
+      }
+
+      window.addEventListener('book-status-changed', updatePillCounts);
+
+      // Expose globally for index page coordination
+      window.ClassicUserStore = {
+        getStatus: getUserStatus,
+        toggleStatus: toggleUserStatus,
+        getStatusMap: getStatusMap,
+        getCounts: getStatusCounts,
+        showToast: showToast,
+        openCmdk: openCmdk
+      };
+    })();
   </script>
 
   

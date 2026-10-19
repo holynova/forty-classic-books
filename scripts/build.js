@@ -7,6 +7,8 @@ const DATA_DIR = path.join(ROOT_DIR, 'data');
 const site = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'site.json'), 'utf-8'));
 const books = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'books.json'), 'utf-8'));
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'package.json'), 'utf-8'));
+const mindmapsPath = path.join(DATA_DIR, 'mindmaps.json');
+const mindmaps = fs.existsSync(mindmapsPath) ? JSON.parse(fs.readFileSync(mindmapsPath, 'utf-8')) : {};
 const crypto = require('crypto');
 const cssContent = fs.readFileSync(path.join(ROOT_DIR, 'style.css'), 'utf-8');
 const cssHash = crypto.createHash('md5').update(cssContent).digest('hex').slice(0, 8);
@@ -333,6 +335,273 @@ const perfAndAnalyticsScript = `
       } else {
         setTimeout(loadAnalytics, 2000);
       }
+    })();
+  </script>
+`;
+
+// Mindmap Generator & Renderer
+function generateMindmapMarkdown(mm, book) {
+  const cleanTitle = book.title.startsWith('《') && book.title.endsWith('》')
+    ? book.title
+    : `《${book.title}》`;
+  let md = `# ${cleanTitle} 思维导图\n\n`;
+  if (mm.theme) md += `> 核心主题：${mm.theme}\n\n`;
+  mm.branches.forEach((b) => {
+    md += `## ${b.name}\n`;
+    if (b.desc) md += `*${b.desc}*\n\n`;
+    b.topics.forEach(t => {
+      md += `### ${t.title}\n`;
+      if (t.desc) md += `${t.desc}\n`;
+      t.points.forEach(pt => {
+        md += `- ${pt}\n`;
+      });
+      md += '\n';
+    });
+  });
+  return md.trim();
+}
+
+function renderMindmapHtml(mm, book) {
+  const mdOutline = generateMindmapMarkdown(mm, book);
+  const branchesHtml = mm.branches.map((b, bIdx) => {
+    const topicsHtml = b.topics.map(t => {
+      const pointsHtml = t.points.map(pt => `
+        <li class="mm-point-item">
+          <span class="mm-pt-dot">•</span>
+          <span class="mm-pt-text">${escapeHtml(pt)}</span>
+        </li>
+      `.trim()).join('\n');
+
+      return `
+        <div class="mm-topic-card">
+          <div class="mm-topic-header">
+            <span class="mm-topic-bullet"></span>
+            <h4 class="mm-topic-title">${escapeHtml(t.title)}</h4>
+          </div>
+          ${t.desc ? `<p class="mm-topic-desc">${escapeHtml(t.desc)}</p>` : ''}
+          <ul class="mm-points-list">
+            ${pointsHtml}
+          </ul>
+        </div>
+      `.trim();
+    }).join('\n');
+
+    return `
+      <div class="mm-branch" data-branch-index="${bIdx}">
+        <div class="mm-branch-header">
+          <span class="mm-branch-toggle-icon">▼</span>
+          <span class="mm-branch-title">${escapeHtml(b.name)}</span>
+          ${b.desc ? `<span class="mm-branch-desc">${escapeHtml(b.desc)}</span>` : ''}
+        </div>
+        <div class="mm-branch-content">
+          <div class="mm-topics-grid">
+            ${topicsHtml}
+          </div>
+        </div>
+      </div>
+    `.trim();
+  }).join('\n');
+
+  return `
+    <section class="section-block mindmap-section" id="mindmapSection">
+      <div class="mindmap-header">
+        <div class="mindmap-header-left">
+          <span class="mindmap-badge">知识脉络</span>
+          <h2 class="mindmap-title">全书思维导图</h2>
+        </div>
+        <div class="mindmap-actions">
+          <button type="button" class="mm-btn mm-btn-toggle" id="mmToggleAllBtn" title="全部折叠/展开">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
+            <span class="mm-toggle-text">全部收起</span>
+          </button>
+          <button type="button" class="mm-btn mm-btn-copy" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>复制大纲</span>
+          </button>
+          <button type="button" class="mm-btn mm-btn-fullscreen" id="mmFullscreenBtn" title="全屏沉浸式全景模式">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+            <span>全屏全景</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mindmap-container" id="mindmapContainer">
+        <div class="mm-root-card">
+          <div class="mm-root-pill">核心主旨</div>
+          <div class="mm-root-title">${escapeHtml(book.title)}</div>
+          <div class="mm-root-theme">${escapeHtml(mm.theme)}</div>
+        </div>
+
+        <div class="mm-tree-body">
+          ${branchesHtml}
+        </div>
+      </div>
+
+      <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true">${escapeHtml(mdOutline)}</textarea>
+
+      <!-- Fullscreen Modal View -->
+      <div class="mindmap-modal" id="mindmapModal" aria-hidden="true" role="dialog" aria-label="思维导图全景全屏视图">
+        <div class="mm-modal-container">
+          <div class="mm-modal-header">
+            <div class="mm-modal-title-wrap">
+              <span class="mm-modal-tag">思维导图全景</span>
+              <span class="mm-modal-book-title">${escapeHtml(book.title)}</span>
+              <span class="mm-modal-theme">${escapeHtml(mm.theme)}</span>
+            </div>
+            <div class="mm-modal-controls">
+              <button type="button" class="mm-btn" id="mmModalToggleAllBtn">
+                <span class="mm-modal-toggle-text">全部收起</span>
+              </button>
+              <button type="button" class="mm-modal-close-btn" id="mmModalCloseBtn" aria-label="关闭全屏">×</button>
+            </div>
+          </div>
+          <div class="mm-modal-body" id="mmModalBody"></div>
+        </div>
+      </div>
+
+      <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
+    </section>
+  `.trim();
+}
+
+const mindmapScript = `
+  <script>
+    (function() {
+      var mmSection = document.getElementById('mindmapSection');
+      if (!mmSection) return;
+
+      var container = document.getElementById('mindmapContainer');
+      var toggleAllBtn = document.getElementById('mmToggleAllBtn');
+      var copyBtn = document.getElementById('mmCopyMarkdownBtn');
+      var fullscreenBtn = document.getElementById('mmFullscreenBtn');
+      var modal = document.getElementById('mindmapModal');
+      var modalCloseBtn = document.getElementById('mmModalCloseBtn');
+      var modalBody = document.getElementById('mmModalBody');
+      var modalToggleAllBtn = document.getElementById('mmModalToggleAllBtn');
+      var toast = document.getElementById('mmToast');
+      var mdSource = document.getElementById('mmMarkdownSource');
+
+      var isAllCollapsed = false;
+
+      function bindBranchHeaders(root) {
+        var headers = root.querySelectorAll('.mm-branch-header');
+        headers.forEach(function(header) {
+          header.addEventListener('click', function() {
+            var branch = header.closest('.mm-branch');
+            if (branch) {
+              branch.classList.toggle('is-collapsed');
+            }
+          });
+        });
+      }
+
+      bindBranchHeaders(container);
+
+      // Toggle all in main view
+      if (toggleAllBtn) {
+        toggleAllBtn.addEventListener('click', function() {
+          isAllCollapsed = !isAllCollapsed;
+          var branches = container.querySelectorAll('.mm-branch');
+          branches.forEach(function(b) {
+            if (isAllCollapsed) {
+              b.classList.add('is-collapsed');
+            } else {
+              b.classList.remove('is-collapsed');
+            }
+          });
+          var txt = toggleAllBtn.querySelector('.mm-toggle-text');
+          if (txt) txt.textContent = isAllCollapsed ? '全部展开' : '全部收起';
+        });
+      }
+
+      // Copy Markdown Outline
+      function showToast(msg) {
+        if (!toast) return;
+        toast.textContent = msg;
+        toast.classList.add('active');
+        setTimeout(function() {
+          toast.classList.remove('active');
+        }, 2200);
+      }
+
+      if (copyBtn && mdSource) {
+        copyBtn.addEventListener('click', function() {
+          var text = mdSource.value;
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(function() {
+              showToast('✓ 已复制思维导图大纲到剪贴板！');
+            }).catch(function() {
+              fallbackCopy(text);
+            });
+          } else {
+            fallbackCopy(text);
+          }
+        });
+      }
+
+      function fallbackCopy(text) {
+        try {
+          var ta = document.createElement('textarea');
+          ta.value = text;
+          ta.style.position = 'fixed';
+          ta.style.left = '-9999px';
+          document.body.appendChild(ta);
+          ta.select();
+          document.execCommand('copy');
+          document.body.removeChild(ta);
+          showToast('✓ 已复制思维导图大纲到剪贴板！');
+        } catch (e) {
+          showToast('复制失败，请手动选取复制');
+        }
+      }
+
+      // Fullscreen Modal Logic
+      function openModal() {
+        if (!modal || !modalBody) return;
+        modalBody.innerHTML = container.innerHTML;
+        bindBranchHeaders(modalBody);
+        modal.classList.add('active');
+        modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
+
+      function closeModal() {
+        if (!modal) return;
+        modal.classList.remove('active');
+        modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
+
+      if (fullscreenBtn) {
+        fullscreenBtn.addEventListener('click', openModal);
+      }
+      if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', closeModal);
+      }
+      if (modal) {
+        modal.addEventListener('click', function(e) {
+          if (e.target === modal) closeModal();
+        });
+      }
+
+      if (modalToggleAllBtn) {
+        modalToggleAllBtn.addEventListener('click', function() {
+          var branches = modalBody.querySelectorAll('.mm-branch');
+          var shouldCollapse = !branches[0].classList.contains('is-collapsed');
+          branches.forEach(function(b) {
+            if (shouldCollapse) b.classList.add('is-collapsed');
+            else b.classList.remove('is-collapsed');
+          });
+          var txt = modalToggleAllBtn.querySelector('.mm-modal-toggle-text');
+          if (txt) txt.textContent = shouldCollapse ? '全部展开' : '全部收起';
+        });
+      }
+
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
+          closeModal();
+        }
+      });
     })();
   </script>
 `;
@@ -1429,6 +1698,11 @@ function buildBooks() {
     const nextBook = idx < books.length - 1 ? books[idx + 1] : null;
     const stars = getStars(book.rating);
 
+    // Mindmap support (for books with verified mindmaps)
+    const mm = mindmaps[book.id];
+    const mindmapHtml = mm ? renderMindmapHtml(mm, book) : '';
+    const mindmapScriptHtml = mm ? mindmapScript : '';
+
     // Thesis paragraphs
     const thesisHtml = book.thesis.map(p => `<p>${escapeHtml(p)}</p>`).join('\n');
 
@@ -1590,6 +1864,8 @@ function buildBooks() {
             </ol>
           </section>
 
+          ${mindmapHtml}
+
           <section class="section-block">
             <h2>全书结构</h2>
             <ol class="part-list">
@@ -1626,6 +1902,7 @@ function buildBooks() {
     });
   </script>
 
+  ${mindmapScriptHtml}
   ${renderCmdkModalHtml()}
   ${cmdkAndStoreScript}
   ${sidebarScript}
