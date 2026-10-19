@@ -343,14 +343,16 @@ const perfAndAnalyticsScript = `
 
 function renderNodeToMarkdown(node, depth = 1) {
   let md = '';
-  const title = (node.title || node.name || '').trim();
+  let rawTitle = (node.title || node.name || '').trim();
+  // Escape unescaped $ so KaTeX parser in markmap does not mistake code like $(...) for LaTeX math
+  const title = rawTitle.replace(/(?<!\\)\$/g, '\\$');
   if (depth === 1) {
     const cleanTitle = title.startsWith('《') && title.endsWith('》') ? title : `《${title}》`;
     md += `# ${cleanTitle} 思维导图\n\n`;
-    if (node.theme) md += `> 核心主题：${node.theme}\n\n`;
+    if (node.theme) md += `> 核心主题：${node.theme.replace(/(?<!\\)\$/g, '\\$')}\n\n`;
   } else if (depth <= 6) {
     md += `${'#'.repeat(depth)} ${title}\n`;
-    if (node.desc && depth <= 3) md += `*${node.desc}*\n\n`;
+    if (node.desc && depth <= 3) md += `*${node.desc.replace(/(?<!\\)\$/g, '\\$')}*\n\n`;
   } else {
     const indent = '  '.repeat(depth - 7);
     md += `${indent}- ${title}\n`;

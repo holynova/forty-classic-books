@@ -165,7 +165,114 @@
             </ol>
           </section>
 
-          
+          <section class="section-block mindmap-section" id="mindmapSection">
+      <div class="mindmap-header">
+        <div class="mindmap-header-left">
+          <span class="mindmap-badge">树状思维导图</span>
+          <h2 class="mindmap-title">全书思维导图 · 知识脉络树</h2>
+        </div>
+        <div class="mindmap-actions">
+          <div class="mm-level-switch">
+            <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
+            <button type="button" class="mm-btn" id="mmBtnLevel2" title="展开至二级分支">分支</button>
+            <button type="button" class="mm-btn active" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
+          </div>
+
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+            <span>复制大纲</span>
+          </button>
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmFullscreenBtn" title="全屏沉浸式全景模式 (ESC 退出)">
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
+            <span class="mm-fs-text">全屏</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mm-viewport-wrapper">
+        <div class="mm-viewport" id="mmViewport">
+          <svg id="markmapSvg"></svg>
+          <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
+          <div class="mm-canvas-hint">
+            <span>💡 拖拽平移 · 滚轮缩放 · 点击分支圆点折叠/展开</span>
+          </div>
+        </div>
+      </div>
+
+      <script type="application/json" id="mmTreeData">{"content":"&#x300a;&#x795e;&#x79d8;&#x5c9b;&#x300b; &#x601d;&#x7ef4;&#x5bfc;&#x56fe;","children":[{"content":"&#x4e00;&#x3001;&#x7a7a;&#x4e2d;&#x9047;&#x9669;&#xff1a;&#x70ed;&#x6c14;&#x7403;&#x5760;&#x6d77;&#x4e0e;&#x8352;&#x5c9b;&#x751f;&#x5b58;&#x7b2c;&#x4e00;&#x628a;&#x706b;","children":[{"content":"1. &#x7a7a;&#x4e2d;&#x9047;&#x9669;&#xff1a;&#x70ed;&#x6c14;&#x7403;&#x5760;&#x6d77;&#x4e0e;&#x8352;&#x5c9b;&#x751f;&#x5b58;&#x7b2c;&#x4e00;&#x628a;&#x706b;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x4e94;&#x4eba;&#x9003;&#x51fa;&#x91cc;&#x58eb;&#x6ee1;&#x4e58;&#x6c14;&#x7403;&#x906d;&#x9047;&#x98d3;&#x98ce;&#x5760;&#x843d;&#x8352;&#x5c9b;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x8d5b;&#x52d2;&#x65af;&#x5de5;&#x7a0b;&#x5e08;&#x5931;&#x8e2a;&#x540e;&#x5947;&#x8ff9;&#x83b7;&#x6551;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x51ed;&#x501f;&#x79d1;&#x5b66;&#x77e5;&#x8bc6;&#x5f00;&#x542f;&#x539f;&#x59cb;&#x6c42;&#x751f;","children":[],"payload":{"tag":"li","lines":"9,11"}}],"payload":{"tag":"h6","lines":"8,9"}}],"payload":{"tag":"h5","lines":"7,8"}}],"payload":{"tag":"h4","lines":"6,7"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;&#x8d5b;&#x52d2;&#x65af;&#x7528;&#x6ce5;&#x571f;&#x70e7;&#x7ed3;&#x8010;&#x706b;&#x7816;&#x5efa;&#x9020;&#x9ad8;&#x7089;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x51b6;&#x70bc;&#x5c9b;&#x4e0a;&#x94c1;&#x77ff;&#x77f3;&#x5236;&#x6210;&#x65a7;&#x5934;&#x5200;&#x5251;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"14,18"}}],"payload":{"tag":"h6","lines":"13,14"}}],"payload":{"tag":"h5","lines":"12,13"}}],"payload":{"tag":"h4","lines":"11,12"}}],"payload":{"tag":"h3","lines":"5,6"}}],"payload":{"tag":"h2","lines":"4,5"}},{"content":"&#x4e8c;&#x3001;&#x9057;&#x5f03;&#x7684;&#x4eba;&#xff1a;&#x62d3;&#x8352;&#x7e41;&#x8363;&#x4e0e;&#x8fbe;&#x79d1;&#x8fbe;&#x8352;&#x5c9b;&#x91ce;&#x4eba;&#x6551;&#x8d4e;","children":[{"content":"1. &#x9057;&#x5f03;&#x7684;&#x4eba;&#xff1a;&#x62d3;&#x8352;&#x7e41;&#x8363;&#x4e0e;&#x8fbe;&#x79d1;&#x8fbe;&#x8352;&#x5c9b;&#x91ce;&#x4eba;&#x6551;&#x8d4e;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x6797;&#x80af;&#x5c9b;&#x5de5;&#x4e1a;&#x5927;&#x53d1;&#x5c55;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x519c;&#x4f5c;&#x7269;&#x4e30;&#x6536;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x67b6;&#x8bbe;&#x7535;&#x62a5;&#x7ebf;","children":[],"payload":{"tag":"li","lines":"23,25"}}],"payload":{"tag":"h6","lines":"22,23"}}],"payload":{"tag":"h5","lines":"21,22"}}],"payload":{"tag":"h4","lines":"20,21"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;&#x8d6b;&#x4f2f;&#x7279;&#x5728;&#x4e00;&#x4ef6;&#x51ac;&#x8863;&#x53e3;&#x888b;&#x91cc;&#x610f;&#x5916;&#x53d1;&#x73b0;&#x4e86;&#x4e00;&#x7c92;&#x9ea6;&#x79cd;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x7ecf;&#x8fc7;&#x4e09;&#x5e74;&#x7cbe;&#x5fc3;&#x64ad;&#x79cd;&#x6536;&#x83b7;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"28,32"}}],"payload":{"tag":"h6","lines":"27,28"}}],"payload":{"tag":"h5","lines":"26,27"}}],"payload":{"tag":"h4","lines":"25,26"}}],"payload":{"tag":"h3","lines":"19,20"}}],"payload":{"tag":"h2","lines":"18,19"}},{"content":"&#x4e09;&#x3001;&#x5c9b;&#x7684;&#x79d8;&#x5bc6;&#xff1a;&#x6d77;&#x76d7;&#x6218;&#x8239;&#x6765;&#x88ad;&#x4e0e;&#x9e66;&#x9e49;&#x87ba;&#x53f7;&#x73b0;&#x8eab;","children":[{"content":"1. &#x5c9b;&#x7684;&#x79d8;&#x5bc6;&#xff1a;&#x6d77;&#x76d7;&#x6218;&#x8239;&#x6765;&#x88ad;&#x4e0e;&#x9e66;&#x9e49;&#x87ba;&#x53f7;&#x73b0;&#x8eab;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x51f6;&#x6b8b;&#x6d77;&#x76d7;&#x8239;&#x8fdb;&#x72af;&#x6797;&#x80af;&#x5c9b;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x795e;&#x79d8;&#x529b;&#x91cf;&#x7528;&#x6c34;&#x96f7;&#x5c06;&#x6d77;&#x76d7;&#x8239;&#x77ac;&#x95f4;&#x70b8;&#x6bc1;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x62d3;&#x8352;&#x8005;&#x6536;&#x5230;&#x7535;&#x62a5;&#x6307;&#x5f15;&#x6f5c;&#x5165;&#x6d77;&#x5e95;&#x6697;&#x6d1e;&#x63ed;&#x5f00;&#x5b88;&#x62a4;&#x795e;&#x8c1c;&#x5e95;","children":[],"payload":{"tag":"li","lines":"37,39"}}],"payload":{"tag":"h6","lines":"36,37"}}],"payload":{"tag":"h5","lines":"35,36"}}],"payload":{"tag":"h4","lines":"34,35"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;&#x5728;&#x5de8;&#x5927;&#x7684;&#x7384;&#x6b66;&#x5ca9;&#x6c34;&#x4e0b;&#x7a79;&#x9876;&#x6df1;&#x5904;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x9e66;&#x9e49;&#x87ba;&#x53f7;&#x6d6e;&#x51fa;&#x6c34;&#x9762;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"42,46"}}],"payload":{"tag":"h6","lines":"41,42"}}],"payload":{"tag":"h5","lines":"40,41"}}],"payload":{"tag":"h4","lines":"39,40"}}],"payload":{"tag":"h3","lines":"33,34"}}],"payload":{"tag":"h2","lines":"32,33"}},{"content":"&#x56db;&#x3001;&#x5c3c;&#x6469;&#x8239;&#x957f;&#x4e4b;&#x6b7b;&#xff1a;&#x8fbe;&#x5361;&#x5c14;&#x738b;&#x5b50;&#x7684;&#x9057;&#x5631;&#x4e0e;&#x957f;&#x7720;","children":[{"content":"1. &#x5c3c;&#x6469;&#x8239;&#x957f;&#x4e4b;&#x6b7b;&#xff1a;&#x8fbe;&#x5361;&#x5c14;&#x738b;&#x5b50;&#x7684;&#x9057;&#x5631;&#x4e0e;&#x957f;&#x7720;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x5c3c;&#x6469;&#x8239;&#x957f;&#x5411;&#x4e94;&#x4eba;&#x8bb2;&#x8ff0;&#x81ea;&#x5df1;&#x4f5c;&#x4e3a;&#x5370;&#x5ea6;&#x53cd;&#x82f1;&#x8d77;&#x4e49;&#x738b;&#x5b50;&#x7684;&#x60b2;&#x58ee;&#x5f80;&#x4e8b;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x6258;&#x4ed8;&#x540e;&#x4e8b;&#x540e;&#x5728;&#x4f17;&#x4eba;&#x81f4;&#x656c;&#x4e2d;&#x6253;&#x5f00;&#x6c34;&#x9600;&#x8ba9;&#x9e66;&#x9e49;&#x87ba;&#x53f7;&#x6c89;&#x5165;&#x6df1;&#x6d77;&#x94c1;&#x575f;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x6d88;&#x9664;&#x975e;&#x5fc5;&#x8981;&#x590d;&#x6742;&#x6027;&#x4e0e;&#x8ba4;&#x77e5;&#x6469;&#x64e6;","children":[],"payload":{"tag":"li","lines":"51,53"}}],"payload":{"tag":"h6","lines":"50,51"}}],"payload":{"tag":"h5","lines":"49,50"}}],"payload":{"tag":"h4","lines":"48,49"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;&#x4e94;&#x4f4d;&#x62d3;&#x8352;&#x8005;&#x8083;&#x7acb;&#x5728;&#x8247;&#x824f;&#x8131;&#x5e3d;&#x9ed8;&#x54c0;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x770b;&#x7740;&#x6cdb;&#x7740;&#x6e05;&#x51b7;&#x7eff;&#x5149;&#x7684;&#x9e66;&#x9e49;&#x87ba;&#x53f7;&#x643a;&#x5e26;&#x7740;&#x4e00;&#x751f;&#x7684;&#x9a84;&#x50b2;&#x4e0e;&#x5b64;&#x72ec;&#x7f13;&#x7f13;&#x6ed1;&#x5165;&#x4e07;&#x4e08;&#x6df1;&#x6e0a;&#x5e95;&#x76d8;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"56,60"}}],"payload":{"tag":"h6","lines":"55,56"}}],"payload":{"tag":"h5","lines":"54,55"}}],"payload":{"tag":"h4","lines":"53,54"}}],"payload":{"tag":"h3","lines":"47,48"}}],"payload":{"tag":"h2","lines":"46,47"}},{"content":"&#x4e94;&#x3001;&#x706b;&#x5c71;&#x7206;&#x53d1;&#x4e0e;&#x9093;&#x80af;&#x53f7;&#x8425;&#x6551;&#xff1a;&#x65b0;&#x4e16;&#x754c;&#x7684;&#x6587;&#x660e;&#x91cd;&#x751f;","children":[{"content":"1. &#x706b;&#x5c71;&#x7206;&#x53d1;&#x4e0e;&#x9093;&#x80af;&#x53f7;&#x8425;&#x6551;&#xff1a;&#x65b0;&#x4e16;&#x754c;&#x7684;&#x6587;&#x660e;&#x91cd;&#x751f;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x6797;&#x80af;&#x5c9b;&#x706b;&#x5c71;&#x55b7;&#x53d1;&#x5f7b;&#x5e95;&#x70b8;&#x88c2;&#x6c89;&#x6ca1;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x4e94;&#x4eba;&#x7edd;&#x671b;&#x56f0;&#x5b88;&#x4ec5;&#x5b58;&#x7684;&#x4e00;&#x5757;&#x7901;&#x77f3;&#x6570;&#x65e5;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x9093;&#x80af;&#x53f7;&#x6309;&#x7167;&#x5c3c;&#x6469;&#x8239;&#x957f;&#x7559;&#x4e0b;&#x7684;&#x6f02;&#x6d41;&#x74f6;&#x4fe1;&#x6807;&#x5947;&#x8ff9;&#x8425;&#x6551;","children":[],"payload":{"tag":"li","lines":"65,67"}}],"payload":{"tag":"h6","lines":"64,65"}}],"payload":{"tag":"h5","lines":"63,64"}}],"payload":{"tag":"h4","lines":"62,63"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;&#x9093;&#x80af;&#x53f7;&#x8239;&#x957f;&#x683c;&#x5170;&#x7279;&#x4e4b;&#x5b50;&#x7f57;&#x4f2f;&#x7279;&#x5728;&#x6d77;&#x5e73;&#x7ebf;&#x4e0a;&#x5347;&#x8d77;&#x98ce;&#x5e06;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x5386;&#x7ecf;&#x52ab;&#x96be;&#x7684;&#x62d3;&#x8352;&#x52c7;&#x58eb;&#x91cd;&#x8fd4;&#x6545;&#x571f;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"70,71"}}],"payload":{"tag":"h6","lines":"69,70"}}],"payload":{"tag":"h5","lines":"68,69"}}],"payload":{"tag":"h4","lines":"67,68"}}],"payload":{"tag":"h3","lines":"61,62"}}],"payload":{"tag":"h2","lines":"60,61"}}],"payload":{"tag":"h1","lines":"0,1"}}</script>
+      <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true"># 《神秘岛》 思维导图
+
+&gt; 核心主题：科幻小说之父凡尔纳“海洋三部曲”恢弘终章，五名美国南北战争战俘乘热气球飘落荒岛，凭借科学智慧与顽强毅力白手起家
+
+## 一、空中遇险：热气球坠海与荒岛生存第一把火
+### 1. 空中遇险：热气球坠海与荒岛生存第一把火
+#### 理论机理与规律
+##### 机制要义：五人逃出里士满乘气球遭遇飓风坠落荒岛
+###### 运作逻辑：赛勒斯工程师失踪后奇迹获救
+- 边界约束：凭借科学知识开启原始求生
+
+#### 落地实践与实战案例
+##### 实战案例：赛勒斯用泥土烧结耐火砖建造高炉
+###### 实施过程：冶炼岛上铁矿石制成斧头刀剑
+- 效益评估：优先保障系统鲁棒性与体验价值
+
+
+
+## 二、遗弃的人：拓荒繁荣与达科达荒岛野人救赎
+### 1. 遗弃的人：拓荒繁荣与达科达荒岛野人救赎
+#### 理论机理与规律
+##### 机制要义：林肯岛工业大发展
+###### 运作逻辑：农作物丰收
+- 边界约束：架设电报线
+
+#### 落地实践与实战案例
+##### 实战案例：赫伯特在一件冬衣口袋里意外发现了一粒麦种
+###### 实施过程：经过三年精心播种收获
+- 效益评估：优先保障系统鲁棒性与体验价值
+
+
+
+## 三、岛的秘密：海盗战船来袭与鹦鹉螺号现身
+### 1. 岛的秘密：海盗战船来袭与鹦鹉螺号现身
+#### 理论机理与规律
+##### 机制要义：凶残海盗船进犯林肯岛
+###### 运作逻辑：神秘力量用水雷将海盗船瞬间炸毁
+- 边界约束：拓荒者收到电报指引潜入海底暗洞揭开守护神谜底
+
+#### 落地实践与实战案例
+##### 实战案例：在巨大的玄武岩水下穹顶深处
+###### 实施过程：鹦鹉螺号浮出水面
+- 效益评估：优先保障系统鲁棒性与体验价值
+
+
+
+## 四、尼摩船长之死：达卡尔王子的遗嘱与长眠
+### 1. 尼摩船长之死：达卡尔王子的遗嘱与长眠
+#### 理论机理与规律
+##### 机制要义：尼摩船长向五人讲述自己作为印度反英起义王子的悲壮往事
+###### 运作逻辑：托付后事后在众人致敬中打开水阀让鹦鹉螺号沉入深海铁坟
+- 边界约束：消除非必要复杂性与认知摩擦
+
+#### 落地实践与实战案例
+##### 实战案例：五位拓荒者肃立在艇艏脱帽默哀
+###### 实施过程：看着泛着清冷绿光的鹦鹉螺号携带着一生的骄傲与孤独缓缓滑入万丈深渊底盘
+- 效益评估：优先保障系统鲁棒性与体验价值
+
+
+
+## 五、火山爆发与邓肯号营救：新世界的文明重生
+### 1. 火山爆发与邓肯号营救：新世界的文明重生
+#### 理论机理与规律
+##### 机制要义：林肯岛火山喷发彻底炸裂沉没
+###### 运作逻辑：五人绝望困守仅存的一块礁石数日
+- 边界约束：邓肯号按照尼摩船长留下的漂流瓶信标奇迹营救
+
+#### 落地实践与实战案例
+##### 实战案例：邓肯号船长格兰特之子罗伯特在海平线上升起风帆
+###### 实施过程：历经劫难的拓荒勇士重返故土
+- 效益评估：优先保障系统鲁棒性与体验价值</textarea>
+      <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
+    </section>
 
           <section class="section-block">
             <h2>全书结构</h2>
@@ -234,6 +341,186 @@
   </script>
 
   
+  <script src="vendor/markmap-bundle.js" defer></script>
+  <script>
+    (function() {
+      var mmSection = document.getElementById('mindmapSection');
+      if (!mmSection) return;
+
+      var svgEl = document.getElementById('markmapSvg');
+      var treeDataEl = document.getElementById('mmTreeData');
+      if (!svgEl || !treeDataEl) return;
+
+      function initMarkmap() {
+        if (!window.markmap || !window.markmap.Markmap || !window.d3) {
+          setTimeout(initMarkmap, 50);
+          return;
+        }
+
+        var rawData = JSON.parse(treeDataEl.textContent);
+        // Minimalist, elegant palette aligned with Douban Green and subtle slate tones
+        var palette = ['#007722', '#2f6946', '#334155', '#245a3a', '#475569', '#1e3d29'];
+        var colorScale = d3.scaleOrdinal(palette);
+
+        function cloneData(obj) {
+          return JSON.parse(JSON.stringify(obj));
+        }
+
+        function setFold(n, f) {
+          if (n.children && n.children.length) {
+            n.payload = Object.assign({}, n.payload, { fold: f ? 1 : 0 });
+            n.children.forEach(function(c) { setFold(c, f); });
+          }
+        }
+
+        // Default initial fold: "全部" (all expanded)
+        var currentData = cloneData(rawData);
+        setFold(currentData, false);
+
+        var mm = window.markmap.Markmap.create(svgEl, {
+          autoFit: true,
+          duration: 350,
+          color: function(node) {
+            return colorScale(node.state.id);
+          },
+          paddingX: 16,
+          spacingHorizontal: 75,
+          spacingVertical: 12
+        }, currentData);
+
+        // Mount toolbar
+        if (window.markmap.Toolbar) {
+          var tb = window.markmap.Toolbar.create(mm);
+          tb.setBrand(false);
+          var tbWrap = document.getElementById('mmToolbarWrap');
+          if (tbWrap) tbWrap.appendChild(tb.render());
+        }
+
+        // Level Preset Buttons
+        var btnL1 = document.getElementById('mmBtnLevel1');
+        var btnL2 = document.getElementById('mmBtnLevel2');
+        var btnAll = document.getElementById('mmBtnExpandAll');
+
+        function setActiveLevelBtn(activeBtn) {
+          [btnL1, btnL2, btnAll].forEach(function(b) {
+            if (b) b.classList.remove('active');
+          });
+          if (activeBtn) activeBtn.classList.add('active');
+        }
+
+        if (btnL1) {
+          btnL1.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) { setFold(b, true); });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL1);
+          });
+        }
+
+        if (btnL2) {
+          btnL2.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) {
+                b.payload = Object.assign({}, b.payload, { fold: 0 });
+                if (b.children) {
+                  b.children.forEach(function(t) { setFold(t, true); });
+                }
+              });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL2);
+          });
+        }
+
+        if (btnAll) {
+          btnAll.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            setFold(d, false);
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnAll);
+          });
+        }
+
+        // Fullscreen Toggle
+        var fsBtn = document.getElementById('mmFullscreenBtn');
+        var fsText = fsBtn ? fsBtn.querySelector('.mm-fs-text') : null;
+
+        function toggleFullscreen() {
+          var isFs = mmSection.classList.toggle('is-fullscreen');
+          if (fsText) fsText.textContent = isFs ? '退出全屏' : '全屏';
+          setTimeout(function() {
+            mm.fit();
+          }, 150);
+        }
+
+        if (fsBtn) {
+          fsBtn.addEventListener('click', toggleFullscreen);
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && mmSection.classList.contains('is-fullscreen')) {
+            toggleFullscreen();
+          }
+        });
+
+        // Copy Markdown
+        var copyBtn = document.getElementById('mmCopyMarkdownBtn');
+        var mdSource = document.getElementById('mmMarkdownSource');
+        var toast = document.getElementById('mmToast');
+
+        function showToast(msg) {
+          if (!toast) return;
+          toast.textContent = msg;
+          toast.classList.add('active');
+          setTimeout(function() { toast.classList.remove('active'); }, 2200);
+        }
+
+        if (copyBtn && mdSource) {
+          copyBtn.addEventListener('click', function() {
+            var text = mdSource.value;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function() {
+                showToast('✓ 已复制思维导图大纲到剪贴板！');
+              }).catch(function() {
+                fallbackCopy(text);
+              });
+            } else {
+              fallbackCopy(text);
+            }
+          });
+        }
+
+        function fallbackCopy(text) {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('✓ 已复制思维导图大纲到剪贴板！');
+          } catch (e) {
+            showToast('复制失败，请手动选取');
+          }
+        }
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMarkmap);
+      } else {
+        initMarkmap();
+      }
+    })();
+  </script>
+
   <div class="cmdk-backdrop" id="cmdkBackdrop" aria-hidden="true">
     <div class="cmdk-dialog" id="cmdkDialog" role="dialog" aria-modal="true" aria-label="全书搜索与快速标记">
       <div class="cmdk-head">
