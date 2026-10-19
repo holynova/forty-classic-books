@@ -341,25 +341,69 @@ const perfAndAnalyticsScript = `
   </script>
 `;
 
-// Mindmap Generator & Renderer
+function renderNodeToMarkdown(node, depth = 1) {
+  let md = '';
+  const title = (node.title || node.name || '').trim();
+  if (depth === 1) {
+    const cleanTitle = title.startsWith('《') && title.endsWith('》') ? title : `《${title}》`;
+    md += `# ${cleanTitle} 思维导图\n\n`;
+    if (node.theme) md += `> 核心主题：${node.theme}\n\n`;
+  } else if (depth <= 6) {
+    md += `${'#'.repeat(depth)} ${title}\n`;
+    if (node.desc && depth <= 3) md += `*${node.desc}*\n\n`;
+  } else {
+    const indent = '  '.repeat(depth - 7);
+    md += `${indent}- ${title}\n`;
+  }
+
+  if (node.children && node.children.length > 0) {
+    node.children.forEach(c => {
+      md += renderNodeToMarkdown(c, depth + 1);
+    });
+    if (depth <= 4) md += '\n';
+  } else if (node.points && node.points.length > 0) {
+    node.points.forEach(pt => {
+      if (typeof pt === 'string') {
+        const indent = '  '.repeat(Math.max(0, depth - 6));
+        md += `${indent}- ${pt}\n`;
+      } else {
+        md += renderNodeToMarkdown(pt, depth + 1);
+      }
+    });
+    md += '\n';
+  }
+  return md;
+}
+
+// Mindmap Generator & Renderer supporting up to 8 levels
 function generateMindmapMarkdown(mm, book) {
+  if (mm.children) {
+    return renderNodeToMarkdown(mm, 1).trim();
+  }
+  // Backward compatibility
   const cleanTitle = book.title.startsWith('《') && book.title.endsWith('》')
     ? book.title
     : `《${book.title}》`;
   let md = `# ${cleanTitle} 思维导图\n\n`;
   if (mm.theme) md += `> 核心主题：${mm.theme}\n\n`;
-  mm.branches.forEach((b) => {
-    md += `## ${b.name}\n`;
-    if (b.desc) md += `*${b.desc}*\n\n`;
-    b.topics.forEach(t => {
-      md += `### ${t.title}\n`;
-      if (t.desc) md += `${t.desc}\n`;
-      t.points.forEach(pt => {
-        md += `- ${pt}\n`;
-      });
-      md += '\n';
+  if (mm.branches) {
+    mm.branches.forEach((b) => {
+      md += `## ${b.name}\n`;
+      if (b.desc) md += `*${b.desc}*\n\n`;
+      if (b.topics) {
+        b.topics.forEach(t => {
+          md += `### ${t.title}\n`;
+          if (t.desc) md += `${t.desc}\n`;
+          if (t.points) {
+            t.points.forEach(pt => {
+              md += `- ${pt}\n`;
+            });
+            md += '\n';
+          }
+        });
+      }
     });
-  });
+  }
   return md.trim();
 }
 
