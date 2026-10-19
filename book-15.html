@@ -188,8 +188,8 @@
         <div class="mindmap-actions">
           <div class="mm-level-switch">
             <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
-            <button type="button" class="mm-btn active" id="mmBtnLevel2" title="展开至二级分支">分支</button>
-            <button type="button" class="mm-btn" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
+            <button type="button" class="mm-btn" id="mmBtnLevel2" title="展开至二级分支">分支</button>
+            <button type="button" class="mm-btn active" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
           </div>
 
           <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
@@ -366,7 +366,8 @@ Site Reliability Engineering 是 DevOps 的一种具体实现
         }
 
         var rawData = JSON.parse(treeDataEl.textContent);
-        var palette = ['#007722', '#1d4ed8', '#c2410c', '#7e22ce', '#0f766e', '#be123c'];
+        // Minimalist, elegant palette aligned with Douban Green and subtle slate tones
+        var palette = ['#007722', '#2f6946', '#334155', '#245a3a', '#475569', '#1e3d29'];
         var colorScale = d3.scaleOrdinal(palette);
 
         function cloneData(obj) {
@@ -380,19 +381,9 @@ Site Reliability Engineering 是 DevOps 的一种具体实现
           }
         }
 
-        // Default initial fold: level 2 topics collapsed
+        // Default initial fold: "全部" (all expanded)
         var currentData = cloneData(rawData);
-        if (currentData.children) {
-          currentData.payload = Object.assign({}, currentData.payload, { fold: 0 });
-          currentData.children.forEach(function(branch) {
-            branch.payload = Object.assign({}, branch.payload, { fold: 0 });
-            if (branch.children) {
-              branch.children.forEach(function(topic) {
-                setFold(topic, true);
-              });
-            }
-          });
-        }
+        setFold(currentData, false);
 
         var mm = window.markmap.Markmap.create(svgEl, {
           autoFit: true,
