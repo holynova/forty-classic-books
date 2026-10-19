@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>《重构：改善既有代码的设计》 · 经典书导读</title>
-  <link rel="stylesheet" href="style.css?v=fea06185">
+  <link rel="stylesheet" href="style.css?v=4fdade2e">
 </head>
 <body>
   <div class="layout-container">
@@ -182,317 +182,38 @@
           <section class="section-block mindmap-section" id="mindmapSection">
       <div class="mindmap-header">
         <div class="mindmap-header-left">
-          <span class="mindmap-badge">知识脉络</span>
-          <h2 class="mindmap-title">全书思维导图</h2>
+          <span class="mindmap-badge">树状思维导图</span>
+          <h2 class="mindmap-title">全书思维导图 · 知识脉络树</h2>
         </div>
         <div class="mindmap-actions">
-          <button type="button" class="mm-btn mm-btn-toggle" id="mmToggleAllBtn" title="全部折叠/展开">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-            <span class="mm-toggle-text">全部收起</span>
-          </button>
-          <button type="button" class="mm-btn mm-btn-copy" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
+          <div class="mm-level-switch">
+            <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
+            <button type="button" class="mm-btn active" id="mmBtnLevel2" title="展开至二级分支">分支</button>
+            <button type="button" class="mm-btn" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
+          </div>
+
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>复制大纲</span>
           </button>
-          <button type="button" class="mm-btn mm-btn-fullscreen" id="mmFullscreenBtn" title="全屏沉浸式全景模式">
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmFullscreenBtn" title="全屏沉浸式全景模式 (ESC 退出)">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-            <span>全屏全景</span>
+            <span class="mm-fs-text">全屏</span>
           </button>
         </div>
       </div>
 
-      <div class="mindmap-container" id="mindmapContainer">
-        <div class="mm-root-card">
-          <div class="mm-root-pill">核心主旨</div>
-          <div class="mm-root-title">《重构：改善既有代码的设计》</div>
-          <div class="mm-root-theme">安全代码重构、代码坏味道识别与微步演进技术</div>
-        </div>
-
-        <div class="mm-tree-body">
-          <div class="mm-branch" data-branch-index="0">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">一、重构的基本原则与经济学</span>
-          <span class="mm-branch-desc">在不改变外部行为的前提下，提升代码可读性与维护性</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">重构的定义与两顶帽子</h4>
+      <div class="mm-viewport-wrapper">
+        <div class="mm-viewport" id="mmViewport">
+          <svg id="markmapSvg"></svg>
+          <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
+          <div class="mm-canvas-hint">
+            <span>💡 拖拽平移 · 滚轮缩放 · 点击分支圆点折叠/展开</span>
           </div>
-          <p class="mm-topic-desc">严格隔离‘添加新功能’与‘改善代码结构’两个阶段</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">重构定义：对软件内部结构的一种调整，在不改变软件‘可观察外部行为’的前提下，提高其可理解性并降低其修改成本</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">两顶帽子（Two Hats）：开发时一次只戴一顶帽子。戴‘加功能’帽子时只写测试和功能代码；戴‘重构’帽子时绝对不加新功能，只调结构并确保全绿</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">重构的经济效益：软件不是写完就结束的静态资产，重构能保持代码高可修改性，让后续半年、一年的交付曲线保持平稳而不是指数级变慢</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">何时重构与三次法则</h4>
-          </div>
-          <p class="mm-topic-desc">将重构融入日常呼吸，不搞大破大立</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">三次法则（The Rule of Three）：第一次做只管做出来；第二次做即使有类似重复也先做；第三次再做类似事情时，必须停下来重构</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">预备性重构：在添加新功能前，先重构使代码更容易接纳该功能</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">理解性重构：看懂一段混乱代码后，立刻重构让这段理解永久固化在代码命名与结构里</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="1">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">二、代码坏味道全谱系（Bad Smells）</span>
-          <span class="mm-branch-desc">精确嗅出隐藏在代码内部的腐化信号</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">基础代码级坏味道</h4>
-          </div>
-          <p class="mm-topic-desc">单函数与变量维度的常见腐化</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">神秘命名（Mysterious Name）：名字模糊不知所云，迫使阅读者阅读函数内部实现才能推导含义</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">重复代码（Duplicated Code）：头号公敌，一处修改漏改他处必然产生隐蔽Bug</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">过长函数（Long Function）：通常函数越长越难理解，提炼小函数并给出好名字能极大降低心智负担</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">过长参数列表（Long Parameter List）：参数超过3个极易传错，应封装为参数对象</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">类与对象关系级坏味道</h4>
-          </div>
-          <p class="mm-topic-desc">面向对象职责分配不均产生的架构腐化</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">发散式变化（Divergent Change）：一个类因为多个不同的外界原因需要修改（违反单一职责原则SRP）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">散弹式修改（Shotgun Surgery）：每遇到一种变化，必须在许多不同的类里各做微小改动（职责分散）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">依恋情结（Feature Envy）：一个函数总是极其渴望访问另一个对象的数据，应搬移过去</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">基本类型偏执（Primitive Obsession）：拒绝使用小型领域对象（如金额、电话），全用string和int平铺</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">Switch 语句惊悚现身：重复出现的相同 switch 条件，应重构为多态策略</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="2">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">三、构筑测试保护网</span>
-          <span class="mm-branch-desc">没有完备的自测试套件，任何重构都是盲目冒险</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">自测试代码的安全气囊价值</h4>
-          </div>
-          <p class="mm-topic-desc">自动化测试是重构能够放心推进的唯一底气</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">重构必须以高密度的自测试代码（Self-testing Code）为绝对前提</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">如果重构过程中不小心改变了业务行为，单元测试必须在 3 秒钟内红灯报错报警</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">测试优先驱动：在开始重构一段脏代码前，如果原先缺乏测试，第一步是为它补充覆盖核心场景的黄金端到端测试</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">微步演进与红-绿循环</h4>
-          </div>
-          <p class="mm-topic-desc">将每一次修改拆解为极小的一步</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">微步（Baby Steps）：每次只修改几行，跑一次测试，提交一次</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">如果测试红了，绝对不试图在复杂混乱中连环打补丁，直接 Ctrl+Z 回滚到上一个全绿状态重新再来</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">频繁的小步快跑，比憋个三天的大重构最终合并冲突爆发要安全可靠一万倍</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="3">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">四、核心重构手法清单</span>
-          <span class="mm-branch-desc">最常用、最有效的核心重构武器库</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">最基础有力的重构技法</h4>
-          </div>
-          <p class="mm-topic-desc">日常使用频率最高的微观重构</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">提炼函数（Extract Function）：将一段独立逻辑抽成小函数，用函数名解释其意图</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">内联函数（Inline Function）：消除无意义的间接跳转与冗余包装</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">引入参数对象（Introduce Parameter Object）：把总是成对出现的离散参数封装为领域值对象</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">以查询取代临时变量（Replace Temp with Query）：消除函数内部副作用计算，让数据逻辑可被多次复用</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">面向对象重构技法</h4>
-          </div>
-          <p class="mm-topic-desc">优化类结构与消除复杂条件分支</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">搬移函数/搬移字段（Move Function/Field）：将行为与数据放置在最常使用它们的地方，消除依恋情结</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">以多态取代条件表达式（Replace Conditional with Polymorphism）：用继承与多态机制消除散落各处的 switch-case</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">拆分循环（Split Loop）：一个循环只做一件事，哪怕多迭代一次，清晰度收益远胜微不足道的纳秒级性能损耗</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="4">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">五、继承与高阶架构重构</span>
-          <span class="mm-branch-desc">理清对象继承层级与大型重构策略</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">继承体系重构</h4>
-          </div>
-          <p class="mm-topic-desc">治理继承滥用与职责错配</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">以委托取代继承（Replace Inheritance with Delegation）：当子类并不真正是父类的一种（违背LSP）时，转为组合关联</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">提取超类（Extract Superclass）：将多个兄弟类的公共特征上移到父类中</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">折叠继承体系（Collapse Hierarchy）：当子类与父类已经没有实质区别时，果断合并消除无意义的层级</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">大型重构的推进策略</h4>
-          </div>
-          <p class="mm-topic-desc">持续演进宏观架构</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">梳理并分离领域层与展现层</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">设立防腐层（Anticorruption Layer）隔离老旧恶心遗留系统</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">将重构视为一种生活方式：在每一天的工作中，顺手让代码比昨天的更好一点</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
         </div>
       </div>
 
+      <script type="application/json" id="mmTreeData">{"content":"&#x300a;&#x91cd;&#x6784;&#xff1a;&#x6539;&#x5584;&#x65e2;&#x6709;&#x4ee3;&#x7801;&#x7684;&#x8bbe;&#x8ba1;&#x300b; &#x601d;&#x7ef4;&#x5bfc;&#x56fe;","children":[{"content":"&#x4e00;&#x3001;&#x91cd;&#x6784;&#x7684;&#x57fa;&#x672c;&#x539f;&#x5219;&#x4e0e;&#x7ecf;&#x6d4e;&#x5b66;","children":[{"content":"&#x91cd;&#x6784;&#x7684;&#x5b9a;&#x4e49;&#x4e0e;&#x4e24;&#x9876;&#x5e3d;&#x5b50;","children":[{"content":"&#x91cd;&#x6784;&#x5b9a;&#x4e49;&#xff1a;&#x5bf9;&#x8f6f;&#x4ef6;&#x5185;&#x90e8;&#x7ed3;&#x6784;&#x7684;&#x4e00;&#x79cd;&#x8c03;&#x6574;&#xff0c;&#x5728;&#x4e0d;&#x6539;&#x53d8;&#x8f6f;&#x4ef6;&#x2018;&#x53ef;&#x89c2;&#x5bdf;&#x5916;&#x90e8;&#x884c;&#x4e3a;&#x2019;&#x7684;&#x524d;&#x63d0;&#x4e0b;&#xff0c;&#x63d0;&#x9ad8;&#x5176;&#x53ef;&#x7406;&#x89e3;&#x6027;&#x5e76;&#x964d;&#x4f4e;&#x5176;&#x4fee;&#x6539;&#x6210;&#x672c;","children":[],"payload":{"tag":"li","lines":"9,10"}},{"content":"&#x4e24;&#x9876;&#x5e3d;&#x5b50;&#xff08;Two Hats&#xff09;&#xff1a;&#x5f00;&#x53d1;&#x65f6;&#x4e00;&#x6b21;&#x53ea;&#x6234;&#x4e00;&#x9876;&#x5e3d;&#x5b50;&#x3002;&#x6234;&#x2018;&#x52a0;&#x529f;&#x80fd;&#x2019;&#x5e3d;&#x5b50;&#x65f6;&#x53ea;&#x5199;&#x6d4b;&#x8bd5;&#x548c;&#x529f;&#x80fd;&#x4ee3;&#x7801;&#xff1b;&#x6234;&#x2018;&#x91cd;&#x6784;&#x2019;&#x5e3d;&#x5b50;&#x65f6;&#x7edd;&#x5bf9;&#x4e0d;&#x52a0;&#x65b0;&#x529f;&#x80fd;&#xff0c;&#x53ea;&#x8c03;&#x7ed3;&#x6784;&#x5e76;&#x786e;&#x4fdd;&#x5168;&#x7eff;","children":[],"payload":{"tag":"li","lines":"10,11"}},{"content":"&#x91cd;&#x6784;&#x7684;&#x7ecf;&#x6d4e;&#x6548;&#x76ca;&#xff1a;&#x8f6f;&#x4ef6;&#x4e0d;&#x662f;&#x5199;&#x5b8c;&#x5c31;&#x7ed3;&#x675f;&#x7684;&#x9759;&#x6001;&#x8d44;&#x4ea7;&#xff0c;&#x91cd;&#x6784;&#x80fd;&#x4fdd;&#x6301;&#x4ee3;&#x7801;&#x9ad8;&#x53ef;&#x4fee;&#x6539;&#x6027;&#xff0c;&#x8ba9;&#x540e;&#x7eed;&#x534a;&#x5e74;&#x3001;&#x4e00;&#x5e74;&#x7684;&#x4ea4;&#x4ed8;&#x66f2;&#x7ebf;&#x4fdd;&#x6301;&#x5e73;&#x7a33;&#x800c;&#x4e0d;&#x662f;&#x6307;&#x6570;&#x7ea7;&#x53d8;&#x6162;","children":[],"payload":{"tag":"li","lines":"11,13"}}],"payload":{"tag":"h3","lines":"7,8"}},{"content":"&#x4f55;&#x65f6;&#x91cd;&#x6784;&#x4e0e;&#x4e09;&#x6b21;&#x6cd5;&#x5219;","children":[{"content":"&#x4e09;&#x6b21;&#x6cd5;&#x5219;&#xff08;The Rule of Three&#xff09;&#xff1a;&#x7b2c;&#x4e00;&#x6b21;&#x505a;&#x53ea;&#x7ba1;&#x505a;&#x51fa;&#x6765;&#xff1b;&#x7b2c;&#x4e8c;&#x6b21;&#x505a;&#x5373;&#x4f7f;&#x6709;&#x7c7b;&#x4f3c;&#x91cd;&#x590d;&#x4e5f;&#x5148;&#x505a;&#xff1b;&#x7b2c;&#x4e09;&#x6b21;&#x518d;&#x505a;&#x7c7b;&#x4f3c;&#x4e8b;&#x60c5;&#x65f6;&#xff0c;&#x5fc5;&#x987b;&#x505c;&#x4e0b;&#x6765;&#x91cd;&#x6784;","children":[],"payload":{"tag":"li","lines":"15,16"}},{"content":"&#x9884;&#x5907;&#x6027;&#x91cd;&#x6784;&#xff1a;&#x5728;&#x6dfb;&#x52a0;&#x65b0;&#x529f;&#x80fd;&#x524d;&#xff0c;&#x5148;&#x91cd;&#x6784;&#x4f7f;&#x4ee3;&#x7801;&#x66f4;&#x5bb9;&#x6613;&#x63a5;&#x7eb3;&#x8be5;&#x529f;&#x80fd;","children":[],"payload":{"tag":"li","lines":"16,17"}},{"content":"&#x7406;&#x89e3;&#x6027;&#x91cd;&#x6784;&#xff1a;&#x770b;&#x61c2;&#x4e00;&#x6bb5;&#x6df7;&#x4e71;&#x4ee3;&#x7801;&#x540e;&#xff0c;&#x7acb;&#x523b;&#x91cd;&#x6784;&#x8ba9;&#x8fd9;&#x6bb5;&#x7406;&#x89e3;&#x6c38;&#x4e45;&#x56fa;&#x5316;&#x5728;&#x4ee3;&#x7801;&#x547d;&#x540d;&#x4e0e;&#x7ed3;&#x6784;&#x91cc;","children":[],"payload":{"tag":"li","lines":"17,19"}}],"payload":{"tag":"h3","lines":"13,14"}}],"payload":{"tag":"h2","lines":"4,5"}},{"content":"&#x4e8c;&#x3001;&#x4ee3;&#x7801;&#x574f;&#x5473;&#x9053;&#x5168;&#x8c31;&#x7cfb;&#xff08;Bad Smells&#xff09;","children":[{"content":"&#x57fa;&#x7840;&#x4ee3;&#x7801;&#x7ea7;&#x574f;&#x5473;&#x9053;","children":[{"content":"&#x795e;&#x79d8;&#x547d;&#x540d;&#xff08;Mysterious Name&#xff09;&#xff1a;&#x540d;&#x5b57;&#x6a21;&#x7cca;&#x4e0d;&#x77e5;&#x6240;&#x4e91;&#xff0c;&#x8feb;&#x4f7f;&#x9605;&#x8bfb;&#x8005;&#x9605;&#x8bfb;&#x51fd;&#x6570;&#x5185;&#x90e8;&#x5b9e;&#x73b0;&#x624d;&#x80fd;&#x63a8;&#x5bfc;&#x542b;&#x4e49;","children":[],"payload":{"tag":"li","lines":"24,25"}},{"content":"&#x91cd;&#x590d;&#x4ee3;&#x7801;&#xff08;Duplicated Code&#xff09;&#xff1a;&#x5934;&#x53f7;&#x516c;&#x654c;&#xff0c;&#x4e00;&#x5904;&#x4fee;&#x6539;&#x6f0f;&#x6539;&#x4ed6;&#x5904;&#x5fc5;&#x7136;&#x4ea7;&#x751f;&#x9690;&#x853d;Bug","children":[],"payload":{"tag":"li","lines":"25,26"}},{"content":"&#x8fc7;&#x957f;&#x51fd;&#x6570;&#xff08;Long Function&#xff09;&#xff1a;&#x901a;&#x5e38;&#x51fd;&#x6570;&#x8d8a;&#x957f;&#x8d8a;&#x96be;&#x7406;&#x89e3;&#xff0c;&#x63d0;&#x70bc;&#x5c0f;&#x51fd;&#x6570;&#x5e76;&#x7ed9;&#x51fa;&#x597d;&#x540d;&#x5b57;&#x80fd;&#x6781;&#x5927;&#x964d;&#x4f4e;&#x5fc3;&#x667a;&#x8d1f;&#x62c5;","children":[],"payload":{"tag":"li","lines":"26,27"}},{"content":"&#x8fc7;&#x957f;&#x53c2;&#x6570;&#x5217;&#x8868;&#xff08;Long Parameter List&#xff09;&#xff1a;&#x53c2;&#x6570;&#x8d85;&#x8fc7;3&#x4e2a;&#x6781;&#x6613;&#x4f20;&#x9519;&#xff0c;&#x5e94;&#x5c01;&#x88c5;&#x4e3a;&#x53c2;&#x6570;&#x5bf9;&#x8c61;","children":[],"payload":{"tag":"li","lines":"27,29"}}],"payload":{"tag":"h3","lines":"22,23"}},{"content":"&#x7c7b;&#x4e0e;&#x5bf9;&#x8c61;&#x5173;&#x7cfb;&#x7ea7;&#x574f;&#x5473;&#x9053;","children":[{"content":"&#x53d1;&#x6563;&#x5f0f;&#x53d8;&#x5316;&#xff08;Divergent Change&#xff09;&#xff1a;&#x4e00;&#x4e2a;&#x7c7b;&#x56e0;&#x4e3a;&#x591a;&#x4e2a;&#x4e0d;&#x540c;&#x7684;&#x5916;&#x754c;&#x539f;&#x56e0;&#x9700;&#x8981;&#x4fee;&#x6539;&#xff08;&#x8fdd;&#x53cd;&#x5355;&#x4e00;&#x804c;&#x8d23;&#x539f;&#x5219;SRP&#xff09;","children":[],"payload":{"tag":"li","lines":"31,32"}},{"content":"&#x6563;&#x5f39;&#x5f0f;&#x4fee;&#x6539;&#xff08;Shotgun Surgery&#xff09;&#xff1a;&#x6bcf;&#x9047;&#x5230;&#x4e00;&#x79cd;&#x53d8;&#x5316;&#xff0c;&#x5fc5;&#x987b;&#x5728;&#x8bb8;&#x591a;&#x4e0d;&#x540c;&#x7684;&#x7c7b;&#x91cc;&#x5404;&#x505a;&#x5fae;&#x5c0f;&#x6539;&#x52a8;&#xff08;&#x804c;&#x8d23;&#x5206;&#x6563;&#xff09;","children":[],"payload":{"tag":"li","lines":"32,33"}},{"content":"&#x4f9d;&#x604b;&#x60c5;&#x7ed3;&#xff08;Feature Envy&#xff09;&#xff1a;&#x4e00;&#x4e2a;&#x51fd;&#x6570;&#x603b;&#x662f;&#x6781;&#x5176;&#x6e34;&#x671b;&#x8bbf;&#x95ee;&#x53e6;&#x4e00;&#x4e2a;&#x5bf9;&#x8c61;&#x7684;&#x6570;&#x636e;&#xff0c;&#x5e94;&#x642c;&#x79fb;&#x8fc7;&#x53bb;","children":[],"payload":{"tag":"li","lines":"33,34"}},{"content":"&#x57fa;&#x672c;&#x7c7b;&#x578b;&#x504f;&#x6267;&#xff08;Primitive Obsession&#xff09;&#xff1a;&#x62d2;&#x7edd;&#x4f7f;&#x7528;&#x5c0f;&#x578b;&#x9886;&#x57df;&#x5bf9;&#x8c61;&#xff08;&#x5982;&#x91d1;&#x989d;&#x3001;&#x7535;&#x8bdd;&#xff09;&#xff0c;&#x5168;&#x7528;string&#x548c;int&#x5e73;&#x94fa;","children":[],"payload":{"tag":"li","lines":"34,35"}},{"content":"Switch &#x8bed;&#x53e5;&#x60ca;&#x609a;&#x73b0;&#x8eab;&#xff1a;&#x91cd;&#x590d;&#x51fa;&#x73b0;&#x7684;&#x76f8;&#x540c; switch &#x6761;&#x4ef6;&#xff0c;&#x5e94;&#x91cd;&#x6784;&#x4e3a;&#x591a;&#x6001;&#x7b56;&#x7565;","children":[],"payload":{"tag":"li","lines":"35,37"}}],"payload":{"tag":"h3","lines":"29,30"}}],"payload":{"tag":"h2","lines":"19,20"}},{"content":"&#x4e09;&#x3001;&#x6784;&#x7b51;&#x6d4b;&#x8bd5;&#x4fdd;&#x62a4;&#x7f51;","children":[{"content":"&#x81ea;&#x6d4b;&#x8bd5;&#x4ee3;&#x7801;&#x7684;&#x5b89;&#x5168;&#x6c14;&#x56ca;&#x4ef7;&#x503c;","children":[{"content":"&#x91cd;&#x6784;&#x5fc5;&#x987b;&#x4ee5;&#x9ad8;&#x5bc6;&#x5ea6;&#x7684;&#x81ea;&#x6d4b;&#x8bd5;&#x4ee3;&#x7801;&#xff08;Self-testing Code&#xff09;&#x4e3a;&#x7edd;&#x5bf9;&#x524d;&#x63d0;","children":[],"payload":{"tag":"li","lines":"42,43"}},{"content":"&#x5982;&#x679c;&#x91cd;&#x6784;&#x8fc7;&#x7a0b;&#x4e2d;&#x4e0d;&#x5c0f;&#x5fc3;&#x6539;&#x53d8;&#x4e86;&#x4e1a;&#x52a1;&#x884c;&#x4e3a;&#xff0c;&#x5355;&#x5143;&#x6d4b;&#x8bd5;&#x5fc5;&#x987b;&#x5728; 3 &#x79d2;&#x949f;&#x5185;&#x7ea2;&#x706f;&#x62a5;&#x9519;&#x62a5;&#x8b66;","children":[],"payload":{"tag":"li","lines":"43,44"}},{"content":"&#x6d4b;&#x8bd5;&#x4f18;&#x5148;&#x9a71;&#x52a8;&#xff1a;&#x5728;&#x5f00;&#x59cb;&#x91cd;&#x6784;&#x4e00;&#x6bb5;&#x810f;&#x4ee3;&#x7801;&#x524d;&#xff0c;&#x5982;&#x679c;&#x539f;&#x5148;&#x7f3a;&#x4e4f;&#x6d4b;&#x8bd5;&#xff0c;&#x7b2c;&#x4e00;&#x6b65;&#x662f;&#x4e3a;&#x5b83;&#x8865;&#x5145;&#x8986;&#x76d6;&#x6838;&#x5fc3;&#x573a;&#x666f;&#x7684;&#x9ec4;&#x91d1;&#x7aef;&#x5230;&#x7aef;&#x6d4b;&#x8bd5;","children":[],"payload":{"tag":"li","lines":"44,46"}}],"payload":{"tag":"h3","lines":"40,41"}},{"content":"&#x5fae;&#x6b65;&#x6f14;&#x8fdb;&#x4e0e;&#x7ea2;-&#x7eff;&#x5faa;&#x73af;","children":[{"content":"&#x5fae;&#x6b65;&#xff08;Baby Steps&#xff09;&#xff1a;&#x6bcf;&#x6b21;&#x53ea;&#x4fee;&#x6539;&#x51e0;&#x884c;&#xff0c;&#x8dd1;&#x4e00;&#x6b21;&#x6d4b;&#x8bd5;&#xff0c;&#x63d0;&#x4ea4;&#x4e00;&#x6b21;","children":[],"payload":{"tag":"li","lines":"48,49"}},{"content":"&#x5982;&#x679c;&#x6d4b;&#x8bd5;&#x7ea2;&#x4e86;&#xff0c;&#x7edd;&#x5bf9;&#x4e0d;&#x8bd5;&#x56fe;&#x5728;&#x590d;&#x6742;&#x6df7;&#x4e71;&#x4e2d;&#x8fde;&#x73af;&#x6253;&#x8865;&#x4e01;&#xff0c;&#x76f4;&#x63a5; Ctrl+Z &#x56de;&#x6eda;&#x5230;&#x4e0a;&#x4e00;&#x4e2a;&#x5168;&#x7eff;&#x72b6;&#x6001;&#x91cd;&#x65b0;&#x518d;&#x6765;","children":[],"payload":{"tag":"li","lines":"49,50"}},{"content":"&#x9891;&#x7e41;&#x7684;&#x5c0f;&#x6b65;&#x5feb;&#x8dd1;&#xff0c;&#x6bd4;&#x618b;&#x4e2a;&#x4e09;&#x5929;&#x7684;&#x5927;&#x91cd;&#x6784;&#x6700;&#x7ec8;&#x5408;&#x5e76;&#x51b2;&#x7a81;&#x7206;&#x53d1;&#x8981;&#x5b89;&#x5168;&#x53ef;&#x9760;&#x4e00;&#x4e07;&#x500d;","children":[],"payload":{"tag":"li","lines":"50,52"}}],"payload":{"tag":"h3","lines":"46,47"}}],"payload":{"tag":"h2","lines":"37,38"}},{"content":"&#x56db;&#x3001;&#x6838;&#x5fc3;&#x91cd;&#x6784;&#x624b;&#x6cd5;&#x6e05;&#x5355;","children":[{"content":"&#x6700;&#x57fa;&#x7840;&#x6709;&#x529b;&#x7684;&#x91cd;&#x6784;&#x6280;&#x6cd5;","children":[{"content":"&#x63d0;&#x70bc;&#x51fd;&#x6570;&#xff08;Extract Function&#xff09;&#xff1a;&#x5c06;&#x4e00;&#x6bb5;&#x72ec;&#x7acb;&#x903b;&#x8f91;&#x62bd;&#x6210;&#x5c0f;&#x51fd;&#x6570;&#xff0c;&#x7528;&#x51fd;&#x6570;&#x540d;&#x89e3;&#x91ca;&#x5176;&#x610f;&#x56fe;","children":[],"payload":{"tag":"li","lines":"57,58"}},{"content":"&#x5185;&#x8054;&#x51fd;&#x6570;&#xff08;Inline Function&#xff09;&#xff1a;&#x6d88;&#x9664;&#x65e0;&#x610f;&#x4e49;&#x7684;&#x95f4;&#x63a5;&#x8df3;&#x8f6c;&#x4e0e;&#x5197;&#x4f59;&#x5305;&#x88c5;","children":[],"payload":{"tag":"li","lines":"58,59"}},{"content":"&#x5f15;&#x5165;&#x53c2;&#x6570;&#x5bf9;&#x8c61;&#xff08;Introduce Parameter Object&#xff09;&#xff1a;&#x628a;&#x603b;&#x662f;&#x6210;&#x5bf9;&#x51fa;&#x73b0;&#x7684;&#x79bb;&#x6563;&#x53c2;&#x6570;&#x5c01;&#x88c5;&#x4e3a;&#x9886;&#x57df;&#x503c;&#x5bf9;&#x8c61;","children":[],"payload":{"tag":"li","lines":"59,60"}},{"content":"&#x4ee5;&#x67e5;&#x8be2;&#x53d6;&#x4ee3;&#x4e34;&#x65f6;&#x53d8;&#x91cf;&#xff08;Replace Temp with Query&#xff09;&#xff1a;&#x6d88;&#x9664;&#x51fd;&#x6570;&#x5185;&#x90e8;&#x526f;&#x4f5c;&#x7528;&#x8ba1;&#x7b97;&#xff0c;&#x8ba9;&#x6570;&#x636e;&#x903b;&#x8f91;&#x53ef;&#x88ab;&#x591a;&#x6b21;&#x590d;&#x7528;","children":[],"payload":{"tag":"li","lines":"60,62"}}],"payload":{"tag":"h3","lines":"55,56"}},{"content":"&#x9762;&#x5411;&#x5bf9;&#x8c61;&#x91cd;&#x6784;&#x6280;&#x6cd5;","children":[{"content":"&#x642c;&#x79fb;&#x51fd;&#x6570;/&#x642c;&#x79fb;&#x5b57;&#x6bb5;&#xff08;Move Function/Field&#xff09;&#xff1a;&#x5c06;&#x884c;&#x4e3a;&#x4e0e;&#x6570;&#x636e;&#x653e;&#x7f6e;&#x5728;&#x6700;&#x5e38;&#x4f7f;&#x7528;&#x5b83;&#x4eec;&#x7684;&#x5730;&#x65b9;&#xff0c;&#x6d88;&#x9664;&#x4f9d;&#x604b;&#x60c5;&#x7ed3;","children":[],"payload":{"tag":"li","lines":"64,65"}},{"content":"&#x4ee5;&#x591a;&#x6001;&#x53d6;&#x4ee3;&#x6761;&#x4ef6;&#x8868;&#x8fbe;&#x5f0f;&#xff08;Replace Conditional with Polymorphism&#xff09;&#xff1a;&#x7528;&#x7ee7;&#x627f;&#x4e0e;&#x591a;&#x6001;&#x673a;&#x5236;&#x6d88;&#x9664;&#x6563;&#x843d;&#x5404;&#x5904;&#x7684; switch-case","children":[],"payload":{"tag":"li","lines":"65,66"}},{"content":"&#x62c6;&#x5206;&#x5faa;&#x73af;&#xff08;Split Loop&#xff09;&#xff1a;&#x4e00;&#x4e2a;&#x5faa;&#x73af;&#x53ea;&#x505a;&#x4e00;&#x4ef6;&#x4e8b;&#xff0c;&#x54ea;&#x6015;&#x591a;&#x8fed;&#x4ee3;&#x4e00;&#x6b21;&#xff0c;&#x6e05;&#x6670;&#x5ea6;&#x6536;&#x76ca;&#x8fdc;&#x80dc;&#x5fae;&#x4e0d;&#x8db3;&#x9053;&#x7684;&#x7eb3;&#x79d2;&#x7ea7;&#x6027;&#x80fd;&#x635f;&#x8017;","children":[],"payload":{"tag":"li","lines":"66,68"}}],"payload":{"tag":"h3","lines":"62,63"}}],"payload":{"tag":"h2","lines":"52,53"}},{"content":"&#x4e94;&#x3001;&#x7ee7;&#x627f;&#x4e0e;&#x9ad8;&#x9636;&#x67b6;&#x6784;&#x91cd;&#x6784;","children":[{"content":"&#x7ee7;&#x627f;&#x4f53;&#x7cfb;&#x91cd;&#x6784;","children":[{"content":"&#x4ee5;&#x59d4;&#x6258;&#x53d6;&#x4ee3;&#x7ee7;&#x627f;&#xff08;Replace Inheritance with Delegation&#xff09;&#xff1a;&#x5f53;&#x5b50;&#x7c7b;&#x5e76;&#x4e0d;&#x771f;&#x6b63;&#x662f;&#x7236;&#x7c7b;&#x7684;&#x4e00;&#x79cd;&#xff08;&#x8fdd;&#x80cc;LSP&#xff09;&#x65f6;&#xff0c;&#x8f6c;&#x4e3a;&#x7ec4;&#x5408;&#x5173;&#x8054;","children":[],"payload":{"tag":"li","lines":"73,74"}},{"content":"&#x63d0;&#x53d6;&#x8d85;&#x7c7b;&#xff08;Extract Superclass&#xff09;&#xff1a;&#x5c06;&#x591a;&#x4e2a;&#x5144;&#x5f1f;&#x7c7b;&#x7684;&#x516c;&#x5171;&#x7279;&#x5f81;&#x4e0a;&#x79fb;&#x5230;&#x7236;&#x7c7b;&#x4e2d;","children":[],"payload":{"tag":"li","lines":"74,75"}},{"content":"&#x6298;&#x53e0;&#x7ee7;&#x627f;&#x4f53;&#x7cfb;&#xff08;Collapse Hierarchy&#xff09;&#xff1a;&#x5f53;&#x5b50;&#x7c7b;&#x4e0e;&#x7236;&#x7c7b;&#x5df2;&#x7ecf;&#x6ca1;&#x6709;&#x5b9e;&#x8d28;&#x533a;&#x522b;&#x65f6;&#xff0c;&#x679c;&#x65ad;&#x5408;&#x5e76;&#x6d88;&#x9664;&#x65e0;&#x610f;&#x4e49;&#x7684;&#x5c42;&#x7ea7;","children":[],"payload":{"tag":"li","lines":"75,77"}}],"payload":{"tag":"h3","lines":"71,72"}},{"content":"&#x5927;&#x578b;&#x91cd;&#x6784;&#x7684;&#x63a8;&#x8fdb;&#x7b56;&#x7565;","children":[{"content":"&#x68b3;&#x7406;&#x5e76;&#x5206;&#x79bb;&#x9886;&#x57df;&#x5c42;&#x4e0e;&#x5c55;&#x73b0;&#x5c42;","children":[],"payload":{"tag":"li","lines":"79,80"}},{"content":"&#x8bbe;&#x7acb;&#x9632;&#x8150;&#x5c42;&#xff08;Anticorruption Layer&#xff09;&#x9694;&#x79bb;&#x8001;&#x65e7;&#x6076;&#x5fc3;&#x9057;&#x7559;&#x7cfb;&#x7edf;","children":[],"payload":{"tag":"li","lines":"80,81"}},{"content":"&#x5c06;&#x91cd;&#x6784;&#x89c6;&#x4e3a;&#x4e00;&#x79cd;&#x751f;&#x6d3b;&#x65b9;&#x5f0f;&#xff1a;&#x5728;&#x6bcf;&#x4e00;&#x5929;&#x7684;&#x5de5;&#x4f5c;&#x4e2d;&#xff0c;&#x987a;&#x624b;&#x8ba9;&#x4ee3;&#x7801;&#x6bd4;&#x6628;&#x5929;&#x7684;&#x66f4;&#x597d;&#x4e00;&#x70b9;","children":[],"payload":{"tag":"li","lines":"81,82"}}],"payload":{"tag":"h3","lines":"77,78"}}],"payload":{"tag":"h2","lines":"68,69"}}],"payload":{"tag":"h1","lines":"0,1"}}</script>
       <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true"># 《重构：改善既有代码的设计》 思维导图
 
 &gt; 核心主题：安全代码重构、代码坏味道识别与微步演进技术
@@ -575,27 +296,6 @@
 - 梳理并分离领域层与展现层
 - 设立防腐层（Anticorruption Layer）隔离老旧恶心遗留系统
 - 将重构视为一种生活方式：在每一天的工作中，顺手让代码比昨天的更好一点</textarea>
-
-      <!-- Fullscreen Modal View -->
-      <div class="mindmap-modal" id="mindmapModal" aria-hidden="true" role="dialog" aria-label="思维导图全景全屏视图">
-        <div class="mm-modal-container">
-          <div class="mm-modal-header">
-            <div class="mm-modal-title-wrap">
-              <span class="mm-modal-tag">思维导图全景</span>
-              <span class="mm-modal-book-title">《重构：改善既有代码的设计》</span>
-              <span class="mm-modal-theme">安全代码重构、代码坏味道识别与微步演进技术</span>
-            </div>
-            <div class="mm-modal-controls">
-              <button type="button" class="mm-btn" id="mmModalToggleAllBtn">
-                <span class="mm-modal-toggle-text">全部收起</span>
-              </button>
-              <button type="button" class="mm-modal-close-btn" id="mmModalCloseBtn" aria-label="关闭全屏">×</button>
-            </div>
-          </div>
-          <div class="mm-modal-body" id="mmModalBody"></div>
-        </div>
-      </div>
-
       <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
     </section>
 
@@ -711,143 +411,192 @@
   </script>
 
   
+  <script src="vendor/markmap-bundle.js" defer></script>
   <script>
     (function() {
       var mmSection = document.getElementById('mindmapSection');
       if (!mmSection) return;
 
-      var container = document.getElementById('mindmapContainer');
-      var toggleAllBtn = document.getElementById('mmToggleAllBtn');
-      var copyBtn = document.getElementById('mmCopyMarkdownBtn');
-      var fullscreenBtn = document.getElementById('mmFullscreenBtn');
-      var modal = document.getElementById('mindmapModal');
-      var modalCloseBtn = document.getElementById('mmModalCloseBtn');
-      var modalBody = document.getElementById('mmModalBody');
-      var modalToggleAllBtn = document.getElementById('mmModalToggleAllBtn');
-      var toast = document.getElementById('mmToast');
-      var mdSource = document.getElementById('mmMarkdownSource');
+      var svgEl = document.getElementById('markmapSvg');
+      var treeDataEl = document.getElementById('mmTreeData');
+      if (!svgEl || !treeDataEl) return;
 
-      var isAllCollapsed = false;
+      function initMarkmap() {
+        if (!window.markmap || !window.markmap.Markmap || !window.d3) {
+          setTimeout(initMarkmap, 50);
+          return;
+        }
 
-      function bindBranchHeaders(root) {
-        var headers = root.querySelectorAll('.mm-branch-header');
-        headers.forEach(function(header) {
-          header.addEventListener('click', function() {
-            var branch = header.closest('.mm-branch');
-            if (branch) {
-              branch.classList.toggle('is-collapsed');
+        var rawData = JSON.parse(treeDataEl.textContent);
+        var palette = ['#007722', '#1d4ed8', '#c2410c', '#7e22ce', '#0f766e', '#be123c'];
+        var colorScale = d3.scaleOrdinal(palette);
+
+        function cloneData(obj) {
+          return JSON.parse(JSON.stringify(obj));
+        }
+
+        function setFold(n, f) {
+          if (n.children && n.children.length) {
+            n.payload = Object.assign({}, n.payload, { fold: f ? 1 : 0 });
+            n.children.forEach(function(c) { setFold(c, f); });
+          }
+        }
+
+        // Default initial fold: level 2 topics collapsed
+        var currentData = cloneData(rawData);
+        if (currentData.children) {
+          currentData.payload = Object.assign({}, currentData.payload, { fold: 0 });
+          currentData.children.forEach(function(branch) {
+            branch.payload = Object.assign({}, branch.payload, { fold: 0 });
+            if (branch.children) {
+              branch.children.forEach(function(topic) {
+                setFold(topic, true);
+              });
             }
           });
-        });
-      }
+        }
 
-      bindBranchHeaders(container);
+        var mm = window.markmap.Markmap.create(svgEl, {
+          autoFit: true,
+          duration: 350,
+          color: function(node) {
+            return colorScale(node.state.id);
+          },
+          paddingX: 16,
+          spacingHorizontal: 75,
+          spacingVertical: 12
+        }, currentData);
 
-      // Toggle all in main view
-      if (toggleAllBtn) {
-        toggleAllBtn.addEventListener('click', function() {
-          isAllCollapsed = !isAllCollapsed;
-          var branches = container.querySelectorAll('.mm-branch');
-          branches.forEach(function(b) {
-            if (isAllCollapsed) {
-              b.classList.add('is-collapsed');
-            } else {
-              b.classList.remove('is-collapsed');
-            }
+        // Mount toolbar
+        if (window.markmap.Toolbar) {
+          var tb = window.markmap.Toolbar.create(mm);
+          tb.setBrand(false);
+          var tbWrap = document.getElementById('mmToolbarWrap');
+          if (tbWrap) tbWrap.appendChild(tb.render());
+        }
+
+        // Level Preset Buttons
+        var btnL1 = document.getElementById('mmBtnLevel1');
+        var btnL2 = document.getElementById('mmBtnLevel2');
+        var btnAll = document.getElementById('mmBtnExpandAll');
+
+        function setActiveLevelBtn(activeBtn) {
+          [btnL1, btnL2, btnAll].forEach(function(b) {
+            if (b) b.classList.remove('active');
           });
-          var txt = toggleAllBtn.querySelector('.mm-toggle-text');
-          if (txt) txt.textContent = isAllCollapsed ? '全部展开' : '全部收起';
-        });
-      }
+          if (activeBtn) activeBtn.classList.add('active');
+        }
 
-      // Copy Markdown Outline
-      function showToast(msg) {
-        if (!toast) return;
-        toast.textContent = msg;
-        toast.classList.add('active');
-        setTimeout(function() {
-          toast.classList.remove('active');
-        }, 2200);
-      }
+        if (btnL1) {
+          btnL1.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) { setFold(b, true); });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL1);
+          });
+        }
 
-      if (copyBtn && mdSource) {
-        copyBtn.addEventListener('click', function() {
-          var text = mdSource.value;
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function() {
-              showToast('✓ 已复制思维导图大纲到剪贴板！');
-            }).catch(function() {
-              fallbackCopy(text);
-            });
-          } else {
-            fallbackCopy(text);
+        if (btnL2) {
+          btnL2.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) {
+                b.payload = Object.assign({}, b.payload, { fold: 0 });
+                if (b.children) {
+                  b.children.forEach(function(t) { setFold(t, true); });
+                }
+              });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL2);
+          });
+        }
+
+        if (btnAll) {
+          btnAll.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            setFold(d, false);
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnAll);
+          });
+        }
+
+        // Fullscreen Toggle
+        var fsBtn = document.getElementById('mmFullscreenBtn');
+        var fsText = fsBtn ? fsBtn.querySelector('.mm-fs-text') : null;
+
+        function toggleFullscreen() {
+          var isFs = mmSection.classList.toggle('is-fullscreen');
+          if (fsText) fsText.textContent = isFs ? '退出全屏' : '全屏';
+          setTimeout(function() {
+            mm.fit();
+          }, 150);
+        }
+
+        if (fsBtn) {
+          fsBtn.addEventListener('click', toggleFullscreen);
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && mmSection.classList.contains('is-fullscreen')) {
+            toggleFullscreen();
           }
         });
-      }
 
-      function fallbackCopy(text) {
-        try {
-          var ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-          showToast('✓ 已复制思维导图大纲到剪贴板！');
-        } catch (e) {
-          showToast('复制失败，请手动选取复制');
+        // Copy Markdown
+        var copyBtn = document.getElementById('mmCopyMarkdownBtn');
+        var mdSource = document.getElementById('mmMarkdownSource');
+        var toast = document.getElementById('mmToast');
+
+        function showToast(msg) {
+          if (!toast) return;
+          toast.textContent = msg;
+          toast.classList.add('active');
+          setTimeout(function() { toast.classList.remove('active'); }, 2200);
         }
-      }
 
-      // Fullscreen Modal Logic
-      function openModal() {
-        if (!modal || !modalBody) return;
-        modalBody.innerHTML = container.innerHTML;
-        bindBranchHeaders(modalBody);
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        if (!modal) return;
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-
-      if (fullscreenBtn) {
-        fullscreenBtn.addEventListener('click', openModal);
-      }
-      if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', closeModal);
-      }
-      if (modal) {
-        modal.addEventListener('click', function(e) {
-          if (e.target === modal) closeModal();
-        });
-      }
-
-      if (modalToggleAllBtn) {
-        modalToggleAllBtn.addEventListener('click', function() {
-          var branches = modalBody.querySelectorAll('.mm-branch');
-          var shouldCollapse = !branches[0].classList.contains('is-collapsed');
-          branches.forEach(function(b) {
-            if (shouldCollapse) b.classList.add('is-collapsed');
-            else b.classList.remove('is-collapsed');
+        if (copyBtn && mdSource) {
+          copyBtn.addEventListener('click', function() {
+            var text = mdSource.value;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function() {
+                showToast('✓ 已复制思维导图大纲到剪贴板！');
+              }).catch(function() {
+                fallbackCopy(text);
+              });
+            } else {
+              fallbackCopy(text);
+            }
           });
-          var txt = modalToggleAllBtn.querySelector('.mm-modal-toggle-text');
-          if (txt) txt.textContent = shouldCollapse ? '全部展开' : '全部收起';
-        });
+        }
+
+        function fallbackCopy(text) {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('✓ 已复制思维导图大纲到剪贴板！');
+          } catch (e) {
+            showToast('复制失败，请手动选取');
+          }
+        }
       }
 
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-          closeModal();
-        }
-      });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMarkmap);
+      } else {
+        initMarkmap();
+      }
     })();
   </script>
 

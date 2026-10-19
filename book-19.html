@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>《微服务架构设计模式》 · 经典书导读</title>
-  <link rel="stylesheet" href="style.css?v=fea06185">
+  <link rel="stylesheet" href="style.css?v=4fdade2e">
 </head>
 <body>
   <div class="layout-container">
@@ -187,264 +187,38 @@
           <section class="section-block mindmap-section" id="mindmapSection">
       <div class="mindmap-header">
         <div class="mindmap-header-left">
-          <span class="mindmap-badge">知识脉络</span>
-          <h2 class="mindmap-title">全书思维导图</h2>
+          <span class="mindmap-badge">树状思维导图</span>
+          <h2 class="mindmap-title">全书思维导图 · 知识脉络树</h2>
         </div>
         <div class="mindmap-actions">
-          <button type="button" class="mm-btn mm-btn-toggle" id="mmToggleAllBtn" title="全部折叠/展开">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-            <span class="mm-toggle-text">全部收起</span>
-          </button>
-          <button type="button" class="mm-btn mm-btn-copy" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
+          <div class="mm-level-switch">
+            <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
+            <button type="button" class="mm-btn active" id="mmBtnLevel2" title="展开至二级分支">分支</button>
+            <button type="button" class="mm-btn" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
+          </div>
+
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>复制大纲</span>
           </button>
-          <button type="button" class="mm-btn mm-btn-fullscreen" id="mmFullscreenBtn" title="全屏沉浸式全景模式">
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmFullscreenBtn" title="全屏沉浸式全景模式 (ESC 退出)">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-            <span>全屏全景</span>
+            <span class="mm-fs-text">全屏</span>
           </button>
         </div>
       </div>
 
-      <div class="mindmap-container" id="mindmapContainer">
-        <div class="mm-root-card">
-          <div class="mm-root-pill">核心主旨</div>
-          <div class="mm-root-title">《微服务架构设计模式》</div>
-          <div class="mm-root-theme">微服务模式语言、DDD业务拆分、进程间通信、Saga事务、CQRS与事件溯源、API网关与绞杀者迁移</div>
-        </div>
-
-        <div class="mm-tree-body">
-          <div class="mm-branch" data-branch-index="0">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">一、微服务架构模式语言与拆分策略</span>
-          <span class="mm-branch-desc">系统化模式语言指导架构决策</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">逃离单体地狱与模式语言体系</h4>
+      <div class="mm-viewport-wrapper">
+        <div class="mm-viewport" id="mmViewport">
+          <svg id="markmapSvg"></svg>
+          <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
+          <div class="mm-canvas-hint">
+            <span>💡 拖拽平移 · 滚轮缩放 · 点击分支圆点折叠/展开</span>
           </div>
-          <p class="mm-topic-desc">客观认知微服务的利弊权衡</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">单体地狱的症状：代码库极度膨胀、启动和测试缓慢、技术栈过时锁定、局部代码 Bug 导致整站宕机</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">微服务不是银弹：微服务架构带来了网络调用开销、分布式数据一致性、跨服务查询困难与测试运维高门槛</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">模式语言体系：全书将微服务解构为服务拆分、通信、数据管理、查询、部署、可观察性六大核心模式簇</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">业务边界拆分方法论</h4>
-          </div>
-          <p class="mm-topic-desc">基于业务而非技术层切分系统</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">按业务能力分解（Decompose by Business Capability）：基于企业业务架构与核心能力树定义服务（如订单管理、库存管理、发票服务）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">按 DDD 限界上下文分解（Decompose by Subdomain）：基于领域驱动设计的核心子域、通用子域与支撑子域划定服务界限</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">拆分阻力与对策：网络延迟（细粒度服务合并或批量 API）、分布式事务（采用 Saga 替代 2PC）、数据孤岛（通过事件驱动同步复制）</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="1">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">二、进程间通信与外部 API 模式</span>
-          <span class="mm-branch-desc">微服务网络调用的设计原则</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">同步通信 vs 异步消息通信</h4>
-          </div>
-          <p class="mm-topic-desc">耦合度与可用性的权衡</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">同步 RPC（REST / gRPC）：简单易用但服务间时空紧耦合；调用链一旦过长可用性等于各服务可用性乘积，必须引入超时与断路器防雪崩</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">异步消息发布/订阅（Message Broker）：通过 Kafka/RabbitMQ 彻底解耦发送方与接收方，天然具备削峰填谷与缓冲能力</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">事务性发件箱模式（Transactional Outbox）：在本地数据库同一个事务中同时保存业务数据和待发送事件到 outbox 表，再由独立消息中继异步投递，绝对保证消息不丢失</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">API 网关与前端后置（BFF）模式</h4>
-          </div>
-          <p class="mm-topic-desc">对外暴露统一而优雅的门面</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">API 网关模式（API Gateway Pattern）：为所有外部客户端提供统一入口，负责路由分发、API 组合聚合、协议转换、安全认证与限流熔断</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">前端后置模式（Backends for Frontends, BFF）：针对 Web 端、移动 App、第三方合作伙伴分别定制专用网关，隔离不同客户端对数据结构的异构诉求</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="2">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">三、分布式事务治理：Saga 模式</span>
-          <span class="mm-branch-desc">彻底抛弃 2PC，拥抱最终一致性</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">Saga 模式的原理与运行机制</h4>
-          </div>
-          <p class="mm-topic-desc">微服务分布式事务的标准解法</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">放弃两阶段提交（2PC）：2PC 存在协调者单点阻塞、严重拉长事务持有锁时间、违反微服务独立自治底线</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">Saga 的核心定义：将一个分布式事务拆分为一系列由事件或消息串联的本地事务（Local Transactions）序列</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">补偿事务（Compensating Transactions）：某个本地事务执行失败时，Saga 必须按相反顺序依次执行各个前置事务的补偿操作回滚业务状态（如扣款失败时回滚库存占用）</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">协同式 vs 编排式 Saga</h4>
-          </div>
-          <p class="mm-topic-desc">分布式事务的两种实现路线对比</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">协同式 Saga（Choreography）：去中心化，参与方监听领域事件并决定是否执行本地事务及发布新事件；逻辑简单但缺乏全局全景，容易陷入事件网循环依赖</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">编排式 Saga（Orchestration）：设立中央 Saga 编排器（Orchestrator），由状态机向各微服务发送命令消息并接收响应；逻辑集中明确、易于排查和测试，复杂业务首选</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="3">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">四、微服务数据查询：CQRS 与事件溯源</span>
-          <span class="mm-branch-desc">跨服务复杂聚合查询与数据可靠落盘</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">命令查询职责分离（CQRS 模式）</h4>
-          </div>
-          <p class="mm-topic-desc">解除分布式 JOIN 查询难题</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">跨服务查询痛点：微服务数据库私有后，无法直接执行跨库 SQL JOIN，API 组合模式（API Composition）在海量数据下内存开销与网络往返不可承受</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">CQRS 核心思想：将系统拆分为命令侧（Command / 写模型）与查询侧（Query / 读模型）；写模型专注业务校验与事务，通过事件将变更同步给只读视图库（如 Elasticsearch/MongoDB）实现极致查询性能</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">事件溯源（Event Sourcing）</h4>
-          </div>
-          <p class="mm-topic-desc">以事件作为唯一事实来源的持久化技术</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">不存最终状态，只存不可变事件序列：数据库中不再保存账户余额字段，而是持久化每一笔‘充值’、‘消费’事件追加记录（Event Log）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">巨大优势：具备 100% 完整的历史审计轨迹、支持任意时间点重放重建状态、天然消灭对象-关系阻抗失衡</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">快照机制（Snapshotting）：定期为实体生成状态快照，避免重放数万个事件导致的性能迟钝</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="4">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">五、测试与单体重构迁移策略</span>
-          <span class="mm-branch-desc">从单体安全平滑过渡到微服务</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">绞杀者模式（Strangler Fig Pattern）推进重构</h4>
-          </div>
-          <p class="mm-topic-desc">微服务改造的稳健路线图</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">绝对禁止推倒重来：大爆炸式全量重写几乎 100% 会导致项目延期超支甚至团队解体</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">渐进式替换三步走：先在新功能上使用微服务（保持新业务纯净）、通过 API 网关拦截旧流量逐步转发至新服务、最后将遗留单体彻底架空废弃</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
         </div>
       </div>
 
+      <script type="application/json" id="mmTreeData">{"content":"&#x300a;&#x5fae;&#x670d;&#x52a1;&#x67b6;&#x6784;&#x8bbe;&#x8ba1;&#x6a21;&#x5f0f;&#x300b; &#x601d;&#x7ef4;&#x5bfc;&#x56fe;","children":[{"content":"&#x4e00;&#x3001;&#x5fae;&#x670d;&#x52a1;&#x67b6;&#x6784;&#x6a21;&#x5f0f;&#x8bed;&#x8a00;&#x4e0e;&#x62c6;&#x5206;&#x7b56;&#x7565;","children":[{"content":"&#x9003;&#x79bb;&#x5355;&#x4f53;&#x5730;&#x72f1;&#x4e0e;&#x6a21;&#x5f0f;&#x8bed;&#x8a00;&#x4f53;&#x7cfb;","children":[{"content":"&#x5355;&#x4f53;&#x5730;&#x72f1;&#x7684;&#x75c7;&#x72b6;&#xff1a;&#x4ee3;&#x7801;&#x5e93;&#x6781;&#x5ea6;&#x81a8;&#x80c0;&#x3001;&#x542f;&#x52a8;&#x548c;&#x6d4b;&#x8bd5;&#x7f13;&#x6162;&#x3001;&#x6280;&#x672f;&#x6808;&#x8fc7;&#x65f6;&#x9501;&#x5b9a;&#x3001;&#x5c40;&#x90e8;&#x4ee3;&#x7801; Bug &#x5bfc;&#x81f4;&#x6574;&#x7ad9;&#x5b95;&#x673a;","children":[],"payload":{"tag":"li","lines":"9,10"}},{"content":"&#x5fae;&#x670d;&#x52a1;&#x4e0d;&#x662f;&#x94f6;&#x5f39;&#xff1a;&#x5fae;&#x670d;&#x52a1;&#x67b6;&#x6784;&#x5e26;&#x6765;&#x4e86;&#x7f51;&#x7edc;&#x8c03;&#x7528;&#x5f00;&#x9500;&#x3001;&#x5206;&#x5e03;&#x5f0f;&#x6570;&#x636e;&#x4e00;&#x81f4;&#x6027;&#x3001;&#x8de8;&#x670d;&#x52a1;&#x67e5;&#x8be2;&#x56f0;&#x96be;&#x4e0e;&#x6d4b;&#x8bd5;&#x8fd0;&#x7ef4;&#x9ad8;&#x95e8;&#x69db;","children":[],"payload":{"tag":"li","lines":"10,11"}},{"content":"&#x6a21;&#x5f0f;&#x8bed;&#x8a00;&#x4f53;&#x7cfb;&#xff1a;&#x5168;&#x4e66;&#x5c06;&#x5fae;&#x670d;&#x52a1;&#x89e3;&#x6784;&#x4e3a;&#x670d;&#x52a1;&#x62c6;&#x5206;&#x3001;&#x901a;&#x4fe1;&#x3001;&#x6570;&#x636e;&#x7ba1;&#x7406;&#x3001;&#x67e5;&#x8be2;&#x3001;&#x90e8;&#x7f72;&#x3001;&#x53ef;&#x89c2;&#x5bdf;&#x6027;&#x516d;&#x5927;&#x6838;&#x5fc3;&#x6a21;&#x5f0f;&#x7c07;","children":[],"payload":{"tag":"li","lines":"11,13"}}],"payload":{"tag":"h3","lines":"7,8"}},{"content":"&#x4e1a;&#x52a1;&#x8fb9;&#x754c;&#x62c6;&#x5206;&#x65b9;&#x6cd5;&#x8bba;","children":[{"content":"&#x6309;&#x4e1a;&#x52a1;&#x80fd;&#x529b;&#x5206;&#x89e3;&#xff08;Decompose by Business Capability&#xff09;&#xff1a;&#x57fa;&#x4e8e;&#x4f01;&#x4e1a;&#x4e1a;&#x52a1;&#x67b6;&#x6784;&#x4e0e;&#x6838;&#x5fc3;&#x80fd;&#x529b;&#x6811;&#x5b9a;&#x4e49;&#x670d;&#x52a1;&#xff08;&#x5982;&#x8ba2;&#x5355;&#x7ba1;&#x7406;&#x3001;&#x5e93;&#x5b58;&#x7ba1;&#x7406;&#x3001;&#x53d1;&#x7968;&#x670d;&#x52a1;&#xff09;","children":[],"payload":{"tag":"li","lines":"15,16"}},{"content":"&#x6309; DDD &#x9650;&#x754c;&#x4e0a;&#x4e0b;&#x6587;&#x5206;&#x89e3;&#xff08;Decompose by Subdomain&#xff09;&#xff1a;&#x57fa;&#x4e8e;&#x9886;&#x57df;&#x9a71;&#x52a8;&#x8bbe;&#x8ba1;&#x7684;&#x6838;&#x5fc3;&#x5b50;&#x57df;&#x3001;&#x901a;&#x7528;&#x5b50;&#x57df;&#x4e0e;&#x652f;&#x6491;&#x5b50;&#x57df;&#x5212;&#x5b9a;&#x670d;&#x52a1;&#x754c;&#x9650;","children":[],"payload":{"tag":"li","lines":"16,17"}},{"content":"&#x62c6;&#x5206;&#x963b;&#x529b;&#x4e0e;&#x5bf9;&#x7b56;&#xff1a;&#x7f51;&#x7edc;&#x5ef6;&#x8fdf;&#xff08;&#x7ec6;&#x7c92;&#x5ea6;&#x670d;&#x52a1;&#x5408;&#x5e76;&#x6216;&#x6279;&#x91cf; API&#xff09;&#x3001;&#x5206;&#x5e03;&#x5f0f;&#x4e8b;&#x52a1;&#xff08;&#x91c7;&#x7528; Saga &#x66ff;&#x4ee3; 2PC&#xff09;&#x3001;&#x6570;&#x636e;&#x5b64;&#x5c9b;&#xff08;&#x901a;&#x8fc7;&#x4e8b;&#x4ef6;&#x9a71;&#x52a8;&#x540c;&#x6b65;&#x590d;&#x5236;&#xff09;","children":[],"payload":{"tag":"li","lines":"17,19"}}],"payload":{"tag":"h3","lines":"13,14"}}],"payload":{"tag":"h2","lines":"4,5"}},{"content":"&#x4e8c;&#x3001;&#x8fdb;&#x7a0b;&#x95f4;&#x901a;&#x4fe1;&#x4e0e;&#x5916;&#x90e8; API &#x6a21;&#x5f0f;","children":[{"content":"&#x540c;&#x6b65;&#x901a;&#x4fe1; vs &#x5f02;&#x6b65;&#x6d88;&#x606f;&#x901a;&#x4fe1;","children":[{"content":"&#x540c;&#x6b65; RPC&#xff08;REST / gRPC&#xff09;&#xff1a;&#x7b80;&#x5355;&#x6613;&#x7528;&#x4f46;&#x670d;&#x52a1;&#x95f4;&#x65f6;&#x7a7a;&#x7d27;&#x8026;&#x5408;&#xff1b;&#x8c03;&#x7528;&#x94fe;&#x4e00;&#x65e6;&#x8fc7;&#x957f;&#x53ef;&#x7528;&#x6027;&#x7b49;&#x4e8e;&#x5404;&#x670d;&#x52a1;&#x53ef;&#x7528;&#x6027;&#x4e58;&#x79ef;&#xff0c;&#x5fc5;&#x987b;&#x5f15;&#x5165;&#x8d85;&#x65f6;&#x4e0e;&#x65ad;&#x8def;&#x5668;&#x9632;&#x96ea;&#x5d29;","children":[],"payload":{"tag":"li","lines":"24,25"}},{"content":"&#x5f02;&#x6b65;&#x6d88;&#x606f;&#x53d1;&#x5e03;/&#x8ba2;&#x9605;&#xff08;Message Broker&#xff09;&#xff1a;&#x901a;&#x8fc7; Kafka/RabbitMQ &#x5f7b;&#x5e95;&#x89e3;&#x8026;&#x53d1;&#x9001;&#x65b9;&#x4e0e;&#x63a5;&#x6536;&#x65b9;&#xff0c;&#x5929;&#x7136;&#x5177;&#x5907;&#x524a;&#x5cf0;&#x586b;&#x8c37;&#x4e0e;&#x7f13;&#x51b2;&#x80fd;&#x529b;","children":[],"payload":{"tag":"li","lines":"25,26"}},{"content":"&#x4e8b;&#x52a1;&#x6027;&#x53d1;&#x4ef6;&#x7bb1;&#x6a21;&#x5f0f;&#xff08;Transactional Outbox&#xff09;&#xff1a;&#x5728;&#x672c;&#x5730;&#x6570;&#x636e;&#x5e93;&#x540c;&#x4e00;&#x4e2a;&#x4e8b;&#x52a1;&#x4e2d;&#x540c;&#x65f6;&#x4fdd;&#x5b58;&#x4e1a;&#x52a1;&#x6570;&#x636e;&#x548c;&#x5f85;&#x53d1;&#x9001;&#x4e8b;&#x4ef6;&#x5230; outbox &#x8868;&#xff0c;&#x518d;&#x7531;&#x72ec;&#x7acb;&#x6d88;&#x606f;&#x4e2d;&#x7ee7;&#x5f02;&#x6b65;&#x6295;&#x9012;&#xff0c;&#x7edd;&#x5bf9;&#x4fdd;&#x8bc1;&#x6d88;&#x606f;&#x4e0d;&#x4e22;&#x5931;","children":[],"payload":{"tag":"li","lines":"26,28"}}],"payload":{"tag":"h3","lines":"22,23"}},{"content":"API &#x7f51;&#x5173;&#x4e0e;&#x524d;&#x7aef;&#x540e;&#x7f6e;&#xff08;BFF&#xff09;&#x6a21;&#x5f0f;","children":[{"content":"API &#x7f51;&#x5173;&#x6a21;&#x5f0f;&#xff08;API Gateway Pattern&#xff09;&#xff1a;&#x4e3a;&#x6240;&#x6709;&#x5916;&#x90e8;&#x5ba2;&#x6237;&#x7aef;&#x63d0;&#x4f9b;&#x7edf;&#x4e00;&#x5165;&#x53e3;&#xff0c;&#x8d1f;&#x8d23;&#x8def;&#x7531;&#x5206;&#x53d1;&#x3001;API &#x7ec4;&#x5408;&#x805a;&#x5408;&#x3001;&#x534f;&#x8bae;&#x8f6c;&#x6362;&#x3001;&#x5b89;&#x5168;&#x8ba4;&#x8bc1;&#x4e0e;&#x9650;&#x6d41;&#x7194;&#x65ad;","children":[],"payload":{"tag":"li","lines":"30,31"}},{"content":"&#x524d;&#x7aef;&#x540e;&#x7f6e;&#x6a21;&#x5f0f;&#xff08;Backends for Frontends, BFF&#xff09;&#xff1a;&#x9488;&#x5bf9; Web &#x7aef;&#x3001;&#x79fb;&#x52a8; App&#x3001;&#x7b2c;&#x4e09;&#x65b9;&#x5408;&#x4f5c;&#x4f19;&#x4f34;&#x5206;&#x522b;&#x5b9a;&#x5236;&#x4e13;&#x7528;&#x7f51;&#x5173;&#xff0c;&#x9694;&#x79bb;&#x4e0d;&#x540c;&#x5ba2;&#x6237;&#x7aef;&#x5bf9;&#x6570;&#x636e;&#x7ed3;&#x6784;&#x7684;&#x5f02;&#x6784;&#x8bc9;&#x6c42;","children":[],"payload":{"tag":"li","lines":"31,33"}}],"payload":{"tag":"h3","lines":"28,29"}}],"payload":{"tag":"h2","lines":"19,20"}},{"content":"&#x4e09;&#x3001;&#x5206;&#x5e03;&#x5f0f;&#x4e8b;&#x52a1;&#x6cbb;&#x7406;&#xff1a;Saga &#x6a21;&#x5f0f;","children":[{"content":"Saga &#x6a21;&#x5f0f;&#x7684;&#x539f;&#x7406;&#x4e0e;&#x8fd0;&#x884c;&#x673a;&#x5236;","children":[{"content":"&#x653e;&#x5f03;&#x4e24;&#x9636;&#x6bb5;&#x63d0;&#x4ea4;&#xff08;2PC&#xff09;&#xff1a;2PC &#x5b58;&#x5728;&#x534f;&#x8c03;&#x8005;&#x5355;&#x70b9;&#x963b;&#x585e;&#x3001;&#x4e25;&#x91cd;&#x62c9;&#x957f;&#x4e8b;&#x52a1;&#x6301;&#x6709;&#x9501;&#x65f6;&#x95f4;&#x3001;&#x8fdd;&#x53cd;&#x5fae;&#x670d;&#x52a1;&#x72ec;&#x7acb;&#x81ea;&#x6cbb;&#x5e95;&#x7ebf;","children":[],"payload":{"tag":"li","lines":"38,39"}},{"content":"Saga &#x7684;&#x6838;&#x5fc3;&#x5b9a;&#x4e49;&#xff1a;&#x5c06;&#x4e00;&#x4e2a;&#x5206;&#x5e03;&#x5f0f;&#x4e8b;&#x52a1;&#x62c6;&#x5206;&#x4e3a;&#x4e00;&#x7cfb;&#x5217;&#x7531;&#x4e8b;&#x4ef6;&#x6216;&#x6d88;&#x606f;&#x4e32;&#x8054;&#x7684;&#x672c;&#x5730;&#x4e8b;&#x52a1;&#xff08;Local Transactions&#xff09;&#x5e8f;&#x5217;","children":[],"payload":{"tag":"li","lines":"39,40"}},{"content":"&#x8865;&#x507f;&#x4e8b;&#x52a1;&#xff08;Compensating Transactions&#xff09;&#xff1a;&#x67d0;&#x4e2a;&#x672c;&#x5730;&#x4e8b;&#x52a1;&#x6267;&#x884c;&#x5931;&#x8d25;&#x65f6;&#xff0c;Saga &#x5fc5;&#x987b;&#x6309;&#x76f8;&#x53cd;&#x987a;&#x5e8f;&#x4f9d;&#x6b21;&#x6267;&#x884c;&#x5404;&#x4e2a;&#x524d;&#x7f6e;&#x4e8b;&#x52a1;&#x7684;&#x8865;&#x507f;&#x64cd;&#x4f5c;&#x56de;&#x6eda;&#x4e1a;&#x52a1;&#x72b6;&#x6001;&#xff08;&#x5982;&#x6263;&#x6b3e;&#x5931;&#x8d25;&#x65f6;&#x56de;&#x6eda;&#x5e93;&#x5b58;&#x5360;&#x7528;&#xff09;","children":[],"payload":{"tag":"li","lines":"40,42"}}],"payload":{"tag":"h3","lines":"36,37"}},{"content":"&#x534f;&#x540c;&#x5f0f; vs &#x7f16;&#x6392;&#x5f0f; Saga","children":[{"content":"&#x534f;&#x540c;&#x5f0f; Saga&#xff08;Choreography&#xff09;&#xff1a;&#x53bb;&#x4e2d;&#x5fc3;&#x5316;&#xff0c;&#x53c2;&#x4e0e;&#x65b9;&#x76d1;&#x542c;&#x9886;&#x57df;&#x4e8b;&#x4ef6;&#x5e76;&#x51b3;&#x5b9a;&#x662f;&#x5426;&#x6267;&#x884c;&#x672c;&#x5730;&#x4e8b;&#x52a1;&#x53ca;&#x53d1;&#x5e03;&#x65b0;&#x4e8b;&#x4ef6;&#xff1b;&#x903b;&#x8f91;&#x7b80;&#x5355;&#x4f46;&#x7f3a;&#x4e4f;&#x5168;&#x5c40;&#x5168;&#x666f;&#xff0c;&#x5bb9;&#x6613;&#x9677;&#x5165;&#x4e8b;&#x4ef6;&#x7f51;&#x5faa;&#x73af;&#x4f9d;&#x8d56;","children":[],"payload":{"tag":"li","lines":"44,45"}},{"content":"&#x7f16;&#x6392;&#x5f0f; Saga&#xff08;Orchestration&#xff09;&#xff1a;&#x8bbe;&#x7acb;&#x4e2d;&#x592e; Saga &#x7f16;&#x6392;&#x5668;&#xff08;Orchestrator&#xff09;&#xff0c;&#x7531;&#x72b6;&#x6001;&#x673a;&#x5411;&#x5404;&#x5fae;&#x670d;&#x52a1;&#x53d1;&#x9001;&#x547d;&#x4ee4;&#x6d88;&#x606f;&#x5e76;&#x63a5;&#x6536;&#x54cd;&#x5e94;&#xff1b;&#x903b;&#x8f91;&#x96c6;&#x4e2d;&#x660e;&#x786e;&#x3001;&#x6613;&#x4e8e;&#x6392;&#x67e5;&#x548c;&#x6d4b;&#x8bd5;&#xff0c;&#x590d;&#x6742;&#x4e1a;&#x52a1;&#x9996;&#x9009;","children":[],"payload":{"tag":"li","lines":"45,47"}}],"payload":{"tag":"h3","lines":"42,43"}}],"payload":{"tag":"h2","lines":"33,34"}},{"content":"&#x56db;&#x3001;&#x5fae;&#x670d;&#x52a1;&#x6570;&#x636e;&#x67e5;&#x8be2;&#xff1a;CQRS &#x4e0e;&#x4e8b;&#x4ef6;&#x6eaf;&#x6e90;","children":[{"content":"&#x547d;&#x4ee4;&#x67e5;&#x8be2;&#x804c;&#x8d23;&#x5206;&#x79bb;&#xff08;CQRS &#x6a21;&#x5f0f;&#xff09;","children":[{"content":"&#x8de8;&#x670d;&#x52a1;&#x67e5;&#x8be2;&#x75db;&#x70b9;&#xff1a;&#x5fae;&#x670d;&#x52a1;&#x6570;&#x636e;&#x5e93;&#x79c1;&#x6709;&#x540e;&#xff0c;&#x65e0;&#x6cd5;&#x76f4;&#x63a5;&#x6267;&#x884c;&#x8de8;&#x5e93; SQL JOIN&#xff0c;API &#x7ec4;&#x5408;&#x6a21;&#x5f0f;&#xff08;API Composition&#xff09;&#x5728;&#x6d77;&#x91cf;&#x6570;&#x636e;&#x4e0b;&#x5185;&#x5b58;&#x5f00;&#x9500;&#x4e0e;&#x7f51;&#x7edc;&#x5f80;&#x8fd4;&#x4e0d;&#x53ef;&#x627f;&#x53d7;","children":[],"payload":{"tag":"li","lines":"52,53"}},{"content":"CQRS &#x6838;&#x5fc3;&#x601d;&#x60f3;&#xff1a;&#x5c06;&#x7cfb;&#x7edf;&#x62c6;&#x5206;&#x4e3a;&#x547d;&#x4ee4;&#x4fa7;&#xff08;Command / &#x5199;&#x6a21;&#x578b;&#xff09;&#x4e0e;&#x67e5;&#x8be2;&#x4fa7;&#xff08;Query / &#x8bfb;&#x6a21;&#x578b;&#xff09;&#xff1b;&#x5199;&#x6a21;&#x578b;&#x4e13;&#x6ce8;&#x4e1a;&#x52a1;&#x6821;&#x9a8c;&#x4e0e;&#x4e8b;&#x52a1;&#xff0c;&#x901a;&#x8fc7;&#x4e8b;&#x4ef6;&#x5c06;&#x53d8;&#x66f4;&#x540c;&#x6b65;&#x7ed9;&#x53ea;&#x8bfb;&#x89c6;&#x56fe;&#x5e93;&#xff08;&#x5982; Elasticsearch/MongoDB&#xff09;&#x5b9e;&#x73b0;&#x6781;&#x81f4;&#x67e5;&#x8be2;&#x6027;&#x80fd;","children":[],"payload":{"tag":"li","lines":"53,55"}}],"payload":{"tag":"h3","lines":"50,51"}},{"content":"&#x4e8b;&#x4ef6;&#x6eaf;&#x6e90;&#xff08;Event Sourcing&#xff09;","children":[{"content":"&#x4e0d;&#x5b58;&#x6700;&#x7ec8;&#x72b6;&#x6001;&#xff0c;&#x53ea;&#x5b58;&#x4e0d;&#x53ef;&#x53d8;&#x4e8b;&#x4ef6;&#x5e8f;&#x5217;&#xff1a;&#x6570;&#x636e;&#x5e93;&#x4e2d;&#x4e0d;&#x518d;&#x4fdd;&#x5b58;&#x8d26;&#x6237;&#x4f59;&#x989d;&#x5b57;&#x6bb5;&#xff0c;&#x800c;&#x662f;&#x6301;&#x4e45;&#x5316;&#x6bcf;&#x4e00;&#x7b14;&#x2018;&#x5145;&#x503c;&#x2019;&#x3001;&#x2018;&#x6d88;&#x8d39;&#x2019;&#x4e8b;&#x4ef6;&#x8ffd;&#x52a0;&#x8bb0;&#x5f55;&#xff08;Event Log&#xff09;","children":[],"payload":{"tag":"li","lines":"57,58"}},{"content":"&#x5de8;&#x5927;&#x4f18;&#x52bf;&#xff1a;&#x5177;&#x5907; 100% &#x5b8c;&#x6574;&#x7684;&#x5386;&#x53f2;&#x5ba1;&#x8ba1;&#x8f68;&#x8ff9;&#x3001;&#x652f;&#x6301;&#x4efb;&#x610f;&#x65f6;&#x95f4;&#x70b9;&#x91cd;&#x653e;&#x91cd;&#x5efa;&#x72b6;&#x6001;&#x3001;&#x5929;&#x7136;&#x6d88;&#x706d;&#x5bf9;&#x8c61;-&#x5173;&#x7cfb;&#x963b;&#x6297;&#x5931;&#x8861;","children":[],"payload":{"tag":"li","lines":"58,59"}},{"content":"&#x5feb;&#x7167;&#x673a;&#x5236;&#xff08;Snapshotting&#xff09;&#xff1a;&#x5b9a;&#x671f;&#x4e3a;&#x5b9e;&#x4f53;&#x751f;&#x6210;&#x72b6;&#x6001;&#x5feb;&#x7167;&#xff0c;&#x907f;&#x514d;&#x91cd;&#x653e;&#x6570;&#x4e07;&#x4e2a;&#x4e8b;&#x4ef6;&#x5bfc;&#x81f4;&#x7684;&#x6027;&#x80fd;&#x8fdf;&#x949d;","children":[],"payload":{"tag":"li","lines":"59,61"}}],"payload":{"tag":"h3","lines":"55,56"}}],"payload":{"tag":"h2","lines":"47,48"}},{"content":"&#x4e94;&#x3001;&#x6d4b;&#x8bd5;&#x4e0e;&#x5355;&#x4f53;&#x91cd;&#x6784;&#x8fc1;&#x79fb;&#x7b56;&#x7565;","children":[{"content":"&#x7ede;&#x6740;&#x8005;&#x6a21;&#x5f0f;&#xff08;Strangler Fig Pattern&#xff09;&#x63a8;&#x8fdb;&#x91cd;&#x6784;","children":[{"content":"&#x7edd;&#x5bf9;&#x7981;&#x6b62;&#x63a8;&#x5012;&#x91cd;&#x6765;&#xff1a;&#x5927;&#x7206;&#x70b8;&#x5f0f;&#x5168;&#x91cf;&#x91cd;&#x5199;&#x51e0;&#x4e4e; 100% &#x4f1a;&#x5bfc;&#x81f4;&#x9879;&#x76ee;&#x5ef6;&#x671f;&#x8d85;&#x652f;&#x751a;&#x81f3;&#x56e2;&#x961f;&#x89e3;&#x4f53;","children":[],"payload":{"tag":"li","lines":"66,67"}},{"content":"&#x6e10;&#x8fdb;&#x5f0f;&#x66ff;&#x6362;&#x4e09;&#x6b65;&#x8d70;&#xff1a;&#x5148;&#x5728;&#x65b0;&#x529f;&#x80fd;&#x4e0a;&#x4f7f;&#x7528;&#x5fae;&#x670d;&#x52a1;&#xff08;&#x4fdd;&#x6301;&#x65b0;&#x4e1a;&#x52a1;&#x7eaf;&#x51c0;&#xff09;&#x3001;&#x901a;&#x8fc7; API &#x7f51;&#x5173;&#x62e6;&#x622a;&#x65e7;&#x6d41;&#x91cf;&#x9010;&#x6b65;&#x8f6c;&#x53d1;&#x81f3;&#x65b0;&#x670d;&#x52a1;&#x3001;&#x6700;&#x540e;&#x5c06;&#x9057;&#x7559;&#x5355;&#x4f53;&#x5f7b;&#x5e95;&#x67b6;&#x7a7a;&#x5e9f;&#x5f03;","children":[],"payload":{"tag":"li","lines":"67,68"}}],"payload":{"tag":"h3","lines":"64,65"}}],"payload":{"tag":"h2","lines":"61,62"}}],"payload":{"tag":"h1","lines":"0,1"}}</script>
       <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true"># 《微服务架构设计模式》 思维导图
 
 &gt; 核心主题：微服务模式语言、DDD业务拆分、进程间通信、Saga事务、CQRS与事件溯源、API网关与绞杀者迁移
@@ -513,27 +287,6 @@
 微服务改造的稳健路线图
 - 绝对禁止推倒重来：大爆炸式全量重写几乎 100% 会导致项目延期超支甚至团队解体
 - 渐进式替换三步走：先在新功能上使用微服务（保持新业务纯净）、通过 API 网关拦截旧流量逐步转发至新服务、最后将遗留单体彻底架空废弃</textarea>
-
-      <!-- Fullscreen Modal View -->
-      <div class="mindmap-modal" id="mindmapModal" aria-hidden="true" role="dialog" aria-label="思维导图全景全屏视图">
-        <div class="mm-modal-container">
-          <div class="mm-modal-header">
-            <div class="mm-modal-title-wrap">
-              <span class="mm-modal-tag">思维导图全景</span>
-              <span class="mm-modal-book-title">《微服务架构设计模式》</span>
-              <span class="mm-modal-theme">微服务模式语言、DDD业务拆分、进程间通信、Saga事务、CQRS与事件溯源、API网关与绞杀者迁移</span>
-            </div>
-            <div class="mm-modal-controls">
-              <button type="button" class="mm-btn" id="mmModalToggleAllBtn">
-                <span class="mm-modal-toggle-text">全部收起</span>
-              </button>
-              <button type="button" class="mm-modal-close-btn" id="mmModalCloseBtn" aria-label="关闭全屏">×</button>
-            </div>
-          </div>
-          <div class="mm-modal-body" id="mmModalBody"></div>
-        </div>
-      </div>
-
       <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
     </section>
 
@@ -644,143 +397,192 @@
   </script>
 
   
+  <script src="vendor/markmap-bundle.js" defer></script>
   <script>
     (function() {
       var mmSection = document.getElementById('mindmapSection');
       if (!mmSection) return;
 
-      var container = document.getElementById('mindmapContainer');
-      var toggleAllBtn = document.getElementById('mmToggleAllBtn');
-      var copyBtn = document.getElementById('mmCopyMarkdownBtn');
-      var fullscreenBtn = document.getElementById('mmFullscreenBtn');
-      var modal = document.getElementById('mindmapModal');
-      var modalCloseBtn = document.getElementById('mmModalCloseBtn');
-      var modalBody = document.getElementById('mmModalBody');
-      var modalToggleAllBtn = document.getElementById('mmModalToggleAllBtn');
-      var toast = document.getElementById('mmToast');
-      var mdSource = document.getElementById('mmMarkdownSource');
+      var svgEl = document.getElementById('markmapSvg');
+      var treeDataEl = document.getElementById('mmTreeData');
+      if (!svgEl || !treeDataEl) return;
 
-      var isAllCollapsed = false;
+      function initMarkmap() {
+        if (!window.markmap || !window.markmap.Markmap || !window.d3) {
+          setTimeout(initMarkmap, 50);
+          return;
+        }
 
-      function bindBranchHeaders(root) {
-        var headers = root.querySelectorAll('.mm-branch-header');
-        headers.forEach(function(header) {
-          header.addEventListener('click', function() {
-            var branch = header.closest('.mm-branch');
-            if (branch) {
-              branch.classList.toggle('is-collapsed');
+        var rawData = JSON.parse(treeDataEl.textContent);
+        var palette = ['#007722', '#1d4ed8', '#c2410c', '#7e22ce', '#0f766e', '#be123c'];
+        var colorScale = d3.scaleOrdinal(palette);
+
+        function cloneData(obj) {
+          return JSON.parse(JSON.stringify(obj));
+        }
+
+        function setFold(n, f) {
+          if (n.children && n.children.length) {
+            n.payload = Object.assign({}, n.payload, { fold: f ? 1 : 0 });
+            n.children.forEach(function(c) { setFold(c, f); });
+          }
+        }
+
+        // Default initial fold: level 2 topics collapsed
+        var currentData = cloneData(rawData);
+        if (currentData.children) {
+          currentData.payload = Object.assign({}, currentData.payload, { fold: 0 });
+          currentData.children.forEach(function(branch) {
+            branch.payload = Object.assign({}, branch.payload, { fold: 0 });
+            if (branch.children) {
+              branch.children.forEach(function(topic) {
+                setFold(topic, true);
+              });
             }
           });
-        });
-      }
+        }
 
-      bindBranchHeaders(container);
+        var mm = window.markmap.Markmap.create(svgEl, {
+          autoFit: true,
+          duration: 350,
+          color: function(node) {
+            return colorScale(node.state.id);
+          },
+          paddingX: 16,
+          spacingHorizontal: 75,
+          spacingVertical: 12
+        }, currentData);
 
-      // Toggle all in main view
-      if (toggleAllBtn) {
-        toggleAllBtn.addEventListener('click', function() {
-          isAllCollapsed = !isAllCollapsed;
-          var branches = container.querySelectorAll('.mm-branch');
-          branches.forEach(function(b) {
-            if (isAllCollapsed) {
-              b.classList.add('is-collapsed');
-            } else {
-              b.classList.remove('is-collapsed');
-            }
+        // Mount toolbar
+        if (window.markmap.Toolbar) {
+          var tb = window.markmap.Toolbar.create(mm);
+          tb.setBrand(false);
+          var tbWrap = document.getElementById('mmToolbarWrap');
+          if (tbWrap) tbWrap.appendChild(tb.render());
+        }
+
+        // Level Preset Buttons
+        var btnL1 = document.getElementById('mmBtnLevel1');
+        var btnL2 = document.getElementById('mmBtnLevel2');
+        var btnAll = document.getElementById('mmBtnExpandAll');
+
+        function setActiveLevelBtn(activeBtn) {
+          [btnL1, btnL2, btnAll].forEach(function(b) {
+            if (b) b.classList.remove('active');
           });
-          var txt = toggleAllBtn.querySelector('.mm-toggle-text');
-          if (txt) txt.textContent = isAllCollapsed ? '全部展开' : '全部收起';
-        });
-      }
+          if (activeBtn) activeBtn.classList.add('active');
+        }
 
-      // Copy Markdown Outline
-      function showToast(msg) {
-        if (!toast) return;
-        toast.textContent = msg;
-        toast.classList.add('active');
-        setTimeout(function() {
-          toast.classList.remove('active');
-        }, 2200);
-      }
+        if (btnL1) {
+          btnL1.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) { setFold(b, true); });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL1);
+          });
+        }
 
-      if (copyBtn && mdSource) {
-        copyBtn.addEventListener('click', function() {
-          var text = mdSource.value;
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function() {
-              showToast('✓ 已复制思维导图大纲到剪贴板！');
-            }).catch(function() {
-              fallbackCopy(text);
-            });
-          } else {
-            fallbackCopy(text);
+        if (btnL2) {
+          btnL2.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) {
+                b.payload = Object.assign({}, b.payload, { fold: 0 });
+                if (b.children) {
+                  b.children.forEach(function(t) { setFold(t, true); });
+                }
+              });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL2);
+          });
+        }
+
+        if (btnAll) {
+          btnAll.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            setFold(d, false);
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnAll);
+          });
+        }
+
+        // Fullscreen Toggle
+        var fsBtn = document.getElementById('mmFullscreenBtn');
+        var fsText = fsBtn ? fsBtn.querySelector('.mm-fs-text') : null;
+
+        function toggleFullscreen() {
+          var isFs = mmSection.classList.toggle('is-fullscreen');
+          if (fsText) fsText.textContent = isFs ? '退出全屏' : '全屏';
+          setTimeout(function() {
+            mm.fit();
+          }, 150);
+        }
+
+        if (fsBtn) {
+          fsBtn.addEventListener('click', toggleFullscreen);
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && mmSection.classList.contains('is-fullscreen')) {
+            toggleFullscreen();
           }
         });
-      }
 
-      function fallbackCopy(text) {
-        try {
-          var ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-          showToast('✓ 已复制思维导图大纲到剪贴板！');
-        } catch (e) {
-          showToast('复制失败，请手动选取复制');
+        // Copy Markdown
+        var copyBtn = document.getElementById('mmCopyMarkdownBtn');
+        var mdSource = document.getElementById('mmMarkdownSource');
+        var toast = document.getElementById('mmToast');
+
+        function showToast(msg) {
+          if (!toast) return;
+          toast.textContent = msg;
+          toast.classList.add('active');
+          setTimeout(function() { toast.classList.remove('active'); }, 2200);
         }
-      }
 
-      // Fullscreen Modal Logic
-      function openModal() {
-        if (!modal || !modalBody) return;
-        modalBody.innerHTML = container.innerHTML;
-        bindBranchHeaders(modalBody);
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        if (!modal) return;
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-
-      if (fullscreenBtn) {
-        fullscreenBtn.addEventListener('click', openModal);
-      }
-      if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', closeModal);
-      }
-      if (modal) {
-        modal.addEventListener('click', function(e) {
-          if (e.target === modal) closeModal();
-        });
-      }
-
-      if (modalToggleAllBtn) {
-        modalToggleAllBtn.addEventListener('click', function() {
-          var branches = modalBody.querySelectorAll('.mm-branch');
-          var shouldCollapse = !branches[0].classList.contains('is-collapsed');
-          branches.forEach(function(b) {
-            if (shouldCollapse) b.classList.add('is-collapsed');
-            else b.classList.remove('is-collapsed');
+        if (copyBtn && mdSource) {
+          copyBtn.addEventListener('click', function() {
+            var text = mdSource.value;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function() {
+                showToast('✓ 已复制思维导图大纲到剪贴板！');
+              }).catch(function() {
+                fallbackCopy(text);
+              });
+            } else {
+              fallbackCopy(text);
+            }
           });
-          var txt = modalToggleAllBtn.querySelector('.mm-modal-toggle-text');
-          if (txt) txt.textContent = shouldCollapse ? '全部展开' : '全部收起';
-        });
+        }
+
+        function fallbackCopy(text) {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('✓ 已复制思维导图大纲到剪贴板！');
+          } catch (e) {
+            showToast('复制失败，请手动选取');
+          }
+        }
       }
 
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-          closeModal();
-        }
-      });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMarkmap);
+      } else {
+        initMarkmap();
+      }
     })();
   </script>
 

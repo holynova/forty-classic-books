@@ -9,6 +9,8 @@ const books = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'books.json'), 'utf
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'package.json'), 'utf-8'));
 const mindmapsPath = path.join(DATA_DIR, 'mindmaps.json');
 const mindmaps = fs.existsSync(mindmapsPath) ? JSON.parse(fs.readFileSync(mindmapsPath, 'utf-8')) : {};
+const { Transformer } = require('markmap-lib');
+const transformer = new Transformer();
 const crypto = require('crypto');
 const cssContent = fs.readFileSync(path.join(ROOT_DIR, 'style.css'), 'utf-8');
 const cssHash = crypto.createHash('md5').update(cssContent).digest('hex').slice(0, 8);
@@ -363,245 +365,237 @@ function generateMindmapMarkdown(mm, book) {
 
 function renderMindmapHtml(mm, book) {
   const mdOutline = generateMindmapMarkdown(mm, book);
-  const branchesHtml = mm.branches.map((b, bIdx) => {
-    const topicsHtml = b.topics.map(t => {
-      const pointsHtml = t.points.map(pt => `
-        <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">${escapeHtml(pt)}</span>
-        </li>
-      `.trim()).join('\n');
-
-      return `
-        <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">${escapeHtml(t.title)}</h4>
-          </div>
-          ${t.desc ? `<p class="mm-topic-desc">${escapeHtml(t.desc)}</p>` : ''}
-          <ul class="mm-points-list">
-            ${pointsHtml}
-          </ul>
-        </div>
-      `.trim();
-    }).join('\n');
-
-    return `
-      <div class="mm-branch" data-branch-index="${bIdx}">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">${escapeHtml(b.name)}</span>
-          ${b.desc ? `<span class="mm-branch-desc">${escapeHtml(b.desc)}</span>` : ''}
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            ${topicsHtml}
-          </div>
-        </div>
-      </div>
-    `.trim();
-  }).join('\n');
+  const { root } = transformer.transform(mdOutline);
 
   return `
     <section class="section-block mindmap-section" id="mindmapSection">
       <div class="mindmap-header">
         <div class="mindmap-header-left">
-          <span class="mindmap-badge">知识脉络</span>
-          <h2 class="mindmap-title">全书思维导图</h2>
+          <span class="mindmap-badge">树状思维导图</span>
+          <h2 class="mindmap-title">全书思维导图 · 知识脉络树</h2>
         </div>
         <div class="mindmap-actions">
-          <button type="button" class="mm-btn mm-btn-toggle" id="mmToggleAllBtn" title="全部折叠/展开">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-            <span class="mm-toggle-text">全部收起</span>
-          </button>
-          <button type="button" class="mm-btn mm-btn-copy" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
+          <div class="mm-level-switch">
+            <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
+            <button type="button" class="mm-btn active" id="mmBtnLevel2" title="展开至二级分支">分支</button>
+            <button type="button" class="mm-btn" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
+          </div>
+
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>复制大纲</span>
           </button>
-          <button type="button" class="mm-btn mm-btn-fullscreen" id="mmFullscreenBtn" title="全屏沉浸式全景模式">
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmFullscreenBtn" title="全屏沉浸式全景模式 (ESC 退出)">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-            <span>全屏全景</span>
+            <span class="mm-fs-text">全屏</span>
           </button>
         </div>
       </div>
 
-      <div class="mindmap-container" id="mindmapContainer">
-        <div class="mm-root-card">
-          <div class="mm-root-pill">核心主旨</div>
-          <div class="mm-root-title">${escapeHtml(book.title)}</div>
-          <div class="mm-root-theme">${escapeHtml(mm.theme)}</div>
-        </div>
-
-        <div class="mm-tree-body">
-          ${branchesHtml}
-        </div>
-      </div>
-
-      <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true">${escapeHtml(mdOutline)}</textarea>
-
-      <!-- Fullscreen Modal View -->
-      <div class="mindmap-modal" id="mindmapModal" aria-hidden="true" role="dialog" aria-label="思维导图全景全屏视图">
-        <div class="mm-modal-container">
-          <div class="mm-modal-header">
-            <div class="mm-modal-title-wrap">
-              <span class="mm-modal-tag">思维导图全景</span>
-              <span class="mm-modal-book-title">${escapeHtml(book.title)}</span>
-              <span class="mm-modal-theme">${escapeHtml(mm.theme)}</span>
-            </div>
-            <div class="mm-modal-controls">
-              <button type="button" class="mm-btn" id="mmModalToggleAllBtn">
-                <span class="mm-modal-toggle-text">全部收起</span>
-              </button>
-              <button type="button" class="mm-modal-close-btn" id="mmModalCloseBtn" aria-label="关闭全屏">×</button>
-            </div>
+      <div class="mm-viewport-wrapper">
+        <div class="mm-viewport" id="mmViewport">
+          <svg id="markmapSvg"></svg>
+          <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
+          <div class="mm-canvas-hint">
+            <span>💡 拖拽平移 · 滚轮缩放 · 点击分支圆点折叠/展开</span>
           </div>
-          <div class="mm-modal-body" id="mmModalBody"></div>
         </div>
       </div>
 
+      <script type="application/json" id="mmTreeData">${JSON.stringify(root)}</script>
+      <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true">${escapeHtml(mdOutline)}</textarea>
       <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
     </section>
   `.trim();
 }
 
 const mindmapScript = `
+  <script src="vendor/markmap-bundle.js" defer></script>
   <script>
     (function() {
       var mmSection = document.getElementById('mindmapSection');
       if (!mmSection) return;
 
-      var container = document.getElementById('mindmapContainer');
-      var toggleAllBtn = document.getElementById('mmToggleAllBtn');
-      var copyBtn = document.getElementById('mmCopyMarkdownBtn');
-      var fullscreenBtn = document.getElementById('mmFullscreenBtn');
-      var modal = document.getElementById('mindmapModal');
-      var modalCloseBtn = document.getElementById('mmModalCloseBtn');
-      var modalBody = document.getElementById('mmModalBody');
-      var modalToggleAllBtn = document.getElementById('mmModalToggleAllBtn');
-      var toast = document.getElementById('mmToast');
-      var mdSource = document.getElementById('mmMarkdownSource');
+      var svgEl = document.getElementById('markmapSvg');
+      var treeDataEl = document.getElementById('mmTreeData');
+      if (!svgEl || !treeDataEl) return;
 
-      var isAllCollapsed = false;
+      function initMarkmap() {
+        if (!window.markmap || !window.markmap.Markmap || !window.d3) {
+          setTimeout(initMarkmap, 50);
+          return;
+        }
 
-      function bindBranchHeaders(root) {
-        var headers = root.querySelectorAll('.mm-branch-header');
-        headers.forEach(function(header) {
-          header.addEventListener('click', function() {
-            var branch = header.closest('.mm-branch');
-            if (branch) {
-              branch.classList.toggle('is-collapsed');
+        var rawData = JSON.parse(treeDataEl.textContent);
+        var palette = ['#007722', '#1d4ed8', '#c2410c', '#7e22ce', '#0f766e', '#be123c'];
+        var colorScale = d3.scaleOrdinal(palette);
+
+        function cloneData(obj) {
+          return JSON.parse(JSON.stringify(obj));
+        }
+
+        function setFold(n, f) {
+          if (n.children && n.children.length) {
+            n.payload = Object.assign({}, n.payload, { fold: f ? 1 : 0 });
+            n.children.forEach(function(c) { setFold(c, f); });
+          }
+        }
+
+        // Default initial fold: level 2 topics collapsed
+        var currentData = cloneData(rawData);
+        if (currentData.children) {
+          currentData.payload = Object.assign({}, currentData.payload, { fold: 0 });
+          currentData.children.forEach(function(branch) {
+            branch.payload = Object.assign({}, branch.payload, { fold: 0 });
+            if (branch.children) {
+              branch.children.forEach(function(topic) {
+                setFold(topic, true);
+              });
             }
           });
-        });
-      }
+        }
 
-      bindBranchHeaders(container);
+        var mm = window.markmap.Markmap.create(svgEl, {
+          autoFit: true,
+          duration: 350,
+          color: function(node) {
+            return colorScale(node.state.id);
+          },
+          paddingX: 16,
+          spacingHorizontal: 75,
+          spacingVertical: 12
+        }, currentData);
 
-      // Toggle all in main view
-      if (toggleAllBtn) {
-        toggleAllBtn.addEventListener('click', function() {
-          isAllCollapsed = !isAllCollapsed;
-          var branches = container.querySelectorAll('.mm-branch');
-          branches.forEach(function(b) {
-            if (isAllCollapsed) {
-              b.classList.add('is-collapsed');
-            } else {
-              b.classList.remove('is-collapsed');
-            }
+        // Mount toolbar
+        if (window.markmap.Toolbar) {
+          var tb = window.markmap.Toolbar.create(mm);
+          tb.setBrand(false);
+          var tbWrap = document.getElementById('mmToolbarWrap');
+          if (tbWrap) tbWrap.appendChild(tb.render());
+        }
+
+        // Level Preset Buttons
+        var btnL1 = document.getElementById('mmBtnLevel1');
+        var btnL2 = document.getElementById('mmBtnLevel2');
+        var btnAll = document.getElementById('mmBtnExpandAll');
+
+        function setActiveLevelBtn(activeBtn) {
+          [btnL1, btnL2, btnAll].forEach(function(b) {
+            if (b) b.classList.remove('active');
           });
-          var txt = toggleAllBtn.querySelector('.mm-toggle-text');
-          if (txt) txt.textContent = isAllCollapsed ? '全部展开' : '全部收起';
-        });
-      }
+          if (activeBtn) activeBtn.classList.add('active');
+        }
 
-      // Copy Markdown Outline
-      function showToast(msg) {
-        if (!toast) return;
-        toast.textContent = msg;
-        toast.classList.add('active');
-        setTimeout(function() {
-          toast.classList.remove('active');
-        }, 2200);
-      }
+        if (btnL1) {
+          btnL1.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) { setFold(b, true); });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL1);
+          });
+        }
 
-      if (copyBtn && mdSource) {
-        copyBtn.addEventListener('click', function() {
-          var text = mdSource.value;
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function() {
-              showToast('✓ 已复制思维导图大纲到剪贴板！');
-            }).catch(function() {
-              fallbackCopy(text);
-            });
-          } else {
-            fallbackCopy(text);
+        if (btnL2) {
+          btnL2.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) {
+                b.payload = Object.assign({}, b.payload, { fold: 0 });
+                if (b.children) {
+                  b.children.forEach(function(t) { setFold(t, true); });
+                }
+              });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL2);
+          });
+        }
+
+        if (btnAll) {
+          btnAll.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            setFold(d, false);
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnAll);
+          });
+        }
+
+        // Fullscreen Toggle
+        var fsBtn = document.getElementById('mmFullscreenBtn');
+        var fsText = fsBtn ? fsBtn.querySelector('.mm-fs-text') : null;
+
+        function toggleFullscreen() {
+          var isFs = mmSection.classList.toggle('is-fullscreen');
+          if (fsText) fsText.textContent = isFs ? '退出全屏' : '全屏';
+          setTimeout(function() {
+            mm.fit();
+          }, 150);
+        }
+
+        if (fsBtn) {
+          fsBtn.addEventListener('click', toggleFullscreen);
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && mmSection.classList.contains('is-fullscreen')) {
+            toggleFullscreen();
           }
         });
-      }
 
-      function fallbackCopy(text) {
-        try {
-          var ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-          showToast('✓ 已复制思维导图大纲到剪贴板！');
-        } catch (e) {
-          showToast('复制失败，请手动选取复制');
+        // Copy Markdown
+        var copyBtn = document.getElementById('mmCopyMarkdownBtn');
+        var mdSource = document.getElementById('mmMarkdownSource');
+        var toast = document.getElementById('mmToast');
+
+        function showToast(msg) {
+          if (!toast) return;
+          toast.textContent = msg;
+          toast.classList.add('active');
+          setTimeout(function() { toast.classList.remove('active'); }, 2200);
         }
-      }
 
-      // Fullscreen Modal Logic
-      function openModal() {
-        if (!modal || !modalBody) return;
-        modalBody.innerHTML = container.innerHTML;
-        bindBranchHeaders(modalBody);
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        if (!modal) return;
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-
-      if (fullscreenBtn) {
-        fullscreenBtn.addEventListener('click', openModal);
-      }
-      if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', closeModal);
-      }
-      if (modal) {
-        modal.addEventListener('click', function(e) {
-          if (e.target === modal) closeModal();
-        });
-      }
-
-      if (modalToggleAllBtn) {
-        modalToggleAllBtn.addEventListener('click', function() {
-          var branches = modalBody.querySelectorAll('.mm-branch');
-          var shouldCollapse = !branches[0].classList.contains('is-collapsed');
-          branches.forEach(function(b) {
-            if (shouldCollapse) b.classList.add('is-collapsed');
-            else b.classList.remove('is-collapsed');
+        if (copyBtn && mdSource) {
+          copyBtn.addEventListener('click', function() {
+            var text = mdSource.value;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function() {
+                showToast('✓ 已复制思维导图大纲到剪贴板！');
+              }).catch(function() {
+                fallbackCopy(text);
+              });
+            } else {
+              fallbackCopy(text);
+            }
           });
-          var txt = modalToggleAllBtn.querySelector('.mm-modal-toggle-text');
-          if (txt) txt.textContent = shouldCollapse ? '全部展开' : '全部收起';
-        });
+        }
+
+        function fallbackCopy(text) {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('✓ 已复制思维导图大纲到剪贴板！');
+          } catch (e) {
+            showToast('复制失败，请手动选取');
+          }
+        }
       }
 
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-          closeModal();
-        }
-      });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMarkmap);
+      } else {
+        initMarkmap();
+      }
     })();
   </script>
 `;

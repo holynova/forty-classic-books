@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>《架构整洁之道》 · 经典书导读</title>
-  <link rel="stylesheet" href="style.css?v=fea06185">
+  <link rel="stylesheet" href="style.css?v=4fdade2e">
 </head>
 <body>
   <div class="layout-container">
@@ -187,288 +187,38 @@
           <section class="section-block mindmap-section" id="mindmapSection">
       <div class="mindmap-header">
         <div class="mindmap-header-left">
-          <span class="mindmap-badge">知识脉络</span>
-          <h2 class="mindmap-title">全书思维导图</h2>
+          <span class="mindmap-badge">树状思维导图</span>
+          <h2 class="mindmap-title">全书思维导图 · 知识脉络树</h2>
         </div>
         <div class="mindmap-actions">
-          <button type="button" class="mm-btn mm-btn-toggle" id="mmToggleAllBtn" title="全部折叠/展开">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-            <span class="mm-toggle-text">全部收起</span>
-          </button>
-          <button type="button" class="mm-btn mm-btn-copy" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
+          <div class="mm-level-switch">
+            <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
+            <button type="button" class="mm-btn active" id="mmBtnLevel2" title="展开至二级分支">分支</button>
+            <button type="button" class="mm-btn" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
+          </div>
+
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>复制大纲</span>
           </button>
-          <button type="button" class="mm-btn mm-btn-fullscreen" id="mmFullscreenBtn" title="全屏沉浸式全景模式">
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmFullscreenBtn" title="全屏沉浸式全景模式 (ESC 退出)">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-            <span>全屏全景</span>
+            <span class="mm-fs-text">全屏</span>
           </button>
         </div>
       </div>
 
-      <div class="mindmap-container" id="mindmapContainer">
-        <div class="mm-root-card">
-          <div class="mm-root-pill">核心主旨</div>
-          <div class="mm-root-title">《架构整洁之道》</div>
-          <div class="mm-root-theme">架构终极目标与双重价值、三大编程范式、SOLID原则、组件内聚耦合与整洁同心圆</div>
-        </div>
-
-        <div class="mm-tree-body">
-          <div class="mm-branch" data-branch-index="0">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">一、软件架构的终极目标与双重价值</span>
-          <span class="mm-branch-desc">软件之所以称之为‘软’的根本原因</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">终极目标与人力成本曲线</h4>
+      <div class="mm-viewport-wrapper">
+        <div class="mm-viewport" id="mmViewport">
+          <svg id="markmapSvg"></svg>
+          <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
+          <div class="mm-canvas-hint">
+            <span>💡 拖拽平移 · 滚轮缩放 · 点击分支圆点折叠/展开</span>
           </div>
-          <p class="mm-topic-desc">架构好坏的唯一客观衡量标准</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">终极目标：用最小的人力成本来满足系统构建与维护的业务需求</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">代码行数与人员成本背离悲剧：不良架构导致随着代码量增加，新功能开发效率无限趋近于零，工程团队沦为修补救火队</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">唯有写好代码才能跑得快：‘先凑合上线后面再重构’是一句永远不会兑现的谎言</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">行为价值 vs 架构价值</h4>
-          </div>
-          <p class="mm-topic-desc">艾森豪威尔紧急与重要象限的博弈</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">行为价值（Behavioral Value）：机器按照需求文档正确运行并赚钱（紧急但不总是重要）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">架构价值（Architectural Value）：系统容易应对未来改变、易于演化（重要但不紧急）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">架构师的不可推卸天职：坚决捍卫软件的‘可修改性’，抵制业务方将架构价值完全让位于短期行为价值的冲动</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="1">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">二、三大编程范式的约束本质</span>
-          <span class="mm-branch-desc">范式并不赋予新能力，而是剥夺危险能力</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">结构化、面向对象与函数式编程</h4>
-          </div>
-          <p class="mm-topic-desc">近半个世纪软件工程的三大理论基石</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">结构化编程（Dijkstra）：剥夺 goto 语句，通过顺序、选择、循环三种控制结构实现代码的局部证明与分块递归分解</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">面向对象编程（OO）：通过多态机制实现‘控制反转’（IoC）；核心不是封装或继承，而是允许源码依赖方向跨越架构边界并反向于控制流</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">函数式编程（Functional）：剥夺赋值与可变变量（Immutability），消除多线程并发中的资源竞争、死锁与状态竞争问题</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="2">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">三、SOLID 面向对象设计原则</span>
-          <span class="mm-branch-desc">指导类与模块级设计的不变法门</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">单一职责与开闭原则（SRP &amp; OCP）</h4>
-          </div>
-          <p class="mm-topic-desc">应对变化与职责分离</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">单一职责原则（SRP）：任何一个模块应该只对某一类行为者（Actor）负责；不是‘一个函数只干一件事’，而是防止 CFO 的计算逻辑改动破坏 COO 的报表</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">开闭原则（OCP）：软件实体应当对扩展开放，对修改关闭；通过接口抽象与依赖反转，使新功能能通过添加新代码实现，而非修改已有代码</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">里氏替换、接口隔离与依赖反转（LSP, ISP, DIP）</h4>
-          </div>
-          <p class="mm-topic-desc">子类兼容、接口契约与依赖倒置</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">里氏替换原则（LSP）：子类型必须能够替换掉它们的基类型而行为不破坏调用者；著名的‘正方形不是长方形’继承反模式</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">接口隔离原则（ISP）：不应强迫客户端依赖它们用不到的接口；胖接口必须拆分为细粒度的客户端专用接口</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">依赖反转原则（DIP）：高层业务策略模块绝不应依赖低层细节实现模块，二者都应依赖于抽象；抽象不应依赖细节，细节必须依赖抽象</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="3">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">四、组件构建原则（内聚与耦合）</span>
-          <span class="mm-branch-desc">指导 JAR / NPM / DLL 包与服务粒度划分</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">组件内聚性三大原则（REP, CCP, CRP）</h4>
-          </div>
-          <p class="mm-topic-desc">决定哪些类应该打包放在一起</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">复用/发布等价原则（REP）：软件复用的最小粒度等同于其发布的最小粒度，必须有版本追踪与发布文档支持</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">共同闭包原则（CCP）：因为同样原因需要修改的类应该被组织在同一个组件中；这是 SRP 原则在组件级别的大尺度映射</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">共同复用原则（CRP）：不要强迫组件的用户依赖他们用不到的类；这是 ISP 原则在组件级别的对应物</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">内聚张力三角：REP/CCP/CRP 彼此制衡，项目早期偏重开发便利（CCP），成熟期偏重复用便利（REP/CRP）</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">组件耦合性三大原则（ADP, SDP, SAP）</h4>
-          </div>
-          <p class="mm-topic-desc">管理组件间依赖关系与稳定性</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">无环依赖原则（ADP）：组件依赖关系图绝对不允许出现环；解除循环依赖可通过 DIP 引入新抽象接口或抽取公用组件</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">稳定依赖原则（SDP）：组件应该依赖于比自己更稳定的组件；稳定性指标 I = 传入依赖 / (传入依赖 + 传出依赖)，0为极稳定，1为极不稳定</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">稳定抽象原则（SAP）：组件的抽象程度（A）应该与其稳定性（I）成正比；极稳定的组件必须高度抽象，避免陷入‘痛苦区’（高稳定且高具象）</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="4">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">五、整洁架构（Clean Architecture）模型与边界划分</span>
-          <span class="mm-branch-desc">洋葱同心圆与独立于技术细节的纯粹业务内核</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">同心圆结构与依赖规则（Dependency Rule）</h4>
-          </div>
-          <p class="mm-topic-desc">外圈是机制，内圈是策略</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">依赖规则：源代码依赖方向必须且只能指向同心圆内层；内层绝不允许出现任何外层的类、函数、变量或技术框架名称</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">实体层（Entities）：封装企业最核心的高阶业务规则与实体对象，不受任何外部应用场景变动影响</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">用例层（Use Cases）：封装特定应用的业务流程编排，接收输入、调用实体、产出结果，对具体 UI 和存储完全不知情</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">接口适配器层（Interface Adapters）：将用例与实体需要的数据格式转为外部技术所需的格式（Controllers, Gateways, Presenters）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">框架与驱动层（Frameworks &amp; Drivers）：最外层的易变细节，包括 Web 框架、数据库驱动、UI 控件、消息中间件等</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">边界划分与推迟关键决策</h4>
-          </div>
-          <p class="mm-topic-desc">将所有框架和数据库视为可替换的插件</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">架构的插件化（Plugin Architecture）：让数据库、Web 服务器、消息总线都成为系统核心业务的插头（Plugin），随时可插拔替换</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">推迟决策（Deferring Decisions）：优秀架构师的标志是尽可能晚地做具体技术选型决策，在获得足够业务事实前保留最大的灵活性</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">测试作为架构的第一等公民：良好的架构天然具备高度可测试性（Testability），无需启动真实数据库和 Web 容器即可完成核心业务测试</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
         </div>
       </div>
 
+      <script type="application/json" id="mmTreeData">{"content":"&#x300a;&#x67b6;&#x6784;&#x6574;&#x6d01;&#x4e4b;&#x9053;&#x300b; &#x601d;&#x7ef4;&#x5bfc;&#x56fe;","children":[{"content":"&#x4e00;&#x3001;&#x8f6f;&#x4ef6;&#x67b6;&#x6784;&#x7684;&#x7ec8;&#x6781;&#x76ee;&#x6807;&#x4e0e;&#x53cc;&#x91cd;&#x4ef7;&#x503c;","children":[{"content":"&#x7ec8;&#x6781;&#x76ee;&#x6807;&#x4e0e;&#x4eba;&#x529b;&#x6210;&#x672c;&#x66f2;&#x7ebf;","children":[{"content":"&#x7ec8;&#x6781;&#x76ee;&#x6807;&#xff1a;&#x7528;&#x6700;&#x5c0f;&#x7684;&#x4eba;&#x529b;&#x6210;&#x672c;&#x6765;&#x6ee1;&#x8db3;&#x7cfb;&#x7edf;&#x6784;&#x5efa;&#x4e0e;&#x7ef4;&#x62a4;&#x7684;&#x4e1a;&#x52a1;&#x9700;&#x6c42;","children":[],"payload":{"tag":"li","lines":"9,10"}},{"content":"&#x4ee3;&#x7801;&#x884c;&#x6570;&#x4e0e;&#x4eba;&#x5458;&#x6210;&#x672c;&#x80cc;&#x79bb;&#x60b2;&#x5267;&#xff1a;&#x4e0d;&#x826f;&#x67b6;&#x6784;&#x5bfc;&#x81f4;&#x968f;&#x7740;&#x4ee3;&#x7801;&#x91cf;&#x589e;&#x52a0;&#xff0c;&#x65b0;&#x529f;&#x80fd;&#x5f00;&#x53d1;&#x6548;&#x7387;&#x65e0;&#x9650;&#x8d8b;&#x8fd1;&#x4e8e;&#x96f6;&#xff0c;&#x5de5;&#x7a0b;&#x56e2;&#x961f;&#x6ca6;&#x4e3a;&#x4fee;&#x8865;&#x6551;&#x706b;&#x961f;","children":[],"payload":{"tag":"li","lines":"10,11"}},{"content":"&#x552f;&#x6709;&#x5199;&#x597d;&#x4ee3;&#x7801;&#x624d;&#x80fd;&#x8dd1;&#x5f97;&#x5feb;&#xff1a;&#x2018;&#x5148;&#x51d1;&#x5408;&#x4e0a;&#x7ebf;&#x540e;&#x9762;&#x518d;&#x91cd;&#x6784;&#x2019;&#x662f;&#x4e00;&#x53e5;&#x6c38;&#x8fdc;&#x4e0d;&#x4f1a;&#x5151;&#x73b0;&#x7684;&#x8c0e;&#x8a00;","children":[],"payload":{"tag":"li","lines":"11,13"}}],"payload":{"tag":"h3","lines":"7,8"}},{"content":"&#x884c;&#x4e3a;&#x4ef7;&#x503c; vs &#x67b6;&#x6784;&#x4ef7;&#x503c;","children":[{"content":"&#x884c;&#x4e3a;&#x4ef7;&#x503c;&#xff08;Behavioral Value&#xff09;&#xff1a;&#x673a;&#x5668;&#x6309;&#x7167;&#x9700;&#x6c42;&#x6587;&#x6863;&#x6b63;&#x786e;&#x8fd0;&#x884c;&#x5e76;&#x8d5a;&#x94b1;&#xff08;&#x7d27;&#x6025;&#x4f46;&#x4e0d;&#x603b;&#x662f;&#x91cd;&#x8981;&#xff09;","children":[],"payload":{"tag":"li","lines":"15,16"}},{"content":"&#x67b6;&#x6784;&#x4ef7;&#x503c;&#xff08;Architectural Value&#xff09;&#xff1a;&#x7cfb;&#x7edf;&#x5bb9;&#x6613;&#x5e94;&#x5bf9;&#x672a;&#x6765;&#x6539;&#x53d8;&#x3001;&#x6613;&#x4e8e;&#x6f14;&#x5316;&#xff08;&#x91cd;&#x8981;&#x4f46;&#x4e0d;&#x7d27;&#x6025;&#xff09;","children":[],"payload":{"tag":"li","lines":"16,17"}},{"content":"&#x67b6;&#x6784;&#x5e08;&#x7684;&#x4e0d;&#x53ef;&#x63a8;&#x5378;&#x5929;&#x804c;&#xff1a;&#x575a;&#x51b3;&#x634d;&#x536b;&#x8f6f;&#x4ef6;&#x7684;&#x2018;&#x53ef;&#x4fee;&#x6539;&#x6027;&#x2019;&#xff0c;&#x62b5;&#x5236;&#x4e1a;&#x52a1;&#x65b9;&#x5c06;&#x67b6;&#x6784;&#x4ef7;&#x503c;&#x5b8c;&#x5168;&#x8ba9;&#x4f4d;&#x4e8e;&#x77ed;&#x671f;&#x884c;&#x4e3a;&#x4ef7;&#x503c;&#x7684;&#x51b2;&#x52a8;","children":[],"payload":{"tag":"li","lines":"17,19"}}],"payload":{"tag":"h3","lines":"13,14"}}],"payload":{"tag":"h2","lines":"4,5"}},{"content":"&#x4e8c;&#x3001;&#x4e09;&#x5927;&#x7f16;&#x7a0b;&#x8303;&#x5f0f;&#x7684;&#x7ea6;&#x675f;&#x672c;&#x8d28;","children":[{"content":"&#x7ed3;&#x6784;&#x5316;&#x3001;&#x9762;&#x5411;&#x5bf9;&#x8c61;&#x4e0e;&#x51fd;&#x6570;&#x5f0f;&#x7f16;&#x7a0b;","children":[{"content":"&#x7ed3;&#x6784;&#x5316;&#x7f16;&#x7a0b;&#xff08;Dijkstra&#xff09;&#xff1a;&#x5265;&#x593a; goto &#x8bed;&#x53e5;&#xff0c;&#x901a;&#x8fc7;&#x987a;&#x5e8f;&#x3001;&#x9009;&#x62e9;&#x3001;&#x5faa;&#x73af;&#x4e09;&#x79cd;&#x63a7;&#x5236;&#x7ed3;&#x6784;&#x5b9e;&#x73b0;&#x4ee3;&#x7801;&#x7684;&#x5c40;&#x90e8;&#x8bc1;&#x660e;&#x4e0e;&#x5206;&#x5757;&#x9012;&#x5f52;&#x5206;&#x89e3;","children":[],"payload":{"tag":"li","lines":"24,25"}},{"content":"&#x9762;&#x5411;&#x5bf9;&#x8c61;&#x7f16;&#x7a0b;&#xff08;OO&#xff09;&#xff1a;&#x901a;&#x8fc7;&#x591a;&#x6001;&#x673a;&#x5236;&#x5b9e;&#x73b0;&#x2018;&#x63a7;&#x5236;&#x53cd;&#x8f6c;&#x2019;&#xff08;IoC&#xff09;&#xff1b;&#x6838;&#x5fc3;&#x4e0d;&#x662f;&#x5c01;&#x88c5;&#x6216;&#x7ee7;&#x627f;&#xff0c;&#x800c;&#x662f;&#x5141;&#x8bb8;&#x6e90;&#x7801;&#x4f9d;&#x8d56;&#x65b9;&#x5411;&#x8de8;&#x8d8a;&#x67b6;&#x6784;&#x8fb9;&#x754c;&#x5e76;&#x53cd;&#x5411;&#x4e8e;&#x63a7;&#x5236;&#x6d41;","children":[],"payload":{"tag":"li","lines":"25,26"}},{"content":"&#x51fd;&#x6570;&#x5f0f;&#x7f16;&#x7a0b;&#xff08;Functional&#xff09;&#xff1a;&#x5265;&#x593a;&#x8d4b;&#x503c;&#x4e0e;&#x53ef;&#x53d8;&#x53d8;&#x91cf;&#xff08;Immutability&#xff09;&#xff0c;&#x6d88;&#x9664;&#x591a;&#x7ebf;&#x7a0b;&#x5e76;&#x53d1;&#x4e2d;&#x7684;&#x8d44;&#x6e90;&#x7ade;&#x4e89;&#x3001;&#x6b7b;&#x9501;&#x4e0e;&#x72b6;&#x6001;&#x7ade;&#x4e89;&#x95ee;&#x9898;","children":[],"payload":{"tag":"li","lines":"26,28"}}],"payload":{"tag":"h3","lines":"22,23"}}],"payload":{"tag":"h2","lines":"19,20"}},{"content":"&#x4e09;&#x3001;SOLID &#x9762;&#x5411;&#x5bf9;&#x8c61;&#x8bbe;&#x8ba1;&#x539f;&#x5219;","children":[{"content":"&#x5355;&#x4e00;&#x804c;&#x8d23;&#x4e0e;&#x5f00;&#x95ed;&#x539f;&#x5219;&#xff08;SRP &amp; OCP&#xff09;","children":[{"content":"&#x5355;&#x4e00;&#x804c;&#x8d23;&#x539f;&#x5219;&#xff08;SRP&#xff09;&#xff1a;&#x4efb;&#x4f55;&#x4e00;&#x4e2a;&#x6a21;&#x5757;&#x5e94;&#x8be5;&#x53ea;&#x5bf9;&#x67d0;&#x4e00;&#x7c7b;&#x884c;&#x4e3a;&#x8005;&#xff08;Actor&#xff09;&#x8d1f;&#x8d23;&#xff1b;&#x4e0d;&#x662f;&#x2018;&#x4e00;&#x4e2a;&#x51fd;&#x6570;&#x53ea;&#x5e72;&#x4e00;&#x4ef6;&#x4e8b;&#x2019;&#xff0c;&#x800c;&#x662f;&#x9632;&#x6b62; CFO &#x7684;&#x8ba1;&#x7b97;&#x903b;&#x8f91;&#x6539;&#x52a8;&#x7834;&#x574f; COO &#x7684;&#x62a5;&#x8868;","children":[],"payload":{"tag":"li","lines":"33,34"}},{"content":"&#x5f00;&#x95ed;&#x539f;&#x5219;&#xff08;OCP&#xff09;&#xff1a;&#x8f6f;&#x4ef6;&#x5b9e;&#x4f53;&#x5e94;&#x5f53;&#x5bf9;&#x6269;&#x5c55;&#x5f00;&#x653e;&#xff0c;&#x5bf9;&#x4fee;&#x6539;&#x5173;&#x95ed;&#xff1b;&#x901a;&#x8fc7;&#x63a5;&#x53e3;&#x62bd;&#x8c61;&#x4e0e;&#x4f9d;&#x8d56;&#x53cd;&#x8f6c;&#xff0c;&#x4f7f;&#x65b0;&#x529f;&#x80fd;&#x80fd;&#x901a;&#x8fc7;&#x6dfb;&#x52a0;&#x65b0;&#x4ee3;&#x7801;&#x5b9e;&#x73b0;&#xff0c;&#x800c;&#x975e;&#x4fee;&#x6539;&#x5df2;&#x6709;&#x4ee3;&#x7801;","children":[],"payload":{"tag":"li","lines":"34,36"}}],"payload":{"tag":"h3","lines":"31,32"}},{"content":"&#x91cc;&#x6c0f;&#x66ff;&#x6362;&#x3001;&#x63a5;&#x53e3;&#x9694;&#x79bb;&#x4e0e;&#x4f9d;&#x8d56;&#x53cd;&#x8f6c;&#xff08;LSP, ISP, DIP&#xff09;","children":[{"content":"&#x91cc;&#x6c0f;&#x66ff;&#x6362;&#x539f;&#x5219;&#xff08;LSP&#xff09;&#xff1a;&#x5b50;&#x7c7b;&#x578b;&#x5fc5;&#x987b;&#x80fd;&#x591f;&#x66ff;&#x6362;&#x6389;&#x5b83;&#x4eec;&#x7684;&#x57fa;&#x7c7b;&#x578b;&#x800c;&#x884c;&#x4e3a;&#x4e0d;&#x7834;&#x574f;&#x8c03;&#x7528;&#x8005;&#xff1b;&#x8457;&#x540d;&#x7684;&#x2018;&#x6b63;&#x65b9;&#x5f62;&#x4e0d;&#x662f;&#x957f;&#x65b9;&#x5f62;&#x2019;&#x7ee7;&#x627f;&#x53cd;&#x6a21;&#x5f0f;","children":[],"payload":{"tag":"li","lines":"38,39"}},{"content":"&#x63a5;&#x53e3;&#x9694;&#x79bb;&#x539f;&#x5219;&#xff08;ISP&#xff09;&#xff1a;&#x4e0d;&#x5e94;&#x5f3a;&#x8feb;&#x5ba2;&#x6237;&#x7aef;&#x4f9d;&#x8d56;&#x5b83;&#x4eec;&#x7528;&#x4e0d;&#x5230;&#x7684;&#x63a5;&#x53e3;&#xff1b;&#x80d6;&#x63a5;&#x53e3;&#x5fc5;&#x987b;&#x62c6;&#x5206;&#x4e3a;&#x7ec6;&#x7c92;&#x5ea6;&#x7684;&#x5ba2;&#x6237;&#x7aef;&#x4e13;&#x7528;&#x63a5;&#x53e3;","children":[],"payload":{"tag":"li","lines":"39,40"}},{"content":"&#x4f9d;&#x8d56;&#x53cd;&#x8f6c;&#x539f;&#x5219;&#xff08;DIP&#xff09;&#xff1a;&#x9ad8;&#x5c42;&#x4e1a;&#x52a1;&#x7b56;&#x7565;&#x6a21;&#x5757;&#x7edd;&#x4e0d;&#x5e94;&#x4f9d;&#x8d56;&#x4f4e;&#x5c42;&#x7ec6;&#x8282;&#x5b9e;&#x73b0;&#x6a21;&#x5757;&#xff0c;&#x4e8c;&#x8005;&#x90fd;&#x5e94;&#x4f9d;&#x8d56;&#x4e8e;&#x62bd;&#x8c61;&#xff1b;&#x62bd;&#x8c61;&#x4e0d;&#x5e94;&#x4f9d;&#x8d56;&#x7ec6;&#x8282;&#xff0c;&#x7ec6;&#x8282;&#x5fc5;&#x987b;&#x4f9d;&#x8d56;&#x62bd;&#x8c61;","children":[],"payload":{"tag":"li","lines":"40,42"}}],"payload":{"tag":"h3","lines":"36,37"}}],"payload":{"tag":"h2","lines":"28,29"}},{"content":"&#x56db;&#x3001;&#x7ec4;&#x4ef6;&#x6784;&#x5efa;&#x539f;&#x5219;&#xff08;&#x5185;&#x805a;&#x4e0e;&#x8026;&#x5408;&#xff09;","children":[{"content":"&#x7ec4;&#x4ef6;&#x5185;&#x805a;&#x6027;&#x4e09;&#x5927;&#x539f;&#x5219;&#xff08;REP, CCP, CRP&#xff09;","children":[{"content":"&#x590d;&#x7528;/&#x53d1;&#x5e03;&#x7b49;&#x4ef7;&#x539f;&#x5219;&#xff08;REP&#xff09;&#xff1a;&#x8f6f;&#x4ef6;&#x590d;&#x7528;&#x7684;&#x6700;&#x5c0f;&#x7c92;&#x5ea6;&#x7b49;&#x540c;&#x4e8e;&#x5176;&#x53d1;&#x5e03;&#x7684;&#x6700;&#x5c0f;&#x7c92;&#x5ea6;&#xff0c;&#x5fc5;&#x987b;&#x6709;&#x7248;&#x672c;&#x8ffd;&#x8e2a;&#x4e0e;&#x53d1;&#x5e03;&#x6587;&#x6863;&#x652f;&#x6301;","children":[],"payload":{"tag":"li","lines":"47,48"}},{"content":"&#x5171;&#x540c;&#x95ed;&#x5305;&#x539f;&#x5219;&#xff08;CCP&#xff09;&#xff1a;&#x56e0;&#x4e3a;&#x540c;&#x6837;&#x539f;&#x56e0;&#x9700;&#x8981;&#x4fee;&#x6539;&#x7684;&#x7c7b;&#x5e94;&#x8be5;&#x88ab;&#x7ec4;&#x7ec7;&#x5728;&#x540c;&#x4e00;&#x4e2a;&#x7ec4;&#x4ef6;&#x4e2d;&#xff1b;&#x8fd9;&#x662f; SRP &#x539f;&#x5219;&#x5728;&#x7ec4;&#x4ef6;&#x7ea7;&#x522b;&#x7684;&#x5927;&#x5c3a;&#x5ea6;&#x6620;&#x5c04;","children":[],"payload":{"tag":"li","lines":"48,49"}},{"content":"&#x5171;&#x540c;&#x590d;&#x7528;&#x539f;&#x5219;&#xff08;CRP&#xff09;&#xff1a;&#x4e0d;&#x8981;&#x5f3a;&#x8feb;&#x7ec4;&#x4ef6;&#x7684;&#x7528;&#x6237;&#x4f9d;&#x8d56;&#x4ed6;&#x4eec;&#x7528;&#x4e0d;&#x5230;&#x7684;&#x7c7b;&#xff1b;&#x8fd9;&#x662f; ISP &#x539f;&#x5219;&#x5728;&#x7ec4;&#x4ef6;&#x7ea7;&#x522b;&#x7684;&#x5bf9;&#x5e94;&#x7269;","children":[],"payload":{"tag":"li","lines":"49,50"}},{"content":"&#x5185;&#x805a;&#x5f20;&#x529b;&#x4e09;&#x89d2;&#xff1a;REP/CCP/CRP &#x5f7c;&#x6b64;&#x5236;&#x8861;&#xff0c;&#x9879;&#x76ee;&#x65e9;&#x671f;&#x504f;&#x91cd;&#x5f00;&#x53d1;&#x4fbf;&#x5229;&#xff08;CCP&#xff09;&#xff0c;&#x6210;&#x719f;&#x671f;&#x504f;&#x91cd;&#x590d;&#x7528;&#x4fbf;&#x5229;&#xff08;REP/CRP&#xff09;","children":[],"payload":{"tag":"li","lines":"50,52"}}],"payload":{"tag":"h3","lines":"45,46"}},{"content":"&#x7ec4;&#x4ef6;&#x8026;&#x5408;&#x6027;&#x4e09;&#x5927;&#x539f;&#x5219;&#xff08;ADP, SDP, SAP&#xff09;","children":[{"content":"&#x65e0;&#x73af;&#x4f9d;&#x8d56;&#x539f;&#x5219;&#xff08;ADP&#xff09;&#xff1a;&#x7ec4;&#x4ef6;&#x4f9d;&#x8d56;&#x5173;&#x7cfb;&#x56fe;&#x7edd;&#x5bf9;&#x4e0d;&#x5141;&#x8bb8;&#x51fa;&#x73b0;&#x73af;&#xff1b;&#x89e3;&#x9664;&#x5faa;&#x73af;&#x4f9d;&#x8d56;&#x53ef;&#x901a;&#x8fc7; DIP &#x5f15;&#x5165;&#x65b0;&#x62bd;&#x8c61;&#x63a5;&#x53e3;&#x6216;&#x62bd;&#x53d6;&#x516c;&#x7528;&#x7ec4;&#x4ef6;","children":[],"payload":{"tag":"li","lines":"54,55"}},{"content":"&#x7a33;&#x5b9a;&#x4f9d;&#x8d56;&#x539f;&#x5219;&#xff08;SDP&#xff09;&#xff1a;&#x7ec4;&#x4ef6;&#x5e94;&#x8be5;&#x4f9d;&#x8d56;&#x4e8e;&#x6bd4;&#x81ea;&#x5df1;&#x66f4;&#x7a33;&#x5b9a;&#x7684;&#x7ec4;&#x4ef6;&#xff1b;&#x7a33;&#x5b9a;&#x6027;&#x6307;&#x6807; I = &#x4f20;&#x5165;&#x4f9d;&#x8d56; / (&#x4f20;&#x5165;&#x4f9d;&#x8d56; + &#x4f20;&#x51fa;&#x4f9d;&#x8d56;)&#xff0c;0&#x4e3a;&#x6781;&#x7a33;&#x5b9a;&#xff0c;1&#x4e3a;&#x6781;&#x4e0d;&#x7a33;&#x5b9a;","children":[],"payload":{"tag":"li","lines":"55,56"}},{"content":"&#x7a33;&#x5b9a;&#x62bd;&#x8c61;&#x539f;&#x5219;&#xff08;SAP&#xff09;&#xff1a;&#x7ec4;&#x4ef6;&#x7684;&#x62bd;&#x8c61;&#x7a0b;&#x5ea6;&#xff08;A&#xff09;&#x5e94;&#x8be5;&#x4e0e;&#x5176;&#x7a33;&#x5b9a;&#x6027;&#xff08;I&#xff09;&#x6210;&#x6b63;&#x6bd4;&#xff1b;&#x6781;&#x7a33;&#x5b9a;&#x7684;&#x7ec4;&#x4ef6;&#x5fc5;&#x987b;&#x9ad8;&#x5ea6;&#x62bd;&#x8c61;&#xff0c;&#x907f;&#x514d;&#x9677;&#x5165;&#x2018;&#x75db;&#x82e6;&#x533a;&#x2019;&#xff08;&#x9ad8;&#x7a33;&#x5b9a;&#x4e14;&#x9ad8;&#x5177;&#x8c61;&#xff09;","children":[],"payload":{"tag":"li","lines":"56,58"}}],"payload":{"tag":"h3","lines":"52,53"}}],"payload":{"tag":"h2","lines":"42,43"}},{"content":"&#x4e94;&#x3001;&#x6574;&#x6d01;&#x67b6;&#x6784;&#xff08;Clean Architecture&#xff09;&#x6a21;&#x578b;&#x4e0e;&#x8fb9;&#x754c;&#x5212;&#x5206;","children":[{"content":"&#x540c;&#x5fc3;&#x5706;&#x7ed3;&#x6784;&#x4e0e;&#x4f9d;&#x8d56;&#x89c4;&#x5219;&#xff08;Dependency Rule&#xff09;","children":[{"content":"&#x4f9d;&#x8d56;&#x89c4;&#x5219;&#xff1a;&#x6e90;&#x4ee3;&#x7801;&#x4f9d;&#x8d56;&#x65b9;&#x5411;&#x5fc5;&#x987b;&#x4e14;&#x53ea;&#x80fd;&#x6307;&#x5411;&#x540c;&#x5fc3;&#x5706;&#x5185;&#x5c42;&#xff1b;&#x5185;&#x5c42;&#x7edd;&#x4e0d;&#x5141;&#x8bb8;&#x51fa;&#x73b0;&#x4efb;&#x4f55;&#x5916;&#x5c42;&#x7684;&#x7c7b;&#x3001;&#x51fd;&#x6570;&#x3001;&#x53d8;&#x91cf;&#x6216;&#x6280;&#x672f;&#x6846;&#x67b6;&#x540d;&#x79f0;","children":[],"payload":{"tag":"li","lines":"63,64"}},{"content":"&#x5b9e;&#x4f53;&#x5c42;&#xff08;Entities&#xff09;&#xff1a;&#x5c01;&#x88c5;&#x4f01;&#x4e1a;&#x6700;&#x6838;&#x5fc3;&#x7684;&#x9ad8;&#x9636;&#x4e1a;&#x52a1;&#x89c4;&#x5219;&#x4e0e;&#x5b9e;&#x4f53;&#x5bf9;&#x8c61;&#xff0c;&#x4e0d;&#x53d7;&#x4efb;&#x4f55;&#x5916;&#x90e8;&#x5e94;&#x7528;&#x573a;&#x666f;&#x53d8;&#x52a8;&#x5f71;&#x54cd;","children":[],"payload":{"tag":"li","lines":"64,65"}},{"content":"&#x7528;&#x4f8b;&#x5c42;&#xff08;Use Cases&#xff09;&#xff1a;&#x5c01;&#x88c5;&#x7279;&#x5b9a;&#x5e94;&#x7528;&#x7684;&#x4e1a;&#x52a1;&#x6d41;&#x7a0b;&#x7f16;&#x6392;&#xff0c;&#x63a5;&#x6536;&#x8f93;&#x5165;&#x3001;&#x8c03;&#x7528;&#x5b9e;&#x4f53;&#x3001;&#x4ea7;&#x51fa;&#x7ed3;&#x679c;&#xff0c;&#x5bf9;&#x5177;&#x4f53; UI &#x548c;&#x5b58;&#x50a8;&#x5b8c;&#x5168;&#x4e0d;&#x77e5;&#x60c5;","children":[],"payload":{"tag":"li","lines":"65,66"}},{"content":"&#x63a5;&#x53e3;&#x9002;&#x914d;&#x5668;&#x5c42;&#xff08;Interface Adapters&#xff09;&#xff1a;&#x5c06;&#x7528;&#x4f8b;&#x4e0e;&#x5b9e;&#x4f53;&#x9700;&#x8981;&#x7684;&#x6570;&#x636e;&#x683c;&#x5f0f;&#x8f6c;&#x4e3a;&#x5916;&#x90e8;&#x6280;&#x672f;&#x6240;&#x9700;&#x7684;&#x683c;&#x5f0f;&#xff08;Controllers, Gateways, Presenters&#xff09;","children":[],"payload":{"tag":"li","lines":"66,67"}},{"content":"&#x6846;&#x67b6;&#x4e0e;&#x9a71;&#x52a8;&#x5c42;&#xff08;Frameworks &amp; Drivers&#xff09;&#xff1a;&#x6700;&#x5916;&#x5c42;&#x7684;&#x6613;&#x53d8;&#x7ec6;&#x8282;&#xff0c;&#x5305;&#x62ec; Web &#x6846;&#x67b6;&#x3001;&#x6570;&#x636e;&#x5e93;&#x9a71;&#x52a8;&#x3001;UI &#x63a7;&#x4ef6;&#x3001;&#x6d88;&#x606f;&#x4e2d;&#x95f4;&#x4ef6;&#x7b49;","children":[],"payload":{"tag":"li","lines":"67,69"}}],"payload":{"tag":"h3","lines":"61,62"}},{"content":"&#x8fb9;&#x754c;&#x5212;&#x5206;&#x4e0e;&#x63a8;&#x8fdf;&#x5173;&#x952e;&#x51b3;&#x7b56;","children":[{"content":"&#x67b6;&#x6784;&#x7684;&#x63d2;&#x4ef6;&#x5316;&#xff08;Plugin Architecture&#xff09;&#xff1a;&#x8ba9;&#x6570;&#x636e;&#x5e93;&#x3001;Web &#x670d;&#x52a1;&#x5668;&#x3001;&#x6d88;&#x606f;&#x603b;&#x7ebf;&#x90fd;&#x6210;&#x4e3a;&#x7cfb;&#x7edf;&#x6838;&#x5fc3;&#x4e1a;&#x52a1;&#x7684;&#x63d2;&#x5934;&#xff08;Plugin&#xff09;&#xff0c;&#x968f;&#x65f6;&#x53ef;&#x63d2;&#x62d4;&#x66ff;&#x6362;","children":[],"payload":{"tag":"li","lines":"71,72"}},{"content":"&#x63a8;&#x8fdf;&#x51b3;&#x7b56;&#xff08;Deferring Decisions&#xff09;&#xff1a;&#x4f18;&#x79c0;&#x67b6;&#x6784;&#x5e08;&#x7684;&#x6807;&#x5fd7;&#x662f;&#x5c3d;&#x53ef;&#x80fd;&#x665a;&#x5730;&#x505a;&#x5177;&#x4f53;&#x6280;&#x672f;&#x9009;&#x578b;&#x51b3;&#x7b56;&#xff0c;&#x5728;&#x83b7;&#x5f97;&#x8db3;&#x591f;&#x4e1a;&#x52a1;&#x4e8b;&#x5b9e;&#x524d;&#x4fdd;&#x7559;&#x6700;&#x5927;&#x7684;&#x7075;&#x6d3b;&#x6027;","children":[],"payload":{"tag":"li","lines":"72,73"}},{"content":"&#x6d4b;&#x8bd5;&#x4f5c;&#x4e3a;&#x67b6;&#x6784;&#x7684;&#x7b2c;&#x4e00;&#x7b49;&#x516c;&#x6c11;&#xff1a;&#x826f;&#x597d;&#x7684;&#x67b6;&#x6784;&#x5929;&#x7136;&#x5177;&#x5907;&#x9ad8;&#x5ea6;&#x53ef;&#x6d4b;&#x8bd5;&#x6027;&#xff08;Testability&#xff09;&#xff0c;&#x65e0;&#x9700;&#x542f;&#x52a8;&#x771f;&#x5b9e;&#x6570;&#x636e;&#x5e93;&#x548c; Web &#x5bb9;&#x5668;&#x5373;&#x53ef;&#x5b8c;&#x6210;&#x6838;&#x5fc3;&#x4e1a;&#x52a1;&#x6d4b;&#x8bd5;","children":[],"payload":{"tag":"li","lines":"73,74"}}],"payload":{"tag":"h3","lines":"69,70"}}],"payload":{"tag":"h2","lines":"58,59"}}],"payload":{"tag":"h1","lines":"0,1"}}</script>
       <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true"># 《架构整洁之道》 思维导图
 
 &gt; 核心主题：架构终极目标与双重价值、三大编程范式、SOLID原则、组件内聚耦合与整洁同心圆
@@ -543,27 +293,6 @@
 - 架构的插件化（Plugin Architecture）：让数据库、Web 服务器、消息总线都成为系统核心业务的插头（Plugin），随时可插拔替换
 - 推迟决策（Deferring Decisions）：优秀架构师的标志是尽可能晚地做具体技术选型决策，在获得足够业务事实前保留最大的灵活性
 - 测试作为架构的第一等公民：良好的架构天然具备高度可测试性（Testability），无需启动真实数据库和 Web 容器即可完成核心业务测试</textarea>
-
-      <!-- Fullscreen Modal View -->
-      <div class="mindmap-modal" id="mindmapModal" aria-hidden="true" role="dialog" aria-label="思维导图全景全屏视图">
-        <div class="mm-modal-container">
-          <div class="mm-modal-header">
-            <div class="mm-modal-title-wrap">
-              <span class="mm-modal-tag">思维导图全景</span>
-              <span class="mm-modal-book-title">《架构整洁之道》</span>
-              <span class="mm-modal-theme">架构终极目标与双重价值、三大编程范式、SOLID原则、组件内聚耦合与整洁同心圆</span>
-            </div>
-            <div class="mm-modal-controls">
-              <button type="button" class="mm-btn" id="mmModalToggleAllBtn">
-                <span class="mm-modal-toggle-text">全部收起</span>
-              </button>
-              <button type="button" class="mm-modal-close-btn" id="mmModalCloseBtn" aria-label="关闭全屏">×</button>
-            </div>
-          </div>
-          <div class="mm-modal-body" id="mmModalBody"></div>
-        </div>
-      </div>
-
       <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
     </section>
 
@@ -639,143 +368,192 @@
   </script>
 
   
+  <script src="vendor/markmap-bundle.js" defer></script>
   <script>
     (function() {
       var mmSection = document.getElementById('mindmapSection');
       if (!mmSection) return;
 
-      var container = document.getElementById('mindmapContainer');
-      var toggleAllBtn = document.getElementById('mmToggleAllBtn');
-      var copyBtn = document.getElementById('mmCopyMarkdownBtn');
-      var fullscreenBtn = document.getElementById('mmFullscreenBtn');
-      var modal = document.getElementById('mindmapModal');
-      var modalCloseBtn = document.getElementById('mmModalCloseBtn');
-      var modalBody = document.getElementById('mmModalBody');
-      var modalToggleAllBtn = document.getElementById('mmModalToggleAllBtn');
-      var toast = document.getElementById('mmToast');
-      var mdSource = document.getElementById('mmMarkdownSource');
+      var svgEl = document.getElementById('markmapSvg');
+      var treeDataEl = document.getElementById('mmTreeData');
+      if (!svgEl || !treeDataEl) return;
 
-      var isAllCollapsed = false;
+      function initMarkmap() {
+        if (!window.markmap || !window.markmap.Markmap || !window.d3) {
+          setTimeout(initMarkmap, 50);
+          return;
+        }
 
-      function bindBranchHeaders(root) {
-        var headers = root.querySelectorAll('.mm-branch-header');
-        headers.forEach(function(header) {
-          header.addEventListener('click', function() {
-            var branch = header.closest('.mm-branch');
-            if (branch) {
-              branch.classList.toggle('is-collapsed');
+        var rawData = JSON.parse(treeDataEl.textContent);
+        var palette = ['#007722', '#1d4ed8', '#c2410c', '#7e22ce', '#0f766e', '#be123c'];
+        var colorScale = d3.scaleOrdinal(palette);
+
+        function cloneData(obj) {
+          return JSON.parse(JSON.stringify(obj));
+        }
+
+        function setFold(n, f) {
+          if (n.children && n.children.length) {
+            n.payload = Object.assign({}, n.payload, { fold: f ? 1 : 0 });
+            n.children.forEach(function(c) { setFold(c, f); });
+          }
+        }
+
+        // Default initial fold: level 2 topics collapsed
+        var currentData = cloneData(rawData);
+        if (currentData.children) {
+          currentData.payload = Object.assign({}, currentData.payload, { fold: 0 });
+          currentData.children.forEach(function(branch) {
+            branch.payload = Object.assign({}, branch.payload, { fold: 0 });
+            if (branch.children) {
+              branch.children.forEach(function(topic) {
+                setFold(topic, true);
+              });
             }
           });
-        });
-      }
+        }
 
-      bindBranchHeaders(container);
+        var mm = window.markmap.Markmap.create(svgEl, {
+          autoFit: true,
+          duration: 350,
+          color: function(node) {
+            return colorScale(node.state.id);
+          },
+          paddingX: 16,
+          spacingHorizontal: 75,
+          spacingVertical: 12
+        }, currentData);
 
-      // Toggle all in main view
-      if (toggleAllBtn) {
-        toggleAllBtn.addEventListener('click', function() {
-          isAllCollapsed = !isAllCollapsed;
-          var branches = container.querySelectorAll('.mm-branch');
-          branches.forEach(function(b) {
-            if (isAllCollapsed) {
-              b.classList.add('is-collapsed');
-            } else {
-              b.classList.remove('is-collapsed');
-            }
+        // Mount toolbar
+        if (window.markmap.Toolbar) {
+          var tb = window.markmap.Toolbar.create(mm);
+          tb.setBrand(false);
+          var tbWrap = document.getElementById('mmToolbarWrap');
+          if (tbWrap) tbWrap.appendChild(tb.render());
+        }
+
+        // Level Preset Buttons
+        var btnL1 = document.getElementById('mmBtnLevel1');
+        var btnL2 = document.getElementById('mmBtnLevel2');
+        var btnAll = document.getElementById('mmBtnExpandAll');
+
+        function setActiveLevelBtn(activeBtn) {
+          [btnL1, btnL2, btnAll].forEach(function(b) {
+            if (b) b.classList.remove('active');
           });
-          var txt = toggleAllBtn.querySelector('.mm-toggle-text');
-          if (txt) txt.textContent = isAllCollapsed ? '全部展开' : '全部收起';
-        });
-      }
+          if (activeBtn) activeBtn.classList.add('active');
+        }
 
-      // Copy Markdown Outline
-      function showToast(msg) {
-        if (!toast) return;
-        toast.textContent = msg;
-        toast.classList.add('active');
-        setTimeout(function() {
-          toast.classList.remove('active');
-        }, 2200);
-      }
+        if (btnL1) {
+          btnL1.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) { setFold(b, true); });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL1);
+          });
+        }
 
-      if (copyBtn && mdSource) {
-        copyBtn.addEventListener('click', function() {
-          var text = mdSource.value;
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function() {
-              showToast('✓ 已复制思维导图大纲到剪贴板！');
-            }).catch(function() {
-              fallbackCopy(text);
-            });
-          } else {
-            fallbackCopy(text);
+        if (btnL2) {
+          btnL2.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) {
+                b.payload = Object.assign({}, b.payload, { fold: 0 });
+                if (b.children) {
+                  b.children.forEach(function(t) { setFold(t, true); });
+                }
+              });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL2);
+          });
+        }
+
+        if (btnAll) {
+          btnAll.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            setFold(d, false);
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnAll);
+          });
+        }
+
+        // Fullscreen Toggle
+        var fsBtn = document.getElementById('mmFullscreenBtn');
+        var fsText = fsBtn ? fsBtn.querySelector('.mm-fs-text') : null;
+
+        function toggleFullscreen() {
+          var isFs = mmSection.classList.toggle('is-fullscreen');
+          if (fsText) fsText.textContent = isFs ? '退出全屏' : '全屏';
+          setTimeout(function() {
+            mm.fit();
+          }, 150);
+        }
+
+        if (fsBtn) {
+          fsBtn.addEventListener('click', toggleFullscreen);
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && mmSection.classList.contains('is-fullscreen')) {
+            toggleFullscreen();
           }
         });
-      }
 
-      function fallbackCopy(text) {
-        try {
-          var ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-          showToast('✓ 已复制思维导图大纲到剪贴板！');
-        } catch (e) {
-          showToast('复制失败，请手动选取复制');
+        // Copy Markdown
+        var copyBtn = document.getElementById('mmCopyMarkdownBtn');
+        var mdSource = document.getElementById('mmMarkdownSource');
+        var toast = document.getElementById('mmToast');
+
+        function showToast(msg) {
+          if (!toast) return;
+          toast.textContent = msg;
+          toast.classList.add('active');
+          setTimeout(function() { toast.classList.remove('active'); }, 2200);
         }
-      }
 
-      // Fullscreen Modal Logic
-      function openModal() {
-        if (!modal || !modalBody) return;
-        modalBody.innerHTML = container.innerHTML;
-        bindBranchHeaders(modalBody);
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        if (!modal) return;
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-
-      if (fullscreenBtn) {
-        fullscreenBtn.addEventListener('click', openModal);
-      }
-      if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', closeModal);
-      }
-      if (modal) {
-        modal.addEventListener('click', function(e) {
-          if (e.target === modal) closeModal();
-        });
-      }
-
-      if (modalToggleAllBtn) {
-        modalToggleAllBtn.addEventListener('click', function() {
-          var branches = modalBody.querySelectorAll('.mm-branch');
-          var shouldCollapse = !branches[0].classList.contains('is-collapsed');
-          branches.forEach(function(b) {
-            if (shouldCollapse) b.classList.add('is-collapsed');
-            else b.classList.remove('is-collapsed');
+        if (copyBtn && mdSource) {
+          copyBtn.addEventListener('click', function() {
+            var text = mdSource.value;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function() {
+                showToast('✓ 已复制思维导图大纲到剪贴板！');
+              }).catch(function() {
+                fallbackCopy(text);
+              });
+            } else {
+              fallbackCopy(text);
+            }
           });
-          var txt = modalToggleAllBtn.querySelector('.mm-modal-toggle-text');
-          if (txt) txt.textContent = shouldCollapse ? '全部展开' : '全部收起';
-        });
+        }
+
+        function fallbackCopy(text) {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('✓ 已复制思维导图大纲到剪贴板！');
+          } catch (e) {
+            showToast('复制失败，请手动选取');
+          }
+        }
       }
 
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-          closeModal();
-        }
-      });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMarkmap);
+      } else {
+        initMarkmap();
+      }
     })();
   </script>
 

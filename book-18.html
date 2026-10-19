@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>《凤凰项目：一个IT运维的传奇故事》 · 经典书导读</title>
-  <link rel="stylesheet" href="style.css?v=fea06185">
+  <link rel="stylesheet" href="style.css?v=4fdade2e">
 </head>
 <body>
   <div class="layout-container">
@@ -182,227 +182,38 @@
           <section class="section-block mindmap-section" id="mindmapSection">
       <div class="mindmap-header">
         <div class="mindmap-header-left">
-          <span class="mindmap-badge">知识脉络</span>
-          <h2 class="mindmap-title">全书思维导图</h2>
+          <span class="mindmap-badge">树状思维导图</span>
+          <h2 class="mindmap-title">全书思维导图 · 知识脉络树</h2>
         </div>
         <div class="mindmap-actions">
-          <button type="button" class="mm-btn mm-btn-toggle" id="mmToggleAllBtn" title="全部折叠/展开">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-            <span class="mm-toggle-text">全部收起</span>
-          </button>
-          <button type="button" class="mm-btn mm-btn-copy" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
+          <div class="mm-level-switch">
+            <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
+            <button type="button" class="mm-btn active" id="mmBtnLevel2" title="展开至二级分支">分支</button>
+            <button type="button" class="mm-btn" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
+          </div>
+
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>复制大纲</span>
           </button>
-          <button type="button" class="mm-btn mm-btn-fullscreen" id="mmFullscreenBtn" title="全屏沉浸式全景模式">
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmFullscreenBtn" title="全屏沉浸式全景模式 (ESC 退出)">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-            <span>全屏全景</span>
+            <span class="mm-fs-text">全屏</span>
           </button>
         </div>
       </div>
 
-      <div class="mindmap-container" id="mindmapContainer">
-        <div class="mm-root-card">
-          <div class="mm-root-pill">核心主旨</div>
-          <div class="mm-root-title">《凤凰项目：一个IT运维的传奇故事》</div>
-          <div class="mm-root-theme">约束理论（TOC）、三步工作法（流动/反馈/持续实验）、四种IT工作类型与DevOps启蒙</div>
-        </div>
-
-        <div class="mm-tree-body">
-          <div class="mm-branch" data-branch-index="0">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">一、企业 IT 的危机与约束理论（TOC）</span>
-          <span class="mm-branch-desc">IT 部门深陷泥潭的根本原因与工厂车间思维启蒙</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">凤凰项目危机与救火队恶性循环</h4>
+      <div class="mm-viewport-wrapper">
+        <div class="mm-viewport" id="mmViewport">
+          <svg id="markmapSvg"></svg>
+          <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
+          <div class="mm-canvas-hint">
+            <span>💡 拖拽平移 · 滚轮缩放 · 点击分支圆点折叠/展开</span>
           </div>
-          <p class="mm-topic-desc">传统割裂型 IT 组织的生动缩影</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">危机降临：无限制延期的“凤凰项目”被强推上线导致全美零售网络瘫痪，开发怪运维部署笨拙，运维怪开发代码漏洞百出，CEO 威胁全员外包</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">救火英雄文化的毒害：越是救火立功，越没有时间做根本性改进，恶性技术债持续积累，整个团队被无休止的紧急故障彻底绑架</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">高德拉特约束理论（Theory of Constraints, TOC）</h4>
-          </div>
-          <p class="mm-topic-desc">任何系统的产出速度只取决于其最慢的瓶颈</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">寻找制约因素（瓶颈）：在整个开发交付价值流中，总有一个环节是产能上限（在故事中就是首席技术专家布伦特 Brent）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">保护并最大化利用瓶颈：在瓶颈环节浪费的每一个小时，都是整个系统永久损失的一个小时；严禁让非核心琐事打扰瓶颈，所有进入瓶颈的工作必须经过前置质检</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">打破瓶颈：通过文档化、自动化、将布伦特的知识标准化共享给全员，最终消灭人肉单点瓶颈</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="1">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">二、核心方法论：三步工作法（The Three Ways）</span>
-          <span class="mm-branch-desc">DevOps 与高绩效组织的核心宪章</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">第一步：流动原则（The Principles of Flow）</h4>
-          </div>
-          <p class="mm-topic-desc">让工作从左向右（开发到生产）高速无阻流动</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">可视化工作流：利用物理看板（Kanban Board）将所有看不见的代码和部署任务全部搬上白板，消灭任何灰色地带</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">严格限制在制品（Limit WIP）：在制品过多是交付缓慢的头号杀手；多任务并行切换带来巨大上下文损耗，强制设置各阶段 WIP 上限</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">减小交付批量：放弃几个月一次的巨型版本‘大爆炸’发布，拆解为每日甚至每小时的小批量微小增量发布，极大降低单次变更风险</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">内建质量，严禁缺陷流入下游：开发阶段必须通过自动化单元测试，不让已知缺陷流向测试和运维团队</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">第二步：反馈原则（The Principles of Feedback）</h4>
-          </div>
-          <p class="mm-topic-desc">从右向左建立快速、持续的反馈回路</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">缩短反馈周期：让生产环境发生的任何异常在数分钟内直接反馈给原作者工程师，而非几个月后通过工单系统流转</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">丰田安灯拉绳（Andon Cord）哲学：当生产流水线发生构建失败或严重缺陷时，所有人必须就地停下手中工作，全力排查修复，防止问题堆积</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">质量前移（Shift-Left）：将安全检查、性能测试、可靠性验证前移到持续集成 CI 流水线中最早期阶段</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">第三步：持续学习与实验（The Principles of Continual Learning）</h4>
-          </div>
-          <p class="mm-topic-desc">打造高韧性、高信任度的组织文化</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">预留日常改进时间：制度化设立 20% 的工程时间专门用于偿还技术债、重构工具链与流程优化</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">鼓励受控实验与失败复盘：将失败视为学习的最佳契机，通过混沌工程（Chaos Monkey）主动向生产注入故障演练，提高系统免疫力</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">本地经验转化为全局财富：一个团队解决的棘手问题，必须通过代码库、自动化脚本或知识库沉淀为全公司共享的通用资产</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="2">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">三、四种 IT 工作类型（The Four Types of Work）</span>
-          <span class="mm-branch-desc">理清组织资源消耗的真实分布</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">四种工作分类与致命黑洞</h4>
-          </div>
-          <p class="mm-topic-desc">识别无形中吞噬团队生产力的杀手</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">业务项目（Business Projects）：业务方直接提出并能为公司带来直接商业收益的显性项目（如新电商功能）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">内部 IT 项目（Internal IT Projects）：IT 内部发起的重构、架构升级、工具链自动化建设，为业务项目提供底层动能</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">变更（Changes）：为满足前两类工作而对生产系统进行的打补丁、配置调整与软件部署</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">计划外工作（Unplanned Work）：半夜告警、系统宕机抢修、线上数据修复；计划外工作是吞噬一切生产力的致命黑洞，它会直接杀死前三类有价值的工作</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="3">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">四、安全合规与组织治理的范式跃迁</span>
-          <span class="mm-branch-desc">从卡脖子关卡到内嵌式自动化护航</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">合规官约翰的顿悟与安全左移</h4>
-          </div>
-          <p class="mm-topic-desc">消灭形式主义文档与繁文缛节</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">形式主义合规的破产：厚达数百页的纸质安全审查和变更审批委员会（CAB）根本无法阻止生产事故，反而成为交付瓶颈</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">合规内嵌于自动化流水线：把安全策略和合规准则固化为自动化静态扫描与 CI/CD 强制门禁，实现实时、自动、可信的安全合规审查</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
         </div>
       </div>
 
+      <script type="application/json" id="mmTreeData">{"content":"&#x300a;&#x51e4;&#x51f0;&#x9879;&#x76ee;&#xff1a;&#x4e00;&#x4e2a;IT&#x8fd0;&#x7ef4;&#x7684;&#x4f20;&#x5947;&#x6545;&#x4e8b;&#x300b; &#x601d;&#x7ef4;&#x5bfc;&#x56fe;","children":[{"content":"&#x4e00;&#x3001;&#x4f01;&#x4e1a; IT &#x7684;&#x5371;&#x673a;&#x4e0e;&#x7ea6;&#x675f;&#x7406;&#x8bba;&#xff08;TOC&#xff09;","children":[{"content":"&#x51e4;&#x51f0;&#x9879;&#x76ee;&#x5371;&#x673a;&#x4e0e;&#x6551;&#x706b;&#x961f;&#x6076;&#x6027;&#x5faa;&#x73af;","children":[{"content":"&#x5371;&#x673a;&#x964d;&#x4e34;&#xff1a;&#x65e0;&#x9650;&#x5236;&#x5ef6;&#x671f;&#x7684;&#x201c;&#x51e4;&#x51f0;&#x9879;&#x76ee;&#x201d;&#x88ab;&#x5f3a;&#x63a8;&#x4e0a;&#x7ebf;&#x5bfc;&#x81f4;&#x5168;&#x7f8e;&#x96f6;&#x552e;&#x7f51;&#x7edc;&#x762b;&#x75ea;&#xff0c;&#x5f00;&#x53d1;&#x602a;&#x8fd0;&#x7ef4;&#x90e8;&#x7f72;&#x7b28;&#x62d9;&#xff0c;&#x8fd0;&#x7ef4;&#x602a;&#x5f00;&#x53d1;&#x4ee3;&#x7801;&#x6f0f;&#x6d1e;&#x767e;&#x51fa;&#xff0c;CEO &#x5a01;&#x80c1;&#x5168;&#x5458;&#x5916;&#x5305;","children":[],"payload":{"tag":"li","lines":"9,10"}},{"content":"&#x6551;&#x706b;&#x82f1;&#x96c4;&#x6587;&#x5316;&#x7684;&#x6bd2;&#x5bb3;&#xff1a;&#x8d8a;&#x662f;&#x6551;&#x706b;&#x7acb;&#x529f;&#xff0c;&#x8d8a;&#x6ca1;&#x6709;&#x65f6;&#x95f4;&#x505a;&#x6839;&#x672c;&#x6027;&#x6539;&#x8fdb;&#xff0c;&#x6076;&#x6027;&#x6280;&#x672f;&#x503a;&#x6301;&#x7eed;&#x79ef;&#x7d2f;&#xff0c;&#x6574;&#x4e2a;&#x56e2;&#x961f;&#x88ab;&#x65e0;&#x4f11;&#x6b62;&#x7684;&#x7d27;&#x6025;&#x6545;&#x969c;&#x5f7b;&#x5e95;&#x7ed1;&#x67b6;","children":[],"payload":{"tag":"li","lines":"10,12"}}],"payload":{"tag":"h3","lines":"7,8"}},{"content":"&#x9ad8;&#x5fb7;&#x62c9;&#x7279;&#x7ea6;&#x675f;&#x7406;&#x8bba;&#xff08;Theory of Constraints, TOC&#xff09;","children":[{"content":"&#x5bfb;&#x627e;&#x5236;&#x7ea6;&#x56e0;&#x7d20;&#xff08;&#x74f6;&#x9888;&#xff09;&#xff1a;&#x5728;&#x6574;&#x4e2a;&#x5f00;&#x53d1;&#x4ea4;&#x4ed8;&#x4ef7;&#x503c;&#x6d41;&#x4e2d;&#xff0c;&#x603b;&#x6709;&#x4e00;&#x4e2a;&#x73af;&#x8282;&#x662f;&#x4ea7;&#x80fd;&#x4e0a;&#x9650;&#xff08;&#x5728;&#x6545;&#x4e8b;&#x4e2d;&#x5c31;&#x662f;&#x9996;&#x5e2d;&#x6280;&#x672f;&#x4e13;&#x5bb6;&#x5e03;&#x4f26;&#x7279; Brent&#xff09;","children":[],"payload":{"tag":"li","lines":"14,15"}},{"content":"&#x4fdd;&#x62a4;&#x5e76;&#x6700;&#x5927;&#x5316;&#x5229;&#x7528;&#x74f6;&#x9888;&#xff1a;&#x5728;&#x74f6;&#x9888;&#x73af;&#x8282;&#x6d6a;&#x8d39;&#x7684;&#x6bcf;&#x4e00;&#x4e2a;&#x5c0f;&#x65f6;&#xff0c;&#x90fd;&#x662f;&#x6574;&#x4e2a;&#x7cfb;&#x7edf;&#x6c38;&#x4e45;&#x635f;&#x5931;&#x7684;&#x4e00;&#x4e2a;&#x5c0f;&#x65f6;&#xff1b;&#x4e25;&#x7981;&#x8ba9;&#x975e;&#x6838;&#x5fc3;&#x7410;&#x4e8b;&#x6253;&#x6270;&#x74f6;&#x9888;&#xff0c;&#x6240;&#x6709;&#x8fdb;&#x5165;&#x74f6;&#x9888;&#x7684;&#x5de5;&#x4f5c;&#x5fc5;&#x987b;&#x7ecf;&#x8fc7;&#x524d;&#x7f6e;&#x8d28;&#x68c0;","children":[],"payload":{"tag":"li","lines":"15,16"}},{"content":"&#x6253;&#x7834;&#x74f6;&#x9888;&#xff1a;&#x901a;&#x8fc7;&#x6587;&#x6863;&#x5316;&#x3001;&#x81ea;&#x52a8;&#x5316;&#x3001;&#x5c06;&#x5e03;&#x4f26;&#x7279;&#x7684;&#x77e5;&#x8bc6;&#x6807;&#x51c6;&#x5316;&#x5171;&#x4eab;&#x7ed9;&#x5168;&#x5458;&#xff0c;&#x6700;&#x7ec8;&#x6d88;&#x706d;&#x4eba;&#x8089;&#x5355;&#x70b9;&#x74f6;&#x9888;","children":[],"payload":{"tag":"li","lines":"16,18"}}],"payload":{"tag":"h3","lines":"12,13"}}],"payload":{"tag":"h2","lines":"4,5"}},{"content":"&#x4e8c;&#x3001;&#x6838;&#x5fc3;&#x65b9;&#x6cd5;&#x8bba;&#xff1a;&#x4e09;&#x6b65;&#x5de5;&#x4f5c;&#x6cd5;&#xff08;The Three Ways&#xff09;","children":[{"content":"&#x7b2c;&#x4e00;&#x6b65;&#xff1a;&#x6d41;&#x52a8;&#x539f;&#x5219;&#xff08;The Principles of Flow&#xff09;","children":[{"content":"&#x53ef;&#x89c6;&#x5316;&#x5de5;&#x4f5c;&#x6d41;&#xff1a;&#x5229;&#x7528;&#x7269;&#x7406;&#x770b;&#x677f;&#xff08;Kanban Board&#xff09;&#x5c06;&#x6240;&#x6709;&#x770b;&#x4e0d;&#x89c1;&#x7684;&#x4ee3;&#x7801;&#x548c;&#x90e8;&#x7f72;&#x4efb;&#x52a1;&#x5168;&#x90e8;&#x642c;&#x4e0a;&#x767d;&#x677f;&#xff0c;&#x6d88;&#x706d;&#x4efb;&#x4f55;&#x7070;&#x8272;&#x5730;&#x5e26;","children":[],"payload":{"tag":"li","lines":"23,24"}},{"content":"&#x4e25;&#x683c;&#x9650;&#x5236;&#x5728;&#x5236;&#x54c1;&#xff08;Limit WIP&#xff09;&#xff1a;&#x5728;&#x5236;&#x54c1;&#x8fc7;&#x591a;&#x662f;&#x4ea4;&#x4ed8;&#x7f13;&#x6162;&#x7684;&#x5934;&#x53f7;&#x6740;&#x624b;&#xff1b;&#x591a;&#x4efb;&#x52a1;&#x5e76;&#x884c;&#x5207;&#x6362;&#x5e26;&#x6765;&#x5de8;&#x5927;&#x4e0a;&#x4e0b;&#x6587;&#x635f;&#x8017;&#xff0c;&#x5f3a;&#x5236;&#x8bbe;&#x7f6e;&#x5404;&#x9636;&#x6bb5; WIP &#x4e0a;&#x9650;","children":[],"payload":{"tag":"li","lines":"24,25"}},{"content":"&#x51cf;&#x5c0f;&#x4ea4;&#x4ed8;&#x6279;&#x91cf;&#xff1a;&#x653e;&#x5f03;&#x51e0;&#x4e2a;&#x6708;&#x4e00;&#x6b21;&#x7684;&#x5de8;&#x578b;&#x7248;&#x672c;&#x2018;&#x5927;&#x7206;&#x70b8;&#x2019;&#x53d1;&#x5e03;&#xff0c;&#x62c6;&#x89e3;&#x4e3a;&#x6bcf;&#x65e5;&#x751a;&#x81f3;&#x6bcf;&#x5c0f;&#x65f6;&#x7684;&#x5c0f;&#x6279;&#x91cf;&#x5fae;&#x5c0f;&#x589e;&#x91cf;&#x53d1;&#x5e03;&#xff0c;&#x6781;&#x5927;&#x964d;&#x4f4e;&#x5355;&#x6b21;&#x53d8;&#x66f4;&#x98ce;&#x9669;","children":[],"payload":{"tag":"li","lines":"25,26"}},{"content":"&#x5185;&#x5efa;&#x8d28;&#x91cf;&#xff0c;&#x4e25;&#x7981;&#x7f3a;&#x9677;&#x6d41;&#x5165;&#x4e0b;&#x6e38;&#xff1a;&#x5f00;&#x53d1;&#x9636;&#x6bb5;&#x5fc5;&#x987b;&#x901a;&#x8fc7;&#x81ea;&#x52a8;&#x5316;&#x5355;&#x5143;&#x6d4b;&#x8bd5;&#xff0c;&#x4e0d;&#x8ba9;&#x5df2;&#x77e5;&#x7f3a;&#x9677;&#x6d41;&#x5411;&#x6d4b;&#x8bd5;&#x548c;&#x8fd0;&#x7ef4;&#x56e2;&#x961f;","children":[],"payload":{"tag":"li","lines":"26,28"}}],"payload":{"tag":"h3","lines":"21,22"}},{"content":"&#x7b2c;&#x4e8c;&#x6b65;&#xff1a;&#x53cd;&#x9988;&#x539f;&#x5219;&#xff08;The Principles of Feedback&#xff09;","children":[{"content":"&#x7f29;&#x77ed;&#x53cd;&#x9988;&#x5468;&#x671f;&#xff1a;&#x8ba9;&#x751f;&#x4ea7;&#x73af;&#x5883;&#x53d1;&#x751f;&#x7684;&#x4efb;&#x4f55;&#x5f02;&#x5e38;&#x5728;&#x6570;&#x5206;&#x949f;&#x5185;&#x76f4;&#x63a5;&#x53cd;&#x9988;&#x7ed9;&#x539f;&#x4f5c;&#x8005;&#x5de5;&#x7a0b;&#x5e08;&#xff0c;&#x800c;&#x975e;&#x51e0;&#x4e2a;&#x6708;&#x540e;&#x901a;&#x8fc7;&#x5de5;&#x5355;&#x7cfb;&#x7edf;&#x6d41;&#x8f6c;","children":[],"payload":{"tag":"li","lines":"30,31"}},{"content":"&#x4e30;&#x7530;&#x5b89;&#x706f;&#x62c9;&#x7ef3;&#xff08;Andon Cord&#xff09;&#x54f2;&#x5b66;&#xff1a;&#x5f53;&#x751f;&#x4ea7;&#x6d41;&#x6c34;&#x7ebf;&#x53d1;&#x751f;&#x6784;&#x5efa;&#x5931;&#x8d25;&#x6216;&#x4e25;&#x91cd;&#x7f3a;&#x9677;&#x65f6;&#xff0c;&#x6240;&#x6709;&#x4eba;&#x5fc5;&#x987b;&#x5c31;&#x5730;&#x505c;&#x4e0b;&#x624b;&#x4e2d;&#x5de5;&#x4f5c;&#xff0c;&#x5168;&#x529b;&#x6392;&#x67e5;&#x4fee;&#x590d;&#xff0c;&#x9632;&#x6b62;&#x95ee;&#x9898;&#x5806;&#x79ef;","children":[],"payload":{"tag":"li","lines":"31,32"}},{"content":"&#x8d28;&#x91cf;&#x524d;&#x79fb;&#xff08;Shift-Left&#xff09;&#xff1a;&#x5c06;&#x5b89;&#x5168;&#x68c0;&#x67e5;&#x3001;&#x6027;&#x80fd;&#x6d4b;&#x8bd5;&#x3001;&#x53ef;&#x9760;&#x6027;&#x9a8c;&#x8bc1;&#x524d;&#x79fb;&#x5230;&#x6301;&#x7eed;&#x96c6;&#x6210; CI &#x6d41;&#x6c34;&#x7ebf;&#x4e2d;&#x6700;&#x65e9;&#x671f;&#x9636;&#x6bb5;","children":[],"payload":{"tag":"li","lines":"32,34"}}],"payload":{"tag":"h3","lines":"28,29"}},{"content":"&#x7b2c;&#x4e09;&#x6b65;&#xff1a;&#x6301;&#x7eed;&#x5b66;&#x4e60;&#x4e0e;&#x5b9e;&#x9a8c;&#xff08;The Principles of Continual Learning&#xff09;","children":[{"content":"&#x9884;&#x7559;&#x65e5;&#x5e38;&#x6539;&#x8fdb;&#x65f6;&#x95f4;&#xff1a;&#x5236;&#x5ea6;&#x5316;&#x8bbe;&#x7acb; 20% &#x7684;&#x5de5;&#x7a0b;&#x65f6;&#x95f4;&#x4e13;&#x95e8;&#x7528;&#x4e8e;&#x507f;&#x8fd8;&#x6280;&#x672f;&#x503a;&#x3001;&#x91cd;&#x6784;&#x5de5;&#x5177;&#x94fe;&#x4e0e;&#x6d41;&#x7a0b;&#x4f18;&#x5316;","children":[],"payload":{"tag":"li","lines":"36,37"}},{"content":"&#x9f13;&#x52b1;&#x53d7;&#x63a7;&#x5b9e;&#x9a8c;&#x4e0e;&#x5931;&#x8d25;&#x590d;&#x76d8;&#xff1a;&#x5c06;&#x5931;&#x8d25;&#x89c6;&#x4e3a;&#x5b66;&#x4e60;&#x7684;&#x6700;&#x4f73;&#x5951;&#x673a;&#xff0c;&#x901a;&#x8fc7;&#x6df7;&#x6c8c;&#x5de5;&#x7a0b;&#xff08;Chaos Monkey&#xff09;&#x4e3b;&#x52a8;&#x5411;&#x751f;&#x4ea7;&#x6ce8;&#x5165;&#x6545;&#x969c;&#x6f14;&#x7ec3;&#xff0c;&#x63d0;&#x9ad8;&#x7cfb;&#x7edf;&#x514d;&#x75ab;&#x529b;","children":[],"payload":{"tag":"li","lines":"37,38"}},{"content":"&#x672c;&#x5730;&#x7ecf;&#x9a8c;&#x8f6c;&#x5316;&#x4e3a;&#x5168;&#x5c40;&#x8d22;&#x5bcc;&#xff1a;&#x4e00;&#x4e2a;&#x56e2;&#x961f;&#x89e3;&#x51b3;&#x7684;&#x68d8;&#x624b;&#x95ee;&#x9898;&#xff0c;&#x5fc5;&#x987b;&#x901a;&#x8fc7;&#x4ee3;&#x7801;&#x5e93;&#x3001;&#x81ea;&#x52a8;&#x5316;&#x811a;&#x672c;&#x6216;&#x77e5;&#x8bc6;&#x5e93;&#x6c89;&#x6dc0;&#x4e3a;&#x5168;&#x516c;&#x53f8;&#x5171;&#x4eab;&#x7684;&#x901a;&#x7528;&#x8d44;&#x4ea7;","children":[],"payload":{"tag":"li","lines":"38,40"}}],"payload":{"tag":"h3","lines":"34,35"}}],"payload":{"tag":"h2","lines":"18,19"}},{"content":"&#x4e09;&#x3001;&#x56db;&#x79cd; IT &#x5de5;&#x4f5c;&#x7c7b;&#x578b;&#xff08;The Four Types of Work&#xff09;","children":[{"content":"&#x56db;&#x79cd;&#x5de5;&#x4f5c;&#x5206;&#x7c7b;&#x4e0e;&#x81f4;&#x547d;&#x9ed1;&#x6d1e;","children":[{"content":"&#x4e1a;&#x52a1;&#x9879;&#x76ee;&#xff08;Business Projects&#xff09;&#xff1a;&#x4e1a;&#x52a1;&#x65b9;&#x76f4;&#x63a5;&#x63d0;&#x51fa;&#x5e76;&#x80fd;&#x4e3a;&#x516c;&#x53f8;&#x5e26;&#x6765;&#x76f4;&#x63a5;&#x5546;&#x4e1a;&#x6536;&#x76ca;&#x7684;&#x663e;&#x6027;&#x9879;&#x76ee;&#xff08;&#x5982;&#x65b0;&#x7535;&#x5546;&#x529f;&#x80fd;&#xff09;","children":[],"payload":{"tag":"li","lines":"45,46"}},{"content":"&#x5185;&#x90e8; IT &#x9879;&#x76ee;&#xff08;Internal IT Projects&#xff09;&#xff1a;IT &#x5185;&#x90e8;&#x53d1;&#x8d77;&#x7684;&#x91cd;&#x6784;&#x3001;&#x67b6;&#x6784;&#x5347;&#x7ea7;&#x3001;&#x5de5;&#x5177;&#x94fe;&#x81ea;&#x52a8;&#x5316;&#x5efa;&#x8bbe;&#xff0c;&#x4e3a;&#x4e1a;&#x52a1;&#x9879;&#x76ee;&#x63d0;&#x4f9b;&#x5e95;&#x5c42;&#x52a8;&#x80fd;","children":[],"payload":{"tag":"li","lines":"46,47"}},{"content":"&#x53d8;&#x66f4;&#xff08;Changes&#xff09;&#xff1a;&#x4e3a;&#x6ee1;&#x8db3;&#x524d;&#x4e24;&#x7c7b;&#x5de5;&#x4f5c;&#x800c;&#x5bf9;&#x751f;&#x4ea7;&#x7cfb;&#x7edf;&#x8fdb;&#x884c;&#x7684;&#x6253;&#x8865;&#x4e01;&#x3001;&#x914d;&#x7f6e;&#x8c03;&#x6574;&#x4e0e;&#x8f6f;&#x4ef6;&#x90e8;&#x7f72;","children":[],"payload":{"tag":"li","lines":"47,48"}},{"content":"&#x8ba1;&#x5212;&#x5916;&#x5de5;&#x4f5c;&#xff08;Unplanned Work&#xff09;&#xff1a;&#x534a;&#x591c;&#x544a;&#x8b66;&#x3001;&#x7cfb;&#x7edf;&#x5b95;&#x673a;&#x62a2;&#x4fee;&#x3001;&#x7ebf;&#x4e0a;&#x6570;&#x636e;&#x4fee;&#x590d;&#xff1b;&#x8ba1;&#x5212;&#x5916;&#x5de5;&#x4f5c;&#x662f;&#x541e;&#x566c;&#x4e00;&#x5207;&#x751f;&#x4ea7;&#x529b;&#x7684;&#x81f4;&#x547d;&#x9ed1;&#x6d1e;&#xff0c;&#x5b83;&#x4f1a;&#x76f4;&#x63a5;&#x6740;&#x6b7b;&#x524d;&#x4e09;&#x7c7b;&#x6709;&#x4ef7;&#x503c;&#x7684;&#x5de5;&#x4f5c;","children":[],"payload":{"tag":"li","lines":"48,50"}}],"payload":{"tag":"h3","lines":"43,44"}}],"payload":{"tag":"h2","lines":"40,41"}},{"content":"&#x56db;&#x3001;&#x5b89;&#x5168;&#x5408;&#x89c4;&#x4e0e;&#x7ec4;&#x7ec7;&#x6cbb;&#x7406;&#x7684;&#x8303;&#x5f0f;&#x8dc3;&#x8fc1;","children":[{"content":"&#x5408;&#x89c4;&#x5b98;&#x7ea6;&#x7ff0;&#x7684;&#x987f;&#x609f;&#x4e0e;&#x5b89;&#x5168;&#x5de6;&#x79fb;","children":[{"content":"&#x5f62;&#x5f0f;&#x4e3b;&#x4e49;&#x5408;&#x89c4;&#x7684;&#x7834;&#x4ea7;&#xff1a;&#x539a;&#x8fbe;&#x6570;&#x767e;&#x9875;&#x7684;&#x7eb8;&#x8d28;&#x5b89;&#x5168;&#x5ba1;&#x67e5;&#x548c;&#x53d8;&#x66f4;&#x5ba1;&#x6279;&#x59d4;&#x5458;&#x4f1a;&#xff08;CAB&#xff09;&#x6839;&#x672c;&#x65e0;&#x6cd5;&#x963b;&#x6b62;&#x751f;&#x4ea7;&#x4e8b;&#x6545;&#xff0c;&#x53cd;&#x800c;&#x6210;&#x4e3a;&#x4ea4;&#x4ed8;&#x74f6;&#x9888;","children":[],"payload":{"tag":"li","lines":"55,56"}},{"content":"&#x5408;&#x89c4;&#x5185;&#x5d4c;&#x4e8e;&#x81ea;&#x52a8;&#x5316;&#x6d41;&#x6c34;&#x7ebf;&#xff1a;&#x628a;&#x5b89;&#x5168;&#x7b56;&#x7565;&#x548c;&#x5408;&#x89c4;&#x51c6;&#x5219;&#x56fa;&#x5316;&#x4e3a;&#x81ea;&#x52a8;&#x5316;&#x9759;&#x6001;&#x626b;&#x63cf;&#x4e0e; CI/CD &#x5f3a;&#x5236;&#x95e8;&#x7981;&#xff0c;&#x5b9e;&#x73b0;&#x5b9e;&#x65f6;&#x3001;&#x81ea;&#x52a8;&#x3001;&#x53ef;&#x4fe1;&#x7684;&#x5b89;&#x5168;&#x5408;&#x89c4;&#x5ba1;&#x67e5;","children":[],"payload":{"tag":"li","lines":"56,57"}}],"payload":{"tag":"h3","lines":"53,54"}}],"payload":{"tag":"h2","lines":"50,51"}}],"payload":{"tag":"h1","lines":"0,1"}}</script>
       <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true"># 《凤凰项目：一个IT运维的传奇故事》 思维导图
 
 &gt; 核心主题：约束理论（TOC）、三步工作法（流动/反馈/持续实验）、四种IT工作类型与DevOps启蒙
@@ -460,27 +271,6 @@
 消灭形式主义文档与繁文缛节
 - 形式主义合规的破产：厚达数百页的纸质安全审查和变更审批委员会（CAB）根本无法阻止生产事故，反而成为交付瓶颈
 - 合规内嵌于自动化流水线：把安全策略和合规准则固化为自动化静态扫描与 CI/CD 强制门禁，实现实时、自动、可信的安全合规审查</textarea>
-
-      <!-- Fullscreen Modal View -->
-      <div class="mindmap-modal" id="mindmapModal" aria-hidden="true" role="dialog" aria-label="思维导图全景全屏视图">
-        <div class="mm-modal-container">
-          <div class="mm-modal-header">
-            <div class="mm-modal-title-wrap">
-              <span class="mm-modal-tag">思维导图全景</span>
-              <span class="mm-modal-book-title">《凤凰项目：一个IT运维的传奇故事》</span>
-              <span class="mm-modal-theme">约束理论（TOC）、三步工作法（流动/反馈/持续实验）、四种IT工作类型与DevOps启蒙</span>
-            </div>
-            <div class="mm-modal-controls">
-              <button type="button" class="mm-btn" id="mmModalToggleAllBtn">
-                <span class="mm-modal-toggle-text">全部收起</span>
-              </button>
-              <button type="button" class="mm-modal-close-btn" id="mmModalCloseBtn" aria-label="关闭全屏">×</button>
-            </div>
-          </div>
-          <div class="mm-modal-body" id="mmModalBody"></div>
-        </div>
-      </div>
-
       <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
     </section>
 
@@ -551,143 +341,192 @@
   </script>
 
   
+  <script src="vendor/markmap-bundle.js" defer></script>
   <script>
     (function() {
       var mmSection = document.getElementById('mindmapSection');
       if (!mmSection) return;
 
-      var container = document.getElementById('mindmapContainer');
-      var toggleAllBtn = document.getElementById('mmToggleAllBtn');
-      var copyBtn = document.getElementById('mmCopyMarkdownBtn');
-      var fullscreenBtn = document.getElementById('mmFullscreenBtn');
-      var modal = document.getElementById('mindmapModal');
-      var modalCloseBtn = document.getElementById('mmModalCloseBtn');
-      var modalBody = document.getElementById('mmModalBody');
-      var modalToggleAllBtn = document.getElementById('mmModalToggleAllBtn');
-      var toast = document.getElementById('mmToast');
-      var mdSource = document.getElementById('mmMarkdownSource');
+      var svgEl = document.getElementById('markmapSvg');
+      var treeDataEl = document.getElementById('mmTreeData');
+      if (!svgEl || !treeDataEl) return;
 
-      var isAllCollapsed = false;
+      function initMarkmap() {
+        if (!window.markmap || !window.markmap.Markmap || !window.d3) {
+          setTimeout(initMarkmap, 50);
+          return;
+        }
 
-      function bindBranchHeaders(root) {
-        var headers = root.querySelectorAll('.mm-branch-header');
-        headers.forEach(function(header) {
-          header.addEventListener('click', function() {
-            var branch = header.closest('.mm-branch');
-            if (branch) {
-              branch.classList.toggle('is-collapsed');
+        var rawData = JSON.parse(treeDataEl.textContent);
+        var palette = ['#007722', '#1d4ed8', '#c2410c', '#7e22ce', '#0f766e', '#be123c'];
+        var colorScale = d3.scaleOrdinal(palette);
+
+        function cloneData(obj) {
+          return JSON.parse(JSON.stringify(obj));
+        }
+
+        function setFold(n, f) {
+          if (n.children && n.children.length) {
+            n.payload = Object.assign({}, n.payload, { fold: f ? 1 : 0 });
+            n.children.forEach(function(c) { setFold(c, f); });
+          }
+        }
+
+        // Default initial fold: level 2 topics collapsed
+        var currentData = cloneData(rawData);
+        if (currentData.children) {
+          currentData.payload = Object.assign({}, currentData.payload, { fold: 0 });
+          currentData.children.forEach(function(branch) {
+            branch.payload = Object.assign({}, branch.payload, { fold: 0 });
+            if (branch.children) {
+              branch.children.forEach(function(topic) {
+                setFold(topic, true);
+              });
             }
           });
-        });
-      }
+        }
 
-      bindBranchHeaders(container);
+        var mm = window.markmap.Markmap.create(svgEl, {
+          autoFit: true,
+          duration: 350,
+          color: function(node) {
+            return colorScale(node.state.id);
+          },
+          paddingX: 16,
+          spacingHorizontal: 75,
+          spacingVertical: 12
+        }, currentData);
 
-      // Toggle all in main view
-      if (toggleAllBtn) {
-        toggleAllBtn.addEventListener('click', function() {
-          isAllCollapsed = !isAllCollapsed;
-          var branches = container.querySelectorAll('.mm-branch');
-          branches.forEach(function(b) {
-            if (isAllCollapsed) {
-              b.classList.add('is-collapsed');
-            } else {
-              b.classList.remove('is-collapsed');
-            }
+        // Mount toolbar
+        if (window.markmap.Toolbar) {
+          var tb = window.markmap.Toolbar.create(mm);
+          tb.setBrand(false);
+          var tbWrap = document.getElementById('mmToolbarWrap');
+          if (tbWrap) tbWrap.appendChild(tb.render());
+        }
+
+        // Level Preset Buttons
+        var btnL1 = document.getElementById('mmBtnLevel1');
+        var btnL2 = document.getElementById('mmBtnLevel2');
+        var btnAll = document.getElementById('mmBtnExpandAll');
+
+        function setActiveLevelBtn(activeBtn) {
+          [btnL1, btnL2, btnAll].forEach(function(b) {
+            if (b) b.classList.remove('active');
           });
-          var txt = toggleAllBtn.querySelector('.mm-toggle-text');
-          if (txt) txt.textContent = isAllCollapsed ? '全部展开' : '全部收起';
-        });
-      }
+          if (activeBtn) activeBtn.classList.add('active');
+        }
 
-      // Copy Markdown Outline
-      function showToast(msg) {
-        if (!toast) return;
-        toast.textContent = msg;
-        toast.classList.add('active');
-        setTimeout(function() {
-          toast.classList.remove('active');
-        }, 2200);
-      }
+        if (btnL1) {
+          btnL1.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) { setFold(b, true); });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL1);
+          });
+        }
 
-      if (copyBtn && mdSource) {
-        copyBtn.addEventListener('click', function() {
-          var text = mdSource.value;
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function() {
-              showToast('✓ 已复制思维导图大纲到剪贴板！');
-            }).catch(function() {
-              fallbackCopy(text);
-            });
-          } else {
-            fallbackCopy(text);
+        if (btnL2) {
+          btnL2.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) {
+                b.payload = Object.assign({}, b.payload, { fold: 0 });
+                if (b.children) {
+                  b.children.forEach(function(t) { setFold(t, true); });
+                }
+              });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL2);
+          });
+        }
+
+        if (btnAll) {
+          btnAll.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            setFold(d, false);
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnAll);
+          });
+        }
+
+        // Fullscreen Toggle
+        var fsBtn = document.getElementById('mmFullscreenBtn');
+        var fsText = fsBtn ? fsBtn.querySelector('.mm-fs-text') : null;
+
+        function toggleFullscreen() {
+          var isFs = mmSection.classList.toggle('is-fullscreen');
+          if (fsText) fsText.textContent = isFs ? '退出全屏' : '全屏';
+          setTimeout(function() {
+            mm.fit();
+          }, 150);
+        }
+
+        if (fsBtn) {
+          fsBtn.addEventListener('click', toggleFullscreen);
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && mmSection.classList.contains('is-fullscreen')) {
+            toggleFullscreen();
           }
         });
-      }
 
-      function fallbackCopy(text) {
-        try {
-          var ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-          showToast('✓ 已复制思维导图大纲到剪贴板！');
-        } catch (e) {
-          showToast('复制失败，请手动选取复制');
+        // Copy Markdown
+        var copyBtn = document.getElementById('mmCopyMarkdownBtn');
+        var mdSource = document.getElementById('mmMarkdownSource');
+        var toast = document.getElementById('mmToast');
+
+        function showToast(msg) {
+          if (!toast) return;
+          toast.textContent = msg;
+          toast.classList.add('active');
+          setTimeout(function() { toast.classList.remove('active'); }, 2200);
         }
-      }
 
-      // Fullscreen Modal Logic
-      function openModal() {
-        if (!modal || !modalBody) return;
-        modalBody.innerHTML = container.innerHTML;
-        bindBranchHeaders(modalBody);
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        if (!modal) return;
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-
-      if (fullscreenBtn) {
-        fullscreenBtn.addEventListener('click', openModal);
-      }
-      if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', closeModal);
-      }
-      if (modal) {
-        modal.addEventListener('click', function(e) {
-          if (e.target === modal) closeModal();
-        });
-      }
-
-      if (modalToggleAllBtn) {
-        modalToggleAllBtn.addEventListener('click', function() {
-          var branches = modalBody.querySelectorAll('.mm-branch');
-          var shouldCollapse = !branches[0].classList.contains('is-collapsed');
-          branches.forEach(function(b) {
-            if (shouldCollapse) b.classList.add('is-collapsed');
-            else b.classList.remove('is-collapsed');
+        if (copyBtn && mdSource) {
+          copyBtn.addEventListener('click', function() {
+            var text = mdSource.value;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function() {
+                showToast('✓ 已复制思维导图大纲到剪贴板！');
+              }).catch(function() {
+                fallbackCopy(text);
+              });
+            } else {
+              fallbackCopy(text);
+            }
           });
-          var txt = modalToggleAllBtn.querySelector('.mm-modal-toggle-text');
-          if (txt) txt.textContent = shouldCollapse ? '全部展开' : '全部收起';
-        });
+        }
+
+        function fallbackCopy(text) {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('✓ 已复制思维导图大纲到剪贴板！');
+          } catch (e) {
+            showToast('复制失败，请手动选取');
+          }
+        }
       }
 
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-          closeModal();
-        }
-      });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMarkmap);
+      } else {
+        initMarkmap();
+      }
     })();
   </script>
 

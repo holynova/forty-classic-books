@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>《架构即未来》 · 经典书导读</title>
-  <link rel="stylesheet" href="style.css?v=fea06185">
+  <link rel="stylesheet" href="style.css?v=4fdade2e">
 </head>
 <body>
   <div class="layout-container">
@@ -182,226 +182,38 @@
           <section class="section-block mindmap-section" id="mindmapSection">
       <div class="mindmap-header">
         <div class="mindmap-header-left">
-          <span class="mindmap-badge">知识脉络</span>
-          <h2 class="mindmap-title">全书思维导图</h2>
+          <span class="mindmap-badge">树状思维导图</span>
+          <h2 class="mindmap-title">全书思维导图 · 知识脉络树</h2>
         </div>
         <div class="mindmap-actions">
-          <button type="button" class="mm-btn mm-btn-toggle" id="mmToggleAllBtn" title="全部折叠/展开">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-            <span class="mm-toggle-text">全部收起</span>
-          </button>
-          <button type="button" class="mm-btn mm-btn-copy" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
+          <div class="mm-level-switch">
+            <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
+            <button type="button" class="mm-btn active" id="mmBtnLevel2" title="展开至二级分支">分支</button>
+            <button type="button" class="mm-btn" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
+          </div>
+
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>复制大纲</span>
           </button>
-          <button type="button" class="mm-btn mm-btn-fullscreen" id="mmFullscreenBtn" title="全屏沉浸式全景模式">
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmFullscreenBtn" title="全屏沉浸式全景模式 (ESC 退出)">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-            <span>全屏全景</span>
+            <span class="mm-fs-text">全屏</span>
           </button>
         </div>
       </div>
 
-      <div class="mindmap-container" id="mindmapContainer">
-        <div class="mm-root-card">
-          <div class="mm-root-pill">核心主旨</div>
-          <div class="mm-root-title">《架构即未来》</div>
-          <div class="mm-root-theme">AKF扩展立方体（X/Y/Z轴）、人员与组织可扩展性、流程规范、容灾设计与容量度量</div>
-        </div>
-
-        <div class="mm-tree-body">
-          <div class="mm-branch" data-branch-index="0">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">一、AKF 可扩展立方体（The AKF Scale Cube）</span>
-          <span class="mm-branch-desc">现代企业系统扩展维度的第一性几何模型</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">X 轴扩展：水平克隆（Horizontal Duplication）</h4>
+      <div class="mm-viewport-wrapper">
+        <div class="mm-viewport" id="mmViewport">
+          <svg id="markmapSvg"></svg>
+          <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
+          <div class="mm-canvas-hint">
+            <span>💡 拖拽平移 · 滚轮缩放 · 点击分支圆点折叠/展开</span>
           </div>
-          <p class="mm-topic-desc">最简单直接的负载分摊方式</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">核心机制：在负载均衡器后面增加一模一样的代码和数据实例副本，通过无状态服务横向克隆应对并发访问量</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">优势与瓶颈：实施成本极低，极擅长应对无状态只读流量；但无法解决数据写入容量瓶颈与超大单体代码的认知复杂度</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">Y 轴扩展：按功能/服务拆分（Split by Function/Service）</h4>
-          </div>
-          <p class="mm-topic-desc">微服务与面向服务架构的理论源头</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">核心机制：将庞大单体按业务职责与领域功能纵向切分为互不干扰的独立服务或子系统（如用户、交易、商品）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">优势：各服务代码库小巧、支持独立演进与异构部署，彻底消灭单个功能模块故障导致全站崩溃的风险</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">Z 轴扩展：按数据/客户属性切分（Split by Data/Customer）</h4>
-          </div>
-          <p class="mm-topic-desc">突破数据库单机物理极限的终极法门</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">核心机制：运行完全相同的代码，但根据请求者的属性（如用户 ID 取模、所属区域、客户等级、企业租户）路由到不同的数据分片（Shards / Pods）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">优势：彻底将单机数据量与事务吞吐量无限平摊，建立天然的故障隔离故障域（Failure Domain）</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="1">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">二、组织与人员的可扩展性</span>
-          <span class="mm-branch-desc">人与团队是系统扩展性的前提与基石</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">组织架构决定系统架构</h4>
-          </div>
-          <p class="mm-topic-desc">无法扩展的团队绝对做不出可扩展的系统</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">小团队敏捷作战（亚马逊两个披萨原则）：控制团队规模在 6-10 人，避免团队成员间沟通路径平方级爆炸</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">所有权与端到端责任制：谁构建、谁测试、谁上线、谁运维（You build it, you run it），消除开发与运维的责任推诿</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">消灭关键人物依赖（Bus Factor）：任何核心系统必须有知识冗余，绝对不允许单个英雄工程师请假即导致全公司停摆</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="2">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">三、流程的可扩展性</span>
-          <span class="mm-branch-desc">用稳健流程守护系统演进节奏</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">敏捷交付与变更控制</h4>
-          </div>
-          <p class="mm-topic-desc">在快速变化与稳定性之间建立秩序</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">变更管理精简化：废除冗长的多层官僚审批，将变更风险分级，日常小批量变更走全自动 CI/CD 快速通道</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">事故根因分析（RCA 与 5 Whys）：故障发生后连问 5 个为什么，深挖流程缺陷与系统设计盲区，严禁流于表面的人为责怪</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="3">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">四、可扩展性架构设计核心原则</span>
-          <span class="mm-branch-desc">指导系统架构师日常决策的黄金准则</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">经典架构法则：为扩展与故障而设计</h4>
-          </div>
-          <p class="mm-topic-desc">防御性设计的系统化思维</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">原则1：不要过度设计，为三倍规模设计，为十倍规模预留，按当前需求实现（Design for 3x, Plan for 10x, Build for 1x）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">原则2：彻底拥抱无状态化（Statelessness），所有应用节点随时可被销毁重建</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">原则3：异步通信优先，用消息队列将紧耦合的同步链条解耦为时间独立的处理环节</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">原则4：积极利用多级缓存，靠近用户的缓存效率最高</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">原则5：消灭一切单点故障（SPOF），从网络入口、负载均衡、应用容器到数据库存储全部具备双活与自动转移能力</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="4">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">五、监控度量与容量规划</span>
-          <span class="mm-branch-desc">度量先行，科学把握系统瓶颈</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">容量预测模型与度量先行</h4>
-          </div>
-          <p class="mm-topic-desc">加错机器等于白花钱</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">度量先行准则：没有数据支撑的架构改动就是盲人摸象；在动代码前必须精准定位是 CPU、内存、I/O 还是锁竞争瓶颈</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">容量规划与拐点预测：建立基于业务指标（如日活 DAU、大促交易单量）向技术资源（QPS、带宽、连接数）映射的容量模型，提前数月规划扩容</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
         </div>
       </div>
 
+      <script type="application/json" id="mmTreeData">{"content":"&#x300a;&#x67b6;&#x6784;&#x5373;&#x672a;&#x6765;&#x300b; &#x601d;&#x7ef4;&#x5bfc;&#x56fe;","children":[{"content":"&#x4e00;&#x3001;AKF &#x53ef;&#x6269;&#x5c55;&#x7acb;&#x65b9;&#x4f53;&#xff08;The AKF Scale Cube&#xff09;","children":[{"content":"X &#x8f74;&#x6269;&#x5c55;&#xff1a;&#x6c34;&#x5e73;&#x514b;&#x9686;&#xff08;Horizontal Duplication&#xff09;","children":[{"content":"&#x6838;&#x5fc3;&#x673a;&#x5236;&#xff1a;&#x5728;&#x8d1f;&#x8f7d;&#x5747;&#x8861;&#x5668;&#x540e;&#x9762;&#x589e;&#x52a0;&#x4e00;&#x6a21;&#x4e00;&#x6837;&#x7684;&#x4ee3;&#x7801;&#x548c;&#x6570;&#x636e;&#x5b9e;&#x4f8b;&#x526f;&#x672c;&#xff0c;&#x901a;&#x8fc7;&#x65e0;&#x72b6;&#x6001;&#x670d;&#x52a1;&#x6a2a;&#x5411;&#x514b;&#x9686;&#x5e94;&#x5bf9;&#x5e76;&#x53d1;&#x8bbf;&#x95ee;&#x91cf;","children":[],"payload":{"tag":"li","lines":"9,10"}},{"content":"&#x4f18;&#x52bf;&#x4e0e;&#x74f6;&#x9888;&#xff1a;&#x5b9e;&#x65bd;&#x6210;&#x672c;&#x6781;&#x4f4e;&#xff0c;&#x6781;&#x64c5;&#x957f;&#x5e94;&#x5bf9;&#x65e0;&#x72b6;&#x6001;&#x53ea;&#x8bfb;&#x6d41;&#x91cf;&#xff1b;&#x4f46;&#x65e0;&#x6cd5;&#x89e3;&#x51b3;&#x6570;&#x636e;&#x5199;&#x5165;&#x5bb9;&#x91cf;&#x74f6;&#x9888;&#x4e0e;&#x8d85;&#x5927;&#x5355;&#x4f53;&#x4ee3;&#x7801;&#x7684;&#x8ba4;&#x77e5;&#x590d;&#x6742;&#x5ea6;","children":[],"payload":{"tag":"li","lines":"10,12"}}],"payload":{"tag":"h3","lines":"7,8"}},{"content":"Y &#x8f74;&#x6269;&#x5c55;&#xff1a;&#x6309;&#x529f;&#x80fd;/&#x670d;&#x52a1;&#x62c6;&#x5206;&#xff08;Split by Function/Service&#xff09;","children":[{"content":"&#x6838;&#x5fc3;&#x673a;&#x5236;&#xff1a;&#x5c06;&#x5e9e;&#x5927;&#x5355;&#x4f53;&#x6309;&#x4e1a;&#x52a1;&#x804c;&#x8d23;&#x4e0e;&#x9886;&#x57df;&#x529f;&#x80fd;&#x7eb5;&#x5411;&#x5207;&#x5206;&#x4e3a;&#x4e92;&#x4e0d;&#x5e72;&#x6270;&#x7684;&#x72ec;&#x7acb;&#x670d;&#x52a1;&#x6216;&#x5b50;&#x7cfb;&#x7edf;&#xff08;&#x5982;&#x7528;&#x6237;&#x3001;&#x4ea4;&#x6613;&#x3001;&#x5546;&#x54c1;&#xff09;","children":[],"payload":{"tag":"li","lines":"14,15"}},{"content":"&#x4f18;&#x52bf;&#xff1a;&#x5404;&#x670d;&#x52a1;&#x4ee3;&#x7801;&#x5e93;&#x5c0f;&#x5de7;&#x3001;&#x652f;&#x6301;&#x72ec;&#x7acb;&#x6f14;&#x8fdb;&#x4e0e;&#x5f02;&#x6784;&#x90e8;&#x7f72;&#xff0c;&#x5f7b;&#x5e95;&#x6d88;&#x706d;&#x5355;&#x4e2a;&#x529f;&#x80fd;&#x6a21;&#x5757;&#x6545;&#x969c;&#x5bfc;&#x81f4;&#x5168;&#x7ad9;&#x5d29;&#x6e83;&#x7684;&#x98ce;&#x9669;","children":[],"payload":{"tag":"li","lines":"15,17"}}],"payload":{"tag":"h3","lines":"12,13"}},{"content":"Z &#x8f74;&#x6269;&#x5c55;&#xff1a;&#x6309;&#x6570;&#x636e;/&#x5ba2;&#x6237;&#x5c5e;&#x6027;&#x5207;&#x5206;&#xff08;Split by Data/Customer&#xff09;","children":[{"content":"&#x6838;&#x5fc3;&#x673a;&#x5236;&#xff1a;&#x8fd0;&#x884c;&#x5b8c;&#x5168;&#x76f8;&#x540c;&#x7684;&#x4ee3;&#x7801;&#xff0c;&#x4f46;&#x6839;&#x636e;&#x8bf7;&#x6c42;&#x8005;&#x7684;&#x5c5e;&#x6027;&#xff08;&#x5982;&#x7528;&#x6237; ID &#x53d6;&#x6a21;&#x3001;&#x6240;&#x5c5e;&#x533a;&#x57df;&#x3001;&#x5ba2;&#x6237;&#x7b49;&#x7ea7;&#x3001;&#x4f01;&#x4e1a;&#x79df;&#x6237;&#xff09;&#x8def;&#x7531;&#x5230;&#x4e0d;&#x540c;&#x7684;&#x6570;&#x636e;&#x5206;&#x7247;&#xff08;Shards / Pods&#xff09;","children":[],"payload":{"tag":"li","lines":"19,20"}},{"content":"&#x4f18;&#x52bf;&#xff1a;&#x5f7b;&#x5e95;&#x5c06;&#x5355;&#x673a;&#x6570;&#x636e;&#x91cf;&#x4e0e;&#x4e8b;&#x52a1;&#x541e;&#x5410;&#x91cf;&#x65e0;&#x9650;&#x5e73;&#x644a;&#xff0c;&#x5efa;&#x7acb;&#x5929;&#x7136;&#x7684;&#x6545;&#x969c;&#x9694;&#x79bb;&#x6545;&#x969c;&#x57df;&#xff08;Failure Domain&#xff09;","children":[],"payload":{"tag":"li","lines":"20,22"}}],"payload":{"tag":"h3","lines":"17,18"}}],"payload":{"tag":"h2","lines":"4,5"}},{"content":"&#x4e8c;&#x3001;&#x7ec4;&#x7ec7;&#x4e0e;&#x4eba;&#x5458;&#x7684;&#x53ef;&#x6269;&#x5c55;&#x6027;","children":[{"content":"&#x7ec4;&#x7ec7;&#x67b6;&#x6784;&#x51b3;&#x5b9a;&#x7cfb;&#x7edf;&#x67b6;&#x6784;","children":[{"content":"&#x5c0f;&#x56e2;&#x961f;&#x654f;&#x6377;&#x4f5c;&#x6218;&#xff08;&#x4e9a;&#x9a6c;&#x900a;&#x4e24;&#x4e2a;&#x62ab;&#x8428;&#x539f;&#x5219;&#xff09;&#xff1a;&#x63a7;&#x5236;&#x56e2;&#x961f;&#x89c4;&#x6a21;&#x5728; 6-10 &#x4eba;&#xff0c;&#x907f;&#x514d;&#x56e2;&#x961f;&#x6210;&#x5458;&#x95f4;&#x6c9f;&#x901a;&#x8def;&#x5f84;&#x5e73;&#x65b9;&#x7ea7;&#x7206;&#x70b8;","children":[],"payload":{"tag":"li","lines":"27,28"}},{"content":"&#x6240;&#x6709;&#x6743;&#x4e0e;&#x7aef;&#x5230;&#x7aef;&#x8d23;&#x4efb;&#x5236;&#xff1a;&#x8c01;&#x6784;&#x5efa;&#x3001;&#x8c01;&#x6d4b;&#x8bd5;&#x3001;&#x8c01;&#x4e0a;&#x7ebf;&#x3001;&#x8c01;&#x8fd0;&#x7ef4;&#xff08;You build it, you run it&#xff09;&#xff0c;&#x6d88;&#x9664;&#x5f00;&#x53d1;&#x4e0e;&#x8fd0;&#x7ef4;&#x7684;&#x8d23;&#x4efb;&#x63a8;&#x8bff;","children":[],"payload":{"tag":"li","lines":"28,29"}},{"content":"&#x6d88;&#x706d;&#x5173;&#x952e;&#x4eba;&#x7269;&#x4f9d;&#x8d56;&#xff08;Bus Factor&#xff09;&#xff1a;&#x4efb;&#x4f55;&#x6838;&#x5fc3;&#x7cfb;&#x7edf;&#x5fc5;&#x987b;&#x6709;&#x77e5;&#x8bc6;&#x5197;&#x4f59;&#xff0c;&#x7edd;&#x5bf9;&#x4e0d;&#x5141;&#x8bb8;&#x5355;&#x4e2a;&#x82f1;&#x96c4;&#x5de5;&#x7a0b;&#x5e08;&#x8bf7;&#x5047;&#x5373;&#x5bfc;&#x81f4;&#x5168;&#x516c;&#x53f8;&#x505c;&#x6446;","children":[],"payload":{"tag":"li","lines":"29,31"}}],"payload":{"tag":"h3","lines":"25,26"}}],"payload":{"tag":"h2","lines":"22,23"}},{"content":"&#x4e09;&#x3001;&#x6d41;&#x7a0b;&#x7684;&#x53ef;&#x6269;&#x5c55;&#x6027;","children":[{"content":"&#x654f;&#x6377;&#x4ea4;&#x4ed8;&#x4e0e;&#x53d8;&#x66f4;&#x63a7;&#x5236;","children":[{"content":"&#x53d8;&#x66f4;&#x7ba1;&#x7406;&#x7cbe;&#x7b80;&#x5316;&#xff1a;&#x5e9f;&#x9664;&#x5197;&#x957f;&#x7684;&#x591a;&#x5c42;&#x5b98;&#x50da;&#x5ba1;&#x6279;&#xff0c;&#x5c06;&#x53d8;&#x66f4;&#x98ce;&#x9669;&#x5206;&#x7ea7;&#xff0c;&#x65e5;&#x5e38;&#x5c0f;&#x6279;&#x91cf;&#x53d8;&#x66f4;&#x8d70;&#x5168;&#x81ea;&#x52a8; CI/CD &#x5feb;&#x901f;&#x901a;&#x9053;","children":[],"payload":{"tag":"li","lines":"36,37"}},{"content":"&#x4e8b;&#x6545;&#x6839;&#x56e0;&#x5206;&#x6790;&#xff08;RCA &#x4e0e; 5 Whys&#xff09;&#xff1a;&#x6545;&#x969c;&#x53d1;&#x751f;&#x540e;&#x8fde;&#x95ee; 5 &#x4e2a;&#x4e3a;&#x4ec0;&#x4e48;&#xff0c;&#x6df1;&#x6316;&#x6d41;&#x7a0b;&#x7f3a;&#x9677;&#x4e0e;&#x7cfb;&#x7edf;&#x8bbe;&#x8ba1;&#x76f2;&#x533a;&#xff0c;&#x4e25;&#x7981;&#x6d41;&#x4e8e;&#x8868;&#x9762;&#x7684;&#x4eba;&#x4e3a;&#x8d23;&#x602a;","children":[],"payload":{"tag":"li","lines":"37,39"}}],"payload":{"tag":"h3","lines":"34,35"}}],"payload":{"tag":"h2","lines":"31,32"}},{"content":"&#x56db;&#x3001;&#x53ef;&#x6269;&#x5c55;&#x6027;&#x67b6;&#x6784;&#x8bbe;&#x8ba1;&#x6838;&#x5fc3;&#x539f;&#x5219;","children":[{"content":"&#x7ecf;&#x5178;&#x67b6;&#x6784;&#x6cd5;&#x5219;&#xff1a;&#x4e3a;&#x6269;&#x5c55;&#x4e0e;&#x6545;&#x969c;&#x800c;&#x8bbe;&#x8ba1;","children":[{"content":"&#x539f;&#x5219;1&#xff1a;&#x4e0d;&#x8981;&#x8fc7;&#x5ea6;&#x8bbe;&#x8ba1;&#xff0c;&#x4e3a;&#x4e09;&#x500d;&#x89c4;&#x6a21;&#x8bbe;&#x8ba1;&#xff0c;&#x4e3a;&#x5341;&#x500d;&#x89c4;&#x6a21;&#x9884;&#x7559;&#xff0c;&#x6309;&#x5f53;&#x524d;&#x9700;&#x6c42;&#x5b9e;&#x73b0;&#xff08;Design for 3x, Plan for 10x, Build for 1x&#xff09;","children":[],"payload":{"tag":"li","lines":"44,45"}},{"content":"&#x539f;&#x5219;2&#xff1a;&#x5f7b;&#x5e95;&#x62e5;&#x62b1;&#x65e0;&#x72b6;&#x6001;&#x5316;&#xff08;Statelessness&#xff09;&#xff0c;&#x6240;&#x6709;&#x5e94;&#x7528;&#x8282;&#x70b9;&#x968f;&#x65f6;&#x53ef;&#x88ab;&#x9500;&#x6bc1;&#x91cd;&#x5efa;","children":[],"payload":{"tag":"li","lines":"45,46"}},{"content":"&#x539f;&#x5219;3&#xff1a;&#x5f02;&#x6b65;&#x901a;&#x4fe1;&#x4f18;&#x5148;&#xff0c;&#x7528;&#x6d88;&#x606f;&#x961f;&#x5217;&#x5c06;&#x7d27;&#x8026;&#x5408;&#x7684;&#x540c;&#x6b65;&#x94fe;&#x6761;&#x89e3;&#x8026;&#x4e3a;&#x65f6;&#x95f4;&#x72ec;&#x7acb;&#x7684;&#x5904;&#x7406;&#x73af;&#x8282;","children":[],"payload":{"tag":"li","lines":"46,47"}},{"content":"&#x539f;&#x5219;4&#xff1a;&#x79ef;&#x6781;&#x5229;&#x7528;&#x591a;&#x7ea7;&#x7f13;&#x5b58;&#xff0c;&#x9760;&#x8fd1;&#x7528;&#x6237;&#x7684;&#x7f13;&#x5b58;&#x6548;&#x7387;&#x6700;&#x9ad8;","children":[],"payload":{"tag":"li","lines":"47,48"}},{"content":"&#x539f;&#x5219;5&#xff1a;&#x6d88;&#x706d;&#x4e00;&#x5207;&#x5355;&#x70b9;&#x6545;&#x969c;&#xff08;SPOF&#xff09;&#xff0c;&#x4ece;&#x7f51;&#x7edc;&#x5165;&#x53e3;&#x3001;&#x8d1f;&#x8f7d;&#x5747;&#x8861;&#x3001;&#x5e94;&#x7528;&#x5bb9;&#x5668;&#x5230;&#x6570;&#x636e;&#x5e93;&#x5b58;&#x50a8;&#x5168;&#x90e8;&#x5177;&#x5907;&#x53cc;&#x6d3b;&#x4e0e;&#x81ea;&#x52a8;&#x8f6c;&#x79fb;&#x80fd;&#x529b;","children":[],"payload":{"tag":"li","lines":"48,50"}}],"payload":{"tag":"h3","lines":"42,43"}}],"payload":{"tag":"h2","lines":"39,40"}},{"content":"&#x4e94;&#x3001;&#x76d1;&#x63a7;&#x5ea6;&#x91cf;&#x4e0e;&#x5bb9;&#x91cf;&#x89c4;&#x5212;","children":[{"content":"&#x5bb9;&#x91cf;&#x9884;&#x6d4b;&#x6a21;&#x578b;&#x4e0e;&#x5ea6;&#x91cf;&#x5148;&#x884c;","children":[{"content":"&#x5ea6;&#x91cf;&#x5148;&#x884c;&#x51c6;&#x5219;&#xff1a;&#x6ca1;&#x6709;&#x6570;&#x636e;&#x652f;&#x6491;&#x7684;&#x67b6;&#x6784;&#x6539;&#x52a8;&#x5c31;&#x662f;&#x76f2;&#x4eba;&#x6478;&#x8c61;&#xff1b;&#x5728;&#x52a8;&#x4ee3;&#x7801;&#x524d;&#x5fc5;&#x987b;&#x7cbe;&#x51c6;&#x5b9a;&#x4f4d;&#x662f; CPU&#x3001;&#x5185;&#x5b58;&#x3001;I/O &#x8fd8;&#x662f;&#x9501;&#x7ade;&#x4e89;&#x74f6;&#x9888;","children":[],"payload":{"tag":"li","lines":"55,56"}},{"content":"&#x5bb9;&#x91cf;&#x89c4;&#x5212;&#x4e0e;&#x62d0;&#x70b9;&#x9884;&#x6d4b;&#xff1a;&#x5efa;&#x7acb;&#x57fa;&#x4e8e;&#x4e1a;&#x52a1;&#x6307;&#x6807;&#xff08;&#x5982;&#x65e5;&#x6d3b; DAU&#x3001;&#x5927;&#x4fc3;&#x4ea4;&#x6613;&#x5355;&#x91cf;&#xff09;&#x5411;&#x6280;&#x672f;&#x8d44;&#x6e90;&#xff08;QPS&#x3001;&#x5e26;&#x5bbd;&#x3001;&#x8fde;&#x63a5;&#x6570;&#xff09;&#x6620;&#x5c04;&#x7684;&#x5bb9;&#x91cf;&#x6a21;&#x578b;&#xff0c;&#x63d0;&#x524d;&#x6570;&#x6708;&#x89c4;&#x5212;&#x6269;&#x5bb9;","children":[],"payload":{"tag":"li","lines":"56,57"}}],"payload":{"tag":"h3","lines":"53,54"}}],"payload":{"tag":"h2","lines":"50,51"}}],"payload":{"tag":"h1","lines":"0,1"}}</script>
       <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true"># 《架构即未来》 思维导图
 
 &gt; 核心主题：AKF扩展立方体（X/Y/Z轴）、人员与组织可扩展性、流程规范、容灾设计与容量度量
@@ -459,27 +271,6 @@
 加错机器等于白花钱
 - 度量先行准则：没有数据支撑的架构改动就是盲人摸象；在动代码前必须精准定位是 CPU、内存、I/O 还是锁竞争瓶颈
 - 容量规划与拐点预测：建立基于业务指标（如日活 DAU、大促交易单量）向技术资源（QPS、带宽、连接数）映射的容量模型，提前数月规划扩容</textarea>
-
-      <!-- Fullscreen Modal View -->
-      <div class="mindmap-modal" id="mindmapModal" aria-hidden="true" role="dialog" aria-label="思维导图全景全屏视图">
-        <div class="mm-modal-container">
-          <div class="mm-modal-header">
-            <div class="mm-modal-title-wrap">
-              <span class="mm-modal-tag">思维导图全景</span>
-              <span class="mm-modal-book-title">《架构即未来》</span>
-              <span class="mm-modal-theme">AKF扩展立方体（X/Y/Z轴）、人员与组织可扩展性、流程规范、容灾设计与容量度量</span>
-            </div>
-            <div class="mm-modal-controls">
-              <button type="button" class="mm-btn" id="mmModalToggleAllBtn">
-                <span class="mm-modal-toggle-text">全部收起</span>
-              </button>
-              <button type="button" class="mm-modal-close-btn" id="mmModalCloseBtn" aria-label="关闭全屏">×</button>
-            </div>
-          </div>
-          <div class="mm-modal-body" id="mmModalBody"></div>
-        </div>
-      </div>
-
       <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
     </section>
 
@@ -545,143 +336,192 @@
   </script>
 
   
+  <script src="vendor/markmap-bundle.js" defer></script>
   <script>
     (function() {
       var mmSection = document.getElementById('mindmapSection');
       if (!mmSection) return;
 
-      var container = document.getElementById('mindmapContainer');
-      var toggleAllBtn = document.getElementById('mmToggleAllBtn');
-      var copyBtn = document.getElementById('mmCopyMarkdownBtn');
-      var fullscreenBtn = document.getElementById('mmFullscreenBtn');
-      var modal = document.getElementById('mindmapModal');
-      var modalCloseBtn = document.getElementById('mmModalCloseBtn');
-      var modalBody = document.getElementById('mmModalBody');
-      var modalToggleAllBtn = document.getElementById('mmModalToggleAllBtn');
-      var toast = document.getElementById('mmToast');
-      var mdSource = document.getElementById('mmMarkdownSource');
+      var svgEl = document.getElementById('markmapSvg');
+      var treeDataEl = document.getElementById('mmTreeData');
+      if (!svgEl || !treeDataEl) return;
 
-      var isAllCollapsed = false;
+      function initMarkmap() {
+        if (!window.markmap || !window.markmap.Markmap || !window.d3) {
+          setTimeout(initMarkmap, 50);
+          return;
+        }
 
-      function bindBranchHeaders(root) {
-        var headers = root.querySelectorAll('.mm-branch-header');
-        headers.forEach(function(header) {
-          header.addEventListener('click', function() {
-            var branch = header.closest('.mm-branch');
-            if (branch) {
-              branch.classList.toggle('is-collapsed');
+        var rawData = JSON.parse(treeDataEl.textContent);
+        var palette = ['#007722', '#1d4ed8', '#c2410c', '#7e22ce', '#0f766e', '#be123c'];
+        var colorScale = d3.scaleOrdinal(palette);
+
+        function cloneData(obj) {
+          return JSON.parse(JSON.stringify(obj));
+        }
+
+        function setFold(n, f) {
+          if (n.children && n.children.length) {
+            n.payload = Object.assign({}, n.payload, { fold: f ? 1 : 0 });
+            n.children.forEach(function(c) { setFold(c, f); });
+          }
+        }
+
+        // Default initial fold: level 2 topics collapsed
+        var currentData = cloneData(rawData);
+        if (currentData.children) {
+          currentData.payload = Object.assign({}, currentData.payload, { fold: 0 });
+          currentData.children.forEach(function(branch) {
+            branch.payload = Object.assign({}, branch.payload, { fold: 0 });
+            if (branch.children) {
+              branch.children.forEach(function(topic) {
+                setFold(topic, true);
+              });
             }
           });
-        });
-      }
+        }
 
-      bindBranchHeaders(container);
+        var mm = window.markmap.Markmap.create(svgEl, {
+          autoFit: true,
+          duration: 350,
+          color: function(node) {
+            return colorScale(node.state.id);
+          },
+          paddingX: 16,
+          spacingHorizontal: 75,
+          spacingVertical: 12
+        }, currentData);
 
-      // Toggle all in main view
-      if (toggleAllBtn) {
-        toggleAllBtn.addEventListener('click', function() {
-          isAllCollapsed = !isAllCollapsed;
-          var branches = container.querySelectorAll('.mm-branch');
-          branches.forEach(function(b) {
-            if (isAllCollapsed) {
-              b.classList.add('is-collapsed');
-            } else {
-              b.classList.remove('is-collapsed');
-            }
+        // Mount toolbar
+        if (window.markmap.Toolbar) {
+          var tb = window.markmap.Toolbar.create(mm);
+          tb.setBrand(false);
+          var tbWrap = document.getElementById('mmToolbarWrap');
+          if (tbWrap) tbWrap.appendChild(tb.render());
+        }
+
+        // Level Preset Buttons
+        var btnL1 = document.getElementById('mmBtnLevel1');
+        var btnL2 = document.getElementById('mmBtnLevel2');
+        var btnAll = document.getElementById('mmBtnExpandAll');
+
+        function setActiveLevelBtn(activeBtn) {
+          [btnL1, btnL2, btnAll].forEach(function(b) {
+            if (b) b.classList.remove('active');
           });
-          var txt = toggleAllBtn.querySelector('.mm-toggle-text');
-          if (txt) txt.textContent = isAllCollapsed ? '全部展开' : '全部收起';
-        });
-      }
+          if (activeBtn) activeBtn.classList.add('active');
+        }
 
-      // Copy Markdown Outline
-      function showToast(msg) {
-        if (!toast) return;
-        toast.textContent = msg;
-        toast.classList.add('active');
-        setTimeout(function() {
-          toast.classList.remove('active');
-        }, 2200);
-      }
+        if (btnL1) {
+          btnL1.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) { setFold(b, true); });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL1);
+          });
+        }
 
-      if (copyBtn && mdSource) {
-        copyBtn.addEventListener('click', function() {
-          var text = mdSource.value;
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function() {
-              showToast('✓ 已复制思维导图大纲到剪贴板！');
-            }).catch(function() {
-              fallbackCopy(text);
-            });
-          } else {
-            fallbackCopy(text);
+        if (btnL2) {
+          btnL2.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) {
+                b.payload = Object.assign({}, b.payload, { fold: 0 });
+                if (b.children) {
+                  b.children.forEach(function(t) { setFold(t, true); });
+                }
+              });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL2);
+          });
+        }
+
+        if (btnAll) {
+          btnAll.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            setFold(d, false);
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnAll);
+          });
+        }
+
+        // Fullscreen Toggle
+        var fsBtn = document.getElementById('mmFullscreenBtn');
+        var fsText = fsBtn ? fsBtn.querySelector('.mm-fs-text') : null;
+
+        function toggleFullscreen() {
+          var isFs = mmSection.classList.toggle('is-fullscreen');
+          if (fsText) fsText.textContent = isFs ? '退出全屏' : '全屏';
+          setTimeout(function() {
+            mm.fit();
+          }, 150);
+        }
+
+        if (fsBtn) {
+          fsBtn.addEventListener('click', toggleFullscreen);
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && mmSection.classList.contains('is-fullscreen')) {
+            toggleFullscreen();
           }
         });
-      }
 
-      function fallbackCopy(text) {
-        try {
-          var ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-          showToast('✓ 已复制思维导图大纲到剪贴板！');
-        } catch (e) {
-          showToast('复制失败，请手动选取复制');
+        // Copy Markdown
+        var copyBtn = document.getElementById('mmCopyMarkdownBtn');
+        var mdSource = document.getElementById('mmMarkdownSource');
+        var toast = document.getElementById('mmToast');
+
+        function showToast(msg) {
+          if (!toast) return;
+          toast.textContent = msg;
+          toast.classList.add('active');
+          setTimeout(function() { toast.classList.remove('active'); }, 2200);
         }
-      }
 
-      // Fullscreen Modal Logic
-      function openModal() {
-        if (!modal || !modalBody) return;
-        modalBody.innerHTML = container.innerHTML;
-        bindBranchHeaders(modalBody);
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        if (!modal) return;
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-
-      if (fullscreenBtn) {
-        fullscreenBtn.addEventListener('click', openModal);
-      }
-      if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', closeModal);
-      }
-      if (modal) {
-        modal.addEventListener('click', function(e) {
-          if (e.target === modal) closeModal();
-        });
-      }
-
-      if (modalToggleAllBtn) {
-        modalToggleAllBtn.addEventListener('click', function() {
-          var branches = modalBody.querySelectorAll('.mm-branch');
-          var shouldCollapse = !branches[0].classList.contains('is-collapsed');
-          branches.forEach(function(b) {
-            if (shouldCollapse) b.classList.add('is-collapsed');
-            else b.classList.remove('is-collapsed');
+        if (copyBtn && mdSource) {
+          copyBtn.addEventListener('click', function() {
+            var text = mdSource.value;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function() {
+                showToast('✓ 已复制思维导图大纲到剪贴板！');
+              }).catch(function() {
+                fallbackCopy(text);
+              });
+            } else {
+              fallbackCopy(text);
+            }
           });
-          var txt = modalToggleAllBtn.querySelector('.mm-modal-toggle-text');
-          if (txt) txt.textContent = shouldCollapse ? '全部展开' : '全部收起';
-        });
+        }
+
+        function fallbackCopy(text) {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('✓ 已复制思维导图大纲到剪贴板！');
+          } catch (e) {
+            showToast('复制失败，请手动选取');
+          }
+        }
       }
 
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-          closeModal();
-        }
-      });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMarkmap);
+      } else {
+        initMarkmap();
+      }
     })();
   </script>
 

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>《UNIX编程艺术》 · 经典书导读</title>
-  <link rel="stylesheet" href="style.css?v=fea06185">
+  <link rel="stylesheet" href="style.css?v=4fdade2e">
 </head>
 <body>
   <div class="layout-container">
@@ -182,248 +182,38 @@
           <section class="section-block mindmap-section" id="mindmapSection">
       <div class="mindmap-header">
         <div class="mindmap-header-left">
-          <span class="mindmap-badge">知识脉络</span>
-          <h2 class="mindmap-title">全书思维导图</h2>
+          <span class="mindmap-badge">树状思维导图</span>
+          <h2 class="mindmap-title">全书思维导图 · 知识脉络树</h2>
         </div>
         <div class="mindmap-actions">
-          <button type="button" class="mm-btn mm-btn-toggle" id="mmToggleAllBtn" title="全部折叠/展开">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-            <span class="mm-toggle-text">全部收起</span>
-          </button>
-          <button type="button" class="mm-btn mm-btn-copy" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
+          <div class="mm-level-switch">
+            <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
+            <button type="button" class="mm-btn active" id="mmBtnLevel2" title="展开至二级分支">分支</button>
+            <button type="button" class="mm-btn" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
+          </div>
+
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>复制大纲</span>
           </button>
-          <button type="button" class="mm-btn mm-btn-fullscreen" id="mmFullscreenBtn" title="全屏沉浸式全景模式">
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmFullscreenBtn" title="全屏沉浸式全景模式 (ESC 退出)">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-            <span>全屏全景</span>
+            <span class="mm-fs-text">全屏</span>
           </button>
         </div>
       </div>
 
-      <div class="mindmap-container" id="mindmapContainer">
-        <div class="mm-root-card">
-          <div class="mm-root-pill">核心主旨</div>
-          <div class="mm-root-title">《UNIX编程艺术》</div>
-          <div class="mm-root-theme">Unix哲学十七大铁律、文本流协议、透明性与正交模块设计</div>
-        </div>
-
-        <div class="mm-tree-body">
-          <div class="mm-branch" data-branch-index="0">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">一、Unix哲学核心铁律</span>
-          <span class="mm-branch-desc">历经半个世纪工业洗礼的软件设计思想巅峰</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">模块、清晰与组合原则</h4>
+      <div class="mm-viewport-wrapper">
+        <div class="mm-viewport" id="mmViewport">
+          <svg id="markmapSvg"></svg>
+          <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
+          <div class="mm-canvas-hint">
+            <span>💡 拖拽平移 · 滚轮缩放 · 点击分支圆点折叠/展开</span>
           </div>
-          <p class="mm-topic-desc">软件架构的根本准则</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">模块原则（Modularity）：写简单的、通过良好定义的接口连接的模块，高内聚松耦合</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">清晰原则（Clarity）：清晰胜过机巧，一段自作聪明晦涩难懂的代码即使快 5%，也是严重的负资产</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">组合原则（Composition）：设计时考虑与其他程序的连接，编写每一个程序都假定它会作为过滤器被管道调用</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">分离原则（Separation）：策略同机制分离，引擎同接口分离，策略会频繁变动，机制应保持稳定</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">简单、表示与缄默原则</h4>
-          </div>
-          <p class="mm-topic-desc">极简主义与数据驱动编程</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">简单原则（Simplicity）：设计应从最简模型开始，避免画蛇添足，复杂的代码必然潜伏着更多无法预知的Bug</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">表示原则（Representation）：把知识叠入数据，让逻辑尽可能简单，复杂的代码往往可以通过表驱动数据结构轻松化解</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">缄默原则（Silence）：如果程序没有什么特别的事情要说，就默不作声；只在异常和错误时向 stderr 报警</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">补救原则（Repair）：如果必须失败，立即并且声势浩大地失败（Fail Loudly），不要悄悄吞掉异常带病延宕</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="1">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">二、文本流与通用数据协议</span>
-          <span class="mm-branch-desc">万物皆文件与人类可读的纯文本流</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">人类可读的纯文本流</h4>
-          </div>
-          <p class="mm-topic-desc">避免封闭、不可逆、易失真的私有二进制协议</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">纯文本通用流：Unix 最大的发明是管道与纯文本流，所有工具程序都能天然无障碍互通</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">文本协议优势：易于肉眼阅读与调试、易于借助 sed/awk/grep 处理、版本控制极度友好、完全跨平台架构中立</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">结构化文本格式演进：从古典的空白分隔到现代的 JSON/YAML，纯文本协议在互联网革命中赢得了彻底胜利</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">万物皆文件（Everything is a File）</h4>
-          </div>
-          <p class="mm-topic-desc">统一抽象树消减无数特化系统调用</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">把设备、套接字、进程信息（/proc）统统映射为文件树节点</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">统一的 open/read/write/close API 语义，消除对无数特化硬件系统调用的记忆与适配负担</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="2">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">三、透明性与多道程序设计</span>
-          <span class="mm-branch-desc">透明性、轻量进程隔离与领域专用微语言</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">透明性与可显性（Transparency &amp; Discoverability）</h4>
-          </div>
-          <p class="mm-topic-desc">让系统的内部运作对外界一目了然</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">透明性：系统没有阴暗角落，内行一眼就能看清它是如何工作、当前处于什么状态</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">可显性：系统能向操作者友好暴露其内部度量与日志链路，提供清晰的调试钩子</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">自底向上的透明性设计：通过良好的日志格式与诊断命令，极大降低运维与线上排障成本</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">多进程模型与轻量IPC</h4>
-          </div>
-          <p class="mm-topic-desc">进程隔离是消灭内存竞态最稳健的屏障</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">Unix 崇尚多进程而非共享内存的多线程：进程拥有独立的内存空间地址，一个崩溃绝不会污染波及他人</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">轻量级 IPC：使用管道（Pipes）、套接字（Sockets）进行消息传递，天然具备进程间天然屏障</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">微型语言（Mini-languages）：当问题领域足够复杂时，编写一个小型 DSL 与代码生成器往往胜过手写几万行控制逻辑</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="3">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">四、接口设计与开源协作共同体</span>
-          <span class="mm-branch-desc">CLI分工、渐进式优化与黑客文化精髓</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">优化原则与接口分工</h4>
-          </div>
-          <p class="mm-topic-desc">宁花机器时间，不废程序员时间</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">经济原则（Economy）：程序员的人工时间是极其昂贵的，而硬件与机器时间是极其廉价的</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">优化铁律：先让程序跑起来，然后测度（Profile），只有数据证明确实是瓶颈时才去局部优化</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">CLI 与 GUI 的优雅分工：用 CLI 脚本承载严谨的底层机制，用 GUI 外壳承载人机友好的交互展现</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">集市模式与开源文化</h4>
-          </div>
-          <p class="mm-topic-desc">全球协同开发的技术伦理与创造力源泉</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">大教堂 vs 集市：开放代码、早期且频繁发布、倾听客户反馈、让全世界眼睛共同帮抓 Bug</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">模块复用与可移植性：站在巨人的肩膀上，绝不重新发明轮子，构建长期抗腐蚀的代码基石</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
         </div>
       </div>
 
+      <script type="application/json" id="mmTreeData">{"content":"&#x300a;UNIX&#x7f16;&#x7a0b;&#x827a;&#x672f;&#x300b; &#x601d;&#x7ef4;&#x5bfc;&#x56fe;","children":[{"content":"&#x4e00;&#x3001;Unix&#x54f2;&#x5b66;&#x6838;&#x5fc3;&#x94c1;&#x5f8b;","children":[{"content":"&#x6a21;&#x5757;&#x3001;&#x6e05;&#x6670;&#x4e0e;&#x7ec4;&#x5408;&#x539f;&#x5219;","children":[{"content":"&#x6a21;&#x5757;&#x539f;&#x5219;&#xff08;Modularity&#xff09;&#xff1a;&#x5199;&#x7b80;&#x5355;&#x7684;&#x3001;&#x901a;&#x8fc7;&#x826f;&#x597d;&#x5b9a;&#x4e49;&#x7684;&#x63a5;&#x53e3;&#x8fde;&#x63a5;&#x7684;&#x6a21;&#x5757;&#xff0c;&#x9ad8;&#x5185;&#x805a;&#x677e;&#x8026;&#x5408;","children":[],"payload":{"tag":"li","lines":"9,10"}},{"content":"&#x6e05;&#x6670;&#x539f;&#x5219;&#xff08;Clarity&#xff09;&#xff1a;&#x6e05;&#x6670;&#x80dc;&#x8fc7;&#x673a;&#x5de7;&#xff0c;&#x4e00;&#x6bb5;&#x81ea;&#x4f5c;&#x806a;&#x660e;&#x6666;&#x6da9;&#x96be;&#x61c2;&#x7684;&#x4ee3;&#x7801;&#x5373;&#x4f7f;&#x5feb; 5%&#xff0c;&#x4e5f;&#x662f;&#x4e25;&#x91cd;&#x7684;&#x8d1f;&#x8d44;&#x4ea7;","children":[],"payload":{"tag":"li","lines":"10,11"}},{"content":"&#x7ec4;&#x5408;&#x539f;&#x5219;&#xff08;Composition&#xff09;&#xff1a;&#x8bbe;&#x8ba1;&#x65f6;&#x8003;&#x8651;&#x4e0e;&#x5176;&#x4ed6;&#x7a0b;&#x5e8f;&#x7684;&#x8fde;&#x63a5;&#xff0c;&#x7f16;&#x5199;&#x6bcf;&#x4e00;&#x4e2a;&#x7a0b;&#x5e8f;&#x90fd;&#x5047;&#x5b9a;&#x5b83;&#x4f1a;&#x4f5c;&#x4e3a;&#x8fc7;&#x6ee4;&#x5668;&#x88ab;&#x7ba1;&#x9053;&#x8c03;&#x7528;","children":[],"payload":{"tag":"li","lines":"11,12"}},{"content":"&#x5206;&#x79bb;&#x539f;&#x5219;&#xff08;Separation&#xff09;&#xff1a;&#x7b56;&#x7565;&#x540c;&#x673a;&#x5236;&#x5206;&#x79bb;&#xff0c;&#x5f15;&#x64ce;&#x540c;&#x63a5;&#x53e3;&#x5206;&#x79bb;&#xff0c;&#x7b56;&#x7565;&#x4f1a;&#x9891;&#x7e41;&#x53d8;&#x52a8;&#xff0c;&#x673a;&#x5236;&#x5e94;&#x4fdd;&#x6301;&#x7a33;&#x5b9a;","children":[],"payload":{"tag":"li","lines":"12,14"}}],"payload":{"tag":"h3","lines":"7,8"}},{"content":"&#x7b80;&#x5355;&#x3001;&#x8868;&#x793a;&#x4e0e;&#x7f04;&#x9ed8;&#x539f;&#x5219;","children":[{"content":"&#x7b80;&#x5355;&#x539f;&#x5219;&#xff08;Simplicity&#xff09;&#xff1a;&#x8bbe;&#x8ba1;&#x5e94;&#x4ece;&#x6700;&#x7b80;&#x6a21;&#x578b;&#x5f00;&#x59cb;&#xff0c;&#x907f;&#x514d;&#x753b;&#x86c7;&#x6dfb;&#x8db3;&#xff0c;&#x590d;&#x6742;&#x7684;&#x4ee3;&#x7801;&#x5fc5;&#x7136;&#x6f5c;&#x4f0f;&#x7740;&#x66f4;&#x591a;&#x65e0;&#x6cd5;&#x9884;&#x77e5;&#x7684;Bug","children":[],"payload":{"tag":"li","lines":"16,17"}},{"content":"&#x8868;&#x793a;&#x539f;&#x5219;&#xff08;Representation&#xff09;&#xff1a;&#x628a;&#x77e5;&#x8bc6;&#x53e0;&#x5165;&#x6570;&#x636e;&#xff0c;&#x8ba9;&#x903b;&#x8f91;&#x5c3d;&#x53ef;&#x80fd;&#x7b80;&#x5355;&#xff0c;&#x590d;&#x6742;&#x7684;&#x4ee3;&#x7801;&#x5f80;&#x5f80;&#x53ef;&#x4ee5;&#x901a;&#x8fc7;&#x8868;&#x9a71;&#x52a8;&#x6570;&#x636e;&#x7ed3;&#x6784;&#x8f7b;&#x677e;&#x5316;&#x89e3;","children":[],"payload":{"tag":"li","lines":"17,18"}},{"content":"&#x7f04;&#x9ed8;&#x539f;&#x5219;&#xff08;Silence&#xff09;&#xff1a;&#x5982;&#x679c;&#x7a0b;&#x5e8f;&#x6ca1;&#x6709;&#x4ec0;&#x4e48;&#x7279;&#x522b;&#x7684;&#x4e8b;&#x60c5;&#x8981;&#x8bf4;&#xff0c;&#x5c31;&#x9ed8;&#x4e0d;&#x4f5c;&#x58f0;&#xff1b;&#x53ea;&#x5728;&#x5f02;&#x5e38;&#x548c;&#x9519;&#x8bef;&#x65f6;&#x5411; stderr &#x62a5;&#x8b66;","children":[],"payload":{"tag":"li","lines":"18,19"}},{"content":"&#x8865;&#x6551;&#x539f;&#x5219;&#xff08;Repair&#xff09;&#xff1a;&#x5982;&#x679c;&#x5fc5;&#x987b;&#x5931;&#x8d25;&#xff0c;&#x7acb;&#x5373;&#x5e76;&#x4e14;&#x58f0;&#x52bf;&#x6d69;&#x5927;&#x5730;&#x5931;&#x8d25;&#xff08;Fail Loudly&#xff09;&#xff0c;&#x4e0d;&#x8981;&#x6084;&#x6084;&#x541e;&#x6389;&#x5f02;&#x5e38;&#x5e26;&#x75c5;&#x5ef6;&#x5b95;","children":[],"payload":{"tag":"li","lines":"19,21"}}],"payload":{"tag":"h3","lines":"14,15"}}],"payload":{"tag":"h2","lines":"4,5"}},{"content":"&#x4e8c;&#x3001;&#x6587;&#x672c;&#x6d41;&#x4e0e;&#x901a;&#x7528;&#x6570;&#x636e;&#x534f;&#x8bae;","children":[{"content":"&#x4eba;&#x7c7b;&#x53ef;&#x8bfb;&#x7684;&#x7eaf;&#x6587;&#x672c;&#x6d41;","children":[{"content":"&#x7eaf;&#x6587;&#x672c;&#x901a;&#x7528;&#x6d41;&#xff1a;Unix &#x6700;&#x5927;&#x7684;&#x53d1;&#x660e;&#x662f;&#x7ba1;&#x9053;&#x4e0e;&#x7eaf;&#x6587;&#x672c;&#x6d41;&#xff0c;&#x6240;&#x6709;&#x5de5;&#x5177;&#x7a0b;&#x5e8f;&#x90fd;&#x80fd;&#x5929;&#x7136;&#x65e0;&#x969c;&#x788d;&#x4e92;&#x901a;","children":[],"payload":{"tag":"li","lines":"26,27"}},{"content":"&#x6587;&#x672c;&#x534f;&#x8bae;&#x4f18;&#x52bf;&#xff1a;&#x6613;&#x4e8e;&#x8089;&#x773c;&#x9605;&#x8bfb;&#x4e0e;&#x8c03;&#x8bd5;&#x3001;&#x6613;&#x4e8e;&#x501f;&#x52a9; sed/awk/grep &#x5904;&#x7406;&#x3001;&#x7248;&#x672c;&#x63a7;&#x5236;&#x6781;&#x5ea6;&#x53cb;&#x597d;&#x3001;&#x5b8c;&#x5168;&#x8de8;&#x5e73;&#x53f0;&#x67b6;&#x6784;&#x4e2d;&#x7acb;","children":[],"payload":{"tag":"li","lines":"27,28"}},{"content":"&#x7ed3;&#x6784;&#x5316;&#x6587;&#x672c;&#x683c;&#x5f0f;&#x6f14;&#x8fdb;&#xff1a;&#x4ece;&#x53e4;&#x5178;&#x7684;&#x7a7a;&#x767d;&#x5206;&#x9694;&#x5230;&#x73b0;&#x4ee3;&#x7684; JSON/YAML&#xff0c;&#x7eaf;&#x6587;&#x672c;&#x534f;&#x8bae;&#x5728;&#x4e92;&#x8054;&#x7f51;&#x9769;&#x547d;&#x4e2d;&#x8d62;&#x5f97;&#x4e86;&#x5f7b;&#x5e95;&#x80dc;&#x5229;","children":[],"payload":{"tag":"li","lines":"28,30"}}],"payload":{"tag":"h3","lines":"24,25"}},{"content":"&#x4e07;&#x7269;&#x7686;&#x6587;&#x4ef6;&#xff08;Everything is a File&#xff09;","children":[{"content":"&#x628a;&#x8bbe;&#x5907;&#x3001;&#x5957;&#x63a5;&#x5b57;&#x3001;&#x8fdb;&#x7a0b;&#x4fe1;&#x606f;&#xff08;/proc&#xff09;&#x7edf;&#x7edf;&#x6620;&#x5c04;&#x4e3a;&#x6587;&#x4ef6;&#x6811;&#x8282;&#x70b9;","children":[],"payload":{"tag":"li","lines":"32,33"}},{"content":"&#x7edf;&#x4e00;&#x7684; open/read/write/close API &#x8bed;&#x4e49;&#xff0c;&#x6d88;&#x9664;&#x5bf9;&#x65e0;&#x6570;&#x7279;&#x5316;&#x786c;&#x4ef6;&#x7cfb;&#x7edf;&#x8c03;&#x7528;&#x7684;&#x8bb0;&#x5fc6;&#x4e0e;&#x9002;&#x914d;&#x8d1f;&#x62c5;","children":[],"payload":{"tag":"li","lines":"33,35"}}],"payload":{"tag":"h3","lines":"30,31"}}],"payload":{"tag":"h2","lines":"21,22"}},{"content":"&#x4e09;&#x3001;&#x900f;&#x660e;&#x6027;&#x4e0e;&#x591a;&#x9053;&#x7a0b;&#x5e8f;&#x8bbe;&#x8ba1;","children":[{"content":"&#x900f;&#x660e;&#x6027;&#x4e0e;&#x53ef;&#x663e;&#x6027;&#xff08;Transparency &amp; Discoverability&#xff09;","children":[{"content":"&#x900f;&#x660e;&#x6027;&#xff1a;&#x7cfb;&#x7edf;&#x6ca1;&#x6709;&#x9634;&#x6697;&#x89d2;&#x843d;&#xff0c;&#x5185;&#x884c;&#x4e00;&#x773c;&#x5c31;&#x80fd;&#x770b;&#x6e05;&#x5b83;&#x662f;&#x5982;&#x4f55;&#x5de5;&#x4f5c;&#x3001;&#x5f53;&#x524d;&#x5904;&#x4e8e;&#x4ec0;&#x4e48;&#x72b6;&#x6001;","children":[],"payload":{"tag":"li","lines":"40,41"}},{"content":"&#x53ef;&#x663e;&#x6027;&#xff1a;&#x7cfb;&#x7edf;&#x80fd;&#x5411;&#x64cd;&#x4f5c;&#x8005;&#x53cb;&#x597d;&#x66b4;&#x9732;&#x5176;&#x5185;&#x90e8;&#x5ea6;&#x91cf;&#x4e0e;&#x65e5;&#x5fd7;&#x94fe;&#x8def;&#xff0c;&#x63d0;&#x4f9b;&#x6e05;&#x6670;&#x7684;&#x8c03;&#x8bd5;&#x94a9;&#x5b50;","children":[],"payload":{"tag":"li","lines":"41,42"}},{"content":"&#x81ea;&#x5e95;&#x5411;&#x4e0a;&#x7684;&#x900f;&#x660e;&#x6027;&#x8bbe;&#x8ba1;&#xff1a;&#x901a;&#x8fc7;&#x826f;&#x597d;&#x7684;&#x65e5;&#x5fd7;&#x683c;&#x5f0f;&#x4e0e;&#x8bca;&#x65ad;&#x547d;&#x4ee4;&#xff0c;&#x6781;&#x5927;&#x964d;&#x4f4e;&#x8fd0;&#x7ef4;&#x4e0e;&#x7ebf;&#x4e0a;&#x6392;&#x969c;&#x6210;&#x672c;","children":[],"payload":{"tag":"li","lines":"42,44"}}],"payload":{"tag":"h3","lines":"38,39"}},{"content":"&#x591a;&#x8fdb;&#x7a0b;&#x6a21;&#x578b;&#x4e0e;&#x8f7b;&#x91cf;IPC","children":[{"content":"Unix &#x5d07;&#x5c1a;&#x591a;&#x8fdb;&#x7a0b;&#x800c;&#x975e;&#x5171;&#x4eab;&#x5185;&#x5b58;&#x7684;&#x591a;&#x7ebf;&#x7a0b;&#xff1a;&#x8fdb;&#x7a0b;&#x62e5;&#x6709;&#x72ec;&#x7acb;&#x7684;&#x5185;&#x5b58;&#x7a7a;&#x95f4;&#x5730;&#x5740;&#xff0c;&#x4e00;&#x4e2a;&#x5d29;&#x6e83;&#x7edd;&#x4e0d;&#x4f1a;&#x6c61;&#x67d3;&#x6ce2;&#x53ca;&#x4ed6;&#x4eba;","children":[],"payload":{"tag":"li","lines":"46,47"}},{"content":"&#x8f7b;&#x91cf;&#x7ea7; IPC&#xff1a;&#x4f7f;&#x7528;&#x7ba1;&#x9053;&#xff08;Pipes&#xff09;&#x3001;&#x5957;&#x63a5;&#x5b57;&#xff08;Sockets&#xff09;&#x8fdb;&#x884c;&#x6d88;&#x606f;&#x4f20;&#x9012;&#xff0c;&#x5929;&#x7136;&#x5177;&#x5907;&#x8fdb;&#x7a0b;&#x95f4;&#x5929;&#x7136;&#x5c4f;&#x969c;","children":[],"payload":{"tag":"li","lines":"47,48"}},{"content":"&#x5fae;&#x578b;&#x8bed;&#x8a00;&#xff08;Mini-languages&#xff09;&#xff1a;&#x5f53;&#x95ee;&#x9898;&#x9886;&#x57df;&#x8db3;&#x591f;&#x590d;&#x6742;&#x65f6;&#xff0c;&#x7f16;&#x5199;&#x4e00;&#x4e2a;&#x5c0f;&#x578b; DSL &#x4e0e;&#x4ee3;&#x7801;&#x751f;&#x6210;&#x5668;&#x5f80;&#x5f80;&#x80dc;&#x8fc7;&#x624b;&#x5199;&#x51e0;&#x4e07;&#x884c;&#x63a7;&#x5236;&#x903b;&#x8f91;","children":[],"payload":{"tag":"li","lines":"48,50"}}],"payload":{"tag":"h3","lines":"44,45"}}],"payload":{"tag":"h2","lines":"35,36"}},{"content":"&#x56db;&#x3001;&#x63a5;&#x53e3;&#x8bbe;&#x8ba1;&#x4e0e;&#x5f00;&#x6e90;&#x534f;&#x4f5c;&#x5171;&#x540c;&#x4f53;","children":[{"content":"&#x4f18;&#x5316;&#x539f;&#x5219;&#x4e0e;&#x63a5;&#x53e3;&#x5206;&#x5de5;","children":[{"content":"&#x7ecf;&#x6d4e;&#x539f;&#x5219;&#xff08;Economy&#xff09;&#xff1a;&#x7a0b;&#x5e8f;&#x5458;&#x7684;&#x4eba;&#x5de5;&#x65f6;&#x95f4;&#x662f;&#x6781;&#x5176;&#x6602;&#x8d35;&#x7684;&#xff0c;&#x800c;&#x786c;&#x4ef6;&#x4e0e;&#x673a;&#x5668;&#x65f6;&#x95f4;&#x662f;&#x6781;&#x5176;&#x5ec9;&#x4ef7;&#x7684;","children":[],"payload":{"tag":"li","lines":"55,56"}},{"content":"&#x4f18;&#x5316;&#x94c1;&#x5f8b;&#xff1a;&#x5148;&#x8ba9;&#x7a0b;&#x5e8f;&#x8dd1;&#x8d77;&#x6765;&#xff0c;&#x7136;&#x540e;&#x6d4b;&#x5ea6;&#xff08;Profile&#xff09;&#xff0c;&#x53ea;&#x6709;&#x6570;&#x636e;&#x8bc1;&#x660e;&#x786e;&#x5b9e;&#x662f;&#x74f6;&#x9888;&#x65f6;&#x624d;&#x53bb;&#x5c40;&#x90e8;&#x4f18;&#x5316;","children":[],"payload":{"tag":"li","lines":"56,57"}},{"content":"CLI &#x4e0e; GUI &#x7684;&#x4f18;&#x96c5;&#x5206;&#x5de5;&#xff1a;&#x7528; CLI &#x811a;&#x672c;&#x627f;&#x8f7d;&#x4e25;&#x8c28;&#x7684;&#x5e95;&#x5c42;&#x673a;&#x5236;&#xff0c;&#x7528; GUI &#x5916;&#x58f3;&#x627f;&#x8f7d;&#x4eba;&#x673a;&#x53cb;&#x597d;&#x7684;&#x4ea4;&#x4e92;&#x5c55;&#x73b0;","children":[],"payload":{"tag":"li","lines":"57,59"}}],"payload":{"tag":"h3","lines":"53,54"}},{"content":"&#x96c6;&#x5e02;&#x6a21;&#x5f0f;&#x4e0e;&#x5f00;&#x6e90;&#x6587;&#x5316;","children":[{"content":"&#x5927;&#x6559;&#x5802; vs &#x96c6;&#x5e02;&#xff1a;&#x5f00;&#x653e;&#x4ee3;&#x7801;&#x3001;&#x65e9;&#x671f;&#x4e14;&#x9891;&#x7e41;&#x53d1;&#x5e03;&#x3001;&#x503e;&#x542c;&#x5ba2;&#x6237;&#x53cd;&#x9988;&#x3001;&#x8ba9;&#x5168;&#x4e16;&#x754c;&#x773c;&#x775b;&#x5171;&#x540c;&#x5e2e;&#x6293; Bug","children":[],"payload":{"tag":"li","lines":"61,62"}},{"content":"&#x6a21;&#x5757;&#x590d;&#x7528;&#x4e0e;&#x53ef;&#x79fb;&#x690d;&#x6027;&#xff1a;&#x7ad9;&#x5728;&#x5de8;&#x4eba;&#x7684;&#x80a9;&#x8180;&#x4e0a;&#xff0c;&#x7edd;&#x4e0d;&#x91cd;&#x65b0;&#x53d1;&#x660e;&#x8f6e;&#x5b50;&#xff0c;&#x6784;&#x5efa;&#x957f;&#x671f;&#x6297;&#x8150;&#x8680;&#x7684;&#x4ee3;&#x7801;&#x57fa;&#x77f3;","children":[],"payload":{"tag":"li","lines":"62,63"}}],"payload":{"tag":"h3","lines":"59,60"}}],"payload":{"tag":"h2","lines":"50,51"}}],"payload":{"tag":"h1","lines":"0,1"}}</script>
       <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true"># 《UNIX编程艺术》 思维导图
 
 &gt; 核心主题：Unix哲学十七大铁律、文本流协议、透明性与正交模块设计
@@ -487,27 +277,6 @@
 全球协同开发的技术伦理与创造力源泉
 - 大教堂 vs 集市：开放代码、早期且频繁发布、倾听客户反馈、让全世界眼睛共同帮抓 Bug
 - 模块复用与可移植性：站在巨人的肩膀上，绝不重新发明轮子，构建长期抗腐蚀的代码基石</textarea>
-
-      <!-- Fullscreen Modal View -->
-      <div class="mindmap-modal" id="mindmapModal" aria-hidden="true" role="dialog" aria-label="思维导图全景全屏视图">
-        <div class="mm-modal-container">
-          <div class="mm-modal-header">
-            <div class="mm-modal-title-wrap">
-              <span class="mm-modal-tag">思维导图全景</span>
-              <span class="mm-modal-book-title">《UNIX编程艺术》</span>
-              <span class="mm-modal-theme">Unix哲学十七大铁律、文本流协议、透明性与正交模块设计</span>
-            </div>
-            <div class="mm-modal-controls">
-              <button type="button" class="mm-btn" id="mmModalToggleAllBtn">
-                <span class="mm-modal-toggle-text">全部收起</span>
-              </button>
-              <button type="button" class="mm-modal-close-btn" id="mmModalCloseBtn" aria-label="关闭全屏">×</button>
-            </div>
-          </div>
-          <div class="mm-modal-body" id="mmModalBody"></div>
-        </div>
-      </div>
-
       <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
     </section>
 
@@ -588,143 +357,192 @@
   </script>
 
   
+  <script src="vendor/markmap-bundle.js" defer></script>
   <script>
     (function() {
       var mmSection = document.getElementById('mindmapSection');
       if (!mmSection) return;
 
-      var container = document.getElementById('mindmapContainer');
-      var toggleAllBtn = document.getElementById('mmToggleAllBtn');
-      var copyBtn = document.getElementById('mmCopyMarkdownBtn');
-      var fullscreenBtn = document.getElementById('mmFullscreenBtn');
-      var modal = document.getElementById('mindmapModal');
-      var modalCloseBtn = document.getElementById('mmModalCloseBtn');
-      var modalBody = document.getElementById('mmModalBody');
-      var modalToggleAllBtn = document.getElementById('mmModalToggleAllBtn');
-      var toast = document.getElementById('mmToast');
-      var mdSource = document.getElementById('mmMarkdownSource');
+      var svgEl = document.getElementById('markmapSvg');
+      var treeDataEl = document.getElementById('mmTreeData');
+      if (!svgEl || !treeDataEl) return;
 
-      var isAllCollapsed = false;
+      function initMarkmap() {
+        if (!window.markmap || !window.markmap.Markmap || !window.d3) {
+          setTimeout(initMarkmap, 50);
+          return;
+        }
 
-      function bindBranchHeaders(root) {
-        var headers = root.querySelectorAll('.mm-branch-header');
-        headers.forEach(function(header) {
-          header.addEventListener('click', function() {
-            var branch = header.closest('.mm-branch');
-            if (branch) {
-              branch.classList.toggle('is-collapsed');
+        var rawData = JSON.parse(treeDataEl.textContent);
+        var palette = ['#007722', '#1d4ed8', '#c2410c', '#7e22ce', '#0f766e', '#be123c'];
+        var colorScale = d3.scaleOrdinal(palette);
+
+        function cloneData(obj) {
+          return JSON.parse(JSON.stringify(obj));
+        }
+
+        function setFold(n, f) {
+          if (n.children && n.children.length) {
+            n.payload = Object.assign({}, n.payload, { fold: f ? 1 : 0 });
+            n.children.forEach(function(c) { setFold(c, f); });
+          }
+        }
+
+        // Default initial fold: level 2 topics collapsed
+        var currentData = cloneData(rawData);
+        if (currentData.children) {
+          currentData.payload = Object.assign({}, currentData.payload, { fold: 0 });
+          currentData.children.forEach(function(branch) {
+            branch.payload = Object.assign({}, branch.payload, { fold: 0 });
+            if (branch.children) {
+              branch.children.forEach(function(topic) {
+                setFold(topic, true);
+              });
             }
           });
-        });
-      }
+        }
 
-      bindBranchHeaders(container);
+        var mm = window.markmap.Markmap.create(svgEl, {
+          autoFit: true,
+          duration: 350,
+          color: function(node) {
+            return colorScale(node.state.id);
+          },
+          paddingX: 16,
+          spacingHorizontal: 75,
+          spacingVertical: 12
+        }, currentData);
 
-      // Toggle all in main view
-      if (toggleAllBtn) {
-        toggleAllBtn.addEventListener('click', function() {
-          isAllCollapsed = !isAllCollapsed;
-          var branches = container.querySelectorAll('.mm-branch');
-          branches.forEach(function(b) {
-            if (isAllCollapsed) {
-              b.classList.add('is-collapsed');
-            } else {
-              b.classList.remove('is-collapsed');
-            }
+        // Mount toolbar
+        if (window.markmap.Toolbar) {
+          var tb = window.markmap.Toolbar.create(mm);
+          tb.setBrand(false);
+          var tbWrap = document.getElementById('mmToolbarWrap');
+          if (tbWrap) tbWrap.appendChild(tb.render());
+        }
+
+        // Level Preset Buttons
+        var btnL1 = document.getElementById('mmBtnLevel1');
+        var btnL2 = document.getElementById('mmBtnLevel2');
+        var btnAll = document.getElementById('mmBtnExpandAll');
+
+        function setActiveLevelBtn(activeBtn) {
+          [btnL1, btnL2, btnAll].forEach(function(b) {
+            if (b) b.classList.remove('active');
           });
-          var txt = toggleAllBtn.querySelector('.mm-toggle-text');
-          if (txt) txt.textContent = isAllCollapsed ? '全部展开' : '全部收起';
-        });
-      }
+          if (activeBtn) activeBtn.classList.add('active');
+        }
 
-      // Copy Markdown Outline
-      function showToast(msg) {
-        if (!toast) return;
-        toast.textContent = msg;
-        toast.classList.add('active');
-        setTimeout(function() {
-          toast.classList.remove('active');
-        }, 2200);
-      }
+        if (btnL1) {
+          btnL1.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) { setFold(b, true); });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL1);
+          });
+        }
 
-      if (copyBtn && mdSource) {
-        copyBtn.addEventListener('click', function() {
-          var text = mdSource.value;
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function() {
-              showToast('✓ 已复制思维导图大纲到剪贴板！');
-            }).catch(function() {
-              fallbackCopy(text);
-            });
-          } else {
-            fallbackCopy(text);
+        if (btnL2) {
+          btnL2.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) {
+                b.payload = Object.assign({}, b.payload, { fold: 0 });
+                if (b.children) {
+                  b.children.forEach(function(t) { setFold(t, true); });
+                }
+              });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL2);
+          });
+        }
+
+        if (btnAll) {
+          btnAll.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            setFold(d, false);
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnAll);
+          });
+        }
+
+        // Fullscreen Toggle
+        var fsBtn = document.getElementById('mmFullscreenBtn');
+        var fsText = fsBtn ? fsBtn.querySelector('.mm-fs-text') : null;
+
+        function toggleFullscreen() {
+          var isFs = mmSection.classList.toggle('is-fullscreen');
+          if (fsText) fsText.textContent = isFs ? '退出全屏' : '全屏';
+          setTimeout(function() {
+            mm.fit();
+          }, 150);
+        }
+
+        if (fsBtn) {
+          fsBtn.addEventListener('click', toggleFullscreen);
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && mmSection.classList.contains('is-fullscreen')) {
+            toggleFullscreen();
           }
         });
-      }
 
-      function fallbackCopy(text) {
-        try {
-          var ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-          showToast('✓ 已复制思维导图大纲到剪贴板！');
-        } catch (e) {
-          showToast('复制失败，请手动选取复制');
+        // Copy Markdown
+        var copyBtn = document.getElementById('mmCopyMarkdownBtn');
+        var mdSource = document.getElementById('mmMarkdownSource');
+        var toast = document.getElementById('mmToast');
+
+        function showToast(msg) {
+          if (!toast) return;
+          toast.textContent = msg;
+          toast.classList.add('active');
+          setTimeout(function() { toast.classList.remove('active'); }, 2200);
         }
-      }
 
-      // Fullscreen Modal Logic
-      function openModal() {
-        if (!modal || !modalBody) return;
-        modalBody.innerHTML = container.innerHTML;
-        bindBranchHeaders(modalBody);
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        if (!modal) return;
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-
-      if (fullscreenBtn) {
-        fullscreenBtn.addEventListener('click', openModal);
-      }
-      if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', closeModal);
-      }
-      if (modal) {
-        modal.addEventListener('click', function(e) {
-          if (e.target === modal) closeModal();
-        });
-      }
-
-      if (modalToggleAllBtn) {
-        modalToggleAllBtn.addEventListener('click', function() {
-          var branches = modalBody.querySelectorAll('.mm-branch');
-          var shouldCollapse = !branches[0].classList.contains('is-collapsed');
-          branches.forEach(function(b) {
-            if (shouldCollapse) b.classList.add('is-collapsed');
-            else b.classList.remove('is-collapsed');
+        if (copyBtn && mdSource) {
+          copyBtn.addEventListener('click', function() {
+            var text = mdSource.value;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function() {
+                showToast('✓ 已复制思维导图大纲到剪贴板！');
+              }).catch(function() {
+                fallbackCopy(text);
+              });
+            } else {
+              fallbackCopy(text);
+            }
           });
-          var txt = modalToggleAllBtn.querySelector('.mm-modal-toggle-text');
-          if (txt) txt.textContent = shouldCollapse ? '全部展开' : '全部收起';
-        });
+        }
+
+        function fallbackCopy(text) {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('✓ 已复制思维导图大纲到剪贴板！');
+          } catch (e) {
+            showToast('复制失败，请手动选取');
+          }
+        }
       }
 
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-          closeModal();
-        }
-      });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMarkmap);
+      } else {
+        initMarkmap();
+      }
     })();
   </script>
 

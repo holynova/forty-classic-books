@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>《企业应用架构模式》 · 经典书导读</title>
-  <link rel="stylesheet" href="style.css?v=fea06185">
+  <link rel="stylesheet" href="style.css?v=4fdade2e">
 </head>
 <body>
   <div class="layout-container">
@@ -182,276 +182,38 @@
           <section class="section-block mindmap-section" id="mindmapSection">
       <div class="mindmap-header">
         <div class="mindmap-header-left">
-          <span class="mindmap-badge">知识脉络</span>
-          <h2 class="mindmap-title">全书思维导图</h2>
+          <span class="mindmap-badge">树状思维导图</span>
+          <h2 class="mindmap-title">全书思维导图 · 知识脉络树</h2>
         </div>
         <div class="mindmap-actions">
-          <button type="button" class="mm-btn mm-btn-toggle" id="mmToggleAllBtn" title="全部折叠/展开">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="7 13 12 18 17 13"></polyline><polyline points="7 6 12 11 17 6"></polyline></svg>
-            <span class="mm-toggle-text">全部收起</span>
-          </button>
-          <button type="button" class="mm-btn mm-btn-copy" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
+          <div class="mm-level-switch">
+            <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
+            <button type="button" class="mm-btn active" id="mmBtnLevel2" title="展开至二级分支">分支</button>
+            <button type="button" class="mm-btn" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
+          </div>
+
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
             <span>复制大纲</span>
           </button>
-          <button type="button" class="mm-btn mm-btn-fullscreen" id="mmFullscreenBtn" title="全屏沉浸式全景模式">
+          <button type="button" class="mm-btn mm-btn-standalone" id="mmFullscreenBtn" title="全屏沉浸式全景模式 (ESC 退出)">
             <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-            <span>全屏全景</span>
+            <span class="mm-fs-text">全屏</span>
           </button>
         </div>
       </div>
 
-      <div class="mindmap-container" id="mindmapContainer">
-        <div class="mm-root-card">
-          <div class="mm-root-pill">核心主旨</div>
-          <div class="mm-root-title">《企业应用架构模式》</div>
-          <div class="mm-root-theme">企业应用分层体系、三种领域逻辑形态、对象关系阻抗失衡与并发会话模式</div>
-        </div>
-
-        <div class="mm-tree-body">
-          <div class="mm-branch" data-branch-index="0">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">一、企业应用分层与核心考量</span>
-          <span class="mm-branch-desc">Martin Fowler 对企业软件复杂性的第一性解构</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">经典三层架构（Presentation, Domain, Data Source）</h4>
+      <div class="mm-viewport-wrapper">
+        <div class="mm-viewport" id="mmViewport">
+          <svg id="markmapSvg"></svg>
+          <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
+          <div class="mm-canvas-hint">
+            <span>💡 拖拽平移 · 滚轮缩放 · 点击分支圆点折叠/展开</span>
           </div>
-          <p class="mm-topic-desc">分离关注点的基本骨架</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">表现层（Presentation）：处理与用户的交互、界面渲染、请求解析与参数校验</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">领域层（Domain Logic / Business Logic）：系统的真正灵魂，处理纯粹的业务计算、规则校验与状态流转</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">数据源层（Data Source）：负责与数据库、外部系统或消息队列通信，持久化领域状态</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">单向依赖法则：表现层依赖领域层，领域层不依赖表现层；保持领域层的纯洁性使其具备跨平台复用与可测试性</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">分布策略与 Fowler 第一定律</h4>
-          </div>
-          <p class="mm-topic-desc">不要盲目做分布式对象</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">分布式对象第一定律：不要分布式（First Rule of Distributed Object: Don't distribute!）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">跨网络调用的高昂开销：进程内方法调用与跨网络 IPC 耗时相差数千倍；除非因团队自治、物理隔离或极高扩展性，尽量保持进程内单一部署</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">粗粒度接口（Remote Façade）：必须跨网络时，必须将细粒度 getters/setters 聚合为粗粒度 DTO（数据传输对象），单次传输完整数据</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="1">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">二、组织领域逻辑的三大经典模式</span>
-          <span class="mm-branch-desc">根据业务复杂度选择最适配的代码模型</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">事务脚本（Transaction Script）</h4>
-          </div>
-          <p class="mm-topic-desc">最简单直接的过程式思维</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">实现机制：用一个过程（函数）组织一次业务请求的所有操作，从数据库取数、计算、写回数据库</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">适用场景：简单业务系统或纯 CRUD 项目，开发上手极快，几乎没有面向对象的学习曲线</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">局限性：随着业务规则膨胀，脚本内大量重复代码难以复用，陷入‘复制-粘贴-修改’的代码泥潭</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">表模块（Table Module）与领域模型（Domain Model）</h4>
-          </div>
-          <p class="mm-topic-desc">面向表结构 vs 面向丰富对象</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">表模块（Table Module）：为数据库中的一张表定义一个单一类，配合 RecordSet 操作（典型如 .NET DataTable），适合以数据表为核心的系统</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">领域模型（Domain Model）：由互相关联的对象构成的面向对象网络，每个对象封装数据与特定行为；利用继承、多态应对极其复杂的业务规则</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">服务层（Service Layer）：在领域模型之上定义一个明确的边界接口，建立一组可用的操作，并协调事务与安全控制</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="2">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">三、对象-关系映射（ORM）与阻抗失衡解决方案</span>
-          <span class="mm-branch-desc">消除关系型数据库与面向对象内存结构之间的鸿沟</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">数据源架构模式（Active Record vs Data Mapper）</h4>
-          </div>
-          <p class="mm-topic-desc">对象与数据表绑定的深浅权衡</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">活动记录（Active Record）：一个对象包装数据库表的一行，包含字段属性与数据库增删改查逻辑（如 Ruby on Rails/MyBatis-Plus）；简单直观但领域与数据层强耦合</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">数据映射器（Data Mapper）：在对象与数据库之间设立完全独立的映射层，保持领域实体对象对底层数据库结构一无所知，实现极致解耦（如 Hibernate/JPA）</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">结构、并发与事务映射关键模式</h4>
-          </div>
-          <p class="mm-topic-desc">ORM 框架的核心底层算法机制</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">工作单元（Unit of Work）：维护在一次业务事务中受影响的业务对象列表，统一计算脏数据并在事务提交时一次性批量刷库，彻底避免脏写与重复写</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">标识映射（Identity Map）：在内存中建立已加载对象的哈希缓存，确保在同一个业务上下文里同一行数据库记录只存在一个对应的内存对象，避免状态不一致</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">延迟加载（Lazy Load）：将关联对象的加载推迟到第一次真正被访问时（通过虚代理 Virtual Proxy 或动态代理实现），避免 N+1 或一次性拉取整个数据库</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="3">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">四、Web 表现层架构模式</span>
-          <span class="mm-branch-desc">组织用户交互与请求分发的成熟模式</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">MVC 与控制器形态（Page Controller vs Front Controller）</h4>
-          </div>
-          <p class="mm-topic-desc">现代 Web 框架的通用底层设计</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">模型-视图-控制器（Model-View-Controller）：分离数据表示、界面视图与流程控制，视图监听模型变化，控制器负责接收用户输入</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">页面控制器（Page Controller）：一个页面（或 URL）对应一个独立的控制器（如早期 JSP/PHP）</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">前端控制器（Front Controller）：所有请求先流经一个统一的集中分发器（如 Spring DispatcherServlet），在此处统一处理认证、日志、本地化和路由</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
-<div class="mm-branch" data-branch-index="4">
-        <div class="mm-branch-header">
-          <span class="mm-branch-toggle-icon">▼</span>
-          <span class="mm-branch-title">五、并发控制与会话状态管理</span>
-          <span class="mm-branch-desc">保障多用户访问安全与状态维持</span>
-        </div>
-        <div class="mm-branch-content">
-          <div class="mm-topics-grid">
-            <div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">并发控制模式（乐观锁 vs 悲观锁）</h4>
-          </div>
-          <p class="mm-topic-desc">面对并发写冲突的防御手段</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">乐观离线锁（Optimistic Offline Lock）：在实体中维护版本号（Version），提交时比对版本号是否一致，冲突则回滚并提示；读多写少、冲突率低的推荐方案</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">悲观离线锁（Pessimistic Offline Lock）：进入编辑态即直接加锁占用资源，其他用户无法编辑；强一致性但降低系统并发度与吞吐量</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">粗粒度锁（Coarse-Grained Lock）：对复杂对象树（如订单及全部订单项）统一锁住根对象，防止并发下零散子项产生幻读冲突</span>
-        </li>
-          </ul>
-        </div>
-<div class="mm-topic-card">
-          <div class="mm-topic-header">
-            <span class="mm-topic-bullet"></span>
-            <h4 class="mm-topic-title">会话状态维持模式</h4>
-          </div>
-          <p class="mm-topic-desc">无状态设计与状态落地</p>
-          <ul class="mm-points-list">
-            <li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">客户端会话状态（Client Session State）：将状态数据加密保存在客户端（如 Cookie/JWT），服务端完全无状态，扩展性极高但受容量与网络带宽限制</span>
-        </li>
-<li class="mm-point-item">
-          <span class="mm-pt-dot">•</span>
-          <span class="mm-pt-text">服务器端会话状态（Server Session State）：保存在内存或集中式 Redis 中，客户端仅持 Session ID，安全高效但需维护分布式 Session</span>
-        </li>
-          </ul>
-        </div>
-          </div>
-        </div>
-      </div>
         </div>
       </div>
 
+      <script type="application/json" id="mmTreeData">{"content":"&#x300a;&#x4f01;&#x4e1a;&#x5e94;&#x7528;&#x67b6;&#x6784;&#x6a21;&#x5f0f;&#x300b; &#x601d;&#x7ef4;&#x5bfc;&#x56fe;","children":[{"content":"&#x4e00;&#x3001;&#x4f01;&#x4e1a;&#x5e94;&#x7528;&#x5206;&#x5c42;&#x4e0e;&#x6838;&#x5fc3;&#x8003;&#x91cf;","children":[{"content":"&#x7ecf;&#x5178;&#x4e09;&#x5c42;&#x67b6;&#x6784;&#xff08;Presentation, Domain, Data Source&#xff09;","children":[{"content":"&#x8868;&#x73b0;&#x5c42;&#xff08;Presentation&#xff09;&#xff1a;&#x5904;&#x7406;&#x4e0e;&#x7528;&#x6237;&#x7684;&#x4ea4;&#x4e92;&#x3001;&#x754c;&#x9762;&#x6e32;&#x67d3;&#x3001;&#x8bf7;&#x6c42;&#x89e3;&#x6790;&#x4e0e;&#x53c2;&#x6570;&#x6821;&#x9a8c;","children":[],"payload":{"tag":"li","lines":"9,10"}},{"content":"&#x9886;&#x57df;&#x5c42;&#xff08;Domain Logic / Business Logic&#xff09;&#xff1a;&#x7cfb;&#x7edf;&#x7684;&#x771f;&#x6b63;&#x7075;&#x9b42;&#xff0c;&#x5904;&#x7406;&#x7eaf;&#x7cb9;&#x7684;&#x4e1a;&#x52a1;&#x8ba1;&#x7b97;&#x3001;&#x89c4;&#x5219;&#x6821;&#x9a8c;&#x4e0e;&#x72b6;&#x6001;&#x6d41;&#x8f6c;","children":[],"payload":{"tag":"li","lines":"10,11"}},{"content":"&#x6570;&#x636e;&#x6e90;&#x5c42;&#xff08;Data Source&#xff09;&#xff1a;&#x8d1f;&#x8d23;&#x4e0e;&#x6570;&#x636e;&#x5e93;&#x3001;&#x5916;&#x90e8;&#x7cfb;&#x7edf;&#x6216;&#x6d88;&#x606f;&#x961f;&#x5217;&#x901a;&#x4fe1;&#xff0c;&#x6301;&#x4e45;&#x5316;&#x9886;&#x57df;&#x72b6;&#x6001;","children":[],"payload":{"tag":"li","lines":"11,12"}},{"content":"&#x5355;&#x5411;&#x4f9d;&#x8d56;&#x6cd5;&#x5219;&#xff1a;&#x8868;&#x73b0;&#x5c42;&#x4f9d;&#x8d56;&#x9886;&#x57df;&#x5c42;&#xff0c;&#x9886;&#x57df;&#x5c42;&#x4e0d;&#x4f9d;&#x8d56;&#x8868;&#x73b0;&#x5c42;&#xff1b;&#x4fdd;&#x6301;&#x9886;&#x57df;&#x5c42;&#x7684;&#x7eaf;&#x6d01;&#x6027;&#x4f7f;&#x5176;&#x5177;&#x5907;&#x8de8;&#x5e73;&#x53f0;&#x590d;&#x7528;&#x4e0e;&#x53ef;&#x6d4b;&#x8bd5;&#x6027;","children":[],"payload":{"tag":"li","lines":"12,14"}}],"payload":{"tag":"h3","lines":"7,8"}},{"content":"&#x5206;&#x5e03;&#x7b56;&#x7565;&#x4e0e; Fowler &#x7b2c;&#x4e00;&#x5b9a;&#x5f8b;","children":[{"content":"&#x5206;&#x5e03;&#x5f0f;&#x5bf9;&#x8c61;&#x7b2c;&#x4e00;&#x5b9a;&#x5f8b;&#xff1a;&#x4e0d;&#x8981;&#x5206;&#x5e03;&#x5f0f;&#xff08;First Rule of Distributed Object: Don&apos;t distribute!&#xff09;","children":[],"payload":{"tag":"li","lines":"16,17"}},{"content":"&#x8de8;&#x7f51;&#x7edc;&#x8c03;&#x7528;&#x7684;&#x9ad8;&#x6602;&#x5f00;&#x9500;&#xff1a;&#x8fdb;&#x7a0b;&#x5185;&#x65b9;&#x6cd5;&#x8c03;&#x7528;&#x4e0e;&#x8de8;&#x7f51;&#x7edc; IPC &#x8017;&#x65f6;&#x76f8;&#x5dee;&#x6570;&#x5343;&#x500d;&#xff1b;&#x9664;&#x975e;&#x56e0;&#x56e2;&#x961f;&#x81ea;&#x6cbb;&#x3001;&#x7269;&#x7406;&#x9694;&#x79bb;&#x6216;&#x6781;&#x9ad8;&#x6269;&#x5c55;&#x6027;&#xff0c;&#x5c3d;&#x91cf;&#x4fdd;&#x6301;&#x8fdb;&#x7a0b;&#x5185;&#x5355;&#x4e00;&#x90e8;&#x7f72;","children":[],"payload":{"tag":"li","lines":"17,18"}},{"content":"&#x7c97;&#x7c92;&#x5ea6;&#x63a5;&#x53e3;&#xff08;Remote Fa&#xe7;ade&#xff09;&#xff1a;&#x5fc5;&#x987b;&#x8de8;&#x7f51;&#x7edc;&#x65f6;&#xff0c;&#x5fc5;&#x987b;&#x5c06;&#x7ec6;&#x7c92;&#x5ea6; getters/setters &#x805a;&#x5408;&#x4e3a;&#x7c97;&#x7c92;&#x5ea6; DTO&#xff08;&#x6570;&#x636e;&#x4f20;&#x8f93;&#x5bf9;&#x8c61;&#xff09;&#xff0c;&#x5355;&#x6b21;&#x4f20;&#x8f93;&#x5b8c;&#x6574;&#x6570;&#x636e;","children":[],"payload":{"tag":"li","lines":"18,20"}}],"payload":{"tag":"h3","lines":"14,15"}}],"payload":{"tag":"h2","lines":"4,5"}},{"content":"&#x4e8c;&#x3001;&#x7ec4;&#x7ec7;&#x9886;&#x57df;&#x903b;&#x8f91;&#x7684;&#x4e09;&#x5927;&#x7ecf;&#x5178;&#x6a21;&#x5f0f;","children":[{"content":"&#x4e8b;&#x52a1;&#x811a;&#x672c;&#xff08;Transaction Script&#xff09;","children":[{"content":"&#x5b9e;&#x73b0;&#x673a;&#x5236;&#xff1a;&#x7528;&#x4e00;&#x4e2a;&#x8fc7;&#x7a0b;&#xff08;&#x51fd;&#x6570;&#xff09;&#x7ec4;&#x7ec7;&#x4e00;&#x6b21;&#x4e1a;&#x52a1;&#x8bf7;&#x6c42;&#x7684;&#x6240;&#x6709;&#x64cd;&#x4f5c;&#xff0c;&#x4ece;&#x6570;&#x636e;&#x5e93;&#x53d6;&#x6570;&#x3001;&#x8ba1;&#x7b97;&#x3001;&#x5199;&#x56de;&#x6570;&#x636e;&#x5e93;","children":[],"payload":{"tag":"li","lines":"25,26"}},{"content":"&#x9002;&#x7528;&#x573a;&#x666f;&#xff1a;&#x7b80;&#x5355;&#x4e1a;&#x52a1;&#x7cfb;&#x7edf;&#x6216;&#x7eaf; CRUD &#x9879;&#x76ee;&#xff0c;&#x5f00;&#x53d1;&#x4e0a;&#x624b;&#x6781;&#x5feb;&#xff0c;&#x51e0;&#x4e4e;&#x6ca1;&#x6709;&#x9762;&#x5411;&#x5bf9;&#x8c61;&#x7684;&#x5b66;&#x4e60;&#x66f2;&#x7ebf;","children":[],"payload":{"tag":"li","lines":"26,27"}},{"content":"&#x5c40;&#x9650;&#x6027;&#xff1a;&#x968f;&#x7740;&#x4e1a;&#x52a1;&#x89c4;&#x5219;&#x81a8;&#x80c0;&#xff0c;&#x811a;&#x672c;&#x5185;&#x5927;&#x91cf;&#x91cd;&#x590d;&#x4ee3;&#x7801;&#x96be;&#x4ee5;&#x590d;&#x7528;&#xff0c;&#x9677;&#x5165;&#x2018;&#x590d;&#x5236;-&#x7c98;&#x8d34;-&#x4fee;&#x6539;&#x2019;&#x7684;&#x4ee3;&#x7801;&#x6ce5;&#x6f6d;","children":[],"payload":{"tag":"li","lines":"27,29"}}],"payload":{"tag":"h3","lines":"23,24"}},{"content":"&#x8868;&#x6a21;&#x5757;&#xff08;Table Module&#xff09;&#x4e0e;&#x9886;&#x57df;&#x6a21;&#x578b;&#xff08;Domain Model&#xff09;","children":[{"content":"&#x8868;&#x6a21;&#x5757;&#xff08;Table Module&#xff09;&#xff1a;&#x4e3a;&#x6570;&#x636e;&#x5e93;&#x4e2d;&#x7684;&#x4e00;&#x5f20;&#x8868;&#x5b9a;&#x4e49;&#x4e00;&#x4e2a;&#x5355;&#x4e00;&#x7c7b;&#xff0c;&#x914d;&#x5408; RecordSet &#x64cd;&#x4f5c;&#xff08;&#x5178;&#x578b;&#x5982; .NET DataTable&#xff09;&#xff0c;&#x9002;&#x5408;&#x4ee5;&#x6570;&#x636e;&#x8868;&#x4e3a;&#x6838;&#x5fc3;&#x7684;&#x7cfb;&#x7edf;","children":[],"payload":{"tag":"li","lines":"31,32"}},{"content":"&#x9886;&#x57df;&#x6a21;&#x578b;&#xff08;Domain Model&#xff09;&#xff1a;&#x7531;&#x4e92;&#x76f8;&#x5173;&#x8054;&#x7684;&#x5bf9;&#x8c61;&#x6784;&#x6210;&#x7684;&#x9762;&#x5411;&#x5bf9;&#x8c61;&#x7f51;&#x7edc;&#xff0c;&#x6bcf;&#x4e2a;&#x5bf9;&#x8c61;&#x5c01;&#x88c5;&#x6570;&#x636e;&#x4e0e;&#x7279;&#x5b9a;&#x884c;&#x4e3a;&#xff1b;&#x5229;&#x7528;&#x7ee7;&#x627f;&#x3001;&#x591a;&#x6001;&#x5e94;&#x5bf9;&#x6781;&#x5176;&#x590d;&#x6742;&#x7684;&#x4e1a;&#x52a1;&#x89c4;&#x5219;","children":[],"payload":{"tag":"li","lines":"32,33"}},{"content":"&#x670d;&#x52a1;&#x5c42;&#xff08;Service Layer&#xff09;&#xff1a;&#x5728;&#x9886;&#x57df;&#x6a21;&#x578b;&#x4e4b;&#x4e0a;&#x5b9a;&#x4e49;&#x4e00;&#x4e2a;&#x660e;&#x786e;&#x7684;&#x8fb9;&#x754c;&#x63a5;&#x53e3;&#xff0c;&#x5efa;&#x7acb;&#x4e00;&#x7ec4;&#x53ef;&#x7528;&#x7684;&#x64cd;&#x4f5c;&#xff0c;&#x5e76;&#x534f;&#x8c03;&#x4e8b;&#x52a1;&#x4e0e;&#x5b89;&#x5168;&#x63a7;&#x5236;","children":[],"payload":{"tag":"li","lines":"33,35"}}],"payload":{"tag":"h3","lines":"29,30"}}],"payload":{"tag":"h2","lines":"20,21"}},{"content":"&#x4e09;&#x3001;&#x5bf9;&#x8c61;-&#x5173;&#x7cfb;&#x6620;&#x5c04;&#xff08;ORM&#xff09;&#x4e0e;&#x963b;&#x6297;&#x5931;&#x8861;&#x89e3;&#x51b3;&#x65b9;&#x6848;","children":[{"content":"&#x6570;&#x636e;&#x6e90;&#x67b6;&#x6784;&#x6a21;&#x5f0f;&#xff08;Active Record vs Data Mapper&#xff09;","children":[{"content":"&#x6d3b;&#x52a8;&#x8bb0;&#x5f55;&#xff08;Active Record&#xff09;&#xff1a;&#x4e00;&#x4e2a;&#x5bf9;&#x8c61;&#x5305;&#x88c5;&#x6570;&#x636e;&#x5e93;&#x8868;&#x7684;&#x4e00;&#x884c;&#xff0c;&#x5305;&#x542b;&#x5b57;&#x6bb5;&#x5c5e;&#x6027;&#x4e0e;&#x6570;&#x636e;&#x5e93;&#x589e;&#x5220;&#x6539;&#x67e5;&#x903b;&#x8f91;&#xff08;&#x5982; Ruby on Rails/MyBatis-Plus&#xff09;&#xff1b;&#x7b80;&#x5355;&#x76f4;&#x89c2;&#x4f46;&#x9886;&#x57df;&#x4e0e;&#x6570;&#x636e;&#x5c42;&#x5f3a;&#x8026;&#x5408;","children":[],"payload":{"tag":"li","lines":"40,41"}},{"content":"&#x6570;&#x636e;&#x6620;&#x5c04;&#x5668;&#xff08;Data Mapper&#xff09;&#xff1a;&#x5728;&#x5bf9;&#x8c61;&#x4e0e;&#x6570;&#x636e;&#x5e93;&#x4e4b;&#x95f4;&#x8bbe;&#x7acb;&#x5b8c;&#x5168;&#x72ec;&#x7acb;&#x7684;&#x6620;&#x5c04;&#x5c42;&#xff0c;&#x4fdd;&#x6301;&#x9886;&#x57df;&#x5b9e;&#x4f53;&#x5bf9;&#x8c61;&#x5bf9;&#x5e95;&#x5c42;&#x6570;&#x636e;&#x5e93;&#x7ed3;&#x6784;&#x4e00;&#x65e0;&#x6240;&#x77e5;&#xff0c;&#x5b9e;&#x73b0;&#x6781;&#x81f4;&#x89e3;&#x8026;&#xff08;&#x5982; Hibernate/JPA&#xff09;","children":[],"payload":{"tag":"li","lines":"41,43"}}],"payload":{"tag":"h3","lines":"38,39"}},{"content":"&#x7ed3;&#x6784;&#x3001;&#x5e76;&#x53d1;&#x4e0e;&#x4e8b;&#x52a1;&#x6620;&#x5c04;&#x5173;&#x952e;&#x6a21;&#x5f0f;","children":[{"content":"&#x5de5;&#x4f5c;&#x5355;&#x5143;&#xff08;Unit of Work&#xff09;&#xff1a;&#x7ef4;&#x62a4;&#x5728;&#x4e00;&#x6b21;&#x4e1a;&#x52a1;&#x4e8b;&#x52a1;&#x4e2d;&#x53d7;&#x5f71;&#x54cd;&#x7684;&#x4e1a;&#x52a1;&#x5bf9;&#x8c61;&#x5217;&#x8868;&#xff0c;&#x7edf;&#x4e00;&#x8ba1;&#x7b97;&#x810f;&#x6570;&#x636e;&#x5e76;&#x5728;&#x4e8b;&#x52a1;&#x63d0;&#x4ea4;&#x65f6;&#x4e00;&#x6b21;&#x6027;&#x6279;&#x91cf;&#x5237;&#x5e93;&#xff0c;&#x5f7b;&#x5e95;&#x907f;&#x514d;&#x810f;&#x5199;&#x4e0e;&#x91cd;&#x590d;&#x5199;","children":[],"payload":{"tag":"li","lines":"45,46"}},{"content":"&#x6807;&#x8bc6;&#x6620;&#x5c04;&#xff08;Identity Map&#xff09;&#xff1a;&#x5728;&#x5185;&#x5b58;&#x4e2d;&#x5efa;&#x7acb;&#x5df2;&#x52a0;&#x8f7d;&#x5bf9;&#x8c61;&#x7684;&#x54c8;&#x5e0c;&#x7f13;&#x5b58;&#xff0c;&#x786e;&#x4fdd;&#x5728;&#x540c;&#x4e00;&#x4e2a;&#x4e1a;&#x52a1;&#x4e0a;&#x4e0b;&#x6587;&#x91cc;&#x540c;&#x4e00;&#x884c;&#x6570;&#x636e;&#x5e93;&#x8bb0;&#x5f55;&#x53ea;&#x5b58;&#x5728;&#x4e00;&#x4e2a;&#x5bf9;&#x5e94;&#x7684;&#x5185;&#x5b58;&#x5bf9;&#x8c61;&#xff0c;&#x907f;&#x514d;&#x72b6;&#x6001;&#x4e0d;&#x4e00;&#x81f4;","children":[],"payload":{"tag":"li","lines":"46,47"}},{"content":"&#x5ef6;&#x8fdf;&#x52a0;&#x8f7d;&#xff08;Lazy Load&#xff09;&#xff1a;&#x5c06;&#x5173;&#x8054;&#x5bf9;&#x8c61;&#x7684;&#x52a0;&#x8f7d;&#x63a8;&#x8fdf;&#x5230;&#x7b2c;&#x4e00;&#x6b21;&#x771f;&#x6b63;&#x88ab;&#x8bbf;&#x95ee;&#x65f6;&#xff08;&#x901a;&#x8fc7;&#x865a;&#x4ee3;&#x7406; Virtual Proxy &#x6216;&#x52a8;&#x6001;&#x4ee3;&#x7406;&#x5b9e;&#x73b0;&#xff09;&#xff0c;&#x907f;&#x514d; N+1 &#x6216;&#x4e00;&#x6b21;&#x6027;&#x62c9;&#x53d6;&#x6574;&#x4e2a;&#x6570;&#x636e;&#x5e93;","children":[],"payload":{"tag":"li","lines":"47,49"}}],"payload":{"tag":"h3","lines":"43,44"}}],"payload":{"tag":"h2","lines":"35,36"}},{"content":"&#x56db;&#x3001;Web &#x8868;&#x73b0;&#x5c42;&#x67b6;&#x6784;&#x6a21;&#x5f0f;","children":[{"content":"MVC &#x4e0e;&#x63a7;&#x5236;&#x5668;&#x5f62;&#x6001;&#xff08;Page Controller vs Front Controller&#xff09;","children":[{"content":"&#x6a21;&#x578b;-&#x89c6;&#x56fe;-&#x63a7;&#x5236;&#x5668;&#xff08;Model-View-Controller&#xff09;&#xff1a;&#x5206;&#x79bb;&#x6570;&#x636e;&#x8868;&#x793a;&#x3001;&#x754c;&#x9762;&#x89c6;&#x56fe;&#x4e0e;&#x6d41;&#x7a0b;&#x63a7;&#x5236;&#xff0c;&#x89c6;&#x56fe;&#x76d1;&#x542c;&#x6a21;&#x578b;&#x53d8;&#x5316;&#xff0c;&#x63a7;&#x5236;&#x5668;&#x8d1f;&#x8d23;&#x63a5;&#x6536;&#x7528;&#x6237;&#x8f93;&#x5165;","children":[],"payload":{"tag":"li","lines":"54,55"}},{"content":"&#x9875;&#x9762;&#x63a7;&#x5236;&#x5668;&#xff08;Page Controller&#xff09;&#xff1a;&#x4e00;&#x4e2a;&#x9875;&#x9762;&#xff08;&#x6216; URL&#xff09;&#x5bf9;&#x5e94;&#x4e00;&#x4e2a;&#x72ec;&#x7acb;&#x7684;&#x63a7;&#x5236;&#x5668;&#xff08;&#x5982;&#x65e9;&#x671f; JSP/PHP&#xff09;","children":[],"payload":{"tag":"li","lines":"55,56"}},{"content":"&#x524d;&#x7aef;&#x63a7;&#x5236;&#x5668;&#xff08;Front Controller&#xff09;&#xff1a;&#x6240;&#x6709;&#x8bf7;&#x6c42;&#x5148;&#x6d41;&#x7ecf;&#x4e00;&#x4e2a;&#x7edf;&#x4e00;&#x7684;&#x96c6;&#x4e2d;&#x5206;&#x53d1;&#x5668;&#xff08;&#x5982; Spring DispatcherServlet&#xff09;&#xff0c;&#x5728;&#x6b64;&#x5904;&#x7edf;&#x4e00;&#x5904;&#x7406;&#x8ba4;&#x8bc1;&#x3001;&#x65e5;&#x5fd7;&#x3001;&#x672c;&#x5730;&#x5316;&#x548c;&#x8def;&#x7531;","children":[],"payload":{"tag":"li","lines":"56,58"}}],"payload":{"tag":"h3","lines":"52,53"}}],"payload":{"tag":"h2","lines":"49,50"}},{"content":"&#x4e94;&#x3001;&#x5e76;&#x53d1;&#x63a7;&#x5236;&#x4e0e;&#x4f1a;&#x8bdd;&#x72b6;&#x6001;&#x7ba1;&#x7406;","children":[{"content":"&#x5e76;&#x53d1;&#x63a7;&#x5236;&#x6a21;&#x5f0f;&#xff08;&#x4e50;&#x89c2;&#x9501; vs &#x60b2;&#x89c2;&#x9501;&#xff09;","children":[{"content":"&#x4e50;&#x89c2;&#x79bb;&#x7ebf;&#x9501;&#xff08;Optimistic Offline Lock&#xff09;&#xff1a;&#x5728;&#x5b9e;&#x4f53;&#x4e2d;&#x7ef4;&#x62a4;&#x7248;&#x672c;&#x53f7;&#xff08;Version&#xff09;&#xff0c;&#x63d0;&#x4ea4;&#x65f6;&#x6bd4;&#x5bf9;&#x7248;&#x672c;&#x53f7;&#x662f;&#x5426;&#x4e00;&#x81f4;&#xff0c;&#x51b2;&#x7a81;&#x5219;&#x56de;&#x6eda;&#x5e76;&#x63d0;&#x793a;&#xff1b;&#x8bfb;&#x591a;&#x5199;&#x5c11;&#x3001;&#x51b2;&#x7a81;&#x7387;&#x4f4e;&#x7684;&#x63a8;&#x8350;&#x65b9;&#x6848;","children":[],"payload":{"tag":"li","lines":"63,64"}},{"content":"&#x60b2;&#x89c2;&#x79bb;&#x7ebf;&#x9501;&#xff08;Pessimistic Offline Lock&#xff09;&#xff1a;&#x8fdb;&#x5165;&#x7f16;&#x8f91;&#x6001;&#x5373;&#x76f4;&#x63a5;&#x52a0;&#x9501;&#x5360;&#x7528;&#x8d44;&#x6e90;&#xff0c;&#x5176;&#x4ed6;&#x7528;&#x6237;&#x65e0;&#x6cd5;&#x7f16;&#x8f91;&#xff1b;&#x5f3a;&#x4e00;&#x81f4;&#x6027;&#x4f46;&#x964d;&#x4f4e;&#x7cfb;&#x7edf;&#x5e76;&#x53d1;&#x5ea6;&#x4e0e;&#x541e;&#x5410;&#x91cf;","children":[],"payload":{"tag":"li","lines":"64,65"}},{"content":"&#x7c97;&#x7c92;&#x5ea6;&#x9501;&#xff08;Coarse-Grained Lock&#xff09;&#xff1a;&#x5bf9;&#x590d;&#x6742;&#x5bf9;&#x8c61;&#x6811;&#xff08;&#x5982;&#x8ba2;&#x5355;&#x53ca;&#x5168;&#x90e8;&#x8ba2;&#x5355;&#x9879;&#xff09;&#x7edf;&#x4e00;&#x9501;&#x4f4f;&#x6839;&#x5bf9;&#x8c61;&#xff0c;&#x9632;&#x6b62;&#x5e76;&#x53d1;&#x4e0b;&#x96f6;&#x6563;&#x5b50;&#x9879;&#x4ea7;&#x751f;&#x5e7b;&#x8bfb;&#x51b2;&#x7a81;","children":[],"payload":{"tag":"li","lines":"65,67"}}],"payload":{"tag":"h3","lines":"61,62"}},{"content":"&#x4f1a;&#x8bdd;&#x72b6;&#x6001;&#x7ef4;&#x6301;&#x6a21;&#x5f0f;","children":[{"content":"&#x5ba2;&#x6237;&#x7aef;&#x4f1a;&#x8bdd;&#x72b6;&#x6001;&#xff08;Client Session State&#xff09;&#xff1a;&#x5c06;&#x72b6;&#x6001;&#x6570;&#x636e;&#x52a0;&#x5bc6;&#x4fdd;&#x5b58;&#x5728;&#x5ba2;&#x6237;&#x7aef;&#xff08;&#x5982; Cookie/JWT&#xff09;&#xff0c;&#x670d;&#x52a1;&#x7aef;&#x5b8c;&#x5168;&#x65e0;&#x72b6;&#x6001;&#xff0c;&#x6269;&#x5c55;&#x6027;&#x6781;&#x9ad8;&#x4f46;&#x53d7;&#x5bb9;&#x91cf;&#x4e0e;&#x7f51;&#x7edc;&#x5e26;&#x5bbd;&#x9650;&#x5236;","children":[],"payload":{"tag":"li","lines":"69,70"}},{"content":"&#x670d;&#x52a1;&#x5668;&#x7aef;&#x4f1a;&#x8bdd;&#x72b6;&#x6001;&#xff08;Server Session State&#xff09;&#xff1a;&#x4fdd;&#x5b58;&#x5728;&#x5185;&#x5b58;&#x6216;&#x96c6;&#x4e2d;&#x5f0f; Redis &#x4e2d;&#xff0c;&#x5ba2;&#x6237;&#x7aef;&#x4ec5;&#x6301; Session ID&#xff0c;&#x5b89;&#x5168;&#x9ad8;&#x6548;&#x4f46;&#x9700;&#x7ef4;&#x62a4;&#x5206;&#x5e03;&#x5f0f; Session","children":[],"payload":{"tag":"li","lines":"70,71"}}],"payload":{"tag":"h3","lines":"67,68"}}],"payload":{"tag":"h2","lines":"58,59"}}],"payload":{"tag":"h1","lines":"0,1"}}</script>
       <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true"># 《企业应用架构模式》 思维导图
 
 &gt; 核心主题：企业应用分层体系、三种领域逻辑形态、对象关系阻抗失衡与并发会话模式
@@ -523,27 +285,6 @@ ORM 框架的核心底层算法机制
 无状态设计与状态落地
 - 客户端会话状态（Client Session State）：将状态数据加密保存在客户端（如 Cookie/JWT），服务端完全无状态，扩展性极高但受容量与网络带宽限制
 - 服务器端会话状态（Server Session State）：保存在内存或集中式 Redis 中，客户端仅持 Session ID，安全高效但需维护分布式 Session</textarea>
-
-      <!-- Fullscreen Modal View -->
-      <div class="mindmap-modal" id="mindmapModal" aria-hidden="true" role="dialog" aria-label="思维导图全景全屏视图">
-        <div class="mm-modal-container">
-          <div class="mm-modal-header">
-            <div class="mm-modal-title-wrap">
-              <span class="mm-modal-tag">思维导图全景</span>
-              <span class="mm-modal-book-title">《企业应用架构模式》</span>
-              <span class="mm-modal-theme">企业应用分层体系、三种领域逻辑形态、对象关系阻抗失衡与并发会话模式</span>
-            </div>
-            <div class="mm-modal-controls">
-              <button type="button" class="mm-btn" id="mmModalToggleAllBtn">
-                <span class="mm-modal-toggle-text">全部收起</span>
-              </button>
-              <button type="button" class="mm-modal-close-btn" id="mmModalCloseBtn" aria-label="关闭全屏">×</button>
-            </div>
-          </div>
-          <div class="mm-modal-body" id="mmModalBody"></div>
-        </div>
-      </div>
-
       <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
     </section>
 
@@ -634,143 +375,192 @@ ORM 框架的核心底层算法机制
   </script>
 
   
+  <script src="vendor/markmap-bundle.js" defer></script>
   <script>
     (function() {
       var mmSection = document.getElementById('mindmapSection');
       if (!mmSection) return;
 
-      var container = document.getElementById('mindmapContainer');
-      var toggleAllBtn = document.getElementById('mmToggleAllBtn');
-      var copyBtn = document.getElementById('mmCopyMarkdownBtn');
-      var fullscreenBtn = document.getElementById('mmFullscreenBtn');
-      var modal = document.getElementById('mindmapModal');
-      var modalCloseBtn = document.getElementById('mmModalCloseBtn');
-      var modalBody = document.getElementById('mmModalBody');
-      var modalToggleAllBtn = document.getElementById('mmModalToggleAllBtn');
-      var toast = document.getElementById('mmToast');
-      var mdSource = document.getElementById('mmMarkdownSource');
+      var svgEl = document.getElementById('markmapSvg');
+      var treeDataEl = document.getElementById('mmTreeData');
+      if (!svgEl || !treeDataEl) return;
 
-      var isAllCollapsed = false;
+      function initMarkmap() {
+        if (!window.markmap || !window.markmap.Markmap || !window.d3) {
+          setTimeout(initMarkmap, 50);
+          return;
+        }
 
-      function bindBranchHeaders(root) {
-        var headers = root.querySelectorAll('.mm-branch-header');
-        headers.forEach(function(header) {
-          header.addEventListener('click', function() {
-            var branch = header.closest('.mm-branch');
-            if (branch) {
-              branch.classList.toggle('is-collapsed');
+        var rawData = JSON.parse(treeDataEl.textContent);
+        var palette = ['#007722', '#1d4ed8', '#c2410c', '#7e22ce', '#0f766e', '#be123c'];
+        var colorScale = d3.scaleOrdinal(palette);
+
+        function cloneData(obj) {
+          return JSON.parse(JSON.stringify(obj));
+        }
+
+        function setFold(n, f) {
+          if (n.children && n.children.length) {
+            n.payload = Object.assign({}, n.payload, { fold: f ? 1 : 0 });
+            n.children.forEach(function(c) { setFold(c, f); });
+          }
+        }
+
+        // Default initial fold: level 2 topics collapsed
+        var currentData = cloneData(rawData);
+        if (currentData.children) {
+          currentData.payload = Object.assign({}, currentData.payload, { fold: 0 });
+          currentData.children.forEach(function(branch) {
+            branch.payload = Object.assign({}, branch.payload, { fold: 0 });
+            if (branch.children) {
+              branch.children.forEach(function(topic) {
+                setFold(topic, true);
+              });
             }
           });
-        });
-      }
+        }
 
-      bindBranchHeaders(container);
+        var mm = window.markmap.Markmap.create(svgEl, {
+          autoFit: true,
+          duration: 350,
+          color: function(node) {
+            return colorScale(node.state.id);
+          },
+          paddingX: 16,
+          spacingHorizontal: 75,
+          spacingVertical: 12
+        }, currentData);
 
-      // Toggle all in main view
-      if (toggleAllBtn) {
-        toggleAllBtn.addEventListener('click', function() {
-          isAllCollapsed = !isAllCollapsed;
-          var branches = container.querySelectorAll('.mm-branch');
-          branches.forEach(function(b) {
-            if (isAllCollapsed) {
-              b.classList.add('is-collapsed');
-            } else {
-              b.classList.remove('is-collapsed');
-            }
+        // Mount toolbar
+        if (window.markmap.Toolbar) {
+          var tb = window.markmap.Toolbar.create(mm);
+          tb.setBrand(false);
+          var tbWrap = document.getElementById('mmToolbarWrap');
+          if (tbWrap) tbWrap.appendChild(tb.render());
+        }
+
+        // Level Preset Buttons
+        var btnL1 = document.getElementById('mmBtnLevel1');
+        var btnL2 = document.getElementById('mmBtnLevel2');
+        var btnAll = document.getElementById('mmBtnExpandAll');
+
+        function setActiveLevelBtn(activeBtn) {
+          [btnL1, btnL2, btnAll].forEach(function(b) {
+            if (b) b.classList.remove('active');
           });
-          var txt = toggleAllBtn.querySelector('.mm-toggle-text');
-          if (txt) txt.textContent = isAllCollapsed ? '全部展开' : '全部收起';
-        });
-      }
+          if (activeBtn) activeBtn.classList.add('active');
+        }
 
-      // Copy Markdown Outline
-      function showToast(msg) {
-        if (!toast) return;
-        toast.textContent = msg;
-        toast.classList.add('active');
-        setTimeout(function() {
-          toast.classList.remove('active');
-        }, 2200);
-      }
+        if (btnL1) {
+          btnL1.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) { setFold(b, true); });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL1);
+          });
+        }
 
-      if (copyBtn && mdSource) {
-        copyBtn.addEventListener('click', function() {
-          var text = mdSource.value;
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(function() {
-              showToast('✓ 已复制思维导图大纲到剪贴板！');
-            }).catch(function() {
-              fallbackCopy(text);
-            });
-          } else {
-            fallbackCopy(text);
+        if (btnL2) {
+          btnL2.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            if (d.children) {
+              d.children.forEach(function(b) {
+                b.payload = Object.assign({}, b.payload, { fold: 0 });
+                if (b.children) {
+                  b.children.forEach(function(t) { setFold(t, true); });
+                }
+              });
+            }
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnL2);
+          });
+        }
+
+        if (btnAll) {
+          btnAll.addEventListener('click', function() {
+            var d = cloneData(rawData);
+            setFold(d, false);
+            mm.setData(d);
+            mm.fit();
+            setActiveLevelBtn(btnAll);
+          });
+        }
+
+        // Fullscreen Toggle
+        var fsBtn = document.getElementById('mmFullscreenBtn');
+        var fsText = fsBtn ? fsBtn.querySelector('.mm-fs-text') : null;
+
+        function toggleFullscreen() {
+          var isFs = mmSection.classList.toggle('is-fullscreen');
+          if (fsText) fsText.textContent = isFs ? '退出全屏' : '全屏';
+          setTimeout(function() {
+            mm.fit();
+          }, 150);
+        }
+
+        if (fsBtn) {
+          fsBtn.addEventListener('click', toggleFullscreen);
+        }
+
+        document.addEventListener('keydown', function(e) {
+          if (e.key === 'Escape' && mmSection.classList.contains('is-fullscreen')) {
+            toggleFullscreen();
           }
         });
-      }
 
-      function fallbackCopy(text) {
-        try {
-          var ta = document.createElement('textarea');
-          ta.value = text;
-          ta.style.position = 'fixed';
-          ta.style.left = '-9999px';
-          document.body.appendChild(ta);
-          ta.select();
-          document.execCommand('copy');
-          document.body.removeChild(ta);
-          showToast('✓ 已复制思维导图大纲到剪贴板！');
-        } catch (e) {
-          showToast('复制失败，请手动选取复制');
+        // Copy Markdown
+        var copyBtn = document.getElementById('mmCopyMarkdownBtn');
+        var mdSource = document.getElementById('mmMarkdownSource');
+        var toast = document.getElementById('mmToast');
+
+        function showToast(msg) {
+          if (!toast) return;
+          toast.textContent = msg;
+          toast.classList.add('active');
+          setTimeout(function() { toast.classList.remove('active'); }, 2200);
         }
-      }
 
-      // Fullscreen Modal Logic
-      function openModal() {
-        if (!modal || !modalBody) return;
-        modalBody.innerHTML = container.innerHTML;
-        bindBranchHeaders(modalBody);
-        modal.classList.add('active');
-        modal.setAttribute('aria-hidden', 'false');
-        document.body.style.overflow = 'hidden';
-      }
-
-      function closeModal() {
-        if (!modal) return;
-        modal.classList.remove('active');
-        modal.setAttribute('aria-hidden', 'true');
-        document.body.style.overflow = '';
-      }
-
-      if (fullscreenBtn) {
-        fullscreenBtn.addEventListener('click', openModal);
-      }
-      if (modalCloseBtn) {
-        modalCloseBtn.addEventListener('click', closeModal);
-      }
-      if (modal) {
-        modal.addEventListener('click', function(e) {
-          if (e.target === modal) closeModal();
-        });
-      }
-
-      if (modalToggleAllBtn) {
-        modalToggleAllBtn.addEventListener('click', function() {
-          var branches = modalBody.querySelectorAll('.mm-branch');
-          var shouldCollapse = !branches[0].classList.contains('is-collapsed');
-          branches.forEach(function(b) {
-            if (shouldCollapse) b.classList.add('is-collapsed');
-            else b.classList.remove('is-collapsed');
+        if (copyBtn && mdSource) {
+          copyBtn.addEventListener('click', function() {
+            var text = mdSource.value;
+            if (navigator.clipboard && navigator.clipboard.writeText) {
+              navigator.clipboard.writeText(text).then(function() {
+                showToast('✓ 已复制思维导图大纲到剪贴板！');
+              }).catch(function() {
+                fallbackCopy(text);
+              });
+            } else {
+              fallbackCopy(text);
+            }
           });
-          var txt = modalToggleAllBtn.querySelector('.mm-modal-toggle-text');
-          if (txt) txt.textContent = shouldCollapse ? '全部展开' : '全部收起';
-        });
+        }
+
+        function fallbackCopy(text) {
+          try {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.position = 'fixed';
+            ta.style.left = '-9999px';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            showToast('✓ 已复制思维导图大纲到剪贴板！');
+          } catch (e) {
+            showToast('复制失败，请手动选取');
+          }
+        }
       }
 
-      document.addEventListener('keydown', function(e) {
-        if (e.key === 'Escape' && modal && modal.classList.contains('active')) {
-          closeModal();
-        }
-      });
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initMarkmap);
+      } else {
+        initMarkmap();
+      }
     })();
   </script>
 
