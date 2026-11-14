@@ -106,7 +106,7 @@ function renderSidebar(currentBookId = null, isDetail = false) {
     <div class="sidebar-header">
       <a class="sidebar-brand" href="index.html">
         <span class="sidebar-brand-title">${escapeHtml(site.brand)}</span>
-        <span class="sidebar-brand-sub">${site.domains.length} 大领域 · ${books.length} 本精选 · 经典书导读</span>
+        <span class="sidebar-brand-sub">${site.domains.length} 大领域，${books.length} 本精选</span>
       </a>
       <button type="button" class="sidebar-close-btn" id="sidebarCloseBtn" aria-label="关闭目录">×</button>
     </div>
@@ -418,7 +418,7 @@ function renderMindmapHtml(mm, book) {
       <div class="mindmap-header">
         <div class="mindmap-header-left">
           <span class="mindmap-badge">树状思维导图</span>
-          <h2 class="mindmap-title">全书思维导图 · 知识脉络树</h2>
+          <h2 class="mindmap-title">全书思维导图：知识脉络树</h2>
         </div>
         <div class="mindmap-actions">
           <div class="mm-level-switch">
@@ -443,7 +443,7 @@ function renderMindmapHtml(mm, book) {
           <svg id="markmapSvg"></svg>
           <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
           <div class="mm-canvas-hint">
-            <span>💡 拖拽平移 · 滚轮缩放 · 点击分支圆点折叠/展开</span>
+            <span>💡 拖拽平移、滚轮缩放、点分支圆点折叠或展开</span>
           </div>
         </div>
       </div>
@@ -1259,8 +1259,7 @@ function buildIndex() {
               <span class="brow-user-tag" data-tag-id="${b.id}"></span>
             </div>
             <div class="brow-meta">
-              <span class="brow-meta-info">${escapeHtml(b.author)} / ${escapeHtml(b.publisher)} / ${escapeHtml(b.publishYear)}</span>
-              <span class="brow-meta-sep">·</span>
+              <span class="brow-meta-info">${[b.author, b.publisher, b.publishYear].filter(Boolean).map(escapeHtml).join(' / ')}</span>
               <span class="brow-rating-chip">
                 <span class="brow-rating-stars">${stars}</span>
                 <span class="brow-rating-score tabular">${b.rating}</span>
@@ -1381,7 +1380,7 @@ function buildIndex() {
       <footer>
         <div class="wrap">
           <p>${escapeHtml(site.footerNote)}</p>
-          <p>${escapeHtml(site.footerVerify)} · <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> · <span class="footer-version">v${escapeHtml(pkg.version)}</span></p>
+          <p>${escapeHtml(site.footerVerify)} ｜ <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> ｜ <span class="footer-version">v${escapeHtml(pkg.version)}</span></p>
         </div>
       </footer>
 
@@ -1774,6 +1773,26 @@ function buildBooks() {
     const domObj = site.domains.find(d => d.name === book.domain);
     const domainAnchor = domObj ? `index.html#${domObj.id}` : 'index.html';
 
+    const publishYearRow = book.publishYear ? `
+      <div class="detail-meta-item">
+        <span class="label">出版年：</span>
+        <span class="value">${escapeHtml(book.publishYear)}</span>
+      </div>
+    `.trim() : '';
+
+    const doubanRow = book.doubanUrl ? `
+              <div class="detail-meta-item detail-meta-link">
+                <a class="douban-link" href="${book.doubanUrl}" target="_blank" rel="noopener">豆瓣读书条目 →</a>
+              </div>
+    `.trim() : '';
+
+    const verifyRow = (book.verifiedAt && book.verifiedSource) ? `
+              <div class="detail-meta-item detail-meta-verify">
+                <span class="label">目录核对：</span>
+                <span class="value">${escapeHtml(book.verifiedSource)}（${escapeHtml(book.verifiedAt)}）</span>
+              </div>
+    `.trim() : '';
+
     const origTitleRow = book.originalTitle ? `
       <div class="detail-meta-item">
         <span class="label">原作名：</span>
@@ -1788,7 +1807,7 @@ function buildBooks() {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>${escapeHtml(book.title)} · 经典书导读</title>
+  <title>${escapeHtml(book.title)}｜经典书导读</title>
   <link rel="stylesheet" href="${cssHref}">
 </head>
 <body>
@@ -1844,14 +1863,10 @@ function buildBooks() {
                 <span class="label">出版社：</span>
                 <span class="value">${escapeHtml(book.publisher)}</span>
               </div>
-              <div class="detail-meta-item">
-                <span class="label">出版年：</span>
-                <span class="value">${escapeHtml(book.publishYear)}</span>
-              </div>
+              ${publishYearRow}
               ${origTitleRow}
-              <div class="detail-meta-item detail-meta-link">
-                <a class="douban-link" href="${book.doubanUrl}" target="_blank" rel="noopener">豆瓣读书条目 →</a>
-              </div>
+              ${verifyRow}
+              ${doubanRow}
             </div>
           </div>
 
@@ -1859,7 +1874,7 @@ function buildBooks() {
             <span class="ratebox-num tabular">${book.rating}</span>
             <div class="ratebox-info">
               <div class="ratebox-stars" aria-label="评分星级">${stars}</div>
-              <div class="ratebox-label">豆瓣评分 · ${formatRatingCount(book.ratingCount)}</div>
+              <div class="ratebox-label">豆瓣评分，${formatRatingCount(book.ratingCount)}</div>
             </div>
           </div>
 
@@ -1914,7 +1929,7 @@ function buildBooks() {
 
         <footer>
           <p>${escapeHtml(site.footerNote)}</p>
-          <p>${escapeHtml(site.footerVerify)} · <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> · <span class="footer-version">v${escapeHtml(pkg.version)}</span></p>
+          <p>${escapeHtml(site.footerVerify)} ｜ <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> ｜ <span class="footer-version">v${escapeHtml(pkg.version)}</span></p>
         </footer>
       </div>
 
