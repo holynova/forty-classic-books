@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>《UNIX编程艺术》｜经典书导读</title>
-  <link rel="stylesheet" href="style.css?v=aef3764d">
+  <link rel="stylesheet" href="style.css?v=dc02d545">
 </head>
 <body>
   <div class="layout-container">
@@ -76,6 +76,13 @@
             <h1>《UNIX编程艺术》</h1>
           </div>
 
+          <nav class="page-toc" aria-label="本页目录">
+        <a href="#sec-thesis">总体观点</a>
+        <a href="#sec-ideas">核心观点</a>
+        <a href="#mindmapSection">思维导图</a>
+        <a href="#sec-structure">全书结构</a>
+      </nav>
+
           <div class="detail-top">
             <div class="detail-cover-wrap">
               <picture><source srcset="covers/detail/s1467587.webp" type="image/webp"><img class="detail-cover" src="covers/s1467587.jpg" alt="《UNIX编程艺术》封面" fetchpriority="high" decoding="async" width="138" height="200"></picture>
@@ -97,10 +104,6 @@
         <span class="label">原作名：</span>
         <span class="value">The Art of UNIX Programming</span>
       </div>
-              <div class="detail-meta-item detail-meta-verify">
-                <span class="label">目录核对：</span>
-                <span class="value">权威版本真实目录核验（2026-10-10）</span>
-              </div>
               <div class="detail-meta-item detail-meta-link">
                 <a class="douban-link" href="https://book.douban.com/subject/1467587/" target="_blank" rel="noopener">豆瓣读书条目 →</a>
               </div>
@@ -113,27 +116,26 @@
               <div class="ratebox-stars" aria-label="评分星级">★★★★★</div>
               <div class="ratebox-label">豆瓣评分，2,302 人评价</div>
             </div>
-          </div>
-
-          <div class="detail-user-shelf" data-book-id="8">
-            <div class="shelf-action-group">
-              <button type="button" class="detail-shelf-btn btn-want" data-status="want" aria-pressed="false" aria-label="标记为想读">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                <span>想读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-read" data-status="read" aria-pressed="false" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>已读</span>
-              </button>
+            <div class="detail-user-shelf" data-book-id="8">
+              <div class="shelf-action-group">
+                <button type="button" class="detail-shelf-btn btn-want" data-status="want" aria-pressed="false" aria-label="标记为想读">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span>想读</span>
+                </button>
+                <button type="button" class="detail-shelf-btn btn-read" data-status="read" aria-pressed="false" aria-label="标记为已读">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>已读</span>
+                </button>
+              </div>
+              <div class="shelf-status-badge" id="detailShelfBadge">未标记阅读状态</div>
             </div>
-            <div class="shelf-status-badge" id="detailShelfBadge">未标记阅读状态</div>
           </div>
 
           <div class="intro-quote">
             讲“怎么写出像 UNIX 那样优雅、耐用、历久弥新软件”的设计哲学书。
           </div>
 
-          <section class="section-block">
+          <section class="section-block" id="sec-thesis">
             <h2>总体观点</h2>
             <div class="thesis-body">
               <p>埃里克·雷蒙德是开源运动旗手，花五年把贝尔实验室几十年攒下的设计直觉——让 UNIX 从 1969 年活到今天的底层智慧——提炼成 17 条设计规则，加整套工具、社区、文化的论述。</p>
@@ -142,7 +144,7 @@
             </div>
           </section>
 
-          <section class="section-block">
+          <section class="section-block" id="sec-ideas">
             <h2>核心观点</h2>
             <ol class="idea-list">
               <li class="idea-item">
@@ -185,15 +187,12 @@
 
           <section class="section-block mindmap-section" id="mindmapSection">
       <div class="mindmap-header">
-        <div class="mindmap-header-left">
-          <span class="mindmap-badge">树状思维导图</span>
-          <h2 class="mindmap-title">全书思维导图：知识脉络树</h2>
-        </div>
+        <h2 class="mindmap-title">全书思维导图</h2>
         <div class="mindmap-actions">
           <div class="mm-level-switch">
             <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
-            <button type="button" class="mm-btn" id="mmBtnLevel2" title="展开至二级分支">分支</button>
-            <button type="button" class="mm-btn active" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
+            <button type="button" class="mm-btn active" id="mmBtnLevel2" title="展开至二级分支">分支</button>
+            <button type="button" class="mm-btn" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
           </div>
 
           <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
@@ -207,17 +206,22 @@
         </div>
       </div>
 
+      <p class="mm-canvas-hint">拖拽查看，点圆点展开或折叠</p>
+
       <div class="mm-viewport-wrapper">
         <div class="mm-viewport" id="mmViewport">
           <svg id="markmapSvg"></svg>
           <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
-          <div class="mm-canvas-hint">
-            <span>💡 拖拽平移、滚轮缩放、点分支圆点折叠或展开</span>
-          </div>
         </div>
       </div>
 
-      <script type="application/json" id="mmTreeData">{"content":"&#x300a;UNIX&#x7f16;&#x7a0b;&#x827a;&#x672f;&#x300b; &#x601d;&#x7ef4;&#x5bfc;&#x56fe;","children":[{"content":"&#x4e00;&#x3001;&#x5206; &#x54f2;&#x5b66;&#xff08;&#x7b2c;1-3&#x7ae0;&#xff09;&#xff1a;&#x54f2;&#x5b66;&#x3001;&#x5386;&#x53f2;&#x4e0e;&#x5bf9;&#x6bd4;","children":[{"content":"1. &#x5206; &#x54f2;&#x5b66;&#xff08;&#x7b2c;1-3&#x7ae0;&#xff09;&#xff1a;&#x54f2;&#x5b66;&#x3001;&#x5386;&#x53f2;&#x4e0e;&#x5bf9;&#x6bd4;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;Unix &#x6838;&#x5fc3;&#x54f2;&#x5b66;&#x662f;&#x4fdd;&#x6301;&#x7b80;&#x5355;&#xff08;KISS &#x539f;&#x5219;&#xff09;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x6a21;&#x5757;&#x539f;&#x5219;&#x3001;&#x6e05;&#x6670;&#x539f;&#x5219;&#x3001;&#x7ec4;&#x5408;&#x539f;&#x5219;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x7528;&#x7ba1;&#x9053;&#x8fde;&#x63a5;&#x4e13;&#x6ce8;&#x505a;&#x597d;&#x4e00;&#x4ef6;&#x4e8b;&#x7684;&#x5c0f;&#x5de5;&#x5177;","children":[],"payload":{"tag":"li","lines":"9,11"}}],"payload":{"tag":"h6","lines":"8,9"}}],"payload":{"tag":"h5","lines":"7,8"}}],"payload":{"tag":"h4","lines":"6,7"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;&#x901a;&#x8fc7; <code>cat access.log | grep 404 | awk &apos;{print \\&#x24;1}&apos; | sort | uniq -c</code> &#x4e00;&#x884c;&#x547d;&#x4ee4;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x4f18;&#x96c5;&#x7ec4;&#x5408;&#x5c0f;&#x5de5;&#x5177;&#x5b8c;&#x6210;&#x8bbf;&#x95ee;&#x5206;&#x6790;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"14,15"}}],"payload":{"tag":"h6","lines":"13,14"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x5199;&#x83dc;&#x8c31;&#x201c;&#x9002;&#x91cf;&#x76d0;&#x3001;&#x5c11;&#x8bb8;&#x7cd6;&#x3001;&#x706b;&#x5019;&#x770b;&#x7740;&#x529e;&#x201d;&#xff0c;&#x770b;&#x7684;&#x4eba;&#x60f3;&#x6253;&#x4eba;&#x3002;&#x5199;&#x201c;&#x76d0; 3 &#x514b;&#xff0c;&#x4e2d;&#x706b; 2 &#x5206;","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x6e05;&#x6670;&#x80dc;&#x4e8e;&#x673a;&#x5de7;&#xff1a;&#x4ee3;&#x7801;&#x9996;&#x5148;&#x662f;&#x5199;&#x7ed9;&#x4eba;&#x770b;&#x7684;&#x3011;","children":[],"payload":{"tag":"li","lines":"16,20"}}],"payload":{"tag":"h6","lines":"15,16"}}],"payload":{"tag":"h5","lines":"12,13"}}],"payload":{"tag":"h4","lines":"11,12"}}],"payload":{"tag":"h3","lines":"5,6"}}],"payload":{"tag":"h2","lines":"4,5"}},{"content":"&#x4e8c;&#x3001;&#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x6a21;&#x5757;&#x6027;&#x4e0e;&#x6587;&#x672c;&#x5316;&#xff08;&#x7b2c;4-5&#x7ae0;&#xff09;&#xff1a;&#x6a21;&#x5757;&#x6027;&#x3001;&#x597d;&#x534f;&#x8bae;&#x4e0e;&#x6587;&#x672c;&#x6d41;&#x4e0e;&#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x900f;&#x660e;&#x6027;&#x4e0e;&#x591a;&#x9053;&#x7a0b;&#x5e8f;&#xff08;&#x7b2c;6-7&#x7ae0;&#xff09;&#xff1a;&#x900f;&#x660e;&#x6027;&#x3001;&#x53ef;&#x68c0;&#x9a8c;&#x6027;&#x4e0e;&#x8fdb;&#x7a0b;&#x5206;&#x79bb;","children":[{"content":"1. &#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x6a21;&#x5757;&#x6027;&#x4e0e;&#x6587;&#x672c;&#x5316;&#xff08;&#x7b2c;4-5&#x7ae0;&#xff09;&#xff1a;&#x6a21;&#x5757;&#x6027;&#x3001;&#x597d;&#x534f;&#x8bae;&#x4e0e;&#x6587;&#x672c;&#x6d41;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x6a21;&#x5757;&#x8ffd;&#x6c42;&#x9ad8;&#x5185;&#x805a;&#x677e;&#x8026;&#x5408;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x5c06;&#x7eaf;&#x6587;&#x672c;&#x6d41;&#x548c;&#x900f;&#x660e;&#x7684;&#x4eba;&#x7c7b;&#x53ef;&#x8bfb;&#x534f;&#x8bae;&#x4f5c;&#x4e3a;&#x901a;&#x7528;&#x7684;&#x8f93;&#x5165;&#x8f93;&#x51fa;&#x5a92;&#x4ecb;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x6446;&#x8131;&#x4e13;&#x6709;&#x4e8c;&#x8fdb;&#x5236;&#x9ed1;&#x76d2;&#x7ed1;&#x67b6;","children":[],"payload":{"tag":"li","lines":"25,27"}}],"payload":{"tag":"h6","lines":"24,25"}}],"payload":{"tag":"h5","lines":"23,24"}}],"payload":{"tag":"h4","lines":"22,23"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;HTTP&#x3001;SMTP &#x7b49;&#x4e92;&#x8054;&#x7f51;&#x57fa;&#x77f3;&#x534f;&#x8bae;&#x5747;&#x8bbe;&#x8ba1;&#x4e3a;&#x660e;&#x6587;&#x6587;&#x672c;&#x4ea4;&#x4e92;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x5f00;&#x53d1;&#x8005;&#x4ec5;&#x7528; telnet &#x6216; curl &#x5373;&#x53ef;&#x8f7b;&#x677e;&#x6293;&#x5305;&#x8c03;&#x8bd5;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"30,31"}}],"payload":{"tag":"h6","lines":"29,30"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x4ece;&#x65e5;&#x5fd7;&#x627e;&#x8bbf;&#x95ee;&#x91cf; Top10 &#x7684; IP&#xff1a;&#x4e00;&#x884c;&#x547d;&#x4ee4;&#x4e32;&#x8d77;&#x516d;&#x4e03;&#x4e2a;&#x5c0f;&#x5de5;&#x5177;&#xff0c;cat &#x65e5;&#x5fd7; |","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x5c0f;&#x5de5;&#x5177;&#x52a0;&#x7ba1;&#x9053;&#xff0c;&#x80fd;&#x5e72;&#x5927;&#x4e8b;&#x60c5;&#xff08;&#x7ec4;&#x5408;&#x539f;&#x5219;&#xff09;&#x3011;","children":[],"payload":{"tag":"li","lines":"32,35"}}],"payload":{"tag":"h6","lines":"31,32"}}],"payload":{"tag":"h5","lines":"28,29"}}],"payload":{"tag":"h4","lines":"27,28"}}],"payload":{"tag":"h3","lines":"21,22"}},{"content":"2. &#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x900f;&#x660e;&#x6027;&#x4e0e;&#x591a;&#x9053;&#x7a0b;&#x5e8f;&#xff08;&#x7b2c;6-7&#x7ae0;&#xff09;&#xff1a;&#x900f;&#x660e;&#x6027;&#x3001;&#x53ef;&#x68c0;&#x9a8c;&#x6027;&#x4e0e;&#x8fdb;&#x7a0b;&#x5206;&#x79bb;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x7cfb;&#x7edf;&#x8bbe;&#x8ba1;&#x5fc5;&#x987b;&#x5177;&#x5907;&#x900f;&#x660e;&#x6027;&#x4e0e;&#x53ef;&#x68c0;&#x9a8c;&#x6027;&#x8ba9;&#x6392;&#x67e5;&#x4e00;&#x76ee;&#x4e86;&#x7136;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x7528;&#x8f7b;&#x91cf;&#x8fdb;&#x7a0b;&#x9694;&#x79bb;&#x9632;&#x8303;&#x5355;&#x70b9;&#x5d29;&#x6e83;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x4ee5;&#x7ba1;&#x9053;&#x6216;&#x5957;&#x63a5;&#x5b57;&#x901a;&#x4fe1;","children":[],"payload":{"tag":"li","lines":"39,41"}}],"payload":{"tag":"h6","lines":"38,39"}}],"payload":{"tag":"h5","lines":"37,38"}}],"payload":{"tag":"h4","lines":"36,37"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;Nginx &#x91c7;&#x7528; Master-Worker &#x591a;&#x8fdb;&#x7a0b;&#x67b6;&#x6784;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x67d0;&#x4e2a; Worker &#x8fdb;&#x7a0b;&#x7531;&#x4e8e;&#x8bf7;&#x6c42;&#x5d29;&#x6e83;&#x65f6;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"44,45"}}],"payload":{"tag":"h6","lines":"43,44"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x4ece;&#x65e5;&#x5fd7;&#x627e;&#x8bbf;&#x95ee;&#x91cf; Top10 &#x7684; IP&#xff1a;&#x4e00;&#x884c;&#x547d;&#x4ee4;&#x4e32;&#x8d77;&#x516d;&#x4e03;&#x4e2a;&#x5c0f;&#x5de5;&#x5177;&#xff0c;cat &#x65e5;&#x5fd7; |","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x5c0f;&#x5de5;&#x5177;&#x52a0;&#x7ba1;&#x9053;&#xff0c;&#x80fd;&#x5e72;&#x5927;&#x4e8b;&#x60c5;&#xff08;&#x7ec4;&#x5408;&#x539f;&#x5219;&#xff09;&#x3011;","children":[],"payload":{"tag":"li","lines":"46,50"}}],"payload":{"tag":"h6","lines":"45,46"}}],"payload":{"tag":"h5","lines":"42,43"}}],"payload":{"tag":"h4","lines":"41,42"}}],"payload":{"tag":"h3","lines":"35,36"}}],"payload":{"tag":"h2","lines":"20,21"}},{"content":"&#x4e09;&#x3001;&#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x5fae;&#x578b;&#x8bed;&#x8a00;&#x4e0e;&#x751f;&#x6210;&#xff08;&#x7b2c;8-9&#x7ae0;&#xff09;&#xff1a;&#x5fae;&#x578b;&#x8bed;&#x8a00;&#x4e0e;&#x4ee3;&#x7801;&#x751f;&#x6210;&#x4e0e;&#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x8f6c;&#x5316;&#x4e0e;&#x914d;&#x7f6e;&#xff08;&#x7b2c;10-13&#x7ae0;&#xff09;&#xff1a;&#x914d;&#x7f6e;&#x3001;&#x63a5;&#x53e3;&#x3001;&#x4f18;&#x5316;&#x4e0e;&#x590d;&#x6742;&#x5ea6;","children":[{"content":"1. &#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x5fae;&#x578b;&#x8bed;&#x8a00;&#x4e0e;&#x751f;&#x6210;&#xff08;&#x7b2c;8-9&#x7ae0;&#xff09;&#xff1a;&#x5fae;&#x578b;&#x8bed;&#x8a00;&#x4e0e;&#x4ee3;&#x7801;&#x751f;&#x6210;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x9047;&#x5230;&#x590d;&#x6742;&#x9886;&#x57df;&#x95ee;&#x9898;&#x65f6;&#x53d1;&#x660e;&#x5fae;&#x578b;&#x4e13;&#x7528;&#x8bed;&#x8a00;&#xff08;&#x5982; DSL&#x3001;&#x6b63;&#x5219;&#x3001;Yacc&#xff09;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x7f16;&#x5199;&#x4ee3;&#x7801;&#x751f;&#x6210;&#x5de5;&#x5177;&#x8ba9;&#x7a0b;&#x5e8f;&#x53bb;&#x751f;&#x6210;&#x7a0b;&#x5e8f;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x6d88;&#x9664;&#x975e;&#x5fc5;&#x8981;&#x590d;&#x6742;&#x6027;&#x4e0e;&#x8ba4;&#x77e5;&#x6469;&#x64e6;","children":[],"payload":{"tag":"li","lines":"55,57"}}],"payload":{"tag":"h6","lines":"54,55"}}],"payload":{"tag":"h5","lines":"53,54"}}],"payload":{"tag":"h4","lines":"52,53"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;&#x5229;&#x7528;&#x6b63;&#x5219;&#x8868;&#x8fbe;&#x5f0f;&#x6216; SQL &#x58f0;&#x660e;&#x5f0f;&#x63d0;&#x53d6;&#x6570;&#x636e;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x65e0;&#x9700;&#x624b;&#x52a8;&#x7f16;&#x5199;&#x590d;&#x6742;&#x7684;&#x53cc;&#x91cd;&#x5faa;&#x73af;&#x4e0e;&#x5b57;&#x7b26;&#x4e32;&#x5b57;&#x7b26;&#x6bd4;&#x5bf9;&#x7b97;&#x6cd5;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"60,61"}}],"payload":{"tag":"h6","lines":"59,60"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x4ece;&#x65e5;&#x5fd7;&#x627e;&#x8bbf;&#x95ee;&#x91cf; Top10 &#x7684; IP&#xff1a;&#x4e00;&#x884c;&#x547d;&#x4ee4;&#x4e32;&#x8d77;&#x516d;&#x4e03;&#x4e2a;&#x5c0f;&#x5de5;&#x5177;&#xff0c;cat &#x65e5;&#x5fd7; |","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x5c0f;&#x5de5;&#x5177;&#x52a0;&#x7ba1;&#x9053;&#xff0c;&#x80fd;&#x5e72;&#x5927;&#x4e8b;&#x60c5;&#xff08;&#x7ec4;&#x5408;&#x539f;&#x5219;&#xff09;&#x3011;","children":[],"payload":{"tag":"li","lines":"62,65"}}],"payload":{"tag":"h6","lines":"61,62"}}],"payload":{"tag":"h5","lines":"58,59"}}],"payload":{"tag":"h4","lines":"57,58"}}],"payload":{"tag":"h3","lines":"51,52"}},{"content":"2. &#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x8f6c;&#x5316;&#x4e0e;&#x914d;&#x7f6e;&#xff08;&#x7b2c;10-13&#x7ae0;&#xff09;&#xff1a;&#x914d;&#x7f6e;&#x3001;&#x63a5;&#x53e3;&#x3001;&#x4f18;&#x5316;&#x4e0e;&#x590d;&#x6742;&#x5ea6;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x914d;&#x7f6e;&#x6587;&#x4ef6;&#x4fdd;&#x6301;&#x7eaf;&#x6587;&#x672c;&#x53ef;&#x8bfb;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;CLI&#x4e0e;GUI&#x63a5;&#x53e3;&#x6b63;&#x4ea4;&#x89e3;&#x8026;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x4e0d;&#x505a;&#x8fc7;&#x65e9;&#x4f18;&#x5316;","children":[],"payload":{"tag":"li","lines":"69,71"}}],"payload":{"tag":"h6","lines":"68,69"}}],"payload":{"tag":"h5","lines":"67,68"}}],"payload":{"tag":"h4","lines":"66,67"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;Git &#x6838;&#x5fc3;&#x529f;&#x80fd;&#x5b8c;&#x5168;&#x901a;&#x8fc7; CLI &#x66b4;&#x9732;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x5404;&#x7c7b;&#x56fe;&#x5f62;&#x5316;&#x5ba2;&#x6237;&#x7aef;&#x4ec5;&#x5145;&#x5f53;&#x754c;&#x9762;&#x5c55;&#x793a;&#x5916;&#x58f3;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"74,75"}}],"payload":{"tag":"h6","lines":"73,74"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x4ece;&#x65e5;&#x5fd7;&#x627e;&#x8bbf;&#x95ee;&#x91cf; Top10 &#x7684; IP&#xff1a;&#x4e00;&#x884c;&#x547d;&#x4ee4;&#x4e32;&#x8d77;&#x516d;&#x4e03;&#x4e2a;&#x5c0f;&#x5de5;&#x5177;&#xff0c;cat &#x65e5;&#x5fd7; |","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x5c0f;&#x5de5;&#x5177;&#x52a0;&#x7ba1;&#x9053;&#xff0c;&#x80fd;&#x5e72;&#x5927;&#x4e8b;&#x60c5;&#xff08;&#x7ec4;&#x5408;&#x539f;&#x5219;&#xff09;&#x3011;","children":[],"payload":{"tag":"li","lines":"76,80"}}],"payload":{"tag":"h6","lines":"75,76"}}],"payload":{"tag":"h5","lines":"72,73"}}],"payload":{"tag":"h4","lines":"71,72"}}],"payload":{"tag":"h3","lines":"65,66"}}],"payload":{"tag":"h2","lines":"50,51"}},{"content":"&#x56db;&#x3001;&#x5206; &#x5b9e;&#x73b0;&#xff08;&#x7b2c;14-17&#x7ae0;&#xff09;&#xff1a;&#x8bed;&#x8a00;&#x3001;&#x5de5;&#x5177;&#x3001;&#x91cd;&#x7528;&#x4e0e;&#x53ef;&#x79fb;&#x690d;&#x6027;&#x4e0e;&#x5206; &#x5171;&#x540c;&#x4f53;&#xff08;&#x7b2c;18-19&#x7ae0;&#xff09;&#xff1a;&#x5f00;&#x6e90;&#x6587;&#x5316;&#x4e0e;Unix&#x7684;&#x672a;&#x6765;","children":[{"content":"1. &#x5206; &#x5b9e;&#x73b0;&#xff08;&#x7b2c;14-17&#x7ae0;&#xff09;&#xff1a;&#x8bed;&#x8a00;&#x3001;&#x5de5;&#x5177;&#x3001;&#x91cd;&#x7528;&#x4e0e;&#x53ef;&#x79fb;&#x690d;&#x6027;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x6309;&#x95ee;&#x9898;&#x573a;&#x666f;&#x9009;&#x62e9;&#x5408;&#x9002;&#x7684;&#x9ad8;&#x7ea7;&#x8bed;&#x8a00;&#x4e0e;&#x5de5;&#x5177;&#x94fe;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x4e0d;&#x91cd;&#x590d;&#x9020;&#x8f6e;&#x5b50;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x4e25;&#x5b88; POSIX &#x6807;&#x51c6;&#x4ee5;&#x4fdd;&#x969c;&#x8de8;&#x5e73;&#x53f0;&#x53ef;&#x79fb;&#x690d;&#x6027;","children":[],"payload":{"tag":"li","lines":"85,87"}}],"payload":{"tag":"h6","lines":"84,85"}}],"payload":{"tag":"h5","lines":"83,84"}}],"payload":{"tag":"h4","lines":"82,83"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;&#x6838;&#x5fc3;&#x8ba1;&#x7b97;&#x6a21;&#x5757;&#x7528; C/Rust &#x7f16;&#x5199;&#x4ee5;&#x4fdd;&#x969c;&#x6781;&#x81f4;&#x6027;&#x80fd;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x5916;&#x56f4;&#x80f6;&#x6c34;&#x5c42;&#x4e0e;&#x5b9a;&#x65f6;&#x4efb;&#x52a1;&#x7528; Python/Shell &#x7f16;&#x5199;&#x4ee5;&#x8ffd;&#x6c42;&#x5feb;&#x901f;&#x8fed;&#x4ee3;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"90,91"}}],"payload":{"tag":"h6","lines":"89,90"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x4ece;&#x65e5;&#x5fd7;&#x627e;&#x8bbf;&#x95ee;&#x91cf; Top10 &#x7684; IP&#xff1a;&#x4e00;&#x884c;&#x547d;&#x4ee4;&#x4e32;&#x8d77;&#x516d;&#x4e03;&#x4e2a;&#x5c0f;&#x5de5;&#x5177;&#xff0c;cat &#x65e5;&#x5fd7; |","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x5c0f;&#x5de5;&#x5177;&#x52a0;&#x7ba1;&#x9053;&#xff0c;&#x80fd;&#x5e72;&#x5927;&#x4e8b;&#x60c5;&#xff08;&#x7ec4;&#x5408;&#x539f;&#x5219;&#xff09;&#x3011;","children":[],"payload":{"tag":"li","lines":"92,95"}}],"payload":{"tag":"h6","lines":"91,92"}}],"payload":{"tag":"h5","lines":"88,89"}}],"payload":{"tag":"h4","lines":"87,88"}}],"payload":{"tag":"h3","lines":"81,82"}},{"content":"2. &#x5206; &#x5171;&#x540c;&#x4f53;&#xff08;&#x7b2c;18-19&#x7ae0;&#xff09;&#xff1a;&#x5f00;&#x6e90;&#x6587;&#x5316;&#x4e0e;Unix&#x7684;&#x672a;&#x6765;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x5f00;&#x6e90;&#x534f;&#x4f5c;&#x3001;&#x4ee3;&#x7801;&#x516c;&#x5f00;&#x4e0e;&#x5bf9;&#x7b49;&#x8bc4;&#x5ba1;&#x6784;&#x5efa;&#x4e86;&#x7e41;&#x8363;&#x7684;&#x8f6f;&#x4ef6;&#x5171;&#x540c;&#x4f53;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x8f6f;&#x4ef6;&#x751f;&#x6001;&#x7684;&#x957f;&#x9752;&#x6e90;&#x4e8e;&#x5171;&#x4eab;&#x3001;&#x900f;&#x660e;&#x4e0e;&#x5f00;&#x653e;&#x6807;&#x51c6;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x6d88;&#x9664;&#x975e;&#x5fc5;&#x8981;&#x590d;&#x6742;&#x6027;&#x4e0e;&#x8ba4;&#x77e5;&#x6469;&#x64e6;","children":[],"payload":{"tag":"li","lines":"99,101"}}],"payload":{"tag":"h6","lines":"98,99"}}],"payload":{"tag":"h5","lines":"97,98"}}],"payload":{"tag":"h4","lines":"96,97"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;Linux &#x548c;&#x4f17;&#x591a;&#x5f00;&#x6e90;&#x57fa;&#x7840;&#x8f6f;&#x4ef6;&#x51ed;&#x501f;&#x5168;&#x7403;&#x6210;&#x5343;&#x4e0a;&#x4e07;&#x5de5;&#x7a0b;&#x5e08;&#x7684;&#x6301;&#x7eed;&#x516c;&#x5f00;&#x5ba1;&#x67e5;&#x4e0e;&#x6f14;&#x8fdb;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x6218;&#x80dc;&#x4e86;&#x4f17;&#x591a;&#x5c01;&#x95ed;&#x9ad8;&#x6602;&#x7684;&#x4e13;&#x6709;&#x5546;&#x4e1a; Unix","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"104,105"}}],"payload":{"tag":"h6","lines":"103,104"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x5199;&#x83dc;&#x8c31;&#x201c;&#x9002;&#x91cf;&#x76d0;&#x3001;&#x5c11;&#x8bb8;&#x7cd6;&#x3001;&#x706b;&#x5019;&#x770b;&#x7740;&#x529e;&#x201d;&#xff0c;&#x770b;&#x7684;&#x4eba;&#x60f3;&#x6253;&#x4eba;&#x3002;&#x5199;&#x201c;&#x76d0; 3 &#x514b;&#xff0c;&#x4e2d;&#x706b; 2 &#x5206;","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x6e05;&#x6670;&#x80dc;&#x4e8e;&#x673a;&#x5de7;&#xff1a;&#x4ee3;&#x7801;&#x9996;&#x5148;&#x662f;&#x5199;&#x7ed9;&#x4eba;&#x770b;&#x7684;&#x3011;","children":[],"payload":{"tag":"li","lines":"106,107"}}],"payload":{"tag":"h6","lines":"105,106"}}],"payload":{"tag":"h5","lines":"102,103"}}],"payload":{"tag":"h4","lines":"101,102"}}],"payload":{"tag":"h3","lines":"95,96"}}],"payload":{"tag":"h2","lines":"80,81"}}],"payload":{"tag":"h1","lines":"0,1"}}</script>
+      <div class="mm-desc-card" id="mmDescCard" hidden>
+        <button type="button" class="mm-desc-close" id="mmDescClose" aria-label="关闭说明">×</button>
+        <div class="mm-desc-title" id="mmDescTitle"></div>
+        <p class="mm-desc-text" id="mmDescText"></p>
+      </div>
+
+      <script type="application/json" id="mmTreeData">{"content":"&#x300a;UNIX&#x7f16;&#x7a0b;&#x827a;&#x672f;&#x300b; &#x601d;&#x7ef4;&#x5bfc;&#x56fe;","children":[{"content":"&#x4e00;&#x3001;&#x5206; &#x54f2;&#x5b66;&#xff08;&#x7b2c;1-3&#x7ae0;&#xff09;&#xff1a;&#x54f2;&#x5b66;&#x3001;&#x5386;&#x53f2;&#x4e0e;&#x5bf9;&#x6bd4;","children":[{"content":"1. &#x5206; &#x54f2;&#x5b66;&#xff08;&#x7b2c;1-3&#x7ae0;&#xff09;&#xff1a;&#x54f2;&#x5b66;&#x3001;&#x5386;&#x53f2;&#x4e0e;&#x5bf9;&#x6bd4;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;Unix &#x6838;&#x5fc3;&#x54f2;&#x5b66;&#x662f;&#x4fdd;&#x6301;&#x7b80;&#x5355;&#xff08;KISS &#x539f;&#x5219;&#xff09;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x6a21;&#x5757;&#x539f;&#x5219;&#x3001;&#x6e05;&#x6670;&#x539f;&#x5219;&#x3001;&#x7ec4;&#x5408;&#x539f;&#x5219;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x7528;&#x7ba1;&#x9053;&#x8fde;&#x63a5;&#x4e13;&#x6ce8;&#x505a;&#x597d;&#x4e00;&#x4ef6;&#x4e8b;&#x7684;&#x5c0f;&#x5de5;&#x5177;","children":[],"payload":{"tag":"li","lines":"9,11"}}],"payload":{"tag":"h6","lines":"8,9"}}],"payload":{"tag":"h5","lines":"7,8"}}],"payload":{"tag":"h4","lines":"6,7"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;&#x901a;&#x8fc7; \u003ccode>cat access.log | grep 404 | awk &apos;{print \\&#x24;1}&apos; | sort | uniq -c\u003c/code> &#x4e00;&#x884c;&#x547d;&#x4ee4;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x4f18;&#x96c5;&#x7ec4;&#x5408;&#x5c0f;&#x5de5;&#x5177;&#x5b8c;&#x6210;&#x8bbf;&#x95ee;&#x5206;&#x6790;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"14,15"}}],"payload":{"tag":"h6","lines":"13,14"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x5199;&#x83dc;&#x8c31;&#x201c;&#x9002;&#x91cf;&#x76d0;&#x3001;&#x5c11;&#x8bb8;&#x7cd6;&#x3001;&#x706b;&#x5019;&#x770b;&#x7740;&#x529e;&#x201d;&#xff0c;&#x770b;&#x7684;&#x4eba;&#x60f3;&#x6253;&#x4eba;&#x3002;&#x5199;&#x201c;&#x76d0; 3 &#x514b;&#xff0c;&#x4e2d;&#x706b; 2 &#x5206;","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x6e05;&#x6670;&#x80dc;&#x4e8e;&#x673a;&#x5de7;&#xff1a;&#x4ee3;&#x7801;&#x9996;&#x5148;&#x662f;&#x5199;&#x7ed9;&#x4eba;&#x770b;&#x7684;&#x3011;","children":[],"payload":{"tag":"li","lines":"16,20"}}],"payload":{"tag":"h6","lines":"15,16"}}],"payload":{"tag":"h5","lines":"12,13"}}],"payload":{"tag":"h4","lines":"11,12"}}],"payload":{"tag":"h3","lines":"5,6","jump":"part-0"}}],"payload":{"tag":"h2","lines":"4,5","jump":"part-0"}},{"content":"&#x4e8c;&#x3001;&#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x6a21;&#x5757;&#x6027;&#x4e0e;&#x6587;&#x672c;&#x5316;&#xff08;&#x7b2c;4-5&#x7ae0;&#xff09;&#xff1a;&#x6a21;&#x5757;&#x6027;&#x3001;&#x597d;&#x534f;&#x8bae;&#x4e0e;&#x6587;&#x672c;&#x6d41;&#x4e0e;&#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x900f;&#x660e;&#x6027;&#x4e0e;&#x591a;&#x9053;&#x7a0b;&#x5e8f;&#xff08;&#x7b2c;6-7&#x7ae0;&#xff09;&#xff1a;&#x900f;&#x660e;&#x6027;&#x3001;&#x53ef;&#x68c0;&#x9a8c;&#x6027;&#x4e0e;&#x8fdb;&#x7a0b;&#x5206;&#x79bb;","children":[{"content":"1. &#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x6a21;&#x5757;&#x6027;&#x4e0e;&#x6587;&#x672c;&#x5316;&#xff08;&#x7b2c;4-5&#x7ae0;&#xff09;&#xff1a;&#x6a21;&#x5757;&#x6027;&#x3001;&#x597d;&#x534f;&#x8bae;&#x4e0e;&#x6587;&#x672c;&#x6d41;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x6a21;&#x5757;&#x8ffd;&#x6c42;&#x9ad8;&#x5185;&#x805a;&#x677e;&#x8026;&#x5408;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x5c06;&#x7eaf;&#x6587;&#x672c;&#x6d41;&#x548c;&#x900f;&#x660e;&#x7684;&#x4eba;&#x7c7b;&#x53ef;&#x8bfb;&#x534f;&#x8bae;&#x4f5c;&#x4e3a;&#x901a;&#x7528;&#x7684;&#x8f93;&#x5165;&#x8f93;&#x51fa;&#x5a92;&#x4ecb;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x6446;&#x8131;&#x4e13;&#x6709;&#x4e8c;&#x8fdb;&#x5236;&#x9ed1;&#x76d2;&#x7ed1;&#x67b6;","children":[],"payload":{"tag":"li","lines":"25,27"}}],"payload":{"tag":"h6","lines":"24,25"}}],"payload":{"tag":"h5","lines":"23,24"}}],"payload":{"tag":"h4","lines":"22,23"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;HTTP&#x3001;SMTP &#x7b49;&#x4e92;&#x8054;&#x7f51;&#x57fa;&#x77f3;&#x534f;&#x8bae;&#x5747;&#x8bbe;&#x8ba1;&#x4e3a;&#x660e;&#x6587;&#x6587;&#x672c;&#x4ea4;&#x4e92;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x5f00;&#x53d1;&#x8005;&#x4ec5;&#x7528; telnet &#x6216; curl &#x5373;&#x53ef;&#x8f7b;&#x677e;&#x6293;&#x5305;&#x8c03;&#x8bd5;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"30,31"}}],"payload":{"tag":"h6","lines":"29,30"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x4ece;&#x65e5;&#x5fd7;&#x627e;&#x8bbf;&#x95ee;&#x91cf; Top10 &#x7684; IP&#xff1a;&#x4e00;&#x884c;&#x547d;&#x4ee4;&#x4e32;&#x8d77;&#x516d;&#x4e03;&#x4e2a;&#x5c0f;&#x5de5;&#x5177;&#xff0c;cat &#x65e5;&#x5fd7; |","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x5c0f;&#x5de5;&#x5177;&#x52a0;&#x7ba1;&#x9053;&#xff0c;&#x80fd;&#x5e72;&#x5927;&#x4e8b;&#x60c5;&#xff08;&#x7ec4;&#x5408;&#x539f;&#x5219;&#xff09;&#x3011;","children":[],"payload":{"tag":"li","lines":"32,35"}}],"payload":{"tag":"h6","lines":"31,32"}}],"payload":{"tag":"h5","lines":"28,29"}}],"payload":{"tag":"h4","lines":"27,28"}}],"payload":{"tag":"h3","lines":"21,22","jump":"part-1"}},{"content":"2. &#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x900f;&#x660e;&#x6027;&#x4e0e;&#x591a;&#x9053;&#x7a0b;&#x5e8f;&#xff08;&#x7b2c;6-7&#x7ae0;&#xff09;&#xff1a;&#x900f;&#x660e;&#x6027;&#x3001;&#x53ef;&#x68c0;&#x9a8c;&#x6027;&#x4e0e;&#x8fdb;&#x7a0b;&#x5206;&#x79bb;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x7cfb;&#x7edf;&#x8bbe;&#x8ba1;&#x5fc5;&#x987b;&#x5177;&#x5907;&#x900f;&#x660e;&#x6027;&#x4e0e;&#x53ef;&#x68c0;&#x9a8c;&#x6027;&#x8ba9;&#x6392;&#x67e5;&#x4e00;&#x76ee;&#x4e86;&#x7136;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x7528;&#x8f7b;&#x91cf;&#x8fdb;&#x7a0b;&#x9694;&#x79bb;&#x9632;&#x8303;&#x5355;&#x70b9;&#x5d29;&#x6e83;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x4ee5;&#x7ba1;&#x9053;&#x6216;&#x5957;&#x63a5;&#x5b57;&#x901a;&#x4fe1;","children":[],"payload":{"tag":"li","lines":"39,41"}}],"payload":{"tag":"h6","lines":"38,39"}}],"payload":{"tag":"h5","lines":"37,38"}}],"payload":{"tag":"h4","lines":"36,37"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;Nginx &#x91c7;&#x7528; Master-Worker &#x591a;&#x8fdb;&#x7a0b;&#x67b6;&#x6784;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x67d0;&#x4e2a; Worker &#x8fdb;&#x7a0b;&#x7531;&#x4e8e;&#x8bf7;&#x6c42;&#x5d29;&#x6e83;&#x65f6;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"44,45"}}],"payload":{"tag":"h6","lines":"43,44"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x4ece;&#x65e5;&#x5fd7;&#x627e;&#x8bbf;&#x95ee;&#x91cf; Top10 &#x7684; IP&#xff1a;&#x4e00;&#x884c;&#x547d;&#x4ee4;&#x4e32;&#x8d77;&#x516d;&#x4e03;&#x4e2a;&#x5c0f;&#x5de5;&#x5177;&#xff0c;cat &#x65e5;&#x5fd7; |","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x5c0f;&#x5de5;&#x5177;&#x52a0;&#x7ba1;&#x9053;&#xff0c;&#x80fd;&#x5e72;&#x5927;&#x4e8b;&#x60c5;&#xff08;&#x7ec4;&#x5408;&#x539f;&#x5219;&#xff09;&#x3011;","children":[],"payload":{"tag":"li","lines":"46,50"}}],"payload":{"tag":"h6","lines":"45,46"}}],"payload":{"tag":"h5","lines":"42,43"}}],"payload":{"tag":"h4","lines":"41,42"}}],"payload":{"tag":"h3","lines":"35,36","jump":"part-2"}}],"payload":{"tag":"h2","lines":"20,21"}},{"content":"&#x4e09;&#x3001;&#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x5fae;&#x578b;&#x8bed;&#x8a00;&#x4e0e;&#x751f;&#x6210;&#xff08;&#x7b2c;8-9&#x7ae0;&#xff09;&#xff1a;&#x5fae;&#x578b;&#x8bed;&#x8a00;&#x4e0e;&#x4ee3;&#x7801;&#x751f;&#x6210;&#x4e0e;&#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x8f6c;&#x5316;&#x4e0e;&#x914d;&#x7f6e;&#xff08;&#x7b2c;10-13&#x7ae0;&#xff09;&#xff1a;&#x914d;&#x7f6e;&#x3001;&#x63a5;&#x53e3;&#x3001;&#x4f18;&#x5316;&#x4e0e;&#x590d;&#x6742;&#x5ea6;","children":[{"content":"1. &#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x5fae;&#x578b;&#x8bed;&#x8a00;&#x4e0e;&#x751f;&#x6210;&#xff08;&#x7b2c;8-9&#x7ae0;&#xff09;&#xff1a;&#x5fae;&#x578b;&#x8bed;&#x8a00;&#x4e0e;&#x4ee3;&#x7801;&#x751f;&#x6210;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x9047;&#x5230;&#x590d;&#x6742;&#x9886;&#x57df;&#x95ee;&#x9898;&#x65f6;&#x53d1;&#x660e;&#x5fae;&#x578b;&#x4e13;&#x7528;&#x8bed;&#x8a00;&#xff08;&#x5982; DSL&#x3001;&#x6b63;&#x5219;&#x3001;Yacc&#xff09;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x7f16;&#x5199;&#x4ee3;&#x7801;&#x751f;&#x6210;&#x5de5;&#x5177;&#x8ba9;&#x7a0b;&#x5e8f;&#x53bb;&#x751f;&#x6210;&#x7a0b;&#x5e8f;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x6d88;&#x9664;&#x975e;&#x5fc5;&#x8981;&#x590d;&#x6742;&#x6027;&#x4e0e;&#x8ba4;&#x77e5;&#x6469;&#x64e6;","children":[],"payload":{"tag":"li","lines":"55,57"}}],"payload":{"tag":"h6","lines":"54,55"}}],"payload":{"tag":"h5","lines":"53,54"}}],"payload":{"tag":"h4","lines":"52,53"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;&#x5229;&#x7528;&#x6b63;&#x5219;&#x8868;&#x8fbe;&#x5f0f;&#x6216; SQL &#x58f0;&#x660e;&#x5f0f;&#x63d0;&#x53d6;&#x6570;&#x636e;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x65e0;&#x9700;&#x624b;&#x52a8;&#x7f16;&#x5199;&#x590d;&#x6742;&#x7684;&#x53cc;&#x91cd;&#x5faa;&#x73af;&#x4e0e;&#x5b57;&#x7b26;&#x4e32;&#x5b57;&#x7b26;&#x6bd4;&#x5bf9;&#x7b97;&#x6cd5;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"60,61"}}],"payload":{"tag":"h6","lines":"59,60"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x4ece;&#x65e5;&#x5fd7;&#x627e;&#x8bbf;&#x95ee;&#x91cf; Top10 &#x7684; IP&#xff1a;&#x4e00;&#x884c;&#x547d;&#x4ee4;&#x4e32;&#x8d77;&#x516d;&#x4e03;&#x4e2a;&#x5c0f;&#x5de5;&#x5177;&#xff0c;cat &#x65e5;&#x5fd7; |","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x5c0f;&#x5de5;&#x5177;&#x52a0;&#x7ba1;&#x9053;&#xff0c;&#x80fd;&#x5e72;&#x5927;&#x4e8b;&#x60c5;&#xff08;&#x7ec4;&#x5408;&#x539f;&#x5219;&#xff09;&#x3011;","children":[],"payload":{"tag":"li","lines":"62,65"}}],"payload":{"tag":"h6","lines":"61,62"}}],"payload":{"tag":"h5","lines":"58,59"}}],"payload":{"tag":"h4","lines":"57,58"}}],"payload":{"tag":"h3","lines":"51,52","jump":"part-3"}},{"content":"2. &#x5206; &#x8bbe;&#x8ba1;&#xb7;&#x8f6c;&#x5316;&#x4e0e;&#x914d;&#x7f6e;&#xff08;&#x7b2c;10-13&#x7ae0;&#xff09;&#xff1a;&#x914d;&#x7f6e;&#x3001;&#x63a5;&#x53e3;&#x3001;&#x4f18;&#x5316;&#x4e0e;&#x590d;&#x6742;&#x5ea6;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x914d;&#x7f6e;&#x6587;&#x4ef6;&#x4fdd;&#x6301;&#x7eaf;&#x6587;&#x672c;&#x53ef;&#x8bfb;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;CLI&#x4e0e;GUI&#x63a5;&#x53e3;&#x6b63;&#x4ea4;&#x89e3;&#x8026;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x4e0d;&#x505a;&#x8fc7;&#x65e9;&#x4f18;&#x5316;","children":[],"payload":{"tag":"li","lines":"69,71"}}],"payload":{"tag":"h6","lines":"68,69"}}],"payload":{"tag":"h5","lines":"67,68"}}],"payload":{"tag":"h4","lines":"66,67"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;Git &#x6838;&#x5fc3;&#x529f;&#x80fd;&#x5b8c;&#x5168;&#x901a;&#x8fc7; CLI &#x66b4;&#x9732;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x5404;&#x7c7b;&#x56fe;&#x5f62;&#x5316;&#x5ba2;&#x6237;&#x7aef;&#x4ec5;&#x5145;&#x5f53;&#x754c;&#x9762;&#x5c55;&#x793a;&#x5916;&#x58f3;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"74,75"}}],"payload":{"tag":"h6","lines":"73,74"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x4ece;&#x65e5;&#x5fd7;&#x627e;&#x8bbf;&#x95ee;&#x91cf; Top10 &#x7684; IP&#xff1a;&#x4e00;&#x884c;&#x547d;&#x4ee4;&#x4e32;&#x8d77;&#x516d;&#x4e03;&#x4e2a;&#x5c0f;&#x5de5;&#x5177;&#xff0c;cat &#x65e5;&#x5fd7; |","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x5c0f;&#x5de5;&#x5177;&#x52a0;&#x7ba1;&#x9053;&#xff0c;&#x80fd;&#x5e72;&#x5927;&#x4e8b;&#x60c5;&#xff08;&#x7ec4;&#x5408;&#x539f;&#x5219;&#xff09;&#x3011;","children":[],"payload":{"tag":"li","lines":"76,80"}}],"payload":{"tag":"h6","lines":"75,76"}}],"payload":{"tag":"h5","lines":"72,73"}}],"payload":{"tag":"h4","lines":"71,72"}}],"payload":{"tag":"h3","lines":"65,66","jump":"part-4"}}],"payload":{"tag":"h2","lines":"50,51"}},{"content":"&#x56db;&#x3001;&#x5206; &#x5b9e;&#x73b0;&#xff08;&#x7b2c;14-17&#x7ae0;&#xff09;&#xff1a;&#x8bed;&#x8a00;&#x3001;&#x5de5;&#x5177;&#x3001;&#x91cd;&#x7528;&#x4e0e;&#x53ef;&#x79fb;&#x690d;&#x6027;&#x4e0e;&#x5206; &#x5171;&#x540c;&#x4f53;&#xff08;&#x7b2c;18-19&#x7ae0;&#xff09;&#xff1a;&#x5f00;&#x6e90;&#x6587;&#x5316;&#x4e0e;Unix&#x7684;&#x672a;&#x6765;","children":[{"content":"1. &#x5206; &#x5b9e;&#x73b0;&#xff08;&#x7b2c;14-17&#x7ae0;&#xff09;&#xff1a;&#x8bed;&#x8a00;&#x3001;&#x5de5;&#x5177;&#x3001;&#x91cd;&#x7528;&#x4e0e;&#x53ef;&#x79fb;&#x690d;&#x6027;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x6309;&#x95ee;&#x9898;&#x573a;&#x666f;&#x9009;&#x62e9;&#x5408;&#x9002;&#x7684;&#x9ad8;&#x7ea7;&#x8bed;&#x8a00;&#x4e0e;&#x5de5;&#x5177;&#x94fe;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x4e0d;&#x91cd;&#x590d;&#x9020;&#x8f6e;&#x5b50;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x4e25;&#x5b88; POSIX &#x6807;&#x51c6;&#x4ee5;&#x4fdd;&#x969c;&#x8de8;&#x5e73;&#x53f0;&#x53ef;&#x79fb;&#x690d;&#x6027;","children":[],"payload":{"tag":"li","lines":"85,87"}}],"payload":{"tag":"h6","lines":"84,85"}}],"payload":{"tag":"h5","lines":"83,84"}}],"payload":{"tag":"h4","lines":"82,83"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;&#x6838;&#x5fc3;&#x8ba1;&#x7b97;&#x6a21;&#x5757;&#x7528; C/Rust &#x7f16;&#x5199;&#x4ee5;&#x4fdd;&#x969c;&#x6781;&#x81f4;&#x6027;&#x80fd;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x5916;&#x56f4;&#x80f6;&#x6c34;&#x5c42;&#x4e0e;&#x5b9a;&#x65f6;&#x4efb;&#x52a1;&#x7528; Python/Shell &#x7f16;&#x5199;&#x4ee5;&#x8ffd;&#x6c42;&#x5feb;&#x901f;&#x8fed;&#x4ee3;","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"90,91"}}],"payload":{"tag":"h6","lines":"89,90"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x4ece;&#x65e5;&#x5fd7;&#x627e;&#x8bbf;&#x95ee;&#x91cf; Top10 &#x7684; IP&#xff1a;&#x4e00;&#x884c;&#x547d;&#x4ee4;&#x4e32;&#x8d77;&#x516d;&#x4e03;&#x4e2a;&#x5c0f;&#x5de5;&#x5177;&#xff0c;cat &#x65e5;&#x5fd7; |","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x5c0f;&#x5de5;&#x5177;&#x52a0;&#x7ba1;&#x9053;&#xff0c;&#x80fd;&#x5e72;&#x5927;&#x4e8b;&#x60c5;&#xff08;&#x7ec4;&#x5408;&#x539f;&#x5219;&#xff09;&#x3011;","children":[],"payload":{"tag":"li","lines":"92,95"}}],"payload":{"tag":"h6","lines":"91,92"}}],"payload":{"tag":"h5","lines":"88,89"}}],"payload":{"tag":"h4","lines":"87,88"}}],"payload":{"tag":"h3","lines":"81,82","jump":"part-5"}},{"content":"2. &#x5206; &#x5171;&#x540c;&#x4f53;&#xff08;&#x7b2c;18-19&#x7ae0;&#xff09;&#xff1a;&#x5f00;&#x6e90;&#x6587;&#x5316;&#x4e0e;Unix&#x7684;&#x672a;&#x6765;","children":[{"content":"&#x7406;&#x8bba;&#x673a;&#x7406;&#x4e0e;&#x89c4;&#x5f8b;","children":[{"content":"&#x673a;&#x5236;&#x8981;&#x4e49;&#xff1a;&#x5f00;&#x6e90;&#x534f;&#x4f5c;&#x3001;&#x4ee3;&#x7801;&#x516c;&#x5f00;&#x4e0e;&#x5bf9;&#x7b49;&#x8bc4;&#x5ba1;&#x6784;&#x5efa;&#x4e86;&#x7e41;&#x8363;&#x7684;&#x8f6f;&#x4ef6;&#x5171;&#x540c;&#x4f53;","children":[{"content":"&#x8fd0;&#x4f5c;&#x903b;&#x8f91;&#xff1a;&#x8f6f;&#x4ef6;&#x751f;&#x6001;&#x7684;&#x957f;&#x9752;&#x6e90;&#x4e8e;&#x5171;&#x4eab;&#x3001;&#x900f;&#x660e;&#x4e0e;&#x5f00;&#x653e;&#x6807;&#x51c6;","children":[{"content":"&#x8fb9;&#x754c;&#x7ea6;&#x675f;&#xff1a;&#x6d88;&#x9664;&#x975e;&#x5fc5;&#x8981;&#x590d;&#x6742;&#x6027;&#x4e0e;&#x8ba4;&#x77e5;&#x6469;&#x64e6;","children":[],"payload":{"tag":"li","lines":"99,101"}}],"payload":{"tag":"h6","lines":"98,99"}}],"payload":{"tag":"h5","lines":"97,98"}}],"payload":{"tag":"h4","lines":"96,97"}},{"content":"&#x843d;&#x5730;&#x5b9e;&#x8df5;&#x4e0e;&#x5b9e;&#x6218;&#x6848;&#x4f8b;","children":[{"content":"&#x5b9e;&#x6218;&#x6848;&#x4f8b;&#xff1a;Linux &#x548c;&#x4f17;&#x591a;&#x5f00;&#x6e90;&#x57fa;&#x7840;&#x8f6f;&#x4ef6;&#x51ed;&#x501f;&#x5168;&#x7403;&#x6210;&#x5343;&#x4e0a;&#x4e07;&#x5de5;&#x7a0b;&#x5e08;&#x7684;&#x6301;&#x7eed;&#x516c;&#x5f00;&#x5ba1;&#x67e5;&#x4e0e;&#x6f14;&#x8fdb;","children":[{"content":"&#x5b9e;&#x65bd;&#x8fc7;&#x7a0b;&#xff1a;&#x6218;&#x80dc;&#x4e86;&#x4f17;&#x591a;&#x5c01;&#x95ed;&#x9ad8;&#x6602;&#x7684;&#x4e13;&#x6709;&#x5546;&#x4e1a; Unix","children":[{"content":"&#x6548;&#x76ca;&#x8bc4;&#x4f30;&#xff1a;&#x4f18;&#x5148;&#x4fdd;&#x969c;&#x7cfb;&#x7edf;&#x9c81;&#x68d2;&#x6027;&#x4e0e;&#x4f53;&#x9a8c;&#x4ef7;&#x503c;","children":[],"payload":{"tag":"li","lines":"104,105"}}],"payload":{"tag":"h6","lines":"103,104"}},{"content":"&#x5ef6;&#x4f38;&#x9a8c;&#x8bc1;&#xff1a;&#x5199;&#x83dc;&#x8c31;&#x201c;&#x9002;&#x91cf;&#x76d0;&#x3001;&#x5c11;&#x8bb8;&#x7cd6;&#x3001;&#x706b;&#x5019;&#x770b;&#x7740;&#x529e;&#x201d;&#xff0c;&#x770b;&#x7684;&#x4eba;&#x60f3;&#x6253;&#x4eba;&#x3002;&#x5199;&#x201c;&#x76d0; 3 &#x514b;&#xff0c;&#x4e2d;&#x706b; 2 &#x5206;","children":[{"content":"&#x6307;&#x5bfc;&#x539f;&#x5219;&#xff1a;&#x3010;&#x6e05;&#x6670;&#x80dc;&#x4e8e;&#x673a;&#x5de7;&#xff1a;&#x4ee3;&#x7801;&#x9996;&#x5148;&#x662f;&#x5199;&#x7ed9;&#x4eba;&#x770b;&#x7684;&#x3011;","children":[],"payload":{"tag":"li","lines":"106,107"}}],"payload":{"tag":"h6","lines":"105,106"}}],"payload":{"tag":"h5","lines":"102,103"}}],"payload":{"tag":"h4","lines":"101,102"}}],"payload":{"tag":"h3","lines":"95,96","jump":"part-6"}}],"payload":{"tag":"h2","lines":"80,81"}}],"payload":{"tag":"h1","lines":"0,1","desc":"讲“怎么写出像 UNIX 那样优雅、耐用、历久弥新软件”的设计哲学书。"}}</script>
       <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true"># 《UNIX编程艺术》 思维导图
 
 &gt; 核心主题：讲“怎么写出像 UNIX 那样优雅、耐用、历久弥新软件”的设计哲学书。
@@ -328,43 +332,36 @@
       <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
     </section>
 
-          <section class="section-block">
+          <section class="section-block" id="sec-structure">
             <h2>全书结构</h2>
             <ol class="part-list">
-              <li class="part-item">
+              <li class="part-item" id="part-0">
         <h3 class="part-title">第一部分 哲学（第1-3章）：哲学、历史与对比</h3>
         <p class="part-desc">Unix 核心哲学是保持简单（KISS 原则）：模块原则、清晰原则、组合原则；用管道连接专注做好一件事的小工具。</p>
-        <div class="example-box">通过 `cat access.log | grep 404 | awk '{print $1}' | sort | uniq -c` 一行命令，优雅组合小工具完成访问分析。</div>
       </li>
-<li class="part-item">
+<li class="part-item" id="part-1">
         <h3 class="part-title">第二部分 设计·模块性与文本化（第4-5章）：模块性、好协议与文本流</h3>
         <p class="part-desc">模块追求高内聚松耦合，将纯文本流和透明的人类可读协议作为通用的输入输出媒介，摆脱专有二进制黑盒绑架。</p>
-        <div class="example-box">HTTP、SMTP 等互联网基石协议均设计为明文文本交互，开发者仅用 telnet 或 curl 即可轻松抓包调试。</div>
       </li>
-<li class="part-item">
+<li class="part-item" id="part-2">
         <h3 class="part-title">第二部分 设计·透明性与多道程序（第6-7章）：透明性、可检验性与进程分离</h3>
         <p class="part-desc">系统设计必须具备透明性与可检验性让排查一目了然，用轻量进程隔离防范单点崩溃，以管道或套接字通信。</p>
-        <div class="example-box">Nginx 采用 Master-Worker 多进程架构，某个 Worker 进程由于请求崩溃时，Master 自动将其拉起，全站毫不受影响。</div>
       </li>
-<li class="part-item">
+<li class="part-item" id="part-3">
         <h3 class="part-title">第二部分 设计·微型语言与生成（第8-9章）：微型语言与代码生成</h3>
         <p class="part-desc">遇到复杂领域问题时发明微型专用语言（如 DSL、正则、Yacc），编写代码生成工具让程序去生成程序。</p>
-        <div class="example-box">利用正则表达式或 SQL 声明式提取数据，无需手动编写复杂的双重循环与字符串字符比对算法。</div>
       </li>
-<li class="part-item">
+<li class="part-item" id="part-4">
         <h3 class="part-title">第二部分 设计·转化与配置（第10-13章）：配置、接口、优化与复杂度</h3>
         <p class="part-desc">配置文件保持纯文本可读，CLI与GUI接口正交解耦，不做过早优化，严厉控制系统的偶发与本质复杂度。</p>
-        <div class="example-box">Git 核心功能完全通过 CLI 暴露，各类图形化客户端仅充当界面展示外壳，使得自动化脚本与交互操作具备同等能力。</div>
       </li>
-<li class="part-item">
+<li class="part-item" id="part-5">
         <h3 class="part-title">第三部分 实现（第14-17章）：语言、工具、重用与可移植性</h3>
         <p class="part-desc">按问题场景选择合适的高级语言与工具链，不重复造轮子，严守 POSIX 标准以保障跨平台可移植性。</p>
-        <div class="example-box">核心计算模块用 C/Rust 编写以保障极致性能，外围胶水层与定时任务用 Python/Shell 编写以追求快速迭代。</div>
       </li>
-<li class="part-item">
+<li class="part-item" id="part-6">
         <h3 class="part-title">第四部分 共同体（第18-19章）：开源文化与Unix的未来</h3>
         <p class="part-desc">开源协作、代码公开与对等评审构建了繁荣的软件共同体，软件生态的长青源于共享、透明与开放标准。</p>
-        <div class="example-box">Linux 和众多开源基础软件凭借全球成千上万工程师的持续公开审查与演进，战胜了众多封闭高昂的专有商业 Unix。</div>
       </li>
             </ol>
           </section>
@@ -386,6 +383,7 @@
         <footer>
           <p>观点与结构均为转述总结，非原文摘录。封面图片来自豆瓣读书，仅作展示。</p>
           <p>豆瓣评分与评价人数来自豆瓣读书。 ｜ <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> ｜ <span class="footer-version">v1.0.0</span></p>
+          <p class="footer-verify">目录核对：权威版本真实目录核验（2026-10-10）</p>
         </footer>
       </div>
 
@@ -437,9 +435,29 @@
           }
         }
 
-        // Default initial fold: "全部" (all expanded)
-        var currentData = cloneData(rawData);
-        setFold(currentData, false);
+        // Fold a data tree to a preset level: 1 = root + branches,
+        // 2 = + branch children, 3 = everything expanded
+        function foldToLevel(d, level) {
+          if (!d.children) return d;
+          if (level === 1) {
+            d.children.forEach(function(b) { setFold(b, true); });
+          } else if (level === 2) {
+            d.children.forEach(function(b) {
+              b.payload = Object.assign({}, b.payload, { fold: 0 });
+              if (b.children) {
+                b.children.forEach(function(t) { setFold(t, true); });
+              }
+            });
+          } else {
+            setFold(d, false);
+          }
+          return d;
+        }
+
+        // Default initial fold: "分支" (level 2) so the first view stays readable;
+        // on narrow screens level 1 ("主干") keeps the text legible instead
+        var defaultLevel = window.innerWidth <= 640 ? 1 : 2;
+        var currentData = foldToLevel(cloneData(rawData), defaultLevel);
 
         var mm = window.markmap.Markmap.create(svgEl, {
           autoFit: true,
@@ -460,6 +478,104 @@
           if (tbWrap) tbWrap.appendChild(tb.render());
         }
 
+        // Adaptive viewport height: shrink the canvas to the rendered tree
+        // so the wide-but-short tree stops leaving big empty bands
+        var viewportEl = document.getElementById('mmViewport');
+        function fitViewportHeight() {
+          if (!viewportEl || mmSection.classList.contains('is-fullscreen')) return;
+          setTimeout(function() {
+            if (!viewportEl || mmSection.classList.contains('is-fullscreen')) return;
+            var renderedH = 0;
+            try {
+              var bbox = svgEl.getBBox();
+              renderedH = bbox.height;
+            } catch (e) {
+              var g = svgEl.querySelector('g');
+              if (g) renderedH = g.getBoundingClientRect().height;
+            }
+            if (!renderedH) return;
+            var isMobile = window.innerWidth <= 640;
+            var minH = isMobile ? 240 : 280;
+            var maxH = isMobile ? 520 : 560;
+            // 48px clearance above the tree (floating toolbar zone) and
+            // 48px below, so the toolbar never covers a tree label
+            var target = Math.round(Math.min(maxH, Math.max(minH, renderedH + 96)));
+            if (Math.abs(target - viewportEl.clientHeight) > 8) {
+              viewportEl.style.height = target + 'px';
+              setTimeout(function() { mm.fit(); }, 80);
+            }
+          }, 420);
+        }
+
+        var resizeTimer = null;
+        window.addEventListener('resize', function() {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function() {
+            mm.fit();
+            fitViewportHeight();
+          }, 250);
+        });
+
+        // Mark nodes that respond to text clicks (jump / description card)
+        function markClickableNodes() {
+          svgEl.querySelectorAll('g.markmap-node').forEach(function(g) {
+            var p = (g.__data__ && g.__data__.payload) || {};
+            g.classList.toggle('mm-jumpable', !!p.jump);
+            g.classList.toggle('mm-has-desc', !!p.desc && !p.jump);
+          });
+        }
+
+        // Re-mark after markmap re-renders nodes (fold toggles, level switches)
+        if ('MutationObserver' in window) {
+          var moTimer = null;
+          new MutationObserver(function() {
+            clearTimeout(moTimer);
+            moTimer = setTimeout(markClickableNodes, 120);
+          }).observe(svgEl, { childList: true, subtree: true });
+        }
+
+        // Description card (below the viewport)
+        var descCard = document.getElementById('mmDescCard');
+        var descTitle = document.getElementById('mmDescTitle');
+        var descText = document.getElementById('mmDescText');
+        var descClose = document.getElementById('mmDescClose');
+        function hideDescCard() { if (descCard) descCard.hidden = true; }
+        if (descClose) descClose.addEventListener('click', hideDescCard);
+
+        // Click on node text: jump to the matching structure entry,
+        // or show the node's description card. Circle clicks still fold
+        // (markmap's own handler) and are ignored here.
+        svgEl.addEventListener('click', function(e) {
+          if (e.target.tagName === 'circle') return;
+          var g = e.target.closest ? e.target.closest('g.markmap-node') : null;
+          if (!g || !g.__data__) return;
+          var payload = g.__data__.payload || {};
+          if (payload.jump) {
+            var target = document.getElementById(payload.jump);
+            if (target) {
+              hideDescCard();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              return;
+            }
+          }
+          if (payload.desc) {
+            var title = '';
+            if (g.__data__.content) {
+              var tmp = document.createElement('div');
+              tmp.innerHTML = g.__data__.content;
+              title = (tmp.textContent || '').replace(/s*思维导图s*$/, '');
+            }
+            if (descTitle) descTitle.textContent = title;
+            if (descText) descText.textContent = payload.desc;
+            if (descCard) descCard.hidden = false;
+          } else {
+            hideDescCard();
+          }
+        });
+
+        fitViewportHeight();
+        setTimeout(markClickableNodes, 500);
+
         // Level Preset Buttons
         var btnL1 = document.getElementById('mmBtnLevel1');
         var btnL2 = document.getElementById('mmBtnLevel2');
@@ -472,41 +588,32 @@
           if (activeBtn) activeBtn.classList.add('active');
         }
 
+        // Sync the active button with the width-aware default level
+        setActiveLevelBtn(defaultLevel === 1 ? btnL1 : btnL2);
+
         if (btnL1) {
           btnL1.addEventListener('click', function() {
-            var d = cloneData(rawData);
-            if (d.children) {
-              d.children.forEach(function(b) { setFold(b, true); });
-            }
-            mm.setData(d);
+            mm.setData(foldToLevel(cloneData(rawData), 1));
             mm.fit();
+            fitViewportHeight();
             setActiveLevelBtn(btnL1);
           });
         }
 
         if (btnL2) {
           btnL2.addEventListener('click', function() {
-            var d = cloneData(rawData);
-            if (d.children) {
-              d.children.forEach(function(b) {
-                b.payload = Object.assign({}, b.payload, { fold: 0 });
-                if (b.children) {
-                  b.children.forEach(function(t) { setFold(t, true); });
-                }
-              });
-            }
-            mm.setData(d);
+            mm.setData(foldToLevel(cloneData(rawData), 2));
             mm.fit();
+            fitViewportHeight();
             setActiveLevelBtn(btnL2);
           });
         }
 
         if (btnAll) {
           btnAll.addEventListener('click', function() {
-            var d = cloneData(rawData);
-            setFold(d, false);
-            mm.setData(d);
+            mm.setData(foldToLevel(cloneData(rawData), 3));
             mm.fit();
+            fitViewportHeight();
             setActiveLevelBtn(btnAll);
           });
         }
@@ -520,6 +627,7 @@
           if (fsText) fsText.textContent = isFs ? '退出全屏' : '全屏';
           setTimeout(function() {
             mm.fit();
+            if (!isFs) fitViewportHeight();
           }, 150);
         }
 
