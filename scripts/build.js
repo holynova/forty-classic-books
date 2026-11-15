@@ -7,10 +7,6 @@ const DATA_DIR = path.join(ROOT_DIR, 'data');
 const site = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'site.json'), 'utf-8'));
 const books = JSON.parse(fs.readFileSync(path.join(DATA_DIR, 'books.json'), 'utf-8'));
 const pkg = JSON.parse(fs.readFileSync(path.join(ROOT_DIR, 'package.json'), 'utf-8'));
-const mindmapsPath = path.join(DATA_DIR, 'mindmaps.json');
-const mindmaps = fs.existsSync(mindmapsPath) ? JSON.parse(fs.readFileSync(mindmapsPath, 'utf-8')) : {};
-const { Transformer } = require('markmap-lib');
-const transformer = new Transformer();
 const crypto = require('crypto');
 const cssContent = fs.readFileSync(path.join(ROOT_DIR, 'style.css'), 'utf-8');
 const cssHash = crypto.createHash('md5').update(cssContent).digest('hex').slice(0, 8);
@@ -336,302 +332,6 @@ const perfAndAnalyticsScript = `
         requestIdleCallback(loadAnalytics, { timeout: 3000 });
       } else {
         setTimeout(loadAnalytics, 2000);
-      }
-    })();
-  </script>
-`;
-
-function renderNodeToMarkdown(node, depth = 1) {
-  let md = '';
-  let rawTitle = (node.title || node.name || '').trim();
-  // Escape unescaped $ so KaTeX parser in markmap does not mistake code like $(...) for LaTeX math
-  const title = rawTitle.replace(/(?<!\\)\$/g, '\\$');
-  if (depth === 1) {
-    const cleanTitle = title.startsWith('《') && title.endsWith('》') ? title : `《${title}》`;
-    md += `# ${cleanTitle} 思维导图\n\n`;
-    if (node.theme) md += `> 核心主题：${node.theme.replace(/(?<!\\)\$/g, '\\$')}\n\n`;
-  } else if (depth <= 6) {
-    md += `${'#'.repeat(depth)} ${title}\n`;
-    if (node.desc && depth <= 3) md += `*${node.desc.replace(/(?<!\\)\$/g, '\\$')}*\n\n`;
-  } else {
-    const indent = '  '.repeat(depth - 7);
-    md += `${indent}- ${title}\n`;
-  }
-
-  if (node.children && node.children.length > 0) {
-    node.children.forEach(c => {
-      md += renderNodeToMarkdown(c, depth + 1);
-    });
-    if (depth <= 4) md += '\n';
-  } else if (node.points && node.points.length > 0) {
-    node.points.forEach(pt => {
-      if (typeof pt === 'string') {
-        const indent = '  '.repeat(Math.max(0, depth - 6));
-        md += `${indent}- ${pt}\n`;
-      } else {
-        md += renderNodeToMarkdown(pt, depth + 1);
-      }
-    });
-    md += '\n';
-  }
-  return md;
-}
-
-// Mindmap Generator & Renderer supporting up to 8 levels
-function generateMindmapMarkdown(mm, book) {
-  if (mm.children) {
-    return renderNodeToMarkdown(mm, 1).trim();
-  }
-  // Backward compatibility
-  const cleanTitle = book.title.startsWith('《') && book.title.endsWith('》')
-    ? book.title
-    : `《${book.title}》`;
-  let md = `# ${cleanTitle} 思维导图\n\n`;
-  if (mm.theme) md += `> 核心主题：${mm.theme}\n\n`;
-  if (mm.branches) {
-    mm.branches.forEach((b) => {
-      md += `## ${b.name}\n`;
-      if (b.desc) md += `*${b.desc}*\n\n`;
-      if (b.topics) {
-        b.topics.forEach(t => {
-          md += `### ${t.title}\n`;
-          if (t.desc) md += `${t.desc}\n`;
-          if (t.points) {
-            t.points.forEach(pt => {
-              md += `- ${pt}\n`;
-            });
-            md += '\n';
-          }
-        });
-      }
-    });
-  }
-  return md.trim();
-}
-
-function renderMindmapHtml(mm, book) {
-  const mdOutline = generateMindmapMarkdown(mm, book);
-  const { root } = transformer.transform(mdOutline);
-
-  return `
-    <section class="section-block mindmap-section" id="mindmapSection">
-      <div class="mindmap-header">
-        <div class="mindmap-header-left">
-          <span class="mindmap-badge">树状思维导图</span>
-          <h2 class="mindmap-title">全书思维导图：知识脉络树</h2>
-        </div>
-        <div class="mindmap-actions">
-          <div class="mm-level-switch">
-            <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
-            <button type="button" class="mm-btn" id="mmBtnLevel2" title="展开至二级分支">分支</button>
-            <button type="button" class="mm-btn active" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
-          </div>
-
-          <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
-            <span>复制大纲</span>
-          </button>
-          <button type="button" class="mm-btn mm-btn-standalone" id="mmFullscreenBtn" title="全屏沉浸式全景模式 (ESC 退出)">
-            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 3 21 3 21 9"></polyline><polyline points="9 21 3 21 3 15"></polyline><line x1="21" y1="3" x2="14" y2="10"></line><line x1="3" y1="21" x2="10" y2="14"></line></svg>
-            <span class="mm-fs-text">全屏</span>
-          </button>
-        </div>
-      </div>
-
-      <div class="mm-viewport-wrapper">
-        <div class="mm-viewport" id="mmViewport">
-          <svg id="markmapSvg"></svg>
-          <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
-          <div class="mm-canvas-hint">
-            <span>💡 拖拽平移、滚轮缩放、点分支圆点折叠或展开</span>
-          </div>
-        </div>
-      </div>
-
-      <script type="application/json" id="mmTreeData">${JSON.stringify(root)}</script>
-      <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true">${escapeHtml(mdOutline)}</textarea>
-      <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
-    </section>
-  `.trim();
-}
-
-const mindmapScript = `
-  <script src="vendor/markmap-bundle.js" defer></script>
-  <script>
-    (function() {
-      var mmSection = document.getElementById('mindmapSection');
-      if (!mmSection) return;
-
-      var svgEl = document.getElementById('markmapSvg');
-      var treeDataEl = document.getElementById('mmTreeData');
-      if (!svgEl || !treeDataEl) return;
-
-      function initMarkmap() {
-        if (!window.markmap || !window.markmap.Markmap || !window.d3) {
-          setTimeout(initMarkmap, 50);
-          return;
-        }
-
-        var rawData = JSON.parse(treeDataEl.textContent);
-        // Minimalist, elegant palette aligned with Douban Green and subtle slate tones
-        var palette = ['#007722', '#2f6946', '#334155', '#245a3a', '#475569', '#1e3d29'];
-        var colorScale = d3.scaleOrdinal(palette);
-
-        function cloneData(obj) {
-          return JSON.parse(JSON.stringify(obj));
-        }
-
-        function setFold(n, f) {
-          if (n.children && n.children.length) {
-            n.payload = Object.assign({}, n.payload, { fold: f ? 1 : 0 });
-            n.children.forEach(function(c) { setFold(c, f); });
-          }
-        }
-
-        // Default initial fold: "全部" (all expanded)
-        var currentData = cloneData(rawData);
-        setFold(currentData, false);
-
-        var mm = window.markmap.Markmap.create(svgEl, {
-          autoFit: true,
-          duration: 350,
-          color: function(node) {
-            return colorScale(node.state.id);
-          },
-          paddingX: 16,
-          spacingHorizontal: 75,
-          spacingVertical: 12
-        }, currentData);
-
-        // Mount toolbar
-        if (window.markmap.Toolbar) {
-          var tb = window.markmap.Toolbar.create(mm);
-          tb.setBrand(false);
-          var tbWrap = document.getElementById('mmToolbarWrap');
-          if (tbWrap) tbWrap.appendChild(tb.render());
-        }
-
-        // Level Preset Buttons
-        var btnL1 = document.getElementById('mmBtnLevel1');
-        var btnL2 = document.getElementById('mmBtnLevel2');
-        var btnAll = document.getElementById('mmBtnExpandAll');
-
-        function setActiveLevelBtn(activeBtn) {
-          [btnL1, btnL2, btnAll].forEach(function(b) {
-            if (b) b.classList.remove('active');
-          });
-          if (activeBtn) activeBtn.classList.add('active');
-        }
-
-        if (btnL1) {
-          btnL1.addEventListener('click', function() {
-            var d = cloneData(rawData);
-            if (d.children) {
-              d.children.forEach(function(b) { setFold(b, true); });
-            }
-            mm.setData(d);
-            mm.fit();
-            setActiveLevelBtn(btnL1);
-          });
-        }
-
-        if (btnL2) {
-          btnL2.addEventListener('click', function() {
-            var d = cloneData(rawData);
-            if (d.children) {
-              d.children.forEach(function(b) {
-                b.payload = Object.assign({}, b.payload, { fold: 0 });
-                if (b.children) {
-                  b.children.forEach(function(t) { setFold(t, true); });
-                }
-              });
-            }
-            mm.setData(d);
-            mm.fit();
-            setActiveLevelBtn(btnL2);
-          });
-        }
-
-        if (btnAll) {
-          btnAll.addEventListener('click', function() {
-            var d = cloneData(rawData);
-            setFold(d, false);
-            mm.setData(d);
-            mm.fit();
-            setActiveLevelBtn(btnAll);
-          });
-        }
-
-        // Fullscreen Toggle
-        var fsBtn = document.getElementById('mmFullscreenBtn');
-        var fsText = fsBtn ? fsBtn.querySelector('.mm-fs-text') : null;
-
-        function toggleFullscreen() {
-          var isFs = mmSection.classList.toggle('is-fullscreen');
-          if (fsText) fsText.textContent = isFs ? '退出全屏' : '全屏';
-          setTimeout(function() {
-            mm.fit();
-          }, 150);
-        }
-
-        if (fsBtn) {
-          fsBtn.addEventListener('click', toggleFullscreen);
-        }
-
-        document.addEventListener('keydown', function(e) {
-          if (e.key === 'Escape' && mmSection.classList.contains('is-fullscreen')) {
-            toggleFullscreen();
-          }
-        });
-
-        // Copy Markdown
-        var copyBtn = document.getElementById('mmCopyMarkdownBtn');
-        var mdSource = document.getElementById('mmMarkdownSource');
-        var toast = document.getElementById('mmToast');
-
-        function showToast(msg) {
-          if (!toast) return;
-          toast.textContent = msg;
-          toast.classList.add('active');
-          setTimeout(function() { toast.classList.remove('active'); }, 2200);
-        }
-
-        if (copyBtn && mdSource) {
-          copyBtn.addEventListener('click', function() {
-            var text = mdSource.value;
-            if (navigator.clipboard && navigator.clipboard.writeText) {
-              navigator.clipboard.writeText(text).then(function() {
-                showToast('✓ 已复制思维导图大纲到剪贴板！');
-              }).catch(function() {
-                fallbackCopy(text);
-              });
-            } else {
-              fallbackCopy(text);
-            }
-          });
-        }
-
-        function fallbackCopy(text) {
-          try {
-            var ta = document.createElement('textarea');
-            ta.value = text;
-            ta.style.position = 'fixed';
-            ta.style.left = '-9999px';
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            showToast('✓ 已复制思维导图大纲到剪贴板！');
-          } catch (e) {
-            showToast('复制失败，请手动选取');
-          }
-        }
-      }
-
-      if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initMarkmap);
-      } else {
-        initMarkmap();
       }
     })();
   </script>
@@ -1728,11 +1428,6 @@ function buildBooks() {
     const nextBook = idx < books.length - 1 ? books[idx + 1] : null;
     const stars = getStars(book.rating);
 
-    // Mindmap support (for books with verified mindmaps)
-    const mm = mindmaps[book.id];
-    const mindmapHtml = mm ? renderMindmapHtml(mm, book) : '';
-    const mindmapScriptHtml = mm ? mindmapScript : '';
-
     // Thesis paragraphs
     const thesisHtml = book.thesis.map(p => `<p>${escapeHtml(p)}</p>`).join('\n');
 
@@ -1745,12 +1440,11 @@ function buildBooks() {
       </li>
     `.trim()).join('\n');
 
-    // Structure list
-    const structureHtml = book.structure.map(part => `
-      <li class="part-item">
+    // Structure list (compact directory: title + one line, no example box)
+    const structureHtml = book.structure.map((part, i) => `
+      <li class="part-item" id="part-${i}">
         <h3 class="part-title">${escapeHtml(part.title)}</h3>
         <p class="part-desc">${escapeHtml(part.desc)}</p>
-        <div class="example-box">${escapeHtml(part.example)}</div>
       </li>
     `.trim()).join('\n');
 
@@ -1786,11 +1480,8 @@ function buildBooks() {
               </div>
     `.trim() : '';
 
-    const verifyRow = (book.verifiedAt && book.verifiedSource) ? `
-              <div class="detail-meta-item detail-meta-verify">
-                <span class="label">目录核对：</span>
-                <span class="value">${escapeHtml(book.verifiedSource)}（${escapeHtml(book.verifiedAt)}）</span>
-              </div>
+    const footerVerifyRow = (book.verifiedAt && book.verifiedSource) ? `
+      <p class="footer-verify">目录核对：${escapeHtml(book.verifiedSource)}（${escapeHtml(book.verifiedAt)}）</p>
     `.trim() : '';
 
     const origTitleRow = book.originalTitle ? `
@@ -1799,6 +1490,15 @@ function buildBooks() {
         <span class="value">${escapeHtml(book.originalTitle)}</span>
       </div>
     `.trim() : '';
+
+    // Sticky in-page table of contents
+    const pageTocHtml = `
+      <nav class="page-toc" aria-label="本页目录">
+        <a href="#sec-thesis">总体观点</a>
+        <a href="#sec-ideas">核心观点</a>
+        <a href="#sec-structure">全书结构</a>
+      </nav>
+    `.trim();
 
     const sidebarHtml = renderSidebar(book.id, true);
 
@@ -1850,6 +1550,8 @@ function buildBooks() {
             <h1>${escapeHtml(book.title)}</h1>
           </div>
 
+          ${pageTocHtml}
+
           <div class="detail-top">
             <div class="detail-cover-wrap">
               ${getCoverPicture(book.cover, book.title, true, true)}
@@ -1865,7 +1567,6 @@ function buildBooks() {
               </div>
               ${publishYearRow}
               ${origTitleRow}
-              ${verifyRow}
               ${doubanRow}
             </div>
           </div>
@@ -1876,43 +1577,40 @@ function buildBooks() {
               <div class="ratebox-stars" aria-label="评分星级">${stars}</div>
               <div class="ratebox-label">豆瓣评分，${formatRatingCount(book.ratingCount)}</div>
             </div>
-          </div>
-
-          <div class="detail-user-shelf" data-book-id="${book.id}">
-            <div class="shelf-action-group">
-              <button type="button" class="detail-shelf-btn btn-want" data-status="want" aria-pressed="false" aria-label="标记为想读">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                <span>想读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-read" data-status="read" aria-pressed="false" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>已读</span>
-              </button>
+            <div class="detail-user-shelf" data-book-id="${book.id}">
+              <div class="shelf-action-group">
+                <button type="button" class="detail-shelf-btn btn-want" data-status="want" aria-pressed="false" aria-label="标记为想读">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span>想读</span>
+                </button>
+                <button type="button" class="detail-shelf-btn btn-read" data-status="read" aria-pressed="false" aria-label="标记为已读">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>已读</span>
+                </button>
+              </div>
+              <div class="shelf-status-badge" id="detailShelfBadge">未标记阅读状态</div>
             </div>
-            <div class="shelf-status-badge" id="detailShelfBadge">未标记阅读状态</div>
           </div>
 
           <div class="intro-quote">
             ${escapeHtml(book.intro)}
           </div>
 
-          <section class="section-block">
+          <section class="section-block" id="sec-thesis">
             <h2>总体观点</h2>
             <div class="thesis-body">
               ${thesisHtml}
             </div>
           </section>
 
-          <section class="section-block">
+          <section class="section-block" id="sec-ideas">
             <h2>核心观点</h2>
             <ol class="idea-list">
               ${ideasHtml}
             </ol>
           </section>
 
-          ${mindmapHtml}
-
-          <section class="section-block">
+          <section class="section-block" id="sec-structure">
             <h2>全书结构</h2>
             <ol class="part-list">
               ${structureHtml}
@@ -1930,6 +1628,7 @@ function buildBooks() {
         <footer>
           <p>${escapeHtml(site.footerNote)}</p>
           <p>${escapeHtml(site.footerVerify)} ｜ <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> ｜ <span class="footer-version">v${escapeHtml(pkg.version)}</span></p>
+          ${footerVerifyRow}
         </footer>
       </div>
 
@@ -1948,7 +1647,6 @@ function buildBooks() {
     });
   </script>
 
-  ${mindmapScriptHtml}
   ${renderCmdkModalHtml()}
   ${cmdkAndStoreScript}
   ${sidebarScript}
