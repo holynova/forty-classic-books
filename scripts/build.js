@@ -409,22 +409,70 @@ function generateMindmapMarkdown(mm, book) {
   return md.trim();
 }
 
+// Strip leading numeral prefixes ("一、", "1. ") from a mindmap node title
+function stripNumeralPrefix(t) {
+  return (t || '').trim()
+    .replace(/^[一二三四五六七八九十]+[、．.]/, '')
+    .replace(/^\d+[、．.]\s*/, '')
+    .trim();
+}
+
+// Strip chapter prefixes ("第1章 ", "Chapter 1") from a structure title
+function stripChapterPrefix(t) {
+  return (t || '').trim()
+    .replace(/^第\s*[一二三四五六七八九十\d]+\s*[章节篇]\s*/, '')
+    .replace(/^(Chapter|Part)\s*\d+\s*[:：.]?\s*/i, '')
+    .trim();
+}
+
+// Find the structure anchor id for a mindmap branch title (null if no match)
+function findStructureAnchor(title, book) {
+  const base = stripNumeralPrefix(title);
+  if (!base) return null;
+  const parts = book.structure || [];
+  for (let i = 0; i < parts.length; i++) {
+    const s = stripChapterPrefix(parts[i].title);
+    const raw = (parts[i].title || '').trim();
+    if (base === s || base === raw || s.includes(base) || base.includes(s) || raw.includes(base) || base.includes(raw)) {
+      return 'part-' + i;
+    }
+  }
+  return null;
+}
+
+// Walk the raw mindmap tree and the transformed markmap tree in parallel,
+// injecting per-node payload: desc (node desc, root theme) and jump (structure anchor)
+function injectMindmapPayload(mmNode, tNode, book, depth, parentAnchor) {
+  if (!tNode.payload) tNode.payload = {};
+  if (depth === 1 && mmNode.theme) tNode.payload.desc = mmNode.theme;
+  if (mmNode.desc) tNode.payload.desc = mmNode.desc;
+  let anchor = null;
+  if (depth === 2 || depth === 3) {
+    anchor = findStructureAnchor(mmNode.title || mmNode.name, book)
+      || (depth === 3 ? parentAnchor : null);
+    if (anchor) tNode.payload.jump = anchor;
+  }
+  const kids = mmNode.children || [];
+  const tkids = tNode.children || [];
+  for (let i = 0; i < kids.length && i < tkids.length; i++) {
+    injectMindmapPayload(kids[i], tkids[i], book, depth + 1, anchor);
+  }
+}
+
 function renderMindmapHtml(mm, book) {
   const mdOutline = generateMindmapMarkdown(mm, book);
   const { root } = transformer.transform(mdOutline);
+  injectMindmapPayload(mm, root, book, 1, null);
 
   return `
     <section class="section-block mindmap-section" id="mindmapSection">
       <div class="mindmap-header">
-        <div class="mindmap-header-left">
-          <span class="mindmap-badge">树状思维导图</span>
-          <h2 class="mindmap-title">全书思维导图：知识脉络树</h2>
-        </div>
+        <h2 class="mindmap-title">全书思维导图</h2>
         <div class="mindmap-actions">
           <div class="mm-level-switch">
             <button type="button" class="mm-btn" id="mmBtnLevel1" title="折叠至一级主脉">主干</button>
-            <button type="button" class="mm-btn" id="mmBtnLevel2" title="展开至二级分支">分支</button>
-            <button type="button" class="mm-btn active" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
+            <button type="button" class="mm-btn active" id="mmBtnLevel2" title="展开至二级分支">分支</button>
+            <button type="button" class="mm-btn" id="mmBtnExpandAll" title="展开全部细节要点">全部</button>
           </div>
 
           <button type="button" class="mm-btn mm-btn-standalone" id="mmCopyMarkdownBtn" title="复制思维导图大纲为 Markdown 文本">
@@ -438,17 +486,22 @@ function renderMindmapHtml(mm, book) {
         </div>
       </div>
 
+      <p class="mm-canvas-hint">拖拽查看，点圆点展开或折叠</p>
+
       <div class="mm-viewport-wrapper">
         <div class="mm-viewport" id="mmViewport">
           <svg id="markmapSvg"></svg>
           <div class="mm-toolbar-wrap" id="mmToolbarWrap"></div>
-          <div class="mm-canvas-hint">
-            <span>💡 拖拽平移、滚轮缩放、点分支圆点折叠或展开</span>
-          </div>
         </div>
       </div>
 
-      <script type="application/json" id="mmTreeData">${JSON.stringify(root)}</script>
+      <div class="mm-desc-card" id="mmDescCard" hidden>
+        <button type="button" class="mm-desc-close" id="mmDescClose" aria-label="关闭说明">×</button>
+        <div class="mm-desc-title" id="mmDescTitle"></div>
+        <p class="mm-desc-text" id="mmDescText"></p>
+      </div>
+
+      <script type="application/json" id="mmTreeData">${JSON.stringify(root).replace(/</g, '\\u003c')}</script>
       <textarea id="mmMarkdownSource" style="display:none;" aria-hidden="true">${escapeHtml(mdOutline)}</textarea>
       <div class="mm-toast" id="mmToast" role="status" aria-live="polite">已复制思维导图大纲到剪贴板！</div>
     </section>
@@ -488,9 +541,29 @@ const mindmapScript = `
           }
         }
 
-        // Default initial fold: "全部" (all expanded)
-        var currentData = cloneData(rawData);
-        setFold(currentData, false);
+        // Fold a data tree to a preset level: 1 = root + branches,
+        // 2 = + branch children, 3 = everything expanded
+        function foldToLevel(d, level) {
+          if (!d.children) return d;
+          if (level === 1) {
+            d.children.forEach(function(b) { setFold(b, true); });
+          } else if (level === 2) {
+            d.children.forEach(function(b) {
+              b.payload = Object.assign({}, b.payload, { fold: 0 });
+              if (b.children) {
+                b.children.forEach(function(t) { setFold(t, true); });
+              }
+            });
+          } else {
+            setFold(d, false);
+          }
+          return d;
+        }
+
+        // Default initial fold: "分支" (level 2) so the first view stays readable;
+        // on narrow screens level 1 ("主干") keeps the text legible instead
+        var defaultLevel = window.innerWidth <= 640 ? 1 : 2;
+        var currentData = foldToLevel(cloneData(rawData), defaultLevel);
 
         var mm = window.markmap.Markmap.create(svgEl, {
           autoFit: true,
@@ -511,6 +584,104 @@ const mindmapScript = `
           if (tbWrap) tbWrap.appendChild(tb.render());
         }
 
+        // Adaptive viewport height: shrink the canvas to the rendered tree
+        // so the wide-but-short tree stops leaving big empty bands
+        var viewportEl = document.getElementById('mmViewport');
+        function fitViewportHeight() {
+          if (!viewportEl || mmSection.classList.contains('is-fullscreen')) return;
+          setTimeout(function() {
+            if (!viewportEl || mmSection.classList.contains('is-fullscreen')) return;
+            var renderedH = 0;
+            try {
+              var bbox = svgEl.getBBox();
+              renderedH = bbox.height;
+            } catch (e) {
+              var g = svgEl.querySelector('g');
+              if (g) renderedH = g.getBoundingClientRect().height;
+            }
+            if (!renderedH) return;
+            var isMobile = window.innerWidth <= 640;
+            var minH = isMobile ? 240 : 280;
+            var maxH = isMobile ? 520 : 560;
+            // 48px clearance above the tree (floating toolbar zone) and
+            // 48px below, so the toolbar never covers a tree label
+            var target = Math.round(Math.min(maxH, Math.max(minH, renderedH + 96)));
+            if (Math.abs(target - viewportEl.clientHeight) > 8) {
+              viewportEl.style.height = target + 'px';
+              setTimeout(function() { mm.fit(); }, 80);
+            }
+          }, 420);
+        }
+
+        var resizeTimer = null;
+        window.addEventListener('resize', function() {
+          clearTimeout(resizeTimer);
+          resizeTimer = setTimeout(function() {
+            mm.fit();
+            fitViewportHeight();
+          }, 250);
+        });
+
+        // Mark nodes that respond to text clicks (jump / description card)
+        function markClickableNodes() {
+          svgEl.querySelectorAll('g.markmap-node').forEach(function(g) {
+            var p = (g.__data__ && g.__data__.payload) || {};
+            g.classList.toggle('mm-jumpable', !!p.jump);
+            g.classList.toggle('mm-has-desc', !!p.desc && !p.jump);
+          });
+        }
+
+        // Re-mark after markmap re-renders nodes (fold toggles, level switches)
+        if ('MutationObserver' in window) {
+          var moTimer = null;
+          new MutationObserver(function() {
+            clearTimeout(moTimer);
+            moTimer = setTimeout(markClickableNodes, 120);
+          }).observe(svgEl, { childList: true, subtree: true });
+        }
+
+        // Description card (below the viewport)
+        var descCard = document.getElementById('mmDescCard');
+        var descTitle = document.getElementById('mmDescTitle');
+        var descText = document.getElementById('mmDescText');
+        var descClose = document.getElementById('mmDescClose');
+        function hideDescCard() { if (descCard) descCard.hidden = true; }
+        if (descClose) descClose.addEventListener('click', hideDescCard);
+
+        // Click on node text: jump to the matching structure entry,
+        // or show the node's description card. Circle clicks still fold
+        // (markmap's own handler) and are ignored here.
+        svgEl.addEventListener('click', function(e) {
+          if (e.target.tagName === 'circle') return;
+          var g = e.target.closest ? e.target.closest('g.markmap-node') : null;
+          if (!g || !g.__data__) return;
+          var payload = g.__data__.payload || {};
+          if (payload.jump) {
+            var target = document.getElementById(payload.jump);
+            if (target) {
+              hideDescCard();
+              target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+              return;
+            }
+          }
+          if (payload.desc) {
+            var title = '';
+            if (g.__data__.content) {
+              var tmp = document.createElement('div');
+              tmp.innerHTML = g.__data__.content;
+              title = (tmp.textContent || '').replace(/\s*思维导图\s*$/, '');
+            }
+            if (descTitle) descTitle.textContent = title;
+            if (descText) descText.textContent = payload.desc;
+            if (descCard) descCard.hidden = false;
+          } else {
+            hideDescCard();
+          }
+        });
+
+        fitViewportHeight();
+        setTimeout(markClickableNodes, 500);
+
         // Level Preset Buttons
         var btnL1 = document.getElementById('mmBtnLevel1');
         var btnL2 = document.getElementById('mmBtnLevel2');
@@ -523,41 +694,32 @@ const mindmapScript = `
           if (activeBtn) activeBtn.classList.add('active');
         }
 
+        // Sync the active button with the width-aware default level
+        setActiveLevelBtn(defaultLevel === 1 ? btnL1 : btnL2);
+
         if (btnL1) {
           btnL1.addEventListener('click', function() {
-            var d = cloneData(rawData);
-            if (d.children) {
-              d.children.forEach(function(b) { setFold(b, true); });
-            }
-            mm.setData(d);
+            mm.setData(foldToLevel(cloneData(rawData), 1));
             mm.fit();
+            fitViewportHeight();
             setActiveLevelBtn(btnL1);
           });
         }
 
         if (btnL2) {
           btnL2.addEventListener('click', function() {
-            var d = cloneData(rawData);
-            if (d.children) {
-              d.children.forEach(function(b) {
-                b.payload = Object.assign({}, b.payload, { fold: 0 });
-                if (b.children) {
-                  b.children.forEach(function(t) { setFold(t, true); });
-                }
-              });
-            }
-            mm.setData(d);
+            mm.setData(foldToLevel(cloneData(rawData), 2));
             mm.fit();
+            fitViewportHeight();
             setActiveLevelBtn(btnL2);
           });
         }
 
         if (btnAll) {
           btnAll.addEventListener('click', function() {
-            var d = cloneData(rawData);
-            setFold(d, false);
-            mm.setData(d);
+            mm.setData(foldToLevel(cloneData(rawData), 3));
             mm.fit();
+            fitViewportHeight();
             setActiveLevelBtn(btnAll);
           });
         }
@@ -571,6 +733,7 @@ const mindmapScript = `
           if (fsText) fsText.textContent = isFs ? '退出全屏' : '全屏';
           setTimeout(function() {
             mm.fit();
+            if (!isFs) fitViewportHeight();
           }, 150);
         }
 
@@ -1745,12 +1908,11 @@ function buildBooks() {
       </li>
     `.trim()).join('\n');
 
-    // Structure list
-    const structureHtml = book.structure.map(part => `
-      <li class="part-item">
+    // Structure list (compact directory: title + one line, no example box)
+    const structureHtml = book.structure.map((part, i) => `
+      <li class="part-item" id="part-${i}">
         <h3 class="part-title">${escapeHtml(part.title)}</h3>
         <p class="part-desc">${escapeHtml(part.desc)}</p>
-        <div class="example-box">${escapeHtml(part.example)}</div>
       </li>
     `.trim()).join('\n');
 
@@ -1786,11 +1948,8 @@ function buildBooks() {
               </div>
     `.trim() : '';
 
-    const verifyRow = (book.verifiedAt && book.verifiedSource) ? `
-              <div class="detail-meta-item detail-meta-verify">
-                <span class="label">目录核对：</span>
-                <span class="value">${escapeHtml(book.verifiedSource)}（${escapeHtml(book.verifiedAt)}）</span>
-              </div>
+    const footerVerifyRow = (book.verifiedAt && book.verifiedSource) ? `
+      <p class="footer-verify">目录核对：${escapeHtml(book.verifiedSource)}（${escapeHtml(book.verifiedAt)}）</p>
     `.trim() : '';
 
     const origTitleRow = book.originalTitle ? `
@@ -1799,6 +1958,16 @@ function buildBooks() {
         <span class="value">${escapeHtml(book.originalTitle)}</span>
       </div>
     `.trim() : '';
+
+    // Sticky in-page table of contents (mindmap link only when the book has one)
+    const pageTocHtml = `
+      <nav class="page-toc" aria-label="本页目录">
+        <a href="#sec-thesis">总体观点</a>
+        <a href="#sec-ideas">核心观点</a>
+        ${mm ? '<a href="#mindmapSection">思维导图</a>' : ''}
+        <a href="#sec-structure">全书结构</a>
+      </nav>
+    `.trim();
 
     const sidebarHtml = renderSidebar(book.id, true);
 
@@ -1850,6 +2019,8 @@ function buildBooks() {
             <h1>${escapeHtml(book.title)}</h1>
           </div>
 
+          ${pageTocHtml}
+
           <div class="detail-top">
             <div class="detail-cover-wrap">
               ${getCoverPicture(book.cover, book.title, true, true)}
@@ -1865,7 +2036,6 @@ function buildBooks() {
               </div>
               ${publishYearRow}
               ${origTitleRow}
-              ${verifyRow}
               ${doubanRow}
             </div>
           </div>
@@ -1876,34 +2046,33 @@ function buildBooks() {
               <div class="ratebox-stars" aria-label="评分星级">${stars}</div>
               <div class="ratebox-label">豆瓣评分，${formatRatingCount(book.ratingCount)}</div>
             </div>
-          </div>
-
-          <div class="detail-user-shelf" data-book-id="${book.id}">
-            <div class="shelf-action-group">
-              <button type="button" class="detail-shelf-btn btn-want" data-status="want" aria-pressed="false" aria-label="标记为想读">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
-                <span>想读</span>
-              </button>
-              <button type="button" class="detail-shelf-btn btn-read" data-status="read" aria-pressed="false" aria-label="标记为已读">
-                <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
-                <span>已读</span>
-              </button>
+            <div class="detail-user-shelf" data-book-id="${book.id}">
+              <div class="shelf-action-group">
+                <button type="button" class="detail-shelf-btn btn-want" data-status="want" aria-pressed="false" aria-label="标记为想读">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+                  <span>想读</span>
+                </button>
+                <button type="button" class="detail-shelf-btn btn-read" data-status="read" aria-pressed="false" aria-label="标记为已读">
+                  <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  <span>已读</span>
+                </button>
+              </div>
+              <div class="shelf-status-badge" id="detailShelfBadge">未标记阅读状态</div>
             </div>
-            <div class="shelf-status-badge" id="detailShelfBadge">未标记阅读状态</div>
           </div>
 
           <div class="intro-quote">
             ${escapeHtml(book.intro)}
           </div>
 
-          <section class="section-block">
+          <section class="section-block" id="sec-thesis">
             <h2>总体观点</h2>
             <div class="thesis-body">
               ${thesisHtml}
             </div>
           </section>
 
-          <section class="section-block">
+          <section class="section-block" id="sec-ideas">
             <h2>核心观点</h2>
             <ol class="idea-list">
               ${ideasHtml}
@@ -1912,7 +2081,7 @@ function buildBooks() {
 
           ${mindmapHtml}
 
-          <section class="section-block">
+          <section class="section-block" id="sec-structure">
             <h2>全书结构</h2>
             <ol class="part-list">
               ${structureHtml}
@@ -1930,6 +2099,7 @@ function buildBooks() {
         <footer>
           <p>${escapeHtml(site.footerNote)}</p>
           <p>${escapeHtml(site.footerVerify)} ｜ <a href="https://github.com/holynova/forty-classic-books" target="_blank" rel="noopener">GitHub 仓库</a> ｜ <span class="footer-version">v${escapeHtml(pkg.version)}</span></p>
+          ${footerVerifyRow}
         </footer>
       </div>
 
