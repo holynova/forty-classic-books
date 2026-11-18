@@ -1,34 +1,74 @@
-# 经典书导读 / Classic Books Guide (921 本严选核实版)
+<p align="right"><a href="README.en.md">English</a></p>
 
-中文：精选软件工程、系统设计、UI/UX 设计、产品经理、中国历史、建筑学、艺术、主理人五星精选、主理人四星精选与主理人心愿精选 10 大核心领域，共 921 本豆瓣高分经典严谨导读。章节结构严格对齐原书真实目录，总体观点 × 核心观点（配生动真实案例）× 全书结构（逐章实战解析），坚持硬核干货，拒绝杜撰空话。纯静态网页，内置全局搜索、吸顶目录、沉浸式默认隐藏侧边导航抽屉，并全链路优化 WebP 响应式图片与离屏渲染性能。
+<p align="center">
+  <img src="./assets/readme/hero.svg" width="100%" alt="经典书导读 — 921 本豆瓣高分经典：总体观点、核心观点、全书结构；三本书《人月神话》8.4、《人件》8.2、《代码大全》9.3">
+</p>
 
-English: Curated reading guide for 921 verified classic books across 10 core domains: Software Engineering, System Design, UI/UX Design, Product Management, Chinese History, Architecture, Art, Curator's 5-Star Favorites, Curator's 4-Star Favorites, and Curator's Wishlist. Chapter structures strictly match authentic tables of contents with zero omissions or hallucinations. Zero-dependency static site with instant search, distraction-free collapsible navigation, and performance-optimized WebP responsive images.
+<p align="center">
+  <a href="https://xiaosang.cc/forty-classic-books/">▶ 在线阅读</a>
+  ·
+  <a href="https://holynova.github.io/forty-classic-books/">GitHub Pages 镜像</a>
+  ·
+  <a href="https://github.com/holynova/forty-classic-books">GitHub 仓库</a>
+</p>
 
-![Project screenshot](./assets/screenshot.png)
+经典书导读收录 921 本豆瓣高分经典，分 10 大领域。每本书讲清三件事：总体观点、核心观点（配真实案例）、全书结构；章节严格对齐原书真实目录，拒绝空话。纯静态网页，内置全站搜索与想读 / 已读记录。
 
-## 在线体验 / Live Demo
+## 截图
 
-- [Cloudflare Demo](https://xiaosang.cc/forty-classic-books/)
-- [GitHub Pages](https://holynova.github.io/forty-classic-books/)
-- [GitHub Repo](https://github.com/holynova/forty-classic-books)
+<p align="center">
+  <img src="./assets/readme/screenshot.png" width="100%" alt="网站首页：经典书导读标题、搜索框、10 大领域分类标签，软件工程分类下《人月神话》8.4 分与《人件》8.2 分两本书">
+</p>
 
-<img src="./assets/qr.png" width="180" alt="扫码访问 Cloudflare 在线体验">
+## 内容
 
-## 本地运行 / Run locally
+10 大领域，共 921 本：
+
+| 领域 | 说明 |
+| --- | --- |
+| 软件工程 | 写代码、带团队、做工程的方法论经典 |
+| 系统设计 | 架构、分布式、高可用的设计经典 |
+| UI/UX 设计 | 交互、视觉、用户体验的设计经典 |
+| 产品经理 | 产品思维、需求、增长的实战经典 |
+| 中国历史 | 通史与断代史的大家之作 |
+| 建筑学 | 建筑史、空间与城市的经典 |
+| 艺术 | 艺术史与审美的入门与进阶 |
+| 主理人五星精选 | 主理人亲读五星的书 |
+| 主理人四星精选 | 主理人亲读四星的书 |
+| 主理人心愿精选 | 主理人想读的书 |
+
+每本书包含：
+
+- **总体观点**：一句话说清这本书到底在讲什么。
+- **核心观点**：配生动真实案例，不堆抽象概念。
+- **全书结构**：逐章解析，章节与原书目录一一对应。
+- **豆瓣评分与评价人数**：评分与人数均来自豆瓣条目。
+
+## 功能
+
+- **全站搜索**：按书名、作者、出版社、关键词搜全部 921 本。
+- **领域筛选**：按 10 大领域浏览，吸顶目录快速跳转。
+- **想读 / 已读**：点一下标记，存在本地浏览器，下次打开还在。
+- **上下本导航**：详情页可直接翻到上一本 / 下一本，键盘 `←` `→` 也能翻。
+- **响应式 WebP 封面**：封面按设备尺寸加载，手机上也不卡。
+
+## 本地运行
+
+页面已预生成，直接起静态服务器即可浏览：
 
 ```bash
-# 生成全部静态页面并执行验收
+python3 -m http.server 8000
+# 打开 http://localhost:8000
+```
+
+重新生成全部页面并执行验收：
+
+```bash
 npm run build && npm run validate
-# 或
-node scripts/build.js && node scripts/validate.js
 ```
 
-## 发布 / Deploy
+## 技术
 
-```bash
-npx wrangler deploy --config wrangler.jsonc
-```
-
-Cloudflare Workers · Route: `xiaosang.cc/forty-classic-books/*`
-
-源码与部署配置使用同一个主分支；在本地手动发布，不创建 Cloudflare 专用分支或 GitHub Action。
+- 纯静态网页，零依赖：预生成的 HTML + CSS + 少量 JS，无后端。
+- 全站搜索用预建的 `search-index.json`，本地即时检索。
+- 封面为 WebP 响应式图片，离屏内容延迟渲染。
