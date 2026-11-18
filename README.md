@@ -1,9 +1,11 @@
+<p align="right"><a href="README.en.md">English</a></p>
+
 <p align="center">
   <img src="./assets/readme/hero.svg" width="100%" alt="经典书导读 — 921 本豆瓣高分经典：总体观点、核心观点、全书结构；三本书《人月神话》8.4、《人件》8.2、《代码大全》9.3">
 </p>
 
 <p align="center">
-  <a href="https://xiaosang.cc/forty-classic-books/">▶ 在线阅读 Read Online</a>
+  <a href="https://xiaosang.cc/forty-classic-books/">▶ 在线阅读</a>
   ·
   <a href="https://holynova.github.io/forty-classic-books/">GitHub Pages 镜像</a>
   ·
@@ -12,15 +14,13 @@
 
 经典书导读收录 921 本豆瓣高分经典，分 10 大领域。每本书讲清三件事：总体观点、核心观点（配真实案例）、全书结构；章节严格对齐原书真实目录，拒绝空话。纯静态网页，内置全站搜索与想读 / 已读记录。
 
-Classic Books Guide covers 921 highly-rated classics across 10 domains. Each book gets three things: the big idea, the core arguments (with real examples), and the full chapter structure — matched against the book's actual table of contents. A dependency-free static site with full-text search and want-to-read / finished tracking.
-
-## 截图 / Screenshot
+## 截图
 
 <p align="center">
   <img src="./assets/readme/screenshot.png" width="100%" alt="网站首页：经典书导读标题、搜索框、10 大领域分类标签，软件工程分类下《人月神话》8.4 分与《人件》8.2 分两本书">
 </p>
 
-## 内容 / What's Inside
+## 内容
 
 10 大领域，共 921 本：
 
@@ -44,7 +44,7 @@ Classic Books Guide covers 921 highly-rated classics across 10 domains. Each boo
 - **全书结构**：逐章解析，章节与原书目录一一对应。
 - **豆瓣评分与评价人数**：评分与人数均来自豆瓣条目。
 
-## 功能 / Features
+## 功能
 
 - **全站搜索**：按书名、作者、出版社、关键词搜全部 921 本。
 - **领域筛选**：按 10 大领域浏览，吸顶目录快速跳转。
@@ -52,7 +52,7 @@ Classic Books Guide covers 921 highly-rated classics across 10 domains. Each boo
 - **上下本导航**：详情页可直接翻到上一本 / 下一本，键盘 `←` `→` 也能翻。
 - **响应式 WebP 封面**：封面按设备尺寸加载，手机上也不卡。
 
-## 本地运行 / Run Locally
+## 本地运行
 
 页面已预生成，直接起静态服务器即可浏览：
 
@@ -67,18 +67,8 @@ python3 -m http.server 8000
 npm run build && npm run validate
 ```
 
-## 技术 / Tech
+## 技术
 
 - 纯静态网页，零依赖：预生成的 HTML + CSS + 少量 JS，无后端。
 - 全站搜索用预建的 `search-index.json`，本地即时检索。
 - 封面为 WebP 响应式图片，离屏内容延迟渲染。
-
-## English
-
-**Classic Books Guide** is a reading guide to 921 highly-rated books in 10 domains — software engineering, system design, UI/UX, product management, Chinese history, architecture, art, and three curator's picks lists. Every book gets the big idea, the core arguments with real examples, and the full structure chapter by chapter, verified against the actual table of contents. Douban ratings and review counts are shown for every title.
-
-- **Search everything**: instant search across all 921 books by title, author, publisher, or keyword.
-- **Browse by domain**: ten categories with a sticky table of contents.
-- **Want to read / finished**: one tap to mark a book; saved locally in your browser.
-- **Navigate between books**: previous/next links on every detail page, plus `←` `→` keyboard shortcuts.
-- **Run it locally**: pages are prebuilt — serve the directory with any static server, or rebuild with `npm run build && npm run validate`.
